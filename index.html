@@ -5,39 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>مبخوت بن عبدالله — MBK</title>
-
-  <meta
-    name="description"
-    content="الموقع الشخصي لمبخوت بن عبدالله."
-  >
+  <meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-
-    /* =========================================================
-       MBK — COLOR SYSTEM
-       ONLY 3 COLORS
-       ========================================================= */
-
     :root {
-      --navy: #071A33;
-      --white: #FFFFFF;
-      --gold: #D4AF37;
+      --black: #000000;
+      --white: #ffffff;
+      --light: #f5f5f7;
+      --gray: #6e6e73;
+      --blue: #0071e3;
+      --border: #d2d2d7;
 
-      --max-width: 1200px;
+      --max: 1200px;
     }
-
-
-    /* =========================================================
-       RESET
-       ========================================================= */
 
     * {
       margin: 0;
@@ -50,9 +34,9 @@
     }
 
     body {
-      background: var(--navy);
-      color: var(--white);
-      font-family: "Cairo", sans-serif;
+      background: var(--white);
+      color: var(--black);
+      font-family: "Cairo", Arial, sans-serif;
       overflow-x: hidden;
     }
 
@@ -61,19 +45,18 @@
       text-decoration: none;
     }
 
-    button {
-      font-family: inherit;
-    }
-
     img {
       display: block;
       max-width: 100%;
     }
 
+    button {
+      font: inherit;
+    }
 
-    /* =========================================================
-       NAVIGATION
-       ========================================================= */
+    /* =========================
+       NAVBAR
+    ========================= */
 
     .navbar {
       position: fixed;
@@ -81,26 +64,23 @@
       right: 0;
       left: 0;
 
-      height: 64px;
+      height: 52px;
 
-      z-index: 9999;
+      z-index: 1000;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      padding: 0 35px;
+      padding: 0 28px;
 
-      background: rgba(7, 26, 51, 0.94);
+      background: rgba(255,255,255,.82);
 
-      border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
 
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(0,0,0,.08);
     }
-
-
-    /* LOGO */
 
     .logo {
       direction: ltr;
@@ -110,102 +90,66 @@
       font-size: 17px;
       font-weight: 700;
 
-      letter-spacing: 5px;
+      letter-spacing: 4px;
 
-      color: var(--gold);
+      color: var(--black);
     }
-
-
-    /* NAV LINKS */
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 34px;
+      gap: 30px;
     }
 
     .nav-links a {
-      position: relative;
+      color: var(--black);
 
       font-size: 12px;
-      font-weight: 500;
 
-      color: var(--white);
-
-      transition: .3s ease;
-    }
-
-    .nav-links a::after {
-      content: "";
-
-      position: absolute;
-
-      right: 0;
-      bottom: -7px;
-
-      width: 0;
-      height: 1px;
-
-      background: var(--gold);
-
-      transition: .3s ease;
+      transition: color .25s ease;
     }
 
     .nav-links a:hover {
-      color: var(--gold);
+      color: var(--blue);
     }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-
-    /* MOBILE MENU */
 
     .menu-button {
       display: none;
 
-      width: 38px;
-      height: 38px;
+      border: 0;
+      background: transparent;
 
-      border: 1px solid var(--gold);
-      border-radius: 50%;
+      color: var(--black);
 
-      background: var(--navy);
-
-      color: var(--gold);
+      font-size: 21px;
 
       cursor: pointer;
-
-      font-size: 18px;
     }
 
-
-    /* =========================================================
+    /* =========================
        HERO
-       ========================================================= */
+    ========================= */
 
     .hero {
       min-height: 100vh;
 
+      padding:
+        145px 24px
+        90px;
+
       display: flex;
       flex-direction: column;
+
       align-items: center;
       justify-content: center;
 
       text-align: center;
-
-      padding:
-        150px
-        24px
-        90px;
     }
-
 
     .hero-label {
       direction: ltr;
 
-      color: var(--gold);
+      color: var(--gray);
 
       font-family: Arial, sans-serif;
 
@@ -216,11 +160,10 @@
       margin-bottom: 25px;
     }
 
-
     .hero-title {
-      color: var(--white);
+      color: var(--black);
 
-      font-size: clamp(45px, 8vw, 92px);
+      font-size: clamp(45px, 8vw, 90px);
 
       line-height: 1.15;
 
@@ -232,90 +175,57 @@
     }
 
     .hero-title span {
-      color: var(--gold);
+      display: block;
     }
-
 
     .hero-description {
       max-width: 650px;
 
-      color: var(--white);
+      color: var(--gray);
 
-      font-size: 16px;
+      font-size: 17px;
 
       line-height: 2;
 
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
-
-
-    /* HERO BUTTON */
 
     .hero-button {
       display: inline-flex;
+
       align-items: center;
-      gap: 12px;
 
-      padding: 12px 25px;
+      gap: 9px;
 
-      border: 1px solid var(--gold);
-      border-radius: 30px;
+      color: var(--blue);
 
-      color: var(--gold);
+      font-size: 14px;
 
-      font-size: 13px;
-
-      transition:
-        background .3s ease,
-        color .3s ease,
-        transform .3s ease;
-    }
-
-    .hero-button span {
-      font-size: 17px;
-      direction: ltr;
+      transition: gap .25s ease;
     }
 
     .hero-button:hover {
-      background: var(--gold);
-      color: var(--navy);
-
-      transform: translateY(-3px);
+      gap: 14px;
     }
 
+    .hero-button span {
+      direction: ltr;
+    }
 
-    /* =========================================================
+    /* =========================
        HERO IMAGE
-       ========================================================= */
+    ========================= */
 
     .hero-image-container {
       width: min(900px, 92vw);
 
       margin-top: 75px;
 
-      position: relative;
-
       overflow: hidden;
 
       border-radius: 28px;
 
-      border: 1px solid rgba(212, 175, 55, 0.35);
-
-      background: var(--navy);
-    }
-
-    .hero-image-container::after {
-      content: "";
-
-      position: absolute;
-
-      inset: 0;
-
-      border: 1px solid rgba(212, 175, 55, 0.20);
-
-      border-radius: inherit;
-
-      pointer-events: none;
+      background: var(--light);
     }
 
     .hero-image {
@@ -324,18 +234,15 @@
       height: auto;
 
       object-fit: contain;
-
-      background: var(--navy);
     }
 
-
-    /* =========================================================
-       GENERAL SECTIONS
-       ========================================================= */
+    /* =========================
+       SECTIONS
+    ========================= */
 
     .section {
       width: min(
-        var(--max-width),
+        var(--max),
         calc(100% - 60px)
       );
 
@@ -344,57 +251,70 @@
       padding: 150px 0;
     }
 
+    .section.light {
+      width: 100%;
+
+      max-width: none;
+
+      padding-right: max(
+        30px,
+        calc((100vw - var(--max)) / 2)
+      );
+
+      padding-left: max(
+        30px,
+        calc((100vw - var(--max)) / 2)
+      );
+
+      background: var(--light);
+    }
 
     .section-label {
       direction: ltr;
 
-      color: var(--gold);
+      color: var(--gray);
 
       font-family: Arial, sans-serif;
 
       font-size: 10px;
 
-      letter-spacing: 5px;
+      letter-spacing: 4px;
 
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
-
     .section-title {
-      color: var(--white);
+      color: var(--black);
 
-      font-size: clamp(40px, 6vw, 70px);
+      font-size: clamp(
+        42px,
+        6vw,
+        72px
+      );
 
       line-height: 1.2;
 
       font-weight: 600;
 
-      letter-spacing: -2px;
+      letter-spacing: -3px;
 
       margin-bottom: 60px;
     }
 
-
-    /* =========================================================
+    /* =========================
        ABOUT
-       ========================================================= */
+    ========================= */
 
     .about-grid {
       display: grid;
 
       grid-template-columns:
-        .8fr
-        1.2fr;
+        .75fr 1.25fr;
 
       gap: 100px;
-
-      align-items: start;
     }
 
-
     .about-intro {
-      color: var(--gold);
-
       font-size: 30px;
 
       line-height: 1.7;
@@ -402,78 +322,70 @@
       font-weight: 600;
     }
 
-
     .about-text {
-      color: var(--white);
+      color: var(--gray);
 
       font-size: 17px;
 
       line-height: 2.25;
     }
 
-
     .about-text strong {
       display: block;
 
-      color: var(--gold);
-
-      margin-top: 30px;
+      color: var(--black);
 
       font-size: 18px;
+
+      margin-top: 30px;
 
       font-weight: 600;
     }
 
-
-    /* =========================================================
+    /* =========================
        JOURNEY
-       ========================================================= */
+    ========================= */
 
     .journey-list {
-      border-top: 1px solid rgba(212, 175, 55, .35);
+      border-top: 1px solid var(--border);
     }
-
 
     .journey-item {
       display: grid;
 
-      grid-template-columns: 160px 1fr;
+      grid-template-columns:
+        160px 1fr;
 
       gap: 55px;
 
-      padding: 38px 0;
+      padding: 40px 0;
 
-      border-bottom: 1px solid rgba(212, 175, 55, .35);
+      border-bottom:
+        1px solid var(--border);
 
       transition:
-        padding .4s ease,
-        background .4s ease;
+        padding .3s ease;
     }
-
 
     .journey-item:hover {
-      padding-right: 18px;
-      padding-left: 18px;
-
-      background: rgba(212, 175, 55, .04);
+      padding-right: 12px;
+      padding-left: 12px;
     }
-
 
     .journey-year {
       direction: ltr;
 
-      color: var(--gold);
+      color: var(--black);
 
       font-family: Arial, sans-serif;
 
-      font-size: 23px;
+      font-size: 22px;
 
-      font-weight: 700;
+      font-weight: 600;
     }
 
-
     .journey-content h3 {
-      color: var(--white);
+      color: var(--black);
 
       font-size: 22px;
 
@@ -482,19 +394,17 @@
       margin-bottom: 7px;
     }
 
-
     .journey-content p {
-      color: var(--white);
+      color: var(--gray);
 
       font-size: 14px;
 
       line-height: 1.9;
     }
 
-
-    /* =========================================================
+    /* =========================
        GALLERY
-       ========================================================= */
+    ========================= */
 
     .gallery {
       display: grid;
@@ -505,7 +415,6 @@
       gap: 20px;
     }
 
-
     .gallery-item {
       position: relative;
 
@@ -513,15 +422,12 @@
 
       min-height: 430px;
 
-      border-radius: 25px;
+      border-radius: 24px;
 
-      border: 1px solid rgba(212, 175, 55, .28);
+      background: var(--light);
 
       cursor: pointer;
-
-      background: var(--navy);
     }
-
 
     .gallery-item.large {
       grid-column: span 2;
@@ -529,13 +435,13 @@
       min-height: 620px;
     }
 
-
     .gallery-item img {
+      position: absolute;
+
+      inset: 0;
+
       width: 100%;
       height: 100%;
-
-      position: absolute;
-      inset: 0;
 
       object-fit: cover;
 
@@ -544,11 +450,9 @@
         cubic-bezier(.2,.8,.2,1);
     }
 
-
     .gallery-item:hover img {
-      transform: scale(1.04);
+      transform: scale(1.035);
     }
-
 
     .gallery-overlay {
       position: absolute;
@@ -559,20 +463,19 @@
 
       padding: 35px;
 
+      color: var(--white);
+
       background:
         linear-gradient(
           transparent,
-          rgba(7,26,51,.95)
+          rgba(0,0,0,.75)
         );
     }
-
 
     .gallery-overlay small {
       display: block;
 
       direction: ltr;
-
-      color: var(--gold);
 
       font-family: Arial, sans-serif;
 
@@ -583,221 +486,190 @@
       margin-bottom: 8px;
     }
 
-
     .gallery-overlay h3 {
-      color: var(--white);
-
       font-size: 22px;
 
       font-weight: 600;
     }
 
-
-    /* =========================================================
-       MBK SIGNATURE
-       ========================================================= */
+    /* =========================
+       BIG MBK
+    ========================= */
 
     .signature {
+      min-height: 65vh;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
       text-align: center;
 
-      padding:
-        170px
-        20px;
+      padding: 120px 20px;
     }
-
 
     .signature-logo {
       direction: ltr;
 
-      color: var(--gold);
-
       font-family: Arial, sans-serif;
 
       font-size: clamp(
-        80px,
-        17vw,
-        190px
+        90px,
+        18vw,
+        220px
       );
+
+      line-height: 1;
 
       font-weight: 700;
 
-      letter-spacing: 12px;
+      letter-spacing: 8px;
 
-      line-height: 1;
+      color: var(--black);
     }
-
-
-    .signature-line {
-      width: 70px;
-      height: 1px;
-
-      background: var(--gold);
-
-      margin:
-        28px
-        auto;
-    }
-
 
     .signature p {
-      color: var(--white);
+      color: var(--gray);
 
-      font-size: 14px;
+      font-size: 15px;
+
+      margin-top: 30px;
     }
 
-
-    /* =========================================================
+    /* =========================
        CONTACT
-       ========================================================= */
+    ========================= */
 
     .contact {
+      background: var(--light);
+
       text-align: center;
 
       padding:
-        100px
+        130px
         20px
-        160px;
+        150px;
     }
-
-
-    .contact .section-label {
-      margin-bottom: 20px;
-    }
-
 
     .contact-title {
-      color: var(--white);
+      color: var(--black);
 
       font-size: clamp(
         45px,
         8vw,
-        80px
+        82px
       );
+
+      line-height: 1.2;
 
       font-weight: 600;
 
-      letter-spacing: -2px;
+      letter-spacing: -3px;
 
       margin-bottom: 20px;
     }
 
-
     .contact-description {
-      color: var(--white);
+      color: var(--gray);
 
       font-size: 15px;
 
       margin-bottom: 35px;
     }
 
-
-    /* SOCIAL ICONS */
-
     .socials {
       display: flex;
 
       justify-content: center;
 
-      gap: 15px;
+      gap: 14px;
     }
 
-
     .social {
-      width: 56px;
-      height: 56px;
+      width: 52px;
+      height: 52px;
 
       display: flex;
 
       align-items: center;
       justify-content: center;
 
-      border:
-        1px solid
-        var(--gold);
-
       border-radius: 50%;
 
-      color: var(--gold);
+      background: var(--white);
 
-      background: var(--navy);
+      color: var(--black);
 
       transition:
-        background .3s ease,
-        color .3s ease,
-        transform .3s ease;
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
     }
-
 
     .social:hover {
-      background: var(--gold);
+      background: var(--blue);
 
-      color: var(--navy);
+      color: var(--white);
 
-      transform: translateY(-5px);
+      transform: translateY(-4px);
     }
 
-
     .social svg {
-      width: 22px;
-      height: 22px;
+      width: 21px;
+      height: 21px;
 
       fill: currentColor;
     }
 
-
-    /* =========================================================
+    /* =========================
        FOOTER
-       ========================================================= */
+    ========================= */
 
     footer {
-      border-top:
-        1px solid
-        rgba(212, 175, 55, .35);
+      padding: 35px 20px;
 
       text-align: center;
 
-      padding: 35px 20px 40px;
+      background: var(--white);
     }
 
-
     footer p {
-      color: var(--white);
+      color: var(--gray);
 
       font-size: 11px;
     }
 
-
     .footer-logo {
       direction: ltr;
 
-      color: var(--gold);
+      color: var(--black);
 
       font-family: Arial, sans-serif;
 
-      letter-spacing: 5px;
+      font-size: 11px;
 
-      font-size: 12px;
+      letter-spacing: 5px;
 
       margin-top: 12px;
     }
 
-
-    /* =========================================================
-       REVEAL ANIMATION
-       ========================================================= */
+    /* =========================
+       REVEAL
+    ========================= */
 
     .reveal {
       opacity: 0;
 
       transform:
-        translateY(40px);
+        translateY(35px);
 
       transition:
-        opacity .9s ease,
-        transform .9s
-        cubic-bezier(.2,.8,.2,1);
+        opacity .8s ease,
+        transform .8s ease;
     }
-
 
     .reveal.visible {
       opacity: 1;
@@ -806,17 +678,16 @@
         translateY(0);
     }
 
-
-    /* =========================================================
+    /* =========================
        LIGHTBOX
-       ========================================================= */
+    ========================= */
 
     .lightbox {
       position: fixed;
 
       inset: 0;
 
-      z-index: 99999;
+      z-index: 9999;
 
       display: flex;
 
@@ -826,22 +697,20 @@
       padding: 25px;
 
       background:
-        rgba(7,26,51,.98);
+        rgba(0,0,0,.94);
 
       opacity: 0;
 
       visibility: hidden;
 
-      transition: .35s ease;
+      transition: .3s ease;
     }
-
 
     .lightbox.active {
       opacity: 1;
 
       visibility: visible;
     }
-
 
     .lightbox img {
       max-width: 94vw;
@@ -850,42 +719,34 @@
 
       object-fit: contain;
 
-      border:
-        1px solid
-        var(--gold);
-
-      border-radius: 18px;
+      border-radius: 14px;
     }
-
 
     .close-lightbox {
       position: absolute;
 
-      top: 25px;
+      top: 22px;
       left: 25px;
 
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
 
-      border:
-        1px solid
-        var(--gold);
+      border: 0;
 
       border-radius: 50%;
 
-      background: var(--navy);
+      background: var(--white);
 
-      color: var(--gold);
+      color: var(--black);
 
-      font-size: 24px;
+      font-size: 23px;
 
       cursor: pointer;
     }
 
-
-    /* =========================================================
+    /* =========================
        MOBILE
-       ========================================================= */
+    ========================= */
 
     @media (max-width: 800px) {
 
@@ -893,13 +754,13 @@
         padding: 0 20px;
       }
 
-
       .nav-links {
         display: none;
 
         position: absolute;
 
-        top: 64px;
+        top: 52px;
+
         right: 0;
         left: 0;
 
@@ -907,40 +768,35 @@
 
         gap: 25px;
 
-        padding: 30px;
+        padding: 28px;
 
-        background: var(--navy);
+        background:
+          rgba(255,255,255,.96);
 
         border-bottom:
           1px solid
-          rgba(212,175,55,.35);
+          var(--border);
       }
-
 
       .nav-links.open {
         display: flex;
       }
 
-
       .menu-button {
         display: block;
       }
 
-
       .hero {
-        padding-top: 130px;
+        padding-top: 125px;
       }
-
 
       .hero-title {
         letter-spacing: -1px;
       }
 
-
       .hero-description {
         font-size: 14px;
       }
-
 
       .hero-image-container {
         margin-top: 55px;
@@ -948,16 +804,16 @@
         border-radius: 20px;
       }
 
-
       .section {
-        width: min(
-          92%,
-          600px
-        );
+        width: 92%;
 
         padding: 100px 0;
       }
 
+      .section.light {
+        padding-right: 4%;
+        padding-left: 4%;
+      }
 
       .about-grid {
         grid-template-columns: 1fr;
@@ -965,79 +821,66 @@
         gap: 30px;
       }
 
-
       .about-intro {
         font-size: 24px;
       }
-
 
       .about-text {
         font-size: 15px;
       }
 
-
       .journey-item {
         grid-template-columns:
-          80px 1fr;
+          75px 1fr;
 
         gap: 20px;
       }
-
 
       .journey-content h3 {
         font-size: 19px;
       }
 
-
       .journey-content p {
         font-size: 13px;
       }
-
 
       .gallery {
         grid-template-columns: 1fr;
       }
 
-
       .gallery-item.large {
         grid-column: span 1;
       }
-
 
       .gallery-item,
       .gallery-item.large {
         min-height: 340px;
       }
 
-
       .signature {
-        padding:
-          110px
-          20px;
-      }
+        min-height: 55vh;
 
+        padding: 100px 20px;
+      }
 
       .signature-logo {
-        letter-spacing: 6px;
+        letter-spacing: 5px;
       }
-
 
       .contact {
-        padding-bottom: 110px;
+        padding:
+          100px 20px;
       }
-
     }
 
   </style>
 </head>
 
-
 <body>
 
-
-  <!-- =======================================================
+  <!-- =========================
        NAVIGATION
-       ======================================================= -->
+  ========================== -->
 
   <header class="navbar">
 
@@ -1047,7 +890,6 @@
     >
       MBK
     </a>
-
 
     <nav
       class="nav-links"
@@ -1072,11 +914,10 @@
 
     </nav>
 
-
     <button
       class="menu-button"
       id="menuButton"
-      aria-label="فتح القائمة"
+      aria-label="القائمة"
     >
       ☰
     </button>
@@ -1084,20 +925,17 @@
   </header>
 
 
-  <!-- =======================================================
+  <!-- =========================
        HERO
-       ======================================================= -->
+  ========================== -->
 
   <main id="home">
 
-
     <section class="hero">
 
-
       <div class="hero-label">
-        MBK / PERSONAL IDENTITY
+        MBK / PERSONAL WEBSITE
       </div>
-
 
       <h1 class="hero-title">
 
@@ -1109,7 +947,6 @@
 
       </h1>
 
-
       <p class="hero-description">
 
         مساحة شخصية تجمع بين الأصالة،
@@ -1117,7 +954,6 @@
         التي أؤمن بقيمتها وجمالها.
 
       </p>
-
 
       <a
         href="#about"
@@ -1127,13 +963,11 @@
         اكتشف المزيد
 
         <span>
-          ↓
+          →
         </span>
 
       </a>
 
-
-      <!-- الصورة الأصلية -->
 
       <div class="hero-image-container">
 
@@ -1145,13 +979,12 @@
 
       </div>
 
-
     </section>
 
 
-    <!-- =====================================================
+    <!-- =========================
          ABOUT
-         ===================================================== -->
+    ========================== -->
 
     <section
       class="section reveal"
@@ -1162,21 +995,17 @@
         ABOUT
       </div>
 
-
       <h2 class="section-title">
         نبذة
       </h2>
 
-
       <div class="about-grid">
-
 
         <div class="about-intro">
 
           أنا مبخوت بن عبدالله.
 
         </div>
-
 
         <div class="about-text">
 
@@ -1192,7 +1021,6 @@
           من اهتماماتي، أعمالي، اختياراتي، والأشياء
           التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
 
-
           <strong>
 
             أطمح للأفضل، وأسعى لأن أترك أثرًا
@@ -1207,12 +1035,12 @@
     </section>
 
 
-    <!-- =====================================================
+    <!-- =========================
          JOURNEY
-         ===================================================== -->
+    ========================== -->
 
     <section
-      class="section reveal"
+      class="section light reveal"
       id="journey"
     >
 
@@ -1220,14 +1048,11 @@
         JOURNEY
       </div>
 
-
       <h2 class="section-title">
         رحلتي
       </h2>
 
-
       <div class="journey-list">
-
 
         <article class="journey-item">
 
@@ -1337,15 +1162,14 @@
 
         </article>
 
-
       </div>
 
     </section>
 
 
-    <!-- =====================================================
+    <!-- =========================
          SELECTED
-         ===================================================== -->
+    ========================== -->
 
     <section
       class="section reveal"
@@ -1356,11 +1180,9 @@
         SELECTED
       </div>
 
-
       <h2 class="section-title">
         مختاراتي
       </h2>
-
 
       <div class="gallery">
 
@@ -1494,25 +1316,20 @@
 
         </article>
 
-
       </div>
 
     </section>
 
 
-    <!-- =====================================================
-         SIGNATURE
-         ===================================================== -->
+    <!-- =========================
+         MBK
+    ========================== -->
 
     <section class="signature reveal">
 
       <div class="signature-logo">
         MBK
       </div>
-
-
-      <div class="signature-line"></div>
-
 
       <p>
         الأصالة في الهوية، والطموح في كل خطوة.
@@ -1521,9 +1338,9 @@
     </section>
 
 
-    <!-- =====================================================
+    <!-- =========================
          CONTACT
-         ===================================================== -->
+    ========================== -->
 
     <section
       class="contact reveal"
@@ -1534,11 +1351,9 @@
         CONTACT
       </div>
 
-
       <h2 class="contact-title">
         تواصل
       </h2>
-
 
       <p class="contact-description">
         يسعدني تواصلك.
@@ -1557,13 +1372,9 @@
           title="البريد الإلكتروني"
         >
 
-          <svg
-            viewBox="0 0 24 24"
-          >
+          <svg viewBox="0 0 24 24">
 
-            <path
-              d="M3 5h18v14H3V5zm2 2v.7l7 5 7-5V7l-7 5-7-5z"
-            />
+            <path d="M3 5h18v14H3V5zm2 2v.7l7 5 7-5V7l-7 5-7-5z"/>
 
           </svg>
 
@@ -1581,13 +1392,9 @@
           title="Facebook"
         >
 
-          <svg
-            viewBox="0 0 24 24"
-          >
+          <svg viewBox="0 0 24 24">
 
-            <path
-              d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.7.3-1 1-1z"
-            />
+            <path d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.7.3-1 1-1z"/>
 
           </svg>
 
@@ -1598,13 +1405,12 @@
 
     </section>
 
-
   </main>
 
 
-  <!-- =======================================================
+  <!-- =========================
        FOOTER
-       ======================================================= -->
+  ========================== -->
 
   <footer>
 
@@ -1619,9 +1425,9 @@
   </footer>
 
 
-  <!-- =======================================================
+  <!-- =========================
        LIGHTBOX
-       ======================================================= -->
+  ========================== -->
 
   <div
     class="lightbox"
@@ -1636,7 +1442,6 @@
       ×
     </button>
 
-
     <img
       id="lightboxImage"
       src=""
@@ -1646,23 +1451,17 @@
   </div>
 
 
-  <!-- =======================================================
-       JAVASCRIPT
-       ======================================================= -->
-
   <script>
 
-
-    /* =====================================================
-       MOBILE NAVIGATION
-       ===================================================== */
+    /* =========================
+       MOBILE MENU
+    ========================= */
 
     const menuButton =
       document.getElementById("menuButton");
 
     const navLinks =
       document.getElementById("navLinks");
-
 
     menuButton.addEventListener(
       "click",
@@ -1690,29 +1489,26 @@
       });
 
 
-    /* =====================================================
-       SCROLL REVEAL
-       ===================================================== */
+    /* =========================
+       SCROLL ANIMATION
+    ========================= */
 
     const revealElements =
       document.querySelectorAll(".reveal");
 
-
-    const revealObserver =
+    const observer =
       new IntersectionObserver(
         entries => {
 
           entries.forEach(entry => {
 
-            if (
-              entry.isIntersecting
-            ) {
+            if (entry.isIntersecting) {
 
               entry.target.classList.add(
                 "visible"
               );
 
-              revealObserver.unobserve(
+              observer.unobserve(
                 entry.target
               );
 
@@ -1727,35 +1523,25 @@
       );
 
 
-    revealElements.forEach(
-      element => {
+    revealElements.forEach(element => {
 
-        revealObserver.observe(
-          element
-        );
+      observer.observe(element);
 
-      }
-    );
+    });
 
 
-    /* =====================================================
+    /* =========================
        LIGHTBOX
-       ===================================================== */
+    ========================= */
 
     const lightbox =
-      document.getElementById(
-        "lightbox"
-      );
+      document.getElementById("lightbox");
 
     const lightboxImage =
-      document.getElementById(
-        "lightboxImage"
-      );
+      document.getElementById("lightboxImage");
 
     const closeLightbox =
-      document.getElementById(
-        "closeLightbox"
-      );
+      document.getElementById("closeLightbox");
 
 
     document
@@ -1790,8 +1576,7 @@
 
       lightboxImage.src = "";
 
-      document.body.style.overflow =
-        "";
+      document.body.style.overflow = "";
 
     }
 
@@ -1822,9 +1607,7 @@
       "keydown",
       event => {
 
-        if (
-          event.key === "Escape"
-        ) {
+        if (event.key === "Escape") {
 
           closeImage();
 
@@ -1833,9 +1616,7 @@
       }
     );
 
-
   </script>
-
 
 </body>
 </html>
