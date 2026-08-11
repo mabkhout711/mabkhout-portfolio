@@ -1,789 +1,535 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>مبخوت بن عبدالله</title>
+  <title>مبخوت بن عبدالله | Mabkhout Bin Abdullah</title>
 
-<meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله">
+  <meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- الخطوط -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
+  <style>
+    :root {
+      --navy: #061426;
+      --navy-light: #0b1d31;
+      --gold: #d4af37;
+      --gold-light: #f0d878;
+      --white: #f7f5ef;
+      --muted: #aeb4bc;
+      --line: rgba(212, 175, 55, 0.32);
+    }
 
-:root{
-    --navy:#030b18;
-    --navy2:#07182d;
-    --gold:#d4af37;
-    --gold2:#f3dc7b;
-    --white:#ffffff;
-    --muted:#aeb8c7;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    min-height:100vh;
-    overflow-x:hidden;
-    color:white;
-    font-family:"Cairo",sans-serif;
-
-    background:
+    body {
+      min-height: 100vh;
+      background:
         radial-gradient(
-            circle at 50% 30%,
-            rgba(212,175,55,.13),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 15% 80%,
-            rgba(18,55,92,.35),
-            transparent 30%
+          circle at 50% 38%,
+          rgba(212, 175, 55, 0.08),
+          transparent 30%
         ),
         linear-gradient(
-            135deg,
-            #020711,
-            #061326 55%,
-            #020812
+          145deg,
+          #030b16 0%,
+          #061426 45%,
+          #020811 100%
         );
-}
+      color: var(--white);
+      font-family: "Cairo", sans-serif;
+      overflow-x: hidden;
+    }
 
-/* الخلفية */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-
-    background:
+    /* شبكة خلفية فاخرة */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.22;
+      background-image:
         linear-gradient(
-            rgba(255,255,255,.018) 1px,
-            transparent 1px
+          rgba(255,255,255,0.035) 1px,
+          transparent 1px
         ),
         linear-gradient(
-            90deg,
-            rgba(255,255,255,.018) 1px,
-            transparent 1px
+          90deg,
+          rgba(255,255,255,0.035) 1px,
+          transparent 1px
         );
-
-    background-size:80px 80px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent
-        );
-}
-
-/* التوهج */
-
-body::after{
-    content:"";
-    position:fixed;
-
-    width:500px;
-    height:500px;
-
-    top:40%;
-    left:50%;
-
-    transform:translate(-50%,-50%);
-
-    background:rgba(212,175,55,.06);
-
-    filter:blur(100px);
-
-    pointer-events:none;
-}
-
-/* الشريط العلوي */
-
-nav{
-    position:fixed;
-
-    top:0;
-    left:0;
-    right:0;
-
-    height:78px;
-
-    padding:0 6%;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    z-index:1000;
-
-    background:rgba(2,8,18,.72);
-
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-
-    border-bottom:
-        1px solid rgba(212,175,55,.12);
-}
-
-.logo{
-    font-family:"Inter",sans-serif;
-
-    font-size:22px;
-    font-weight:800;
-
-    letter-spacing:7px;
-
-    color:var(--gold2);
-}
-
-.nav-text{
-    font-size:12px;
-
-    color:#aeb8c7;
-
-    transition:.3s;
-}
-
-.nav-text:hover{
-    color:var(--gold2);
-}
-
-/* الصفحة الرئيسية */
-
-main{
-    min-height:100vh;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:
-        120px 20px 70px;
-}
-
-.hero{
-    width:min(1100px,100%);
-
-    text-align:center;
-
-    animation:
-        entrance 1.2s ease forwards;
-
-    transition:transform .25s ease;
-}
-
-@keyframes entrance{
-
-    from{
-        opacity:0;
-        transform:translateY(35px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+      );
     }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
+    /* توهج ذهبي */
+    .gold-glow {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.08);
+      filter: blur(90px);
+      top: 25%;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
     }
 
-}
-
-/* الاسم العربي */
-
-.name{
-    direction:rtl;
-
-    font-family:"Aref Ruqaa",serif;
-
-    font-size:
-        clamp(42px,7vw,78px);
-
-    line-height:1.3;
-
-    font-weight:700;
-
-    letter-spacing:0;
-
-    color:white;
-
-    margin-bottom:35px;
-
-    text-shadow:
-        0 15px 45px rgba(0,0,0,.5);
-}
-
-/* الصورة */
-
-.photo-container{
-
-    position:relative;
-
-    width:350px;
-    height:440px;
-
-    margin:0 auto 38px;
-
-    perspective:1000px;
-}
-
-/* الهالة الذهبية */
-
-.photo-glow{
-
-    position:absolute;
-
-    width:300px;
-    height:300px;
-
-    top:50%;
-    left:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    border-radius:50%;
-
-    background:
-        rgba(212,175,55,.16);
-
-    filter:blur(70px);
-
-    z-index:0;
-}
-
-/* الإطار */
-
-.photo-frame{
-
-    position:absolute;
-
-    inset:0;
-
-    border:
-        1px solid
-        rgba(212,175,55,.75);
-
-    border-radius:
-        180px 180px 28px 28px;
-
-    transform:
-        rotate(2.5deg);
-
-    transition:
-        transform .6s ease;
-
-    z-index:1;
-}
-
-.photo-container:hover
-.photo-frame{
-
-    transform:
-        rotate(0deg)
-        scale(1.025);
-}
-
-/* الإطار الداخلي */
-
-.photo-frame::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:9px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.25);
-
-    border-radius:
-        170px 170px 20px 20px;
-}
-
-/* الصورة */
-
-.profile-photo{
-
-    position:absolute;
-
-    inset:15px;
-
-    width:
-        calc(100% - 30px);
-
-    height:
-        calc(100% - 30px);
-
-    object-fit:cover;
-
-    border-radius:
-        165px 165px 20px 20px;
-
-    border:
-        6px solid var(--navy);
-
-    background:
-        linear-gradient(
-            145deg,
-            #122945,
-            #061326
-        );
-
-    z-index:2;
-
-    display:block;
-
-    box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.45);
-}
-
-/* الزوايا الذهبية */
-
-.corner{
-
-    position:absolute;
-
-    width:45px;
-    height:45px;
-
-    border-color:var(--gold);
-
-    z-index:4;
-}
-
-.corner.tl{
-
-    top:-15px;
-    left:-15px;
-
-    border-top:2px solid;
-    border-left:2px solid;
-}
-
-.corner.br{
-
-    bottom:-15px;
-    right:-15px;
-
-    border-bottom:2px solid;
-    border-right:2px solid;
-}
-
-/* الخط */
-
-.divider{
-
-    width:120px;
-    height:1px;
-
-    margin:25px auto;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold),
-            transparent
-        );
-
-    position:relative;
-}
-
-.divider::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:6px;
-    height:6px;
-
-    border-radius:50%;
-
-    background:var(--gold);
-
-    top:50%;
-    left:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    box-shadow:
-        0 0 15px var(--gold);
-}
-
-/* العبارة */
-
-.motto{
-
-    font-size:
-        clamp(22px,3vw,30px);
-
-    font-weight:500;
-
-    color:white;
-
-    margin-bottom:10px;
-}
-
-.subtitle{
-
-    color:var(--muted);
-
-    font-size:15px;
-
-    line-height:2;
-
-    max-width:600px;
-
-    margin:auto;
-}
-
-/* الأزرار */
-
-.actions{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:14px;
-
-    margin-top:30px;
-
-    flex-wrap:wrap;
-}
-
-.btn{
-
-    min-width:190px;
-
-    padding:
-        14px 25px;
-
-    border-radius:12px;
-
-    text-decoration:none;
-
-    font-size:13px;
-
-    font-weight:700;
-
-    transition:
-        transform .3s,
-        box-shadow .3s,
-        border-color .3s;
-}
-
-.btn-gold{
-
-    color:#071426;
-
-    background:
-        linear-gradient(
-            135deg,
-            #a77e19,
-            #f2d66f,
-            #bd9327
-        );
-
-    box-shadow:
-        0 12px 35px
-        rgba(212,175,55,.15);
-}
-
-.btn-outline{
-
-    color:white;
-
-    border:
-        1px solid
-        rgba(212,175,55,.5);
-
-    background:
-        rgba(255,255,255,.025);
-}
-
-.btn:hover{
-
-    transform:
-        translateY(-5px);
-
-    box-shadow:
-        0 20px 45px
-        rgba(0,0,0,.3);
-}
-
-/* معلومات أسفل الموقع */
-
-.bottom-info{
-
-    margin-top:55px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:25px;
-
-    color:
-        rgba(255,255,255,.28);
-
-    font-family:"Inter",sans-serif;
-
-    font-size:9px;
-
-    letter-spacing:3px;
-}
-
-.dot{
-
-    width:4px;
-    height:4px;
-
-    border-radius:50%;
-
-    background:var(--gold);
-
-    box-shadow:
-        0 0 10px var(--gold);
-}
-
-/* الجوال */
-
-@media(max-width:600px){
-
-    nav{
-        height:65px;
-        padding:0 20px;
+    /* الهيدر */
+    header {
+      height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      border-bottom: 1px solid rgba(212,175,55,0.14);
+      background: rgba(3, 11, 22, 0.82);
+      backdrop-filter: blur(18px);
+      position: relative;
+      z-index: 10;
     }
 
-    .logo{
-        font-size:18px;
-        letter-spacing:5px;
+    .brand {
+      font-family: "Inter", sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 8px;
+      color: var(--gold-light);
     }
 
-    .nav-text{
-        font-size:10px;
+    .header-title {
+      font-size: 15px;
+      color: #c7ccd2;
+      letter-spacing: 1px;
     }
 
-    main{
-        padding:
-            105px 18px 55px;
+    /* المحتوى الرئيسي */
+    main {
+      width: min(1120px, 92%);
+      margin: auto;
+      padding: 70px 0 90px;
     }
 
-    .name{
-
-        font-size:46px;
-
-        letter-spacing:0;
-
-        margin-bottom:28px;
+    .hero {
+      min-height: calc(100vh - 176px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
     }
 
-    .photo-container{
-
-        width:270px;
-        height:350px;
-
-        margin-bottom:32px;
+    /* الزاوية */
+    .corner {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-color: var(--gold);
+      opacity: 0.75;
     }
 
-    .motto{
-        font-size:20px;
+    .corner.top-right {
+      top: 30px;
+      right: 0;
+      border-top: 2px solid;
+      border-right: 2px solid;
     }
 
-    .subtitle{
-        font-size:13px;
+    .corner.bottom-left {
+      bottom: 30px;
+      left: 0;
+      border-bottom: 2px solid;
+      border-left: 2px solid;
     }
 
-    .actions{
-
-        flex-direction:column;
-
-        align-items:center;
-
-        width:100%;
+    /* الاسم العربي */
+    .arabic-name {
+      font-family: "Cairo", sans-serif;
+      font-size: clamp(42px, 7vw, 86px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -2px;
+      color: var(--white);
+      text-shadow:
+        0 0 25px rgba(255,255,255,0.05);
+      margin-bottom: 18px;
     }
 
-    .btn{
-
-        width:min(320px,100%);
+    .arabic-name span {
+      color: var(--gold-light);
     }
 
-    .bottom-info{
-
-        gap:12px;
-
-        font-size:7px;
-
-        letter-spacing:2px;
+    /* الاسم الإنجليزي */
+    .english-name {
+      direction: ltr;
+      font-family: "Inter", sans-serif;
+      font-size: clamp(20px, 3vw, 32px);
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: #d7d9dc;
+      margin-bottom: 28px;
     }
 
-}
+    /* الخط الذهبي */
+    .gold-line {
+      width: 150px;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        var(--gold-light),
+        var(--gold),
+        transparent
+      );
+      box-shadow: 0 0 18px rgba(212,175,55,0.4);
+      margin-bottom: 38px;
+    }
 
-</style>
+    /* الصورة */
+    .photo-frame {
+      position: relative;
+      width: min(430px, 82vw);
+      aspect-ratio: 4 / 5;
+      padding: 10px;
+      margin: 10px auto 38px;
+    }
 
+    .photo-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(212,175,55,0.8);
+      border-radius: 28px 28px 65px 65px;
+      transform: rotate(-1.5deg);
+      box-shadow:
+        0 0 35px rgba(212,175,55,0.10),
+        inset 0 0 30px rgba(212,175,55,0.04);
+    }
+
+    .photo-frame::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 24px 24px 58px 58px;
+      transform: rotate(1.5deg);
+    }
+
+    .profile-photo {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px 20px 52px 52px;
+      border: 4px solid #08172a;
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.45);
+    }
+
+    /* نبذة */
+    .quote {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    /* الروابط */
+    .links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      direction: rtl;
+    }
+
+    .link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 180px;
+      justify-content: center;
+      padding: 14px 24px;
+      border: 1px solid rgba(212,175,55,0.45);
+      border-radius: 999px;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      background: rgba(255,255,255,0.025);
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .link:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-light);
+      background: rgba(212,175,55,0.08);
+      box-shadow: 0 10px 35px rgba(212,175,55,0.12);
+    }
+
+    .link .icon {
+      color: var(--gold-light);
+      font-size: 18px;
+    }
+
+    /* الفوتر */
+    footer {
+      border-top: 1px solid rgba(212,175,55,0.15);
+      padding: 34px 20px;
+      text-align: center;
+      background: rgba(2,8,17,0.65);
+    }
+
+    footer .footer-name {
+      font-family: "Inter", sans-serif;
+      direction: ltr;
+      font-size: 14px;
+      color: #8d939b;
+      letter-spacing: 1px;
+    }
+
+    footer .mbk {
+      color: var(--gold);
+      margin-top: 8px;
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      letter-spacing: 5px;
+    }
+
+    /* الجوال */
+    @media (max-width: 600px) {
+
+      header {
+        height: 72px;
+        padding: 0 22px;
+      }
+
+      .brand {
+        font-size: 20px;
+        letter-spacing: 5px;
+      }
+
+      .header-title {
+        font-size: 13px;
+      }
+
+      main {
+        width: 90%;
+        padding: 45px 0 65px;
+      }
+
+      .hero {
+        min-height: calc(100vh - 137px);
+      }
+
+      .arabic-name {
+        font-size: clamp(40px, 11vw, 58px);
+        letter-spacing: -1.5px;
+        white-space: nowrap;
+      }
+
+      .english-name {
+        font-size: 18px;
+        letter-spacing: 1px;
+      }
+
+      .gold-line {
+        width: 110px;
+        margin-bottom: 28px;
+      }
+
+      .photo-frame {
+        width: min(350px, 88vw);
+        margin-bottom: 30px;
+      }
+
+      .quote {
+        font-size: 21px;
+      }
+
+      .links {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .link {
+        width: min(330px, 100%);
+      }
+
+      .corner {
+        width: 48px;
+        height: 48px;
+      }
+
+      .corner.top-right {
+        top: 10px;
+      }
+
+      .corner.bottom-left {
+        bottom: 10px;
+      }
+    }
+
+    /* حركة دخول ناعمة */
+    .hero > * {
+      animation: reveal 0.9s ease both;
+    }
+
+    .arabic-name {
+      animation-delay: 0.05s;
+    }
+
+    .english-name {
+      animation-delay: 0.15s;
+    }
+
+    .gold-line {
+      animation-delay: 0.25s;
+    }
+
+    .photo-frame {
+      animation-delay: 0.35s;
+    }
+
+    .quote {
+      animation-delay: 0.45s;
+    }
+
+    .links {
+      animation-delay: 0.55s;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<nav>
+  <div class="gold-glow"></div>
 
-    <div class="logo">
-        MBK
-    </div>
+  <header>
+    <div class="header-title">الموقع الشخصي</div>
 
-    <div class="nav-text">
-        الموقع الشخصي
-    </div>
+    <div class="brand">MBK</div>
+  </header>
 
-</nav>
+  <main>
 
+    <section class="hero">
 
-<main>
+      <div class="corner top-right"></div>
+      <div class="corner bottom-left"></div>
 
-<section class="hero">
+      <!-- الاسم العربي -->
+      <h1 class="arabic-name">
+        مبخوت <span>بن عبدالله</span>
+      </h1>
 
-    <!-- الاسم العربي بخط رقعة -->
+      <!-- الاسم الإنجليزي -->
+      <div class="english-name">
+        Mabkhout Bin Abdullah
+      </div>
 
-    <h1 class="name">
-        مبخوت بن عبدالله
-    </h1>
+      <div class="gold-line"></div>
 
-
-    <!-- الصورة -->
-
-    <div class="photo-container">
-
-        <div class="photo-glow"></div>
-
-        <div class="photo-frame"></div>
-
-        <div class="corner tl"></div>
-
-        <div class="corner br"></div>
-
+      <!-- الصورة -->
+      <div class="photo-frame">
         <img
-            class="profile-photo"
-            src="file_00000000582882468daa3e8113233056.png"
-            alt="مبخوت بن عبدالله"
+          class="profile-photo"
+          src="file_00000000582882468daa3e8113233056.png"
+          alt="Mabkhout Bin Abdullah"
+          loading="eager"
         >
+      </div>
 
-    </div>
-
-
-    <div class="divider"></div>
-
-
-    <!-- المحتوى العربي -->
-
-    <div class="motto">
+      <!-- النبذة -->
+      <p class="quote">
         وما توفيقي إلا بالله
-    </div>
+      </p>
 
-    <p class="subtitle">
-        هذا موقعي الشخصي، مساحة بسيطة تعبّر عن هويتي
-        وحضوري الرقمي.
-    </p>
-
-
-    <!-- أزرار التواصل -->
-
-    <div class="actions">
+      <!-- الروابط -->
+      <div class="links">
 
         <a
-            class="btn btn-gold"
-            href="mailto:Mabkhut505g@gmail.com"
+          class="link"
+          href="mailto:Mabkhut505g@gmail.com"
         >
-            البريد الإلكتروني
+          <span class="icon">✉</span>
+          البريد الإلكتروني
         </a>
 
         <a
-            class="btn btn-outline"
-            href="https://www.facebook.com/share/19JG7PQiHL/"
-            target="_blank"
-            rel="noopener noreferrer"
+          class="link"
+          href="https://www.facebook.com/share/19JG7PQiHL/"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-            صفحتي على Facebook
+          <span class="icon">f</span>
+          Facebook
         </a>
 
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <div class="footer-name">
+      Mabkhout Bin Abdullah 2026 ©
     </div>
 
-
-    <div class="bottom-info">
-
-        <span>الموقع الشخصي</span>
-
-        <span class="dot"></span>
-
-        <span>مبخوت بن عبدالله</span>
-
+    <div class="mbk">
+      MBK
     </div>
 
-</section>
-
-</main>
-
-
-<script>
-
-/* حركة تفاعلية */
-
-const hero =
-document.querySelector(".hero");
-
-document.addEventListener(
-    "mousemove",
-    (e) => {
-
-        if(window.innerWidth < 800)
-            return;
-
-        const x =
-            (e.clientX /
-            window.innerWidth - .5) * 2;
-
-        const y =
-            (e.clientY /
-            window.innerHeight - .5) * 2;
-
-        hero.style.transform =
-            `perspective(1400px)
-             rotateY(${x}deg)
-             rotateX(${-y}deg)`;
-
-    }
-);
-
-document.addEventListener(
-    "mouseleave",
-    () => {
-
-        hero.style.transform =
-            "perspective(1400px) rotateY(0deg) rotateX(0deg)";
-
-    }
-);
-
-</script>
+  </footer>
 
 </body>
-
 </html>
