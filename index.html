@@ -5,33 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>مبخوت بن عبدالله | MBK</title>
-
 <meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله">
 <meta name="theme-color" content="#061426">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 /* =========================================================
-   ROOT
+   VARIABLES
 ========================================================= */
 
 :root{
     --navy:#061426;
-    --navy-2:#081a2f;
-    --navy-3:#020914;
+    --navy-dark:#020914;
+    --navy-light:#0b1d32;
+
     --gold:#d4af37;
     --gold-light:#f1d56a;
+    --gold-pale:#ffeaa0;
+
     --white:#f8f7f2;
     --text:#d8dce2;
     --muted:#8995a3;
+
     --border:rgba(212,175,55,.20);
     --border-strong:rgba(212,175,55,.42);
+
     --shadow:rgba(0,0,0,.45);
 }
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     margin:0;
@@ -46,18 +54,21 @@ html{
 body{
     min-height:100vh;
     overflow-x:hidden;
-    font-family:"Cairo",sans-serif;
+
+    font-family:"Cairo","Noto Kufi Arabic",sans-serif;
+
     color:var(--white);
+
     background:
         radial-gradient(
             circle at 50% 0%,
             rgba(212,175,55,.08),
-            transparent 28%
+            transparent 27%
         ),
         radial-gradient(
-            circle at 10% 50%,
-            rgba(14,47,79,.40),
-            transparent 32%
+            circle at 0% 50%,
+            rgba(16,50,82,.32),
+            transparent 35%
         ),
         linear-gradient(
             145deg,
@@ -72,34 +83,44 @@ body::before{
     position:fixed;
     inset:0;
     pointer-events:none;
-    opacity:.08;
+    z-index:-10;
+
+    opacity:.055;
+
     background-image:
         linear-gradient(
-            rgba(255,255,255,.04) 1px,
+            rgba(255,255,255,.05) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(255,255,255,.04) 1px,
+            rgba(255,255,255,.05) 1px,
             transparent 1px
         );
-    background-size:70px 70px;
-    z-index:-5;
+
+    background-size:75px 75px;
 }
 
 body::after{
     content:"";
     position:fixed;
+
     width:450px;
     height:450px;
-    top:15%;
+
+    top:12%;
     left:50%;
+
     transform:translateX(-50%);
+
     border-radius:50%;
-    background:rgba(212,175,55,.045);
+
+    background:rgba(212,175,55,.035);
+
     filter:blur(120px);
+
     pointer-events:none;
-    z-index:-4;
+    z-index:-9;
 }
 
 a{
@@ -110,25 +131,31 @@ button{
     font-family:inherit;
 }
 
-
 /* =========================================================
    HEADER
 ========================================================= */
 
 header{
     position:fixed;
+
     top:0;
     right:0;
     left:0;
+
     height:76px;
+
     padding:0 6%;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     z-index:1000;
 
     background:rgba(2,9,20,.76);
-    border-bottom:1px solid rgba(212,175,55,.12);
+
+    border-bottom:
+        1px solid rgba(212,175,55,.12);
 
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
@@ -136,36 +163,53 @@ header{
 
 .logo{
     direction:ltr;
+
     font-family:Arial,sans-serif;
-    font-size:24px;
+
+    font-size:23px;
     font-weight:700;
-    letter-spacing:8px;
+
+    letter-spacing:7px;
+
     color:var(--gold-light);
+
     text-decoration:none;
 }
 
 .menu-btn{
     width:47px;
     height:47px;
+
     border-radius:50%;
-    border:1px solid var(--border-strong);
+
+    border:
+        1px solid var(--border-strong);
+
     background:rgba(255,255,255,.025);
+
     color:var(--gold-light);
+
     cursor:pointer;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     font-size:21px;
+
     transition:.3s ease;
 }
 
 .menu-btn:hover{
-    transform:rotate(6deg) scale(1.04);
-    border-color:var(--gold-light);
-    background:rgba(212,175,55,.08);
-    box-shadow:0 0 30px rgba(212,175,55,.12);
-}
+    transform:scale(1.05);
 
+    border-color:var(--gold-light);
+
+    background:rgba(212,175,55,.08);
+
+    box-shadow:
+        0 0 30px rgba(212,175,55,.12);
+}
 
 /* =========================================================
    SIDE MENU
@@ -174,11 +218,16 @@ header{
 .overlay{
     position:fixed;
     inset:0;
+
     background:rgba(0,0,0,.58);
+
     backdrop-filter:blur(5px);
+
     z-index:1100;
+
     opacity:0;
     visibility:hidden;
+
     transition:.35s ease;
 }
 
@@ -189,26 +238,34 @@ header{
 
 .side-menu{
     position:fixed;
+
     top:0;
     right:0;
+
     width:min(370px,88vw);
     height:100vh;
+
     padding:105px 35px 35px;
+
     z-index:1200;
 
     background:
         linear-gradient(
             150deg,
-            rgba(8,26,47,.98),
+            rgba(8,26,47,.99),
             rgba(2,9,20,.99)
         );
 
-    border-left:1px solid var(--border);
+    border-left:
+        1px solid var(--border);
 
     transform:translateX(105%);
-    transition:transform .45s cubic-bezier(.77,0,.18,1);
 
-    box-shadow:-30px 0 90px rgba(0,0,0,.45);
+    transition:
+        transform .45s cubic-bezier(.77,0,.18,1);
+
+    box-shadow:
+        -30px 0 90px rgba(0,0,0,.45);
 }
 
 .side-menu.active{
@@ -217,34 +274,54 @@ header{
 
 .close-menu{
     position:absolute;
+
     top:24px;
     left:24px;
+
     width:42px;
     height:42px;
+
     border-radius:50%;
-    border:1px solid var(--border-strong);
+
+    border:
+        1px solid var(--border-strong);
+
     background:transparent;
+
     color:var(--gold-light);
+
     cursor:pointer;
+
     font-size:22px;
 }
 
 .menu-label{
     color:var(--gold);
+
     font-size:11px;
+
     letter-spacing:4px;
+
     margin-bottom:28px;
+
     direction:ltr;
     text-align:right;
 }
 
 .side-menu a{
     display:block;
+
     padding:17px 0;
-    border-bottom:1px solid rgba(255,255,255,.055);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.055);
+
     text-decoration:none;
+
     font-size:17px;
+
     color:var(--white);
+
     transition:.3s ease;
 }
 
@@ -252,7 +329,6 @@ header{
     color:var(--gold-light);
     padding-right:10px;
 }
-
 
 /* =========================================================
    MAIN
@@ -263,117 +339,195 @@ main{
     margin:auto;
 }
 
-
 /* =========================================================
    HERO
 ========================================================= */
 
 .hero{
     min-height:100vh;
-    padding:130px 0 95px;
+
+    padding:
+        125px 0 85px;
 
     display:flex;
     flex-direction:column;
+
     align-items:center;
     justify-content:center;
 
     text-align:center;
+
     position:relative;
 }
 
 .hero-corner{
     position:absolute;
+
     width:72px;
     height:72px;
-    border-color:rgba(212,175,55,.68);
+
+    border-color:
+        rgba(212,175,55,.68);
+
     pointer-events:none;
 }
 
 .hero-corner.top{
-    top:110px;
+    top:108px;
     right:0;
+
     border-top:1px solid;
     border-right:1px solid;
 }
 
 .hero-corner.bottom{
-    bottom:60px;
+    bottom:55px;
     left:0;
+
     border-bottom:1px solid;
     border-left:1px solid;
 }
 
-.hero-name{
-    font-size:clamp(43px,8vw,78px);
-    font-weight:800;
-    line-height:1.35;
-    letter-spacing:-2px;
-    margin-bottom:20px;
-    animation:heroIn .9s ease both;
-}
+/* =========================================================
+   NAME — FIXED
+========================================================= */
 
-.hero-name span{
+.hero-name{
+    width:100%;
+    max-width:850px;
+
+    padding:
+        0 20px;
+
+    margin:
+        0 auto 17px;
+
+    font-size:
+        clamp(34px,5.5vw,58px);
+
+    font-weight:800;
+
+    line-height:1.5;
+
+    text-align:center;
+
+    white-space:normal;
+
+    letter-spacing:-1px;
+
     color:var(--gold-light);
+
+    background:
+        linear-gradient(
+            135deg,
+            #b88918 0%,
+            #f7df78 25%,
+            #d4af37 50%,
+            #fff0a3 75%,
+            #b88918 100%
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+        0 0 18px rgba(212,175,55,.12);
+
+    animation:
+        heroIn .9s ease both;
 }
 
 .gold-line{
-    width:145px;
+    width:110px;
     height:2px;
-    margin-bottom:45px;
+
+    margin:
+        0 auto 38px;
+
     background:
         linear-gradient(
             90deg,
             transparent,
-            var(--gold),
-            var(--gold-light),
-            var(--gold),
+            #b88918,
+            #f1d56a,
+            #b88918,
             transparent
         );
-    box-shadow:0 0 22px rgba(212,175,55,.3);
+
+    box-shadow:
+        0 0 16px rgba(212,175,55,.28);
 }
 
-
 /* =========================================================
-   PROFILE PHOTO
+   PROFILE IMAGE
 ========================================================= */
 
 .photo-frame{
     width:min(470px,88vw);
+
     aspect-ratio:1/1;
+
     padding:10px;
+
     position:relative;
-    margin-bottom:35px;
+
+    margin-bottom:34px;
 }
 
 .photo-frame::before{
     content:"";
+
     position:absolute;
+
     inset:0;
-    border:1px solid rgba(212,175,55,.82);
+
+    border:
+        1px solid rgba(212,175,55,.82);
+
     border-radius:31px;
+
     transform:rotate(-1deg);
 }
 
 .photo-frame::after{
     content:"";
+
     position:absolute;
+
     inset:7px;
-    border:1px solid rgba(212,175,55,.22);
+
+    border:
+        1px solid rgba(212,175,55,.22);
+
     border-radius:27px;
+
     transform:rotate(1deg);
 }
 
 .profile-photo{
     position:relative;
+
     z-index:2;
+
     width:100%;
     height:100%;
+
     display:block;
 
+    /*
+       الصورة الأصلية 1:1
+       وتظهر كاملة
+    */
     object-fit:contain;
 
+    object-position:center;
+
     border-radius:24px;
-    border:5px solid #07172a;
+
+    border:
+        5px solid #07172a;
 
     background:#07172a;
 
@@ -387,52 +541,70 @@ main{
 
 .photo-frame:hover .profile-photo{
     transform:scale(1.012);
+
     box-shadow:
         0 35px 95px rgba(0,0,0,.58);
 }
 
 .quote{
     color:var(--white);
-    font-size:clamp(21px,4vw,29px);
+
+    font-size:
+        clamp(20px,4vw,28px);
+
     font-weight:500;
 }
 
-
 /* =========================================================
-   SECTION
+   SECTIONS
 ========================================================= */
 
 .section{
     padding:105px 0;
+
     position:relative;
 }
 
 .section-header{
     text-align:center;
+
     margin-bottom:52px;
 }
 
 .section-label{
     display:block;
+
     color:var(--gold);
+
     font-size:11px;
+
     letter-spacing:4px;
+
     direction:ltr;
+
     margin-bottom:10px;
 }
 
 .section-title{
-    font-size:clamp(31px,5vw,47px);
+    font-size:
+        clamp(30px,5vw,46px);
+
     font-weight:800;
+
     line-height:1.4;
 }
 
 .section-title::after{
     content:"";
+
     display:block;
+
     width:68px;
     height:2px;
-    margin:16px auto 0;
+
+    margin:
+        16px auto 0;
+
     background:
         linear-gradient(
             90deg,
@@ -442,17 +614,20 @@ main{
         );
 }
 
-
 /* =========================================================
    ABOUT
 ========================================================= */
 
 .about-card{
     max-width:870px;
+
     margin:auto;
+
     padding:45px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:30px;
 
     background:
@@ -470,16 +645,19 @@ main{
 
 .about-card p{
     color:var(--text);
+
     font-size:18px;
+
     line-height:2.15;
 }
 
 .signature{
     margin-top:25px;
+
     color:var(--gold-light);
+
     font-size:15px;
 }
-
 
 /* =========================================================
    VALUES
@@ -487,18 +665,25 @@ main{
 
 .values{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:20px;
 }
 
 .value-card{
     padding:36px 25px;
+
     text-align:center;
 
-    border:1px solid rgba(212,175,55,.15);
+    border:
+        1px solid rgba(212,175,55,.15);
+
     border-radius:25px;
 
-    background:rgba(255,255,255,.022);
+    background:
+        rgba(255,255,255,.022);
 
     transition:
         transform .35s ease,
@@ -508,37 +693,50 @@ main{
 
 .value-card:hover{
     transform:translateY(-8px);
-    border-color:rgba(212,175,55,.42);
-    box-shadow:0 22px 55px rgba(212,175,55,.07);
+
+    border-color:
+        rgba(212,175,55,.42);
+
+    box-shadow:
+        0 22px 55px
+        rgba(212,175,55,.07);
 }
 
 .value-icon{
     width:55px;
     height:55px;
-    margin:0 auto 18px;
+
+    margin:
+        0 auto 18px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
     border-radius:50%;
-    border:1px solid rgba(212,175,55,.35);
+
+    border:
+        1px solid rgba(212,175,55,.35);
 
     color:var(--gold-light);
+
     font-size:22px;
 }
 
 .value-card h3{
     font-size:20px;
+
     margin-bottom:9px;
 }
 
 .value-card p{
     color:var(--muted);
+
     font-size:14px;
+
     line-height:1.9;
 }
-
 
 /* =========================================================
    GALLERY
@@ -546,16 +744,25 @@ main{
 
 .gallery{
     display:grid;
-    grid-template-columns:repeat(12,1fr);
+
+    grid-template-columns:
+        repeat(12,1fr);
+
     gap:18px;
 }
 
 .gallery-item{
     position:relative;
+
     overflow:hidden;
+
     border-radius:25px;
-    border:1px solid rgba(212,175,55,.17);
+
+    border:
+        1px solid rgba(212,175,55,.17);
+
     background:#07172a;
+
     cursor:pointer;
 }
 
@@ -602,21 +809,29 @@ main{
 .gallery-item img{
     width:100%;
     height:100%;
+
     display:block;
+
     object-fit:cover;
-    transition:transform .7s ease;
+
+    transition:
+        transform .7s ease;
 }
 
 .gallery-item::after{
     content:"";
+
     position:absolute;
+
     inset:0;
+
     background:
         linear-gradient(
             to top,
             rgba(0,0,0,.78),
-            transparent 50%
+            transparent 52%
         );
+
     pointer-events:none;
 }
 
@@ -626,26 +841,33 @@ main{
 
 .gallery-info{
     position:absolute;
+
     right:22px;
     left:22px;
     bottom:20px;
+
     z-index:2;
 }
 
 .gallery-info small{
     display:block;
+
     color:var(--gold-light);
+
     font-size:11px;
+
     letter-spacing:2px;
+
     direction:ltr;
+
     margin-bottom:4px;
 }
 
 .gallery-info h3{
     font-size:18px;
+
     font-weight:600;
 }
-
 
 /* =========================================================
    LIGHTBOX
@@ -653,16 +875,21 @@ main{
 
 .lightbox{
     position:fixed;
+
     inset:0;
+
     z-index:2000;
 
     padding:25px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
-    background:rgba(0,0,0,.88);
+    background:
+        rgba(0,0,0,.88);
+
     backdrop-filter:blur(10px);
 
     opacity:0;
@@ -683,13 +910,17 @@ main{
     object-fit:contain;
 
     border-radius:15px;
-    border:1px solid rgba(212,175,55,.28);
 
-    box-shadow:0 30px 100px rgba(0,0,0,.65);
+    border:
+        1px solid rgba(212,175,55,.28);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.65);
 }
 
 .lightbox-close{
     position:absolute;
+
     top:22px;
     left:25px;
 
@@ -698,9 +929,11 @@ main{
 
     border-radius:50%;
 
-    border:1px solid rgba(212,175,55,.4);
+    border:
+        1px solid rgba(212,175,55,.4);
 
-    background:rgba(0,0,0,.25);
+    background:
+        rgba(0,0,0,.25);
 
     color:var(--gold-light);
 
@@ -709,23 +942,28 @@ main{
     cursor:pointer;
 }
 
-
 /* =========================================================
    JOURNEY
 ========================================================= */
 
 .timeline{
     max-width:850px;
+
     margin:auto;
+
     position:relative;
 }
 
 .timeline::before{
     content:"";
+
     position:absolute;
+
     top:0;
     bottom:0;
+
     right:50%;
+
     width:1px;
 
     background:
@@ -738,8 +976,11 @@ main{
 
 .timeline-item{
     position:relative;
+
     width:50%;
-    padding:0 36px 58px;
+
+    padding:
+        0 36px 58px;
 }
 
 .timeline-item:nth-child(odd){
@@ -748,11 +989,13 @@ main{
 
 .timeline-item:nth-child(even){
     margin-right:50%;
+
     text-align:right;
 }
 
 .timeline-dot{
     position:absolute;
+
     top:4px;
 
     width:13px;
@@ -776,24 +1019,31 @@ main{
 
 .timeline-year{
     color:var(--gold-light);
+
     font-size:28px;
+
     font-weight:800;
+
     line-height:1;
+
     margin-bottom:10px;
 }
 
 .timeline-title{
     font-size:18px;
+
     font-weight:600;
+
     margin-bottom:7px;
 }
 
 .timeline-text{
     color:var(--muted);
+
     font-size:14px;
+
     line-height:1.9;
 }
-
 
 /* =========================================================
    CONTACT
@@ -801,27 +1051,35 @@ main{
 
 .contact-card{
     max-width:700px;
+
     margin:auto;
 
     padding:45px;
 
     text-align:center;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:30px;
 
-    background:rgba(255,255,255,.022);
+    background:
+        rgba(255,255,255,.022);
 }
 
 .contact-card p{
     color:var(--muted);
+
     margin-bottom:28px;
+
     line-height:1.9;
 }
 
 .contact-icons{
     display:flex;
+
     justify-content:center;
+
     gap:16px;
 }
 
@@ -830,14 +1088,17 @@ main{
     height:60px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
     border-radius:50%;
 
-    border:1px solid rgba(212,175,55,.42);
+    border:
+        1px solid rgba(212,175,55,.42);
 
-    background:rgba(255,255,255,.02);
+    background:
+        rgba(255,255,255,.02);
 
     color:var(--gold-light);
 
@@ -847,18 +1108,26 @@ main{
 }
 
 .social:hover{
-    transform:translateY(-5px) scale(1.04);
-    background:rgba(212,175,55,.08);
-    border-color:var(--gold-light);
-    box-shadow:0 15px 40px rgba(212,175,55,.13);
+    transform:
+        translateY(-5px) scale(1.04);
+
+    background:
+        rgba(212,175,55,.08);
+
+    border-color:
+        var(--gold-light);
+
+    box-shadow:
+        0 15px 40px
+        rgba(212,175,55,.13);
 }
 
 .social svg{
     width:26px;
     height:26px;
+
     fill:currentColor;
 }
-
 
 /* =========================================================
    QR
@@ -867,11 +1136,13 @@ main{
 .qr-button{
     margin-top:27px;
 
-    padding:12px 24px;
+    padding:
+        12px 24px;
 
     border-radius:999px;
 
-    border:1px solid rgba(212,175,55,.38);
+    border:
+        1px solid rgba(212,175,55,.38);
 
     background:transparent;
 
@@ -883,22 +1154,30 @@ main{
 }
 
 .qr-button:hover{
-    background:rgba(212,175,55,.08);
-    transform:translateY(-3px);
+    background:
+        rgba(212,175,55,.08);
+
+    transform:
+        translateY(-3px);
 }
 
 .qr-modal{
     position:fixed;
+
     inset:0;
+
     z-index:2100;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
     padding:20px;
 
-    background:rgba(0,0,0,.78);
+    background:
+        rgba(0,0,0,.78);
+
     backdrop-filter:blur(8px);
 
     opacity:0;
@@ -914,21 +1193,27 @@ main{
 
 .qr-box{
     width:min(360px,92vw);
+
     padding:32px;
 
     text-align:center;
 
-    border:1px solid rgba(212,175,55,.35);
+    border:
+        1px solid rgba(212,175,55,.35);
+
     border-radius:30px;
 
     background:#07172a;
 
-    box-shadow:0 30px 100px rgba(0,0,0,.55);
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55);
 }
 
 .qr-box h3{
     color:var(--gold-light);
+
     direction:ltr;
+
     letter-spacing:2px;
 }
 
@@ -948,11 +1233,13 @@ main{
 }
 
 .qr-close{
-    padding:10px 25px;
+    padding:
+        10px 25px;
 
     border-radius:999px;
 
-    border:1px solid rgba(212,175,55,.35);
+    border:
+        1px solid rgba(212,175,55,.35);
 
     background:transparent;
 
@@ -961,22 +1248,25 @@ main{
     cursor:pointer;
 }
 
-
 /* =========================================================
    FOOTER
 ========================================================= */
 
 footer{
     padding:45px 20px;
+
     text-align:center;
 
-    border-top:1px solid rgba(212,175,55,.12);
+    border-top:
+        1px solid rgba(212,175,55,.12);
 
-    background:rgba(2,8,17,.72);
+    background:
+        rgba(2,8,17,.72);
 }
 
 .footer-copy{
     color:#858f9b;
+
     font-size:12px;
 }
 
@@ -994,14 +1284,15 @@ footer{
     font-weight:700;
 }
 
-
 /* =========================================================
-   SCROLL REVEAL
+   REVEAL
 ========================================================= */
 
 .reveal{
     opacity:0;
-    transform:translateY(35px);
+
+    transform:
+        translateY(35px);
 
     transition:
         opacity .8s ease,
@@ -1010,25 +1301,32 @@ footer{
 
 .reveal.visible{
     opacity:1;
-    transform:translateY(0);
-}
 
+    transform:
+        translateY(0);
+}
 
 /* =========================================================
    HERO ANIMATION
 ========================================================= */
 
 @keyframes heroIn{
+
     from{
         opacity:0;
-        transform:translateY(25px);
+
+        transform:
+            translateY(25px);
     }
+
     to{
         opacity:1;
-        transform:translateY(0);
-    }
-}
 
+        transform:
+            translateY(0);
+    }
+
+}
 
 /* =========================================================
    MOBILE
@@ -1038,29 +1336,44 @@ footer{
 
     header{
         height:70px;
-        padding:0 20px;
+
+        padding:
+            0 20px;
     }
 
     .logo{
         font-size:21px;
+
         letter-spacing:6px;
     }
 
     main{
-        width:min(92%,520px);
+        width:
+            min(92%,520px);
     }
 
     .hero{
-        padding:110px 0 75px;
+        padding:
+            105px 0 70px;
     }
 
     .hero-name{
-        font-size:clamp(39px,11vw,58px);
-        letter-spacing:-1px;
+        max-width:100%;
+
+        padding:
+            0 12px;
+
+        font-size:
+            clamp(32px,9vw,47px);
+
+        line-height:1.55;
+
+        letter-spacing:-.5px;
     }
 
     .photo-frame{
-        width:min(390px,88vw);
+        width:
+            min(390px,88vw);
     }
 
     .section{
@@ -1068,11 +1381,13 @@ footer{
     }
 
     .about-card{
-        padding:30px 22px;
+        padding:
+            30px 22px;
     }
 
     .about-card p{
         font-size:16px;
+
         line-height:2;
     }
 
@@ -1093,7 +1408,9 @@ footer{
     .gallery-item:nth-child(6),
     .gallery-item:nth-child(7),
     .gallery-item:nth-child(8){
+
         grid-column:span 1;
+
         aspect-ratio:16/10;
     }
 
@@ -1104,15 +1421,20 @@ footer{
     .timeline-item,
     .timeline-item:nth-child(odd),
     .timeline-item:nth-child(even){
+
         width:100%;
+
         margin:0;
+
         padding:
             0 42px 45px 0;
+
         text-align:right;
     }
 
     .timeline-item:nth-child(odd) .timeline-dot,
     .timeline-item:nth-child(even) .timeline-dot{
+
         right:7px;
         left:auto;
     }
@@ -1122,7 +1444,8 @@ footer{
     }
 
     .contact-card{
-        padding:32px 20px;
+        padding:
+            32px 20px;
     }
 
     .hero-corner{
@@ -1136,7 +1459,6 @@ footer{
 
 }
 
-
 /* =========================================================
    SMALL MOBILE
 ========================================================= */
@@ -1144,7 +1466,10 @@ footer{
 @media(max-width:420px){
 
     .hero-name{
-        font-size:38px;
+        font-size:34px;
+
+        padding:
+            0 8px;
     }
 
     .photo-frame{
@@ -1162,7 +1487,6 @@ footer{
 
 }
 
-
 /* =========================================================
    REDUCED MOTION
 ========================================================= */
@@ -1172,8 +1496,11 @@ footer{
     *,
     *::before,
     *::after{
+
         animation:none!important;
+
         transition:none!important;
+
         scroll-behavior:auto!important;
     }
 
@@ -1182,9 +1509,7 @@ footer{
 </style>
 </head>
 
-
 <body>
-
 
 <!-- =======================================================
      HEADER
@@ -1274,7 +1599,6 @@ footer{
 
 <main>
 
-
 <!-- =======================================================
      HERO
 ======================================================= -->
@@ -1285,6 +1609,7 @@ footer{
 >
 
     <div class="hero-corner top"></div>
+
     <div class="hero-corner bottom"></div>
 
 
@@ -1439,7 +1764,7 @@ footer{
 
 
 <!-- =======================================================
-     GALLERY
+     SELECTED GALLERY
 ======================================================= -->
 
 <section
@@ -1462,8 +1787,6 @@ footer{
 
     <div class="gallery">
 
-
-        <!-- جبال وطبيعة -->
 
         <div
             class="gallery-item"
@@ -1489,8 +1812,6 @@ footer{
         </div>
 
 
-        <!-- ريف -->
-
         <div
             class="gallery-item"
             data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
@@ -1514,8 +1835,6 @@ footer{
 
         </div>
 
-
-        <!-- مدينة ليلية -->
 
         <div
             class="gallery-item"
@@ -1541,8 +1860,6 @@ footer{
         </div>
 
 
-        <!-- شارع -->
-
         <div
             class="gallery-item"
             data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
@@ -1550,7 +1867,7 @@ footer{
 
             <img
                 src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85"
-                alt="شارع في المدينة"
+                alt="شوارع المدينة"
                 loading="lazy"
             >
 
@@ -1566,8 +1883,6 @@ footer{
 
         </div>
 
-
-        <!-- منظر علوي للمدينة -->
 
         <div
             class="gallery-item"
@@ -1593,8 +1908,6 @@ footer{
         </div>
 
 
-        <!-- طريق -->
-
         <div
             class="gallery-item"
             data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
@@ -1619,8 +1932,6 @@ footer{
         </div>
 
 
-        <!-- بحيرة -->
-
         <div
             class="gallery-item"
             data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
@@ -1628,7 +1939,7 @@ footer{
 
             <img
                 src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
-                alt="طبيعة هادئة"
+                alt="منظر طبيعي هادئ"
                 loading="lazy"
             >
 
@@ -1645,8 +1956,6 @@ footer{
         </div>
 
 
-        <!-- حياة المدينة -->
-
         <div
             class="gallery-item"
             data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
@@ -1654,7 +1963,7 @@ footer{
 
             <img
                 src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85"
-                alt="حياة وعمارة"
+                alt="العمارة والحياة"
                 loading="lazy"
             >
 
@@ -1848,9 +2157,13 @@ footer{
                 title="البريد الإلكتروني"
             >
 
-                <svg viewBox="0 0 24 24">
+                <svg
+                    viewBox="0 0 24 24"
+                >
 
-                    <path d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"/>
+                    <path
+                        d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
+                    />
 
                 </svg>
 
@@ -1868,9 +2181,13 @@ footer{
                 title="Facebook"
             >
 
-                <svg viewBox="0 0 24 24">
+                <svg
+                    viewBox="0 0 24 24"
+                >
 
-                    <path d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"/>
+                    <path
+                        d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
+                    />
 
                 </svg>
 
@@ -2057,7 +2374,9 @@ const revealObserver =
 
                 if(entry.isIntersecting){
 
-                    entry.target.classList.add("visible");
+                    entry.target.classList.add(
+                        "visible"
+                    );
 
                     revealObserver.unobserve(
                         entry.target
@@ -2107,11 +2426,15 @@ galleryItems.forEach(item => {
             const image =
                 item.dataset.full;
 
-            lightboxImage.src=image;
+            lightboxImage.src =
+                image;
 
-            lightbox.classList.add("active");
+            lightbox.classList.add(
+                "active"
+            );
 
-            document.body.style.overflow="hidden";
+            document.body.style.overflow =
+                "hidden";
 
         }
     );
@@ -2121,7 +2444,9 @@ galleryItems.forEach(item => {
 
 function closeLightbox(){
 
-    lightbox.classList.remove("active");
+    lightbox.classList.remove(
+        "active"
+    );
 
     lightboxImage.src="";
 
@@ -2140,7 +2465,9 @@ lightbox.addEventListener(
     "click",
     event => {
 
-        if(event.target===lightbox){
+        if(
+            event.target === lightbox
+        ){
 
             closeLightbox();
 
@@ -2168,9 +2495,12 @@ qrButton.addEventListener(
     "click",
     () => {
 
-        qrModal.classList.add("active");
+        qrModal.classList.add(
+            "active"
+        );
 
-        document.body.style.overflow="hidden";
+        document.body.style.overflow =
+            "hidden";
 
     }
 );
@@ -2180,9 +2510,12 @@ qrClose.addEventListener(
     "click",
     () => {
 
-        qrModal.classList.remove("active");
+        qrModal.classList.remove(
+            "active"
+        );
 
-        document.body.style.overflow="";
+        document.body.style.overflow =
+            "";
 
     }
 );
@@ -2192,11 +2525,16 @@ qrModal.addEventListener(
     "click",
     event => {
 
-        if(event.target===qrModal){
+        if(
+            event.target === qrModal
+        ){
 
-            qrModal.classList.remove("active");
+            qrModal.classList.remove(
+                "active"
+            );
 
-            document.body.style.overflow="";
+            document.body.style.overflow =
+                "";
 
         }
 
@@ -2205,22 +2543,25 @@ qrModal.addEventListener(
 
 
 /* =========================================================
-   ESC KEY
+   ESCAPE
 ========================================================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
-        if(event.key==="Escape"){
+        if(event.key === "Escape"){
 
             closeSideMenu();
 
             closeLightbox();
 
-            qrModal.classList.remove("active");
+            qrModal.classList.remove(
+                "active"
+            );
 
-            document.body.style.overflow="";
+            document.body.style.overflow =
+                "";
 
         }
 
