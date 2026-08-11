@@ -4,24 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>مبخوت بن عبدالله | Mabkhout Bin Abdullah</title>
-
-  <meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله">
+  <title>مبخوت بن عبدالله</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --navy: #061426;
-      --navy-light: #0b1d31;
+      --navy2: #091b30;
       --gold: #d4af37;
-      --gold-light: #f0d878;
-      --white: #f7f5ef;
-      --muted: #aeb4bc;
-      --line: rgba(212, 175, 55, 0.32);
+      --gold-light: #f2d76b;
+      --white: #f8f7f2;
+      --muted: #b9bec5;
     }
 
     * {
@@ -39,76 +35,64 @@
       background:
         radial-gradient(
           circle at 50% 38%,
-          rgba(212, 175, 55, 0.08),
-          transparent 30%
+          rgba(212,175,55,.09),
+          transparent 34%
         ),
         linear-gradient(
           145deg,
-          #030b16 0%,
-          #061426 45%,
-          #020811 100%
+          #020914,
+          var(--navy) 50%,
+          #030b16
         );
       color: var(--white);
       font-family: "Cairo", sans-serif;
       overflow-x: hidden;
     }
 
-    /* شبكة خلفية فاخرة */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.22;
+      opacity: .18;
+
       background-image:
         linear-gradient(
-          rgba(255,255,255,0.035) 1px,
+          rgba(255,255,255,.035) 1px,
           transparent 1px
         ),
         linear-gradient(
           90deg,
-          rgba(255,255,255,0.035) 1px,
+          rgba(255,255,255,.035) 1px,
           transparent 1px
         );
-      background-size: 72px 72px;
-      mask-image: linear-gradient(
-        to bottom,
-        black,
-        transparent 90%
-      );
+
+      background-size: 70px 70px;
     }
 
-    /* توهج ذهبي */
-    .gold-glow {
-      position: fixed;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: rgba(212, 175, 55, 0.08);
-      filter: blur(90px);
-      top: 25%;
-      left: 50%;
-      transform: translateX(-50%);
-      pointer-events: none;
-    }
+    /* =========================
+       HEADER
+    ========================= */
 
-    /* الهيدر */
     header {
-      height: 86px;
+      height: 82px;
+      padding: 0 7%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 7%;
-      border-bottom: 1px solid rgba(212,175,55,0.14);
-      background: rgba(3, 11, 22, 0.82);
+
+      background: rgba(2,9,20,.88);
+      border-bottom: 1px solid rgba(212,175,55,.15);
+
       backdrop-filter: blur(18px);
       position: relative;
       z-index: 10;
     }
 
     .brand {
-      font-family: "Inter", sans-serif;
-      font-size: 24px;
+      direction: ltr;
+      font-family: Arial, sans-serif;
+      font-size: 25px;
       font-weight: 700;
       letter-spacing: 8px;
       color: var(--gold-light);
@@ -116,213 +100,290 @@
 
     .header-title {
       font-size: 15px;
-      color: #c7ccd2;
-      letter-spacing: 1px;
+      color: #c4c8ce;
+      font-weight: 500;
     }
 
-    /* المحتوى الرئيسي */
+    /* =========================
+       MAIN
+    ========================= */
+
     main {
-      width: min(1120px, 92%);
+      width: min(1050px, 92%);
       margin: auto;
-      padding: 70px 0 90px;
     }
 
     .hero {
-      min-height: calc(100vh - 176px);
+      min-height: calc(100vh - 82px);
+
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+
+      padding: 70px 0 90px;
+
       text-align: center;
       position: relative;
     }
 
-    /* الزاوية */
+    /* =========================
+       DECORATIVE CORNERS
+    ========================= */
+
     .corner {
       position: absolute;
-      width: 80px;
-      height: 80px;
-      border-color: var(--gold);
-      opacity: 0.75;
+      width: 72px;
+      height: 72px;
+      border-color: rgba(212,175,55,.8);
     }
 
-    .corner.top-right {
-      top: 30px;
+    .corner.one {
+      top: 42px;
       right: 0;
       border-top: 2px solid;
       border-right: 2px solid;
     }
 
-    .corner.bottom-left {
-      bottom: 30px;
+    .corner.two {
+      bottom: 45px;
       left: 0;
       border-bottom: 2px solid;
       border-left: 2px solid;
     }
 
-    /* الاسم العربي */
-    .arabic-name {
+    /* =========================
+       ARABIC NAME
+    ========================= */
+
+    .name {
       font-family: "Cairo", sans-serif;
-      font-size: clamp(42px, 7vw, 86px);
+
+      font-size: clamp(42px, 8vw, 82px);
+
       font-weight: 800;
-      line-height: 1.15;
+
+      line-height: 1.25;
+
       letter-spacing: -2px;
+
       color: var(--white);
+
+      margin-top: 18px;
+      margin-bottom: 22px;
+
       text-shadow:
-        0 0 25px rgba(255,255,255,0.05);
-      margin-bottom: 18px;
+        0 5px 25px rgba(0,0,0,.35);
     }
 
-    .arabic-name span {
+    .name span {
       color: var(--gold-light);
     }
 
-    /* الاسم الإنجليزي */
-    .english-name {
-      direction: ltr;
-      font-family: "Inter", sans-serif;
-      font-size: clamp(20px, 3vw, 32px);
-      font-weight: 500;
-      letter-spacing: 2px;
-      color: #d7d9dc;
-      margin-bottom: 28px;
-    }
+    /* =========================
+       GOLD LINE
+    ========================= */
 
-    /* الخط الذهبي */
     .gold-line {
       width: 150px;
       height: 2px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        var(--gold),
-        var(--gold-light),
-        var(--gold),
-        transparent
-      );
-      box-shadow: 0 0 18px rgba(212,175,55,0.4);
-      margin-bottom: 38px;
+
+      margin-bottom: 48px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          var(--gold-light),
+          var(--gold),
+          transparent
+        );
+
+      box-shadow:
+        0 0 20px rgba(212,175,55,.45);
     }
 
-    /* الصورة */
+    /* =========================
+       IMAGE
+    ========================= */
+
     .photo-frame {
-      position: relative;
-      width: min(430px, 82vw);
+      width: min(470px, 88vw);
       aspect-ratio: 4 / 5;
-      padding: 10px;
-      margin: 10px auto 38px;
+
+      position: relative;
+
+      padding: 11px;
+
+      margin-bottom: 42px;
     }
 
     .photo-frame::before {
       content: "";
+
       position: absolute;
       inset: 0;
-      border: 1px solid rgba(212,175,55,0.8);
-      border-radius: 28px 28px 65px 65px;
-      transform: rotate(-1.5deg);
+
+      border: 1px solid rgba(212,175,55,.9);
+
+      border-radius:
+        32px
+        32px
+        75px
+        75px;
+
+      transform: rotate(-1.2deg);
+
       box-shadow:
-        0 0 35px rgba(212,175,55,0.10),
-        inset 0 0 30px rgba(212,175,55,0.04);
+        0 0 45px rgba(212,175,55,.09);
     }
 
     .photo-frame::after {
       content: "";
+
       position: absolute;
-      inset: 8px;
-      border: 1px solid rgba(212,175,55,0.25);
-      border-radius: 24px 24px 58px 58px;
-      transform: rotate(1.5deg);
+      inset: 7px;
+
+      border: 1px solid rgba(212,175,55,.28);
+
+      border-radius:
+        27px
+        27px
+        68px
+        68px;
+
+      transform: rotate(1.2deg);
     }
 
     .profile-photo {
-      position: relative;
-      z-index: 2;
       width: 100%;
       height: 100%;
+
       object-fit: cover;
+
       display: block;
-      border-radius: 20px 20px 52px 52px;
-      border: 4px solid #08172a;
+
+      position: relative;
+      z-index: 2;
+
+      border-radius:
+        24px
+        24px
+        62px
+        62px;
+
+      border: 5px solid #07172a;
+
       box-shadow:
-        0 20px 60px rgba(0,0,0,0.45);
+        0 25px 70px rgba(0,0,0,.5);
     }
 
-    /* نبذة */
+    /* =========================
+       QUOTE
+    ========================= */
+
     .quote {
-      font-size: clamp(22px, 4vw, 32px);
+      font-size: clamp(22px, 4vw, 30px);
+
       font-weight: 500;
+
       color: var(--white);
+
       margin-bottom: 28px;
     }
 
-    /* الروابط */
+    /* =========================
+       LINKS
+    ========================= */
+
     .links {
       display: flex;
       justify-content: center;
       align-items: center;
+
       gap: 14px;
+
       flex-wrap: wrap;
-      direction: rtl;
     }
 
     .link {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      min-width: 180px;
-      justify-content: center;
-      padding: 14px 24px;
-      border: 1px solid rgba(212,175,55,0.45);
+      min-width: 200px;
+
+      padding: 14px 25px;
+
       border-radius: 999px;
+
+      border: 1px solid rgba(212,175,55,.42);
+
+      background: rgba(255,255,255,.025);
+
       color: var(--white);
+
       text-decoration: none;
+
       font-size: 16px;
       font-weight: 600;
-      background: rgba(255,255,255,0.025);
+
       transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease,
-        box-shadow 0.25s ease;
+        .3s ease;
     }
 
     .link:hover {
       transform: translateY(-4px);
+
       border-color: var(--gold-light);
-      background: rgba(212,175,55,0.08);
-      box-shadow: 0 10px 35px rgba(212,175,55,0.12);
+
+      background:
+        rgba(212,175,55,.08);
+
+      box-shadow:
+        0 12px 35px rgba(212,175,55,.13);
     }
 
-    .link .icon {
+    .link span {
       color: var(--gold-light);
-      font-size: 18px;
+      margin-left: 8px;
     }
 
-    /* الفوتر */
+    /* =========================
+       FOOTER
+    ========================= */
+
     footer {
-      border-top: 1px solid rgba(212,175,55,0.15);
-      padding: 34px 20px;
+      padding: 32px 20px;
+
       text-align: center;
-      background: rgba(2,8,17,0.65);
+
+      border-top:
+        1px solid rgba(212,175,55,.14);
+
+      background:
+        rgba(2,8,17,.7);
     }
 
-    footer .footer-name {
-      font-family: "Inter", sans-serif;
-      direction: ltr;
+    .footer-name {
       font-size: 14px;
-      color: #8d939b;
-      letter-spacing: 1px;
+      color: #8f969f;
     }
 
-    footer .mbk {
-      color: var(--gold);
+    .footer-mbk {
+      direction: ltr;
+
       margin-top: 8px;
-      font-family: "Inter", sans-serif;
+
+      color: var(--gold);
+
+      font-family: Arial, sans-serif;
+
       font-weight: 700;
+
       letter-spacing: 5px;
     }
 
-    /* الجوال */
+    /* =========================
+       MOBILE
+    ========================= */
+
     @media (max-width: 600px) {
 
       header {
@@ -331,46 +392,47 @@
       }
 
       .brand {
-        font-size: 20px;
-        letter-spacing: 5px;
+        font-size: 21px;
+        letter-spacing: 6px;
       }
 
       .header-title {
         font-size: 13px;
       }
 
-      main {
-        width: 90%;
-        padding: 45px 0 65px;
-      }
-
       .hero {
-        min-height: calc(100vh - 137px);
+        padding:
+          48px
+          0
+          70px;
       }
 
-      .arabic-name {
+      .name {
         font-size: clamp(40px, 11vw, 58px);
-        letter-spacing: -1.5px;
-        white-space: nowrap;
-      }
 
-      .english-name {
-        font-size: 18px;
-        letter-spacing: 1px;
+        letter-spacing:
+          -1.5px;
+
+        line-height:
+          1.35;
+
+        margin-bottom:
+          20px;
       }
 
       .gold-line {
         width: 110px;
-        margin-bottom: 28px;
+        margin-bottom: 38px;
       }
 
       .photo-frame {
-        width: min(350px, 88vw);
-        margin-bottom: 30px;
+        width: min(390px, 88vw);
+        margin-bottom: 35px;
       }
 
       .quote {
         font-size: 21px;
+        margin-bottom: 25px;
       }
 
       .links {
@@ -387,57 +449,65 @@
         height: 48px;
       }
 
-      .corner.top-right {
-        top: 10px;
+      .corner.one {
+        top: 15px;
       }
 
-      .corner.bottom-left {
-        bottom: 10px;
+      .corner.two {
+        bottom: 20px;
       }
     }
 
-    /* حركة دخول ناعمة */
-    .hero > * {
-      animation: reveal 0.9s ease both;
+    /* =========================
+       ANIMATION
+    ========================= */
+
+    .name,
+    .gold-line,
+    .photo-frame,
+    .quote,
+    .links {
+      animation:
+        reveal .9s ease both;
     }
 
-    .arabic-name {
-      animation-delay: 0.05s;
-    }
-
-    .english-name {
-      animation-delay: 0.15s;
+    .name {
+      animation-delay: .05s;
     }
 
     .gold-line {
-      animation-delay: 0.25s;
+      animation-delay: .15s;
     }
 
     .photo-frame {
-      animation-delay: 0.35s;
+      animation-delay: .25s;
     }
 
     .quote {
-      animation-delay: 0.45s;
+      animation-delay: .35s;
     }
 
     .links {
-      animation-delay: 0.55s;
+      animation-delay: .45s;
     }
 
     @keyframes reveal {
+
       from {
         opacity: 0;
-        transform: translateY(18px);
+        transform:
+          translateY(20px);
       }
 
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform:
+          translateY(0);
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
+
       *,
       *::before,
       *::after {
@@ -445,63 +515,75 @@
         transition: none !important;
       }
     }
+
   </style>
 </head>
 
 <body>
 
-  <div class="gold-glow"></div>
-
   <header>
-    <div class="header-title">الموقع الشخصي</div>
 
-    <div class="brand">MBK</div>
+    <div class="brand">
+      MBK
+    </div>
+
+    <div class="header-title">
+      الموقع الشخصي
+    </div>
+
   </header>
+
 
   <main>
 
     <section class="hero">
 
-      <div class="corner top-right"></div>
-      <div class="corner bottom-left"></div>
+      <div class="corner one"></div>
+      <div class="corner two"></div>
 
-      <!-- الاسم العربي -->
-      <h1 class="arabic-name">
+
+      <!-- الاسم العربي فقط -->
+
+      <h1 class="name">
         مبخوت <span>بن عبدالله</span>
       </h1>
 
-      <!-- الاسم الإنجليزي -->
-      <div class="english-name">
-        Mabkhout Bin Abdullah
-      </div>
 
       <div class="gold-line"></div>
 
+
       <!-- الصورة -->
+
       <div class="photo-frame">
+
         <img
           class="profile-photo"
           src="file_00000000582882468daa3e8113233056.png"
-          alt="Mabkhout Bin Abdullah"
-          loading="eager"
+          alt="مبخوت بن عبدالله"
         >
+
       </div>
 
+
       <!-- النبذة -->
+
       <p class="quote">
         وما توفيقي إلا بالله
       </p>
 
+
       <!-- الروابط -->
+
       <div class="links">
 
         <a
           class="link"
           href="mailto:Mabkhut505g@gmail.com"
         >
-          <span class="icon">✉</span>
+          <span>✉</span>
           البريد الإلكتروني
         </a>
+
 
         <a
           class="link"
@@ -509,7 +591,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span class="icon">f</span>
+          <span>f</span>
           Facebook
         </a>
 
@@ -519,13 +601,14 @@
 
   </main>
 
+
   <footer>
 
     <div class="footer-name">
-      Mabkhout Bin Abdullah 2026 ©
+      مبخوت بن عبدالله 2026 ©
     </div>
 
-    <div class="mbk">
+    <div class="footer-mbk">
       MBK
     </div>
 
