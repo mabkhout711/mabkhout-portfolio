@@ -1,424 +1,85 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, ArrowLeft, Mail, ChevronRight, ChevronLeft } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-// ==========================================
-// CONFIGURATION
-// ==========================================
-// Replace this URL with the exact path to your uploaded portrait image.
-const USER_PORTRAIT_URL = "./mabkhout-saqra-portrait.jpg"; 
+    <title>مبخوت بن عبدالله | Mabkhout Bin Abdullah</title>
 
-// ==========================================
-// TRANSLATIONS & CONTENT
-// ==========================================
-const content = {
-  en: {
-    nav: { home: "HOME", about: "ABOUT", projects: "PROJECTS", contact: "CONTACT" },
-    hero: {
-      name1: "MABKHOUT",
-      name2: "SAQRA",
-      subtitle: "Personal Identity • Vision • Creativity",
-      primaryBtn: "EXPLORE MY WORK",
-      secondaryBtn: "CONTACT ME"
-    },
-    about: {
-      title: "ABOUT ME",
-      quote: `"If I am right, it is from Allah; if I am wrong, it is from myself and Satan. I am not infallible, but I try to reform myself."`,
-      arabicQuote: `"إن أصبت فمن الله، وإن أخطأت فمن نفسي والشيطان. لستُ معصوماً، ولكني أُحاول إصلاح نفسي."`
-    },
-    projects: {
-      title: "PROJECTS",
-      viewBtn: "VIEW PROJECT",
-      items: [
-        { id: 1, name: "Project Alpha", category: "Brand Identity", desc: "A comprehensive luxury brand development." },
-        { id: 2, name: "Project Beta", category: "Digital Strategy", desc: "Strategic planning and execution." },
-        { id: 3, name: "Project Gamma", category: "Creative Direction", desc: "Artistic vision for premium campaigns." }
-      ]
-    },
-    skills: {
-      title: "SKILLS",
-      items: ["Strategic Leadership", "Brand Development", "Creative Direction", "Visionary Planning", "Public Relations", "Executive Management"]
-    },
-    gallery: { title: "GALLERY" },
-    contact: {
-      title: "LET'S CONNECT",
-      name: "Name",
-      email: "Email",
-      message: "Message",
-      send: "SEND MESSAGE"
-    },
-    footer: { name: "MABKHOUT SAQRA" }
-  },
-  ar: {
-    nav: { home: "الرئيسية", about: "نبذة عني", projects: "المشاريع", contact: "تواصل معي" },
-    hero: {
-      name1: "مبخوت",
-      name2: "بن عبدالله",
-      subtitle: "هوية شخصية • رؤية • إبداع",
-      primaryBtn: "تصفح أعمالي",
-      secondaryBtn: "تواصل معي"
-    },
-    about: {
-      title: "نبذة عني",
-      quote: `"إن أصبت فمن الله، وإن أخطأت فمن نفسي والشيطان. لستُ معصوماً، ولكني أُحاول إصلاح نفسي."`,
-      arabicQuote: ""
-    },
-    projects: {
-      title: "المشاريع",
-      viewBtn: "عرض المشروع",
-      items: [
-        { id: 1, name: "المشروع الأول", category: "هوية العلامة", desc: "تطوير شامل لعلامة تجارية فاخرة." },
-        { id: 2, name: "المشروع الثاني", category: "الاستراتيجية الرقمية", desc: "التخطيط الاستراتيجي والتنفيذ." },
-        { id: 3, name: "المشروع الثالث", category: "الإدارة الإبداعية", desc: "رؤية فنية للحملات المميزة." }
-      ]
-    },
-    skills: {
-      title: "المهارات",
-      items: ["القيادة الاستراتيجية", "تطوير العلامات التجارية", "الإدارة الإبداعية", "التخطيط المستقبلي", "العلاقات العامة", "الإدارة التنفيذية"]
-    },
-    gallery: { title: "معرض الصور" },
-    contact: {
-      title: "تواصل معي",
-      name: "الاسم",
-      email: "البريد الإلكتروني",
-      message: "الرسالة",
-      send: "إرسال الرسالة"
-    },
-    footer: { name: "مبخوت بن عبدالله" }
-  }
-};
-
-// ==========================================
-// MAIN APP COMPONENT
-// ==========================================
-export default function App() {
-  const [lang, setLang] = useState('en');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [imageError, setImageError] = useState(false);
-
-  const t = content[lang];
-  const isRTL = lang === 'ar';
-  
-  const toggleLang = () => {
-    setLang(prev => prev === 'en' ? 'ar' : 'en');
-    setIsMobileMenuOpen(false);
-  };
-
-  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
-  const ChevronIcon = isRTL ? ChevronLeft : ChevronRight;
-
-  return (
-    <div 
-      dir={isRTL ? 'rtl' : 'ltr'} 
-      className={`min-h-screen bg-white text-[#9E7E41] selection:bg-[#D4AF37] selection:text-white ${isRTL ? 'font-cairo' : 'font-montserrat'}`}
+    <meta
+        name="description"
+        content="الموقع الشخصي لمبخوت بن عبدالله"
     >
-      {/* Injecting Google Fonts for Premium Typography 
-        English: Cinzel (Serif) & Montserrat (Sans)
-        Arabic: Amiri (Serif) & Cairo (Sans)
-      */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
-        
-        .font-cinzel { font-family: 'Cinzel', serif; }
-        .font-montserrat { font-family: 'Montserrat', sans-serif; }
-        .font-amiri { font-family: 'Amiri', serif; }
-        .font-cairo { font-family: 'Cairo', sans-serif; }
-        
-        .heading-font { font-family: ${isRTL ? "'Amiri', serif" : "'Cinzel', serif"}; }
-        .body-font { font-family: ${isRTL ? "'Cairo', sans-serif" : "'Montserrat', sans-serif"}; }
-        
-        /* Smooth scrolling */
-        html { scroll-behavior: smooth; }
-        
-        /* Custom scrollbar in Gold */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #ffffff; }
-        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #9E7E41; }
-        
-        /* Elegant fade in animation */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-fade-in { animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-      `}} />
 
-      {/* ================= HEADER ================= */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-[#D4AF37]/20 transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-24 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="text-3xl heading-font font-bold text-[#C5A059] tracking-widest hover:text-[#9E7E41] transition-colors">
-            MBK
-          </a>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-10">
-            {Object.values(t.nav).map((item, idx) => (
-              <a key={idx} href={`#${item.toLowerCase().replace(/\s/g, '')}`} className="text-sm font-medium tracking-[0.2em] text-[#C5A059] hover:text-[#9E7E41] transition-colors relative group">
-                {item}
-                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#D4AF37] transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
-            
-            <div className="w-[1px] h-5 bg-[#D4AF37]/30 mx-2"></div>
-            
-            <button onClick={toggleLang} className="text-sm font-medium tracking-widest text-[#C5A059] hover:text-[#9E7E41] transition-colors flex items-center gap-2">
-              {lang === 'en' ? 'العربية' : 'EN'}
-            </button>
-          </nav>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-          {/* Mobile Menu Toggle */}
-          <button className="md:hidden text-[#C5A059]" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-        {/* Mobile Nav Dropdown */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-24 left-0 right-0 bg-white border-b border-[#D4AF37]/20 p-6 flex flex-col gap-6 shadow-2xl shadow-[#D4AF37]/10 animate-fade-in">
-            {Object.values(t.nav).map((item, idx) => (
-              <a 
-                key={idx} 
-                href={`#${item.toLowerCase().replace(/\s/g, '')}`} 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg font-medium tracking-widest text-[#C5A059]"
-              >
-                {item}
-              </a>
-            ))}
-            <hr className="border-[#D4AF37]/20" />
-            <button onClick={toggleLang} className="text-lg font-medium tracking-widest text-[#C5A059] text-left">
-              {lang === 'en' ? 'Switch to العربية' : 'Switch to English'}
-            </button>
-          </div>
-        )}
-      </header>
+<body>
 
-      <main className="pt-24">
-        {/* ================= HERO ================= */}
-        <section id="home" className="relative min-h-[90vh] flex items-center overflow-hidden">
-          {/* Subtle background decorative lines */}
-          <div className="absolute inset-0 pointer-events-none opacity-20">
-            <div className="absolute top-0 right-[10%] w-[1px] h-full bg-[#D4AF37]"></div>
-            <div className="absolute top-[20%] left-0 w-full h-[1px] bg-[#D4AF37]"></div>
-          </div>
+    <main class="site">
 
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full grid md:grid-cols-2 gap-16 items-center relative z-10 py-16">
-            
-            {/* Text Content */}
-            <div className={`flex flex-col ${isRTL ? 'md:items-start' : 'md:items-start'} items-center text-center md:text-start animate-fade-in`}>
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-[1px] bg-[#D4AF37]"></div>
-                <span className="text-sm tracking-[0.3em] font-medium text-[#C5A059] uppercase">{t.hero.subtitle}</span>
-              </div>
-              
-              <h1 className="text-5xl md:text-7xl lg:text-8xl heading-font font-bold text-[#C5A059] leading-tight mb-4 flex flex-col">
-                <span>{t.hero.name1}</span>
-                <span>{t.hero.name2}</span>
-              </h1>
-              
-              <div className="flex flex-col sm:flex-row gap-6 mt-12 w-full sm:w-auto">
-                <a href="#projects" className="group relative px-8 py-4 bg-[#C5A059] text-white text-sm tracking-widest font-medium overflow-hidden">
-                  <div className="absolute inset-0 bg-[#9E7E41] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
-                  <span className="relative z-10 flex items-center justify-center gap-3">
-                    {t.hero.primaryBtn} <ArrowIcon size={16} />
-                  </span>
-                </a>
-                <a href="#contact" className="group relative px-8 py-4 bg-transparent border border-[#C5A059] text-[#C5A059] text-sm tracking-widest font-medium overflow-hidden">
-                  <div className="absolute inset-0 bg-[#C5A059] -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></div>
-                  <span className="relative z-10 flex items-center justify-center group-hover:text-white transition-colors duration-500">
-                    {t.hero.secondaryBtn}
-                  </span>
-                </a>
-              </div>
-            </div>
+        <section class="hero">
 
-            {/* Portrait Image */}
-            <div className="relative animate-fade-in mx-auto w-full max-w-[400px] lg:max-w-[500px]" style={{ animationDelay: '0.2s' }}>
-              {/* Architectural Gold Frame */}
-              <div className="absolute inset-0 border-2 border-[#D4AF37] translate-x-4 -translate-y-4 md:translate-x-8 md:-translate-y-8 z-0 transition-transform duration-700 hover:translate-x-2 hover:-translate-y-2"></div>
-              <div className="absolute inset-0 border border-[#D4AF37]/50 -translate-x-4 translate-y-4 md:-translate-x-6 md:translate-y-6 z-0"></div>
-              
-              <div className="relative z-10 aspect-[3/4] bg-white overflow-hidden shadow-2xl shadow-[#D4AF37]/10">
-                {!imageError ? (
-                  <img 
-                    src={USER_PORTRAIT_URL} 
-                    alt="Mabkhout Saqra Portrait"
-                    className="w-full h-full object-cover filter brightness-[0.98] contrast-[1.02] hover:scale-105 transition-transform duration-1000"
-                    onError={() => setImageError(true)}
-                  />
-                ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center bg-[#FDFBF7] border-4 border-white p-8 text-center">
-                     {/* Placeholder if local image is missing */}
-                    <div className="w-16 h-16 border border-[#C5A059] rounded-full flex items-center justify-center mb-4">
-                       <span className="heading-font text-2xl text-[#C5A059]">MBK</span>
-                    </div>
-                    <p className="text-sm font-medium text-[#9E7E41] tracking-widest">USER PORTRAIT GOES HERE</p>
-                    <p className="text-xs text-[#C5A059]/70 mt-2">Replace <code>mabkhout-saqra-portrait.jpg</code></p>
-                  </div>
-                )}
-              </div>
-            </div>
+            <div class="hero-card">
 
-          </div>
-        </section>
+                <div class="profile">
+                    <img
+                        src="profile.jpg"
+                        alt="مبخوت بن عبدالله"
+                    >
+                </div>
 
-        {/* ================= ABOUT ================= */}
-        <section id="about" className="py-24 bg-[#FDFCF9] relative">
-          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <h2 className="text-xs tracking-[0.4em] text-[#D4AF37] font-semibold uppercase mb-12 flex items-center justify-center gap-4">
-              <span className="w-12 h-[1px] bg-[#D4AF37]"></span>
-              {t.about.title}
-              <span className="w-12 h-[1px] bg-[#D4AF37]"></span>
-            </h2>
-            
-            <div className="relative">
-              <span className="absolute -top-12 -left-4 text-8xl text-[#C5A059] opacity-20 heading-font">"</span>
-              <p className="text-2xl md:text-4xl heading-font text-[#9E7E41] leading-relaxed md:leading-loose">
-                {t.about.quote}
-              </p>
-              {lang === 'en' && t.about.arabicQuote && (
-                <p className="mt-8 text-xl md:text-2xl font-amiri text-[#C5A059] opacity-80" dir="rtl">
-                  {t.about.arabicQuote}
+                <p class="label">
+                    PERSONAL PROFILE
                 </p>
-              )}
-              <span className="absolute -bottom-16 -right-4 text-8xl text-[#C5A059] opacity-20 heading-font">"</span>
+
+                <h1>
+                    مبخوت بن عبدالله
+                </h1>
+
+                <h2>
+                    Mabkhout Bin Abdullah
+                </h2>
+
+                <div class="gold-line"></div>
+
+                <p class="motto">
+                    وما توفيقي إلا بالله
+                </p>
+
+                <div class="links">
+
+                    <a
+                        href="mailto:Mabkhut505g@gmail.com"
+                        class="link"
+                    >
+                        البريد الإلكتروني
+                    </a>
+
+                    <a
+                        href="YOUR_FACEBOOK_LINK"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="link"
+                    >
+                        Facebook
+                    </a>
+
+                </div>
+
             </div>
-          </div>
+
         </section>
 
-        {/* ================= BRAND IDENTITY (MBK) ================= */}
-        <section className="py-32 bg-white relative overflow-hidden flex items-center justify-center">
-          {/* Geometric Luxury Lines */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-1/2 left-0 w-full h-[1px] bg-[#C5A059]/10"></div>
-            <div className="absolute top-0 left-1/2 w-[1px] h-full bg-[#C5A059]/10"></div>
-            <div className="absolute top-1/4 left-1/4 w-[1px] h-1/2 bg-[#C5A059]/20"></div>
-            <div className="absolute top-1/4 right-1/4 w-[1px] h-1/2 bg-[#C5A059]/20"></div>
-          </div>
-          
-          <div className="relative z-10 text-center animate-fade-in group cursor-default">
-            <h2 className="text-8xl md:text-[12rem] lg:text-[16rem] heading-font font-bold text-[#C5A059] leading-none tracking-tighter group-hover:scale-105 transition-transform duration-1000 ease-out">
-              MBK
-            </h2>
-            <div className="mt-6 flex items-center justify-center gap-4">
-               <div className="w-16 h-[1px] bg-[#D4AF37]"></div>
-               <span className="text-sm tracking-[0.5em] text-[#9E7E41] uppercase">Premium Identity</span>
-               <div className="w-16 h-[1px] bg-[#D4AF37]"></div>
-            </div>
-          </div>
-        </section>
+    </main>
 
-        {/* ================= PROJECTS ================= */}
-        <section id="projects" className="py-24 bg-[#FDFCF9]">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-              <div>
-                <h2 className="text-3xl md:text-5xl heading-font text-[#C5A059] mb-4">{t.projects.title}</h2>
-                <div className="w-24 h-[2px] bg-[#D4AF37]"></div>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {t.projects.items.map((project) => (
-                <div key={project.id} className="group bg-white border border-[#C5A059]/10 hover:border-[#C5A059]/50 transition-all duration-500 flex flex-col h-full hover:shadow-[0_8px_30px_rgba(197,160,89,0.05)]">
-                  <div className="aspect-video bg-[#FDFBF7] relative overflow-hidden flex items-center justify-center p-8">
-                    {/* Placeholder for project image */}
-                    <div className="absolute inset-0 bg-[#C5A059]/5 scale-0 group-hover:scale-100 transition-transform duration-700 ease-in-out rounded-full blur-3xl"></div>
-                    <span className="text-[#C5A059]/40 heading-font text-2xl tracking-widest group-hover:scale-110 transition-transform duration-500">MBK</span>
-                  </div>
-                  <div className="p-8 flex-grow flex flex-col">
-                    <span className="text-xs tracking-[0.2em] text-[#D4AF37] mb-2 uppercase">{project.category}</span>
-                    <h3 className="text-xl heading-font text-[#9E7E41] mb-4">{project.name}</h3>
-                    <p className="text-sm text-[#9E7E41]/80 mb-8 flex-grow leading-relaxed">{project.desc}</p>
-                    <button className="flex items-center gap-2 text-sm font-medium tracking-widest text-[#C5A059] group-hover:text-[#9E7E41] transition-colors mt-auto w-max">
-                      {t.projects.viewBtn} <ArrowIcon size={14} className="group-hover:translate-x-1 transition-transform" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= SKILLS ================= */}
-        <section className="py-24 bg-white border-y border-[#C5A059]/10">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-            <h2 className="text-xs tracking-[0.4em] text-[#D4AF37] font-semibold uppercase mb-16">{t.skills.title}</h2>
-            <div className="flex flex-wrap justify-center gap-x-12 gap-y-8">
-              {t.skills.items.map((skill, idx) => (
-                <div key={idx} className="flex items-center gap-3 group cursor-default">
-                  <div className="w-2 h-2 rotate-45 border border-[#C5A059] group-hover:bg-[#C5A059] transition-colors duration-300"></div>
-                  <span className="text-lg text-[#9E7E41] tracking-wide group-hover:text-[#C5A059] transition-colors duration-300">{skill}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= GALLERY (Prepared for future) ================= */}
-        <section className="py-24 bg-[#FDFCF9]">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-            <h2 className="text-3xl md:text-5xl heading-font text-[#C5A059] mb-4">{t.gallery.title}</h2>
-            <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mb-16"></div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[1, 2, 3, 4].map((item) => (
-                <div key={item} className="aspect-square bg-white border border-[#C5A059]/10 hover:border-[#C5A059]/40 flex items-center justify-center transition-colors duration-500">
-                  <span className="text-[#C5A059]/30 text-xs tracking-widest uppercase">Image {item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= CONTACT ================= */}
-        <section id="contact" className="py-32 bg-white relative">
-          <div className="max-w-3xl mx-auto px-6 text-center">
-             <Mail size={32} className="mx-auto text-[#D4AF37] mb-6" strokeWidth={1} />
-             <h2 className="text-4xl md:text-6xl heading-font text-[#C5A059] mb-16">{t.contact.title}</h2>
-             
-             <form className="flex flex-col gap-12 text-start" onSubmit={(e) => e.preventDefault()}>
-                <div className="relative group">
-                  <input type="text" id="name" placeholder=" " className="w-full bg-transparent border-b border-[#C5A059]/30 py-4 text-[#9E7E41] focus:outline-none focus:border-[#C5A059] transition-colors peer" required />
-                  <label htmlFor="name" className={`absolute ${isRTL ? 'right-0' : 'left-0'} top-4 text-[#C5A059]/70 text-sm tracking-widest transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-[#C5A059] peer-valid:-top-6 peer-valid:text-xs`}>
-                    {t.contact.name}
-                  </label>
-                </div>
-                
-                <div className="relative group">
-                  <input type="email" id="email" placeholder=" " className="w-full bg-transparent border-b border-[#C5A059]/30 py-4 text-[#9E7E41] focus:outline-none focus:border-[#C5A059] transition-colors peer" required />
-                  <label htmlFor="email" className={`absolute ${isRTL ? 'right-0' : 'left-0'} top-4 text-[#C5A059]/70 text-sm tracking-widest transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-[#C5A059] peer-valid:-top-6 peer-valid:text-xs`}>
-                    {t.contact.email}
-                  </label>
-                </div>
-                
-                <div className="relative group">
-                  <textarea id="message" rows="4" placeholder=" " className="w-full bg-transparent border-b border-[#C5A059]/30 py-4 text-[#9E7E41] focus:outline-none focus:border-[#C5A059] transition-colors peer resize-none" required></textarea>
-                  <label htmlFor="message" className={`absolute ${isRTL ? 'right-0' : 'left-0'} top-4 text-[#C5A059]/70 text-sm tracking-widest transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-[#C5A059] peer-valid:-top-6 peer-valid:text-xs`}>
-                    {t.contact.message}
-                  </label>
-                </div>
-                
-                <button type="submit" className="mt-8 relative px-12 py-5 bg-[#C5A059] text-white tracking-[0.2em] font-medium text-sm mx-auto overflow-hidden group">
-                  <div className="absolute inset-0 bg-[#9E7E41] scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out"></div>
-                  <span className="relative z-10">{t.contact.send}</span>
-                </button>
-             </form>
-          </div>
-        </section>
-      </main>
-
-      {/* ================= FOOTER ================= */}
-      <footer className="bg-[#FDFCF9] py-16 border-t border-[#C5A059]/20 text-center">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
-          <a href="#" className="text-4xl heading-font font-bold text-[#C5A059] tracking-widest mb-6">MBK</a>
-          <p className="text-sm tracking-[0.3em] text-[#9E7E41] uppercase mb-2">{t.footer.name}</p>
-          <div className="w-12 h-[1px] bg-[#D4AF37]/50 my-6"></div>
-          <p className="text-xs text-[#C5A059]/70 tracking-widest">
-            © {new Date().getFullYear()} MBK IDENTITY. ALL RIGHTS RESERVED.
-          </p>
-        </div>
-      </footer>
-    </div>
-  );
-}
-
-
+</body>
+</html>
