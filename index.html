@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>مبخوت بن عبدالله</title>
-
 <meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
     --navy:#061426;
+    --navy-dark:#020914;
     --gold:#d4af37;
     --gold-light:#f2d76b;
     --white:#f8f7f2;
+    --gray:#9da5ae;
 }
 
 *{
@@ -35,36 +33,32 @@ html{
 
 body{
     min-height:100vh;
+    overflow-x:hidden;
+    color:var(--white);
+    font-family:"Cairo",sans-serif;
 
     background:
         radial-gradient(
             circle at 50% 38%,
-            rgba(212,175,55,.09),
+            rgba(212,175,55,.10),
             transparent 34%
         ),
         linear-gradient(
             145deg,
-            #020914,
-            #061426 50%,
+            var(--navy-dark),
+            var(--navy) 50%,
             #030b16
         );
-
-    color:var(--white);
-    font-family:"Cairo",sans-serif;
-    overflow-x:hidden;
 }
 
-/* الخلفية */
+/* شبكة الخلفية */
 
 body::before{
     content:"";
-
     position:fixed;
     inset:0;
-
     pointer-events:none;
-
-    opacity:.18;
+    opacity:.16;
 
     background-image:
         linear-gradient(
@@ -84,24 +78,19 @@ body::before{
 
 .gold-glow{
     position:fixed;
-
     width:420px;
     height:420px;
-
     border-radius:50%;
-
-    background:rgba(212,175,55,.08);
-
-    filter:blur(90px);
 
     top:25%;
     left:50%;
-
     transform:translateX(-50%);
+
+    background:rgba(212,175,55,.08);
+    filter:blur(90px);
 
     pointer-events:none;
 }
-
 
 /* =========================
    HEADER
@@ -109,47 +98,42 @@ body::before{
 
 header{
     height:82px;
-
     padding:0 7%;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    background:rgba(2,9,20,.88);
-
-    border-bottom:
-        1px solid
-        rgba(212,175,55,.15);
-
-    backdrop-filter:blur(18px);
-
     position:relative;
     z-index:10;
+
+    background:rgba(2,9,20,.88);
+    border-bottom:1px solid rgba(212,175,55,.15);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 }
 
 .brand{
     direction:ltr;
 
     font-family:Arial,sans-serif;
-
     font-size:25px;
-
     font-weight:700;
 
     letter-spacing:8px;
 
     color:var(--gold-light);
+
+    text-shadow:
+        0 0 20px rgba(212,175,55,.18);
 }
 
 .header-title{
     font-size:15px;
-
-    color:#c4c8ce;
-
     font-weight:500;
+    color:#c4c8ce;
 }
-
 
 /* =========================
    MAIN
@@ -157,18 +141,14 @@ header{
 
 main{
     width:min(1050px,92%);
-
     margin:auto;
 }
 
 .hero{
-    min-height:
-        calc(100vh - 82px);
+    min-height:calc(100vh - 82px);
 
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
 
     padding:70px 0 90px;
@@ -178,10 +158,7 @@ main{
     position:relative;
 }
 
-
-/* =========================
-   CORNERS
-========================= */
+/* الزوايا الذهبية */
 
 .corner{
     position:absolute;
@@ -189,8 +166,7 @@ main{
     width:72px;
     height:72px;
 
-    border-color:
-        rgba(212,175,55,.8);
+    border-color:rgba(212,175,55,.8);
 }
 
 .corner.one{
@@ -209,7 +185,6 @@ main{
     border-left:2px solid;
 }
 
-
 /* =========================
    NAME
 ========================= */
@@ -217,13 +192,11 @@ main{
 .name{
     font-family:"Cairo",sans-serif;
 
-    font-size:
-        clamp(42px,8vw,82px);
+    font-size:clamp(42px,8vw,82px);
 
     font-weight:800;
 
     line-height:1.25;
-
     letter-spacing:-2px;
 
     color:var(--white);
@@ -232,17 +205,17 @@ main{
     margin-bottom:22px;
 
     text-shadow:
-        0 5px 25px
-        rgba(0,0,0,.35);
+        0 5px 25px rgba(0,0,0,.35);
 
-    animation:
-        reveal .9s ease both;
+    animation:reveal .9s ease both;
 }
 
 .name span{
     color:var(--gold-light);
-}
 
+    text-shadow:
+        0 0 25px rgba(212,175,55,.12);
+}
 
 /* =========================
    GOLD LINE
@@ -250,7 +223,6 @@ main{
 
 .gold-line{
     width:150px;
-
     height:2px;
 
     margin-bottom:48px;
@@ -266,16 +238,14 @@ main{
         );
 
     box-shadow:
-        0 0 20px
-        rgba(212,175,55,.45);
+        0 0 20px rgba(212,175,55,.45);
 
     animation:
         reveal .9s .15s ease both;
 }
 
-
 /* =========================
-   SQUARE PHOTO 1:1
+   PHOTO 1:1
 ========================= */
 
 .photo-frame{
@@ -293,6 +263,8 @@ main{
         reveal .9s .25s ease both;
 }
 
+/* الإطار الخارجي */
+
 .photo-frame::before{
     content:"";
 
@@ -300,18 +272,17 @@ main{
 
     inset:0;
 
-    border:
-        1px solid
-        rgba(212,175,55,.9);
+    border:1px solid rgba(212,175,55,.9);
 
     border-radius:32px;
 
     transform:rotate(-1.2deg);
 
     box-shadow:
-        0 0 45px
-        rgba(212,175,55,.09);
+        0 0 45px rgba(212,175,55,.09);
 }
+
+/* الإطار الداخلي */
 
 .photo-frame::after{
     content:"";
@@ -320,44 +291,34 @@ main{
 
     inset:7px;
 
-    border:
-        1px solid
-        rgba(212,175,55,.28);
+    border:1px solid rgba(212,175,55,.28);
 
     border-radius:27px;
 
     transform:rotate(1.2deg);
 }
 
-
-/* =========================
-   PROFILE IMAGE
-========================= */
+/* الصورة */
 
 .profile-photo{
     width:100%;
-
     height:100%;
-
-    object-fit:contain;
 
     display:block;
 
     position:relative;
-
     z-index:2;
+
+    object-fit:contain;
 
     border-radius:24px;
 
-    border:
-        5px solid
-        #07172a;
+    border:5px solid #07172a;
 
     background:#07172a;
 
     box-shadow:
-        0 25px 70px
-        rgba(0,0,0,.5);
+        0 25px 70px rgba(0,0,0,.5);
 
     transition:
         transform .5s ease,
@@ -372,14 +333,12 @@ main{
         rgba(212,175,55,.16);
 }
 
-
 /* =========================
    QUOTE
 ========================= */
 
 .quote{
-    font-size:
-        clamp(22px,4vw,30px);
+    font-size:clamp(22px,4vw,30px);
 
     font-weight:500;
 
@@ -391,7 +350,6 @@ main{
         reveal .9s .35s ease both;
 }
 
-
 /* =========================
    LINKS
 ========================= */
@@ -400,7 +358,6 @@ main{
     display:flex;
 
     justify-content:center;
-
     align-items:center;
 
     gap:14px;
@@ -418,19 +375,15 @@ main{
 
     border-radius:999px;
 
-    border:
-        1px solid
-        rgba(212,175,55,.42);
+    border:1px solid rgba(212,175,55,.42);
 
-    background:
-        rgba(255,255,255,.025);
+    background:rgba(255,255,255,.025);
 
     color:var(--white);
 
     text-decoration:none;
 
     font-size:16px;
-
     font-weight:600;
 
     transition:.3s ease;
@@ -439,11 +392,9 @@ main{
 .link:hover{
     transform:translateY(-4px);
 
-    border-color:
-        var(--gold-light);
+    border-color:var(--gold-light);
 
-    background:
-        rgba(212,175,55,.08);
+    background:rgba(212,175,55,.08);
 
     box-shadow:
         0 12px 35px
@@ -452,10 +403,8 @@ main{
 
 .link span{
     color:var(--gold-light);
-
     margin-left:8px;
 }
-
 
 /* =========================
    FOOTER
@@ -466,17 +415,15 @@ footer{
 
     text-align:center;
 
+    background:rgba(2,8,17,.7);
+
     border-top:
         1px solid
         rgba(212,175,55,.14);
-
-    background:
-        rgba(2,8,17,.7);
 }
 
 .footer-name{
     font-size:14px;
-
     color:#8f969f;
 }
 
@@ -489,33 +436,27 @@ footer{
 
     font-family:Arial,sans-serif;
 
+    font-size:14px;
     font-weight:700;
 
     letter-spacing:5px;
 }
-
 
 /* =========================
    ANIMATION
 ========================= */
 
 @keyframes reveal{
-
     from{
         opacity:0;
-
-        transform:
-            translateY(20px);
+        transform:translateY(20px);
     }
 
     to{
         opacity:1;
-
-        transform:
-            translateY(0);
+        transform:translateY(0);
     }
 }
-
 
 /* =========================
    MOBILE
@@ -525,13 +466,11 @@ footer{
 
     header{
         height:72px;
-
         padding:0 22px;
     }
 
     .brand{
         font-size:21px;
-
         letter-spacing:6px;
     }
 
@@ -540,13 +479,11 @@ footer{
     }
 
     .hero{
-        padding:
-            48px 0 70px;
+        padding:48px 0 70px;
     }
 
     .name{
-        font-size:
-            clamp(40px,11vw,58px);
+        font-size:clamp(40px,11vw,58px);
 
         letter-spacing:-1.5px;
 
@@ -557,13 +494,11 @@ footer{
 
     .gold-line{
         width:110px;
-
         margin-bottom:38px;
     }
 
     .photo-frame{
-        width:
-            min(390px,88vw);
+        width:min(390px,88vw);
 
         aspect-ratio:1 / 1;
 
@@ -576,19 +511,16 @@ footer{
 
     .quote{
         font-size:21px;
-
         margin-bottom:25px;
     }
 
     .links{
         width:100%;
-
         flex-direction:column;
     }
 
     .link{
-        width:
-            min(330px,100%);
+        width:min(330px,100%);
     }
 
     .corner{
@@ -613,18 +545,13 @@ footer{
     }
 }
 
-
-/* =========================
-   REDUCED MOTION
-========================= */
+/* تقليل الحركة */
 
 @media(prefers-reduced-motion:reduce){
 
     *,
-    *::before,
-    *::after{
+    *::before{
         animation:none !important;
-
         transition:none !important;
     }
 }
@@ -632,15 +559,11 @@ footer{
 </style>
 </head>
 
-
 <body>
 
 <div class="gold-glow"></div>
 
-
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
 
 <header>
 
@@ -655,30 +578,29 @@ footer{
 </header>
 
 
-<!-- =========================
-     MAIN
-========================= -->
+<!-- MAIN -->
 
 <main>
 
 <section class="hero">
 
     <div class="corner one"></div>
-
     <div class="corner two"></div>
 
 
-    <!-- الاسم العربي -->
+    <!-- الاسم -->
 
     <h1 class="name">
         مبخوت <span>بن عبدالله</span>
     </h1>
 
 
+    <!-- الخط الذهبي -->
+
     <div class="gold-line"></div>
 
 
-    <!-- الصورة 1:1 -->
+    <!-- الصورة المربعة 1:1 -->
 
     <div class="photo-frame">
 
@@ -729,9 +651,7 @@ footer{
 </main>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -744,7 +664,6 @@ footer{
     </div>
 
 </footer>
-
 
 </body>
 </html>
