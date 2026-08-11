@@ -37,6 +37,7 @@ html{
 
 body{
     min-height:100vh;
+
     background:
         radial-gradient(
             circle at 50% 38%,
@@ -51,19 +52,21 @@ body{
         );
 
     color:var(--white);
+
     font-family:"Cairo",sans-serif;
+
     overflow-x:hidden;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
-
 body::before{
     content:"";
+
     position:fixed;
+
     inset:0;
+
     pointer-events:none;
+
     opacity:.18;
 
     background-image:
@@ -79,10 +82,6 @@ body::before{
 
     background-size:70px 70px;
 }
-
-/* =========================
-   GOLD LIGHT
-========================= */
 
 .gold-glow{
     position:fixed;
@@ -106,9 +105,8 @@ body::before{
     pointer-events:none;
 }
 
-/* =========================
-   HEADER
-========================= */
+
+/* HEADER */
 
 header{
     height:82px;
@@ -116,7 +114,9 @@ header{
     padding:0 7%;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     background:
@@ -129,6 +129,7 @@ header{
     backdrop-filter:blur(18px);
 
     position:relative;
+
     z-index:10;
 }
 
@@ -154,9 +155,8 @@ header{
     font-weight:500;
 }
 
-/* =========================
-   MAIN
-========================= */
+
+/* MAIN */
 
 main{
     width:min(1050px,92%);
@@ -182,9 +182,8 @@ main{
     position:relative;
 }
 
-/* =========================
-   DECORATIVE CORNERS
-========================= */
+
+/* CORNERS */
 
 .corner{
     position:absolute;
@@ -212,9 +211,8 @@ main{
     border-left:2px solid;
 }
 
-/* =========================
-   NAME
-========================= */
+
+/* NAME */
 
 .name{
     font-family:"Cairo",sans-serif;
@@ -231,6 +229,7 @@ main{
     color:var(--white);
 
     margin-top:18px;
+
     margin-bottom:22px;
 
     text-shadow:
@@ -245,12 +244,12 @@ main{
     color:var(--gold-light);
 }
 
-/* =========================
-   GOLD LINE
-========================= */
+
+/* GOLD LINE */
 
 .gold-line{
     width:150px;
+
     height:2px;
 
     margin-bottom:48px;
@@ -273,9 +272,8 @@ main{
         reveal .9s .15s ease both;
 }
 
-/* =========================
-   PHOTO
-========================= */
+
+/* PHOTO */
 
 .photo-frame{
     width:min(470px,88vw);
@@ -340,6 +338,7 @@ main{
 
 .profile-photo{
     width:100%;
+
     height:100%;
 
     object-fit:cover;
@@ -379,9 +378,8 @@ main{
         rgba(0,0,0,.6);
 }
 
-/* =========================
-   QUOTE
-========================= */
+
+/* QUOTE */
 
 .quote{
     font-size:
@@ -397,9 +395,8 @@ main{
         reveal .9s .35s ease both;
 }
 
-/* =========================
-   LINKS
-========================= */
+
+/* LINKS */
 
 .links{
     display:flex;
@@ -439,8 +436,7 @@ main{
 
     font-weight:600;
 
-    transition:
-        .3s ease;
+    transition:.3s ease;
 }
 
 .link:hover{
@@ -465,9 +461,8 @@ main{
     margin-left:8px;
 }
 
-/* =========================
-   FOOTER
-========================= */
+
+/* FOOTER */
 
 footer{
     padding:
@@ -503,9 +498,8 @@ footer{
     letter-spacing:5px;
 }
 
-/* =========================
-   ANIMATION
-========================= */
+
+/* ANIMATION */
 
 @keyframes reveal{
 
@@ -524,9 +518,8 @@ footer{
     }
 }
 
-/* =========================
-   MOBILE
-========================= */
+
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -623,9 +616,8 @@ footer{
     }
 }
 
-/* =========================
-   REDUCED MOTION
-========================= */
+
+/* REDUCED MOTION */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -633,6 +625,7 @@ footer{
     *::before,
     *::after{
         animation:none !important;
+
         transition:none !important;
     }
 }
@@ -645,10 +638,6 @@ footer{
 
 <div class="gold-glow"></div>
 
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header>
 
@@ -663,10 +652,6 @@ footer{
 </header>
 
 
-<!-- =========================
-     MAIN
-========================= -->
-
 <main>
 
 <section class="hero">
@@ -677,8 +662,6 @@ footer{
     <div class="corner two"></div>
 
 
-    <!-- الاسم العربي فقط -->
-
     <h1 class="name">
         مبخوت <span>بن عبدالله</span>
     </h1>
@@ -687,13 +670,13 @@ footer{
     <div class="gold-line"></div>
 
 
-    <!-- الصورة -->
+    <!-- الصورة الجديدة -->
 
     <div class="photo-frame">
 
         <img
             class="profile-photo"
-            src="file_00000000582882468daa3e8113233056.png"
+            src="file_00000000202482468d4027eb8c5919f7.png"
             alt="مبخوت بن عبدالله"
             loading="eager"
         >
@@ -701,14 +684,10 @@ footer{
     </div>
 
 
-    <!-- النبذة -->
-
     <p class="quote">
         وما توفيقي إلا بالله
     </p>
 
-
-    <!-- روابط التواصل -->
 
     <div class="links">
 
@@ -737,10 +716,6 @@ footer{
 
 </main>
 
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
