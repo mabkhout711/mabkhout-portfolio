@@ -51,8 +51,6 @@ body{
         );
 }
 
-/* شبكة الخلفية */
-
 body::before{
     content:"";
     position:fixed;
@@ -74,8 +72,6 @@ body::before{
     background-size:70px 70px;
 }
 
-/* التوهج الذهبي */
-
 .gold-glow{
     position:fixed;
     width:420px;
@@ -92,9 +88,7 @@ body::before{
     pointer-events:none;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header{
     height:82px;
@@ -135,9 +129,7 @@ header{
     color:#c4c8ce;
 }
 
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 main{
     width:min(1050px,92%);
@@ -158,7 +150,7 @@ main{
     position:relative;
 }
 
-/* الزوايا الذهبية */
+/* GOLD CORNERS */
 
 .corner{
     position:absolute;
@@ -185,9 +177,7 @@ main{
     border-left:2px solid;
 }
 
-/* =========================
-   NAME
-========================= */
+/* NAME */
 
 .name{
     font-family:"Cairo",sans-serif;
@@ -217,9 +207,7 @@ main{
         0 0 25px rgba(212,175,55,.12);
 }
 
-/* =========================
-   GOLD LINE
-========================= */
+/* GOLD LINE */
 
 .gold-line{
     width:150px;
@@ -244,9 +232,7 @@ main{
         reveal .9s .15s ease both;
 }
 
-/* =========================
-   PHOTO 1:1
-========================= */
+/* SQUARE PHOTO */
 
 .photo-frame{
     width:min(470px,88vw);
@@ -262,8 +248,6 @@ main{
     animation:
         reveal .9s .25s ease both;
 }
-
-/* الإطار الخارجي */
 
 .photo-frame::before{
     content:"";
@@ -282,8 +266,6 @@ main{
         0 0 45px rgba(212,175,55,.09);
 }
 
-/* الإطار الداخلي */
-
 .photo-frame::after{
     content:"";
 
@@ -297,8 +279,6 @@ main{
 
     transform:rotate(1.2deg);
 }
-
-/* الصورة */
 
 .profile-photo{
     width:100%;
@@ -333,9 +313,7 @@ main{
         rgba(212,175,55,.16);
 }
 
-/* =========================
-   QUOTE
-========================= */
+/* QUOTE */
 
 .quote{
     font-size:clamp(22px,4vw,30px);
@@ -350,9 +328,7 @@ main{
         reveal .9s .35s ease both;
 }
 
-/* =========================
-   LINKS
-========================= */
+/* LINKS */
 
 .links{
     display:flex;
@@ -406,9 +382,7 @@ main{
     margin-left:8px;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
     padding:32px 20px;
@@ -442,9 +416,7 @@ footer{
     letter-spacing:5px;
 }
 
-/* =========================
-   ANIMATION
-========================= */
+/* ANIMATION */
 
 @keyframes reveal{
     from{
@@ -458,9 +430,7 @@ footer{
     }
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -545,7 +515,7 @@ footer{
     }
 }
 
-/* تقليل الحركة */
+/* REDUCED MOTION */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -563,8 +533,6 @@ footer{
 
 <div class="gold-glow"></div>
 
-<!-- HEADER -->
-
 <header>
 
     <div class="brand">
@@ -577,9 +545,6 @@ footer{
 
 </header>
 
-
-<!-- MAIN -->
-
 <main>
 
 <section class="hero">
@@ -587,20 +552,11 @@ footer{
     <div class="corner one"></div>
     <div class="corner two"></div>
 
-
-    <!-- الاسم -->
-
     <h1 class="name">
         مبخوت <span>بن عبدالله</span>
     </h1>
 
-
-    <!-- الخط الذهبي -->
-
     <div class="gold-line"></div>
-
-
-    <!-- الصورة المربعة 1:1 -->
 
     <div class="photo-frame">
 
@@ -613,26 +569,19 @@ footer{
 
     </div>
 
-
-    <!-- النبذة -->
-
     <p class="quote">
         وما توفيقي إلا بالله
     </p>
-
-
-    <!-- الروابط -->
 
     <div class="links">
 
         <a
             class="link"
-            href="mailto:Mabkhut505g@gmail.com"
+            href="mailto:mabkhout@mabkhut.com"
         >
             <span>✉</span>
-            البريد الإلكتروني
+            mabkhout@mabkhut.com
         </a>
-
 
         <a
             class="link"
@@ -649,9 +598,6 @@ footer{
 </section>
 
 </main>
-
-
-<!-- FOOTER -->
 
 <footer>
 
