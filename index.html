@@ -1,1622 +1,314 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>مبخوت بن عبدالله — MBK</title>
-  <meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --black: #000000;
-      --white: #ffffff;
-      --light: #f5f5f7;
-      --gray: #6e6e73;
-      --blue: #0071e3;
-      --border: #d2d2d7;
-
-      --max: 1200px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--white);
-      color: var(--black);
-      font-family: "Cairo", Arial, sans-serif;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    /* =========================
-       NAVBAR
-    ========================= */
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      right: 0;
-      left: 0;
-
-      height: 52px;
-
-      z-index: 1000;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 0 28px;
-
-      background: rgba(255,255,255,.82);
-
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-
-      border-bottom: 1px solid rgba(0,0,0,.08);
-    }
-
-    .logo {
-      direction: ltr;
-
-      font-family: Arial, sans-serif;
-
-      font-size: 17px;
-      font-weight: 700;
-
-      letter-spacing: 4px;
-
-      color: var(--black);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .nav-links a {
-      color: var(--black);
-
-      font-size: 12px;
-
-      transition: color .25s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--blue);
-    }
-
-    .menu-button {
-      display: none;
-
-      border: 0;
-      background: transparent;
-
-      color: var(--black);
-
-      font-size: 21px;
-
-      cursor: pointer;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      min-height: 100vh;
-
-      padding:
-        145px 24px
-        90px;
-
-      display: flex;
-      flex-direction: column;
-
-      align-items: center;
-      justify-content: center;
-
-      text-align: center;
-    }
-
-    .hero-label {
-      direction: ltr;
-
-      color: var(--gray);
-
-      font-family: Arial, sans-serif;
-
-      font-size: 10px;
-
-      letter-spacing: 5px;
-
-      margin-bottom: 25px;
-    }
-
-    .hero-title {
-      color: var(--black);
-
-      font-size: clamp(45px, 8vw, 90px);
-
-      line-height: 1.15;
-
-      font-weight: 600;
-
-      letter-spacing: -3px;
-
-      margin-bottom: 24px;
-    }
-
-    .hero-title span {
-      display: block;
-    }
-
-    .hero-description {
-      max-width: 650px;
-
-      color: var(--gray);
-
-      font-size: 17px;
-
-      line-height: 2;
-
-      margin-bottom: 30px;
-    }
-
-    .hero-button {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 9px;
-
-      color: var(--blue);
-
-      font-size: 14px;
-
-      transition: gap .25s ease;
-    }
-
-    .hero-button:hover {
-      gap: 14px;
-    }
-
-    .hero-button span {
-      direction: ltr;
-    }
-
-    /* =========================
-       HERO IMAGE
-    ========================= */
-
-    .hero-image-container {
-      width: min(900px, 92vw);
-
-      margin-top: 75px;
-
-      overflow: hidden;
-
-      border-radius: 28px;
-
-      background: var(--light);
-    }
-
-    .hero-image {
-      width: 100%;
-
-      height: auto;
-
-      object-fit: contain;
-    }
-
-    /* =========================
-       SECTIONS
-    ========================= */
-
-    .section {
-      width: min(
-        var(--max),
-        calc(100% - 60px)
-      );
-
-      margin: auto;
-
-      padding: 150px 0;
-    }
-
-    .section.light {
-      width: 100%;
-
-      max-width: none;
-
-      padding-right: max(
-        30px,
-        calc((100vw - var(--max)) / 2)
-      );
-
-      padding-left: max(
-        30px,
-        calc((100vw - var(--max)) / 2)
-      );
-
-      background: var(--light);
-    }
-
-    .section-label {
-      direction: ltr;
-
-      color: var(--gray);
-
-      font-family: Arial, sans-serif;
-
-      font-size: 10px;
-
-      letter-spacing: 4px;
-
-      margin-bottom: 20px;
-    }
-
-    .section-title {
-      color: var(--black);
-
-      font-size: clamp(
-        42px,
-        6vw,
-        72px
-      );
-
-      line-height: 1.2;
-
-      font-weight: 600;
-
-      letter-spacing: -3px;
-
-      margin-bottom: 60px;
-    }
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about-grid {
-      display: grid;
-
-      grid-template-columns:
-        .75fr 1.25fr;
-
-      gap: 100px;
-    }
-
-    .about-intro {
-      font-size: 30px;
-
-      line-height: 1.7;
-
-      font-weight: 600;
-    }
-
-    .about-text {
-      color: var(--gray);
-
-      font-size: 17px;
-
-      line-height: 2.25;
-    }
-
-    .about-text strong {
-      display: block;
-
-      color: var(--black);
-
-      font-size: 18px;
-
-      margin-top: 30px;
-
-      font-weight: 600;
-    }
-
-    /* =========================
-       JOURNEY
-    ========================= */
-
-    .journey-list {
-      border-top: 1px solid var(--border);
-    }
-
-    .journey-item {
-      display: grid;
-
-      grid-template-columns:
-        160px 1fr;
-
-      gap: 55px;
-
-      padding: 40px 0;
-
-      border-bottom:
-        1px solid var(--border);
-
-      transition:
-        padding .3s ease;
-    }
-
-    .journey-item:hover {
-      padding-right: 12px;
-      padding-left: 12px;
-    }
-
-    .journey-year {
-      direction: ltr;
-
-      color: var(--black);
-
-      font-family: Arial, sans-serif;
-
-      font-size: 22px;
-
-      font-weight: 600;
-    }
-
-    .journey-content h3 {
-      color: var(--black);
-
-      font-size: 22px;
-
-      font-weight: 600;
-
-      margin-bottom: 7px;
-    }
-
-    .journey-content p {
-      color: var(--gray);
-
-      font-size: 14px;
-
-      line-height: 1.9;
-    }
-
-    /* =========================
-       GALLERY
-    ========================= */
-
-    .gallery {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 20px;
-    }
-
-    .gallery-item {
-      position: relative;
-
-      overflow: hidden;
-
-      min-height: 430px;
-
-      border-radius: 24px;
-
-      background: var(--light);
-
-      cursor: pointer;
-    }
-
-    .gallery-item.large {
-      grid-column: span 2;
-
-      min-height: 620px;
-    }
-
-    .gallery-item img {
-      position: absolute;
-
-      inset: 0;
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      transition:
-        transform 1s
-        cubic-bezier(.2,.8,.2,1);
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.035);
-    }
-
-    .gallery-overlay {
-      position: absolute;
-
-      right: 0;
-      left: 0;
-      bottom: 0;
-
-      padding: 35px;
-
-      color: var(--white);
-
-      background:
-        linear-gradient(
-          transparent,
-          rgba(0,0,0,.75)
-        );
-    }
-
-    .gallery-overlay small {
-      display: block;
-
-      direction: ltr;
-
-      font-family: Arial, sans-serif;
-
-      font-size: 9px;
-
-      letter-spacing: 4px;
-
-      margin-bottom: 8px;
-    }
-
-    .gallery-overlay h3 {
-      font-size: 22px;
-
-      font-weight: 600;
-    }
-
-    /* =========================
-       BIG MBK
-    ========================= */
-
-    .signature {
-      min-height: 65vh;
-
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: center;
-      justify-content: center;
-
-      text-align: center;
-
-      padding: 120px 20px;
-    }
-
-    .signature-logo {
-      direction: ltr;
-
-      font-family: Arial, sans-serif;
-
-      font-size: clamp(
-        90px,
-        18vw,
-        220px
-      );
-
-      line-height: 1;
-
-      font-weight: 700;
-
-      letter-spacing: 8px;
-
-      color: var(--black);
-    }
-
-    .signature p {
-      color: var(--gray);
-
-      font-size: 15px;
-
-      margin-top: 30px;
-    }
-
-    /* =========================
-       CONTACT
-    ========================= */
-
-    .contact {
-      background: var(--light);
-
-      text-align: center;
-
-      padding:
-        130px
-        20px
-        150px;
-    }
-
-    .contact-title {
-      color: var(--black);
-
-      font-size: clamp(
-        45px,
-        8vw,
-        82px
-      );
-
-      line-height: 1.2;
-
-      font-weight: 600;
-
-      letter-spacing: -3px;
-
-      margin-bottom: 20px;
-    }
-
-    .contact-description {
-      color: var(--gray);
-
-      font-size: 15px;
-
-      margin-bottom: 35px;
-    }
-
-    .socials {
-      display: flex;
-
-      justify-content: center;
-
-      gap: 14px;
-    }
-
-    .social {
-      width: 52px;
-      height: 52px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-
-      background: var(--white);
-
-      color: var(--black);
-
-      transition:
-        background .25s ease,
-        color .25s ease,
-        transform .25s ease;
-    }
-
-    .social:hover {
-      background: var(--blue);
-
-      color: var(--white);
-
-      transform: translateY(-4px);
-    }
-
-    .social svg {
-      width: 21px;
-      height: 21px;
-
-      fill: currentColor;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      padding: 35px 20px;
-
-      text-align: center;
-
-      background: var(--white);
-    }
-
-    footer p {
-      color: var(--gray);
-
-      font-size: 11px;
-    }
-
-    .footer-logo {
-      direction: ltr;
-
-      color: var(--black);
-
-      font-family: Arial, sans-serif;
-
-      font-size: 11px;
-
-      letter-spacing: 5px;
-
-      margin-top: 12px;
-    }
-
-    /* =========================
-       REVEAL
-    ========================= */
-
-    .reveal {
-      opacity: 0;
-
-      transform:
-        translateY(35px);
-
-      transition:
-        opacity .8s ease,
-        transform .8s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-
-      transform:
-        translateY(0);
-    }
-
-    /* =========================
-       LIGHTBOX
-    ========================= */
-
-    .lightbox {
-      position: fixed;
-
-      inset: 0;
-
-      z-index: 9999;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      padding: 25px;
-
-      background:
-        rgba(0,0,0,.94);
-
-      opacity: 0;
-
-      visibility: hidden;
-
-      transition: .3s ease;
-    }
-
-    .lightbox.active {
-      opacity: 1;
-
-      visibility: visible;
-    }
-
-    .lightbox img {
-      max-width: 94vw;
-
-      max-height: 90vh;
-
-      object-fit: contain;
-
-      border-radius: 14px;
-    }
-
-    .close-lightbox {
-      position: absolute;
-
-      top: 22px;
-      left: 25px;
-
-      width: 42px;
-      height: 42px;
-
-      border: 0;
-
-      border-radius: 50%;
-
-      background: var(--white);
-
-      color: var(--black);
-
-      font-size: 23px;
-
-      cursor: pointer;
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 800px) {
-
-      .navbar {
-        padding: 0 20px;
-      }
-
-      .nav-links {
-        display: none;
-
-        position: absolute;
-
-        top: 52px;
-
-        right: 0;
-        left: 0;
-
-        flex-direction: column;
-
-        gap: 25px;
-
-        padding: 28px;
-
-        background:
-          rgba(255,255,255,.96);
-
-        border-bottom:
-          1px solid
-          var(--border);
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .menu-button {
-        display: block;
-      }
-
-      .hero {
-        padding-top: 125px;
-      }
-
-      .hero-title {
-        letter-spacing: -1px;
-      }
-
-      .hero-description {
-        font-size: 14px;
-      }
-
-      .hero-image-container {
-        margin-top: 55px;
-
-        border-radius: 20px;
-      }
-
-      .section {
-        width: 92%;
-
-        padding: 100px 0;
-      }
-
-      .section.light {
-        padding-right: 4%;
-        padding-left: 4%;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-
-        gap: 30px;
-      }
-
-      .about-intro {
-        font-size: 24px;
-      }
-
-      .about-text {
-        font-size: 15px;
-      }
-
-      .journey-item {
-        grid-template-columns:
-          75px 1fr;
-
-        gap: 20px;
-      }
-
-      .journey-content h3 {
-        font-size: 19px;
-      }
-
-      .journey-content p {
-        font-size: 13px;
-      }
-
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-
-      .gallery-item.large {
-        grid-column: span 1;
-      }
-
-      .gallery-item,
-      .gallery-item.large {
-        min-height: 340px;
-      }
-
-      .signature {
-        min-height: 55vh;
-
-        padding: 100px 20px;
-      }
-
-      .signature-logo {
-        letter-spacing: 5px;
-      }
-
-      .contact {
-        padding:
-          100px 20px;
-      }
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مبخوت بن عبدالله | MBK</title>
+    
+    <!-- استدعاء خط Alexandria من Google Fonts ليعطي طابعاً عصرياً وهندسياً -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- إعدادات Tailwind لتطابق الألوان المطلوبة تماماً -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        apple: {
+                            light: '#F5F5F7',
+                            gray: '#6E6E73',
+                            blue: '#0071E3',
+                            black: '#000000',
+                            white: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Alexandria', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* إعدادات عامة وسلوك التمرير */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #F5F5F7;
+            color: #000000;
+            overflow-x: hidden;
+        }
+
+        /* تأثير التلاشي عند التمرير (Fade-in on scroll) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* تأثير قسم النبذة (Text Reveal) */
+        .philosophy-word {
+            opacity: 0.2;
+            transition: opacity 0.1s;
+        }
+
+        /* تأثيرات قسم المعرض (Gallery Micro-interactions) */
+        .gallery-container:hover .gallery-item:not(:hover) {
+            opacity: 0.3;
+            transform: scale(0.98);
+            filter: grayscale(80%);
+        }
+        .gallery-item {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: crosshair;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            z-index: 10;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
+
+        /* إخفاء شريط التمرير الافتراضي لجمالية أكثر (اختياري) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F5F5F7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #6E6E73;
+            border-radius: 10px;
+        }
+    </style>
 </head>
+<body class="font-sans antialiased text-apple-black selection:bg-apple-blue selection:text-white">
 
-<body>
-
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
-
-  <header class="navbar">
-
-    <a
-      href="#home"
-      class="logo"
-    >
-      MBK
-    </a>
-
-    <nav
-      class="nav-links"
-      id="navLinks"
-    >
-
-      <a href="#about">
-        نبذة
-      </a>
-
-      <a href="#journey">
-        رحلتي
-      </a>
-
-      <a href="#gallery">
-        مختاراتي
-      </a>
-
-      <a href="#contact">
-        تواصل
-      </a>
-
+    <!-- Navigation / Monogram -->
+    <nav class="fixed top-0 left-0 w-full p-6 md:p-10 flex justify-between items-center z-50 mix-blend-difference text-white pointer-events-none">
+        <div class="font-bold text-xl tracking-widest pointer-events-auto cursor-pointer" onclick="window.scrollTo(0,0)">
+            MBK.
+        </div>
     </nav>
 
-    <button
-      class="menu-button"
-      id="menuButton"
-      aria-label="القائمة"
-    >
-      ☰
-    </button>
+    <!-- 1. Hero Section -->
+    <header class="relative min-h-[100svh] flex flex-col justify-center items-center px-6 pt-20">
+        <div class="w-full max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-8">
+            
+            <!-- Text Content -->
+            <div class="reveal flex-1 text-center md:text-right space-y-4 z-10">
+                <h2 class="text-apple-gray text-lg md:text-xl font-light tracking-wide">أهلاً بك، أنا</h2>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-apple-black leading-tight">
+                    مبخوت<br>بن عبدالله
+                </h1>
+                <div class="w-12 h-[2px] bg-apple-black mx-auto md:mx-0 mt-8"></div>
+            </div>
 
-  </header>
-
-
-  <!-- =========================
-       HERO
-  ========================== -->
-
-  <main id="home">
-
-    <section class="hero">
-
-      <div class="hero-label">
-        MBK / PERSONAL WEBSITE
-      </div>
-
-      <h1 class="hero-title">
-
-        مبخوت
-
-        <span>
-          بن عبدالله
-        </span>
-
-      </h1>
-
-      <p class="hero-description">
-
-        مساحة شخصية تجمع بين الأصالة،
-        الأناقة والطموح، وتعكس الأشياء
-        التي أؤمن بقيمتها وجمالها.
-
-      </p>
-
-      <a
-        href="#about"
-        class="hero-button"
-      >
-
-        اكتشف المزيد
-
-        <span>
-          →
-        </span>
-
-      </a>
-
-
-      <div class="hero-image-container">
-
-        <img
-          class="hero-image"
-          src="file_00000000202482468d4027eb8c5919f7.png"
-          alt="مبخوت بن عبدالله"
-        >
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         ABOUT
-    ========================== -->
-
-    <section
-      class="section reveal"
-      id="about"
-    >
-
-      <div class="section-label">
-        ABOUT
-      </div>
-
-      <h2 class="section-title">
-        نبذة
-      </h2>
-
-      <div class="about-grid">
-
-        <div class="about-intro">
-
-          أنا مبخوت بن عبدالله.
-
+            <!-- Image (Square, uncropped, in white elegant frame) -->
+            <div class="reveal flex-1 flex justify-center md:justify-end">
+                <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.04)] transition-transform duration-700 hover:scale-[1.02]">
+                    <!-- Using the exact provided filename, with aspect-square to ensure 1:1 ratio without clipping -->
+                    <img src="file_00000000202482468d4027eb8c5919f7.png" 
+                         alt="مبخوت بن عبدالله" 
+                         class="w-64 h-64 md:w-96 md:h-96 object-contain rounded-2xl bg-apple-light"
+                         onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop'; this.title='صورة بديلة تظهر فقط إذا لم يتم العثور على الملف الأصلي'">
+                </div>
+            </div>
+            
         </div>
 
-        <div class="about-text">
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-50">
+            <span class="text-xs text-apple-gray mb-2">اكتشف</span>
+            <div class="w-[1px] h-12 bg-apple-gray"></div>
+        </div>
+    </header>
 
-          أؤمن بأن الشخصية الحقيقية تُبنى بالطموح،
-          والتجربة، والاهتمام بالتفاصيل. أسعى دائمًا
-          إلى تطوير نفسي، واكتشاف أفكار جديدة،
-          وصناعة هوية تعكس رؤيتي وشخصيتي بأسلوب
-          يجمع بين الأصالة، الأناقة، والطموح.
+    <!-- 2. Philosophy / About Section (Scroll Text Reveal) -->
+    <section id="philosophy" class="relative py-32 md:py-48 px-6 min-h-screen flex items-center justify-center bg-apple-light">
+        <div class="max-w-4xl mx-auto text-center">
+            <p id="reveal-text" class="text-2xl md:text-4xl lg:text-5xl leading-relaxed md:leading-normal font-medium text-apple-black">
+                <!-- Text will be split into spans by JS -->
+                أنا مبخوت بن عبدالله. أؤمن بأن الشخصية الحقيقية تُبنى بالطموح، والتجربة، والاهتمام بالتفاصيل. أسعى دائمًا إلى تطوير نفسي، واكتشاف أفكار جديدة، وصناعة هوية تعكس رؤيتي وشخصيتي بأسلوب يجمع بين الأصالة، الأناقة، والطموح. هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا من اهتماماتي، أعمالي، اختياراتي، والأشياء التي أرى فيها قيمة وجمالًا يستحق أن يُشارك. أطمح للأفضل، وأسعى لأن أترك أثرًا يستحق أن يُذكر.
+            </p>
+        </div>
+    </section>
 
-          <br><br>
+    <!-- 3. The Journey Section -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-3xl mx-auto">
+            <div class="reveal mb-16 text-center md:text-right">
+                <h3 class="text-xs font-bold tracking-widest text-apple-gray uppercase mb-2">التسلسل الزمني</h3>
+                <h2 class="text-3xl md:text-5xl font-bold">رحلتي</h2>
+            </div>
+            
+            <div class="relative border-r border-apple-light pr-8 md:pr-12 space-y-16">
+                
+                <!-- 2015 -->
+                <div class="reveal relative">
+                    <span class="absolute -right-[37px] md:-right-[53px] top-1 w-3 h-3 rounded-full bg-apple-black ring-4 ring-white"></span>
+                    <h4 class="text-xl md:text-2xl font-bold text-apple-black mb-2">2015</h4>
+                    <p class="text-apple-gray text-sm md:text-base leading-relaxed">
+                        البداية. نقطة الانطلاق نحو استكشاف الشغف وتشكيل الرؤية الأولى التي بنيت عليها طموحاتي.
+                    </p>
+                </div>
 
-          هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا
-          من اهتماماتي، أعمالي، اختياراتي، والأشياء
-          التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
+                <!-- 2018 (Placeholder for structure) -->
+                <div class="reveal relative">
+                    <span class="absolute -right-[37px] md:-right-[53px] top-1 w-3 h-3 rounded-full bg-apple-gray ring-4 ring-white"></span>
+                    <h4 class="text-xl md:text-2xl font-bold text-apple-black mb-2">2018</h4>
+                    <p class="text-apple-gray text-sm md:text-base leading-relaxed">
+                        مرحلة التطور واكتساب الخبرات. توسيع المدارك والاهتمام بالتفاصيل التي تصنع الفارق.
+                    </p>
+                </div>
 
-          <strong>
+                <!-- Present (Placeholder) -->
+                <div class="reveal relative">
+                    <span class="absolute -right-[37px] md:-right-[53px] top-1 w-3 h-3 rounded-full bg-apple-black ring-4 ring-white"></span>
+                    <h4 class="text-xl md:text-2xl font-bold text-apple-black mb-2">الآن</h4>
+                    <p class="text-apple-gray text-sm md:text-base leading-relaxed">
+                        السعي المستمر نحو الأفضل، وترك أثر يستحق أن يُذكر، من خلال الأصالة والأناقة.
+                    </p>
+                </div>
 
-            أطمح للأفضل، وأسعى لأن أترك أثرًا
-            يستحق أن يُذكر.
+            </div>
+        </div>
+    </section>
 
-          </strong>
+    <!-- 4. Picks (Gallery) Section -->
+    <section class="py-24 px-6 md:px-12 bg-apple-light">
+        <div class="max-w-7xl mx-auto">
+            <div class="reveal mb-12 text-center md:text-right">
+                <h2 class="text-3xl md:text-5xl font-bold">مختاراتي</h2>
+                <p class="text-apple-gray mt-4">الطبيعة، الحياة، والمدن بعدستي وذائقتي.</p>
+            </div>
 
+            <!-- Bento Box / Masonry Grid -->
+            <div class="gallery-container grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                
+                <div class="gallery-item reveal md:col-span-2 md:row-span-2 overflow-hidden rounded-3xl bg-white p-2">
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=1000&auto=format&fit=crop" alt="City" class="w-full h-64 md:h-full object-cover rounded-2xl">
+                </div>
+                
+                <div class="gallery-item reveal overflow-hidden rounded-3xl bg-white p-2">
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1000&auto=format&fit=crop" alt="Nature" class="w-full h-64 object-cover rounded-2xl">
+                </div>
+                
+                <div class="gallery-item reveal overflow-hidden rounded-3xl bg-white p-2">
+                    <img src="https://images.unsplash.com/photo-1517672651691-24622a91b550?q=80&w=1000&auto=format&fit=crop" alt="Life" class="w-full h-64 object-cover rounded-2xl">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Contact & Footer -->
+    <section class="bg-apple-black text-white py-32 px-6 flex flex-col justify-center items-center text-center">
+        <div class="reveal max-w-2xl mx-auto space-y-12">
+            <h2 class="text-5xl md:text-7xl font-bold">تواصل</h2>
+            <p class="text-apple-gray text-lg md:text-xl font-light max-w-md mx-auto">
+                للحديث بقية، والرسائل دائماً مرحب بها.
+            </p>
+            
+            <div class="flex items-center justify-center gap-8 mt-8">
+                <!-- Email Icon -->
+                <a href="mailto:mabkhout@mabkhut.com" class="text-white hover:text-apple-blue transition-colors duration-300 transform hover:scale-110" aria-label="البريد الإلكتروني">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                </a>
+                
+                <!-- Facebook Icon -->
+                <a href="#" target="_blank" class="text-white hover:text-apple-blue transition-colors duration-300 transform hover:scale-110" aria-label="فيسبوك">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+            </div>
         </div>
 
-      </div>
-
+        <footer class="mt-32 pt-8 border-t border-apple-gray/20 w-full max-w-4xl flex flex-col md:flex-row justify-between items-center gap-4 text-apple-gray text-sm">
+            <div>&copy; 2024 مبخوت بن عبدالله. جميع الحقوق محفوظة.</div>
+            <div class="font-bold tracking-widest text-white">MBK.</div>
+        </footer>
     </section>
 
-
-    <!-- =========================
-         JOURNEY
-    ========================== -->
-
-    <section
-      class="section light reveal"
-      id="journey"
-    >
-
-      <div class="section-label">
-        JOURNEY
-      </div>
-
-      <h2 class="section-title">
-        رحلتي
-      </h2>
-
-      <div class="journey-list">
-
-        <article class="journey-item">
-
-          <div class="journey-year">
-            2015
-          </div>
-
-          <div class="journey-content">
-
-            <h3>
-              البداية
-            </h3>
-
-            <p>
-              بداية مرحلة جديدة من التجارب
-              واكتشاف الذات.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <article class="journey-item">
-
-          <div class="journey-year">
-            2018
-          </div>
-
-          <div class="journey-content">
-
-            <h3>
-              التجربة
-            </h3>
-
-            <p>
-              سنوات من التجربة والتعلم
-              وتكوين رؤية أكثر وضوحًا.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <article class="journey-item">
-
-          <div class="journey-year">
-            2021
-          </div>
-
-          <div class="journey-content">
-
-            <h3>
-              التطور
-            </h3>
-
-            <p>
-              مرحلة جديدة أصبحت فيها
-              التجارب جزءًا من الهوية.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <article class="journey-item">
-
-          <div class="journey-year">
-            2024
-          </div>
-
-          <div class="journey-content">
-
-            <h3>
-              رؤية جديدة
-            </h3>
-
-            <p>
-              طموح أكبر وخطوات أكثر ثباتًا
-              نحو المستقبل.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <article class="journey-item">
-
-          <div class="journey-year">
-            2026
-          </div>
-
-          <div class="journey-content">
-
-            <h3>
-              القادم
-            </h3>
-
-            <p>
-              ما زالت الرحلة مستمرة.
-            </p>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         SELECTED
-    ========================== -->
-
-    <section
-      class="section reveal"
-      id="gallery"
-    >
-
-      <div class="section-label">
-        SELECTED
-      </div>
-
-      <h2 class="section-title">
-        مختاراتي
-      </h2>
-
-      <div class="gallery">
-
-
-        <article
-          class="gallery-item large"
-          data-image="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=90"
-        >
-
-          <img
-            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=90"
-            alt="الطبيعة"
-            loading="lazy"
-          >
-
-          <div class="gallery-overlay">
-
-            <small>
-              NATURE
-            </small>
-
-            <h3>
-              هدوء الطبيعة
-            </h3>
-
-          </div>
-
-        </article>
-
-
-        <article
-          class="gallery-item"
-          data-image="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
-        >
-
-          <img
-            src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
-            alt="المدينة"
-            loading="lazy"
-          >
-
-          <div class="gallery-overlay">
-
-            <small>
-              CITY
-            </small>
-
-            <h3>
-              نبض المدينة
-            </h3>
-
-          </div>
-
-        </article>
-
-
-        <article
-          class="gallery-item"
-          data-image="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
-        >
-
-          <img
-            src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
-            alt="الشوارع"
-            loading="lazy"
-          >
-
-          <div class="gallery-overlay">
-
-            <small>
-              STREETS
-            </small>
-
-            <h3>
-              بين الشوارع
-            </h3>
-
-          </div>
-
-        </article>
-
-
-        <article
-          class="gallery-item"
-          data-image="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
-        >
-
-          <img
-            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
-            alt="الطريق"
-            loading="lazy"
-          >
-
-          <div class="gallery-overlay">
-
-            <small>
-              JOURNEY
-            </small>
-
-            <h3>
-              الطريق
-            </h3>
-
-          </div>
-
-        </article>
-
-
-        <article
-          class="gallery-item"
-          data-image="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
-        >
-
-          <img
-            src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
-            alt="الهندسة المعمارية"
-            loading="lazy"
-          >
-
-          <div class="gallery-overlay">
-
-            <small>
-              ARCHITECTURE
-            </small>
-
-            <h3>
-              تفاصيل المكان
-            </h3>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         MBK
-    ========================== -->
-
-    <section class="signature reveal">
-
-      <div class="signature-logo">
-        MBK
-      </div>
-
-      <p>
-        الأصالة في الهوية، والطموح في كل خطوة.
-      </p>
-
-    </section>
-
-
-    <!-- =========================
-         CONTACT
-    ========================== -->
-
-    <section
-      class="contact reveal"
-      id="contact"
-    >
-
-      <div class="section-label">
-        CONTACT
-      </div>
-
-      <h2 class="contact-title">
-        تواصل
-      </h2>
-
-      <p class="contact-description">
-        يسعدني تواصلك.
-      </p>
-
-
-      <div class="socials">
-
-
-        <!-- EMAIL -->
-
-        <a
-          class="social"
-          href="mailto:mabkhout@mabkhut.com"
-          aria-label="البريد الإلكتروني"
-          title="البريد الإلكتروني"
-        >
-
-          <svg viewBox="0 0 24 24">
-
-            <path d="M3 5h18v14H3V5zm2 2v.7l7 5 7-5V7l-7 5-7-5z"/>
-
-          </svg>
-
-        </a>
-
-
-        <!-- FACEBOOK -->
-
-        <a
-          class="social"
-          href="https://www.facebook.com/share/19JG7PQiHL/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Facebook"
-          title="Facebook"
-        >
-
-          <svg viewBox="0 0 24 24">
-
-            <path d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.7.3-1 1-1z"/>
-
-          </svg>
-
-        </a>
-
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-  <footer>
-
-    <p>
-      © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
-    </p>
-
-    <div class="footer-logo">
-      MBK
-    </div>
-
-  </footer>
-
-
-  <!-- =========================
-       LIGHTBOX
-  ========================== -->
-
-  <div
-    class="lightbox"
-    id="lightbox"
-  >
-
-    <button
-      class="close-lightbox"
-      id="closeLightbox"
-      aria-label="إغلاق"
-    >
-      ×
-    </button>
-
-    <img
-      id="lightboxImage"
-      src=""
-      alt=""
-    >
-
-  </div>
-
-
-  <script>
-
-    /* =========================
-       MOBILE MENU
-    ========================= */
-
-    const menuButton =
-      document.getElementById("menuButton");
-
-    const navLinks =
-      document.getElementById("navLinks");
-
-    menuButton.addEventListener(
-      "click",
-      () => {
-
-        navLinks.classList.toggle("open");
-
-      }
-    );
-
-
-    document
-      .querySelectorAll(".nav-links a")
-      .forEach(link => {
-
-        link.addEventListener(
-          "click",
-          () => {
-
-            navLinks.classList.remove("open");
-
-          }
-        );
-
-      });
-
-
-    /* =========================
-       SCROLL ANIMATION
-    ========================= */
-
-    const revealElements =
-      document.querySelectorAll(".reveal");
-
-    const observer =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add(
-                "visible"
-              );
-
-              observer.unobserve(
-                entry.target
-              );
-
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.12
-        }
-      );
-
-
-    revealElements.forEach(element => {
-
-      observer.observe(element);
-
-    });
-
-
-    /* =========================
-       LIGHTBOX
-    ========================= */
-
-    const lightbox =
-      document.getElementById("lightbox");
-
-    const lightboxImage =
-      document.getElementById("lightboxImage");
-
-    const closeLightbox =
-      document.getElementById("closeLightbox");
-
-
-    document
-      .querySelectorAll(".gallery-item")
-      .forEach(item => {
-
-        item.addEventListener(
-          "click",
-          () => {
-
-            lightboxImage.src =
-              item.dataset.image;
-
-            lightbox.classList.add(
-              "active"
-            );
-
-            document.body.style.overflow =
-              "hidden";
-
-          }
-        );
-
-      });
-
-
-    function closeImage() {
-
-      lightbox.classList.remove(
-        "active"
-      );
-
-      lightboxImage.src = "";
-
-      document.body.style.overflow = "";
-
-    }
-
-
-    closeLightbox.addEventListener(
-      "click",
-      closeImage
-    );
-
-
-    lightbox.addEventListener(
-      "click",
-      event => {
-
-        if (
-          event.target === lightbox
-        ) {
-
-          closeImage();
-
-        }
-
-      }
-    );
-
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (event.key === "Escape") {
-
-          closeImage();
-
-        }
-
-      }
-    );
-
-  </script>
-
+    <!-- JavaScript Interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Fade-in Reveal Logic
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Reveal only once
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+
+            // 2. Text Reveal (Scroll-jacking) Logic for Philosophy Section
+            const textContainer = document.getElementById('reveal-text');
+            const textContent = textContainer.innerText;
+            
+            // Split text into words and wrap in spans
+            const words = textContent.split(' ');
+            textContainer.innerHTML = '';
+            
+            words.forEach(word => {
+                const span = document.createElement('span');
+                span.innerText = word + ' ';
+                span.classList.add('philosophy-word');
+                textContainer.appendChild(span);
+            });
+
+            const spans = document.querySelectorAll('.philosophy-word');
+            const philosophySection = document.getElementById('philosophy');
+
+            // Listen to scroll to adjust opacity
+            window.addEventListener('scroll', () => {
+                const rect = philosophySection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                // Calculate how much of the section has been scrolled through
+                // Start revealing when top hits the middle of the screen
+                const scrollProgress = (windowHeight - rect.top) / (rect.height + windowHeight / 2);
+                
+                if (scrollProgress > 0 && scrollProgress < 1.2) {
+                    spans.forEach((span, index) => {
+                        // Calculate specific trigger point for each word
+                        const wordProgress = (index / spans.length);
+                        // If user scrolled past this word's trigger point, make it solid
+                        if (scrollProgress > wordProgress) {
+                            span.style.opacity = '1';
+                        } else {
+                            span.style.opacity = '0.2';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
+
