@@ -1,2959 +1,1106 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>مبخوت بن عبدالله | MBK</title>
-<meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله — هوية شخصية تجمع الأصالة، الأناقة والطموح.">
-<meta name="theme-color" content="#030b16">
+  <title>مبخوت بن عبدالله — MBK</title>
+  <meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله.">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-/* =========================================================
-   ROOT
-========================================================= */
-
-:root{
-    --bg:#020812;
-    --bg2:#061426;
-    --navy:#081a30;
-
-    --gold:#d4af37;
-    --gold-light:#f4dc79;
-    --gold-soft:#b9962f;
-
-    --white:#f7f5ed;
-    --text:#d9dde4;
-    --muted:#8793a1;
-
-    --line:rgba(212,175,55,.18);
-    --line-strong:rgba(212,175,55,.42);
-
-    --glass:rgba(255,255,255,.035);
-
-    --ease:cubic-bezier(.22,1,.36,1);
-}
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    min-height:100vh;
-    overflow-x:hidden;
-
-    background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(212,175,55,.13),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 0% 45%,
-            rgba(14,48,82,.35),
-            transparent 32%
-        ),
-        linear-gradient(
-            145deg,
-            #01050b 0%,
-            #061426 48%,
-            #020812 100%
-        );
-
-    color:var(--white);
-
-    font-family:
-        "Cairo",
-        "Noto Kufi Arabic",
-        sans-serif;
-}
-
-body.no-scroll{
-    overflow:hidden;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-button{
-    font-family:inherit;
-}
-
-img{
-    max-width:100%;
-}
-
-
-/* =========================================================
-   AMBIENT LIGHT
-========================================================= */
-
-.ambient{
-    position:fixed;
-    width:500px;
-    height:500px;
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    filter:blur(120px);
-
-    opacity:.08;
-
-    z-index:-5;
-}
-
-.ambient.one{
-    top:5%;
-    right:-180px;
-    background:var(--gold);
-}
-
-.ambient.two{
-    bottom:5%;
-    left:-200px;
-    background:#14558a;
-}
-
-
-/* =========================================================
-   GRAIN
-========================================================= */
-
-body::after{
-    content:"";
-
-    position:fixed;
-    inset:0;
-
-    pointer-events:none;
-
-    z-index:9999;
-
-    opacity:.035;
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-}
-
-
-/* =========================================================
-   LOADER
-========================================================= */
-
-.loader{
-    position:fixed;
-    inset:0;
-
-    z-index:10000;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:#020812;
-
-    transition:
-        opacity .8s ease,
-        visibility .8s ease;
-}
-
-.loader.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-.loader-inner{
-    text-align:center;
-}
-
-.loader-logo{
-    direction:ltr;
-
-    font-family:Arial,sans-serif;
-
-    font-size:34px;
-    font-weight:700;
-
-    letter-spacing:12px;
-
-    color:var(--gold-light);
-
-    animation:
-        loaderPulse 1.6s ease-in-out infinite;
-}
-
-.loader-line{
-    width:100px;
-    height:1px;
-
-    margin:18px auto 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold-light),
-            transparent
-        );
-}
-
-@keyframes loaderPulse{
-    0%,100%{
-        opacity:.45;
+  <style>
+    :root {
+      --bg: #000;
+      --surface: #111;
+      --surface-2: #171717;
+      --text: #f5f5f7;
+      --muted: #86868b;
+      --gold: #d4af37;
+      --line: rgba(255,255,255,.10);
+      --max: 1180px;
     }
 
-    50%{
-        opacity:1;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-}
 
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-header{
-    position:fixed;
-
-    top:0;
-    right:0;
-    left:0;
-
-    height:78px;
-
-    padding:0 5%;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    z-index:500;
-
-    border-bottom:1px solid rgba(212,175,55,.08);
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(2,8,18,.82),
-            rgba(2,8,18,.38)
-        );
-
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-
-    transition:
-        background .35s ease,
-        border-color .35s ease;
-}
-
-header.scrolled{
-    background:rgba(2,8,18,.88);
-    border-color:rgba(212,175,55,.15);
-}
-
-.logo{
-    direction:ltr;
-
-    font-family:Arial,sans-serif;
-
-    font-size:21px;
-    font-weight:700;
-
-    letter-spacing:7px;
-
-    color:var(--gold-light);
-}
-
-.header-right{
-    display:flex;
-    align-items:center;
-    gap:14px;
-}
-
-.header-caption{
-    direction:ltr;
-
-    color:#6f7b89;
-
-    font-size:9px;
-
-    letter-spacing:3px;
-}
-
-.menu-button{
-    width:45px;
-    height:45px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:1px solid var(--line-strong);
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.025);
-
-    color:var(--gold-light);
-
-    cursor:pointer;
-
-    transition:
-        transform .35s var(--ease),
-        background .35s ease,
-        border-color .35s ease;
-}
-
-.menu-button:hover{
-    transform:rotate(8deg) scale(1.06);
-
-    background:rgba(212,175,55,.08);
-
-    border-color:var(--gold-light);
-}
-
-
-/* =========================================================
-   SIDE MENU
-========================================================= */
-
-.menu-overlay{
-    position:fixed;
-    inset:0;
-
-    z-index:600;
-
-    background:rgba(0,0,0,.62);
-
-    backdrop-filter:blur(7px);
-
-    opacity:0;
-    visibility:hidden;
-
-    transition:.4s ease;
-}
-
-.menu-overlay.active{
-    opacity:1;
-    visibility:visible;
-}
-
-.side-menu{
-    position:fixed;
-
-    top:0;
-    right:0;
-
-    width:min(410px,90vw);
-    height:100vh;
-
-    z-index:700;
-
-    padding:115px 40px 40px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(8,28,50,.99),
-            rgba(2,8,18,.99)
-        );
-
-    border-left:1px solid var(--line);
-
-    box-shadow:
-        -35px 0 100px rgba(0,0,0,.5);
-
-    transform:translateX(110%);
-
-    transition:
-        transform .65s var(--ease);
-}
-
-.side-menu.active{
-    transform:translateX(0);
-}
-
-.menu-close{
-    position:absolute;
-
-    top:25px;
-    left:25px;
-
-    width:43px;
-    height:43px;
-
-    border-radius:50%;
-
-    border:1px solid var(--line-strong);
-
-    background:transparent;
-
-    color:var(--gold-light);
-
-    font-size:22px;
-
-    cursor:pointer;
-}
-
-.menu-eyebrow{
-    direction:ltr;
-
-    color:var(--gold);
-
-    font-size:9px;
-
-    letter-spacing:4px;
-
-    margin-bottom:30px;
-}
-
-.side-menu a{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:18px 0;
-
-    border-bottom:1px solid rgba(255,255,255,.06);
-
-    font-size:17px;
-
-    transition:
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Cairo", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    /* NAV */
+
+    .nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 54px;
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 28px;
+
+      background: rgba(0,0,0,.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .brand {
+      direction: ltr;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #aaa;
+      font-size: 12px;
+      transition: color .3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .menu {
+      display: none;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 24px 80px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+    }
+
+    .eyebrow {
+      direction: ltr;
+      color: var(--gold);
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 8vw, 92px);
+      line-height: 1.15;
+      font-weight: 600;
+      letter-spacing: -3px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 2;
+      margin-bottom: 38px;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: #fff;
+      font-size: 14px;
+
+      transition: color .3s ease;
+    }
+
+    .hero-link span {
+      direction: ltr;
+      color: var(--gold);
+      transition: transform .3s ease;
+    }
+
+    .hero-link:hover {
+      color: var(--gold);
+    }
+
+    .hero-link:hover span {
+      transform: translateX(-5px);
+    }
+
+    /* HERO IMAGE */
+
+    .hero-image-wrap {
+      width: min(920px, 92vw);
+      margin-top: 85px;
+      position: relative;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-height: 760px;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 28px;
+      background: #090909;
+    }
+
+    /* SECTIONS */
+
+    .section {
+      width: min(var(--max), calc(100% - 48px));
+      margin: auto;
+      padding: 150px 0;
+    }
+
+    .section-label {
+      color: var(--gold);
+      direction: ltr;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.25;
+      font-weight: 600;
+      letter-spacing: -2px;
+      margin-bottom: 55px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .about-intro {
+      font-size: 28px;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    .about-text {
+      color: #aaa;
+      font-size: 17px;
+      line-height: 2.2;
+    }
+
+    .about-text strong {
+      display: block;
+      color: #fff;
+      margin-top: 28px;
+      font-weight: 500;
+    }
+
+    /* JOURNEY */
+
+    .journey {
+      border-top: 1px solid var(--line);
+    }
+
+    .journey-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 60px;
+
+      padding: 38px 0;
+
+      border-bottom: 1px solid var(--line);
+
+      transition: padding .4s ease;
+    }
+
+    .journey-item:hover {
+      padding-right: 14px;
+      padding-left: 14px;
+    }
+
+    .year {
+      direction: ltr;
+      font-family: Arial, sans-serif;
+      color: var(--gold);
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .journey-content h3 {
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .journey-content p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: var(--surface);
+      cursor: pointer;
+    }
+
+    .gallery-item.large {
+      grid-column: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      transition: transform 1s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .gallery-item.large img {
+      min-height: 620px;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.035);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      padding: 28px;
+
+      background: linear-gradient(
+        transparent,
+        rgba(0,0,0,.75)
+      );
+    }
+
+    .gallery-overlay small {
+      direction: ltr;
+      display: block;
+      color: var(--gold);
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      margin-bottom: 5px;
+    }
+
+    .gallery-overlay h3 {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    /* SIGNATURE */
+
+    .signature {
+      text-align: center;
+      padding: 180px 20px;
+    }
+
+    .signature-mbk {
+      direction: ltr;
+      font-family: Arial, sans-serif;
+      font-size: clamp(70px, 16vw, 190px);
+      font-weight: 700;
+      letter-spacing: 10px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .signature p {
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      text-align: center;
+      padding-bottom: 150px;
+    }
+
+    .contact h2 {
+      font-size: clamp(42px, 7vw, 76px);
+      font-weight: 600;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .contact p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 35px;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .social {
+      width: 54px;
+      height: 54px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.16);
+
+      color: #fff;
+
+      transition:
+        border-color .3s ease,
         color .3s ease,
-        padding .3s ease;
-}
-
-.side-menu a::after{
-    content:"↗";
-
-    direction:ltr;
-
-    color:var(--gold);
-
-    opacity:.45;
-
-    transition:.3s ease;
-}
-
-.side-menu a:hover{
-    color:var(--gold-light);
-    padding-right:10px;
-}
-
-.side-menu a:hover::after{
-    opacity:1;
-    transform:translate(-4px,-4px);
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-main{
-    width:min(1180px,90%);
-
-    margin:auto;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-    min-height:100vh;
-
-    position:relative;
-
-    display:grid;
-
-    grid-template-columns:
-        minmax(0,1fr)
-        minmax(380px,520px);
-
-    align-items:center;
-
-    gap:70px;
-
-    padding:
-        125px
-        0
-        80px;
-}
-
-.hero-copy{
-    position:relative;
-
-    z-index:2;
-
-    padding-right:5%;
-}
-
-.hero-eyebrow{
-    display:flex;
-    align-items:center;
-
-    gap:13px;
-
-    margin-bottom:25px;
-
-    direction:ltr;
-
-    color:var(--gold);
-
-    font-size:10px;
-
-    letter-spacing:4px;
-}
-
-.hero-eyebrow::before{
-    content:"";
-
-    width:55px;
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold)
-        );
-}
-
-.hero-title{
-    margin-bottom:20px;
-
-    font-size:
-        clamp(
-            44px,
-            6vw,
-            76px
-        );
-
-    line-height:1.35;
-
-    font-weight:800;
-
-    letter-spacing:-2px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #aa7d13 0%,
-            #f7e18a 27%,
-            #d4af37 50%,
-            #fff1a8 73%,
-            #aa7d13 100%
-        );
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-
-    filter:
-        drop-shadow(
-            0 8px 30px rgba(212,175,55,.10)
-        );
-}
-
-.hero-description{
-    max-width:550px;
-
-    color:var(--muted);
-
-    font-size:15px;
-
-    line-height:2;
-
-    margin-bottom:32px;
-}
-
-.hero-actions{
-    display:flex;
-    align-items:center;
-
-    gap:12px;
-
-    flex-wrap:wrap;
-}
-
-.primary-button{
-    padding:13px 24px;
-
-    border:1px solid var(--gold);
-
-    border-radius:999px;
-
-    color:#07111e;
-
-    background:
-        linear-gradient(
-            135deg,
-            #b88918,
-            #f0d365,
-            #b88918
-        );
-
-    font-size:13px;
-    font-weight:700;
-
-    transition:
-        transform .35s var(--ease),
-        box-shadow .35s ease;
-}
-
-.primary-button:hover{
-    transform:translateY(-4px);
-
-    box-shadow:
-        0 15px 40px rgba(212,175,55,.2);
-}
-
-.secondary-button{
-    padding:13px 24px;
-
-    border:1px solid var(--line-strong);
-
-    border-radius:999px;
-
-    color:var(--text);
-
-    background:rgba(255,255,255,.025);
-
-    font-size:13px;
-
-    transition:.35s ease;
-}
-
-.secondary-button:hover{
-    color:var(--gold-light);
-    border-color:var(--gold);
-    transform:translateY(-4px);
-}
-
-
-/* =========================================================
-   HERO VISUAL
-========================================================= */
-
-.hero-visual{
-    position:relative;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.hero-orbit{
-    position:absolute;
-
-    width:112%;
-    aspect-ratio:1/1;
-
-    border:1px solid rgba(212,175,55,.13);
-
-    border-radius:50%;
-
-    transform:rotate(-15deg);
-
-    pointer-events:none;
-}
-
-.hero-orbit::before{
-    content:"";
-
-    position:absolute;
-
-    top:8%;
-    left:18%;
-
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:var(--gold-light);
-
-    box-shadow:
-        0 0 18px var(--gold);
-}
-
-.hero-frame{
-    width:min(500px,100%);
-
-    aspect-ratio:1/1;
-
-    position:relative;
-
-    padding:13px;
-}
-
-.hero-frame::before{
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    border:
-        1px solid
-        rgba(212,175,55,.65);
-
-    border-radius:38px;
-
-    transform:rotate(-1.5deg);
-}
-
-.hero-frame::after{
-    content:"";
-
-    position:absolute;
-
-    inset:8px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.17);
-
-    border-radius:33px;
-
-    transform:rotate(1.5deg);
-}
-
-.hero-image{
-    position:relative;
-
-    z-index:2;
-
-    width:100%;
-    height:100%;
-
-    object-fit:contain;
-
-    object-position:center;
-
-    display:block;
-
-    border-radius:30px;
-
-    border:5px solid #07172a;
-
-    background:#07172a;
-
-    box-shadow:
-        0 35px 90px rgba(0,0,0,.55);
-
-    transition:
-        transform .7s var(--ease),
-        box-shadow .7s ease;
-}
-
-.hero-frame:hover .hero-image{
-    transform:scale(1.012);
-
-    box-shadow:
-        0 40px 110px rgba(0,0,0,.65);
-}
-
-.hero-signature{
-    position:absolute;
-
-    left:-30px;
-    bottom:25px;
-
-    z-index:4;
-
-    padding:13px 17px;
-
-    border:1px solid var(--line);
-
-    border-radius:15px;
-
-    background:rgba(3,12,24,.78);
-
-    backdrop-filter:blur(12px);
-
-    direction:ltr;
-
-    font-family:Arial,sans-serif;
-
-    color:var(--gold-light);
-
-    font-size:10px;
-
-    letter-spacing:3px;
-}
-
-
-/* =========================================================
-   GOLD DIVIDER
-========================================================= */
-
-.section-divider{
-    width:100%;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--line-strong),
-            transparent
-        );
-}
-
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.section{
-    padding:105px 0;
-
-    position:relative;
-}
-
-.section-head{
-    margin-bottom:45px;
-}
-
-.section-eyebrow{
-    direction:ltr;
-
-    color:var(--gold);
-
-    font-size:9px;
-
-    letter-spacing:4px;
-
-    margin-bottom:10px;
-}
-
-.section-title{
-    font-size:
-        clamp(
-            34px,
-            5vw,
-            54px
-        );
-
-    font-weight:800;
-
-    line-height:1.4;
-}
-
-.section-title::after{
-    content:"";
-
-    display:block;
-
-    width:65px;
-    height:2px;
-
-    margin-top:12px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold),
-            transparent
-        );
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about-layout{
-    display:grid;
-
-    grid-template-columns:
-        .35fr
-        1fr;
-
-    gap:65px;
-
-    align-items:start;
-}
-
-.about-number{
-    direction:ltr;
-
-    color:rgba(212,175,55,.18);
-
-    font-family:Arial,sans-serif;
-
-    font-size:110px;
-
-    line-height:.8;
-
-    font-weight:700;
-
-    letter-spacing:-10px;
-}
-
-.about-content{
-    max-width:850px;
-}
-
-.about-content p{
-    color:var(--text);
-
-    font-size:18px;
-
-    line-height:2.15;
-}
-
-.about-content strong{
-    display:block;
-
-    margin-top:8px;
-
-    color:var(--gold-light);
-
-    font-weight:700;
-}
-
-
-/* =========================================================
-   VALUES
-========================================================= */
-
-.values-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:17px;
-}
-
-.value{
-    min-height:230px;
-
-    padding:30px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.14);
-
-    border-radius:27px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.008)
-        );
-
-    position:relative;
-
-    overflow:hidden;
-
-    transition:
-        transform .5s var(--ease),
-        border-color .5s ease,
-        box-shadow .5s ease;
-}
-
-.value::before{
-    content:"";
-
-    position:absolute;
-
-    width:160px;
-    height:160px;
-
-    top:-100px;
-    left:-100px;
-
-    border-radius:50%;
-
-    background:rgba(212,175,55,.08);
-
-    filter:blur(20px);
-
-    transition:.5s ease;
-}
-
-.value:hover{
-    transform:translateY(-9px);
-
-    border-color:var(--line-strong);
-
-    box-shadow:
-        0 25px 65px rgba(0,0,0,.22);
-}
-
-.value:hover::before{
-    transform:translate(80px,80px);
-}
-
-.value-index{
-    direction:ltr;
-
-    color:var(--gold);
-
-    font-family:Arial,sans-serif;
-
-    font-size:11px;
-
-    letter-spacing:3px;
-
-    margin-bottom:35px;
-}
-
-.value h3{
-    font-size:21px;
-
-    margin-bottom:10px;
-}
-
-.value p{
-    color:var(--muted);
-
-    font-size:14px;
-
-    line-height:1.9;
-}
-
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-.gallery-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(12,1fr);
-
-    gap:16px;
-}
-
-.gallery-item{
-    position:relative;
-
-    overflow:hidden;
-
-    min-height:280px;
-
-    border-radius:27px;
-
-    border:1px solid rgba(212,175,55,.14);
-
-    background:#07172a;
-
-    cursor:pointer;
-}
-
-.gallery-item:nth-child(1){
-    grid-column:span 7;
-    aspect-ratio:16/10;
-}
-
-.gallery-item:nth-child(2){
-    grid-column:span 5;
-    aspect-ratio:1/1;
-}
-
-.gallery-item:nth-child(3){
-    grid-column:span 5;
-    aspect-ratio:1/1;
-}
-
-.gallery-item:nth-child(4){
-    grid-column:span 7;
-    aspect-ratio:16/10;
-}
-
-.gallery-item:nth-child(5){
-    grid-column:span 4;
-    aspect-ratio:1/1;
-}
-
-.gallery-item:nth-child(6){
-    grid-column:span 4;
-    aspect-ratio:1/1;
-}
-
-.gallery-item:nth-child(7){
-    grid-column:span 4;
-    aspect-ratio:1/1;
-}
-
-.gallery-image{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    display:block;
-
-    transition:
-        transform 1s var(--ease),
-        filter 1s ease;
-}
-
-.gallery-item::after{
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,.85),
-            transparent 58%
-        );
-
-    pointer-events:none;
-}
-
-.gallery-item:hover .gallery-image{
-    transform:scale(1.08);
-
-    filter:saturate(1.05);
-}
-
-.gallery-info{
-    position:absolute;
-
-    right:24px;
-    left:24px;
-    bottom:21px;
-
-    z-index:3;
-}
-
-.gallery-category{
-    display:block;
-
-    direction:ltr;
-
-    color:var(--gold-light);
-
-    font-size:9px;
-
-    letter-spacing:3px;
-
-    margin-bottom:5px;
-}
-
-.gallery-title{
-    font-size:18px;
-
-    font-weight:600;
-}
-
-
-/* =========================================================
-   JOURNEY
-========================================================= */
-
-.journey{
-    position:relative;
-}
-
-.journey-track{
-    position:relative;
-
-    max-width:1000px;
-
-    margin:auto;
-
-    padding:20px 0;
-}
-
-.journey-track::before{
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    bottom:0;
-
-    right:50%;
-
-    width:1px;
-
-    background:
-        linear-gradient(
-            transparent,
-            var(--gold),
-            transparent
-        );
-}
-
-.journey-item{
-    width:50%;
-
-    position:relative;
-
-    padding:0 45px 60px;
-}
-
-.journey-item:nth-child(even){
-    margin-right:50%;
-
-    text-align:right;
-}
-
-.journey-item:nth-child(odd){
-    text-align:left;
-}
-
-.journey-dot{
-    position:absolute;
-
-    top:5px;
-
-    width:12px;
-    height:12px;
-
-    border-radius:50%;
-
-    background:var(--gold-light);
-
-    box-shadow:
-        0 0 0 6px rgba(212,175,55,.08),
-        0 0 25px rgba(212,175,55,.45);
-}
-
-.journey-item:nth-child(odd) .journey-dot{
-    right:-6px;
-}
-
-.journey-item:nth-child(even) .journey-dot{
-    left:-6px;
-}
-
-.journey-year{
-    direction:ltr;
-
-    color:var(--gold-light);
-
-    font-family:Arial,sans-serif;
-
-    font-size:34px;
-
-    font-weight:700;
-
-    line-height:1;
-
-    margin-bottom:10px;
-}
-
-.journey-title{
-    font-size:19px;
-
-    margin-bottom:8px;
-}
-
-.journey-text{
-    color:var(--muted);
-
-    font-size:14px;
-
-    line-height:1.9;
-}
-
-
-/* =========================================================
-   SIGNATURE
-========================================================= */
-
-.signature-section{
-    padding:130px 0;
-
-    text-align:center;
-}
-
-.signature-mark{
-    direction:ltr;
-
-    font-family:Arial,sans-serif;
-
-    font-size:
-        clamp(
-            70px,
-            14vw,
-            170px
-        );
-
-    font-weight:700;
-
-    letter-spacing:
-        clamp(
-            8px,
-            2vw,
-            22px
-        );
-
-    background:
-        linear-gradient(
-            135deg,
-            #8e6710,
-            #f6de78,
-            #c89f25,
-            #fff0a1,
-            #8e6710
-        );
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-
-    opacity:.9;
-}
-
-.signature-quote{
-    margin-top:15px;
-
-    color:var(--muted);
-
-    font-size:16px;
-
-    letter-spacing:1px;
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact-box{
-    max-width:850px;
-
-    margin:auto;
-
-    padding:55px 35px;
-
-    text-align:center;
-
-    border:
-        1px solid
-        rgba(212,175,55,.20);
-
-    border-radius:35px;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(212,175,55,.07),
-            transparent 45%
-        ),
-        rgba(255,255,255,.018);
-}
-
-.contact-box h3{
-    font-size:30px;
-
-    margin-bottom:12px;
-}
-
-.contact-box p{
-    color:var(--muted);
-
-    font-size:14px;
-
-    margin-bottom:30px;
-}
-
-.socials{
-    display:flex;
-
-    justify-content:center;
-
-    gap:14px;
-}
-
-.social{
-    width:61px;
-    height:61px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border:
-        1px solid
-        var(--line-strong);
-
-    border-radius:50%;
-
-    color:var(--gold-light);
-
-    background:
-        rgba(255,255,255,.025);
-
-    transition:
-        transform .4s var(--ease),
-        background .35s ease,
-        box-shadow .35s ease,
-        border-color .35s ease;
-}
-
-.social:hover{
-    transform:
-        translateY(-7px)
-        scale(1.04);
-
-    background:
-        rgba(212,175,55,.08);
-
-    border-color:
-        var(--gold-light);
-
-    box-shadow:
-        0 18px 45px
-        rgba(212,175,55,.13);
-}
-
-.social svg{
-    width:25px;
-    height:25px;
-
-    fill:currentColor;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-    padding:40px 20px 32px;
-
-    text-align:center;
-
-    border-top:
-        1px solid
-        rgba(212,175,55,.10);
-
-    background:
-        rgba(1,6,13,.72);
-}
-
-.footer-ar{
-    color:#77818e;
-
-    font-size:11px;
-}
-
-.footer-mbk{
-    margin-top:10px;
-
-    direction:ltr;
-
-    font-family:Arial,sans-serif;
-
-    color:var(--gold);
-
-    font-weight:700;
-
-    letter-spacing:7px;
-}
-
-
-/* =========================================================
-   LIGHTBOX
-========================================================= */
-
-.lightbox{
-    position:fixed;
-
-    inset:0;
-
-    z-index:3000;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:25px;
-
-    background:
-        rgba(0,0,0,.91);
-
-    backdrop-filter:blur(13px);
-
-    opacity:0;
-    visibility:hidden;
-
-    transition:.4s ease;
-}
-
-.lightbox.active{
-    opacity:1;
-    visibility:visible;
-}
-
-.lightbox img{
-    max-width:92vw;
-    max-height:87vh;
-
-    object-fit:contain;
-
-    border-radius:18px;
-
-    border:1px solid rgba(212,175,55,.3);
-
-    box-shadow:
-        0 35px 110px rgba(0,0,0,.7);
-}
-
-.lightbox-close{
-    position:absolute;
-
-    top:23px;
-    left:25px;
-
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-
-    border:1px solid var(--line-strong);
-
-    background:rgba(0,0,0,.25);
-
-    color:var(--gold-light);
-
-    font-size:23px;
-
-    cursor:pointer;
-}
-
-
-/* =========================================================
-   REVEAL
-========================================================= */
-
-.reveal{
-    opacity:0;
-
-    transform:translateY(45px);
-
-    transition:
-        opacity 1s ease,
-        transform 1s var(--ease);
-}
-
-.reveal.visible{
-    opacity:1;
-
-    transform:translateY(0);
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:900px){
-
-    .hero{
-        grid-template-columns:1fr;
-
-        gap:45px;
-
-        padding-top:125px;
-
-        text-align:center;
+        transform .3s ease;
     }
 
-    .hero-copy{
-        padding-right:0;
-
-        order:1;
+    .social:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      transform: translateY(-4px);
     }
 
-    .hero-visual{
-        order:2;
+    .social svg {
+      width: 21px;
+      height: 21px;
+      fill: currentColor;
     }
 
-    .hero-eyebrow{
-        justify-content:center;
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 20px 35px;
+      text-align: center;
     }
 
-    .hero-description{
-        margin-left:auto;
-        margin-right:auto;
+    footer p {
+      color: #666;
+      font-size: 11px;
     }
 
-    .hero-actions{
-        justify-content:center;
+    .footer-mbk {
+      direction: ltr;
+      color: var(--gold);
+      font-family: Arial, sans-serif;
+      letter-spacing: 5px;
+      font-size: 12px;
+      margin-top: 10px;
     }
 
-    .hero-frame{
-        width:min(480px,88vw);
+    /* ANIMATION */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.2,.8,.2,1);
     }
 
-    .hero-signature{
-        left:0;
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .about-layout{
-        grid-template-columns:1fr;
+    /* LIGHTBOX */
 
-        gap:25px;
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 25px;
+
+      background: rgba(0,0,0,.94);
+      backdrop-filter: blur(20px);
+
+      opacity: 0;
+      visibility: hidden;
+      transition: .35s ease;
     }
 
-    .about-number{
-        font-size:70px;
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
     }
 
-}
-
-
-@media(max-width:700px){
-
-    main{
-        width:min(92%,520px);
+    .lightbox img {
+      max-width: 94vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 15px;
     }
 
-    header{
-        height:70px;
+    .lightbox-close {
+      position: absolute;
+      top: 22px;
+      left: 25px;
 
-        padding:0 20px;
+      width: 42px;
+      height: 42px;
+
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+
+      background: transparent;
+      color: #fff;
+
+      font-size: 22px;
+      cursor: pointer;
     }
 
-    .header-caption{
-        display:none;
+    /* MOBILE */
+
+    @media (max-width: 760px) {
+
+      .nav {
+        padding: 0 18px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .hero {
+        padding-top: 125px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .hero-image-wrap {
+        margin-top: 55px;
+      }
+
+      .hero-image {
+        border-radius: 20px;
+      }
+
+      .section {
+        padding: 95px 0;
+        width: min(92%, 560px);
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-intro {
+        font-size: 23px;
+      }
+
+      .about-text {
+        font-size: 15px;
+      }
+
+      .journey-item {
+        grid-template-columns: 80px 1fr;
+        gap: 20px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item.large {
+        grid-column: span 1;
+      }
+
+      .gallery-item img,
+      .gallery-item.large img {
+        min-height: 330px;
+      }
+
+      .signature {
+        padding: 110px 20px;
+      }
+
+      .signature-mbk {
+        letter-spacing: 5px;
+      }
+
+      .contact {
+        padding-bottom: 100px;
+      }
     }
-
-    .hero{
-        padding:
-            105px
-            0
-            65px;
-    }
-
-    .hero-title{
-        font-size:
-            clamp(
-                39px,
-                11vw,
-                55px
-            );
-
-        letter-spacing:-1px;
-    }
-
-    .hero-description{
-        font-size:14px;
-    }
-
-    .hero-frame{
-        width:92vw;
-        max-width:420px;
-    }
-
-    .hero-orbit{
-        width:106%;
-    }
-
-    .hero-signature{
-        left:2px;
-
-        padding:10px 12px;
-
-        font-size:8px;
-    }
-
-    .section{
-        padding:75px 0;
-    }
-
-    .section-head{
-        margin-bottom:32px;
-    }
-
-    .values-grid{
-        grid-template-columns:1fr;
-    }
-
-    .value{
-        min-height:auto;
-    }
-
-    .gallery-grid{
-        grid-template-columns:1fr;
-    }
-
-    .gallery-item,
-    .gallery-item:nth-child(1),
-    .gallery-item:nth-child(2),
-    .gallery-item:nth-child(3),
-    .gallery-item:nth-child(4),
-    .gallery-item:nth-child(5),
-    .gallery-item:nth-child(6),
-    .gallery-item:nth-child(7){
-
-        grid-column:span 1;
-
-        aspect-ratio:
-            16/10;
-
-        min-height:0;
-    }
-
-    .journey-track::before{
-        right:11px;
-    }
-
-    .journey-item,
-    .journey-item:nth-child(even),
-    .journey-item:nth-child(odd){
-
-        width:100%;
-
-        margin:0;
-
-        padding:
-            0
-            35px
-            45px
-            0;
-
-        text-align:right;
-    }
-
-    .journey-item:nth-child(odd) .journey-dot,
-    .journey-item:nth-child(even) .journey-dot{
-
-        right:5px;
-        left:auto;
-    }
-
-    .journey-year{
-        font-size:28px;
-    }
-
-    .signature-section{
-        padding:90px 0;
-    }
-
-    .contact-box{
-        padding:
-            40px
-            20px;
-    }
-
-}
-
-
-@media(max-width:420px){
-
-    .hero-title{
-        font-size:36px;
-    }
-
-    .hero-actions{
-        flex-direction:column;
-
-        width:100%;
-    }
-
-    .primary-button,
-    .secondary-button{
-        width:100%;
-
-        text-align:center;
-    }
-
-    .about-content p{
-        font-size:16px;
-    }
-
-    .social{
-        width:56px;
-        height:56px;
-    }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
-
-        animation:none!important;
-
-        transition:none!important;
-
-        scroll-behavior:auto!important;
-    }
-
-}
-
-</style>
+  </style>
 </head>
-
 
 <body>
 
-<div class="ambient one"></div>
-<div class="ambient two"></div>
+  <!-- NAVIGATION -->
+
+  <header class="nav">
+    <a href="#home" class="brand">MBK</a>
+
+    <nav class="nav-links">
+      <a href="#about">نبذة</a>
+      <a href="#journey">رحلتي</a>
+      <a href="#gallery">مختاراتي</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+
+    <button class="menu" id="menuBtn" aria-label="القائمة">☰</button>
+  </header>
 
 
-<!-- =======================================================
-     LOADER
-======================================================= -->
+  <!-- HERO -->
 
-<div class="loader" id="loader">
+  <main id="home">
 
-    <div class="loader-inner">
+    <section class="hero">
 
-        <div class="loader-logo">
-            MBK
+      <div class="eyebrow">MBK / PERSONAL IDENTITY</div>
+
+      <h1>
+        مبخوت <span>بن عبدالله</span>
+      </h1>
+
+      <p>
+        مساحة شخصية تجمع بين الأصالة، الأناقة والطموح،
+        وتعكس الأشياء التي أؤمن بقيمتها وجمالها.
+      </p>
+
+      <a href="#about" class="hero-link">
+        اكتشف المزيد
+        <span>↓</span>
+      </a>
+
+      <div class="hero-image-wrap">
+        <img
+          class="hero-image"
+          src="file_00000000202482468d4027eb8c5919f7.png"
+          alt="مبخوت بن عبدالله"
+        >
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="section reveal" id="about">
+
+      <div class="section-label">ABOUT</div>
+
+      <h2 class="section-title">
+        من أنا؟
+      </h2>
+
+      <div class="about">
+
+        <div class="about-intro">
+          أنا مبخوت بن عبدالله.
         </div>
 
-        <div class="loader-line"></div>
+        <div class="about-text">
 
-    </div>
+          أؤمن بأن الشخصية الحقيقية تُبنى بالطموح،
+          والتجربة، والاهتمام بالتفاصيل. أسعى دائمًا
+          إلى تطوير نفسي، واكتشاف أفكار جديدة،
+          وصناعة هوية تعكس رؤيتي وشخصيتي بأسلوب
+          يجمع بين الأصالة، الأناقة، والطموح.
 
-</div>
+          <br><br>
 
+          هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا
+          من اهتماماتي، أعمالي، اختياراتي، والأشياء
+          التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
 
-<!-- =======================================================
-     HEADER
-======================================================= -->
+          <strong>
+            أطمح للأفضل، وأسعى لأن أترك أثرًا يستحق أن يُذكر.
+          </strong>
 
-<header id="header">
+        </div>
 
-    <a href="#home" class="logo">
-        MBK
-    </a>
+      </div>
 
-    <div class="header-right">
-
-        <span class="header-caption">
-            PERSONAL IDENTITY
-        </span>
-
-        <button
-            class="menu-button"
-            id="menuButton"
-            aria-label="فتح القائمة"
-        >
-            ☰
-        </button>
-
-    </div>
-
-</header>
+    </section>
 
 
-<!-- =======================================================
-     MENU
-======================================================= -->
+    <!-- JOURNEY -->
 
-<div
-    class="menu-overlay"
-    id="menuOverlay"
-></div>
+    <section class="section reveal" id="journey">
 
+      <div class="section-label">JOURNEY</div>
 
-<nav
-    class="side-menu"
-    id="sideMenu"
->
-
-    <button
-        class="menu-close"
-        id="menuClose"
-        aria-label="إغلاق"
-    >
-        ×
-    </button>
-
-    <div class="menu-eyebrow">
-        NAVIGATION
-    </div>
-
-    <a href="#home">
-        الرئيسية
-    </a>
-
-    <a href="#about">
-        نبذة
-    </a>
-
-    <a href="#values">
-        بصمتي
-    </a>
-
-    <a href="#gallery">
-        مختاراتي
-    </a>
-
-    <a href="#journey">
+      <h2 class="section-title">
         رحلتي
-    </a>
+      </h2>
 
-    <a href="#contact">
-        تواصل
-    </a>
+      <div class="journey">
 
-</nav>
-
-
-<main>
-
-
-<!-- =======================================================
-     HERO
-======================================================= -->
-
-<section
-    class="hero"
-    id="home"
->
-
-
-    <div class="hero-copy">
-
-        <div class="hero-eyebrow">
-            PERSONAL IDENTITY
-        </div>
-
-
-        <h1 class="hero-title">
-            مبخوت بن عبدالله
-        </h1>
-
-
-        <p class="hero-description">
-            مساحة شخصية تعكس رؤيتي، اهتمامي،
-            اختياراتي، وكل ما أراه جديرًا بأن يحمل
-            معنى وقيمة وجمالًا.
-        </p>
-
-
-        <div class="hero-actions">
-
-            <a
-                href="#about"
-                class="primary-button"
-            >
-                اكتشف المزيد
-            </a>
-
-            <a
-                href="#gallery"
-                class="secondary-button"
-            >
-                مختاراتي
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="hero-visual">
-
-        <div class="hero-orbit"></div>
-
-
-        <div class="hero-frame">
-
-            <img
-                class="hero-image"
-                src="file_00000000202482468d4027eb8c5919f7.png"
-                alt="مبخوت بن عبدالله"
-            >
-
-        </div>
-
-
-        <div class="hero-signature">
-            MBK / PERSONAL
-        </div>
-
-    </div>
-
-</section>
-
-
-<div class="section-divider"></div>
-
-
-<!-- =======================================================
-     ABOUT
-======================================================= -->
-
-<section
-    class="section reveal"
-    id="about"
->
-
-    <div class="section-head">
-
-        <div class="section-eyebrow">
-            ABOUT
-        </div>
-
-        <h2 class="section-title">
-            نبذة
-        </h2>
-
-    </div>
-
-
-    <div class="about-layout">
-
-        <div class="about-number">
-            01
-        </div>
-
-
-        <div class="about-content">
-
+        <article class="journey-item">
+          <div class="year">2015</div>
+          <div class="journey-content">
+            <h3>البداية</h3>
             <p>
-
-                أنا مبخوت بن عبدالله.
-
-                <br><br>
-
-                أؤمن بأن الشخصية الحقيقية تُبنى بالطموح،
-                والتجربة، والاهتمام بالتفاصيل. أسعى دائمًا
-                إلى تطوير نفسي، واكتشاف أفكار جديدة،
-                وصناعة هوية تعكس رؤيتي وشخصيتي بأسلوب
-                يجمع بين الأصالة، الأناقة، والطموح.
-
-                <br><br>
-
-                هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا
-                من اهتماماتي، أعمالي، اختياراتي، والأشياء
-                التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
-
-                <strong>
-                    أطمح للأفضل، وأسعى لأن أترك أثرًا يستحق أن يُذكر.
-                </strong>
-
+              بداية مرحلة جديدة من التجارب واكتشاف الذات.
             </p>
+          </div>
+        </article>
 
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     VALUES
-======================================================= -->
-
-<section
-    class="section reveal"
-    id="values"
->
-
-    <div class="section-head">
-
-        <div class="section-eyebrow">
-            VALUES
-        </div>
-
-        <h2 class="section-title">
-            بصمتي
-        </h2>
-
-    </div>
-
-
-    <div class="values-grid">
-
-
-        <article class="value">
-
-            <div class="value-index">
-                01 / CREATE
-            </div>
-
-            <h3>
-                الإبداع
-            </h3>
-
+        <article class="journey-item">
+          <div class="year">2018</div>
+          <div class="journey-content">
+            <h3>التجربة</h3>
             <p>
-                أبحث عن الأفكار المختلفة،
-                وأهتم بأن يكون لكل تفصيل
-                شخصية وحضور خاص.
+              سنوات من التجربة والتعلم وتكوين رؤية أكثر وضوحًا.
             </p>
-
+          </div>
         </article>
 
-
-        <article class="value">
-
-            <div class="value-index">
-                02 / DETAIL
-            </div>
-
-            <h3>
-                التفاصيل
-            </h3>
-
+        <article class="journey-item">
+          <div class="year">2021</div>
+          <div class="journey-content">
+            <h3>التطور</h3>
             <p>
-                التفاصيل الصغيرة هي التي
-                تصنع الصورة الكبيرة وتمنح
-                العمل هويته الحقيقية.
+              مرحلة جديدة أصبحت فيها التجارب جزءًا من الهوية.
             </p>
-
+          </div>
         </article>
 
-
-        <article class="value">
-
-            <div class="value-index">
-                03 / IDENTITY
-            </div>
-
-            <h3>
-                الأصالة
-            </h3>
-
+        <article class="journey-item">
+          <div class="year">2024</div>
+          <div class="journey-content">
+            <h3>رؤية جديدة</h3>
             <p>
-                أؤمن بهوية واضحة تحافظ على
-                الأصالة، وتواكب الحداثة دون
-                أن تفقد روحها.
+              طموح أكبر وخطوات أكثر ثباتًا نحو المستقبل.
             </p>
-
+          </div>
         </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     GALLERY
-======================================================= -->
-
-<section
-    class="section reveal"
-    id="gallery"
->
-
-    <div class="section-head">
-
-        <div class="section-eyebrow">
-            SELECTED
-        </div>
-
-        <h2 class="section-title">
-            مختاراتي
-        </h2>
-
-    </div>
-
-
-    <div class="gallery-grid">
-
-
-        <article
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=90"
-        >
-
-            <img
-                class="gallery-image"
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=85"
-                alt="جبال وطبيعة"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <span class="gallery-category">
-                    NATURE
-                </span>
-
-                <h3 class="gallery-title">
-                    هدوء الجبال
-                </h3>
-
-            </div>
-
-        </article>
-
-
-        <article
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=90"
-        >
-
-            <img
-                class="gallery-image"
-                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=85"
-                alt="طبيعة"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <span class="gallery-category">
-                    LIFE
-                </span>
-
-                <h3 class="gallery-title">
-                    تفاصيل هادئة
-                </h3>
-
-            </div>
-
-        </article>
-
-
-        <article
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=2000&q=90"
-        >
-
-            <img
-                class="gallery-image"
-                src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1400&q=85"
-                alt="مدينة"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <span class="gallery-category">
-                    CITY
-                </span>
-
-                <h3 class="gallery-title">
-                    نبض المدينة
-                </h3>
-
-            </div>
-
-        </article>
-
-
-        <article
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=2000&q=90"
-        >
-
-            <img
-                class="gallery-image"
-                src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1400&q=85"
-                alt="شوارع المدينة"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <span class="gallery-category">
-                    STREETS
-                </span>
-
-                <h3 class="gallery-title">
-                    بين الشوارع
-                </h3>
-
-            </div>
-
-        </article>
-
-
-        <article
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=2000&q=90"
-        >
-
-            <img
-                class="gallery-image"
-                src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1400&q=85"
-                alt="مدينة من الأعلى"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <span class="gallery-category">
-                    URBAN
-                </span>
-
-                <h3 class="gallery-title">
-                    أفق جديد
-                </h3>
-
-            </div>
-
-        </article>
-
-
-        <article
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=90"
-        >
-
-            <img
-                class="gallery-image"
-                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1400&q=85"
-                alt="طريق"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <span class="gallery-category">
-                    JOURNEY
-                </span>
-
-                <h3 class="gallery-title">
-                    الطريق
-                </h3>
-
-            </div>
-
-        </article>
-
-
-        <article
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=2000&q=90"
-        >
-
-            <img
-                class="gallery-image"
-                src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=85"
-                alt="عمارة"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <span class="gallery-category">
-                    ARCHITECTURE
-                </span>
-
-                <h3 class="gallery-title">
-                    تفاصيل المكان
-                </h3>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     JOURNEY
-======================================================= -->
-
-<section
-    class="section reveal journey"
-    id="journey"
->
-
-    <div class="section-head">
-
-        <div class="section-eyebrow">
-            JOURNEY
-        </div>
-
-        <h2 class="section-title">
-            رحلتي
-        </h2>
-
-    </div>
-
-
-    <div class="journey-track">
-
 
         <article class="journey-item">
-
-            <div class="journey-dot"></div>
-
-            <div class="journey-year">
-                2015
-            </div>
-
-            <h3 class="journey-title">
-                البداية
-            </h3>
-
-            <p class="journey-text">
-                بداية مرحلة جديدة من التجارب
-                والتعلم واكتشاف الذات.
+          <div class="year">2026</div>
+          <div class="journey-content">
+            <h3>القادم</h3>
+            <p>
+              ما زالت الرحلة مستمرة.
             </p>
+          </div>
+        </article>
 
+      </div>
+
+    </section>
+
+
+    <!-- GALLERY -->
+
+    <section class="section reveal" id="gallery">
+
+      <div class="section-label">SELECTED</div>
+
+      <h2 class="section-title">
+        مختاراتي
+      </h2>
+
+      <div class="gallery">
+
+        <article
+          class="gallery-item large"
+          data-image="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=90"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
+            alt="الجبال والطبيعة"
+            loading="lazy"
+          >
+
+          <div class="gallery-overlay">
+            <small>NATURE</small>
+            <h3>هدوء الطبيعة</h3>
+          </div>
         </article>
 
 
-        <article class="journey-item">
+        <article
+          class="gallery-item"
+          data-image="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=90"
+            alt="مدينة"
+            loading="lazy"
+          >
 
-            <div class="journey-dot"></div>
-
-            <div class="journey-year">
-                2018
-            </div>
-
-            <h3 class="journey-title">
-                التجربة
-            </h3>
-
-            <p class="journey-text">
-                سنوات من التجربة واكتشاف
-                الاهتمامات وتطوير المهارات.
-            </p>
-
+          <div class="gallery-overlay">
+            <small>CITY</small>
+            <h3>نبض المدينة</h3>
+          </div>
         </article>
 
 
-        <article class="journey-item">
+        <article
+          class="gallery-item"
+          data-image="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=90"
+            alt="شوارع"
+            loading="lazy"
+          >
 
-            <div class="journey-dot"></div>
-
-            <div class="journey-year">
-                2021
-            </div>
-
-            <h3 class="journey-title">
-                التطور
-            </h3>
-
-            <p class="journey-text">
-                أصبحت الرؤية أكثر وضوحًا،
-                وأصبحت التجارب جزءًا من الهوية.
-            </p>
-
+          <div class="gallery-overlay">
+            <small>STREETS</small>
+            <h3>بين الشوارع</h3>
+          </div>
         </article>
 
 
-        <article class="journey-item">
+        <article
+          class="gallery-item"
+          data-image="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90"
+            alt="طريق"
+            loading="lazy"
+          >
 
-            <div class="journey-dot"></div>
-
-            <div class="journey-year">
-                2024
-            </div>
-
-            <h3 class="journey-title">
-                مرحلة جديدة
-            </h3>
-
-            <p class="journey-text">
-                رؤية أوسع، وطموح أكبر،
-                وخطوات أكثر ثباتًا.
-            </p>
-
+          <div class="gallery-overlay">
+            <small>JOURNEY</small>
+            <h3>الطريق</h3>
+          </div>
         </article>
 
 
-        <article class="journey-item">
+        <article
+          class="gallery-item"
+          data-image="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90"
+            alt="هندسة معمارية"
+            loading="lazy"
+          >
 
-            <div class="journey-dot"></div>
-
-            <div class="journey-year">
-                2026
-            </div>
-
-            <h3 class="journey-title">
-                القادم
-            </h3>
-
-            <p class="journey-text">
-                الاستمرار في التطور وبناء
-                المستقبل برؤية مختلفة.
-            </p>
-
+          <div class="gallery-overlay">
+            <small>ARCHITECTURE</small>
+            <h3>تفاصيل المكان</h3>
+          </div>
         </article>
 
+      </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =======================================================
-     SIGNATURE
-======================================================= -->
+    <!-- SIGNATURE -->
 
-<section class="signature-section reveal">
+    <section class="signature reveal">
 
-    <div class="signature-mark">
+      <div class="signature-mbk">
         MBK
-    </div>
+      </div>
 
-    <p class="signature-quote">
+      <p>
         الأصالة في الهوية، والطموح في كل خطوة.
+      </p>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact reveal" id="contact">
+
+      <div class="section-label">CONTACT</div>
+
+      <h2>تواصل</h2>
+
+      <p>
+        يسعدني تواصلك.
+      </p>
+
+      <div class="socials">
+
+        <!-- EMAIL -->
+
+        <a
+          class="social"
+          href="mailto:mabkhout@mabkhut.com"
+          aria-label="البريد الإلكتروني"
+          title="البريد الإلكتروني"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M3 5h18v14H3V5zm2 2v.7l7 5 7-5V7l-7 5-7-5z"/>
+          </svg>
+        </a>
+
+
+        <!-- FACEBOOK -->
+
+        <a
+          class="social"
+          href="https://www.facebook.com/share/19JG7PQiHL/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+          title="Facebook"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.7.3-1 1-1z"/>
+          </svg>
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
     </p>
 
-</section>
-
-
-<div class="section-divider"></div>
-
-
-<!-- =======================================================
-     CONTACT — ONCE
-======================================================= -->
-
-<section
-    class="section reveal"
-    id="contact"
->
-
-    <div class="contact-box">
-
-        <div class="section-eyebrow">
-            CONTACT
-        </div>
-
-        <h3>
-            تواصل
-        </h3>
-
-        <p>
-            يسعدني تواصلك.
-        </p>
-
-
-        <div class="socials">
-
-
-            <!-- EMAIL -->
-
-            <a
-                class="social"
-                href="mailto:mabkhout@mabkhut.com"
-                aria-label="البريد الإلكتروني"
-                title="البريد الإلكتروني"
-            >
-
-                <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                >
-
-                    <path
-                        d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
-                    />
-
-                </svg>
-
-            </a>
-
-
-            <!-- FACEBOOK -->
-
-            <a
-                class="social"
-                href="https://www.facebook.com/share/19JG7PQiHL/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                title="Facebook"
-            >
-
-                <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                >
-
-                    <path
-                        d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
-                    />
-
-                </svg>
-
-            </a>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-<!-- =======================================================
-     FOOTER
-======================================================= -->
-
-<footer>
-
-    <div class="footer-ar">
-        © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
-    </div>
-
     <div class="footer-mbk">
-        MBK
+      MBK
     </div>
 
-</footer>
+  </footer>
 
 
-<!-- =======================================================
-     LIGHTBOX
-======================================================= -->
+  <!-- LIGHTBOX -->
 
-<div
-    class="lightbox"
-    id="lightbox"
->
+  <div class="lightbox" id="lightbox">
 
     <button
-        class="lightbox-close"
-        id="lightboxClose"
-        aria-label="إغلاق"
+      class="lightbox-close"
+      id="lightboxClose"
+      aria-label="إغلاق"
     >
-        ×
+      ×
     </button>
 
-    <img
-        id="lightboxImage"
-        src=""
-        alt=""
-    >
+    <img id="lightboxImage" src="" alt="">
 
-</div>
+  </div>
 
 
-<script>
+  <script>
 
-/* =========================================================
-   LOADER
-========================================================= */
+    /* MOBILE MENU */
 
-window.addEventListener(
-    "load",
-    () => {
+    const menuBtn = document.getElementById("menuBtn");
 
-        setTimeout(
-            () => {
+    menuBtn.addEventListener("click", () => {
 
-                document
-                    .getElementById("loader")
-                    .classList.add("hide");
+      const links = document.querySelector(".nav-links");
 
-            },
-            700
-        );
+      const open = links.style.display === "flex";
 
-    }
-);
+      if (open) {
+        links.style.display = "";
+        return;
+      }
 
-
-/* =========================================================
-   HEADER SCROLL
-========================================================= */
-
-const header =
-    document.getElementById("header");
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        if(window.scrollY > 30){
-
-            header.classList.add("scrolled");
-
-        }else{
-
-            header.classList.remove("scrolled");
-
-        }
-
-    },
-    {
-        passive:true
-    }
-);
+      links.style.position = "absolute";
+      links.style.top = "54px";
+      links.style.right = "0";
+      links.style.left = "0";
+      links.style.padding = "20px 25px";
+      links.style.background = "rgba(0,0,0,.95)";
+      links.style.flexDirection = "column";
+      links.style.alignItems = "center";
+      links.style.gap = "22px";
+      links.style.display = "flex";
+    });
 
 
-/* =========================================================
-   MENU
-========================================================= */
+    /* SCROLL REVEAL */
 
-const menuButton =
-    document.getElementById("menuButton");
+    const revealElements =
+      document.querySelectorAll(".reveal");
 
-const menuClose =
-    document.getElementById("menuClose");
-
-const sideMenu =
-    document.getElementById("sideMenu");
-
-const menuOverlay =
-    document.getElementById("menuOverlay");
-
-
-function openMenu(){
-
-    sideMenu.classList.add("active");
-
-    menuOverlay.classList.add("active");
-
-    document.body.classList.add("no-scroll");
-
-}
-
-
-function closeMenu(){
-
-    sideMenu.classList.remove("active");
-
-    menuOverlay.classList.remove("active");
-
-    document.body.classList.remove("no-scroll");
-
-}
-
-
-menuButton.addEventListener(
-    "click",
-    openMenu
-);
-
-
-menuClose.addEventListener(
-    "click",
-    closeMenu
-);
-
-
-menuOverlay.addEventListener(
-    "click",
-    closeMenu
-);
-
-
-document
-    .querySelectorAll(".side-menu a")
-    .forEach(
-        link => {
-
-            link.addEventListener(
-                "click",
-                closeMenu
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-const revealElements =
-    document.querySelectorAll(".reveal");
-
-
-const revealObserver =
-    new IntersectionObserver(
+    const observer =
+      new IntersectionObserver(
         entries => {
 
-            entries.forEach(
-                entry => {
+          entries.forEach(entry => {
 
-                    if(
-                        entry.isIntersecting
-                    ){
+            if (entry.isIntersecting) {
 
-                        entry.target
-                            .classList
-                            .add("visible");
+              entry.target.classList.add("show");
 
-                        revealObserver
-                            .unobserve(
-                                entry.target
-                            );
+              observer.unobserve(entry.target);
 
-                    }
+            }
 
-                }
-            );
+          });
 
         },
         {
-            threshold:.12
+          threshold: .12
         }
-    );
+      );
+
+    revealElements.forEach(element => {
+      observer.observe(element);
+    });
 
 
-revealElements.forEach(
-    element => {
+    /* LIGHTBOX */
 
-        revealObserver.observe(
-            element
-        );
+    const lightbox =
+      document.getElementById("lightbox");
 
-    }
-);
+    const lightboxImage =
+      document.getElementById("lightboxImage");
 
+    const lightboxClose =
+      document.getElementById("lightboxClose");
 
-/* =========================================================
-   GALLERY LIGHTBOX
-========================================================= */
+    document
+      .querySelectorAll(".gallery-item")
+      .forEach(item => {
 
-const galleryItems =
-    document.querySelectorAll(
-        ".gallery-item"
-    );
+        item.addEventListener("click", () => {
 
-const lightbox =
-    document.getElementById(
-        "lightbox"
-    );
+          lightboxImage.src =
+            item.dataset.image;
 
-const lightboxImage =
-    document.getElementById(
-        "lightboxImage"
-    );
+          lightbox.classList.add("active");
 
-const lightboxClose =
-    document.getElementById(
-        "lightboxClose"
-    );
+          document.body.style.overflow = "hidden";
+
+        });
+
+      });
 
 
-galleryItems.forEach(
-    item => {
+    function closeLightbox() {
 
-        item.addEventListener(
-            "click",
-            () => {
+      lightbox.classList.remove("active");
 
-                const fullImage =
-                    item.dataset.full;
+      lightboxImage.src = "";
 
-                lightboxImage.src =
-                    fullImage;
-
-                lightboxImage.alt =
-                    item.querySelector(
-                        ".gallery-title"
-                    )?.textContent ||
-                    "صورة";
-
-                lightbox.classList.add(
-                    "active"
-                );
-
-                document.body.classList.add(
-                    "no-scroll"
-                );
-
-            }
-        );
+      document.body.style.overflow = "";
 
     }
-);
 
 
-function closeLightbox(){
-
-    lightbox.classList.remove(
-        "active"
+    lightboxClose.addEventListener(
+      "click",
+      closeLightbox
     );
 
-    lightboxImage.src="";
 
-    document.body.classList.remove(
-        "no-scroll"
-    );
+    lightbox.addEventListener(
+      "click",
+      event => {
 
-}
-
-
-lightboxClose.addEventListener(
-    "click",
-    closeLightbox
-);
-
-
-lightbox.addEventListener(
-    "click",
-    event => {
-
-        if(
-            event.target === lightbox
-        ){
-
-            closeLightbox();
-
+        if (event.target === lightbox) {
+          closeLightbox();
         }
 
-    }
-);
+      }
+    );
 
 
-/* =========================================================
-   ESCAPE KEY
-========================================================= */
+    document.addEventListener(
+      "keydown",
+      event => {
 
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if(event.key === "Escape"){
-
-            closeMenu();
-
-            closeLightbox();
-
+        if (event.key === "Escape") {
+          closeLightbox();
         }
 
-    }
-);
+      }
+    );
 
-</script>
+  </script>
 
 </body>
 </html>
