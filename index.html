@@ -18,11 +18,9 @@
 
 :root{
     --navy:#061426;
-    --navy2:#091b30;
     --gold:#d4af37;
     --gold-light:#f2d76b;
     --white:#f8f7f2;
-    --muted:#b9bec5;
 }
 
 *{
@@ -47,22 +45,21 @@ body{
         linear-gradient(
             145deg,
             #020914,
-            var(--navy) 50%,
+            #061426 50%,
             #030b16
         );
 
     color:var(--white);
-
     font-family:"Cairo",sans-serif;
-
     overflow-x:hidden;
 }
+
+/* الخلفية */
 
 body::before{
     content:"";
 
     position:fixed;
-
     inset:0;
 
     pointer-events:none;
@@ -83,6 +80,8 @@ body::before{
     background-size:70px 70px;
 }
 
+/* التوهج الذهبي */
+
 .gold-glow{
     position:fixed;
 
@@ -91,22 +90,22 @@ body::before{
 
     border-radius:50%;
 
-    background:
-        rgba(212,175,55,.08);
+    background:rgba(212,175,55,.08);
 
     filter:blur(90px);
 
     top:25%;
     left:50%;
 
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
     pointer-events:none;
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header{
     height:82px;
@@ -114,13 +113,10 @@ header{
     padding:0 7%;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
-    background:
-        rgba(2,9,20,.88);
+    background:rgba(2,9,20,.88);
 
     border-bottom:
         1px solid
@@ -129,7 +125,6 @@ header{
     backdrop-filter:blur(18px);
 
     position:relative;
-
     z-index:10;
 }
 
@@ -156,7 +151,9 @@ header{
 }
 
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 main{
     width:min(1050px,92%);
@@ -174,8 +171,7 @@ main{
 
     align-items:center;
 
-    padding:
-        70px 0 90px;
+    padding:70px 0 90px;
 
     text-align:center;
 
@@ -183,7 +179,9 @@ main{
 }
 
 
-/* CORNERS */
+/* =========================
+   CORNERS
+========================= */
 
 .corner{
     position:absolute;
@@ -212,7 +210,9 @@ main{
 }
 
 
-/* NAME */
+/* =========================
+   NAME
+========================= */
 
 .name{
     font-family:"Cairo",sans-serif;
@@ -229,7 +229,6 @@ main{
     color:var(--white);
 
     margin-top:18px;
-
     margin-bottom:22px;
 
     text-shadow:
@@ -245,7 +244,9 @@ main{
 }
 
 
-/* GOLD LINE */
+/* =========================
+   GOLD LINE
+========================= */
 
 .gold-line{
     width:150px;
@@ -273,12 +274,14 @@ main{
 }
 
 
-/* PHOTO */
+/* =========================
+   SQUARE PHOTO 1:1
+========================= */
 
 .photo-frame{
     width:min(470px,88vw);
 
-    aspect-ratio:4 / 5;
+    aspect-ratio:1 / 1;
 
     position:relative;
 
@@ -301,14 +304,9 @@ main{
         1px solid
         rgba(212,175,55,.9);
 
-    border-radius:
-        32px
-        32px
-        75px
-        75px;
+    border-radius:32px;
 
-    transform:
-        rotate(-1.2deg);
+    transform:rotate(-1.2deg);
 
     box-shadow:
         0 0 45px
@@ -326,22 +324,22 @@ main{
         1px solid
         rgba(212,175,55,.28);
 
-    border-radius:
-        27px
-        27px
-        68px
-        68px;
+    border-radius:27px;
 
-    transform:
-        rotate(1.2deg);
+    transform:rotate(1.2deg);
 }
+
+
+/* =========================
+   PROFILE IMAGE
+========================= */
 
 .profile-photo{
     width:100%;
 
     height:100%;
 
-    object-fit:cover;
+    object-fit:contain;
 
     display:block;
 
@@ -349,15 +347,13 @@ main{
 
     z-index:2;
 
-    border-radius:
-        24px
-        24px
-        62px
-        62px;
+    border-radius:24px;
 
     border:
         5px solid
         #07172a;
+
+    background:#07172a;
 
     box-shadow:
         0 25px 70px
@@ -368,18 +364,18 @@ main{
         box-shadow .5s ease;
 }
 
-.photo-frame:hover
-.profile-photo{
-    transform:
-        scale(1.015);
+.photo-frame:hover .profile-photo{
+    transform:scale(1.015);
 
     box-shadow:
         0 30px 85px
-        rgba(0,0,0,.6);
+        rgba(212,175,55,.16);
 }
 
 
-/* QUOTE */
+/* =========================
+   QUOTE
+========================= */
 
 .quote{
     font-size:
@@ -396,7 +392,9 @@ main{
 }
 
 
-/* LINKS */
+/* =========================
+   LINKS
+========================= */
 
 .links{
     display:flex;
@@ -416,8 +414,7 @@ main{
 .link{
     min-width:200px;
 
-    padding:
-        14px 25px;
+    padding:14px 25px;
 
     border-radius:999px;
 
@@ -440,8 +437,7 @@ main{
 }
 
 .link:hover{
-    transform:
-        translateY(-4px);
+    transform:translateY(-4px);
 
     border-color:
         var(--gold-light);
@@ -455,18 +451,18 @@ main{
 }
 
 .link span{
-    color:
-        var(--gold-light);
+    color:var(--gold-light);
 
     margin-left:8px;
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-    padding:
-        32px 20px;
+    padding:32px 20px;
 
     text-align:center;
 
@@ -499,7 +495,9 @@ footer{
 }
 
 
-/* ANIMATION */
+/* =========================
+   ANIMATION
+========================= */
 
 @keyframes reveal{
 
@@ -519,15 +517,16 @@ footer{
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
 
     header{
         height:72px;
 
-        padding:
-            0 22px;
+        padding:0 22px;
     }
 
     .brand{
@@ -549,43 +548,42 @@ footer{
         font-size:
             clamp(40px,11vw,58px);
 
-        letter-spacing:
-            -1.5px;
+        letter-spacing:-1.5px;
 
-        line-height:
-            1.35;
+        line-height:1.35;
 
-        margin-bottom:
-            20px;
+        margin-bottom:20px;
     }
 
     .gold-line{
         width:110px;
 
-        margin-bottom:
-            38px;
+        margin-bottom:38px;
     }
 
     .photo-frame{
         width:
             min(390px,88vw);
 
-        margin-bottom:
-            35px;
+        aspect-ratio:1 / 1;
+
+        margin-bottom:35px;
+    }
+
+    .profile-photo{
+        object-fit:contain;
     }
 
     .quote{
         font-size:21px;
 
-        margin-bottom:
-            25px;
+        margin-bottom:25px;
     }
 
     .links{
         width:100%;
 
-        flex-direction:
-            column;
+        flex-direction:column;
     }
 
     .link{
@@ -607,8 +605,7 @@ footer{
     }
 
     footer{
-        padding:
-            28px 15px;
+        padding:28px 15px;
     }
 
     .footer-name{
@@ -617,7 +614,9 @@ footer{
 }
 
 
-/* REDUCED MOTION */
+/* =========================
+   REDUCED MOTION
+========================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -639,6 +638,10 @@ footer{
 <div class="gold-glow"></div>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
     <div class="brand">
@@ -652,15 +655,20 @@ footer{
 </header>
 
 
+<!-- =========================
+     MAIN
+========================= -->
+
 <main>
 
 <section class="hero">
-
 
     <div class="corner one"></div>
 
     <div class="corner two"></div>
 
+
+    <!-- الاسم العربي -->
 
     <h1 class="name">
         مبخوت <span>بن عبدالله</span>
@@ -670,7 +678,7 @@ footer{
     <div class="gold-line"></div>
 
 
-    <!-- الصورة الجديدة -->
+    <!-- الصورة 1:1 -->
 
     <div class="photo-frame">
 
@@ -684,10 +692,14 @@ footer{
     </div>
 
 
+    <!-- النبذة -->
+
     <p class="quote">
         وما توفيقي إلا بالله
     </p>
 
+
+    <!-- الروابط -->
 
     <div class="links">
 
@@ -716,6 +728,10 @@ footer{
 
 </main>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
