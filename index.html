@@ -5,28 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>مبخوت بن عبدالله — MBK</title>
-  <meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله.">
+
+  <meta
+    name="description"
+    content="الموقع الشخصي لمبخوت بن عبدالله."
+  >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
+
+    /* =========================================================
+       MBK — COLOR SYSTEM
+       ONLY 3 COLORS
+       ========================================================= */
+
     :root {
-      --bg: #000;
-      --surface: #111;
-      --surface-2: #171717;
-      --text: #f5f5f7;
-      --muted: #86868b;
-      --gold: #d4af37;
-      --line: rgba(255,255,255,.10);
-      --max: 1180px;
+      --navy: #071A33;
+      --white: #FFFFFF;
+      --gold: #D4AF37;
+
+      --max-width: 1200px;
     }
 
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -34,8 +50,8 @@
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: var(--navy);
+      color: var(--white);
       font-family: "Cairo", sans-serif;
       overflow-x: hidden;
     }
@@ -45,639 +61,1122 @@
       text-decoration: none;
     }
 
+    button {
+      font-family: inherit;
+    }
+
     img {
       display: block;
       max-width: 100%;
     }
 
-    button {
-      font: inherit;
-    }
 
-    /* NAV */
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
 
-    .nav {
+    .navbar {
       position: fixed;
       top: 0;
       right: 0;
       left: 0;
-      height: 54px;
-      z-index: 1000;
+
+      height: 64px;
+
+      z-index: 9999;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      padding: 0 28px;
+      padding: 0 35px;
 
-      background: rgba(0,0,0,.72);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(7, 26, 51, 0.94);
 
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
     }
 
-    .brand {
+
+    /* LOGO */
+
+    .logo {
       direction: ltr;
+
       font-family: Arial, sans-serif;
-      font-size: 16px;
+
+      font-size: 17px;
       font-weight: 700;
-      letter-spacing: 4px;
+
+      letter-spacing: 5px;
+
+      color: var(--gold);
     }
+
+
+    /* NAV LINKS */
 
     .nav-links {
       display: flex;
-      gap: 28px;
       align-items: center;
+      gap: 34px;
     }
 
     .nav-links a {
-      color: #aaa;
+      position: relative;
+
       font-size: 12px;
-      transition: color .3s ease;
+      font-weight: 500;
+
+      color: var(--white);
+
+      transition: .3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+
+      position: absolute;
+
+      right: 0;
+      bottom: -7px;
+
+      width: 0;
+      height: 1px;
+
+      background: var(--gold);
+
+      transition: .3s ease;
     }
 
     .nav-links a:hover {
-      color: #fff;
+      color: var(--gold);
     }
 
-    .menu {
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+
+    /* MOBILE MENU */
+
+    .menu-button {
       display: none;
-      width: 34px;
-      height: 34px;
-      border: 0;
-      background: transparent;
-      color: #fff;
+
+      width: 38px;
+      height: 38px;
+
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+
+      background: var(--navy);
+
+      color: var(--gold);
+
       cursor: pointer;
-      font-size: 20px;
+
+      font-size: 18px;
     }
 
-    /* HERO */
+
+    /* =========================================================
+       HERO
+       ========================================================= */
 
     .hero {
       min-height: 100vh;
-      padding: 150px 24px 80px;
 
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
 
       text-align: center;
+
+      padding:
+        150px
+        24px
+        90px;
     }
 
-    .eyebrow {
+
+    .hero-label {
       direction: ltr;
+
       color: var(--gold);
+
       font-family: Arial, sans-serif;
+
       font-size: 10px;
-      letter-spacing: 4px;
+
+      letter-spacing: 5px;
+
+      margin-bottom: 25px;
+    }
+
+
+    .hero-title {
+      color: var(--white);
+
+      font-size: clamp(45px, 8vw, 92px);
+
+      line-height: 1.15;
+
+      font-weight: 600;
+
+      letter-spacing: -3px;
+
       margin-bottom: 24px;
     }
 
-    .hero h1 {
-      font-size: clamp(44px, 8vw, 92px);
-      line-height: 1.15;
-      font-weight: 600;
-      letter-spacing: -3px;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 span {
+    .hero-title span {
       color: var(--gold);
     }
 
-    .hero p {
-      max-width: 620px;
-      color: var(--muted);
-      font-size: 17px;
+
+    .hero-description {
+      max-width: 650px;
+
+      color: var(--white);
+
+      font-size: 16px;
+
       line-height: 2;
-      margin-bottom: 38px;
-    }
 
-    .hero-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-
-      color: #fff;
-      font-size: 14px;
-
-      transition: color .3s ease;
-    }
-
-    .hero-link span {
-      direction: ltr;
-      color: var(--gold);
-      transition: transform .3s ease;
-    }
-
-    .hero-link:hover {
-      color: var(--gold);
-    }
-
-    .hero-link:hover span {
-      transform: translateX(-5px);
-    }
-
-    /* HERO IMAGE */
-
-    .hero-image-wrap {
-      width: min(920px, 92vw);
-      margin-top: 85px;
-      position: relative;
-    }
-
-    .hero-image {
-      width: 100%;
-      max-height: 760px;
-      object-fit: contain;
-      object-position: center;
-      border-radius: 28px;
-      background: #090909;
-    }
-
-    /* SECTIONS */
-
-    .section {
-      width: min(var(--max), calc(100% - 48px));
-      margin: auto;
-      padding: 150px 0;
-    }
-
-    .section-label {
-      color: var(--gold);
-      direction: ltr;
-      font-family: Arial, sans-serif;
-      font-size: 10px;
-      letter-spacing: 4px;
-      margin-bottom: 20px;
-    }
-
-    .section-title {
-      font-size: clamp(38px, 6vw, 68px);
-      line-height: 1.25;
-      font-weight: 600;
-      letter-spacing: -2px;
-      margin-bottom: 55px;
-    }
-
-    /* ABOUT */
-
-    .about {
-      display: grid;
-      grid-template-columns: .75fr 1.25fr;
-      gap: 90px;
-      align-items: start;
-    }
-
-    .about-intro {
-      font-size: 28px;
-      line-height: 1.7;
-      font-weight: 500;
-    }
-
-    .about-text {
-      color: #aaa;
-      font-size: 17px;
-      line-height: 2.2;
-    }
-
-    .about-text strong {
-      display: block;
-      color: #fff;
-      margin-top: 28px;
-      font-weight: 500;
-    }
-
-    /* JOURNEY */
-
-    .journey {
-      border-top: 1px solid var(--line);
-    }
-
-    .journey-item {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 60px;
-
-      padding: 38px 0;
-
-      border-bottom: 1px solid var(--line);
-
-      transition: padding .4s ease;
-    }
-
-    .journey-item:hover {
-      padding-right: 14px;
-      padding-left: 14px;
-    }
-
-    .year {
-      direction: ltr;
-      font-family: Arial, sans-serif;
-      color: var(--gold);
-      font-size: 22px;
-      font-weight: 600;
-    }
-
-    .journey-content h3 {
-      font-size: 22px;
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-
-    .journey-content p {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.9;
-    }
-
-    /* GALLERY */
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      background: var(--surface);
-      cursor: pointer;
-    }
-
-    .gallery-item.large {
-      grid-column: span 2;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      min-height: 420px;
-      object-fit: cover;
-      transition: transform 1s cubic-bezier(.2,.8,.2,1);
-    }
-
-    .gallery-item.large img {
-      min-height: 620px;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.035);
-    }
-
-    .gallery-overlay {
-      position: absolute;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      padding: 28px;
-
-      background: linear-gradient(
-        transparent,
-        rgba(0,0,0,.75)
-      );
-    }
-
-    .gallery-overlay small {
-      direction: ltr;
-      display: block;
-      color: var(--gold);
-      font-family: Arial, sans-serif;
-      font-size: 9px;
-      letter-spacing: 3px;
-      margin-bottom: 5px;
-    }
-
-    .gallery-overlay h3 {
-      font-size: 20px;
-      font-weight: 500;
-    }
-
-    /* SIGNATURE */
-
-    .signature {
-      text-align: center;
-      padding: 180px 20px;
-    }
-
-    .signature-mbk {
-      direction: ltr;
-      font-family: Arial, sans-serif;
-      font-size: clamp(70px, 16vw, 190px);
-      font-weight: 700;
-      letter-spacing: 10px;
-      color: #fff;
-      line-height: 1;
-    }
-
-    .signature p {
-      margin-top: 25px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* CONTACT */
-
-    .contact {
-      text-align: center;
-      padding-bottom: 150px;
-    }
-
-    .contact h2 {
-      font-size: clamp(42px, 7vw, 76px);
-      font-weight: 600;
-      letter-spacing: -2px;
-      margin-bottom: 18px;
-    }
-
-    .contact p {
-      color: var(--muted);
-      font-size: 15px;
       margin-bottom: 35px;
     }
 
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-    }
 
-    .social {
-      width: 54px;
-      height: 54px;
+    /* HERO BUTTON */
 
-      display: flex;
+    .hero-button {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 12px;
 
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.16);
+      padding: 12px 25px;
 
-      color: #fff;
+      border: 1px solid var(--gold);
+      border-radius: 30px;
+
+      color: var(--gold);
+
+      font-size: 13px;
 
       transition:
-        border-color .3s ease,
+        background .3s ease,
         color .3s ease,
         transform .3s ease;
     }
 
-    .social:hover {
-      color: var(--gold);
-      border-color: var(--gold);
-      transform: translateY(-4px);
+    .hero-button span {
+      font-size: 17px;
+      direction: ltr;
     }
 
+    .hero-button:hover {
+      background: var(--gold);
+      color: var(--navy);
+
+      transform: translateY(-3px);
+    }
+
+
+    /* =========================================================
+       HERO IMAGE
+       ========================================================= */
+
+    .hero-image-container {
+      width: min(900px, 92vw);
+
+      margin-top: 75px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      border-radius: 28px;
+
+      border: 1px solid rgba(212, 175, 55, 0.35);
+
+      background: var(--navy);
+    }
+
+    .hero-image-container::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      border: 1px solid rgba(212, 175, 55, 0.20);
+
+      border-radius: inherit;
+
+      pointer-events: none;
+    }
+
+    .hero-image {
+      width: 100%;
+
+      height: auto;
+
+      object-fit: contain;
+
+      background: var(--navy);
+    }
+
+
+    /* =========================================================
+       GENERAL SECTIONS
+       ========================================================= */
+
+    .section {
+      width: min(
+        var(--max-width),
+        calc(100% - 60px)
+      );
+
+      margin: auto;
+
+      padding: 150px 0;
+    }
+
+
+    .section-label {
+      direction: ltr;
+
+      color: var(--gold);
+
+      font-family: Arial, sans-serif;
+
+      font-size: 10px;
+
+      letter-spacing: 5px;
+
+      margin-bottom: 18px;
+    }
+
+
+    .section-title {
+      color: var(--white);
+
+      font-size: clamp(40px, 6vw, 70px);
+
+      line-height: 1.2;
+
+      font-weight: 600;
+
+      letter-spacing: -2px;
+
+      margin-bottom: 60px;
+    }
+
+
+    /* =========================================================
+       ABOUT
+       ========================================================= */
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns:
+        .8fr
+        1.2fr;
+
+      gap: 100px;
+
+      align-items: start;
+    }
+
+
+    .about-intro {
+      color: var(--gold);
+
+      font-size: 30px;
+
+      line-height: 1.7;
+
+      font-weight: 600;
+    }
+
+
+    .about-text {
+      color: var(--white);
+
+      font-size: 17px;
+
+      line-height: 2.25;
+    }
+
+
+    .about-text strong {
+      display: block;
+
+      color: var(--gold);
+
+      margin-top: 30px;
+
+      font-size: 18px;
+
+      font-weight: 600;
+    }
+
+
+    /* =========================================================
+       JOURNEY
+       ========================================================= */
+
+    .journey-list {
+      border-top: 1px solid rgba(212, 175, 55, .35);
+    }
+
+
+    .journey-item {
+      display: grid;
+
+      grid-template-columns: 160px 1fr;
+
+      gap: 55px;
+
+      padding: 38px 0;
+
+      border-bottom: 1px solid rgba(212, 175, 55, .35);
+
+      transition:
+        padding .4s ease,
+        background .4s ease;
+    }
+
+
+    .journey-item:hover {
+      padding-right: 18px;
+      padding-left: 18px;
+
+      background: rgba(212, 175, 55, .04);
+    }
+
+
+    .journey-year {
+      direction: ltr;
+
+      color: var(--gold);
+
+      font-family: Arial, sans-serif;
+
+      font-size: 23px;
+
+      font-weight: 700;
+    }
+
+
+    .journey-content h3 {
+      color: var(--white);
+
+      font-size: 22px;
+
+      font-weight: 600;
+
+      margin-bottom: 7px;
+    }
+
+
+    .journey-content p {
+      color: var(--white);
+
+      font-size: 14px;
+
+      line-height: 1.9;
+    }
+
+
+    /* =========================================================
+       GALLERY
+       ========================================================= */
+
+    .gallery {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 20px;
+    }
+
+
+    .gallery-item {
+      position: relative;
+
+      overflow: hidden;
+
+      min-height: 430px;
+
+      border-radius: 25px;
+
+      border: 1px solid rgba(212, 175, 55, .28);
+
+      cursor: pointer;
+
+      background: var(--navy);
+    }
+
+
+    .gallery-item.large {
+      grid-column: span 2;
+
+      min-height: 620px;
+    }
+
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+
+      position: absolute;
+      inset: 0;
+
+      object-fit: cover;
+
+      transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
+    }
+
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+
+    .gallery-overlay {
+      position: absolute;
+
+      right: 0;
+      left: 0;
+      bottom: 0;
+
+      padding: 35px;
+
+      background:
+        linear-gradient(
+          transparent,
+          rgba(7,26,51,.95)
+        );
+    }
+
+
+    .gallery-overlay small {
+      display: block;
+
+      direction: ltr;
+
+      color: var(--gold);
+
+      font-family: Arial, sans-serif;
+
+      font-size: 9px;
+
+      letter-spacing: 4px;
+
+      margin-bottom: 8px;
+    }
+
+
+    .gallery-overlay h3 {
+      color: var(--white);
+
+      font-size: 22px;
+
+      font-weight: 600;
+    }
+
+
+    /* =========================================================
+       MBK SIGNATURE
+       ========================================================= */
+
+    .signature {
+      text-align: center;
+
+      padding:
+        170px
+        20px;
+    }
+
+
+    .signature-logo {
+      direction: ltr;
+
+      color: var(--gold);
+
+      font-family: Arial, sans-serif;
+
+      font-size: clamp(
+        80px,
+        17vw,
+        190px
+      );
+
+      font-weight: 700;
+
+      letter-spacing: 12px;
+
+      line-height: 1;
+    }
+
+
+    .signature-line {
+      width: 70px;
+      height: 1px;
+
+      background: var(--gold);
+
+      margin:
+        28px
+        auto;
+    }
+
+
+    .signature p {
+      color: var(--white);
+
+      font-size: 14px;
+    }
+
+
+    /* =========================================================
+       CONTACT
+       ========================================================= */
+
+    .contact {
+      text-align: center;
+
+      padding:
+        100px
+        20px
+        160px;
+    }
+
+
+    .contact .section-label {
+      margin-bottom: 20px;
+    }
+
+
+    .contact-title {
+      color: var(--white);
+
+      font-size: clamp(
+        45px,
+        8vw,
+        80px
+      );
+
+      font-weight: 600;
+
+      letter-spacing: -2px;
+
+      margin-bottom: 20px;
+    }
+
+
+    .contact-description {
+      color: var(--white);
+
+      font-size: 15px;
+
+      margin-bottom: 35px;
+    }
+
+
+    /* SOCIAL ICONS */
+
+    .socials {
+      display: flex;
+
+      justify-content: center;
+
+      gap: 15px;
+    }
+
+
+    .social {
+      width: 56px;
+      height: 56px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border:
+        1px solid
+        var(--gold);
+
+      border-radius: 50%;
+
+      color: var(--gold);
+
+      background: var(--navy);
+
+      transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease;
+    }
+
+
+    .social:hover {
+      background: var(--gold);
+
+      color: var(--navy);
+
+      transform: translateY(-5px);
+    }
+
+
     .social svg {
-      width: 21px;
-      height: 21px;
+      width: 22px;
+      height: 22px;
+
       fill: currentColor;
     }
 
-    /* FOOTER */
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
 
     footer {
-      border-top: 1px solid var(--line);
-      padding: 30px 20px 35px;
+      border-top:
+        1px solid
+        rgba(212, 175, 55, .35);
+
       text-align: center;
+
+      padding: 35px 20px 40px;
     }
 
+
     footer p {
-      color: #666;
+      color: var(--white);
+
       font-size: 11px;
     }
 
-    .footer-mbk {
+
+    .footer-logo {
       direction: ltr;
+
       color: var(--gold);
+
       font-family: Arial, sans-serif;
+
       letter-spacing: 5px;
+
       font-size: 12px;
-      margin-top: 10px;
+
+      margin-top: 12px;
     }
 
-    /* ANIMATION */
+
+    /* =========================================================
+       REVEAL ANIMATION
+       ========================================================= */
 
     .reveal {
       opacity: 0;
-      transform: translateY(35px);
+
+      transform:
+        translateY(40px);
+
       transition:
         opacity .9s ease,
-        transform .9s cubic-bezier(.2,.8,.2,1);
+        transform .9s
+        cubic-bezier(.2,.8,.2,1);
     }
 
-    .reveal.show {
+
+    .reveal.visible {
       opacity: 1;
-      transform: translateY(0);
+
+      transform:
+        translateY(0);
     }
 
-    /* LIGHTBOX */
+
+    /* =========================================================
+       LIGHTBOX
+       ========================================================= */
 
     .lightbox {
       position: fixed;
+
       inset: 0;
-      z-index: 3000;
+
+      z-index: 99999;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
       padding: 25px;
 
-      background: rgba(0,0,0,.94);
-      backdrop-filter: blur(20px);
+      background:
+        rgba(7,26,51,.98);
 
       opacity: 0;
+
       visibility: hidden;
+
       transition: .35s ease;
     }
 
+
     .lightbox.active {
       opacity: 1;
+
       visibility: visible;
     }
 
+
     .lightbox img {
       max-width: 94vw;
+
       max-height: 90vh;
+
       object-fit: contain;
-      border-radius: 15px;
+
+      border:
+        1px solid
+        var(--gold);
+
+      border-radius: 18px;
     }
 
-    .lightbox-close {
+
+    .close-lightbox {
       position: absolute;
-      top: 22px;
+
+      top: 25px;
       left: 25px;
 
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
 
-      border: 1px solid rgba(255,255,255,.2);
+      border:
+        1px solid
+        var(--gold);
+
       border-radius: 50%;
 
-      background: transparent;
-      color: #fff;
+      background: var(--navy);
 
-      font-size: 22px;
+      color: var(--gold);
+
+      font-size: 24px;
+
       cursor: pointer;
     }
 
-    /* MOBILE */
 
-    @media (max-width: 760px) {
+    /* =========================================================
+       MOBILE
+       ========================================================= */
 
-      .nav {
-        padding: 0 18px;
+    @media (max-width: 800px) {
+
+      .navbar {
+        padding: 0 20px;
       }
+
 
       .nav-links {
         display: none;
+
+        position: absolute;
+
+        top: 64px;
+        right: 0;
+        left: 0;
+
+        flex-direction: column;
+
+        gap: 25px;
+
+        padding: 30px;
+
+        background: var(--navy);
+
+        border-bottom:
+          1px solid
+          rgba(212,175,55,.35);
       }
 
-      .menu {
+
+      .nav-links.open {
+        display: flex;
+      }
+
+
+      .menu-button {
         display: block;
       }
 
+
       .hero {
-        padding-top: 125px;
+        padding-top: 130px;
       }
 
-      .hero h1 {
-        letter-spacing: -1.5px;
+
+      .hero-title {
+        letter-spacing: -1px;
       }
 
-      .hero p {
-        font-size: 15px;
+
+      .hero-description {
+        font-size: 14px;
       }
 
-      .hero-image-wrap {
+
+      .hero-image-container {
         margin-top: 55px;
-      }
 
-      .hero-image {
         border-radius: 20px;
       }
 
+
       .section {
-        padding: 95px 0;
-        width: min(92%, 560px);
+        width: min(
+          92%,
+          600px
+        );
+
+        padding: 100px 0;
       }
 
-      .about {
+
+      .about-grid {
         grid-template-columns: 1fr;
+
         gap: 30px;
       }
 
+
       .about-intro {
-        font-size: 23px;
+        font-size: 24px;
       }
+
 
       .about-text {
         font-size: 15px;
       }
 
+
       .journey-item {
-        grid-template-columns: 80px 1fr;
+        grid-template-columns:
+          80px 1fr;
+
         gap: 20px;
       }
+
+
+      .journey-content h3 {
+        font-size: 19px;
+      }
+
+
+      .journey-content p {
+        font-size: 13px;
+      }
+
 
       .gallery {
         grid-template-columns: 1fr;
       }
 
+
       .gallery-item.large {
         grid-column: span 1;
       }
 
-      .gallery-item img,
-      .gallery-item.large img {
-        min-height: 330px;
+
+      .gallery-item,
+      .gallery-item.large {
+        min-height: 340px;
       }
+
 
       .signature {
-        padding: 110px 20px;
+        padding:
+          110px
+          20px;
       }
 
-      .signature-mbk {
-        letter-spacing: 5px;
+
+      .signature-logo {
+        letter-spacing: 6px;
       }
+
 
       .contact {
-        padding-bottom: 100px;
+        padding-bottom: 110px;
       }
+
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- NAVIGATION -->
 
-  <header class="nav">
-    <a href="#home" class="brand">MBK</a>
+  <!-- =======================================================
+       NAVIGATION
+       ======================================================= -->
 
-    <nav class="nav-links">
-      <a href="#about">نبذة</a>
-      <a href="#journey">رحلتي</a>
-      <a href="#gallery">مختاراتي</a>
-      <a href="#contact">تواصل</a>
+  <header class="navbar">
+
+    <a
+      href="#home"
+      class="logo"
+    >
+      MBK
+    </a>
+
+
+    <nav
+      class="nav-links"
+      id="navLinks"
+    >
+
+      <a href="#about">
+        نبذة
+      </a>
+
+      <a href="#journey">
+        رحلتي
+      </a>
+
+      <a href="#gallery">
+        مختاراتي
+      </a>
+
+      <a href="#contact">
+        تواصل
+      </a>
+
     </nav>
 
-    <button class="menu" id="menuBtn" aria-label="القائمة">☰</button>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      aria-label="فتح القائمة"
+    >
+      ☰
+    </button>
+
   </header>
 
 
-  <!-- HERO -->
+  <!-- =======================================================
+       HERO
+       ======================================================= -->
 
   <main id="home">
 
+
     <section class="hero">
 
-      <div class="eyebrow">MBK / PERSONAL IDENTITY</div>
 
-      <h1>
-        مبخوت <span>بن عبدالله</span>
+      <div class="hero-label">
+        MBK / PERSONAL IDENTITY
+      </div>
+
+
+      <h1 class="hero-title">
+
+        مبخوت
+
+        <span>
+          بن عبدالله
+        </span>
+
       </h1>
 
-      <p>
-        مساحة شخصية تجمع بين الأصالة، الأناقة والطموح،
-        وتعكس الأشياء التي أؤمن بقيمتها وجمالها.
+
+      <p class="hero-description">
+
+        مساحة شخصية تجمع بين الأصالة،
+        الأناقة والطموح، وتعكس الأشياء
+        التي أؤمن بقيمتها وجمالها.
+
       </p>
 
-      <a href="#about" class="hero-link">
+
+      <a
+        href="#about"
+        class="hero-button"
+      >
+
         اكتشف المزيد
-        <span>↓</span>
+
+        <span>
+          ↓
+        </span>
+
       </a>
 
-      <div class="hero-image-wrap">
+
+      <!-- الصورة الأصلية -->
+
+      <div class="hero-image-container">
+
         <img
           class="hero-image"
           src="file_00000000202482468d4027eb8c5919f7.png"
           alt="مبخوت بن عبدالله"
         >
+
       </div>
+
 
     </section>
 
 
-    <!-- ABOUT -->
+    <!-- =====================================================
+         ABOUT
+         ===================================================== -->
 
-    <section class="section reveal" id="about">
+    <section
+      class="section reveal"
+      id="about"
+    >
 
-      <div class="section-label">ABOUT</div>
+      <div class="section-label">
+        ABOUT
+      </div>
+
 
       <h2 class="section-title">
-        من أنا؟
+        نبذة
       </h2>
 
-      <div class="about">
+
+      <div class="about-grid">
+
 
         <div class="about-intro">
+
           أنا مبخوت بن عبدالله.
+
         </div>
+
 
         <div class="about-text">
 
@@ -693,8 +1192,12 @@
           من اهتماماتي، أعمالي، اختياراتي، والأشياء
           التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
 
+
           <strong>
-            أطمح للأفضل، وأسعى لأن أترك أثرًا يستحق أن يُذكر.
+
+            أطمح للأفضل، وأسعى لأن أترك أثرًا
+            يستحق أن يُذكر.
+
           </strong>
 
         </div>
@@ -704,99 +1207,187 @@
     </section>
 
 
-    <!-- JOURNEY -->
+    <!-- =====================================================
+         JOURNEY
+         ===================================================== -->
 
-    <section class="section reveal" id="journey">
+    <section
+      class="section reveal"
+      id="journey"
+    >
 
-      <div class="section-label">JOURNEY</div>
+      <div class="section-label">
+        JOURNEY
+      </div>
+
 
       <h2 class="section-title">
         رحلتي
       </h2>
 
-      <div class="journey">
+
+      <div class="journey-list">
+
 
         <article class="journey-item">
-          <div class="year">2015</div>
-          <div class="journey-content">
-            <h3>البداية</h3>
-            <p>
-              بداية مرحلة جديدة من التجارب واكتشاف الذات.
-            </p>
+
+          <div class="journey-year">
+            2015
           </div>
+
+          <div class="journey-content">
+
+            <h3>
+              البداية
+            </h3>
+
+            <p>
+              بداية مرحلة جديدة من التجارب
+              واكتشاف الذات.
+            </p>
+
+          </div>
+
         </article>
 
-        <article class="journey-item">
-          <div class="year">2018</div>
-          <div class="journey-content">
-            <h3>التجربة</h3>
-            <p>
-              سنوات من التجربة والتعلم وتكوين رؤية أكثر وضوحًا.
-            </p>
-          </div>
-        </article>
 
         <article class="journey-item">
-          <div class="year">2021</div>
-          <div class="journey-content">
-            <h3>التطور</h3>
-            <p>
-              مرحلة جديدة أصبحت فيها التجارب جزءًا من الهوية.
-            </p>
+
+          <div class="journey-year">
+            2018
           </div>
+
+          <div class="journey-content">
+
+            <h3>
+              التجربة
+            </h3>
+
+            <p>
+              سنوات من التجربة والتعلم
+              وتكوين رؤية أكثر وضوحًا.
+            </p>
+
+          </div>
+
         </article>
 
-        <article class="journey-item">
-          <div class="year">2024</div>
-          <div class="journey-content">
-            <h3>رؤية جديدة</h3>
-            <p>
-              طموح أكبر وخطوات أكثر ثباتًا نحو المستقبل.
-            </p>
-          </div>
-        </article>
 
         <article class="journey-item">
-          <div class="year">2026</div>
+
+          <div class="journey-year">
+            2021
+          </div>
+
           <div class="journey-content">
-            <h3>القادم</h3>
+
+            <h3>
+              التطور
+            </h3>
+
+            <p>
+              مرحلة جديدة أصبحت فيها
+              التجارب جزءًا من الهوية.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="journey-item">
+
+          <div class="journey-year">
+            2024
+          </div>
+
+          <div class="journey-content">
+
+            <h3>
+              رؤية جديدة
+            </h3>
+
+            <p>
+              طموح أكبر وخطوات أكثر ثباتًا
+              نحو المستقبل.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="journey-item">
+
+          <div class="journey-year">
+            2026
+          </div>
+
+          <div class="journey-content">
+
+            <h3>
+              القادم
+            </h3>
+
             <p>
               ما زالت الرحلة مستمرة.
             </p>
+
           </div>
+
         </article>
+
 
       </div>
 
     </section>
 
 
-    <!-- GALLERY -->
+    <!-- =====================================================
+         SELECTED
+         ===================================================== -->
 
-    <section class="section reveal" id="gallery">
+    <section
+      class="section reveal"
+      id="gallery"
+    >
 
-      <div class="section-label">SELECTED</div>
+      <div class="section-label">
+        SELECTED
+      </div>
+
 
       <h2 class="section-title">
         مختاراتي
       </h2>
 
+
       <div class="gallery">
+
 
         <article
           class="gallery-item large"
           data-image="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=90"
         >
+
           <img
-            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
-            alt="الجبال والطبيعة"
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=90"
+            alt="الطبيعة"
             loading="lazy"
           >
 
           <div class="gallery-overlay">
-            <small>NATURE</small>
-            <h3>هدوء الطبيعة</h3>
+
+            <small>
+              NATURE
+            </small>
+
+            <h3>
+              هدوء الطبيعة
+            </h3>
+
           </div>
+
         </article>
 
 
@@ -804,16 +1395,25 @@
           class="gallery-item"
           data-image="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
         >
+
           <img
-            src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=90"
-            alt="مدينة"
+            src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
+            alt="المدينة"
             loading="lazy"
           >
 
           <div class="gallery-overlay">
-            <small>CITY</small>
-            <h3>نبض المدينة</h3>
+
+            <small>
+              CITY
+            </small>
+
+            <h3>
+              نبض المدينة
+            </h3>
+
           </div>
+
         </article>
 
 
@@ -821,16 +1421,25 @@
           class="gallery-item"
           data-image="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
         >
+
           <img
-            src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=90"
-            alt="شوارع"
+            src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
+            alt="الشوارع"
             loading="lazy"
           >
 
           <div class="gallery-overlay">
-            <small>STREETS</small>
-            <h3>بين الشوارع</h3>
+
+            <small>
+              STREETS
+            </small>
+
+            <h3>
+              بين الشوارع
+            </h3>
+
           </div>
+
         </article>
 
 
@@ -838,16 +1447,25 @@
           class="gallery-item"
           data-image="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
         >
+
           <img
-            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90"
-            alt="طريق"
+            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+            alt="الطريق"
             loading="lazy"
           >
 
           <div class="gallery-overlay">
-            <small>JOURNEY</small>
-            <h3>الطريق</h3>
+
+            <small>
+              JOURNEY
+            </small>
+
+            <h3>
+              الطريق
+            </h3>
+
           </div>
+
         </article>
 
 
@@ -855,30 +1473,46 @@
           class="gallery-item"
           data-image="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
         >
+
           <img
-            src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=90"
-            alt="هندسة معمارية"
+            src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
+            alt="الهندسة المعمارية"
             loading="lazy"
           >
 
           <div class="gallery-overlay">
-            <small>ARCHITECTURE</small>
-            <h3>تفاصيل المكان</h3>
+
+            <small>
+              ARCHITECTURE
+            </small>
+
+            <h3>
+              تفاصيل المكان
+            </h3>
+
           </div>
+
         </article>
+
 
       </div>
 
     </section>
 
 
-    <!-- SIGNATURE -->
+    <!-- =====================================================
+         SIGNATURE
+         ===================================================== -->
 
     <section class="signature reveal">
 
-      <div class="signature-mbk">
+      <div class="signature-logo">
         MBK
       </div>
+
+
+      <div class="signature-line"></div>
+
 
       <p>
         الأصالة في الهوية، والطموح في كل خطوة.
@@ -887,19 +1521,32 @@
     </section>
 
 
-    <!-- CONTACT -->
+    <!-- =====================================================
+         CONTACT
+         ===================================================== -->
 
-    <section class="contact reveal" id="contact">
+    <section
+      class="contact reveal"
+      id="contact"
+    >
 
-      <div class="section-label">CONTACT</div>
+      <div class="section-label">
+        CONTACT
+      </div>
 
-      <h2>تواصل</h2>
 
-      <p>
+      <h2 class="contact-title">
+        تواصل
+      </h2>
+
+
+      <p class="contact-description">
         يسعدني تواصلك.
       </p>
 
+
       <div class="socials">
+
 
         <!-- EMAIL -->
 
@@ -909,9 +1556,17 @@
           aria-label="البريد الإلكتروني"
           title="البريد الإلكتروني"
         >
-          <svg viewBox="0 0 24 24">
-            <path d="M3 5h18v14H3V5zm2 2v.7l7 5 7-5V7l-7 5-7-5z"/>
+
+          <svg
+            viewBox="0 0 24 24"
+          >
+
+            <path
+              d="M3 5h18v14H3V5zm2 2v.7l7 5 7-5V7l-7 5-7-5z"
+            />
+
           </svg>
+
         </a>
 
 
@@ -925,19 +1580,31 @@
           aria-label="Facebook"
           title="Facebook"
         >
-          <svg viewBox="0 0 24 24">
-            <path d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.7.3-1 1-1z"/>
+
+          <svg
+            viewBox="0 0 24 24"
+          >
+
+            <path
+              d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.7.3-1 1-1z"
+            />
+
           </svg>
+
         </a>
+
 
       </div>
 
     </section>
 
+
   </main>
 
 
-  <!-- FOOTER -->
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
 
   <footer>
 
@@ -945,76 +1612,109 @@
       © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
     </p>
 
-    <div class="footer-mbk">
+    <div class="footer-logo">
       MBK
     </div>
 
   </footer>
 
 
-  <!-- LIGHTBOX -->
+  <!-- =======================================================
+       LIGHTBOX
+       ======================================================= -->
 
-  <div class="lightbox" id="lightbox">
+  <div
+    class="lightbox"
+    id="lightbox"
+  >
 
     <button
-      class="lightbox-close"
-      id="lightboxClose"
+      class="close-lightbox"
+      id="closeLightbox"
       aria-label="إغلاق"
     >
       ×
     </button>
 
-    <img id="lightboxImage" src="" alt="">
+
+    <img
+      id="lightboxImage"
+      src=""
+      alt=""
+    >
 
   </div>
 
 
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================= -->
+
   <script>
 
-    /* MOBILE MENU */
 
-    const menuBtn = document.getElementById("menuBtn");
+    /* =====================================================
+       MOBILE NAVIGATION
+       ===================================================== */
 
-    menuBtn.addEventListener("click", () => {
+    const menuButton =
+      document.getElementById("menuButton");
 
-      const links = document.querySelector(".nav-links");
+    const navLinks =
+      document.getElementById("navLinks");
 
-      const open = links.style.display === "flex";
 
-      if (open) {
-        links.style.display = "";
-        return;
+    menuButton.addEventListener(
+      "click",
+      () => {
+
+        navLinks.classList.toggle("open");
+
       }
-
-      links.style.position = "absolute";
-      links.style.top = "54px";
-      links.style.right = "0";
-      links.style.left = "0";
-      links.style.padding = "20px 25px";
-      links.style.background = "rgba(0,0,0,.95)";
-      links.style.flexDirection = "column";
-      links.style.alignItems = "center";
-      links.style.gap = "22px";
-      links.style.display = "flex";
-    });
+    );
 
 
-    /* SCROLL REVEAL */
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            navLinks.classList.remove("open");
+
+          }
+        );
+
+      });
+
+
+    /* =====================================================
+       SCROLL REVEAL
+       ===================================================== */
 
     const revealElements =
       document.querySelectorAll(".reveal");
 
-    const observer =
+
+    const revealObserver =
       new IntersectionObserver(
         entries => {
 
           entries.forEach(entry => {
 
-            if (entry.isIntersecting) {
+            if (
+              entry.isIntersecting
+            ) {
 
-              entry.target.classList.add("show");
+              entry.target.classList.add(
+                "visible"
+              );
 
-              observer.unobserve(entry.target);
+              revealObserver.unobserve(
+                entry.target
+              );
 
             }
 
@@ -1022,58 +1722,83 @@
 
         },
         {
-          threshold: .12
+          threshold: 0.12
         }
       );
 
-    revealElements.forEach(element => {
-      observer.observe(element);
-    });
+
+    revealElements.forEach(
+      element => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
+    );
 
 
-    /* LIGHTBOX */
+    /* =====================================================
+       LIGHTBOX
+       ===================================================== */
 
     const lightbox =
-      document.getElementById("lightbox");
+      document.getElementById(
+        "lightbox"
+      );
 
     const lightboxImage =
-      document.getElementById("lightboxImage");
+      document.getElementById(
+        "lightboxImage"
+      );
 
-    const lightboxClose =
-      document.getElementById("lightboxClose");
+    const closeLightbox =
+      document.getElementById(
+        "closeLightbox"
+      );
+
 
     document
       .querySelectorAll(".gallery-item")
       .forEach(item => {
 
-        item.addEventListener("click", () => {
+        item.addEventListener(
+          "click",
+          () => {
 
-          lightboxImage.src =
-            item.dataset.image;
+            lightboxImage.src =
+              item.dataset.image;
 
-          lightbox.classList.add("active");
+            lightbox.classList.add(
+              "active"
+            );
 
-          document.body.style.overflow = "hidden";
+            document.body.style.overflow =
+              "hidden";
 
-        });
+          }
+        );
 
       });
 
 
-    function closeLightbox() {
+    function closeImage() {
 
-      lightbox.classList.remove("active");
+      lightbox.classList.remove(
+        "active"
+      );
 
       lightboxImage.src = "";
 
-      document.body.style.overflow = "";
+      document.body.style.overflow =
+        "";
 
     }
 
 
-    lightboxClose.addEventListener(
+    closeLightbox.addEventListener(
       "click",
-      closeLightbox
+      closeImage
     );
 
 
@@ -1081,8 +1806,12 @@
       "click",
       event => {
 
-        if (event.target === lightbox) {
-          closeLightbox();
+        if (
+          event.target === lightbox
+        ) {
+
+          closeImage();
+
         }
 
       }
@@ -1093,14 +1822,20 @@
       "keydown",
       event => {
 
-        if (event.key === "Escape") {
-          closeLightbox();
+        if (
+          event.key === "Escape"
+        ) {
+
+          closeImage();
+
         }
 
       }
     );
 
+
   </script>
+
 
 </body>
 </html>
