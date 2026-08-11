@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,71 +7,97 @@
 
     <title>مبخوت بن عبدالله | Mabkhout Bin Abdullah</title>
 
-    <meta
-        name="description"
-        content="الموقع الشخصي لمبخوت بن عبدالله"
-    >
+    <meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <main class="site">
+    <div class="background"></div>
+    <div class="sparkles" aria-hidden="true"></div>
 
-        <section class="hero">
+    <header class="header">
+        <div class="logo">MBK</div>
 
-            <div class="hero-card">
+        <div class="header-line"></div>
 
-                <div class="profile">
+        <span class="year">2026</span>
+    </header>
+
+    <main class="main">
+
+        <section class="profile-card">
+
+            <div class="photo-area">
+                <div class="photo-glow"></div>
+
+                <div class="photo-ring">
                     <img
                         src="profile.jpg"
-                        alt="مبخوت بن عبدالله"
+                        alt="Mabkhout Bin Abdullah"
+                        class="profile-image"
                     >
                 </div>
+            </div>
 
-                <p class="label">
+            <div class="content">
+
+                <span class="personal-label">
                     PERSONAL PROFILE
-                </p>
+                </span>
 
                 <h1>
                     مبخوت بن عبدالله
                 </h1>
 
-                <h2>
+                <p class="english-name">
                     Mabkhout Bin Abdullah
-                </h2>
-
-                <div class="gold-line"></div>
-
-                <p class="motto">
-                    وما توفيقي إلا بالله
                 </p>
 
-                <div class="links">
+                <div class="divider">
+                    <span></span>
+                    <i></i>
+                    <span></span>
+                </div>
+
+                <p class="motto">
+                    وَمَا تَوْفِيقِي إِلَّا بِاللَّهِ
+                </p>
+
+                <div class="buttons">
 
                     <a
                         href="mailto:Mabkhut505g@gmail.com"
-                        class="link"
+                        class="button email-button"
                     >
-                        البريد الإلكتروني
+                        <span class="button-icon">✉</span>
+
+                        <span class="button-text">
+                            البريد الإلكتروني
+                        </span>
+
+                        <span class="button-arrow">↗</span>
                     </a>
 
                     <a
                         href="YOUR_FACEBOOK_LINK"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="link"
+                        class="button facebook-button"
                     >
-                        Facebook
+                        <span class="facebook-icon">f</span>
+
+                        <span class="button-text facebook-text">
+                            Facebook
+                        </span>
+
+                        <span class="button-arrow">↗</span>
                     </a>
 
                 </div>
@@ -80,6 +107,62 @@
         </section>
 
     </main>
+
+    <footer class="footer">
+
+        <div class="footer-line"></div>
+
+        <p>
+            © 2026
+            <strong>Mabkhout Bin Abdullah</strong>
+        </p>
+
+    </footer>
+
+    <script>
+        /* تأثير بسيط عند تحريك الماوس */
+        const card = document.querySelector(".profile-card");
+
+        document.addEventListener("mousemove", function(event) {
+            if (window.innerWidth < 700) return;
+
+            const x = event.clientX / window.innerWidth;
+            const y = event.clientY / window.innerHeight;
+
+            card.style.transform =
+                "perspective(1200px) rotateY(" +
+                ((x - 0.5) * 2) +
+                "deg) rotateX(" +
+                ((0.5 - y) * 2) +
+                "deg)";
+        });
+
+        document.addEventListener("mouseleave", function() {
+            card.style.transform =
+                "perspective(1200px) rotateY(0deg) rotateX(0deg)";
+        });
+
+        /* إضافة لمعات ذهبية للخلفية */
+        const sparkles = document.querySelector(".sparkles");
+
+        for (let i = 0; i < 25; i++) {
+            const sparkle = document.createElement("span");
+
+            sparkle.style.left =
+                Math.random() * 100 + "%";
+
+            sparkle.style.top =
+                Math.random() * 100 + "%";
+
+            sparkle.style.animationDelay =
+                Math.random() * 6 + "s";
+
+            sparkle.style.animationDuration =
+                4 + Math.random() * 5 + "s";
+
+            sparkles.appendChild(sparkle);
+        }
+    </script>
 
 </body>
 </html>
