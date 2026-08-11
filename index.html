@@ -1,197 +1,102 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07152b">
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <title>Mabkhout Bin Abdullah</title>
 
-html {
-    scroll-behavior: smooth;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-body {
-    min-height: 100vh;
-    background:
-        radial-gradient(circle at 50% 15%, rgba(212, 175, 55, 0.12), transparent 32%),
-        linear-gradient(135deg, #071426 0%, #0b1d35 50%, #06101f 100%);
-    color: #ffffff;
-    font-family: "Cairo", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden;
-}
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 60px 60px;
-}
+    <link rel="stylesheet" href="style.css">
+</head>
 
-.profile {
-    width: min(92%, 520px);
-    min-height: 100vh;
-    padding: 45px 25px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
+<body>
 
-.logo {
-    position: absolute;
-    top: 25px;
-    right: 5px;
-    font-family: "Inter", sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 7px;
-    color: #d4af37;
-}
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
 
-.photo-container {
-    width: 145px;
-    height: 145px;
-    border-radius: 50%;
-    padding: 4px;
-    background: linear-gradient(
-        135deg,
-        #f5df8b,
-        #d4af37,
-        #9c7928,
-        #f5df8b
-    );
-    box-shadow:
-        0 0 35px rgba(212, 175, 55, 0.18),
-        0 12px 40px rgba(0, 0, 0, 0.4);
-    margin-bottom: 25px;
-}
+    <main class="hero">
 
-.profile-photo {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #0a192d;
-    background: #ffffff;
-}
+        <header class="topbar">
+            <div class="brand">MBK</div>
+            <div class="status">
+                <span></span>
+                Personal Portfolio
+            </div>
+        </header>
 
-h1 {
-    font-size: clamp(30px, 8vw, 43px);
-    font-weight: 700;
-    line-height: 1.4;
-    color: #ffffff;
-    margin-bottom: 4px;
-}
+        <section class="profile-card">
 
-h2 {
-    font-family: "Inter", sans-serif;
-    font-size: clamp(16px, 4vw, 20px);
-    font-weight: 500;
-    letter-spacing: 1px;
-    color: #d4af37;
-    direction: ltr;
-}
+            <div class="image-wrapper">
+                <div class="image-ring"></div>
 
-.gold-line {
-    width: 65px;
-    height: 2px;
-    margin: 22px 0;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #d4af37,
-        transparent
-    );
-}
+                <img
+                    src="profile.jpg"
+                    alt="Mabkhout Bin Abdullah"
+                    class="profile-image"
+                >
+            </div>
 
-.bio {
-    font-size: 20px;
-    font-weight: 500;
-    color: #f5f5f5;
-    margin-bottom: 28px;
-}
+            <div class="eyebrow">
+                PERSONAL PROFILE
+            </div>
 
-.links {
-    width: 100%;
-    max-width: 390px;
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
-}
+            <h1>
+                مبخوت بن عبدالله
+            </h1>
 
-.link {
-    width: 100%;
-    padding: 15px 20px;
-    border: 1px solid rgba(212, 175, 55, 0.55);
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.035);
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-}
+            <h2>
+                Mabkhout Bin Abdullah
+            </h2>
 
-.link:hover {
-    background: #d4af37;
-    color: #071426;
-    border-color: #d4af37;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
-}
+            <div class="gold-divider">
+                <i></i>
+                <span></span>
+                <i></i>
+            </div>
 
-footer {
-    margin-top: 45px;
-    font-family: "Inter", sans-serif;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.45);
-    direction: ltr;
-}
+            <p class="quote">
+                وما توفيقي إلا بالله
+            </p>
 
-@media (max-width: 480px) {
+            <div class="actions">
 
-    .profile {
-        width: 100%;
-        padding: 55px 20px 25px;
-    }
+                <a
+                    href="mailto:Mabkhut505g@gmail.com"
+                    class="action email"
+                >
+                    <span class="icon">✉</span>
+                    <span>البريد الإلكتروني</span>
+                    <span class="arrow">↗</span>
+                </a>
 
-    .logo {
-        top: 20px;
-        right: 20px;
-        font-size: 18px;
-    }
+                <a
+                    href="ضع_رابط_فيسبوك_هنا"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="action facebook"
+                >
+                    <span class="icon">f</span>
+                    <span>Facebook</span>
+                    <span class="arrow">↗</span>
+                </a>
 
-    .photo-container {
-        width: 125px;
-        height: 125px;
-    }
+            </div>
 
-    h1 {
-        font-size: 31px;
-    }
+        </section>
 
-    h2 {
-        font-size: 16px;
-    }
+        <footer>
+            <span>© 2026</span>
+            <strong>Mabkhout Bin Abdullah</strong>
+            <span>MBK</span>
+        </footer>
 
-    .bio {
-        font-size: 18px;
-    }
+    </main>
 
-    .link {
-        font-size: 16px;
-        padding: 14px 18px;
-    }
-}
+</body>
+</html>
