@@ -60,7 +60,7 @@ body{
         );
 }
 
-/* شبكة خلفية */
+/* الخلفية */
 
 body::before{
     content:"";
@@ -89,7 +89,7 @@ body::before{
         );
 }
 
-/* توهج ذهبي */
+/* التوهج */
 
 body::after{
     content:"";
@@ -110,7 +110,7 @@ body::after{
     pointer-events:none;
 }
 
-/* NAVBAR */
+/* الشريط العلوي */
 
 nav{
     position:fixed;
@@ -161,7 +161,7 @@ nav{
     color:var(--gold2);
 }
 
-/* HERO */
+/* الصفحة الرئيسية */
 
 main{
     min-height:100vh;
@@ -181,6 +181,8 @@ main{
 
     animation:
         entrance 1.2s ease forwards;
+
+    transition:transform .25s ease;
 }
 
 @keyframes entrance{
@@ -197,7 +199,7 @@ main{
 
 }
 
-/* الاسم */
+/* الاسم الإنجليزي */
 
 .name{
     direction:ltr;
@@ -239,7 +241,7 @@ main{
     perspective:1000px;
 }
 
-/* الهالة */
+/* الهالة الذهبية */
 
 .photo-glow{
 
@@ -264,7 +266,7 @@ main{
     z-index:0;
 }
 
-/* الإطار الخارجي */
+/* الإطار */
 
 .photo-frame{
 
@@ -274,7 +276,7 @@ main{
 
     border:
         1px solid
-        rgba(212,175,55,.7);
+        rgba(212,175,55,.75);
 
     border-radius:
         180px 180px 28px 28px;
@@ -296,7 +298,7 @@ main{
         scale(1.025);
 }
 
-/* إطار ثاني */
+/* الإطار الداخلي */
 
 .photo-frame::before{
 
@@ -314,7 +316,7 @@ main{
         170px 170px 20px 20px;
 }
 
-/* الصورة نفسها */
+/* الصورة */
 
 .profile-photo{
 
@@ -352,9 +354,10 @@ main{
         rgba(0,0,0,.45);
 }
 
-/* زخارف */
+/* زوايا ذهبية */
 
 .corner{
+
     position:absolute;
 
     width:45px;
@@ -366,6 +369,7 @@ main{
 }
 
 .corner.tl{
+
     top:-15px;
     left:-15px;
 
@@ -374,6 +378,7 @@ main{
 }
 
 .corner.br{
+
     bottom:-15px;
     right:-15px;
 
@@ -381,34 +386,7 @@ main{
     border-right:2px solid;
 }
 
-/* العبارة */
-
-.motto{
-
-    font-size:
-        clamp(22px,3vw,30px);
-
-    font-weight:500;
-
-    color:white;
-
-    margin-bottom:10px;
-}
-
-.subtitle{
-
-    color:var(--muted);
-
-    font-size:15px;
-
-    line-height:2;
-
-    max-width:600px;
-
-    margin:auto;
-}
-
-/* الخط الذهبي */
+/* الخط */
 
 .divider{
 
@@ -451,6 +429,33 @@ main{
         0 0 15px var(--gold);
 }
 
+/* العبارة */
+
+.motto{
+
+    font-size:
+        clamp(22px,3vw,30px);
+
+    font-weight:500;
+
+    color:white;
+
+    margin-bottom:10px;
+}
+
+.subtitle{
+
+    color:var(--muted);
+
+    font-size:15px;
+
+    line-height:2;
+
+    max-width:600px;
+
+    margin:auto;
+}
+
 /* الأزرار */
 
 .actions{
@@ -483,7 +488,8 @@ main{
 
     transition:
         transform .3s,
-        box-shadow .3s;
+        box-shadow .3s,
+        border-color .3s;
 }
 
 .btn-gold{
@@ -525,7 +531,7 @@ main{
         rgba(0,0,0,.3);
 }
 
-/* معلومات */
+/* معلومات أسفل الموقع */
 
 .bottom-info{
 
@@ -586,6 +592,7 @@ main{
     }
 
     .name{
+
         font-size:39px;
 
         letter-spacing:-1.5px;
@@ -635,6 +642,7 @@ main{
 }
 
 </style>
+
 </head>
 
 <body>
@@ -656,7 +664,7 @@ main{
 
 <section class="hero">
 
-    <!-- الاسم الإنجليزي فقط -->
+    <!-- الاسم بالإنجليزي فقط -->
 
     <h1 class="name">
         Mabkhout <span>Bin Abdullah</span>
@@ -672,6 +680,7 @@ main{
         <div class="photo-frame"></div>
 
         <div class="corner tl"></div>
+
         <div class="corner br"></div>
 
         <img
@@ -686,7 +695,7 @@ main{
     <div class="divider"></div>
 
 
-    <!-- باقي المحتوى عربي -->
+    <!-- المحتوى العربي -->
 
     <div class="motto">
         وما توفيقي إلا بالله
@@ -698,7 +707,7 @@ main{
     </p>
 
 
-    <!-- التواصل -->
+    <!-- أزرار التواصل -->
 
     <div class="actions">
 
@@ -711,7 +720,7 @@ main{
 
         <a
             class="btn btn-outline"
-            href="YOUR_FACEBOOK_LINK"
+            href="https://www.facebook.com/share/19JG7PQiHL/"
             target="_blank"
             rel="noopener noreferrer"
         >
@@ -738,7 +747,7 @@ main{
 
 <script>
 
-/* حركة ثلاثية الأبعاد خفيفة */
+/* حركة تفاعلية فاخرة */
 
 const hero =
 document.querySelector(".hero");
@@ -762,7 +771,6 @@ document.addEventListener(
             `perspective(1400px)
              rotateY(${x}deg)
              rotateX(${-y}deg)`;
-
     }
 );
 
@@ -771,9 +779,7 @@ document.addEventListener(
     () => {
 
         hero.style.transform =
-        "perspective(1400px)
-         rotateY(0deg)
-         rotateX(0deg)";
+            "perspective(1400px) rotateY(0deg) rotateX(0deg)";
 
     }
 );
