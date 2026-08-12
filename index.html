@@ -1,2295 +1,2857 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>مبخوت بن عبدالله | MBK</title>
-<meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله">
-<meta name="theme-color" content="#061426">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-:root{
-    --navy:#061426;
-    --navy-dark:#020914;
-    --gold:#d4af37;
-    --gold-light:#f1d56a;
-    --white:#f8f7f2;
-    --text:#d8dce2;
-    --muted:#8995a3;
-    --border:rgba(212,175,55,.20);
-    --border-strong:rgba(212,175,55,.42);
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    min-height:100vh;
-    overflow-x:hidden;
-    font-family:"Cairo","Noto Kufi Arabic",sans-serif;
-    color:var(--white);
-
-    background:
-        radial-gradient(circle at 50% 0%,rgba(212,175,55,.08),transparent 27%),
-        radial-gradient(circle at 0% 50%,rgba(16,50,82,.32),transparent 35%),
-        linear-gradient(145deg,#020914 0%,#061426 48%,#030b16 100%);
-}
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:-10;
-    opacity:.055;
-
-    background-image:
-        linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
-
-    background-size:75px 75px;
-}
-
-body::after{
-    content:"";
-    position:fixed;
-    width:450px;
-    height:450px;
-    top:12%;
-    left:50%;
-    transform:translateX(-50%);
-    border-radius:50%;
-    background:rgba(212,175,55,.035);
-    filter:blur(120px);
-    pointer-events:none;
-    z-index:-9;
-}
-
-a{
-    color:inherit;
-    -webkit-tap-highlight-color:transparent;
-}
-
-button{
-    font-family:inherit;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-header{
-    position:fixed;
-    top:0;
-    right:0;
-    left:0;
-    height:76px;
-    padding:0 6%;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    z-index:1000;
-
-    background:rgba(2,9,20,.76);
-    border-bottom:1px solid rgba(212,175,55,.12);
-
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-}
-
-.logo{
-    direction:ltr;
-    font-family:Arial,sans-serif;
-    font-size:23px;
-    font-weight:700;
-    letter-spacing:7px;
-    color:var(--gold-light);
-    text-decoration:none;
-}
-
-.menu-btn{
-    width:47px;
-    height:47px;
-    border-radius:50%;
-    border:1px solid var(--border-strong);
-    background:rgba(255,255,255,.025);
-    color:var(--gold-light);
-    cursor:pointer;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:21px;
-    transition:.3s ease;
-}
-
-.menu-btn:hover{
-    transform:scale(1.05);
-    border-color:var(--gold-light);
-    background:rgba(212,175,55,.08);
-    box-shadow:0 0 30px rgba(212,175,55,.12);
-}
-
-
-/* =========================
-   SIDE MENU
-========================= */
-
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.58);
-    backdrop-filter:blur(5px);
-    z-index:1100;
-
-    opacity:0;
-    visibility:hidden;
-    transition:.35s ease;
-}
 
-.overlay.active{
-    opacity:1;
-    visibility:visible;
-}
+    <meta charset="UTF-8">
 
-.side-menu{
-    position:fixed;
-    top:0;
-    right:0;
-    width:min(370px,88vw);
-    height:100vh;
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
 
-    padding:105px 35px 35px;
+    <title>مبخوت بن عبدالله | MBK</title>
 
-    z-index:1200;
+    <meta
+        name="description"
+        content="الموقع الشخصي لمبخوت بن عبدالله — MBK"
+    >
 
-    background:
-        linear-gradient(150deg,rgba(8,26,47,.99),rgba(2,9,20,.99));
-
-    border-left:1px solid var(--border);
-
-    transform:translateX(105%);
-
-    transition:transform .45s cubic-bezier(.77,0,.18,1);
-
-    box-shadow:-30px 0 90px rgba(0,0,0,.45);
-}
-
-.side-menu.active{
-    transform:translateX(0);
-}
-
-.close-menu{
-    position:absolute;
-    top:24px;
-    left:24px;
-
-    width:42px;
-    height:42px;
-
-    border-radius:50%;
-    border:1px solid var(--border-strong);
-    background:transparent;
-
-    color:var(--gold-light);
-    cursor:pointer;
-    font-size:22px;
-}
+    <meta
+        name="theme-color"
+        content="#050505"
+    >
 
-.menu-label{
-    color:var(--gold);
-    font-size:11px;
-    letter-spacing:4px;
-    margin-bottom:28px;
-
-    direction:ltr;
-    text-align:right;
-}
-
-.side-menu a{
-    display:block;
-    padding:17px 0;
-
-    border-bottom:1px solid rgba(255,255,255,.055);
-
-    text-decoration:none;
-    font-size:17px;
-    color:var(--white);
-
-    transition:.3s ease;
-}
-
-.side-menu a:hover{
-    color:var(--gold-light);
-    padding-right:10px;
-}
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-/* =========================
-   MAIN
-========================= */
-
-main{
-    width:min(1120px,92%);
-    margin:auto;
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    min-height:100vh;
-
-    padding:115px 0 55px;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-    text-align:center;
+    <style>
 
-    position:relative;
-}
-
-.hero-corner{
-    position:absolute;
-    width:72px;
-    height:72px;
-    border-color:rgba(212,175,55,.68);
-    pointer-events:none;
-}
+        /* =========================================================
+           ROOT
+        ========================================================= */
 
-.hero-corner.top{
-    top:108px;
-    right:0;
-    border-top:1px solid;
-    border-right:1px solid;
-}
+        :root {
 
-.hero-corner.bottom{
-    bottom:35px;
-    left:0;
-    border-bottom:1px solid;
-    border-left:1px solid;
-}
+            --black: #050505;
+            --black-2: #090909;
+            --black-3: #0e0e0e;
 
+            --gold: #c9a34e;
+            --gold-light: #e5c878;
+            --gold-dark: #806328;
 
-/* =========================
-   NAME
-========================= */
+            --white: #f5f3ed;
+            --text: #c6c3bb;
+            --muted: #77756f;
 
-.hero-name{
-    width:100%;
-    max-width:850px;
+            --line: rgba(255,255,255,.09);
+            --gold-line: rgba(201,163,78,.30);
 
-    padding:0 20px;
-    margin:0 auto 14px;
+            --max: 1240px;
 
-    font-size:clamp(34px,5.5vw,58px);
-    font-weight:800;
-    line-height:1.5;
+            --ease: cubic-bezier(.22,1,.36,1);
+        }
 
-    text-align:center;
-    white-space:normal;
 
-    letter-spacing:-1px;
+        /* =========================================================
+           RESET
+        ========================================================= */
 
-    background:
-        linear-gradient(
-            135deg,
-            #b88918 0%,
-            #f7df78 25%,
-            #d4af37 50%,
-            #fff0a3 75%,
-            #b88918 100%
-        );
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
+        html {
+            scroll-behavior: smooth;
+            background: var(--black);
+        }
 
-    text-shadow:0 0 18px rgba(212,175,55,.12);
+        body {
+            min-height: 100vh;
 
-    animation:heroIn .9s ease both;
-}
+            overflow-x: hidden;
 
-.gold-line{
-    width:100px;
-    height:2px;
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(201,163,78,.055),
+                    transparent 30%
+                ),
+                var(--black);
 
-    margin:0 auto 25px;
+            color: var(--white);
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #b88918,
-            #f1d56a,
-            #b88918,
-            transparent
-        );
+            font-family:
+                "Cairo",
+                sans-serif;
 
-    box-shadow:0 0 16px rgba(212,175,55,.28);
-}
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
 
+        body.menu-open {
+            overflow: hidden;
+        }
 
-/* =========================
-   PROFILE IMAGE
-========================= */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-.photo-frame{
-    width:min(470px,88vw);
-    aspect-ratio:1/1;
+        button {
+            font: inherit;
+        }
 
-    padding:10px;
+        img {
+            max-width: 100%;
+        }
 
-    position:relative;
-    margin-bottom:22px;
-}
 
-.photo-frame::before{
-    content:"";
-    position:absolute;
-    inset:0;
+        /* =========================================================
+           GRAIN
+        ========================================================= */
 
-    border:1px solid rgba(212,175,55,.82);
-    border-radius:31px;
+        body::before {
 
-    transform:rotate(-1deg);
-}
+            content: "";
 
-.photo-frame::after{
-    content:"";
-    position:absolute;
-    inset:7px;
+            position: fixed;
+            inset: 0;
 
-    border:1px solid rgba(212,175,55,.22);
-    border-radius:27px;
+            z-index: 9999;
 
-    transform:rotate(1deg);
-}
+            pointer-events: none;
 
-.profile-photo{
-    position:relative;
-    z-index:2;
+            opacity: .035;
 
-    width:100%;
-    height:100%;
+            background-image:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+        }
 
-    display:block;
 
-    object-fit:contain;
-    object-position:center;
+        /* =========================================================
+           LOADER
+        ========================================================= */
 
-    border-radius:24px;
-    border:5px solid #07172a;
+        .loader {
 
-    background:#07172a;
+            position: fixed;
+            inset: 0;
 
-    box-shadow:0 30px 80px rgba(0,0,0,.50);
+            z-index: 10000;
 
-    transition:
-        transform .6s ease,
-        box-shadow .6s ease;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.photo-frame:hover .profile-photo{
-    transform:scale(1.012);
-    box-shadow:0 35px 95px rgba(0,0,0,.58);
-}
+            background: var(--black);
 
-.quote{
-    color:var(--white);
-    font-size:clamp(20px,4vw,28px);
-    font-weight:500;
-}
+            transition:
+                opacity .8s var(--ease),
+                visibility .8s var(--ease);
+        }
 
+        .loader.hide {
 
-/* =========================
-   SECTIONS
-========================= */
+            opacity: 0;
+            visibility: hidden;
+        }
 
-.section{
-    padding:65px 0;
-    position:relative;
-}
+        .loader-logo {
 
-.section-header{
-    text-align:center;
-    margin-bottom:32px;
-}
+            direction: ltr;
 
-.section-label{
-    display:block;
-    color:var(--gold);
-    font-size:11px;
-    letter-spacing:4px;
+            font-family: "Inter", sans-serif;
 
-    direction:ltr;
+            font-size: 28px;
+            font-weight: 600;
 
-    margin-bottom:7px;
-}
+            letter-spacing: 12px;
 
-.section-title{
-    font-size:clamp(30px,5vw,46px);
-    font-weight:800;
-    line-height:1.4;
-}
+            color: var(--gold-light);
 
-.section-title::after{
-    content:"";
+            animation:
+                loaderPulse 1.4s ease-in-out infinite;
+        }
 
-    display:block;
+        @keyframes loaderPulse {
 
-    width:68px;
-    height:2px;
+            0%,
+            100% {
+                opacity: .35;
+            }
 
-    margin:11px auto 0;
+            50% {
+                opacity: 1;
+            }
+        }
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold),
-            transparent
-        );
-}
 
+        /* =========================================================
+           CURSOR GLOW
+        ========================================================= */
 
-/* =========================
-   ABOUT
-========================= */
+        .cursor-glow {
 
-.about-card{
-    max-width:900px;
-    margin:auto;
+            position: fixed;
 
-    padding:35px 40px;
+            width: 280px;
+            height: 280px;
 
-    border:1px solid var(--border);
-    border-radius:30px;
+            border-radius: 50%;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.012)
-        );
+            pointer-events: none;
 
-    box-shadow:0 30px 80px rgba(0,0,0,.18);
+            z-index: 0;
 
-    text-align:center;
-}
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(201,163,78,.045),
+                    transparent 68%
+                );
 
-.about-card p{
-    color:var(--text);
-    font-size:18px;
-    line-height:2.05;
-}
+            transform:
+                translate(-50%,-50%);
 
-.about-card strong{
-    color:var(--gold-light);
-    font-weight:700;
-}
+            transition:
+                left .15s ease,
+                top .15s ease;
+        }
 
 
-/* =========================
-   VALUES
-========================= */
+        /* =========================================================
+           HEADER
+        ========================================================= */
 
-.values{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
+        .header {
 
-.value-card{
-    padding:30px 25px;
+            position: fixed;
 
-    text-align:center;
+            top: 0;
+            right: 0;
+            left: 0;
 
-    border:1px solid rgba(212,175,55,.15);
-    border-radius:25px;
+            z-index: 1000;
 
-    background:rgba(255,255,255,.022);
+            height: 82px;
 
-    transition:
-        transform .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease;
-}
+            transition:
+                background .45s ease,
+                border-color .45s ease,
+                height .45s ease;
+        }
 
-.value-card:hover{
-    transform:translateY(-8px);
+        .header.scrolled {
 
-    border-color:rgba(212,175,55,.42);
+            height: 70px;
 
-    box-shadow:
-        0 22px 55px rgba(212,175,55,.07);
-}
+            background:
+                rgba(5,5,5,.78);
 
-.value-icon{
-    width:55px;
-    height:55px;
+            border-bottom:
+                1px solid var(--line);
 
-    margin:0 auto 14px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+        .header-inner {
 
-    border-radius:50%;
+            width: min(
+                var(--max),
+                calc(100% - 64px)
+            );
 
-    border:1px solid rgba(212,175,55,.35);
+            height: 100%;
 
-    color:var(--gold-light);
+            margin: auto;
 
-    font-size:22px;
-}
+            display: flex;
 
-.value-card h3{
-    font-size:20px;
-    margin-bottom:7px;
-}
+            align-items: center;
 
-.value-card p{
-    color:var(--muted);
-    font-size:14px;
-    line-height:1.85;
-}
+            justify-content: space-between;
+        }
 
+        .brand {
 
-/* =========================
-   GALLERY
-========================= */
+            direction: ltr;
 
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(12,1fr);
-    gap:15px;
-}
+            display: flex;
+            align-items: center;
 
-.gallery-item{
-    position:relative;
-    overflow:hidden;
+            gap: 11px;
 
-    border-radius:25px;
+            cursor: pointer;
+        }
 
-    border:1px solid rgba(212,175,55,.17);
+        .brand-mark {
 
-    background:#07172a;
+            font-family: "Inter", sans-serif;
 
-    cursor:pointer;
-}
+            font-size: 22px;
 
-.gallery-item:nth-child(1){
-    grid-column:span 7;
-    aspect-ratio:16/10;
-}
+            font-weight: 600;
 
-.gallery-item:nth-child(2){
-    grid-column:span 5;
-    aspect-ratio:1/1;
-}
+            letter-spacing: 7px;
 
-.gallery-item:nth-child(3){
-    grid-column:span 5;
-    aspect-ratio:1/1;
-}
+            color: var(--white);
+        }
 
-.gallery-item:nth-child(4){
-    grid-column:span 7;
-    aspect-ratio:16/10;
-}
+        .brand-dot {
 
-.gallery-item:nth-child(5){
-    grid-column:span 7;
-    aspect-ratio:16/10;
-}
+            width: 5px;
+            height: 5px;
 
-.gallery-item:nth-child(6){
-    grid-column:span 5;
-    aspect-ratio:1/1;
-}
+            border-radius: 50%;
 
-.gallery-item:nth-child(7){
-    grid-column:span 5;
-    aspect-ratio:1/1;
-}
+            background: var(--gold-light);
 
-.gallery-item:nth-child(8){
-    grid-column:span 7;
-    aspect-ratio:16/10;
-}
+            box-shadow:
+                0 0 14px rgba(201,163,78,.55);
+        }
 
-.gallery-item img{
-    width:100%;
-    height:100%;
+        .menu-button {
 
-    display:block;
+            width: 48px;
+            height: 48px;
 
-    object-fit:cover;
+            display: flex;
 
-    transition:transform .7s ease;
-}
+            align-items: center;
+            justify-content: center;
 
-.gallery-item::after{
-    content:"";
+            border: 1px solid var(--gold-line);
 
-    position:absolute;
-    inset:0;
+            background: rgba(255,255,255,.015);
 
-    background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,.78),
-            transparent 52%
-        );
+            color: var(--gold-light);
 
-    pointer-events:none;
-}
+            cursor: pointer;
 
-.gallery-item:hover img{
-    transform:scale(1.07);
-}
+            transition:
+                .35s var(--ease);
+        }
 
-.gallery-info{
-    position:absolute;
+        .menu-button:hover {
 
-    right:22px;
-    left:22px;
-    bottom:18px;
+            background:
+                rgba(201,163,78,.08);
 
-    z-index:2;
-}
+            border-color:
+                rgba(229,200,120,.7);
 
-.gallery-info small{
-    display:block;
+            transform: translateY(-2px);
+        }
 
-    color:var(--gold-light);
+        .menu-lines {
 
-    font-size:11px;
-    letter-spacing:2px;
+            width: 19px;
 
-    direction:ltr;
+            display: flex;
+            flex-direction: column;
 
-    margin-bottom:3px;
-}
+            gap: 5px;
+        }
 
-.gallery-info h3{
-    font-size:18px;
-    font-weight:600;
-}
+        .menu-lines span {
 
+            display: block;
 
-/* =========================
-   LIGHTBOX
-========================= */
+            width: 100%;
+            height: 1px;
 
-.lightbox{
-    position:fixed;
-    inset:0;
+            background: currentColor;
 
-    z-index:2000;
+            transition: .35s ease;
+        }
 
-    padding:25px;
+        .menu-lines span:nth-child(2) {
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+            width: 70%;
 
-    background:rgba(0,0,0,.88);
+            margin-right: auto;
+        }
 
-    backdrop-filter:blur(10px);
 
-    opacity:0;
-    visibility:hidden;
+        /* =========================================================
+           SIDE MENU
+        ========================================================= */
 
-    transition:.3s ease;
-}
+        .menu-overlay {
 
-.lightbox.active{
-    opacity:1;
-    visibility:visible;
-}
+            position: fixed;
+            inset: 0;
 
-.lightbox img{
-    max-width:92vw;
-    max-height:86vh;
+            z-index: 1500;
 
-    object-fit:contain;
+            background:
+                rgba(0,0,0,.62);
 
-    border-radius:15px;
+            opacity: 0;
+            visibility: hidden;
 
-    border:1px solid rgba(212,175,55,.28);
+            transition: .45s ease;
 
-    box-shadow:0 30px 100px rgba(0,0,0,.65);
-}
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
 
-.lightbox-close{
-    position:absolute;
+        .menu-overlay.active {
 
-    top:22px;
-    left:25px;
+            opacity: 1;
+            visibility: visible;
+        }
 
-    width:45px;
-    height:45px;
+        .side-menu {
 
-    border-radius:50%;
+            position: fixed;
 
-    border:1px solid rgba(212,175,55,.4);
+            top: 0;
+            right: 0;
 
-    background:rgba(0,0,0,.25);
+            z-index: 1600;
 
-    color:var(--gold-light);
+            width: min(440px, 100%);
 
-    font-size:23px;
+            height: 100dvh;
 
-    cursor:pointer;
-}
+            padding:
+                34px
+                42px
+                42px;
 
+            display: flex;
 
-/* =========================
-   JOURNEY
-========================= */
+            flex-direction: column;
 
-.timeline{
-    max-width:850px;
-    margin:auto;
-    position:relative;
-}
+            background:
+                linear-gradient(
+                    145deg,
+                    #11100d,
+                    #070707 65%
+                );
 
-.timeline::before{
-    content:"";
+            border-left:
+                1px solid var(--gold-line);
 
-    position:absolute;
+            transform: translateX(105%);
 
-    top:0;
-    bottom:0;
+            transition:
+                transform .65s var(--ease);
 
-    right:50%;
+            box-shadow:
+                -35px 0 100px rgba(0,0,0,.55);
+        }
 
-    width:1px;
+        .side-menu.active {
 
-    background:
-        linear-gradient(
-            transparent,
-            var(--gold),
-            transparent
-        );
-}
+            transform: translateX(0);
+        }
 
-.timeline-item{
-    position:relative;
+        .menu-top {
 
-    width:50%;
+            display: flex;
 
-    padding:0 36px 45px;
-}
+            align-items: center;
 
-.timeline-item:nth-child(odd){
-    text-align:left;
-}
+            justify-content: space-between;
 
-.timeline-item:nth-child(even){
-    margin-right:50%;
-    text-align:right;
-}
+            margin-bottom: 70px;
+        }
 
-.timeline-dot{
-    position:absolute;
+        .menu-small {
 
-    top:4px;
+            direction: ltr;
 
-    width:13px;
-    height:13px;
+            color: var(--gold);
 
-    border-radius:50%;
+            font-family: "Inter", sans-serif;
 
-    background:var(--gold-light);
+            font-size: 10px;
 
-    box-shadow:
-        0 0 18px rgba(212,175,55,.58);
-}
+            letter-spacing: 5px;
+        }
 
-.timeline-item:nth-child(odd) .timeline-dot{
-    right:-6px;
-}
+        .close-button {
 
-.timeline-item:nth-child(even) .timeline-dot{
-    left:-6px;
-}
+            width: 45px;
+            height: 45px;
 
-.timeline-year{
-    color:var(--gold-light);
+            border: 1px solid var(--gold-line);
 
-    font-size:28px;
-    font-weight:800;
+            background: transparent;
 
-    line-height:1;
+            color: var(--gold-light);
 
-    margin-bottom:8px;
-}
+            font-size: 23px;
 
-.timeline-title{
-    font-size:18px;
-    font-weight:600;
-    margin-bottom:6px;
-}
+            cursor: pointer;
 
-.timeline-text{
-    color:var(--muted);
-    font-size:14px;
-    line-height:1.85;
-}
+            transition: .3s ease;
+        }
 
+        .close-button:hover {
 
-/* =========================
-   CONTACT
-========================= */
+            background:
+                rgba(201,163,78,.08);
 
-.contact-card{
-    max-width:700px;
-    margin:auto;
+            transform: rotate(90deg);
+        }
 
-    padding:35px;
+        .menu-navigation {
 
-    text-align:center;
+            display: flex;
 
-    border:1px solid var(--border);
-    border-radius:30px;
+            flex-direction: column;
+        }
 
-    background:rgba(255,255,255,.022);
-}
+        .menu-link {
 
-.contact-icons{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:16px;
-}
+            position: relative;
 
-.social{
-    width:60px;
-    height:60px;
+            display: flex;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+            align-items: center;
 
-    border-radius:50%;
+            justify-content: space-between;
 
-    border:1px solid rgba(212,175,55,.42);
+            padding: 20px 0;
 
-    background:rgba(255,255,255,.02);
+            border-bottom:
+                1px solid rgba(255,255,255,.07);
 
-    color:var(--gold-light);
+            color: #d8d5cd;
 
-    text-decoration:none;
+            font-size: 18px;
 
-    transition:.3s ease;
-}
+            transition: .35s ease;
+        }
 
-.social:hover{
-    transform:translateY(-5px) scale(1.04);
+        .menu-link span:first-child {
 
-    background:rgba(212,175,55,.08);
+            transition: .35s ease;
+        }
 
-    border-color:var(--gold-light);
+        .menu-link span:last-child {
 
-    box-shadow:
-        0 15px 40px rgba(212,175,55,.13);
-}
+            direction: ltr;
 
-.social svg{
-    width:26px;
-    height:26px;
-    fill:currentColor;
-}
+            color: var(--gold);
 
-.qr-button{
-    margin-top:22px;
+            font-family: "Inter", sans-serif;
 
-    padding:11px 24px;
+            font-size: 10px;
 
-    border-radius:999px;
+            letter-spacing: 3px;
 
-    border:1px solid rgba(212,175,55,.38);
+            opacity: .6;
+        }
 
-    background:transparent;
+        .menu-link:hover {
 
-    color:var(--gold-light);
+            color: var(--gold-light);
 
-    cursor:pointer;
+            padding-right: 10px;
+        }
 
-    transition:.3s ease;
-}
+        .menu-footer {
 
-.qr-button:hover{
-    background:rgba(212,175,55,.08);
-    transform:translateY(-3px);
-}
+            margin-top: auto;
 
+            color: var(--muted);
 
-/* =========================
-   QR MODAL
-========================= */
+            font-size: 11px;
 
-.qr-modal{
-    position:fixed;
-    inset:0;
+            line-height: 2;
+        }
 
-    z-index:2100;
+        .menu-footer strong {
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+            display: block;
 
-    padding:20px;
+            direction: ltr;
 
-    background:rgba(0,0,0,.78);
+            margin-top: 5px;
 
-    backdrop-filter:blur(8px);
+            color: var(--gold);
 
-    opacity:0;
-    visibility:hidden;
+            font-family: "Inter", sans-serif;
 
-    transition:.3s ease;
-}
+            letter-spacing: 5px;
+        }
 
-.qr-modal.active{
-    opacity:1;
-    visibility:visible;
-}
 
-.qr-box{
-    width:min(360px,92vw);
+        /* =========================================================
+           MAIN
+        ========================================================= */
 
-    padding:30px;
+        main {
 
-    text-align:center;
+            position: relative;
 
-    border:1px solid rgba(212,175,55,.35);
+            z-index: 1;
+        }
 
-    border-radius:30px;
+        .container {
 
-    background:#07172a;
+            width: min(
+                var(--max),
+                calc(100% - 64px)
+            );
 
-    box-shadow:0 30px 100px rgba(0,0,0,.55);
-}
+            margin: auto;
+        }
 
-.qr-box h3{
-    color:var(--gold-light);
 
-    direction:ltr;
+        /* =========================================================
+           HERO
+        ========================================================= */
 
-    letter-spacing:2px;
-}
+        .hero {
 
-.qr-box img{
-    width:220px;
-    height:220px;
+            position: relative;
 
-    display:block;
+            min-height: 100svh;
 
-    margin:18px auto;
+            padding:
+                130px 0
+                70px;
 
-    padding:9px;
+            display: flex;
 
-    background:white;
+            align-items: center;
 
-    border-radius:14px;
-}
+            overflow: hidden;
+        }
 
-.qr-close{
-    padding:10px 25px;
+        .hero-grid {
 
-    border-radius:999px;
+            width: 100%;
 
-    border:1px solid rgba(212,175,55,.35);
+            display: grid;
 
-    background:transparent;
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(360px, 500px);
 
-    color:white;
+            align-items: center;
 
-    cursor:pointer;
-}
+            gap: 90px;
+        }
 
+        .hero-copy {
 
-/* =========================
-   FOOTER
-========================= */
+            text-align: right;
+        }
 
-footer{
-    padding:38px 20px;
+        .eyebrow {
 
-    text-align:center;
+            display: flex;
 
-    border-top:1px solid rgba(212,175,55,.12);
+            align-items: center;
 
-    background:rgba(2,8,17,.72);
-}
+            gap: 15px;
 
-.footer-copy{
-    color:#858f9b;
-    font-size:12px;
-}
+            margin-bottom: 28px;
 
-.footer-mbk{
-    margin-top:9px;
+            direction: ltr;
 
-    direction:ltr;
+            color: var(--gold);
 
-    font-family:Arial,sans-serif;
+            font-family: "Inter", sans-serif;
 
-    color:var(--gold);
+            font-size: 10px;
 
-    letter-spacing:6px;
+            letter-spacing: 5px;
+        }
 
-    font-weight:700;
-}
+        .eyebrow::before {
 
+            content: "";
 
-/* =========================
-   REVEAL
-========================= */
+            width: 45px;
+            height: 1px;
 
-.reveal{
-    opacity:0;
-    transform:translateY(25px);
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--gold)
+                );
+        }
 
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
-}
+        .hero-title {
 
-.reveal.visible{
-    opacity:1;
-    transform:translateY(0);
-}
+            max-width: 760px;
 
+            color: var(--white);
 
-/* =========================
-   ANIMATION
-========================= */
+            font-size:
+                clamp(
+                    46px,
+                    7vw,
+                    92px
+                );
 
-@keyframes heroIn{
+            font-weight: 800;
 
-    from{
-        opacity:0;
-        transform:translateY(25px);
-    }
+            line-height: 1.18;
 
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+            letter-spacing: -3px;
+        }
 
-}
+        .hero-title .gold {
 
+            display: block;
 
-/* =========================
-   MOBILE
-========================= */
+            background:
+                linear-gradient(
+                    110deg,
+                    #8d6b2e,
+                    #f0d27c 42%,
+                    #ad873d 75%,
+                    #e4c26d
+                );
 
-@media(max-width:760px){
+            -webkit-background-clip: text;
+            background-clip: text;
 
-    header{
-        height:70px;
-        padding:0 20px;
-    }
+            -webkit-text-fill-color: transparent;
+        }
 
-    .logo{
-        font-size:21px;
-        letter-spacing:6px;
-    }
+        .hero-quote {
 
-    main{
-        width:min(92%,520px);
-    }
+            margin-top: 34px;
 
-    .hero{
-        padding:100px 0 45px;
-    }
+            color: #aaa69d;
 
-    .hero-name{
-        max-width:100%;
-        padding:0 12px;
+            font-family: "Amiri", serif;
 
-        font-size:clamp(32px,9vw,47px);
+            font-size:
+                clamp(
+                    21px,
+                    2.5vw,
+                    30px
+                );
 
-        line-height:1.55;
-        letter-spacing:-.5px;
-    }
+            line-height: 1.8;
+        }
 
-    .photo-frame{
-        width:min(390px,88vw);
-        margin-bottom:18px;
-    }
+        .hero-actions {
 
-    .section{
-        padding:52px 0;
-    }
+            display: flex;
 
-    .section-header{
-        margin-bottom:27px;
-    }
+            align-items: center;
 
-    .about-card{
-        padding:28px 22px;
-    }
+            gap: 18px;
 
-    .about-card p{
-        font-size:16px;
-        line-height:2;
-    }
+            margin-top: 42px;
+        }
 
-    .values{
-        grid-template-columns:1fr;
-        gap:14px;
-    }
+        .primary-button {
 
-    .value-card{
-        padding:27px 22px;
-    }
+            position: relative;
 
-    .gallery{
-        grid-template-columns:1fr;
-        gap:13px;
-    }
+            min-width: 155px;
 
-    .gallery-item,
-    .gallery-item:nth-child(1),
-    .gallery-item:nth-child(2),
-    .gallery-item:nth-child(3),
-    .gallery-item:nth-child(4),
-    .gallery-item:nth-child(5),
-    .gallery-item:nth-child(6),
-    .gallery-item:nth-child(7),
-    .gallery-item:nth-child(8){
+            padding: 14px 25px;
 
-        grid-column:span 1;
-        aspect-ratio:16/10;
-    }
+            overflow: hidden;
 
-    .timeline::before{
-        right:13px;
-    }
+            border: 1px solid var(--gold);
 
-    .timeline-item,
-    .timeline-item:nth-child(odd),
-    .timeline-item:nth-child(even){
+            background: var(--gold);
 
-        width:100%;
+            color: #080808;
 
-        margin:0;
+            font-size: 13px;
 
-        padding:0 42px 38px 0;
+            font-weight: 700;
 
-        text-align:right;
-    }
+            cursor: pointer;
 
-    .timeline-item:nth-child(odd) .timeline-dot,
-    .timeline-item:nth-child(even) .timeline-dot{
+            transition: .4s var(--ease);
+        }
 
-        right:7px;
-        left:auto;
-    }
+        .primary-button::before {
 
-    .timeline-year{
-        font-size:25px;
-    }
+            content: "";
 
-    .contact-card{
-        padding:30px 20px;
-    }
+            position: absolute;
 
-    .hero-corner{
-        width:45px;
-        height:45px;
-    }
+            inset: 0;
 
-    .hero-corner.top{
-        top:90px;
-    }
+            background: var(--gold-light);
 
-}
+            transform: translateY(100%);
 
+            transition:
+                transform .4s var(--ease);
+        }
 
-/* =========================
-   SMALL MOBILE
-========================= */
+        .primary-button span {
 
-@media(max-width:420px){
+            position: relative;
 
-    .hero-name{
-        font-size:34px;
-        padding:0 8px;
-    }
+            z-index: 2;
+        }
 
-    .photo-frame{
-        width:92vw;
-    }
+        .primary-button:hover::before {
 
-    .social{
-        width:56px;
-        height:56px;
-    }
+            transform: translateY(0);
+        }
 
-    .gallery-info h3{
-        font-size:16px;
-    }
+        .secondary-button {
 
-}
+            padding: 14px 22px;
 
+            border: 1px solid var(--line);
 
-/* =========================
-   REDUCED MOTION
-========================= */
+            background: transparent;
 
-@media(prefers-reduced-motion:reduce){
+            color: #aaa69d;
 
-    *,
-    *::before,
-    *::after{
+            font-size: 13px;
 
-        animation:none!important;
-        transition:none!important;
-        scroll-behavior:auto!important;
-    }
+            cursor: pointer;
 
-}
+            transition: .35s ease;
+        }
 
-</style>
+        .secondary-button:hover {
+
+            color: var(--gold-light);
+
+            border-color: var(--gold-line);
+        }
+
+
+        /* =========================================================
+           HERO VISUAL
+        ========================================================= */
+
+        .hero-visual {
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+        }
+
+        .portrait-wrap {
+
+            position: relative;
+
+            width: min(470px, 100%);
+
+            aspect-ratio: 4 / 5;
+
+            padding: 12px;
+        }
+
+        .portrait-wrap::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            border:
+                1px solid
+                rgba(201,163,78,.55);
+
+            transform:
+                translate(15px, 15px);
+        }
+
+        .portrait-wrap::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            transform:
+                translate(-9px, -9px);
+        }
+
+        .portrait {
+
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            z-index: 2;
+
+            overflow: hidden;
+
+            background: #101010;
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            box-shadow:
+                0 45px 100px
+                rgba(0,0,0,.58);
+        }
+
+        .portrait img {
+
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            filter:
+                grayscale(12%)
+                contrast(1.04);
+
+            transition:
+                transform 1s var(--ease),
+                filter 1s ease;
+        }
+
+        .portrait:hover img {
+
+            transform: scale(1.035);
+
+            filter:
+                grayscale(0%)
+                contrast(1.04);
+        }
+
+        .portrait-overlay {
+
+            position: absolute;
+            inset: 0;
+
+            z-index: 3;
+
+            pointer-events: none;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(0,0,0,.03),
+                    transparent 55%,
+                    rgba(0,0,0,.42)
+                );
+        }
+
+        .portrait-label {
+
+            position: absolute;
+
+            z-index: 5;
+
+            left: 22px;
+            bottom: 18px;
+
+            direction: ltr;
+
+            color: rgba(255,255,255,.65);
+
+            font-family: "Inter", sans-serif;
+
+            font-size: 8px;
+
+            letter-spacing: 4px;
+        }
+
+        .visual-number {
+
+            position: absolute;
+
+            right: -20px;
+            bottom: -24px;
+
+            direction: ltr;
+
+            color:
+                rgba(201,163,78,.16);
+
+            font-family: "Inter", sans-serif;
+
+            font-size: 80px;
+
+            font-weight: 700;
+
+            line-height: 1;
+        }
+
+
+        /* =========================================================
+           SECTION BASE
+        ========================================================= */
+
+        .section {
+
+            position: relative;
+
+            padding:
+                135px 0;
+        }
+
+        .section + .section {
+
+            border-top:
+                1px solid rgba(255,255,255,.045);
+        }
+
+        .section-heading {
+
+            margin-bottom: 70px;
+        }
+
+        .section-index {
+
+            display: block;
+
+            margin-bottom: 14px;
+
+            direction: ltr;
+
+            color: var(--gold);
+
+            font-family: "Inter", sans-serif;
+
+            font-size: 10px;
+
+            letter-spacing: 5px;
+        }
+
+        .section-title {
+
+            color: var(--white);
+
+            font-size:
+                clamp(
+                    34px,
+                    5vw,
+                    58px
+                );
+
+            font-weight: 700;
+
+            line-height: 1.3;
+
+            letter-spacing: -1px;
+        }
+
+        .section-title::after {
+
+            content: "";
+
+            display: block;
+
+            width: 55px;
+            height: 1px;
+
+            margin-top: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--gold),
+                    transparent
+                );
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about-layout {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                1.2fr;
+
+            gap: 100px;
+
+            align-items: start;
+        }
+
+        .about-lead {
+
+            color: #e4e1d9;
+
+            font-size:
+                clamp(
+                    25px,
+                    3vw,
+                    39px
+                );
+
+            font-weight: 500;
+
+            line-height: 1.65;
+        }
+
+        .about-lead span {
+
+            color: var(--gold-light);
+        }
+
+        .about-text {
+
+            color: var(--text);
+
+            font-size: 16px;
+
+            line-height: 2.2;
+        }
+
+        .about-text p + p {
+
+            margin-top: 24px;
+        }
+
+        .signature {
+
+            margin-top: 35px;
+
+            color: var(--gold);
+
+            font-family: "Amiri", serif;
+
+            font-size: 30px;
+        }
+
+
+        /* =========================================================
+           VALUES
+        ========================================================= */
+
+        .values-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            border-top:
+                1px solid var(--line);
+
+            border-bottom:
+                1px solid var(--line);
+        }
+
+        .value {
+
+            position: relative;
+
+            min-height: 320px;
+
+            padding: 38px;
+
+            border-left:
+                1px solid var(--line);
+
+            transition:
+                background .45s ease;
+        }
+
+        .value:first-child {
+
+            border-left: none;
+        }
+
+        .value:hover {
+
+            background:
+                rgba(201,163,78,.025);
+        }
+
+        .value-number {
+
+            direction: ltr;
+
+            color: var(--gold);
+
+            font-family: "Inter", sans-serif;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+        }
+
+        .value-icon {
+
+            width: 45px;
+            height: 45px;
+
+            margin-top: 55px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid var(--gold-line);
+
+            color: var(--gold-light);
+
+            font-size: 17px;
+        }
+
+        .value h3 {
+
+            margin-top: 24px;
+
+            color: var(--white);
+
+            font-size: 23px;
+        }
+
+        .value p {
+
+            margin-top: 12px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.9;
+        }
+
+
+        /* =========================================================
+           STATEMENT
+        ========================================================= */
+
+        .statement {
+
+            min-height: 65vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    rgba(201,163,78,.07),
+                    transparent 55%
+                );
+        }
+
+        .statement-inner {
+
+            max-width: 900px;
+        }
+
+        .statement-label {
+
+            direction: ltr;
+
+            color: var(--gold);
+
+            font-family: "Inter", sans-serif;
+
+            font-size: 10px;
+
+            letter-spacing: 6px;
+        }
+
+        .statement h2 {
+
+            margin-top: 35px;
+
+            color: #e8e5dc;
+
+            font-family: "Amiri", serif;
+
+            font-size:
+                clamp(
+                    35px,
+                    6vw,
+                    72px
+                );
+
+            font-weight: 400;
+
+            line-height: 1.6;
+        }
+
+        .statement-line {
+
+            width: 90px;
+            height: 1px;
+
+            margin: 35px auto 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--gold),
+                    transparent
+                );
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .contact-layout {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                1fr;
+
+            gap: 80px;
+
+            align-items: end;
+        }
+
+        .contact-title {
+
+            color: var(--white);
+
+            font-size:
+                clamp(
+                    35px,
+                    5vw,
+                    65px
+                );
+
+            line-height: 1.25;
+        }
+
+        .contact-title span {
+
+            color: var(--gold-light);
+        }
+
+        .contact-list {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        .contact-item {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 22px 0;
+
+            border-bottom:
+                1px solid var(--line);
+
+            transition: .35s ease;
+        }
+
+        .contact-item:first-child {
+
+            border-top:
+                1px solid var(--line);
+        }
+
+        .contact-item:hover {
+
+            padding-right: 8px;
+        }
+
+        .contact-meta {
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            margin-bottom: 5px;
+        }
+
+        .contact-value {
+
+            direction: ltr;
+
+            color: #ddd9d0;
+
+            font-family: "Inter", sans-serif;
+
+            font-size: 14px;
+
+            letter-spacing: .5px;
+        }
+
+        .contact-arrow {
+
+            color: var(--gold);
+
+            font-size: 20px;
+
+            transition: .35s ease;
+        }
+
+        .contact-item:hover .contact-arrow {
+
+            transform:
+                translateX(-7px);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+
+            padding:
+                35px 0
+                45px;
+
+            border-top:
+                1px solid var(--line);
+        }
+
+        .footer-inner {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .footer-copy {
+
+            color: #5f5d58;
+
+            font-size: 11px;
+        }
+
+        .footer-brand {
+
+            direction: ltr;
+
+            color: var(--gold);
+
+            font-family: "Inter", sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            letter-spacing: 6px;
+        }
+
+
+        /* =========================================================
+           REVEAL
+        ========================================================= */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(35px);
+
+            transition:
+                opacity .9s var(--ease),
+                transform .9s var(--ease);
+        }
+
+        .reveal.visible {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE TABLET
+        ========================================================= */
+
+        @media (max-width: 950px) {
+
+            .hero-grid {
+
+                grid-template-columns:
+                    1fr;
+
+                gap: 70px;
+
+                text-align: center;
+            }
+
+            .hero-copy {
+
+                order: 2;
+
+                text-align: center;
+            }
+
+            .hero-visual {
+
+                order: 1;
+            }
+
+            .eyebrow {
+
+                justify-content: center;
+            }
+
+            .hero-title {
+
+                margin-inline: auto;
+            }
+
+            .hero-actions {
+
+                justify-content: center;
+            }
+
+            .portrait-wrap {
+
+                width: min(430px, 78vw);
+            }
+
+            .about-layout {
+
+                grid-template-columns:
+                    1fr;
+
+                gap: 45px;
+            }
+
+            .values-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .value {
+
+                min-height: auto;
+
+                border-left: none;
+
+                border-bottom:
+                    1px solid var(--line);
+            }
+
+            .value:last-child {
+
+                border-bottom: none;
+            }
+
+            .contact-layout {
+
+                grid-template-columns:
+                    1fr;
+
+                gap: 55px;
+            }
+        }
+
+
+        /* =========================================================
+           RESPONSIVE MOBILE
+        ========================================================= */
+
+        @media (max-width: 600px) {
+
+            .container,
+            .header-inner {
+
+                width:
+                    calc(100% - 36px);
+            }
+
+            .header {
+
+                height: 68px;
+            }
+
+            .header.scrolled {
+
+                height: 62px;
+            }
+
+            .brand-mark {
+
+                font-size: 19px;
+
+                letter-spacing: 6px;
+            }
+
+            .menu-button {
+
+                width: 44px;
+                height: 44px;
+            }
+
+            .side-menu {
+
+                width: 100%;
+
+                padding:
+                    25px
+                    25px
+                    30px;
+            }
+
+            .menu-top {
+
+                margin-bottom: 45px;
+            }
+
+            .menu-link {
+
+                font-size: 17px;
+
+                padding: 17px 0;
+            }
+
+            .hero {
+
+                min-height: auto;
+
+                padding:
+                    125px 0
+                    75px;
+            }
+
+            .hero-grid {
+
+                gap: 58px;
+            }
+
+            .portrait-wrap {
+
+                width:
+                    min(
+                        330px,
+                        82vw
+                    );
+
+                padding: 8px;
+            }
+
+            .portrait-wrap::before {
+
+                transform:
+                    translate(9px, 9px);
+            }
+
+            .portrait-wrap::after {
+
+                transform:
+                    translate(-6px, -6px);
+            }
+
+            .visual-number {
+
+                right: -8px;
+
+                font-size: 55px;
+
+                bottom: -17px;
+            }
+
+            .hero-title {
+
+                font-size:
+                    clamp(
+                        42px,
+                        13vw,
+                        62px
+                    );
+
+                letter-spacing: -2px;
+            }
+
+            .hero-quote {
+
+                margin-top: 25px;
+
+                font-size: 22px;
+            }
+
+            .hero-actions {
+
+                flex-direction: column;
+
+                width: 100%;
+
+                gap: 11px;
+
+                margin-top: 32px;
+            }
+
+            .primary-button,
+            .secondary-button {
+
+                width: 100%;
+
+                padding: 14px 20px;
+            }
+
+            .section {
+
+                padding:
+                    85px 0;
+            }
+
+            .section-heading {
+
+                margin-bottom: 45px;
+            }
+
+            .section-title {
+
+                font-size: 37px;
+            }
+
+            .about-lead {
+
+                font-size: 26px;
+            }
+
+            .about-text {
+
+                font-size: 15px;
+
+                line-height: 2;
+            }
+
+            .value {
+
+                padding:
+                    30px 22px;
+            }
+
+            .value-icon {
+
+                margin-top: 38px;
+            }
+
+            .statement {
+
+                min-height: 58vh;
+
+                padding:
+                    80px 0;
+            }
+
+            .statement h2 {
+
+                font-size: 35px;
+            }
+
+            .contact-title {
+
+                font-size: 42px;
+            }
+
+            .contact-value {
+
+                font-size: 12px;
+            }
+
+            .footer-inner {
+
+                flex-direction: column;
+
+                text-align: center;
+            }
+        }
+
+
+        /* =========================================================
+           VERY SMALL
+        ========================================================= */
+
+        @media (max-width: 370px) {
+
+            .container,
+            .header-inner {
+
+                width:
+                    calc(100% - 28px);
+            }
+
+            .hero-title {
+
+                font-size: 39px;
+            }
+
+            .hero-quote {
+
+                font-size: 20px;
+            }
+
+            .section-title {
+
+                font-size: 34px;
+            }
+
+            .contact-title {
+
+                font-size: 38px;
+            }
+        }
+
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                scroll-behavior: auto !important;
+
+                animation-duration:
+                    .01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    .01ms !important;
+            }
+
+            .reveal {
+
+                opacity: 1;
+
+                transform: none;
+            }
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
 
-<!-- HEADER -->
+    <!-- =========================================================
+         LOADER
+    ========================================================= -->
 
-<header>
-
-    <a href="#home" class="logo">
-        MBK
-    </a>
-
-    <button
-        class="menu-btn"
-        id="menuBtn"
-        aria-label="فتح القائمة"
+    <div
+        class="loader"
+        id="loader"
     >
-        ☰
-    </button>
 
-</header>
+        <div class="loader-logo">
+            MBK
+        </div>
+
+    </div>
 
 
-<!-- SIDE MENU -->
+    <!-- =========================================================
+         CURSOR
+    ========================================================= -->
 
-<div
-    class="overlay"
-    id="overlay"
-></div>
+    <div
+        class="cursor-glow"
+        id="cursorGlow"
+    ></div>
 
-<nav
-    class="side-menu"
-    id="sideMenu"
->
 
-    <button
-        class="close-menu"
-        id="closeMenu"
-        aria-label="إغلاق"
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
+
+    <header
+        class="header"
+        id="header"
     >
-        ×
-    </button>
 
-    <div class="menu-label">
-        NAVIGATION
-    </div>
+        <div class="header-inner">
 
-    <a href="#home">
-        الرئيسية
-    </a>
+            <a
+                href="#home"
+                class="brand"
+            >
 
-    <a href="#about">
-        نبذة
-    </a>
+                <span class="brand-mark">
+                    MBK
+                </span>
 
-    <a href="#values">
-        بصمتي
-    </a>
+                <span class="brand-dot"></span>
 
-    <a href="#gallery">
-        مختاراتي
-    </a>
-
-    <a href="#journey">
-        رحلتي
-    </a>
-
-    <a href="#contact">
-        تواصل
-    </a>
-
-</nav>
+            </a>
 
 
-<main>
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-label="فتح القائمة"
+                aria-expanded="false"
+            >
+
+                <span class="menu-lines">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </span>
+
+            </button>
+
+        </div>
+
+    </header>
 
 
-<!-- HERO -->
+    <!-- =========================================================
+         MENU OVERLAY
+    ========================================================= -->
 
-<section
-    class="hero"
-    id="home"
->
-
-    <div class="hero-corner top"></div>
-    <div class="hero-corner bottom"></div>
-
-    <h1 class="hero-name">
-        مبخوت بن عبدالله
-    </h1>
-
-    <div class="gold-line"></div>
-
-    <div class="photo-frame">
-
-        <img
-            class="profile-photo"
-            src="file_00000000202482468d4027eb8c5919f7.png"
-            alt="مبخوت بن عبدالله"
-        >
-
-    </div>
-
-    <p class="quote">
-        وما توفيقي إلا بالله
-    </p>
-
-</section>
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    ></div>
 
 
-<!-- ABOUT -->
+    <!-- =========================================================
+         SIDE MENU
+    ========================================================= -->
 
-<section
-    class="section reveal"
-    id="about"
->
+    <aside
+        class="side-menu"
+        id="sideMenu"
+        aria-hidden="true"
+    >
 
-    <div class="section-header">
+        <div class="menu-top">
 
-        <span class="section-label">
-            ABOUT
-        </span>
+            <div class="menu-small">
+                PERSONAL IDENTITY
+            </div>
 
-        <h2 class="section-title">
-            نبذة
-        </h2>
+            <button
+                class="close-button"
+                id="closeButton"
+                aria-label="إغلاق القائمة"
+            >
+                ×
+            </button>
 
-    </div>
+        </div>
 
-    <div class="about-card">
 
-        <p>
+        <nav class="menu-navigation">
 
-            أنا مبخوت بن عبدالله.
+            <a
+                href="#home"
+                class="menu-link"
+            >
 
-            <br><br>
+                <span>
+                    الرئيسية
+                </span>
 
-            أؤمن بأن الشخصية الحقيقية تُبنى بالطموح،
-            والتجربة، والاهتمام بالتفاصيل. أسعى دائمًا
-            إلى تطوير نفسي، واكتشاف أفكار جديدة،
-            وصناعة هوية تعكس رؤيتي وشخصيتي بأسلوب
-            يجمع بين الأصالة، الأناقة، والطموح.
+                <span>
+                    01
+                </span>
 
-            <br><br>
+            </a>
 
-            هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا
-            من اهتماماتي، أعمالي، اختياراتي، والأشياء
-            التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
 
-            <br><br>
+            <a
+                href="#about"
+                class="menu-link"
+            >
+
+                <span>
+                    عنّي
+                </span>
+
+                <span>
+                    02
+                </span>
+
+            </a>
+
+
+            <a
+                href="#values"
+                class="menu-link"
+            >
+
+                <span>
+                    القيم
+                </span>
+
+                <span>
+                    03
+                </span>
+
+            </a>
+
+
+            <a
+                href="#statement"
+                class="menu-link"
+            >
+
+                <span>
+                    الرؤية
+                </span>
+
+                <span>
+                    04
+                </span>
+
+            </a>
+
+
+            <a
+                href="#contact"
+                class="menu-link"
+            >
+
+                <span>
+                    تواصل
+                </span>
+
+                <span>
+                    05
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="menu-footer">
+
+            الموقع الشخصي لمبخوت بن عبدالله
 
             <strong>
-                أطمح للأفضل، وأسعى لأن أترك أثرًا يستحق أن يُذكر.
+                MBK
             </strong>
 
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- VALUES -->
-
-<section
-    class="section reveal"
-    id="values"
->
-
-    <div class="section-header">
-
-        <span class="section-label">
-            MY VALUES
-        </span>
-
-        <h2 class="section-title">
-            بصمتي
-        </h2>
-
-    </div>
-
-    <div class="values">
-
-        <div class="value-card">
-
-            <div class="value-icon">
-                ✦
-            </div>
-
-            <h3>
-                الإبداع
-            </h3>
-
-            <p>
-                أبحث دائمًا عن الأفكار المختلفة
-                والأسلوب الذي يحمل طابعًا خاصًا.
-            </p>
-
         </div>
 
-
-        <div class="value-card">
-
-            <div class="value-icon">
-                ◇
-            </div>
-
-            <h3>
-                الجودة
-            </h3>
-
-            <p>
-                أهتم بالتفاصيل الصغيرة لأنها
-                تصنع الفرق في النتيجة النهائية.
-            </p>
-
-        </div>
+    </aside>
 
 
-        <div class="value-card">
+    <!-- =========================================================
+         MAIN
+    ========================================================= -->
 
-            <div class="value-icon">
-                ◆
-            </div>
-
-            <h3>
-                الأصالة
-            </h3>
-
-            <p>
-                أحافظ على هويتي وأطورها
-                بأسلوب حديث ومتوازن.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
+    <main>
 
 
-<!-- GALLERY -->
+        <!-- =====================================================
+             HERO
+        ===================================================== -->
 
-<section
-    class="section reveal"
-    id="gallery"
->
-
-    <div class="section-header">
-
-        <span class="section-label">
-            SELECTED
-        </span>
-
-        <h2 class="section-title">
-            مختاراتي
-        </h2>
-
-    </div>
-
-    <div class="gallery">
-
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
+        <section
+            class="hero"
+            id="home"
         >
 
-            <img
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
-                alt="جبال وطبيعة"
-                loading="lazy"
-            >
+            <div class="container">
 
-            <div class="gallery-info">
+                <div class="hero-grid">
 
-                <small>NATURE</small>
 
-                <h3>
-                    هدوء الجبال
-                </h3>
+                    <!-- TEXT -->
+
+                    <div class="hero-copy">
+
+
+                        <div class="eyebrow reveal">
+                            PERSONAL IDENTITY
+                        </div>
+
+
+                        <h1
+                            class="hero-title reveal"
+                        >
+
+                            مبخوت
+
+                            <span class="gold">
+                                بن عبدالله
+                            </span>
+
+                        </h1>
+
+
+                        <p
+                            class="hero-quote reveal"
+                        >
+                            « وما توفيقي إلا بالله »
+                        </p>
+
+
+                        <div
+                            class="hero-actions reveal"
+                        >
+
+                            <button
+                                class="primary-button"
+                                onclick="scrollToSection('about')"
+                            >
+
+                                <span>
+                                    اكتشف المزيد
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="secondary-button"
+                                onclick="scrollToSection('contact')"
+                            >
+
+                                تواصل معي
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- IMAGE -->
+
+                    <div class="hero-visual reveal">
+
+                        <div class="portrait-wrap">
+
+                            <div class="portrait">
+
+                                <img
+                                    src="file_00000000202482468d4027eb8c5919f7.png"
+                                    alt="مبخوت بن عبدالله"
+                                    loading="eager"
+                                >
+
+                                <div class="portrait-overlay"></div>
+
+                                <div class="portrait-label">
+                                    MBK / PERSONAL
+                                </div>
+
+                            </div>
+
+
+                            <div class="visual-number">
+                                01
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
 
             </div>
 
-        </div>
+        </section>
 
 
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
+        <!-- =====================================================
+             ABOUT
+        ===================================================== -->
+
+        <section
+            class="section"
+            id="about"
         >
 
-            <img
-                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"
-                alt="طبيعة ريفية"
-                loading="lazy"
-            >
+            <div class="container">
 
-            <div class="gallery-info">
+                <div class="section-heading reveal">
 
-                <small>LIFE</small>
+                    <span class="section-index">
+                        02 — ABOUT
+                    </span>
 
-                <h3>
-                    تفاصيل هادئة
-                </h3>
+                    <h2 class="section-title">
+                        عنّي
+                    </h2>
+
+                </div>
+
+
+                <div class="about-layout">
+
+
+                    <div class="about-lead reveal">
+
+                        شخصية تُبنى على
+                        <span>
+                            الطموح
+                        </span>
+                        ،
+                        والتجربة،
+                        والإتقان.
+
+                    </div>
+
+
+                    <div class="about-text reveal">
+
+                        <p>
+                            أنا مبخوت بن عبدالله. أؤمن بأن قيمة الإنسان
+                            لا تُقاس بما يملك فقط، بل بما يتركه من أثر،
+                            وبالطريقة التي يصنع بها طريقه ويحافظ بها
+                            على هويته.
+                        </p>
+
+                        <p>
+                            هذه المساحة تمثل جانبًا من شخصيتي؛
+                            أفكاري، رؤيتي، اهتمامي بالتفاصيل،
+                            وسعيي المستمر إلى التطور وصناعة شيء
+                            يحمل بصمتي الخاصة.
+                        </p>
+
+                        <p>
+                            لا أبحث عن الكمال بقدر ما أبحث عن
+                            التقدم المستمر، وعن نتيجة تعبّر عن
+                            الجهد الذي سبقها.
+                        </p>
+
+
+                        <div class="signature">
+                            مبخوت بن عبدالله
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
-        </div>
+        </section>
 
 
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
+        <!-- =====================================================
+             VALUES
+        ===================================================== -->
+
+        <section
+            class="section"
+            id="values"
         >
 
-            <img
-                src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=85"
-                alt="مدينة حديثة"
-                loading="lazy"
-            >
+            <div class="container">
 
-            <div class="gallery-info">
+                <div class="section-heading reveal">
 
-                <small>CITY</small>
+                    <span class="section-index">
+                        03 — VALUES
+                    </span>
 
-                <h3>
-                    نبض المدينة
-                </h3>
+                    <h2 class="section-title">
+                        القيم
+                    </h2>
+
+                </div>
+
+
+                <div class="values-grid">
+
+
+                    <article class="value reveal">
+
+                        <div class="value-number">
+                            01
+                        </div>
+
+                        <div class="value-icon">
+                            ✦
+                        </div>
+
+                        <h3>
+                            الأصالة
+                        </h3>
+
+                        <p>
+                            أحافظ على هويتي ومبادئي،
+                            وأمنح التطور مساحة دون أن أفقد
+                            ما يميزني.
+                        </p>
+
+                    </article>
+
+
+                    <article
+                        class="value reveal"
+                        style="transition-delay:100ms"
+                    >
+
+                        <div class="value-number">
+                            02
+                        </div>
+
+                        <div class="value-icon">
+                            ◇
+                        </div>
+
+                        <h3>
+                            الطموح
+                        </h3>
+
+                        <p>
+                            أضع لنفسي أهدافًا أكبر من الواقع
+                            الحالي، وأتعامل مع كل مرحلة
+                            باعتبارها بداية لما بعدها.
+                        </p>
+
+                    </article>
+
+
+                    <article
+                        class="value reveal"
+                        style="transition-delay:200ms"
+                    >
+
+                        <div class="value-number">
+                            03
+                        </div>
+
+                        <div class="value-icon">
+                            ◆
+                        </div>
+
+                        <h3>
+                            الإتقان
+                        </h3>
+
+                        <p>
+                            التفاصيل الصغيرة تصنع الصورة
+                            الكبيرة؛ لذلك أتعامل مع الجودة
+                            باعتبارها جزءًا من الهوية.
+                        </p>
+
+                    </article>
+
+
+                </div>
 
             </div>
 
-        </div>
+        </section>
 
 
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
+        <!-- =====================================================
+             STATEMENT
+        ===================================================== -->
+
+        <section
+            class="section statement"
+            id="statement"
         >
 
-            <img
-                src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85"
-                alt="شوارع المدينة"
-                loading="lazy"
-            >
+            <div class="container">
 
-            <div class="gallery-info">
+                <div class="statement-inner reveal">
 
-                <small>STREETS</small>
+                    <span class="statement-label">
+                        PERSONAL PHILOSOPHY
+                    </span>
 
-                <h3>
-                    بين الشوارع
-                </h3>
+                    <h2>
+                        إن أصبت فمن الله،
+                        <br>
+                        وإن أخطأت فمن نفسي.
+                    </h2>
+
+                    <div class="statement-line"></div>
+
+                </div>
 
             </div>
 
-        </div>
+        </section>
 
 
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90"
+        <!-- =====================================================
+             CONTACT
+        ===================================================== -->
+
+        <section
+            class="section"
+            id="contact"
         >
 
-            <img
-                src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=85"
-                alt="مدينة من الأعلى"
-                loading="lazy"
-            >
+            <div class="container">
 
-            <div class="gallery-info">
+                <div class="contact-layout">
 
-                <small>URBAN</small>
 
-                <h3>
-                    أفق جديد
-                </h3>
+                    <div class="reveal">
+
+                        <span class="section-index">
+                            05 — CONTACT
+                        </span>
+
+                        <h2 class="contact-title">
+
+                            لنبقَ على
+                            <span>
+                                تواصل.
+                            </span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <div class="contact-list reveal">
+
+
+                        <a
+                            class="contact-item"
+                            href="mailto:mabkhout@mabkhut.com"
+                        >
+
+                            <div>
+
+                                <div class="contact-meta">
+                                    البريد الإلكتروني
+                                </div>
+
+                                <div class="contact-value">
+                                    mabkhout@mabkhut.com
+                                </div>
+
+                            </div>
+
+                            <div class="contact-arrow">
+                                ←
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            class="contact-item"
+                            href="https://mabkhut.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+
+                            <div>
+
+                                <div class="contact-meta">
+                                    الموقع الرسمي
+                                </div>
+
+                                <div class="contact-value">
+                                    mabkhut.com
+                                </div>
+
+                            </div>
+
+                            <div class="contact-arrow">
+                                ←
+                            </div>
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-inner">
+
+                <div class="footer-copy">
+                    © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
+                </div>
+
+                <div class="footer-brand">
+                    MBK
+                </div>
 
             </div>
 
         </div>
 
+    </footer>
 
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
-        >
 
-            <img
-                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
-                alt="طريق وسط الطبيعة"
-                loading="lazy"
-            >
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
 
-            <div class="gallery-info">
+    <script>
 
-                <small>JOURNEY</small>
+        /* =====================================================
+           LOADER
+        ===================================================== */
 
-                <h3>
-                    الطريق
-                </h3>
+        window.addEventListener("load", () => {
 
-            </div>
+            const loader =
+                document.getElementById("loader");
 
-        </div>
+            setTimeout(() => {
 
+                loader.classList.add("hide");
 
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
-        >
+            }, 450);
 
-            <img
-                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
-                alt="منظر طبيعي"
-                loading="lazy"
-            >
+        });
 
-            <div class="gallery-info">
 
-                <small>CALM</small>
+        /* =====================================================
+           HEADER SCROLL
+        ===================================================== */
 
-                <h3>
-                    لحظة هدوء
-                </h3>
+        const header =
+            document.getElementById("header");
 
-            </div>
 
-        </div>
+        function updateHeader() {
 
+            if (window.scrollY > 35) {
 
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
-        >
+                header.classList.add("scrolled");
 
-            <img
-                src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85"
-                alt="العمارة والحياة"
-                loading="lazy"
-            >
+            } else {
 
-            <div class="gallery-info">
+                header.classList.remove("scrolled");
 
-                <small>ARCHITECTURE</small>
+            }
 
-                <h3>
-                    تفاصيل المكان
-                </h3>
+        }
 
-            </div>
 
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- JOURNEY -->
-
-<section
-    class="section reveal"
-    id="journey"
->
-
-    <div class="section-header">
-
-        <span class="section-label">
-            MY JOURNEY
-        </span>
-
-        <h2 class="section-title">
-            رحلتي
-        </h2>
-
-    </div>
-
-
-    <div class="timeline">
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2015
-            </div>
-
-            <div class="timeline-title">
-                البداية
-            </div>
-
-            <div class="timeline-text">
-                بداية الرحلة، ومنها بدأت مرحلة
-                جديدة من التجارب والتعلم.
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2018
-            </div>
-
-            <div class="timeline-title">
-                مرحلة من التجربة والتعلّم
-            </div>
-
-            <div class="timeline-text">
-                سنوات من التجربة واكتشاف الاهتمامات
-                وتطوير المهارات والنظرة الخاصة.
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2021
-            </div>
-
-            <div class="timeline-title">
-                تطور ونضج
-            </div>
-
-            <div class="timeline-text">
-                مرحلة أصبح فيها الطموح أكثر وضوحًا
-                وأصبحت التجارب السابقة جزءًا من الهوية.
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2024
-            </div>
-
-            <div class="timeline-title">
-                مرحلة جديدة
-            </div>
-
-            <div class="timeline-text">
-                بداية مرحلة مختلفة، برؤية أوسع
-                وطموح أكبر للمستقبل.
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2026
-            </div>
-
-            <div class="timeline-title">
-                رؤية للمستقبل
-            </div>
-
-            <div class="timeline-text">
-                الاستمرار في التطور وبناء المستقبل
-                بخطوات أكثر وضوحًا وثباتًا.
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section
-    class="section reveal"
-    id="contact"
->
-
-    <div class="section-header">
-
-        <span class="section-label">
-            CONTACT
-        </span>
-
-        <h2 class="section-title">
-            تواصل
-        </h2>
-
-    </div>
-
-
-    <div class="contact-card">
-
-        <div class="contact-icons">
-
-
-            <a
-                class="social"
-                href="mailto:mabkhout@mabkhut.com"
-                aria-label="البريد الإلكتروني"
-                title="البريد الإلكتروني"
-            >
-
-                <svg viewBox="0 0 24 24">
-
-                    <path
-                        d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
-                    />
-
-                </svg>
-
-            </a>
-
-
-            <a
-                class="social"
-                href="https://www.facebook.com/share/19JG7PQiHL/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                title="Facebook"
-            >
-
-                <svg viewBox="0 0 24 24">
-
-                    <path
-                        d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
-                    />
-
-                </svg>
-
-            </a>
-
-
-        </div>
-
-
-        <button
-            class="qr-button"
-            id="qrButton"
-        >
-            مشاركة الموقع عبر QR
-        </button>
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-<!-- LIGHTBOX -->
-
-<div
-    class="lightbox"
-    id="lightbox"
->
-
-    <button
-        class="lightbox-close"
-        id="lightboxClose"
-        aria-label="إغلاق"
-    >
-        ×
-    </button>
-
-    <img
-        id="lightboxImage"
-        src=""
-        alt=""
-    >
-
-</div>
-
-
-<!-- QR -->
-
-<div
-    class="qr-modal"
-    id="qrModal"
->
-
-    <div class="qr-box">
-
-        <h3>
-            mabkhut.com
-        </h3>
-
-        <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com"
-            alt="QR Code"
-        >
-
-        <button
-            class="qr-close"
-            id="qrClose"
-        >
-            إغلاق
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div class="footer-copy">
-        © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
-    </div>
-
-    <div class="footer-mbk">
-        MBK
-    </div>
-
-</footer>
-
-
-<script>
-
-/* MENU */
-
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const closeMenu =
-    document.getElementById("closeMenu");
-
-const sideMenu =
-    document.getElementById("sideMenu");
-
-const overlay =
-    document.getElementById("overlay");
-
-
-function openMenu(){
-
-    sideMenu.classList.add("active");
-
-    overlay.classList.add("active");
-
-    document.body.style.overflow="hidden";
-
-}
-
-
-function closeSideMenu(){
-
-    sideMenu.classList.remove("active");
-
-    overlay.classList.remove("active");
-
-    document.body.style.overflow="";
-
-}
-
-
-menuBtn.addEventListener(
-    "click",
-    openMenu
-);
-
-closeMenu.addEventListener(
-    "click",
-    closeSideMenu
-);
-
-overlay.addEventListener(
-    "click",
-    closeSideMenu
-);
-
-
-document
-    .querySelectorAll(".side-menu a")
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            closeSideMenu
+        window.addEventListener(
+            "scroll",
+            updateHeader,
+            { passive: true }
         );
 
-    });
+
+        updateHeader();
 
 
-/* SCROLL REVEAL */
+        /* =====================================================
+           MENU
+        ===================================================== */
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const closeButton =
+            document.getElementById("closeButton");
+
+        const sideMenu =
+            document.getElementById("sideMenu");
+
+        const menuOverlay =
+            document.getElementById("menuOverlay");
 
 
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
+        function openMenu() {
 
-            entries.forEach(entry => {
+            sideMenu.classList.add("active");
 
-                if(entry.isIntersecting){
+            menuOverlay.classList.add("active");
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+            document.body.classList.add("menu-open");
 
-                    revealObserver.unobserve(
-                        entry.target
-                    );
+            menuButton.setAttribute(
+                "aria-expanded",
+                "true"
+            );
 
-                }
+            sideMenu.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+        }
+
+
+        function closeMenu() {
+
+            sideMenu.classList.remove("active");
+
+            menuOverlay.classList.remove("active");
+
+            document.body.classList.remove("menu-open");
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            sideMenu.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+        }
+
+
+        menuButton.addEventListener(
+            "click",
+            openMenu
+        );
+
+
+        closeButton.addEventListener(
+            "click",
+            closeMenu
+        );
+
+
+        menuOverlay.addEventListener(
+            "click",
+            closeMenu
+        );
+
+
+        document
+            .querySelectorAll(".menu-link")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    closeMenu
+                );
 
             });
 
-        },
-        {
-            threshold:.12
-        }
-    );
 
+        /* =====================================================
+           ESC KEY
+        ===================================================== */
 
-revealElements.forEach(element => {
+        document.addEventListener(
+            "keydown",
+            event => {
 
-    revealObserver.observe(element);
+                if (
+                    event.key === "Escape"
+                ) {
 
-});
+                    closeMenu();
 
+                }
 
-/* GALLERY LIGHTBOX */
-
-const galleryItems =
-    document.querySelectorAll(".gallery-item");
-
-const lightbox =
-    document.getElementById("lightbox");
-
-const lightboxImage =
-    document.getElementById("lightboxImage");
-
-const lightboxClose =
-    document.getElementById("lightboxClose");
-
-
-galleryItems.forEach(item => {
-
-    item.addEventListener(
-        "click",
-        () => {
-
-            const image =
-                item.dataset.full;
-
-            lightboxImage.src =
-                image;
-
-            lightbox.classList.add(
-                "active"
-            );
-
-            document.body.style.overflow =
-                "hidden";
-
-        }
-    );
-
-});
-
-
-function closeLightbox(){
-
-    lightbox.classList.remove(
-        "active"
-    );
-
-    lightboxImage.src="";
-
-    document.body.style.overflow="";
-
-}
-
-
-lightboxClose.addEventListener(
-    "click",
-    closeLightbox
-);
-
-
-lightbox.addEventListener(
-    "click",
-    event => {
-
-        if(
-            event.target === lightbox
-        ){
-
-            closeLightbox();
-
-        }
-
-    }
-);
-
-
-/* QR */
-
-const qrButton =
-    document.getElementById("qrButton");
-
-const qrModal =
-    document.getElementById("qrModal");
-
-const qrClose =
-    document.getElementById("qrClose");
-
-
-qrButton.addEventListener(
-    "click",
-    () => {
-
-        qrModal.classList.add(
-            "active"
+            }
         );
 
-        document.body.style.overflow =
-            "hidden";
 
-    }
-);
+        /* =====================================================
+           SMOOTH SCROLL
+        ===================================================== */
+
+        function scrollToSection(id) {
+
+            const element =
+                document.getElementById(id);
+
+            if (!element) return;
+
+            element.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
 
 
-qrClose.addEventListener(
-    "click",
-    () => {
+        /* =====================================================
+           REVEAL
+        ===================================================== */
 
-        qrModal.classList.remove(
-            "active"
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: .12,
+                    rootMargin:
+                        "0px 0px -40px 0px"
+                }
+            );
+
+
+        revealElements.forEach(
+            element => {
+
+                observer.observe(element);
+
+            }
         );
 
-        document.body.style.overflow =
-            "";
 
-    }
-);
+        /* =====================================================
+           CURSOR GLOW
+        ===================================================== */
 
-
-qrModal.addEventListener(
-    "click",
-    event => {
-
-        if(
-            event.target === qrModal
-        ){
-
-            qrModal.classList.remove(
-                "active"
-            );
-
-            document.body.style.overflow =
-                "";
-
-        }
-
-    }
-);
+        const cursorGlow =
+            document.getElementById("cursorGlow");
 
 
-/* ESC */
+        let cursorX = 0;
+        let cursorY = 0;
 
-document.addEventListener(
-    "keydown",
-    event => {
 
-        if(event.key === "Escape"){
+        document.addEventListener(
+            "mousemove",
+            event => {
 
-            closeSideMenu();
+                cursorX = event.clientX;
 
-            closeLightbox();
+                cursorY = event.clientY;
 
-            qrModal.classList.remove(
-                "active"
-            );
+                cursorGlow.style.left =
+                    cursorX + "px";
 
-            document.body.style.overflow =
-                "";
+                cursorGlow.style.top =
+                    cursorY + "px";
+
+            },
+            { passive: true }
+        );
+
+
+        /* =====================================================
+           DISABLE CURSOR GLOW ON TOUCH
+        ===================================================== */
+
+        if (
+            "ontouchstart" in window ||
+            navigator.maxTouchPoints > 0
+        ) {
+
+            cursorGlow.style.display =
+                "none";
 
         }
 
-    }
-);
 
-</script>
+        /* =====================================================
+           IMAGE FALLBACK
+        ===================================================== */
+
+        const profileImage =
+            document.querySelector(
+                ".portrait img"
+            );
+
+
+        profileImage.addEventListener(
+            "error",
+            () => {
+
+                profileImage.style.display =
+                    "none";
+
+                profileImage.parentElement.style.background =
+                    "linear-gradient(145deg,#171717,#080808)";
+
+            }
+        );
+
+    </script>
 
 </body>
+
 </html>
