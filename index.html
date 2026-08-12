@@ -1,179 +1,360 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>مبخوت بن عبدالله | MBK</title>
-<meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله">
-<meta name="theme-color" content="#061426">
+
+<meta
+    name="description"
+    content="الموقع الشخصي لمبخوت بن عبدالله — MBK"
+>
+
+<meta
+    name="theme-color"
+    content="#061426"
+>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
 
 <style>
 
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
+
     --navy:#061426;
+
     --navy-dark:#020914;
+
+    --navy-soft:#0a1d34;
+
     --gold:#d4af37;
+
     --gold-light:#f1d56a;
+
+    --gold-bright:#ffe99a;
+
     --white:#f8f7f2;
+
     --text:#d8dce2;
+
     --muted:#8995a3;
+
     --border:rgba(212,175,55,.20);
+
     --border-strong:rgba(212,175,55,.42);
+
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
+
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
+
 }
+
 
 html{
+
     scroll-behavior:smooth;
+
 }
 
+
 body{
+
     min-height:100vh;
+
     overflow-x:hidden;
-    font-family:"Cairo","Noto Kufi Arabic",sans-serif;
+
+    font-family:
+        "Cairo",
+        "Noto Kufi Arabic",
+        sans-serif;
+
     color:var(--white);
 
     background:
-        radial-gradient(circle at 50% 0%,rgba(212,175,55,.08),transparent 27%),
-        radial-gradient(circle at 0% 50%,rgba(16,50,82,.32),transparent 35%),
-        linear-gradient(145deg,#020914 0%,#061426 48%,#030b16 100%);
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(212,175,55,.08),
+            transparent 27%
+        ),
+
+        radial-gradient(
+            circle at 0% 50%,
+            rgba(16,50,82,.32),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            145deg,
+            #020914 0%,
+            #061426 48%,
+            #030b16 100%
+        );
+
 }
 
+
 body::before{
+
     content:"";
+
     position:fixed;
+
     inset:0;
+
     pointer-events:none;
+
     z-index:-10;
+
     opacity:.055;
 
     background-image:
-        linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+
+        linear-gradient(
+            rgba(255,255,255,.05) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.05) 1px,
+            transparent 1px
+        );
 
     background-size:75px 75px;
+
 }
+
 
 body::after{
+
     content:"";
+
     position:fixed;
+
     width:450px;
+
     height:450px;
+
     top:12%;
+
     left:50%;
+
     transform:translateX(-50%);
+
     border-radius:50%;
-    background:rgba(212,175,55,.035);
+
+    background:
+        rgba(212,175,55,.035);
+
     filter:blur(120px);
+
     pointer-events:none;
+
     z-index:-9;
+
 }
+
 
 a{
+
     color:inherit;
+
     -webkit-tap-highlight-color:transparent;
+
 }
+
 
 button{
+
     font-family:inherit;
+
 }
 
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 header{
+
     position:fixed;
+
     top:0;
+
     right:0;
+
     left:0;
+
     height:76px;
+
     padding:0 6%;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     z-index:1000;
 
-    background:rgba(2,9,20,.76);
-    border-bottom:1px solid rgba(212,175,55,.12);
+    background:
+        rgba(2,9,20,.76);
 
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+    border-bottom:
+        1px solid rgba(212,175,55,.12);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
 }
+
 
 .logo{
+
     direction:ltr;
+
     font-family:Arial,sans-serif;
+
     font-size:23px;
+
     font-weight:700;
+
     letter-spacing:7px;
+
     color:var(--gold-light);
+
     text-decoration:none;
+
 }
 
+
 .menu-btn{
+
     width:47px;
+
     height:47px;
+
     border-radius:50%;
-    border:1px solid var(--border-strong);
-    background:rgba(255,255,255,.025);
+
+    border:
+        1px solid var(--border-strong);
+
+    background:
+        rgba(255,255,255,.025);
+
     color:var(--gold-light);
+
     cursor:pointer;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     font-size:21px;
+
     transition:.3s ease;
+
 }
+
 
 .menu-btn:hover{
+
     transform:scale(1.05);
+
     border-color:var(--gold-light);
-    background:rgba(212,175,55,.08);
-    box-shadow:0 0 30px rgba(212,175,55,.12);
+
+    background:
+        rgba(212,175,55,.08);
+
+    box-shadow:
+        0 0 30px rgba(212,175,55,.12);
+
 }
 
 
-/* =========================
+/* =========================================================
    SIDE MENU
-========================= */
+========================================================= */
 
 .overlay{
+
     position:fixed;
+
     inset:0;
-    background:rgba(0,0,0,.58);
-    backdrop-filter:blur(5px);
+
+    background:
+        rgba(0,0,0,.58);
+
+    backdrop-filter:
+        blur(5px);
+
     z-index:1100;
 
     opacity:0;
+
     visibility:hidden;
+
     transition:.35s ease;
+
 }
+
 
 .overlay.active{
+
     opacity:1;
+
     visibility:visible;
+
 }
 
+
 .side-menu{
+
     position:fixed;
+
     top:0;
+
     right:0;
+
     width:min(370px,88vw);
+
     height:100vh;
 
     padding:105px 35px 35px;
@@ -181,140 +362,219 @@ header{
     z-index:1200;
 
     background:
-        linear-gradient(150deg,rgba(8,26,47,.99),rgba(2,9,20,.99));
 
-    border-left:1px solid var(--border);
+        linear-gradient(
+            150deg,
+            rgba(8,26,47,.99),
+            rgba(2,9,20,.99)
+        );
 
-    transform:translateX(105%);
+    border-left:
+        1px solid var(--border);
 
-    transition:transform .45s cubic-bezier(.77,0,.18,1);
+    transform:
+        translateX(105%);
 
-    box-shadow:-30px 0 90px rgba(0,0,0,.45);
+    transition:
+        transform .45s cubic-bezier(.77,0,.18,1);
+
+    box-shadow:
+        -30px 0 90px rgba(0,0,0,.45);
+
 }
+
 
 .side-menu.active{
-    transform:translateX(0);
+
+    transform:
+        translateX(0);
+
 }
 
+
 .close-menu{
+
     position:absolute;
+
     top:24px;
+
     left:24px;
 
     width:42px;
+
     height:42px;
 
     border-radius:50%;
-    border:1px solid var(--border-strong);
+
+    border:
+        1px solid var(--border-strong);
+
     background:transparent;
 
     color:var(--gold-light);
+
     cursor:pointer;
+
     font-size:22px;
+
 }
 
+
 .menu-label{
+
     color:var(--gold);
+
     font-size:11px;
+
     letter-spacing:4px;
+
     margin-bottom:28px;
 
     direction:ltr;
+
     text-align:right;
+
 }
 
+
 .side-menu a{
+
     display:block;
+
     padding:17px 0;
 
-    border-bottom:1px solid rgba(255,255,255,.055);
+    border-bottom:
+        1px solid rgba(255,255,255,.055);
 
     text-decoration:none;
+
     font-size:17px;
+
     color:var(--white);
 
     transition:.3s ease;
+
 }
+
 
 .side-menu a:hover{
+
     color:var(--gold-light);
+
     padding-right:10px;
+
 }
 
 
-/* =========================
+/* =========================================================
    MAIN
-========================= */
+========================================================= */
 
 main{
+
     width:min(1120px,92%);
+
     margin:auto;
+
 }
 
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
+
     min-height:100vh;
 
     padding:115px 0 55px;
 
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
 
     position:relative;
+
 }
+
 
 .hero-corner{
+
     position:absolute;
+
     width:72px;
+
     height:72px;
-    border-color:rgba(212,175,55,.68);
+
+    border-color:
+        rgba(212,175,55,.68);
+
     pointer-events:none;
+
 }
+
 
 .hero-corner.top{
+
     top:108px;
+
     right:0;
+
     border-top:1px solid;
+
     border-right:1px solid;
+
 }
+
 
 .hero-corner.bottom{
+
     bottom:35px;
+
     left:0;
+
     border-bottom:1px solid;
+
     border-left:1px solid;
+
 }
 
 
-/* =========================
-   NAME
-========================= */
+/* =========================================================
+   HERO NAME
+========================================================= */
 
 .hero-name{
+
     width:100%;
+
     max-width:850px;
 
     padding:0 20px;
+
     margin:0 auto 14px;
 
-    font-size:clamp(34px,5.5vw,58px);
+    font-size:
+        clamp(34px,5.5vw,58px);
+
     font-weight:800;
+
     line-height:1.5;
 
     text-align:center;
+
     white-space:normal;
 
     letter-spacing:-1px;
 
     background:
+
         linear-gradient(
             135deg,
             #b88918 0%,
@@ -325,21 +585,30 @@ main{
         );
 
     -webkit-background-clip:text;
+
     background-clip:text;
+
     -webkit-text-fill-color:transparent;
 
-    text-shadow:0 0 18px rgba(212,175,55,.12);
+    text-shadow:
+        0 0 18px rgba(212,175,55,.12);
 
-    animation:heroIn .9s ease both;
+    animation:
+        heroIn .9s ease both;
+
 }
 
+
 .gold-line{
+
     width:100px;
+
     height:2px;
 
     margin:0 auto 25px;
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
@@ -349,365 +618,742 @@ main{
             transparent
         );
 
-    box-shadow:0 0 16px rgba(212,175,55,.28);
+    box-shadow:
+        0 0 16px rgba(212,175,55,.28);
+
 }
 
 
-/* =========================
-   PROFILE IMAGE
-========================= */
+/* =========================================================
+   PROFILE
+========================================================= */
 
 .photo-frame{
+
     width:min(470px,88vw);
+
     aspect-ratio:1/1;
 
     padding:10px;
 
     position:relative;
+
     margin-bottom:22px;
+
 }
 
+
 .photo-frame::before{
+
     content:"";
+
     position:absolute;
+
     inset:0;
 
-    border:1px solid rgba(212,175,55,.82);
+    border:
+        1px solid rgba(212,175,55,.82);
+
     border-radius:31px;
 
     transform:rotate(-1deg);
+
 }
 
+
 .photo-frame::after{
+
     content:"";
+
     position:absolute;
+
     inset:7px;
 
-    border:1px solid rgba(212,175,55,.22);
+    border:
+        1px solid rgba(212,175,55,.22);
+
     border-radius:27px;
 
     transform:rotate(1deg);
+
 }
 
+
 .profile-photo{
+
     position:relative;
+
     z-index:2;
 
     width:100%;
+
     height:100%;
 
     display:block;
 
     object-fit:contain;
+
     object-position:center;
 
     border-radius:24px;
+
     border:5px solid #07172a;
 
     background:#07172a;
 
-    box-shadow:0 30px 80px rgba(0,0,0,.50);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.50);
 
     transition:
         transform .6s ease,
         box-shadow .6s ease;
+
 }
 
-.photo-frame:hover .profile-photo{
+
+.photo-frame:hover
+.profile-photo{
+
     transform:scale(1.012);
-    box-shadow:0 35px 95px rgba(0,0,0,.58);
+
+    box-shadow:
+        0 35px 95px rgba(0,0,0,.58);
+
 }
+
 
 .quote{
+
     color:var(--white);
-    font-size:clamp(20px,4vw,28px);
+
+    font-size:
+        clamp(20px,4vw,28px);
+
     font-weight:500;
+
 }
 
 
-/* =========================
+/* =========================================================
    SECTIONS
-========================= */
+========================================================= */
 
 .section{
+
     padding:65px 0;
+
     position:relative;
+
 }
+
 
 .section-header{
+
     text-align:center;
+
     margin-bottom:32px;
+
 }
 
+
 .section-label{
+
     display:block;
+
     color:var(--gold);
+
     font-size:11px;
+
     letter-spacing:4px;
 
     direction:ltr;
 
     margin-bottom:7px;
+
 }
+
 
 .section-title{
-    font-size:clamp(30px,5vw,46px);
+
+    font-size:
+        clamp(30px,5vw,46px);
+
     font-weight:800;
+
     line-height:1.4;
+
 }
 
+
 .section-title::after{
+
     content:"";
 
     display:block;
 
     width:68px;
+
     height:2px;
 
     margin:11px auto 0;
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
             var(--gold),
             transparent
         );
+
 }
 
 
-/* =========================
+/* =========================================================
    ABOUT
-========================= */
+========================================================= */
 
 .about-card{
+
     max-width:900px;
+
     margin:auto;
 
     padding:35px 40px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:30px;
 
     background:
+
         linear-gradient(
             145deg,
             rgba(255,255,255,.035),
             rgba(255,255,255,.012)
         );
 
-    box-shadow:0 30px 80px rgba(0,0,0,.18);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.18);
 
     text-align:center;
+
 }
+
 
 .about-card p{
+
     color:var(--text);
+
     font-size:18px;
+
     line-height:2.05;
+
 }
+
 
 .about-card strong{
+
     color:var(--gold-light);
+
     font-weight:700;
+
 }
 
 
-/* =========================
+/* =========================================================
    VALUES
-========================= */
+========================================================= */
 
 .values{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:18px;
+
 }
 
+
 .value-card{
+
     padding:30px 25px;
 
     text-align:center;
 
-    border:1px solid rgba(212,175,55,.15);
+    border:
+        1px solid rgba(212,175,55,.15);
+
     border-radius:25px;
 
-    background:rgba(255,255,255,.022);
+    background:
+        rgba(255,255,255,.022);
 
     transition:
         transform .35s ease,
         border-color .35s ease,
         box-shadow .35s ease;
+
 }
 
-.value-card:hover{
-    transform:translateY(-8px);
 
-    border-color:rgba(212,175,55,.42);
+.value-card:hover{
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(212,175,55,.42);
 
     box-shadow:
         0 22px 55px rgba(212,175,55,.07);
+
 }
 
+
 .value-icon{
+
     width:55px;
+
     height:55px;
 
     margin:0 auto 14px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     border-radius:50%;
 
-    border:1px solid rgba(212,175,55,.35);
+    border:
+        1px solid rgba(212,175,55,.35);
 
     color:var(--gold-light);
 
     font-size:22px;
+
 }
+
 
 .value-card h3{
+
     font-size:20px;
+
     margin-bottom:7px;
+
 }
+
 
 .value-card p{
+
     color:var(--muted);
+
     font-size:14px;
+
     line-height:1.85;
+
 }
 
 
-/* =========================
-   GALLERY
-========================= */
+/* =========================================================
+   YEMEN INTRO
+========================================================= */
+
+.yemen-intro{
+
+    max-width:900px;
+
+    margin:0 auto 38px;
+
+    text-align:center;
+
+    padding:32px 38px;
+
+    border:
+        1px solid rgba(212,175,55,.18);
+
+    border-radius:28px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(212,175,55,.045),
+            rgba(255,255,255,.012)
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.12);
+
+}
+
+
+.yemen-intro .yemen-kicker{
+
+    display:block;
+
+    color:var(--gold);
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    direction:ltr;
+
+    margin-bottom:14px;
+
+}
+
+
+.yemen-intro h3{
+
+    font-size:
+        clamp(24px,4vw,34px);
+
+    line-height:1.7;
+
+    margin-bottom:15px;
+
+    color:var(--white);
+
+}
+
+
+.yemen-intro p{
+
+    color:var(--text);
+
+    font-size:17px;
+
+    line-height:2;
+
+    margin-bottom:12px;
+
+}
+
+
+.yemen-intro p:last-child{
+
+    margin-bottom:0;
+
+}
+
+
+.yemen-intro strong{
+
+    color:var(--gold-light);
+
+}
+
+
+/* =========================================================
+   YEMEN GALLERY
+========================================================= */
 
 .gallery{
+
     display:grid;
-    grid-template-columns:repeat(12,1fr);
+
+    grid-template-columns:
+        repeat(12,1fr);
+
     gap:15px;
+
 }
 
+
 .gallery-item{
+
     position:relative;
+
     overflow:hidden;
 
     border-radius:25px;
 
-    border:1px solid rgba(212,175,55,.17);
+    border:
+        1px solid rgba(212,175,55,.17);
 
     background:#07172a;
 
     cursor:pointer;
+
 }
+
 
 .gallery-item:nth-child(1){
+
     grid-column:span 7;
+
     aspect-ratio:16/10;
+
 }
+
 
 .gallery-item:nth-child(2){
+
     grid-column:span 5;
+
     aspect-ratio:1/1;
+
 }
+
 
 .gallery-item:nth-child(3){
+
     grid-column:span 5;
+
     aspect-ratio:1/1;
+
 }
+
 
 .gallery-item:nth-child(4){
+
     grid-column:span 7;
+
     aspect-ratio:16/10;
+
 }
+
 
 .gallery-item:nth-child(5){
+
     grid-column:span 7;
+
     aspect-ratio:16/10;
+
 }
+
 
 .gallery-item:nth-child(6){
+
     grid-column:span 5;
+
     aspect-ratio:1/1;
+
 }
+
 
 .gallery-item:nth-child(7){
+
     grid-column:span 5;
+
     aspect-ratio:1/1;
+
 }
+
 
 .gallery-item:nth-child(8){
+
     grid-column:span 7;
+
     aspect-ratio:16/10;
+
 }
 
+
 .gallery-item img{
+
     width:100%;
+
     height:100%;
 
     display:block;
 
     object-fit:cover;
 
-    transition:transform .7s ease;
+    transition:
+        transform .8s ease;
+
 }
 
+
 .gallery-item::after{
+
     content:"";
 
     position:absolute;
+
     inset:0;
 
     background:
+
         linear-gradient(
             to top,
-            rgba(0,0,0,.78),
-            transparent 52%
+            rgba(0,0,0,.88),
+            rgba(0,0,0,.15) 55%,
+            transparent 80%
         );
 
     pointer-events:none;
+
 }
+
+
+.gallery-item::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:2;
+
+    border:
+        1px solid rgba(212,175,55,.08);
+
+    border-radius:25px;
+
+    pointer-events:none;
+
+    transition:.4s ease;
+
+}
+
+
+.gallery-item:hover::before{
+
+    border-color:
+        rgba(212,175,55,.42);
+
+}
+
 
 .gallery-item:hover img{
+
     transform:scale(1.07);
+
 }
 
+
 .gallery-info{
+
     position:absolute;
 
     right:22px;
+
     left:22px;
+
     bottom:18px;
 
-    z-index:2;
+    z-index:3;
+
 }
 
+
 .gallery-info small{
+
     display:block;
 
     color:var(--gold-light);
 
-    font-size:11px;
+    font-size:10px;
+
     letter-spacing:2px;
 
     direction:ltr;
 
-    margin-bottom:3px;
+    margin-bottom:5px;
+
 }
+
 
 .gallery-info h3{
-    font-size:18px;
-    font-weight:600;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    margin-bottom:4px;
+
 }
 
 
-/* =========================
+.gallery-info p{
+
+    color:
+        rgba(255,255,255,.76);
+
+    font-size:12px;
+
+    line-height:1.75;
+
+    max-width:650px;
+
+}
+
+
+/* =========================================================
+   YEMEN FLAG LINE
+========================================================= */
+
+.yemen-line{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:0;
+
+    width:min(250px,70%);
+
+    height:4px;
+
+    margin:40px auto 0;
+
+    overflow:hidden;
+
+    border-radius:999px;
+
+}
+
+
+.yemen-line span{
+
+    flex:1;
+
+    height:100%;
+
+}
+
+
+.yemen-line .red{
+
+    background:#ce1126;
+
+}
+
+
+.yemen-line .white{
+
+    background:#f5f5f5;
+
+}
+
+
+.yemen-line .black{
+
+    background:#111;
+
+}
+
+
+/* =========================================================
    LIGHTBOX
-========================= */
+========================================================= */
 
 .lightbox{
+
     position:fixed;
+
     inset:0;
 
     z-index:2000;
@@ -715,76 +1361,106 @@ main{
     padding:25px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
-    background:rgba(0,0,0,.88);
+    background:
+        rgba(0,0,0,.90);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:
+        blur(10px);
 
     opacity:0;
+
     visibility:hidden;
 
     transition:.3s ease;
+
 }
+
 
 .lightbox.active{
+
     opacity:1;
+
     visibility:visible;
+
 }
 
+
 .lightbox img{
+
     max-width:92vw;
+
     max-height:86vh;
 
     object-fit:contain;
 
     border-radius:15px;
 
-    border:1px solid rgba(212,175,55,.28);
+    border:
+        1px solid rgba(212,175,55,.28);
 
-    box-shadow:0 30px 100px rgba(0,0,0,.65);
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.65);
+
 }
 
+
 .lightbox-close{
+
     position:absolute;
 
     top:22px;
+
     left:25px;
 
     width:45px;
+
     height:45px;
 
     border-radius:50%;
 
-    border:1px solid rgba(212,175,55,.4);
+    border:
+        1px solid rgba(212,175,55,.4);
 
-    background:rgba(0,0,0,.25);
+    background:
+        rgba(0,0,0,.25);
 
     color:var(--gold-light);
 
     font-size:23px;
 
     cursor:pointer;
+
 }
 
 
-/* =========================
+/* =========================================================
    JOURNEY
-========================= */
+========================================================= */
 
 .timeline{
+
     max-width:850px;
+
     margin:auto;
+
     position:relative;
+
 }
 
+
 .timeline::before{
+
     content:"";
 
     position:absolute;
 
     top:0;
+
     bottom:0;
 
     right:50%;
@@ -792,149 +1468,222 @@ main{
     width:1px;
 
     background:
+
         linear-gradient(
             transparent,
             var(--gold),
             transparent
         );
+
 }
 
+
 .timeline-item{
+
     position:relative;
 
     width:50%;
 
     padding:0 36px 45px;
+
 }
+
 
 .timeline-item:nth-child(odd){
+
     text-align:left;
+
 }
+
 
 .timeline-item:nth-child(even){
+
     margin-right:50%;
+
     text-align:right;
+
 }
 
+
 .timeline-dot{
+
     position:absolute;
 
     top:4px;
 
     width:13px;
+
     height:13px;
 
     border-radius:50%;
 
-    background:var(--gold-light);
+    background:
+        var(--gold-light);
 
     box-shadow:
         0 0 18px rgba(212,175,55,.58);
+
 }
 
-.timeline-item:nth-child(odd) .timeline-dot{
+
+.timeline-item:nth-child(odd)
+.timeline-dot{
+
     right:-6px;
+
 }
 
-.timeline-item:nth-child(even) .timeline-dot{
+
+.timeline-item:nth-child(even)
+.timeline-dot{
+
     left:-6px;
+
 }
+
 
 .timeline-year{
+
     color:var(--gold-light);
 
     font-size:28px;
+
     font-weight:800;
 
     line-height:1;
 
     margin-bottom:8px;
+
 }
+
 
 .timeline-title{
+
     font-size:18px;
+
     font-weight:600;
+
     margin-bottom:6px;
+
 }
+
 
 .timeline-text{
+
     color:var(--muted);
+
     font-size:14px;
+
     line-height:1.85;
+
 }
 
 
-/* =========================
+/* =========================================================
    CONTACT
-========================= */
+========================================================= */
 
 .contact-card{
+
     max-width:700px;
+
     margin:auto;
 
     padding:35px;
 
     text-align:center;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:30px;
 
-    background:rgba(255,255,255,.022);
+    background:
+        rgba(255,255,255,.022);
+
 }
+
 
 .contact-icons{
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     gap:16px;
+
 }
 
+
 .social{
+
     width:60px;
+
     height:60px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     border-radius:50%;
 
-    border:1px solid rgba(212,175,55,.42);
+    border:
+        1px solid rgba(212,175,55,.42);
 
-    background:rgba(255,255,255,.02);
+    background:
+        rgba(255,255,255,.02);
 
     color:var(--gold-light);
 
     text-decoration:none;
 
     transition:.3s ease;
+
 }
 
+
 .social:hover{
-    transform:translateY(-5px) scale(1.04);
 
-    background:rgba(212,175,55,.08);
+    transform:
+        translateY(-5px) scale(1.04);
 
-    border-color:var(--gold-light);
+    background:
+        rgba(212,175,55,.08);
+
+    border-color:
+        var(--gold-light);
 
     box-shadow:
         0 15px 40px rgba(212,175,55,.13);
+
 }
+
 
 .social svg{
+
     width:26px;
+
     height:26px;
+
     fill:currentColor;
+
 }
 
+
 .qr-button{
+
     margin-top:22px;
 
     padding:11px 24px;
 
     border-radius:999px;
 
-    border:1px solid rgba(212,175,55,.38);
+    border:
+        1px solid rgba(212,175,55,.38);
 
     background:transparent;
 
@@ -943,71 +1692,101 @@ main{
     cursor:pointer;
 
     transition:.3s ease;
+
 }
+
 
 .qr-button:hover{
-    background:rgba(212,175,55,.08);
-    transform:translateY(-3px);
+
+    background:
+        rgba(212,175,55,.08);
+
+    transform:
+        translateY(-3px);
+
 }
 
 
-/* =========================
+/* =========================================================
    QR MODAL
-========================= */
+========================================================= */
 
 .qr-modal{
+
     position:fixed;
+
     inset:0;
 
     z-index:2100;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     padding:20px;
 
-    background:rgba(0,0,0,.78);
+    background:
+        rgba(0,0,0,.78);
 
-    backdrop-filter:blur(8px);
+    backdrop-filter:
+        blur(8px);
 
     opacity:0;
+
     visibility:hidden;
 
     transition:.3s ease;
+
 }
+
 
 .qr-modal.active{
+
     opacity:1;
+
     visibility:visible;
+
 }
 
+
 .qr-box{
+
     width:min(360px,92vw);
 
     padding:30px;
 
     text-align:center;
 
-    border:1px solid rgba(212,175,55,.35);
+    border:
+        1px solid rgba(212,175,55,.35);
 
     border-radius:30px;
 
     background:#07172a;
 
-    box-shadow:0 30px 100px rgba(0,0,0,.55);
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55);
+
 }
 
+
 .qr-box h3{
+
     color:var(--gold-light);
 
     direction:ltr;
 
     letter-spacing:2px;
+
 }
 
+
 .qr-box img{
+
     width:220px;
+
     height:220px;
 
     display:block;
@@ -1019,43 +1798,58 @@ main{
     background:white;
 
     border-radius:14px;
+
 }
 
+
 .qr-close{
+
     padding:10px 25px;
 
     border-radius:999px;
 
-    border:1px solid rgba(212,175,55,.35);
+    border:
+        1px solid rgba(212,175,55,.35);
 
     background:transparent;
 
     color:white;
 
     cursor:pointer;
+
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer{
+
     padding:38px 20px;
 
     text-align:center;
 
-    border-top:1px solid rgba(212,175,55,.12);
+    border-top:
+        1px solid rgba(212,175,55,.12);
 
-    background:rgba(2,8,17,.72);
+    background:
+        rgba(2,8,17,.72);
+
 }
+
 
 .footer-copy{
+
     color:#858f9b;
+
     font-size:12px;
+
 }
 
+
 .footer-mbk{
+
     margin-top:9px;
 
     direction:ltr;
@@ -1067,116 +1861,205 @@ footer{
     letter-spacing:6px;
 
     font-weight:700;
+
 }
 
 
-/* =========================
+/* =========================================================
    REVEAL
-========================= */
+========================================================= */
 
 .reveal{
+
     opacity:0;
-    transform:translateY(25px);
+
+    transform:
+        translateY(25px);
 
     transition:
         opacity .8s ease,
         transform .8s ease;
+
 }
+
 
 .reveal.visible{
+
     opacity:1;
-    transform:translateY(0);
+
+    transform:
+        translateY(0);
+
 }
 
 
-/* =========================
+/* =========================================================
    ANIMATION
-========================= */
+========================================================= */
 
 @keyframes heroIn{
 
     from{
+
         opacity:0;
-        transform:translateY(25px);
+
+        transform:
+            translateY(25px);
+
     }
 
     to{
+
         opacity:1;
-        transform:translateY(0);
+
+        transform:
+            translateY(0);
+
     }
 
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media(max-width:760px){
 
     header{
+
         height:70px;
+
         padding:0 20px;
+
     }
+
 
     .logo{
+
         font-size:21px;
+
         letter-spacing:6px;
+
     }
+
 
     main{
+
         width:min(92%,520px);
+
     }
+
 
     .hero{
+
         padding:100px 0 45px;
+
     }
+
 
     .hero-name{
+
         max-width:100%;
+
         padding:0 12px;
 
-        font-size:clamp(32px,9vw,47px);
+        font-size:
+            clamp(32px,9vw,47px);
 
         line-height:1.55;
+
         letter-spacing:-.5px;
+
     }
+
 
     .photo-frame{
+
         width:min(390px,88vw);
+
         margin-bottom:18px;
+
     }
+
 
     .section{
+
         padding:52px 0;
+
     }
+
 
     .section-header{
+
         margin-bottom:27px;
+
     }
+
 
     .about-card{
+
         padding:28px 22px;
+
     }
+
 
     .about-card p{
+
         font-size:16px;
+
         line-height:2;
+
     }
+
 
     .values{
+
         grid-template-columns:1fr;
+
         gap:14px;
+
     }
+
 
     .value-card{
+
         padding:27px 22px;
+
     }
 
-    .gallery{
-        grid-template-columns:1fr;
-        gap:13px;
+
+    .yemen-intro{
+
+        padding:26px 20px;
+
     }
+
+
+    .yemen-intro h3{
+
+        font-size:24px;
+
+    }
+
+
+    .yemen-intro p{
+
+        font-size:15px;
+
+        line-height:2;
+
+    }
+
+
+    .gallery{
+
+        grid-template-columns:1fr;
+
+        gap:13px;
+
+    }
+
 
     .gallery-item,
     .gallery-item:nth-child(1),
@@ -1189,12 +2072,43 @@ footer{
     .gallery-item:nth-child(8){
 
         grid-column:span 1;
+
         aspect-ratio:16/10;
+
     }
 
-    .timeline::before{
-        right:13px;
+
+    .gallery-info{
+
+        right:18px;
+
+        left:18px;
+
+        bottom:17px;
+
     }
+
+
+    .gallery-info h3{
+
+        font-size:18px;
+
+    }
+
+
+    .gallery-info p{
+
+        font-size:11px;
+
+    }
+
+
+    .timeline::before{
+
+        right:13px;
+
+    }
+
 
     .timeline-item,
     .timeline-item:nth-child(odd),
@@ -1204,68 +2118,101 @@ footer{
 
         margin:0;
 
-        padding:0 42px 38px 0;
+        padding:
+            0 42px 38px 0;
 
         text-align:right;
+
     }
 
-    .timeline-item:nth-child(odd) .timeline-dot,
-    .timeline-item:nth-child(even) .timeline-dot{
+
+    .timeline-item:nth-child(odd)
+    .timeline-dot,
+    .timeline-item:nth-child(even)
+    .timeline-dot{
 
         right:7px;
+
         left:auto;
+
     }
+
 
     .timeline-year{
+
         font-size:25px;
+
     }
+
 
     .contact-card{
+
         padding:30px 20px;
+
     }
+
 
     .hero-corner{
+
         width:45px;
+
         height:45px;
+
     }
 
+
     .hero-corner.top{
+
         top:90px;
+
     }
 
 }
 
 
-/* =========================
+/* =========================================================
    SMALL MOBILE
-========================= */
+========================================================= */
 
 @media(max-width:420px){
 
     .hero-name{
+
         font-size:34px;
+
         padding:0 8px;
+
     }
+
 
     .photo-frame{
+
         width:92vw;
+
     }
+
 
     .social{
+
         width:56px;
+
         height:56px;
+
     }
 
+
     .gallery-info h3{
+
         font-size:16px;
+
     }
 
 }
 
 
-/* =========================
+/* =========================================================
    REDUCED MOTION
-========================= */
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1274,25 +2221,36 @@ footer{
     *::after{
 
         animation:none!important;
+
         transition:none!important;
+
         scroll-behavior:auto!important;
+
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
 
-<!-- HEADER -->
+<!-- =======================================================
+     HEADER
+======================================================= -->
 
 <header>
 
-    <a href="#home" class="logo">
+    <a
+        href="#home"
+        class="logo"
+    >
         MBK
     </a>
+
 
     <button
         class="menu-btn"
@@ -1305,12 +2263,15 @@ footer{
 </header>
 
 
-<!-- SIDE MENU -->
+<!-- =======================================================
+     SIDE MENU
+======================================================= -->
 
 <div
     class="overlay"
     id="overlay"
 ></div>
+
 
 <nav
     class="side-menu"
@@ -1325,29 +2286,36 @@ footer{
         ×
     </button>
 
+
     <div class="menu-label">
         NAVIGATION
     </div>
+
 
     <a href="#home">
         الرئيسية
     </a>
 
+
     <a href="#about">
         نبذة
     </a>
+
 
     <a href="#values">
         بصمتي
     </a>
 
+
     <a href="#gallery">
-        مختاراتي
+        اليمن
     </a>
+
 
     <a href="#journey">
         رحلتي
     </a>
+
 
     <a href="#contact">
         تواصل
@@ -1356,10 +2324,13 @@ footer{
 </nav>
 
 
+
 <main>
 
 
-<!-- HERO -->
+<!-- =======================================================
+     HERO
+======================================================= -->
 
 <section
     class="hero"
@@ -1367,13 +2338,17 @@ footer{
 >
 
     <div class="hero-corner top"></div>
+
     <div class="hero-corner bottom"></div>
+
 
     <h1 class="hero-name">
         مبخوت بن عبدالله
     </h1>
 
+
     <div class="gold-line"></div>
+
 
     <div class="photo-frame">
 
@@ -1385,6 +2360,7 @@ footer{
 
     </div>
 
+
     <p class="quote">
         وما توفيقي إلا بالله
     </p>
@@ -1392,7 +2368,10 @@ footer{
 </section>
 
 
-<!-- ABOUT -->
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
 
 <section
     class="section reveal"
@@ -1405,11 +2384,13 @@ footer{
             ABOUT
         </span>
 
+
         <h2 class="section-title">
             نبذة
         </h2>
 
     </div>
+
 
     <div class="about-card">
 
@@ -1444,7 +2425,10 @@ footer{
 </section>
 
 
-<!-- VALUES -->
+
+<!-- =======================================================
+     VALUES
+======================================================= -->
 
 <section
     class="section reveal"
@@ -1457,13 +2441,16 @@ footer{
             MY VALUES
         </span>
 
+
         <h2 class="section-title">
             بصمتي
         </h2>
 
     </div>
 
+
     <div class="values">
+
 
         <div class="value-card">
 
@@ -1471,9 +2458,11 @@ footer{
                 ✦
             </div>
 
+
             <h3>
                 الإبداع
             </h3>
+
 
             <p>
                 أبحث دائمًا عن الأفكار المختلفة
@@ -1483,15 +2472,18 @@ footer{
         </div>
 
 
+
         <div class="value-card">
 
             <div class="value-icon">
                 ◇
             </div>
 
+
             <h3>
                 الجودة
             </h3>
+
 
             <p>
                 أهتم بالتفاصيل الصغيرة لأنها
@@ -1501,15 +2493,18 @@ footer{
         </div>
 
 
+
         <div class="value-card">
 
             <div class="value-icon">
                 ◆
             </div>
 
+
             <h3>
                 الأصالة
             </h3>
+
 
             <p>
                 أحافظ على هويتي وأطورها
@@ -1518,223 +2513,399 @@ footer{
 
         </div>
 
+
     </div>
 
 </section>
 
 
-<!-- GALLERY -->
+
+<!-- =======================================================
+     YEMEN
+======================================================= -->
 
 <section
     class="section reveal"
     id="gallery"
 >
 
+
     <div class="section-header">
 
         <span class="section-label">
-            SELECTED
+            YEMEN
         </span>
 
+
         <h2 class="section-title">
-            مختاراتي
+            اليمن
         </h2>
 
     </div>
 
-    <div class="gallery">
 
+
+    <div class="yemen-intro">
+
+        <span class="yemen-kicker">
+            YEMEN · ARABIA FELIX
+        </span>
+
+
+        <h3>
+            اليمن... حيث يبدأ المجد من جذور التاريخ
+        </h3>
+
+
+        <p>
+            هنا أرضٌ لم تكن يومًا هامشًا في كتاب التاريخ،
+            بل كانت صفحةً من صفحاته الأولى.
+        </p>
+
+
+        <p>
+            اليمن، أرض الحضارة وموطن سبأ وحِمْيَر،
+            وبلادٌ ارتبط اسمها في التراث العربي
+            بجذور العرب وأصل الحكاية.
+        </p>
+
+
+        <p>
+
+            من صنعاء العتيقة إلى مأرب،
+            ومن حضرموت إلى عدن،
+            ومن جبال إب وتعز إلى جزر سقطرى،
+            تتغير ملامح الأرض ويبقى المجد واحدًا.
+
+            <strong>
+                اليمن.
+            </strong>
+
+        </p>
+
+
+        <div class="yemen-line">
+
+            <span class="red"></span>
+
+            <span class="white"></span>
+
+            <span class="black"></span>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="gallery yemen-gallery">
+
+
+        <!-- =================================================
+             SANA'A
+        ================================================== -->
 
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
+            data-full="https://images.unsplash.com/photo-fwrN4jisiTc?auto=format&fit=crop&w=2200&q=90"
         >
 
             <img
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
-                alt="جبال وطبيعة"
+                src="https://images.unsplash.com/photo-fwrN4jisiTc?auto=format&fit=crop&w=1500&q=88"
+                alt="صنعاء القديمة في اليمن"
                 loading="lazy"
             >
 
+
             <div class="gallery-info">
 
-                <small>NATURE</small>
+                <small>
+                    SANA'A · YEMEN
+                </small>
+
 
                 <h3>
-                    هدوء الجبال
+                    صنعاء العتيقة
                 </h3>
+
+
+                <p>
+                    مدينةٌ تقف شامخةً بعمارتها الطينية
+                    وذاكرتها التي تحمل قرونًا من التاريخ.
+                </p>
 
             </div>
 
         </div>
 
 
+
+        <!-- =================================================
+             SOCOTRA
+        ================================================== -->
+
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
+            data-full="https://images.unsplash.com/photo-E27TMzU3ncs?auto=format&fit=crop&w=2200&q=90"
         >
 
             <img
-                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"
-                alt="طبيعة ريفية"
+                src="https://images.unsplash.com/photo-E27TMzU3ncs?auto=format&fit=crop&w=1500&q=88"
+                alt="سقطرى اليمن"
                 loading="lazy"
             >
 
+
             <div class="gallery-info">
 
-                <small>LIFE</small>
+                <small>
+                    SOCOTRA · YEMEN
+                </small>
+
 
                 <h3>
-                    تفاصيل هادئة
+                    سقطرى
                 </h3>
+
+
+                <p>
+                    جزيرةٌ يمنية استثنائية،
+                    تجمع بين البحر والصخر والطبيعة النادرة.
+                </p>
 
             </div>
 
         </div>
 
 
+
+        <!-- =================================================
+             HADRAMOUT
+        ================================================== -->
+
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
+            data-full="https://images.unsplash.com/photo-_PlLsSlxCnM?auto=format&fit=crop&w=2200&q=90"
         >
 
             <img
-                src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=85"
-                alt="مدينة حديثة"
+                src="https://images.unsplash.com/photo-_PlLsSlxCnM?auto=format&fit=crop&w=1500&q=88"
+                alt="حصن الغويزي في حضرموت اليمن"
                 loading="lazy"
             >
 
+
             <div class="gallery-info">
 
-                <small>CITY</small>
+                <small>
+                    HADRAMOUT · YEMEN
+                </small>
+
 
                 <h3>
-                    نبض المدينة
+                    حضرموت
                 </h3>
+
+
+                <p>
+                    أرضٌ عريقة، وعمارةٌ شامخة،
+                    وذاكرةٌ حضرمية لا تشبه سواها.
+                </p>
 
             </div>
 
         </div>
 
 
+
+        <!-- =================================================
+             SOCOTRA DUNES
+        ================================================== -->
+
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
+            data-full="https://images.unsplash.com/photo-f9rQRvPkWds?auto=format&fit=crop&w=2200&q=90"
         >
 
             <img
-                src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85"
-                alt="شوارع المدينة"
+                src="https://images.unsplash.com/photo-f9rQRvPkWds?auto=format&fit=crop&w=1500&q=88"
+                alt="كثبان سقطرى اليمن"
                 loading="lazy"
             >
 
+
             <div class="gallery-info">
 
-                <small>STREETS</small>
+                <small>
+                    SOCOTRA · INDIAN OCEAN
+                </small>
+
 
                 <h3>
-                    بين الشوارع
+                    سقطرى — طرفٌ من الجنة
                 </h3>
+
+
+                <p>
+                    كثبانٌ تلامس البحر،
+                    ومشهدٌ يختصر فرادة الجزيرة اليمنية.
+                </p>
 
             </div>
 
         </div>
 
 
+
+        <!-- =================================================
+             SANA'A MOSQUE
+        ================================================== -->
+
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90"
+            data-full="https://images.unsplash.com/photo-Ehd6V-KZKBg?auto=format&fit=crop&w=2200&q=90"
         >
 
             <img
-                src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=85"
-                alt="مدينة من الأعلى"
+                src="https://images.unsplash.com/photo-Ehd6V-KZKBg?auto=format&fit=crop&w=1500&q=88"
+                alt="مسجد في صنعاء اليمن"
                 loading="lazy"
             >
 
+
             <div class="gallery-info">
 
-                <small>URBAN</small>
+                <small>
+                    SANA'A · HERITAGE
+                </small>
+
 
                 <h3>
-                    أفق جديد
+                    صنعاء — ذاكرة الحجر
                 </h3>
+
+
+                <p>
+                    عمارةٌ يمنية مميزة تحمل ملامح
+                    مدينةٍ ارتبط اسمها بالتاريخ.
+                </p>
 
             </div>
 
         </div>
 
 
+
+        <!-- =================================================
+             MARIB
+        ================================================== -->
+
         <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+            class="gallery-item yemen-search-card"
+            data-search="https://unsplash.com/s/photos/marib-yemen"
         >
 
-            <img
-                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
-                alt="طريق وسط الطبيعة"
-                loading="lazy"
-            >
+            <div class="search-card-content">
 
-            <div class="gallery-info">
+                <span>
+                    MARIB · YEMEN
+                </span>
 
-                <small>JOURNEY</small>
 
                 <h3>
-                    الطريق
+                    مأرب — أرض سبأ
                 </h3>
+
+
+                <p>
+                    من هنا تروي الأرض فصلًا من فصول
+                    حضارة سبأ، وسدٍ ارتبط اسمه
+                    بتاريخ الجزيرة العربية.
+                </p>
+
+
+                <button>
+                    استكشاف صور مأرب
+                </button>
 
             </div>
 
         </div>
 
 
+
+        <!-- =================================================
+             ADEN
+        ================================================== -->
+
         <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+            class="gallery-item yemen-search-card"
+            data-search="https://unsplash.com/s/photos/aden-yemen"
         >
 
-            <img
-                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
-                alt="منظر طبيعي"
-                loading="lazy"
-            >
+            <div class="search-card-content">
 
-            <div class="gallery-info">
+                <span>
+                    ADEN · YEMEN
+                </span>
 
-                <small>CALM</small>
 
                 <h3>
-                    لحظة هدوء
+                    عدن — بوابة البحر
                 </h3>
+
+
+                <p>
+                    مدينةٌ ساحلية عريقة،
+                    فتح بحرها أبوابها على العالم.
+                </p>
+
+
+                <button>
+                    استكشاف صور عدن
+                </button>
 
             </div>
 
         </div>
 
 
+
+        <!-- =================================================
+             IBB / TAIZ
+        ================================================== -->
+
         <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
+            class="gallery-item yemen-search-card"
+            data-search="https://unsplash.com/s/photos/ibb-yemen"
         >
 
-            <img
-                src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85"
-                alt="العمارة والحياة"
-                loading="lazy"
-            >
+            <div class="search-card-content">
 
-            <div class="gallery-info">
+                <span>
+                    IBB · YEMEN
+                </span>
 
-                <small>ARCHITECTURE</small>
 
                 <h3>
-                    تفاصيل المكان
+                    إب الخضراء
                 </h3>
+
+
+                <p>
+                    جبالٌ ومرتفعاتٌ وخضرةٌ تمنح اليمن
+                    واحدًا من أجمل وجوهه الطبيعية.
+                </p>
+
+
+                <button>
+                    استكشاف صور إب
+                </button>
 
             </div>
 
         </div>
+
 
 
     </div>
@@ -1742,7 +2913,10 @@ footer{
 </section>
 
 
-<!-- JOURNEY -->
+
+<!-- =======================================================
+     JOURNEY
+======================================================= -->
 
 <section
     class="section reveal"
@@ -1754,6 +2928,7 @@ footer{
         <span class="section-label">
             MY JOURNEY
         </span>
+
 
         <h2 class="section-title">
             رحلتي
@@ -1769,13 +2944,16 @@ footer{
 
             <div class="timeline-dot"></div>
 
+
             <div class="timeline-year">
                 2015
             </div>
 
+
             <div class="timeline-title">
                 البداية
             </div>
+
 
             <div class="timeline-text">
                 بداية الرحلة، ومنها بدأت مرحلة
@@ -1785,17 +2963,21 @@ footer{
         </div>
 
 
+
         <div class="timeline-item">
 
             <div class="timeline-dot"></div>
+
 
             <div class="timeline-year">
                 2018
             </div>
 
+
             <div class="timeline-title">
-                مرحلة من التجربة والتعلّم
+                التجربة والتعلّم
             </div>
+
 
             <div class="timeline-text">
                 سنوات من التجربة واكتشاف الاهتمامات
@@ -1805,17 +2987,21 @@ footer{
         </div>
 
 
+
         <div class="timeline-item">
 
             <div class="timeline-dot"></div>
+
 
             <div class="timeline-year">
                 2021
             </div>
 
+
             <div class="timeline-title">
                 تطور ونضج
             </div>
+
 
             <div class="timeline-text">
                 مرحلة أصبح فيها الطموح أكثر وضوحًا
@@ -1825,17 +3011,21 @@ footer{
         </div>
 
 
+
         <div class="timeline-item">
 
             <div class="timeline-dot"></div>
+
 
             <div class="timeline-year">
                 2024
             </div>
 
+
             <div class="timeline-title">
                 مرحلة جديدة
             </div>
+
 
             <div class="timeline-text">
                 بداية مرحلة مختلفة، برؤية أوسع
@@ -1845,17 +3035,21 @@ footer{
         </div>
 
 
+
         <div class="timeline-item">
 
             <div class="timeline-dot"></div>
+
 
             <div class="timeline-year">
                 2026
             </div>
 
+
             <div class="timeline-title">
                 رؤية للمستقبل
             </div>
+
 
             <div class="timeline-text">
                 الاستمرار في التطور وبناء المستقبل
@@ -1870,7 +3064,10 @@ footer{
 </section>
 
 
-<!-- CONTACT -->
+
+<!-- =======================================================
+     CONTACT
+======================================================= -->
 
 <section
     class="section reveal"
@@ -1883,6 +3080,7 @@ footer{
             CONTACT
         </span>
 
+
         <h2 class="section-title">
             تواصل
         </h2>
@@ -1891,6 +3089,7 @@ footer{
 
 
     <div class="contact-card">
+
 
         <div class="contact-icons">
 
@@ -1911,6 +3110,7 @@ footer{
                 </svg>
 
             </a>
+
 
 
             <a
@@ -1951,7 +3151,10 @@ footer{
 </main>
 
 
-<!-- LIGHTBOX -->
+
+<!-- =======================================================
+     LIGHTBOX
+======================================================= -->
 
 <div
     class="lightbox"
@@ -1966,6 +3169,7 @@ footer{
         ×
     </button>
 
+
     <img
         id="lightboxImage"
         src=""
@@ -1975,7 +3179,10 @@ footer{
 </div>
 
 
-<!-- QR -->
+
+<!-- =======================================================
+     QR
+======================================================= -->
 
 <div
     class="qr-modal"
@@ -1984,14 +3191,17 @@ footer{
 
     <div class="qr-box">
 
+
         <h3>
             mabkhut.com
         </h3>
+
 
         <img
             src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com"
             alt="QR Code"
         >
+
 
         <button
             class="qr-close"
@@ -2000,18 +3210,23 @@ footer{
             إغلاق
         </button>
 
+
     </div>
 
 </div>
 
 
-<!-- FOOTER -->
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
 
 <footer>
 
     <div class="footer-copy">
         © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
     </div>
+
 
     <div class="footer-mbk">
         MBK
@@ -2020,9 +3235,12 @@ footer{
 </footer>
 
 
+
 <script>
 
-/* MENU */
+/* =========================================================
+   MENU
+========================================================= */
 
 const menuBtn =
     document.getElementById("menuBtn");
@@ -2064,10 +3282,12 @@ menuBtn.addEventListener(
     openMenu
 );
 
+
 closeMenu.addEventListener(
     "click",
     closeSideMenu
 );
+
 
 overlay.addEventListener(
     "click",
@@ -2087,7 +3307,10 @@ document
     });
 
 
-/* SCROLL REVEAL */
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
 const revealElements =
     document.querySelectorAll(".reveal");
@@ -2095,6 +3318,7 @@ const revealElements =
 
 const revealObserver =
     new IntersectionObserver(
+
         entries => {
 
             entries.forEach(entry => {
@@ -2114,9 +3338,11 @@ const revealObserver =
             });
 
         },
+
         {
             threshold:.12
         }
+
     );
 
 
@@ -2127,16 +3353,24 @@ revealElements.forEach(element => {
 });
 
 
-/* GALLERY LIGHTBOX */
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
 
 const galleryItems =
-    document.querySelectorAll(".gallery-item");
+    document.querySelectorAll(
+        ".gallery-item:not(.yemen-search-card)"
+    );
+
 
 const lightbox =
     document.getElementById("lightbox");
 
+
 const lightboxImage =
     document.getElementById("lightboxImage");
+
 
 const lightboxClose =
     document.getElementById("lightboxClose");
@@ -2150,6 +3384,8 @@ galleryItems.forEach(item => {
 
             const image =
                 item.dataset.full;
+
+            if(!image) return;
 
             lightboxImage.src =
                 image;
@@ -2202,13 +3438,54 @@ lightbox.addEventListener(
 );
 
 
-/* QR */
+
+/* =========================================================
+   YEMEN SEARCH CARDS
+========================================================= */
+
+const searchCards =
+    document.querySelectorAll(
+        ".yemen-search-card"
+    );
+
+
+searchCards.forEach(card => {
+
+    card.addEventListener(
+        "click",
+        () => {
+
+            const url =
+                card.dataset.search;
+
+            if(url){
+
+                window.open(
+                    url,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+
+            }
+
+        }
+    );
+
+});
+
+
+
+/* =========================================================
+   QR
+========================================================= */
 
 const qrButton =
     document.getElementById("qrButton");
 
+
 const qrModal =
     document.getElementById("qrModal");
+
 
 const qrClose =
     document.getElementById("qrClose");
@@ -2265,7 +3542,10 @@ qrModal.addEventListener(
 );
 
 
-/* ESC */
+
+/* =========================================================
+   ESCAPE
+========================================================= */
 
 document.addEventListener(
     "keydown",
@@ -2291,5 +3571,7 @@ document.addEventListener(
 
 </script>
 
+
 </body>
+
 </html>
