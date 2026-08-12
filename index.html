@@ -1,2157 +1,2295 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مبخوت بن عبدالله | MBK</title>
+<meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله">
+<meta name="theme-color" content="#061426">
 
-  <title>مبخوت بن عبدالله | MBK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <meta
-    name="description"
-    content="الموقع الشخصي الرسمي لمبخوت بن عبدالله — MBK."
-  >
+<style>
 
-  <meta
-    name="author"
-    content="مبخوت بن عبدالله"
-  >
+:root{
+    --navy:#061426;
+    --navy-dark:#020914;
+    --gold:#d4af37;
+    --gold-light:#f1d56a;
+    --white:#f8f7f2;
+    --text:#d8dce2;
+    --muted:#8995a3;
+    --border:rgba(212,175,55,.20);
+    --border-strong:rgba(212,175,55,.42);
+}
 
-  <meta
-    name="theme-color"
-    content="#07110d"
-  >
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-  <meta
-    property="og:title"
-    content="مبخوت بن عبدالله | MBK"
-  >
+html{
+    scroll-behavior:smooth;
+}
 
-  <meta
-    property="og:description"
-    content="الموقع الشخصي الرسمي لمبخوت بن عبدالله."
-  >
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:"Cairo","Noto Kufi Arabic",sans-serif;
+    color:var(--white);
 
-  <meta
-    property="og:type"
-    content="website"
-  >
+    background:
+        radial-gradient(circle at 50% 0%,rgba(212,175,55,.08),transparent 27%),
+        radial-gradient(circle at 0% 50%,rgba(16,50,82,.32),transparent 35%),
+        linear-gradient(145deg,#020914 0%,#061426 48%,#030b16 100%);
+}
 
-  <meta
-    property="og:url"
-    content="https://mabkhut.com/"
-  >
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-10;
+    opacity:.055;
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+    background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    background-size:75px 75px;
+}
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    top:12%;
+    left:50%;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:rgba(212,175,55,.035);
+    filter:blur(120px);
+    pointer-events:none;
+    z-index:-9;
+}
 
-  <style>
+a{
+    color:inherit;
+    -webkit-tap-highlight-color:transparent;
+}
 
-    /* =========================================================
-       RESET
-    ========================================================= */
+button{
+    font-family:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:fixed;
+    top:0;
+    right:0;
+    left:0;
+    height:76px;
+    padding:0 6%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    z-index:1000;
+
+    background:rgba(2,9,20,.76);
+    border-bottom:1px solid rgba(212,175,55,.12);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+}
+
+.logo{
+    direction:ltr;
+    font-family:Arial,sans-serif;
+    font-size:23px;
+    font-weight:700;
+    letter-spacing:7px;
+    color:var(--gold-light);
+    text-decoration:none;
+}
+
+.menu-btn{
+    width:47px;
+    height:47px;
+    border-radius:50%;
+    border:1px solid var(--border-strong);
+    background:rgba(255,255,255,.025);
+    color:var(--gold-light);
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:21px;
+    transition:.3s ease;
+}
+
+.menu-btn:hover{
+    transform:scale(1.05);
+    border-color:var(--gold-light);
+    background:rgba(212,175,55,.08);
+    box-shadow:0 0 30px rgba(212,175,55,.12);
+}
+
+
+/* =========================
+   SIDE MENU
+========================= */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.58);
+    backdrop-filter:blur(5px);
+    z-index:1100;
+
+    opacity:0;
+    visibility:hidden;
+    transition:.35s ease;
+}
+
+.overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.side-menu{
+    position:fixed;
+    top:0;
+    right:0;
+    width:min(370px,88vw);
+    height:100vh;
+
+    padding:105px 35px 35px;
+
+    z-index:1200;
+
+    background:
+        linear-gradient(150deg,rgba(8,26,47,.99),rgba(2,9,20,.99));
+
+    border-left:1px solid var(--border);
+
+    transform:translateX(105%);
+
+    transition:transform .45s cubic-bezier(.77,0,.18,1);
+
+    box-shadow:-30px 0 90px rgba(0,0,0,.45);
+}
+
+.side-menu.active{
+    transform:translateX(0);
+}
+
+.close-menu{
+    position:absolute;
+    top:24px;
+    left:24px;
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+    border:1px solid var(--border-strong);
+    background:transparent;
+
+    color:var(--gold-light);
+    cursor:pointer;
+    font-size:22px;
+}
+
+.menu-label{
+    color:var(--gold);
+    font-size:11px;
+    letter-spacing:4px;
+    margin-bottom:28px;
+
+    direction:ltr;
+    text-align:right;
+}
+
+.side-menu a{
+    display:block;
+    padding:17px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.055);
+
+    text-decoration:none;
+    font-size:17px;
+    color:var(--white);
+
+    transition:.3s ease;
+}
+
+.side-menu a:hover{
+    color:var(--gold-light);
+    padding-right:10px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+    width:min(1120px,92%);
+    margin:auto;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    padding:115px 0 55px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+}
+
+.hero-corner{
+    position:absolute;
+    width:72px;
+    height:72px;
+    border-color:rgba(212,175,55,.68);
+    pointer-events:none;
+}
+
+.hero-corner.top{
+    top:108px;
+    right:0;
+    border-top:1px solid;
+    border-right:1px solid;
+}
+
+.hero-corner.bottom{
+    bottom:35px;
+    left:0;
+    border-bottom:1px solid;
+    border-left:1px solid;
+}
+
+
+/* =========================
+   NAME
+========================= */
+
+.hero-name{
+    width:100%;
+    max-width:850px;
+
+    padding:0 20px;
+    margin:0 auto 14px;
+
+    font-size:clamp(34px,5.5vw,58px);
+    font-weight:800;
+    line-height:1.5;
+
+    text-align:center;
+    white-space:normal;
+
+    letter-spacing:-1px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b88918 0%,
+            #f7df78 25%,
+            #d4af37 50%,
+            #fff0a3 75%,
+            #b88918 100%
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:0 0 18px rgba(212,175,55,.12);
+
+    animation:heroIn .9s ease both;
+}
+
+.gold-line{
+    width:100px;
+    height:2px;
+
+    margin:0 auto 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #b88918,
+            #f1d56a,
+            #b88918,
+            transparent
+        );
+
+    box-shadow:0 0 16px rgba(212,175,55,.28);
+}
+
+
+/* =========================
+   PROFILE IMAGE
+========================= */
+
+.photo-frame{
+    width:min(470px,88vw);
+    aspect-ratio:1/1;
+
+    padding:10px;
+
+    position:relative;
+    margin-bottom:22px;
+}
+
+.photo-frame::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    border:1px solid rgba(212,175,55,.82);
+    border-radius:31px;
+
+    transform:rotate(-1deg);
+}
+
+.photo-frame::after{
+    content:"";
+    position:absolute;
+    inset:7px;
+
+    border:1px solid rgba(212,175,55,.22);
+    border-radius:27px;
+
+    transform:rotate(1deg);
+}
+
+.profile-photo{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:contain;
+    object-position:center;
+
+    border-radius:24px;
+    border:5px solid #07172a;
+
+    background:#07172a;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.50);
+
+    transition:
+        transform .6s ease,
+        box-shadow .6s ease;
+}
+
+.photo-frame:hover .profile-photo{
+    transform:scale(1.012);
+    box-shadow:0 35px 95px rgba(0,0,0,.58);
+}
+
+.quote{
+    color:var(--white);
+    font-size:clamp(20px,4vw,28px);
+    font-weight:500;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+    padding:65px 0;
+    position:relative;
+}
+
+.section-header{
+    text-align:center;
+    margin-bottom:32px;
+}
+
+.section-label{
+    display:block;
+    color:var(--gold);
+    font-size:11px;
+    letter-spacing:4px;
+
+    direction:ltr;
+
+    margin-bottom:7px;
+}
+
+.section-title{
+    font-size:clamp(30px,5vw,46px);
+    font-weight:800;
+    line-height:1.4;
+}
+
+.section-title::after{
+    content:"";
+
+    display:block;
+
+    width:68px;
+    height:2px;
+
+    margin:11px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-card{
+    max-width:900px;
+    margin:auto;
+
+    padding:35px 40px;
+
+    border:1px solid var(--border);
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.012)
+        );
+
+    box-shadow:0 30px 80px rgba(0,0,0,.18);
+
+    text-align:center;
+}
+
+.about-card p{
+    color:var(--text);
+    font-size:18px;
+    line-height:2.05;
+}
+
+.about-card strong{
+    color:var(--gold-light);
+    font-weight:700;
+}
+
+
+/* =========================
+   VALUES
+========================= */
+
+.values{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.value-card{
+    padding:30px 25px;
+
+    text-align:center;
+
+    border:1px solid rgba(212,175,55,.15);
+    border-radius:25px;
+
+    background:rgba(255,255,255,.022);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.value-card:hover{
+    transform:translateY(-8px);
+
+    border-color:rgba(212,175,55,.42);
+
+    box-shadow:
+        0 22px 55px rgba(212,175,55,.07);
+}
+
+.value-icon{
+    width:55px;
+    height:55px;
+
+    margin:0 auto 14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    border:1px solid rgba(212,175,55,.35);
+
+    color:var(--gold-light);
+
+    font-size:22px;
+}
+
+.value-card h3{
+    font-size:20px;
+    margin-bottom:7px;
+}
+
+.value-card p{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.85;
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:15px;
+}
+
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+
+    border-radius:25px;
+
+    border:1px solid rgba(212,175,55,.17);
+
+    background:#07172a;
+
+    cursor:pointer;
+}
+
+.gallery-item:nth-child(1){
+    grid-column:span 7;
+    aspect-ratio:16/10;
+}
+
+.gallery-item:nth-child(2){
+    grid-column:span 5;
+    aspect-ratio:1/1;
+}
+
+.gallery-item:nth-child(3){
+    grid-column:span 5;
+    aspect-ratio:1/1;
+}
+
+.gallery-item:nth-child(4){
+    grid-column:span 7;
+    aspect-ratio:16/10;
+}
+
+.gallery-item:nth-child(5){
+    grid-column:span 7;
+    aspect-ratio:16/10;
+}
+
+.gallery-item:nth-child(6){
+    grid-column:span 5;
+    aspect-ratio:1/1;
+}
+
+.gallery-item:nth-child(7){
+    grid-column:span 5;
+    aspect-ratio:1/1;
+}
+
+.gallery-item:nth-child(8){
+    grid-column:span 7;
+    aspect-ratio:16/10;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:transform .7s ease;
+}
+
+.gallery-item::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.78),
+            transparent 52%
+        );
+
+    pointer-events:none;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.07);
+}
+
+.gallery-info{
+    position:absolute;
+
+    right:22px;
+    left:22px;
+    bottom:18px;
+
+    z-index:2;
+}
+
+.gallery-info small{
+    display:block;
+
+    color:var(--gold-light);
+
+    font-size:11px;
+    letter-spacing:2px;
+
+    direction:ltr;
+
+    margin-bottom:3px;
+}
+
+.gallery-info h3{
+    font-size:18px;
+    font-weight:600;
+}
+
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox{
+    position:fixed;
+    inset:0;
+
+    z-index:2000;
+
+    padding:25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(0,0,0,.88);
+
+    backdrop-filter:blur(10px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s ease;
+}
+
+.lightbox.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.lightbox img{
+    max-width:92vw;
+    max-height:86vh;
+
+    object-fit:contain;
+
+    border-radius:15px;
+
+    border:1px solid rgba(212,175,55,.28);
+
+    box-shadow:0 30px 100px rgba(0,0,0,.65);
+}
+
+.lightbox-close{
+    position:absolute;
+
+    top:22px;
+    left:25px;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(212,175,55,.4);
+
+    background:rgba(0,0,0,.25);
+
+    color:var(--gold-light);
+
+    font-size:23px;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   JOURNEY
+========================= */
+
+.timeline{
+    max-width:850px;
+    margin:auto;
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    bottom:0;
+
+    right:50%;
+
+    width:1px;
+
+    background:
+        linear-gradient(
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+.timeline-item{
+    position:relative;
+
+    width:50%;
+
+    padding:0 36px 45px;
+}
+
+.timeline-item:nth-child(odd){
+    text-align:left;
+}
+
+.timeline-item:nth-child(even){
+    margin-right:50%;
+    text-align:right;
+}
+
+.timeline-dot{
+    position:absolute;
+
+    top:4px;
+
+    width:13px;
+    height:13px;
+
+    border-radius:50%;
+
+    background:var(--gold-light);
+
+    box-shadow:
+        0 0 18px rgba(212,175,55,.58);
+}
+
+.timeline-item:nth-child(odd) .timeline-dot{
+    right:-6px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot{
+    left:-6px;
+}
+
+.timeline-year{
+    color:var(--gold-light);
+
+    font-size:28px;
+    font-weight:800;
+
+    line-height:1;
+
+    margin-bottom:8px;
+}
+
+.timeline-title{
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:6px;
+}
+
+.timeline-text{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.85;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-card{
+    max-width:700px;
+    margin:auto;
+
+    padding:35px;
+
+    text-align:center;
+
+    border:1px solid var(--border);
+    border-radius:30px;
+
+    background:rgba(255,255,255,.022);
+}
+
+.contact-icons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:16px;
+}
+
+.social{
+    width:60px;
+    height:60px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    border:1px solid rgba(212,175,55,.42);
+
+    background:rgba(255,255,255,.02);
+
+    color:var(--gold-light);
+
+    text-decoration:none;
+
+    transition:.3s ease;
+}
+
+.social:hover{
+    transform:translateY(-5px) scale(1.04);
+
+    background:rgba(212,175,55,.08);
+
+    border-color:var(--gold-light);
+
+    box-shadow:
+        0 15px 40px rgba(212,175,55,.13);
+}
+
+.social svg{
+    width:26px;
+    height:26px;
+    fill:currentColor;
+}
+
+.qr-button{
+    margin-top:22px;
+
+    padding:11px 24px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(212,175,55,.38);
+
+    background:transparent;
+
+    color:var(--gold-light);
+
+    cursor:pointer;
+
+    transition:.3s ease;
+}
+
+.qr-button:hover{
+    background:rgba(212,175,55,.08);
+    transform:translateY(-3px);
+}
+
+
+/* =========================
+   QR MODAL
+========================= */
+
+.qr-modal{
+    position:fixed;
+    inset:0;
+
+    z-index:2100;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.78);
+
+    backdrop-filter:blur(8px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s ease;
+}
+
+.qr-modal.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.qr-box{
+    width:min(360px,92vw);
+
+    padding:30px;
+
+    text-align:center;
+
+    border:1px solid rgba(212,175,55,.35);
+
+    border-radius:30px;
+
+    background:#07172a;
+
+    box-shadow:0 30px 100px rgba(0,0,0,.55);
+}
+
+.qr-box h3{
+    color:var(--gold-light);
+
+    direction:ltr;
+
+    letter-spacing:2px;
+}
+
+.qr-box img{
+    width:220px;
+    height:220px;
+
+    display:block;
+
+    margin:18px auto;
+
+    padding:9px;
+
+    background:white;
+
+    border-radius:14px;
+}
+
+.qr-close{
+    padding:10px 25px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(212,175,55,.35);
+
+    background:transparent;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:38px 20px;
+
+    text-align:center;
+
+    border-top:1px solid rgba(212,175,55,.12);
+
+    background:rgba(2,8,17,.72);
+}
+
+.footer-copy{
+    color:#858f9b;
+    font-size:12px;
+}
+
+.footer-mbk{
+    margin-top:9px;
+
+    direction:ltr;
+
+    font-family:Arial,sans-serif;
+
+    color:var(--gold);
+
+    letter-spacing:6px;
+
+    font-weight:700;
+}
+
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes heroIn{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:760px){
+
+    header{
+        height:70px;
+        padding:0 20px;
+    }
+
+    .logo{
+        font-size:21px;
+        letter-spacing:6px;
+    }
+
+    main{
+        width:min(92%,520px);
+    }
+
+    .hero{
+        padding:100px 0 45px;
+    }
+
+    .hero-name{
+        max-width:100%;
+        padding:0 12px;
+
+        font-size:clamp(32px,9vw,47px);
+
+        line-height:1.55;
+        letter-spacing:-.5px;
+    }
+
+    .photo-frame{
+        width:min(390px,88vw);
+        margin-bottom:18px;
+    }
+
+    .section{
+        padding:52px 0;
+    }
+
+    .section-header{
+        margin-bottom:27px;
+    }
+
+    .about-card{
+        padding:28px 22px;
+    }
+
+    .about-card p{
+        font-size:16px;
+        line-height:2;
+    }
+
+    .values{
+        grid-template-columns:1fr;
+        gap:14px;
+    }
+
+    .value-card{
+        padding:27px 22px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+        gap:13px;
+    }
+
+    .gallery-item,
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3),
+    .gallery-item:nth-child(4),
+    .gallery-item:nth-child(5),
+    .gallery-item:nth-child(6),
+    .gallery-item:nth-child(7),
+    .gallery-item:nth-child(8){
+
+        grid-column:span 1;
+        aspect-ratio:16/10;
+    }
+
+    .timeline::before{
+        right:13px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even){
+
+        width:100%;
+
+        margin:0;
+
+        padding:0 42px 38px 0;
+
+        text-align:right;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot{
+
+        right:7px;
+        left:auto;
+    }
+
+    .timeline-year{
+        font-size:25px;
+    }
+
+    .contact-card{
+        padding:30px 20px;
+    }
+
+    .hero-corner{
+        width:45px;
+        height:45px;
+    }
+
+    .hero-corner.top{
+        top:90px;
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:420px){
+
+    .hero-name{
+        font-size:34px;
+        padding:0 8px;
+    }
+
+    .photo-frame{
+        width:92vw;
+    }
+
+    .social{
+        width:56px;
+        height:56px;
+    }
+
+    .gallery-info h3{
+        font-size:16px;
+    }
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
 
     *,
     *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Tajawal", sans-serif;
-      background: #06100c;
-      color: #f4f1e8;
-      line-height: 1.8;
-      overflow-x: hidden;
-    }
-
-    body.menu-open {
-      overflow: hidden;
-    }
-
-    img {
-      display: block;
-      width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-    ::selection {
-      background: #c9a65a;
-      color: #07100c;
-    }
-
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #06100c;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #94763d;
-      border-radius: 20px;
-    }
-
-
-    /* =========================================================
-       VARIABLES
-    ========================================================= */
-
-    :root {
-      --bg: #06100c;
-      --bg-2: #09150f;
-      --bg-3: #0d1c14;
-
-      --gold: #c9a65a;
-      --gold-light: #ead49b;
-      --gold-dark: #80632d;
-
-      --white: #f5f2ea;
-      --muted: #a6aaa2;
-      --line: rgba(201, 166, 90, 0.22);
-
-      --max: 1200px;
-
-      --ease: cubic-bezier(.2,.8,.2,1);
-    }
-
-
-    /* =========================================================
-       GLOBAL
-    ========================================================= */
-
-    .container {
-      width: min(var(--max), calc(100% - 48px));
-      margin-inline: auto;
-    }
-
-    .gold {
-      color: var(--gold);
-    }
-
-    .gold-text {
-      background: linear-gradient(
-        120deg,
-        #f0d89c,
-        #c9a65a,
-        #85652d
-      );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .section {
-      padding: 130px 0;
-      position: relative;
-    }
-
-    .section-label {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      color: var(--gold);
-      font-size: 12px;
-      letter-spacing: .32em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .section-label::before {
-      content: "";
-      width: 42px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .section-title {
-      font-family: "Amiri", serif;
-      font-size: clamp(42px, 5vw, 72px);
-      line-height: 1.15;
-      font-weight: 700;
-    }
-
-    .section-description {
-      color: var(--muted);
-      max-width: 650px;
-      margin-top: 22px;
-      font-size: 17px;
-      line-height: 2;
-    }
-
-
-    /* =========================================================
-       PRELOADER
-    ========================================================= */
-
-    .loader {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: #06100c;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition:
-        opacity .8s ease,
-        visibility .8s ease;
-    }
-
-    .loader.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader-inner {
-      text-align: center;
-    }
-
-    .loader-logo {
-      font-size: 48px;
-      font-weight: 700;
-      letter-spacing: .35em;
-      color: var(--white);
-    }
-
-    .loader-logo span {
-      color: var(--gold);
-    }
-
-    .loader-line {
-      width: 100px;
-      height: 1px;
-      background: rgba(255,255,255,.15);
-      margin: 22px auto;
-      overflow: hidden;
-    }
-
-    .loader-line::after {
-      content: "";
-      display: block;
-      height: 100%;
-      width: 50%;
-      background: var(--gold);
-      animation: loader 1.2s infinite ease-in-out;
-    }
-
-    @keyframes loader {
-      0% {
-        transform: translateX(-120%);
-      }
-
-      100% {
-        transform: translateX(220%);
-      }
-    }
-
-
-    /* =========================================================
-       NAVIGATION
-    ========================================================= */
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      height: 84px;
-      transition:
-        background .4s ease,
-        border .4s ease,
-        backdrop-filter .4s ease;
-    }
-
-    .navbar.scrolled {
-      background: rgba(6,16,12,.82);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(201,166,90,.12);
-    }
-
-    .nav-inner {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: .3em;
-      color: var(--white);
-    }
-
-    .logo span {
-      color: var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 34px;
-    }
-
-    .nav-links a {
-      position: relative;
-      color: rgba(245,242,234,.78);
-      font-size: 14px;
-      transition: color .3s ease;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: -8px;
-      width: 0;
-      height: 1px;
-      background: var(--gold);
-      transition: width .3s var(--ease);
-    }
-
-    .nav-links a:hover {
-      color: var(--gold-light);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-contact {
-      padding: 10px 20px;
-      border: 1px solid var(--line);
-      color: var(--gold-light) !important;
-    }
-
-    .nav-contact::after {
-      display: none;
-    }
-
-    .menu-button {
-      display: none;
-      width: 46px;
-      height: 46px;
-      border: 1px solid var(--line);
-      background: transparent;
-      color: var(--gold);
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-    }
-
-
-    /* =========================================================
-       MOBILE MENU
-    ========================================================= */
-
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      z-index: 900;
-      background: rgba(3,9,6,.98);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: .4s ease;
-    }
-
-    .mobile-menu.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .mobile-links {
-      text-align: center;
-    }
-
-    .mobile-links a {
-      display: block;
-      font-family: "Amiri", serif;
-      font-size: 38px;
-      margin: 18px 0;
-      color: var(--white);
-      transition: color .3s ease;
-    }
-
-    .mobile-links a:hover {
-      color: var(--gold);
-    }
-
-
-    /* =========================================================
-       HERO
-    ========================================================= */
-
-    .hero {
-      min-height: 100svh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background:
-        radial-gradient(
-          circle at 70% 30%,
-          rgba(201,166,90,.08),
-          transparent 35%
-        ),
-        #06100c;
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      opacity: .08;
-      background-image:
-        linear-gradient(
-          rgba(201,166,90,.3) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(201,166,90,.3) 1px,
-          transparent 1px
-        );
-      background-size: 80px 80px;
-      mask-image: linear-gradient(
-        to bottom,
-        black,
-        transparent
-      );
-    }
-
-    .hero-glow {
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: rgba(201,166,90,.07);
-      filter: blur(100px);
-      top: 10%;
-      left: 10%;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      padding-top: 100px;
-      display: grid;
-      grid-template-columns: 1fr .9fr;
-      align-items: center;
-      gap: 80px;
-    }
-
-    .hero-copy {
-      max-width: 650px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--gold);
-      font-size: 13px;
-      letter-spacing: .25em;
-      margin-bottom: 25px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 45px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .hero-title {
-      font-family: "Amiri", serif;
-      font-size: clamp(55px, 7vw, 100px);
-      line-height: 1;
-      font-weight: 700;
-      margin-bottom: 25px;
-    }
-
-    .hero-title span {
-      display: block;
-      color: var(--gold);
-    }
-
-    .hero-quote {
-      font-family: "Amiri", serif;
-      font-size: clamp(25px, 3vw, 34px);
-      color: var(--gold-light);
-      margin-bottom: 25px;
-    }
-
-    .hero-description {
-      color: var(--muted);
-      font-size: 17px;
-      max-width: 560px;
-      line-height: 2;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 14px;
-      margin-top: 38px;
-      flex-wrap: wrap;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 145px;
-      padding: 13px 24px;
-      border: 1px solid var(--line);
-      transition:
-        transform .3s ease,
-        background .3s ease,
-        color .3s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-3px);
-    }
-
-    .button-primary {
-      background: var(--gold);
-      color: #07100c;
-      border-color: var(--gold);
-    }
-
-    .button-primary:hover {
-      background: var(--gold-light);
-    }
-
-    .button-secondary {
-      color: var(--white);
-    }
-
-    .button-secondary:hover {
-      background: rgba(201,166,90,.08);
-      border-color: var(--gold);
-    }
-
-
-    /* =========================================================
-       HERO IMAGE
-    ========================================================= */
-
-    .hero-visual {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-
-    .portrait-frame {
-      position: relative;
-      width: min(430px, 90vw);
-      aspect-ratio: 4 / 5;
-      padding: 12px;
-    }
-
-    .portrait-frame::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(201,166,90,.3);
-      transform: translate(22px,22px);
-      pointer-events: none;
-    }
-
-    .portrait-frame::after {
-      content: "MBK";
-      position: absolute;
-      bottom: -25px;
-      left: -35px;
-      font-size: 80px;
-      font-weight: 700;
-      letter-spacing: .15em;
-      color: rgba(201,166,90,.06);
-      z-index: -1;
-    }
-
-    .portrait {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #101812;
-      border: 1px solid rgba(255,255,255,.08);
-    }
-
-    /* اسم ملف الصورة الشخصية */
-    .portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      filter: saturate(.85);
-      transition: transform 1s var(--ease);
-    }
-
-    .portrait:hover img {
-      transform: scale(1.04);
-    }
-
-    .portrait-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          to top,
-          rgba(3,9,6,.65),
-          transparent 50%
-        );
-    }
-
-    .portrait-label {
-      position: absolute;
-      bottom: 25px;
-      right: 25px;
-      left: 25px;
-      display: flex;
-      justify-content: space-between;
-      color: var(--gold-light);
-      font-size: 11px;
-      letter-spacing: .25em;
-    }
-
-
-    /* =========================================================
-       MARQUEE
-    ========================================================= */
-
-    .marquee {
-      overflow: hidden;
-      border-top: 1px solid rgba(201,166,90,.12);
-      border-bottom: 1px solid rgba(201,166,90,.12);
-      padding: 18px 0;
-      background: #08130e;
-    }
-
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 25s linear infinite;
-    }
-
-    .marquee-item {
-      padding: 0 35px;
-      color: rgba(201,166,90,.6);
-      font-size: 12px;
-      letter-spacing: .35em;
-      white-space: nowrap;
-    }
-
-    @keyframes marquee {
-      to {
-        transform: translateX(50%);
-      }
-    }
+    *::after{
 
-
-    /* =========================================================
-       ABOUT
-    ========================================================= */
-
-    .about {
-      background: #09150f;
-    }
-
-    .about-layout {
-      display: grid;
-      grid-template-columns: .75fr 1.25fr;
-      gap: 100px;
-      align-items: start;
-    }
-
-    .about-number {
-      font-size: 12px;
-      letter-spacing: .3em;
-      color: var(--gold);
-      margin-bottom: 25px;
-    }
-
-    .about-text {
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 2.1;
-      margin-top: 30px;
-    }
-
-    .about-text + .about-text {
-      margin-top: 20px;
-    }
-
-    .about-signature {
-      font-family: "Amiri", serif;
-      font-size: 30px;
-      color: var(--gold-light);
-      margin-top: 40px;
-    }
-
-    .about-cards {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 16px;
-    }
-
-    .info-card {
-      padding: 35px;
-      border: 1px solid rgba(255,255,255,.07);
-      background: rgba(255,255,255,.015);
-      min-height: 220px;
-      transition:
-        transform .4s var(--ease),
-        border-color .4s ease,
-        background .4s ease;
-    }
-
-    .info-card:hover {
-      transform: translateY(-7px);
-      border-color: var(--line);
-      background: rgba(201,166,90,.035);
-    }
-
-    .card-number {
-      color: var(--gold);
-      font-size: 12px;
-      letter-spacing: .2em;
-    }
-
-    .info-card h3 {
-      font-family: "Amiri", serif;
-      font-size: 30px;
-      margin: 35px 0 12px;
-    }
-
-    .info-card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-
-    /* =========================================================
-       VALUES
-    ========================================================= */
-
-    .values {
-      background: #06100c;
-    }
-
-    .values-header {
-      text-align: center;
-      margin-bottom: 70px;
-    }
-
-    .values-header .section-label {
-      justify-content: center;
-    }
-
-    .values-header .section-label::before {
-      display: none;
-    }
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      border-top: 1px solid rgba(255,255,255,.08);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-
-    .value {
-      padding: 55px 35px;
-      border-left: 1px solid rgba(255,255,255,.08);
-      transition: background .4s ease;
-    }
-
-    .value:last-child {
-      border-left: 0;
-    }
-
-    .value:hover {
-      background: rgba(201,166,90,.035);
-    }
-
-    .value-icon {
-      width: 46px;
-      height: 46px;
-      border: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      margin-bottom: 30px;
-    }
-
-    .value h3 {
-      font-family: "Amiri", serif;
-      font-size: 32px;
-      margin-bottom: 15px;
-    }
-
-    .value p {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 2;
-    }
-
-
-    /* =========================================================
-       IDENTITY
-    ========================================================= */
-
-    .identity {
-      background:
-        linear-gradient(
-          135deg,
-          #0b1912,
-          #06100c
-        );
-    }
-
-    .identity-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: center;
-    }
-
-    .identity-box {
-      position: relative;
-      min-height: 470px;
-      border: 1px solid rgba(201,166,90,.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .identity-box::before {
-      content: "MBK";
-      position: absolute;
-      font-size: 210px;
-      font-weight: 800;
-      color: rgba(201,166,90,.025);
-      letter-spacing: .1em;
-    }
-
-    .identity-center {
-      position: relative;
-      text-align: center;
-      z-index: 2;
-    }
-
-    .identity-center strong {
-      display: block;
-      font-size: 80px;
-      letter-spacing: .25em;
-      margin-left: .25em;
-      color: var(--gold);
-    }
-
-    .identity-center span {
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: .4em;
-    }
-
-    .identity-list {
-      margin-top: 40px;
-    }
-
-    .identity-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-
-    .identity-row span:first-child {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .identity-row span:last-child {
-      color: var(--white);
-      font-weight: 600;
-    }
-
-
-    /* =========================================================
-       QUOTE
-    ========================================================= */
-
-    .quote-section {
-      padding: 150px 0;
-      text-align: center;
-      background: #08130e;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .quote-mark {
-      font-family: "Amiri", serif;
-      font-size: 150px;
-      line-height: .5;
-      color: rgba(201,166,90,.12);
-    }
-
-    .quote-text {
-      font-family: "Amiri", serif;
-      font-size: clamp(35px, 5vw, 65px);
-      color: var(--gold-light);
-      max-width: 900px;
-      margin: 40px auto;
-      line-height: 1.5;
-    }
-
-    .quote-caption {
-      color: var(--muted);
-      font-size: 13px;
-      letter-spacing: .2em;
-    }
-
-
-    /* =========================================================
-       CONTACT
-    ========================================================= */
-
-    .contact {
-      background: #06100c;
-    }
-
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: end;
+        animation:none!important;
+        transition:none!important;
+        scroll-behavior:auto!important;
     }
 
-    .contact-title {
-      font-family: "Amiri", serif;
-      font-size: clamp(50px,7vw,90px);
-      line-height: 1;
-    }
-
-    .contact-description {
-      color: var(--muted);
-      max-width: 500px;
-      margin-top: 25px;
-      line-height: 2;
-    }
-
-    .contact-links {
-      display: grid;
-      gap: 14px;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 0;
-      border-bottom: 1px solid rgba(255,255,255,.1);
-      transition: color .3s ease;
-    }
-
-    .contact-link:hover {
-      color: var(--gold);
-    }
-
-    .contact-link small {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      margin-bottom: 4px;
-    }
-
-    .contact-link strong {
-      font-size: 16px;
-      direction: ltr;
-      display: block;
-    }
-
-    .arrow {
-      color: var(--gold);
-      font-size: 22px;
-    }
-
-
-    /* =========================================================
-       FOOTER
-    ========================================================= */
-
-    footer {
-      background: #030806;
-      border-top: 1px solid rgba(201,166,90,.12);
-      padding: 35px 0;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .footer-logo {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: .25em;
-    }
-
-    .footer-logo span {
-      color: var(--gold);
-    }
-
-    .copyright {
-      color: #70766f;
-      font-size: 12px;
-    }
-
-    .footer-quote {
-      color: var(--gold-dark);
-      font-family: "Amiri", serif;
-      font-size: 18px;
-    }
-
-
-    /* =========================================================
-       REVEAL ANIMATION
-    ========================================================= */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(35px);
-      transition:
-        opacity .9s var(--ease),
-        transform .9s var(--ease);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .delay-1 {
-      transition-delay: .1s;
-    }
-
-    .delay-2 {
-      transition-delay: .2s;
-    }
-
-    .delay-3 {
-      transition-delay: .3s;
-    }
-
-
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
-
-    @media (max-width: 900px) {
-
-      .container {
-        width: min(var(--max), calc(100% - 32px));
-      }
-
-      .navbar {
-        height: 72px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .menu-button {
-        display: flex;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 60px;
-        text-align: center;
-        padding-top: 120px;
-      }
-
-      .hero-copy {
-        max-width: none;
-      }
-
-      .eyebrow {
-        justify-content: center;
-      }
-
-      .hero-description {
-        margin-inline: auto;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-visual {
-        order: 2;
-      }
-
-      .portrait-frame {
-        width: min(350px, 80vw);
-      }
-
-      .about-layout,
-      .identity-layout,
-      .contact-layout {
-        grid-template-columns: 1fr;
-        gap: 60px;
-      }
-
-      .values-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .value {
-        border-left: 0;
-        border-bottom: 1px solid rgba(255,255,255,.08);
-      }
-
-      .value:last-child {
-        border-bottom: 0;
-      }
-
-      .identity-box {
-        min-height: 360px;
-      }
-
-      .identity-center strong {
-        font-size: 60px;
-      }
-
-      .contact-layout {
-        align-items: start;
-      }
-    }
-
-
-    @media (max-width: 600px) {
-
-      .section {
-        padding: 90px 0;
-      }
-
-      .hero {
-        min-height: 100svh;
-      }
-
-      .hero-title {
-        font-size: 58px;
-      }
-
-      .hero-description {
-        font-size: 15px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .button {
-        width: 100%;
-      }
-
-      .portrait-frame {
-        width: 78vw;
-      }
-
-      .about-cards {
-        grid-template-columns: 1fr;
-      }
-
-      .info-card {
-        min-height: auto;
-      }
-
-      .section-title {
-        font-size: 48px;
-      }
-
-      .identity-box {
-        min-height: 300px;
-      }
-
-      .identity-center strong {
-        font-size: 48px;
-      }
-
-      .identity-box::before {
-        font-size: 130px;
-      }
-
-      .quote-section {
-        padding: 100px 20px;
-      }
-
-      .quote-text {
-        font-size: 38px;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .mobile-links a {
-        font-size: 32px;
-      }
-    }
-
-
-    @media (prefers-reduced-motion: reduce) {
-
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-
-    }
+}
 
-  </style>
+</style>
 </head>
-
 
 <body>
 
 
-  <!-- =======================================================
-       LOADER
-  ======================================================== -->
+<!-- HEADER -->
 
-  <div class="loader" id="loader">
+<header>
 
-    <div class="loader-inner">
+    <a href="#home" class="logo">
+        MBK
+    </a>
 
-      <div class="loader-logo">
-        M<span>B</span>K
-      </div>
-
-      <div class="loader-line"></div>
-
-    </div>
-
-  </div>
-
-
-  <!-- =======================================================
-       NAVIGATION
-  ======================================================== -->
-
-  <header class="navbar" id="navbar">
-
-    <div class="container nav-inner">
-
-      <a href="#home" class="logo">
-        M<span>B</span>K
-      </a>
-
-      <nav class="nav-links">
-
-        <a href="#home">الرئيسية</a>
-
-        <a href="#about">عنّي</a>
-
-        <a href="#values">القيم</a>
-
-        <a href="#identity">الهوية</a>
-
-        <a href="#contact" class="nav-contact">
-          تواصل معي
-        </a>
-
-      </nav>
-
-      <button
-        class="menu-button"
-        id="menuButton"
+    <button
+        class="menu-btn"
+        id="menuBtn"
         aria-label="فتح القائمة"
-      >
+    >
         ☰
-      </button>
+    </button>
+
+</header>
+
+
+<!-- SIDE MENU -->
+
+<div
+    class="overlay"
+    id="overlay"
+></div>
+
+<nav
+    class="side-menu"
+    id="sideMenu"
+>
+
+    <button
+        class="close-menu"
+        id="closeMenu"
+        aria-label="إغلاق"
+    >
+        ×
+    </button>
+
+    <div class="menu-label">
+        NAVIGATION
+    </div>
+
+    <a href="#home">
+        الرئيسية
+    </a>
+
+    <a href="#about">
+        نبذة
+    </a>
+
+    <a href="#values">
+        بصمتي
+    </a>
+
+    <a href="#gallery">
+        مختاراتي
+    </a>
+
+    <a href="#journey">
+        رحلتي
+    </a>
+
+    <a href="#contact">
+        تواصل
+    </a>
+
+</nav>
+
+
+<main>
+
+
+<!-- HERO -->
+
+<section
+    class="hero"
+    id="home"
+>
+
+    <div class="hero-corner top"></div>
+    <div class="hero-corner bottom"></div>
+
+    <h1 class="hero-name">
+        مبخوت بن عبدالله
+    </h1>
+
+    <div class="gold-line"></div>
+
+    <div class="photo-frame">
+
+        <img
+            class="profile-photo"
+            src="file_00000000202482468d4027eb8c5919f7.png"
+            alt="مبخوت بن عبدالله"
+        >
 
     </div>
 
-  </header>
+    <p class="quote">
+        وما توفيقي إلا بالله
+    </p>
+
+</section>
 
 
-  <!-- =======================================================
-       MOBILE MENU
-  ======================================================== -->
+<!-- ABOUT -->
 
-  <div class="mobile-menu" id="mobileMenu">
+<section
+    class="section reveal"
+    id="about"
+>
 
-    <nav class="mobile-links">
+    <div class="section-header">
 
-      <a href="#home">الرئيسية</a>
+        <span class="section-label">
+            ABOUT
+        </span>
 
-      <a href="#about">عنّي</a>
+        <h2 class="section-title">
+            نبذة
+        </h2>
 
-      <a href="#values">القيم</a>
+    </div>
 
-      <a href="#identity">الهوية</a>
+    <div class="about-card">
 
-      <a href="#contact">تواصل معي</a>
+        <p>
 
-    </nav>
+            أنا مبخوت بن عبدالله.
 
-  </div>
+            <br><br>
+
+            أؤمن بأن الشخصية الحقيقية تُبنى بالطموح،
+            والتجربة، والاهتمام بالتفاصيل. أسعى دائمًا
+            إلى تطوير نفسي، واكتشاف أفكار جديدة،
+            وصناعة هوية تعكس رؤيتي وشخصيتي بأسلوب
+            يجمع بين الأصالة، الأناقة، والطموح.
+
+            <br><br>
+
+            هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا
+            من اهتماماتي، أعمالي، اختياراتي، والأشياء
+            التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
+
+            <br><br>
+
+            <strong>
+                أطمح للأفضل، وأسعى لأن أترك أثرًا يستحق أن يُذكر.
+            </strong>
+
+        </p>
+
+    </div>
+
+</section>
 
 
-  <!-- =======================================================
-       HERO
-  ======================================================== -->
+<!-- VALUES -->
 
-  <main>
+<section
+    class="section reveal"
+    id="values"
+>
 
-    <section class="hero" id="home">
+    <div class="section-header">
 
-      <div class="hero-grid"></div>
+        <span class="section-label">
+            MY VALUES
+        </span>
 
-      <div class="hero-glow"></div>
+        <h2 class="section-title">
+            بصمتي
+        </h2>
 
-      <div class="container hero-inner">
+    </div>
 
-        <div class="hero-copy">
+    <div class="values">
 
-          <div class="eyebrow reveal">
-            PERSONAL IDENTITY
-          </div>
+        <div class="value-card">
 
-          <h1 class="hero-title reveal delay-1">
-            مبخوت
-            <span>بن عبدالله</span>
-          </h1>
+            <div class="value-icon">
+                ✦
+            </div>
 
-          <div class="hero-quote reveal delay-2">
-            « وما توفيقي إلا بالله »
-          </div>
+            <h3>
+                الإبداع
+            </h3>
 
-          <p class="hero-description reveal delay-3">
-            مساحة شخصية تعبّر عن هويتي، رؤيتي، ومبادئي.
-            حضور هادئ وواثق، يبحث عن المعنى قبل المظهر
-            ويؤمن بأن التفاصيل تصنع الفرق.
-          </p>
-
-          <div class="hero-buttons reveal delay-3">
-
-            <a
-              href="#about"
-              class="button button-primary"
-            >
-              اكتشف المزيد
-            </a>
-
-            <a
-              href="#contact"
-              class="button button-secondary"
-            >
-              تواصل معي
-            </a>
-
-          </div>
+            <p>
+                أبحث دائمًا عن الأفكار المختلفة
+                والأسلوب الذي يحمل طابعًا خاصًا.
+            </p>
 
         </div>
 
 
-        <div class="hero-visual reveal delay-2">
+        <div class="value-card">
 
-          <div class="portrait-frame">
-
-            <div class="portrait">
-
-              <!-- =================================================
-                   ضع صورتك الشخصية هنا باسم profile.jpg
-                   أو غيّر الاسم إلى اسم ملف صورتك
-              ================================================== -->
-
-              <img
-                src="profile.jpg"
-                alt="مبخوت بن عبدالله"
-                onerror="this.style.display='none'; this.parentElement.classList.add('no-image')"
-              >
-
-              <div class="portrait-overlay"></div>
-
-              <div class="portrait-label">
-
-                <span>MBK</span>
-
-                <span>PERSONAL</span>
-
-              </div>
-
+            <div class="value-icon">
+                ◇
             </div>
 
-          </div>
+            <h3>
+                الجودة
+            </h3>
+
+            <p>
+                أهتم بالتفاصيل الصغيرة لأنها
+                تصنع الفرق في النتيجة النهائية.
+            </p>
 
         </div>
 
-      </div>
 
-    </section>
+        <div class="value-card">
 
+            <div class="value-icon">
+                ◆
+            </div>
 
-    <!-- =====================================================
-         MARQUEE
-    ====================================================== -->
+            <h3>
+                الأصالة
+            </h3>
 
-    <div class="marquee">
+            <p>
+                أحافظ على هويتي وأطورها
+                بأسلوب حديث ومتوازن.
+            </p>
 
-      <div class="marquee-track">
-
-        <span class="marquee-item">
-          MBK
-        </span>
-
-        <span class="marquee-item">
-          PERSONAL IDENTITY
-        </span>
-
-        <span class="marquee-item">
-          VISION
-        </span>
-
-        <span class="marquee-item">
-          AUTHENTICITY
-        </span>
-
-        <span class="marquee-item">
-          EXCELLENCE
-        </span>
-
-        <span class="marquee-item">
-          MBK
-        </span>
-
-        <span class="marquee-item">
-          PERSONAL IDENTITY
-        </span>
-
-        <span class="marquee-item">
-          VISION
-        </span>
-
-        <span class="marquee-item">
-          AUTHENTICITY
-        </span>
-
-      </div>
+        </div>
 
     </div>
 
+</section>
 
-    <!-- =====================================================
-         ABOUT
-    ====================================================== -->
 
-    <section class="section about" id="about">
+<!-- GALLERY -->
 
-      <div class="container">
+<section
+    class="section reveal"
+    id="gallery"
+>
 
-        <div class="about-layout">
+    <div class="section-header">
 
-          <div class="reveal">
+        <span class="section-label">
+            SELECTED
+        </span>
 
-            <div class="about-number">
-              01 — ABOUT
+        <h2 class="section-title">
+            مختاراتي
+        </h2>
+
+    </div>
+
+    <div class="gallery">
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
+                alt="جبال وطبيعة"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>NATURE</small>
+
+                <h3>
+                    هدوء الجبال
+                </h3>
+
             </div>
-
-            <div class="section-label">
-              نبذة شخصية
-            </div>
-
-            <h2 class="section-title">
-              رحلة تُبنى
-              <br>
-              <span class="gold-text">
-                على المعنى
-              </span>
-            </h2>
-
-          </div>
-
-
-          <div class="reveal delay-2">
-
-            <p class="about-text">
-              أؤمن بأن الحضور الحقيقي لا يعتمد على كثرة
-              الكلام، بل على وضوح الرؤية وصدق المبدأ.
-              لكل إنسان قصة، ومسار، وأثر يسعى إلى تركه.
-            </p>
-
-            <p class="about-text">
-              هذه المساحة تمثل جانبًا من هويتي الشخصية،
-              وتجمع بين ما أؤمن به وما أسعى إليه،
-              بأسلوب بسيط، هادئ، وأصيل.
-            </p>
-
-            <div class="about-signature">
-              مبخوت بن عبدالله
-            </div>
-
-          </div>
 
         </div>
 
 
         <div
-          class="about-cards"
-          style="margin-top:80px;"
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
         >
 
-          <article class="info-card reveal">
-
-            <div class="card-number">
-              01
-            </div>
-
-            <h3>
-              الرؤية
-            </h3>
-
-            <p>
-              النظر إلى المستقبل بعين واضحة،
-              وتحويل الأفكار إلى خطوات حقيقية
-              ذات قيمة وأثر.
-            </p>
-
-          </article>
-
-
-          <article class="info-card reveal delay-1">
-
-            <div class="card-number">
-              02
-            </div>
-
-            <h3>
-              المبادئ
-            </h3>
-
-            <p>
-              الأصالة والصدق والالتزام بالقيم
-              هي الأساس الذي تُبنى عليه
-              القرارات والمواقف.
-            </p>
-
-          </article>
-
-
-          <article class="info-card reveal delay-2">
-
-            <div class="card-number">
-              03
-            </div>
-
-            <h3>
-              الطموح
-            </h3>
-
-            <p>
-              الاستمرار في التعلم والتطور،
-              وعدم الاكتفاء بما تم الوصول إليه.
-            </p>
-
-          </article>
-
-
-          <article class="info-card reveal delay-3">
-
-            <div class="card-number">
-              04
-            </div>
-
-            <h3>
-              الأثر
-            </h3>
-
-            <p>
-              القيمة الحقيقية ليست فيما نملكه،
-              بل فيما نتركه خلفنا من أثر جيد.
-            </p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         VALUES
-    ====================================================== -->
-
-    <section class="section values" id="values">
-
-      <div class="container">
-
-        <div class="values-header reveal">
-
-          <div class="section-label">
-            CORE VALUES
-          </div>
-
-          <h2 class="section-title">
-            القيم التي
-            <span class="gold-text">
-              أؤمن بها
-            </span>
-          </h2>
-
-          <p class="section-description" style="margin-inline:auto;">
-            مبادئ بسيطة لكنها أساسية؛ تشكل طريقة التفكير
-            والتعامل مع الحياة والعمل والمستقبل.
-          </p>
-
-        </div>
-
-
-        <div class="values-grid">
-
-          <article class="value reveal">
-
-            <div class="value-icon">
-              01
-            </div>
-
-            <h3>
-              الأصالة
-            </h3>
-
-            <p>
-              أن أكون صادقًا مع هويتي وقيمي،
-              وألا أفقد جذوري أثناء السعي نحو المستقبل.
-            </p>
-
-          </article>
-
-
-          <article class="value reveal delay-1">
-
-            <div class="value-icon">
-              02
-            </div>
-
-            <h3>
-              الطموح
-            </h3>
-
-            <p>
-              الطموح بالنسبة لي ليس مجرد وصول،
-              بل رغبة مستمرة في التطور وصناعة الأفضل.
-            </p>
-
-          </article>
-
-
-          <article class="value reveal delay-2">
-
-            <div class="value-icon">
-              03
-            </div>
-
-            <h3>
-              الإتقان
-            </h3>
-
-            <p>
-              الاهتمام بالتفاصيل، لأن الجودة لا تأتي
-              من الصدفة، وإنما من العمل المتقن.
-            </p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         IDENTITY
-    ====================================================== -->
-
-    <section class="section identity" id="identity">
-
-      <div class="container">
-
-        <div class="identity-layout">
-
-          <div class="identity-box reveal">
-
-            <div class="identity-center">
-
-              <strong>
-                MBK
-              </strong>
-
-              <span>
-                PERSONAL IDENTITY
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="reveal delay-2">
-
-            <div class="section-label">
-              PERSONAL IDENTITY
-            </div>
-
-            <h2 class="section-title">
-              هويتي في
-              <span class="gold-text">
-                تفاصيلها
-              </span>
-            </h2>
-
-            <p class="section-description">
-              هوية شخصية بسيطة وواضحة، تجمع بين الاسم
-              والرمز والرؤية في تجربة رقمية واحدة.
-            </p>
-
-
-            <div class="identity-list">
-
-              <div class="identity-row">
-
-                <span>
-                  الاسم
-                </span>
-
-                <span>
-                  مبخوت بن عبدالله
-                </span>
-
-              </div>
-
-
-              <div class="identity-row">
-
-                <span>
-                  الهوية المختصرة
-                </span>
-
-                <span>
-                  MBK
-                </span>
-
-              </div>
-
-
-              <div class="identity-row">
-
-                <span>
-                  الموقع
-                </span>
-
-                <span>
-                  mabkhut.com
-                </span>
-
-              </div>
-
-
-              <div class="identity-row">
-
-                <span>
-                  المجال
-                </span>
-
-                <span>
-                  Personal Identity
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         QUOTE
-    ====================================================== -->
-
-    <section class="quote-section">
-
-      <div class="container">
-
-        <div class="quote-mark">
-          “
-        </div>
-
-        <div class="quote-text reveal">
-          « وما توفيقي إلا بالله »
-        </div>
-
-        <div class="quote-caption reveal delay-1">
-          PRINCIPLE • FAITH • PURPOSE
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         CONTACT
-    ====================================================== -->
-
-    <section class="section contact" id="contact">
-
-      <div class="container">
-
-        <div class="contact-layout">
-
-          <div class="reveal">
-
-            <div class="section-label">
-              GET IN TOUCH
-            </div>
-
-            <h2 class="contact-title">
-              لنبقى
-              <span class="gold-text">
-                على تواصل
-              </span>
-            </h2>
-
-            <p class="contact-description">
-              للتواصل والاستفسارات، يمكن الوصول إليّ
-              من خلال البريد الإلكتروني أو الموقع الرسمي.
-            </p>
-
-          </div>
-
-
-          <div class="contact-links reveal delay-2">
-
-            <a
-              href="mailto:mabkhout@mabkhut.com"
-              class="contact-link"
+            <img
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"
+                alt="طبيعة ريفية"
+                loading="lazy"
             >
 
-              <div>
+            <div class="gallery-info">
 
-                <small>
-                  EMAIL
-                </small>
+                <small>LIFE</small>
 
-                <strong>
-                  mabkhout@mabkhut.com
-                </strong>
+                <h3>
+                    تفاصيل هادئة
+                </h3>
 
-              </div>
-
-              <span class="arrow">
-                ←
-              </span>
-
-            </a>
-
-
-            <a
-              href="https://mabkhut.com"
-              target="_blank"
-              rel="noopener"
-              class="contact-link"
-            >
-
-              <div>
-
-                <small>
-                  WEBSITE
-                </small>
-
-                <strong>
-                  mabkhut.com
-                </strong>
-
-              </div>
-
-              <span class="arrow">
-                ←
-              </span>
-
-            </a>
-
-          </div>
+            </div>
 
         </div>
 
-      </div>
 
-    </section>
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
+        >
 
-  </main>
+            <img
+                src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=85"
+                alt="مدينة حديثة"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>CITY</small>
+
+                <h3>
+                    نبض المدينة
+                </h3>
+
+            </div>
+
+        </div>
 
 
-  <!-- =======================================================
-       FOOTER
-  ======================================================== -->
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
+        >
 
-  <footer>
+            <img
+                src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85"
+                alt="شوارع المدينة"
+                loading="lazy"
+            >
 
-    <div class="container footer-inner">
+            <div class="gallery-info">
 
-      <div class="footer-logo">
-        M<span>B</span>K
-      </div>
+                <small>STREETS</small>
 
-      <div class="copyright">
-        © <span id="year"></span>
-        مبخوت بن عبدالله. جميع الحقوق محفوظة.
-      </div>
+                <h3>
+                    بين الشوارع
+                </h3>
 
-      <div class="footer-quote">
-        « وما توفيقي إلا بالله »
-      </div>
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=85"
+                alt="مدينة من الأعلى"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>URBAN</small>
+
+                <h3>
+                    أفق جديد
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
+                alt="طريق وسط الطبيعة"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>JOURNEY</small>
+
+                <h3>
+                    الطريق
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
+                alt="منظر طبيعي"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>CALM</small>
+
+                <h3>
+                    لحظة هدوء
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85"
+                alt="العمارة والحياة"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>ARCHITECTURE</small>
+
+                <h3>
+                    تفاصيل المكان
+                </h3>
+
+            </div>
+
+        </div>
+
 
     </div>
 
-  </footer>
+</section>
 
 
-  <!-- =======================================================
-       JAVASCRIPT
-  ======================================================== -->
+<!-- JOURNEY -->
 
-  <script>
+<section
+    class="section reveal"
+    id="journey"
+>
 
-    /* =======================================================
-       LOADER
-    ======================================================== */
+    <div class="section-header">
 
-    window.addEventListener("load", function () {
+        <span class="section-label">
+            MY JOURNEY
+        </span>
 
-      const loader = document.getElementById("loader");
+        <h2 class="section-title">
+            رحلتي
+        </h2>
 
-      setTimeout(function () {
+    </div>
 
-        loader.classList.add("hide");
 
-      }, 500);
+    <div class="timeline">
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2015
+            </div>
+
+            <div class="timeline-title">
+                البداية
+            </div>
+
+            <div class="timeline-text">
+                بداية الرحلة، ومنها بدأت مرحلة
+                جديدة من التجارب والتعلم.
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2018
+            </div>
+
+            <div class="timeline-title">
+                مرحلة من التجربة والتعلّم
+            </div>
+
+            <div class="timeline-text">
+                سنوات من التجربة واكتشاف الاهتمامات
+                وتطوير المهارات والنظرة الخاصة.
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2021
+            </div>
+
+            <div class="timeline-title">
+                تطور ونضج
+            </div>
+
+            <div class="timeline-text">
+                مرحلة أصبح فيها الطموح أكثر وضوحًا
+                وأصبحت التجارب السابقة جزءًا من الهوية.
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2024
+            </div>
+
+            <div class="timeline-title">
+                مرحلة جديدة
+            </div>
+
+            <div class="timeline-text">
+                بداية مرحلة مختلفة، برؤية أوسع
+                وطموح أكبر للمستقبل.
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2026
+            </div>
+
+            <div class="timeline-title">
+                رؤية للمستقبل
+            </div>
+
+            <div class="timeline-text">
+                الاستمرار في التطور وبناء المستقبل
+                بخطوات أكثر وضوحًا وثباتًا.
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section
+    class="section reveal"
+    id="contact"
+>
+
+    <div class="section-header">
+
+        <span class="section-label">
+            CONTACT
+        </span>
+
+        <h2 class="section-title">
+            تواصل
+        </h2>
+
+    </div>
+
+
+    <div class="contact-card">
+
+        <div class="contact-icons">
+
+
+            <a
+                class="social"
+                href="mailto:mabkhout@mabkhut.com"
+                aria-label="البريد الإلكتروني"
+                title="البريد الإلكتروني"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
+                    />
+
+                </svg>
+
+            </a>
+
+
+            <a
+                class="social"
+                href="https://www.facebook.com/share/19JG7PQiHL/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                title="Facebook"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
+                    />
+
+                </svg>
+
+            </a>
+
+
+        </div>
+
+
+        <button
+            class="qr-button"
+            id="qrButton"
+        >
+            مشاركة الموقع عبر QR
+        </button>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- LIGHTBOX -->
+
+<div
+    class="lightbox"
+    id="lightbox"
+>
+
+    <button
+        class="lightbox-close"
+        id="lightboxClose"
+        aria-label="إغلاق"
+    >
+        ×
+    </button>
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt=""
+    >
+
+</div>
+
+
+<!-- QR -->
+
+<div
+    class="qr-modal"
+    id="qrModal"
+>
+
+    <div class="qr-box">
+
+        <h3>
+            mabkhut.com
+        </h3>
+
+        <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com"
+            alt="QR Code"
+        >
+
+        <button
+            class="qr-close"
+            id="qrClose"
+        >
+            إغلاق
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-copy">
+        © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
+    </div>
+
+    <div class="footer-mbk">
+        MBK
+    </div>
+
+</footer>
+
+
+<script>
+
+/* MENU */
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const closeMenu =
+    document.getElementById("closeMenu");
+
+const sideMenu =
+    document.getElementById("sideMenu");
+
+const overlay =
+    document.getElementById("overlay");
+
+
+function openMenu(){
+
+    sideMenu.classList.add("active");
+
+    overlay.classList.add("active");
+
+    document.body.style.overflow="hidden";
+
+}
+
+
+function closeSideMenu(){
+
+    sideMenu.classList.remove("active");
+
+    overlay.classList.remove("active");
+
+    document.body.style.overflow="";
+
+}
+
+
+menuBtn.addEventListener(
+    "click",
+    openMenu
+);
+
+closeMenu.addEventListener(
+    "click",
+    closeSideMenu
+);
+
+overlay.addEventListener(
+    "click",
+    closeSideMenu
+);
+
+
+document
+    .querySelectorAll(".side-menu a")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            closeSideMenu
+        );
 
     });
 
 
-    /* =======================================================
-       NAVBAR SCROLL
-    ======================================================== */
+/* SCROLL REVEAL */
 
-    const navbar =
-      document.getElementById("navbar");
-
-    function updateNavbar() {
-
-      if (window.scrollY > 50) {
-
-        navbar.classList.add("scrolled");
-
-      } else {
-
-        navbar.classList.remove("scrolled");
-
-      }
-
-    }
-
-    window.addEventListener(
-      "scroll",
-      updateNavbar,
-      { passive: true }
-    );
-
-    updateNavbar();
+const revealElements =
+    document.querySelectorAll(".reveal");
 
 
-    /* =======================================================
-       MOBILE MENU
-    ======================================================== */
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
 
-    const menuButton =
-      document.getElementById("menuButton");
+            entries.forEach(entry => {
 
-    const mobileMenu =
-      document.getElementById("mobileMenu");
+                if(entry.isIntersecting){
 
-    menuButton.addEventListener(
-      "click",
-      function () {
+                    entry.target.classList.add(
+                        "visible"
+                    );
 
-        mobileMenu.classList.toggle("open");
+                    revealObserver.unobserve(
+                        entry.target
+                    );
 
-        document.body.classList.toggle(
-          "menu-open"
-        );
+                }
 
-        menuButton.textContent =
-          mobileMenu.classList.contains("open")
-            ? "×"
-            : "☰";
-
-      }
-    );
-
-
-    /* =======================================================
-       CLOSE MOBILE MENU
-    ======================================================== */
-
-    document
-      .querySelectorAll(".mobile-links a")
-      .forEach(function (link) {
-
-        link.addEventListener(
-          "click",
-          function () {
-
-            mobileMenu.classList.remove("open");
-
-            document.body.classList.remove(
-              "menu-open"
-            );
-
-            menuButton.textContent = "☰";
-
-          }
-        );
-
-      });
-
-
-    /* =======================================================
-       REVEAL ON SCROLL
-    ======================================================== */
-
-    const revealElements =
-      document.querySelectorAll(".reveal");
-
-    const revealObserver =
-      new IntersectionObserver(
-        function (entries, observer) {
-
-          entries.forEach(function (entry) {
-
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add(
-                "visible"
-              );
-
-              observer.unobserve(
-                entry.target
-              );
-
-            }
-
-          });
+            });
 
         },
         {
-          threshold: 0.12,
-          rootMargin: "0px 0px -40px 0px"
+            threshold:.12
         }
-      );
-
-
-    revealElements.forEach(
-      function (element) {
-
-        revealObserver.observe(element);
-
-      }
     );
 
 
-    /* =======================================================
-       CURRENT YEAR
-    ======================================================== */
+revealElements.forEach(element => {
 
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    revealObserver.observe(element);
+
+});
 
 
-    /* =======================================================
-       ESC KEY
-    ======================================================== */
+/* GALLERY LIGHTBOX */
 
-    document.addEventListener(
-      "keydown",
-      function (event) {
+const galleryItems =
+    document.querySelectorAll(".gallery-item");
 
-        if (event.key === "Escape") {
+const lightbox =
+    document.getElementById("lightbox");
 
-          mobileMenu.classList.remove("open");
+const lightboxImage =
+    document.getElementById("lightboxImage");
 
-          document.body.classList.remove(
-            "menu-open"
-          );
+const lightboxClose =
+    document.getElementById("lightboxClose");
 
-          menuButton.textContent = "☰";
+
+galleryItems.forEach(item => {
+
+    item.addEventListener(
+        "click",
+        () => {
+
+            const image =
+                item.dataset.full;
+
+            lightboxImage.src =
+                image;
+
+            lightbox.classList.add(
+                "active"
+            );
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
+    );
+
+});
+
+
+function closeLightbox(){
+
+    lightbox.classList.remove(
+        "active"
+    );
+
+    lightboxImage.src="";
+
+    document.body.style.overflow="";
+
+}
+
+
+lightboxClose.addEventListener(
+    "click",
+    closeLightbox
+);
+
+
+lightbox.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target === lightbox
+        ){
+
+            closeLightbox();
 
         }
 
-      }
-    );
+    }
+);
 
-  </script>
+
+/* QR */
+
+const qrButton =
+    document.getElementById("qrButton");
+
+const qrModal =
+    document.getElementById("qrModal");
+
+const qrClose =
+    document.getElementById("qrClose");
+
+
+qrButton.addEventListener(
+    "click",
+    () => {
+
+        qrModal.classList.add(
+            "active"
+        );
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+);
+
+
+qrClose.addEventListener(
+    "click",
+    () => {
+
+        qrModal.classList.remove(
+            "active"
+        );
+
+        document.body.style.overflow =
+            "";
+
+    }
+);
+
+
+qrModal.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target === qrModal
+        ){
+
+            qrModal.classList.remove(
+                "active"
+            );
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+    }
+);
+
+
+/* ESC */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(event.key === "Escape"){
+
+            closeSideMenu();
+
+            closeLightbox();
+
+            qrModal.classList.remove(
+                "active"
+            );
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+    }
+);
+
+</script>
 
 </body>
 </html>
