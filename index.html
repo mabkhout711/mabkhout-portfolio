@@ -3,17 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#061426">
-<meta name="description" content="الموقع الشخصي الرسمي لمبخوت بن عبدالله — MBK">
+
+<title>مبخوت بن عبدالله | MBK</title>
+
+<meta name="description" content="الموقع الشخصي الرسمي لمبخوت بن عبدالله — MBK.">
 <meta name="author" content="مبخوت بن عبدالله">
-<link rel="canonical" href="https://mabkhut.com/">
+<meta name="theme-color" content="#061426">
+<meta name="color-scheme" content="dark">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="مبخوت بن عبدالله | MBK">
-<meta property="og:description" content="الموقع الشخصي الرسمي لمبخوت بن عبدالله">
+<meta property="og:description" content="الموقع الشخصي الرسمي لمبخوت بن عبدالله.">
 <meta property="og:url" content="https://mabkhut.com/">
+<meta property="og:site_name" content="MBK">
 
-<title>مبخوت بن عبدالله | MBK</title>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="مبخوت بن عبدالله | MBK">
+<meta name="twitter:description" content="الموقع الشخصي الرسمي لمبخوت بن عبدالله.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,33 +29,42 @@
 <style>
 
 /* =========================================================
-   MBK — PREMIUM PERSONAL WEBSITE
-   Single-file HTML / CSS / JavaScript
+   ROOT
 ========================================================= */
 
 :root{
-    --navy:#061426;
-    --navy-dark:#020914;
-    --navy-soft:#0a1d33;
+    --navy-950:#020812;
+    --navy-900:#030b16;
+    --navy-800:#061426;
+    --navy-700:#0a1d34;
+    --navy-600:#102944;
 
     --gold:#d4af37;
     --gold-light:#f1d56a;
-    --gold-bright:#ffe89a;
-    --gold-dark:#9b781b;
+    --gold-bright:#ffe99a;
+    --gold-dark:#9c7718;
 
     --white:#f8f7f2;
     --text:#d8dce2;
     --muted:#8995a3;
 
-    --border:rgba(212,175,55,.20);
+    --border:rgba(212,175,55,.18);
     --border-strong:rgba(212,175,55,.42);
 
     --glass:rgba(255,255,255,.035);
 
-    --shadow:0 30px 90px rgba(0,0,0,.35);
+    --shadow:
+        0 30px 90px rgba(0,0,0,.35);
 
-    --ease:cubic-bezier(.22,1,.36,1);
+    --radius:28px;
+
+    --header-height:76px;
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     margin:0;
@@ -59,40 +74,47 @@
 
 html{
     scroll-behavior:smooth;
+    scroll-padding-top:90px;
 }
 
 body{
     min-height:100vh;
     overflow-x:hidden;
 
-    font-family:"Cairo","Noto Kufi Arabic",sans-serif;
+    font-family:
+        "Cairo",
+        "Noto Kufi Arabic",
+        sans-serif;
 
     color:var(--white);
 
     background:
         radial-gradient(
             circle at 50% -10%,
-            rgba(212,175,55,.13),
-            transparent 30%
+            rgba(212,175,55,.12),
+            transparent 32%
         ),
         radial-gradient(
-            circle at 0% 45%,
-            rgba(21,55,91,.38),
+            circle at -10% 40%,
+            rgba(20,60,100,.32),
             transparent 35%
         ),
         radial-gradient(
-            circle at 100% 80%,
-            rgba(212,175,55,.035),
+            circle at 110% 75%,
+            rgba(212,175,55,.045),
             transparent 30%
         ),
         linear-gradient(
             145deg,
-            #020914 0%,
-            #061426 48%,
-            #030b16 100%
+            var(--navy-950),
+            var(--navy-800) 48%,
+            var(--navy-950)
         );
 
+    line-height:1.7;
+
     -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
 }
 
 body::before{
@@ -101,24 +123,23 @@ body::before{
     position:fixed;
     inset:0;
 
+    z-index:-10;
     pointer-events:none;
 
-    z-index:-20;
-
-    opacity:.055;
+    opacity:.045;
 
     background-image:
         linear-gradient(
-            rgba(255,255,255,.07) 1px,
+            rgba(255,255,255,.08) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(255,255,255,.07) 1px,
+            rgba(255,255,255,.08) 1px,
             transparent 1px
         );
 
-    background-size:75px 75px;
+    background-size:72px 72px;
 }
 
 body::after{
@@ -126,112 +147,124 @@ body::after{
 
     position:fixed;
 
-    width:520px;
-    height:520px;
+    width:500px;
+    height:500px;
 
-    top:8%;
+    top:15%;
     left:50%;
 
     transform:translateX(-50%);
 
     border-radius:50%;
 
-    background:rgba(212,175,55,.035);
+    background:
+        rgba(212,175,55,.035);
 
     filter:blur(130px);
 
+    z-index:-9;
     pointer-events:none;
+}
 
-    z-index:-19;
+body.menu-open,
+body.modal-open{
+    overflow:hidden;
+}
+
+::selection{
+    background:var(--gold);
+    color:#05090e;
 }
 
 a{
     color:inherit;
     text-decoration:none;
+    -webkit-tap-highlight-color:transparent;
 }
 
 button{
-    font-family:inherit;
+    font:inherit;
 }
 
 img{
     max-width:100%;
 }
 
-::selection{
-    background:var(--gold);
-    color:#020914;
-}
-
 
 /* =========================================================
-   SCROLL PROGRESS
+   PRELOADER
 ========================================================= */
 
-.scroll-progress{
+.preloader{
     position:fixed;
+    inset:0;
 
-    top:0;
-    right:0;
+    z-index:5000;
 
-    width:0%;
-    height:2px;
-
-    z-index:3000;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold-dark),
-            var(--gold-light),
-            var(--gold)
-        );
-
-    box-shadow:
-        0 0 14px rgba(212,175,55,.7);
-
-    transition:width .08s linear;
-}
-
-
-/* =========================================================
-   CURSOR GLOW
-========================================================= */
-
-.cursor-glow{
-    position:fixed;
-
-    width:260px;
-    height:260px;
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    z-index:-5;
-
-    transform:translate(-50%,-50%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     background:
         radial-gradient(
             circle,
-            rgba(212,175,55,.06),
-            transparent 68%
+            #0b2038,
+            #020812 70%
         );
 
-    filter:blur(10px);
-
-    opacity:0;
-
-    transition:opacity .3s ease;
+    transition:
+        opacity .7s ease,
+        visibility .7s ease;
 }
 
-@media(pointer:fine){
+.preloader.hide{
+    opacity:0;
+    visibility:hidden;
+}
 
-    body:hover .cursor-glow{
-        opacity:1;
+.loader-content{
+    text-align:center;
+}
+
+.loader-logo{
+    direction:ltr;
+
+    font-family:Arial,sans-serif;
+
+    font-size:38px;
+    font-weight:700;
+
+    letter-spacing:12px;
+
+    color:var(--gold-light);
+
+    animation:
+        loaderPulse 1.5s ease-in-out infinite;
+}
+
+.loader-line{
+    width:100px;
+    height:1px;
+
+    margin:18px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+@keyframes loaderPulse{
+    0%,100%{
+        opacity:.45;
     }
 
+    50%{
+        opacity:1;
+    }
 }
 
 
@@ -246,7 +279,7 @@ header{
     right:0;
     left:0;
 
-    height:76px;
+    height:var(--header-height);
 
     padding:0 6%;
 
@@ -256,28 +289,31 @@ header{
 
     z-index:1000;
 
-    background:rgba(2,9,20,.68);
+    background:
+        rgba(2,9,20,.58);
 
     border-bottom:
-        1px solid rgba(212,175,55,.10);
+        1px solid
+        rgba(212,175,55,.08);
 
-    backdrop-filter:blur(22px);
-    -webkit-backdrop-filter:blur(22px);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 
     transition:
-        background .35s ease,
-        box-shadow .35s ease,
-        border-color .35s ease;
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
 }
 
 header.scrolled{
-    background:rgba(2,9,20,.88);
+    background:
+        rgba(2,9,20,.88);
 
-    border-color:
+    border-bottom-color:
         rgba(212,175,55,.18);
 
     box-shadow:
-        0 12px 45px rgba(0,0,0,.22);
+        0 10px 40px rgba(0,0,0,.18);
 }
 
 .logo{
@@ -286,7 +322,6 @@ header.scrolled{
     font-family:Arial,sans-serif;
 
     font-size:23px;
-
     font-weight:700;
 
     letter-spacing:7px;
@@ -300,7 +335,8 @@ header.scrolled{
     color:var(--gold-bright);
 
     text-shadow:
-        0 0 20px rgba(212,175,55,.35);
+        0 0 20px
+        rgba(212,175,55,.35);
 }
 
 .menu-btn{
@@ -310,7 +346,8 @@ header.scrolled{
     border-radius:50%;
 
     border:
-        1px solid var(--border-strong);
+        1px solid
+        var(--border-strong);
 
     background:
         rgba(255,255,255,.025);
@@ -325,23 +362,28 @@ header.scrolled{
 
     font-size:21px;
 
-    transition:
-        transform .3s var(--ease),
-        background .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease;
+    transition:.3s ease;
 }
 
 .menu-btn:hover{
-    transform:scale(1.06);
+    transform:scale(1.05);
 
-    border-color:var(--gold-light);
+    border-color:
+        var(--gold-light);
 
     background:
         rgba(212,175,55,.08);
 
     box-shadow:
-        0 0 30px rgba(212,175,55,.12);
+        0 0 30px
+        rgba(212,175,55,.12);
+}
+
+.menu-btn span{
+    display:block;
+
+    transition:
+        transform .3s ease;
 }
 
 
@@ -351,14 +393,15 @@ header.scrolled{
 
 .overlay{
     position:fixed;
-
     inset:0;
 
-    background:rgba(0,0,0,.62);
+    z-index:1100;
+
+    background:
+        rgba(0,0,0,.62);
 
     backdrop-filter:blur(7px);
-
-    z-index:1100;
+    -webkit-backdrop-filter:blur(7px);
 
     opacity:0;
     visibility:hidden;
@@ -377,35 +420,34 @@ header.scrolled{
     top:0;
     right:0;
 
-    width:min(390px,88vw);
+    width:min(390px,90vw);
     height:100vh;
 
-    padding:105px 35px 35px;
+    padding:
+        110px 38px 35px;
 
     z-index:1200;
 
     background:
-        radial-gradient(
-            circle at 30% 20%,
-            rgba(212,175,55,.06),
-            transparent 35%
-        ),
         linear-gradient(
             150deg,
-            rgba(8,26,47,.99),
+            rgba(8,27,48,.99),
             rgba(2,9,20,.99)
         );
 
     border-left:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     transform:translateX(105%);
 
     transition:
-        transform .5s var(--ease);
+        transform .48s
+        cubic-bezier(.77,0,.18,1);
 
     box-shadow:
-        -30px 0 100px rgba(0,0,0,.5);
+        -35px 0 100px
+        rgba(0,0,0,.48);
 }
 
 .side-menu.active{
@@ -418,13 +460,14 @@ header.scrolled{
     top:24px;
     left:24px;
 
-    width:42px;
-    height:42px;
+    width:43px;
+    height:43px;
 
     border-radius:50%;
 
     border:
-        1px solid var(--border-strong);
+        1px solid
+        var(--border-strong);
 
     background:transparent;
 
@@ -438,7 +481,8 @@ header.scrolled{
 }
 
 .close-menu:hover{
-    background:rgba(212,175,55,.08);
+    background:
+        rgba(212,175,55,.08);
 
     transform:rotate(90deg);
 }
@@ -465,15 +509,14 @@ header.scrolled{
     padding:17px 0;
 
     border-bottom:
-        1px solid rgba(255,255,255,.055);
-
-    font-size:17px;
+        1px solid
+        rgba(255,255,255,.055);
 
     color:var(--white);
 
-    transition:
-        color .3s ease,
-        padding-right .3s var(--ease);
+    font-size:17px;
+
+    transition:.3s ease;
 }
 
 .side-menu a::before{
@@ -489,8 +532,7 @@ header.scrolled{
 
     background:var(--gold);
 
-    transition:
-        width .35s var(--ease);
+    transition:.3s ease;
 }
 
 .side-menu a:hover{
@@ -524,12 +566,10 @@ main{
 
     padding:
         120px 0
-        55px;
+        60px;
 
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
     justify-content:center;
 
@@ -545,8 +585,14 @@ main{
 
     position:absolute;
 
-    width:500px;
-    height:500px;
+    width:650px;
+    height:650px;
+
+    top:50%;
+    left:50%;
+
+    transform:
+        translate(-50%,-50%);
 
     border-radius:50%;
 
@@ -557,42 +603,25 @@ main{
             transparent 68%
         );
 
-    filter:blur(25px);
-
     z-index:-1;
 
-    animation:
-        heroGlow 7s ease-in-out infinite alternate;
-}
-
-@keyframes heroGlow{
-
-    from{
-        transform:scale(.9);
-        opacity:.6;
-    }
-
-    to{
-        transform:scale(1.12);
-        opacity:1;
-    }
-
+    pointer-events:none;
 }
 
 .hero-corner{
     position:absolute;
 
-    width:72px;
-    height:72px;
+    width:75px;
+    height:75px;
 
     border-color:
-        rgba(212,175,55,.68);
+        rgba(212,175,55,.65);
 
     pointer-events:none;
 }
 
 .hero-corner.top{
-    top:108px;
+    top:105px;
     right:0;
 
     border-top:1px solid;
@@ -607,23 +636,65 @@ main{
     border-left:1px solid;
 }
 
+.hero-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
 
-/* =========================================================
-   HERO NAME
-========================================================= */
+    direction:ltr;
+
+    color:var(--gold-light);
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    margin-bottom:18px;
+
+    opacity:0;
+
+    animation:
+        heroUp .8s .1s ease forwards;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after{
+    content:"";
+
+    width:25px;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold)
+        );
+}
+
+.hero-eyebrow::after{
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            transparent
+        );
+}
 
 .hero-name{
     width:100%;
-
     max-width:850px;
 
     padding:0 20px;
 
-    margin:
-        0 auto 14px;
+    margin:0 auto 14px;
 
     font-size:
-        clamp(34px,5.5vw,58px);
+        clamp(
+            35px,
+            5.7vw,
+            60px
+        );
 
     font-weight:800;
 
@@ -636,10 +707,10 @@ main{
     background:
         linear-gradient(
             135deg,
-            #b88918 0%,
-            #f7df78 25%,
-            #d4af37 50%,
-            #fff0a3 75%,
+            #a97e16 0%,
+            #f7df78 24%,
+            #d4af37 48%,
+            #fff0a3 74%,
             #b88918 100%
         );
 
@@ -649,18 +720,21 @@ main{
     -webkit-text-fill-color:transparent;
 
     text-shadow:
-        0 0 18px rgba(212,175,55,.12);
+        0 0 20px
+        rgba(212,175,55,.10);
+
+    opacity:0;
 
     animation:
-        heroIn .9s ease both;
+        heroUp .9s .2s ease forwards;
 }
 
 .gold-line{
-    width:100px;
+    width:105px;
     height:2px;
 
     margin:
-        0 auto 25px;
+        0 auto 27px;
 
     background:
         linear-gradient(
@@ -673,24 +747,13 @@ main{
         );
 
     box-shadow:
-        0 0 16px rgba(212,175,55,.28);
+        0 0 16px
+        rgba(212,175,55,.28);
+
+    opacity:0;
 
     animation:
-        lineIn 1.1s ease both;
-}
-
-@keyframes lineIn{
-
-    from{
-        width:0;
-        opacity:0;
-    }
-
-    to{
-        width:100px;
-        opacity:1;
-    }
-
+        heroUp .8s .35s ease forwards;
 }
 
 
@@ -707,10 +770,12 @@ main{
 
     position:relative;
 
-    margin-bottom:22px;
+    margin-bottom:23px;
+
+    opacity:0;
 
     animation:
-        photoIn 1s .15s var(--ease) both;
+        heroPhoto 1s .45s ease forwards;
 }
 
 .photo-frame::before{
@@ -721,14 +786,14 @@ main{
     inset:0;
 
     border:
-        1px solid rgba(212,175,55,.82);
+        1px solid
+        rgba(212,175,55,.82);
 
     border-radius:31px;
 
     transform:rotate(-1deg);
 
-    transition:
-        transform .6s var(--ease);
+    transition:.5s ease;
 }
 
 .photo-frame::after{
@@ -739,22 +804,14 @@ main{
     inset:7px;
 
     border:
-        1px solid rgba(212,175,55,.22);
+        1px solid
+        rgba(212,175,55,.22);
 
     border-radius:27px;
 
     transform:rotate(1deg);
 
-    transition:
-        transform .6s var(--ease);
-}
-
-.photo-frame:hover::before{
-    transform:rotate(-2deg) scale(1.015);
-}
-
-.photo-frame:hover::after{
-    transform:rotate(2deg) scale(1.01);
+    transition:.5s ease;
 }
 
 .profile-photo{
@@ -768,61 +825,80 @@ main{
     display:block;
 
     object-fit:contain;
-
     object-position:center;
 
     border-radius:24px;
 
     border:
-        5px solid #07172a;
+        5px solid
+        #07172a;
 
     background:#07172a;
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,.50);
+        0 30px 80px
+        rgba(0,0,0,.50);
 
     transition:
-        transform .7s var(--ease),
-        box-shadow .7s ease;
+        transform .6s ease,
+        box-shadow .6s ease;
+}
+
+.photo-frame:hover::before{
+    transform:
+        rotate(0deg)
+        scale(1.012);
+}
+
+.photo-frame:hover::after{
+    transform:
+        rotate(0deg)
+        scale(1.008);
 }
 
 .photo-frame:hover .profile-photo{
-    transform:
-        scale(1.012)
-        translateY(-3px);
+    transform:scale(1.012);
 
     box-shadow:
-        0 35px 100px rgba(0,0,0,.62);
+        0 38px 100px
+        rgba(0,0,0,.62);
 }
 
 .quote{
     color:var(--white);
 
     font-size:
-        clamp(20px,4vw,28px);
+        clamp(
+            20px,
+            4vw,
+            28px
+        );
 
     font-weight:500;
 
+    opacity:0;
+
     animation:
-        heroIn .9s .3s ease both;
+        heroUp .8s .65s ease forwards;
 }
 
-@keyframes photoIn{
+.quote::before{
+    content:"“";
 
-    from{
-        opacity:0;
-        transform:translateY(35px) scale(.96);
-    }
+    color:var(--gold);
 
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-
+    margin-left:7px;
 }
 
-@keyframes heroIn{
+.quote::after{
+    content:"”";
 
+    color:var(--gold);
+
+    margin-right:7px;
+}
+
+@keyframes heroUp{
     from{
         opacity:0;
         transform:translateY(25px);
@@ -832,18 +908,39 @@ main{
         opacity:1;
         transform:translateY(0);
     }
+}
 
+@keyframes heroPhoto{
+    from{
+        opacity:0;
+        transform:
+            translateY(35px)
+            scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
 }
 
 
 /* =========================================================
-   SECTIONS
+   SECTION
 ========================================================= */
 
 .section{
-    padding:80px 0;
+    padding:78px 0;
 
     position:relative;
+}
+
+.section + .section{
+    border-top:
+        1px solid
+        rgba(212,175,55,.055);
 }
 
 .section-header{
@@ -868,7 +965,11 @@ main{
 
 .section-title{
     font-size:
-        clamp(30px,5vw,46px);
+        clamp(
+            30px,
+            5vw,
+            46px
+        );
 
     font-weight:800;
 
@@ -884,7 +985,7 @@ main{
     height:2px;
 
     margin:
-        11px auto 0;
+        12px auto 0;
 
     background:
         linear-gradient(
@@ -909,21 +1010,21 @@ main{
         42px 45px;
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
-    border-radius:30px;
+    border-radius:
+        var(--radius);
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.04),
+            rgba(255,255,255,.045),
             rgba(255,255,255,.012)
         );
 
     box-shadow:
         var(--shadow);
-
-    text-align:center;
 
     position:relative;
 
@@ -935,28 +1036,29 @@ main{
 
     position:absolute;
 
-    width:220px;
-    height:220px;
+    top:0;
+    right:12%;
 
-    top:-120px;
-    right:-100px;
-
-    border-radius:50%;
+    width:120px;
+    height:1px;
 
     background:
-        rgba(212,175,55,.06);
-
-    filter:blur(35px);
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
 }
 
 .about-card p{
-    position:relative;
-
     color:var(--text);
 
     font-size:18px;
 
     line-height:2.1;
+
+    text-align:center;
 }
 
 .about-card strong{
@@ -980,12 +1082,13 @@ main{
 }
 
 .value-card{
-    padding:32px 25px;
+    padding:32px 26px;
 
     text-align:center;
 
     border:
-        1px solid rgba(212,175,55,.15);
+        1px solid
+        rgba(212,175,55,.15);
 
     border-radius:25px;
 
@@ -993,23 +1096,25 @@ main{
         rgba(255,255,255,.022);
 
     transition:
-        transform .4s var(--ease),
+        transform .35s ease,
         border-color .35s ease,
-        box-shadow .35s ease,
-        background .35s ease;
+        background .35s ease,
+        box-shadow .35s ease;
 }
 
 .value-card:hover{
-    transform:translateY(-9px);
+    transform:
+        translateY(-9px);
 
     border-color:
-        rgba(212,175,55,.48);
+        rgba(212,175,55,.44);
 
     background:
         rgba(212,175,55,.035);
 
     box-shadow:
-        0 25px 65px rgba(212,175,55,.08);
+        0 25px 65px
+        rgba(212,175,55,.07);
 }
 
 .value-icon{
@@ -1017,28 +1122,26 @@ main{
     height:58px;
 
     margin:
-        0 auto 15px;
+        0 auto 16px;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
     border-radius:50%;
 
     border:
-        1px solid rgba(212,175,55,.38);
+        1px solid
+        rgba(212,175,55,.35);
 
     color:var(--gold-light);
 
-    font-size:22px;
+    font-size:23px;
 
     background:
-        rgba(212,175,55,.035);
+        rgba(212,175,55,.025);
 
-    transition:
-        transform .4s var(--ease),
-        background .3s ease;
+    transition:.35s ease;
 }
 
 .value-card:hover .value-icon{
@@ -1046,8 +1149,12 @@ main{
         rotate(10deg)
         scale(1.08);
 
-    background:
-        rgba(212,175,55,.09);
+    border-color:
+        var(--gold-light);
+
+    box-shadow:
+        0 0 25px
+        rgba(212,175,55,.12);
 }
 
 .value-card h3{
@@ -1086,14 +1193,14 @@ main{
     border-radius:25px;
 
     border:
-        1px solid rgba(212,175,55,.17);
+        1px solid
+        rgba(212,175,55,.17);
 
     background:#07172a;
 
     cursor:pointer;
 
-    box-shadow:
-        0 18px 45px rgba(0,0,0,.15);
+    isolation:isolate;
 }
 
 .gallery-item:nth-child(1),
@@ -1123,8 +1230,32 @@ main{
     object-fit:cover;
 
     transition:
-        transform .8s var(--ease),
-        filter .6s ease;
+        transform .75s
+        cubic-bezier(.2,.7,.2,1);
+
+    filter:
+        saturate(.88)
+        contrast(1.04);
+}
+
+.gallery-item::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    z-index:1;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,175,55,.08),
+            transparent 35%
+        );
+
+    opacity:0;
+
+    transition:.4s ease;
 }
 
 .gallery-item::after{
@@ -1134,24 +1265,28 @@ main{
 
     inset:0;
 
+    z-index:1;
+
     background:
         linear-gradient(
             to top,
             rgba(0,0,0,.82),
-            rgba(0,0,0,.08) 65%,
-            transparent
+            rgba(0,0,0,.05) 60%
         );
 
     pointer-events:none;
-
-    transition:
-        opacity .4s ease;
 }
 
 .gallery-item:hover img{
-    transform:scale(1.075);
+    transform:scale(1.08);
 
-    filter:saturate(1.08);
+    filter:
+        saturate(1)
+        contrast(1.06);
+}
+
+.gallery-item:hover::before{
+    opacity:1;
 }
 
 .gallery-info{
@@ -1159,19 +1294,9 @@ main{
 
     right:22px;
     left:22px;
-    bottom:18px;
+    bottom:19px;
 
     z-index:2;
-
-    transform:
-        translateY(4px);
-
-    transition:
-        transform .4s var(--ease);
-}
-
-.gallery-item:hover .gallery-info{
-    transform:translateY(0);
 }
 
 .gallery-info small{
@@ -1185,7 +1310,7 @@ main{
 
     direction:ltr;
 
-    margin-bottom:3px;
+    margin-bottom:4px;
 }
 
 .gallery-info h3{
@@ -1201,22 +1326,21 @@ main{
 
 .lightbox{
     position:fixed;
-
     inset:0;
 
-    z-index:2000;
+    z-index:3000;
 
     padding:25px;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
     background:
-        rgba(0,0,0,.90);
+        rgba(0,0,0,.91);
 
     backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
 
     opacity:0;
     visibility:hidden;
@@ -1235,13 +1359,26 @@ main{
 
     object-fit:contain;
 
-    border-radius:15px;
+    border-radius:16px;
 
     border:
-        1px solid rgba(212,175,55,.28);
+        1px solid
+        rgba(212,175,55,.28);
 
     box-shadow:
-        0 30px 110px rgba(0,0,0,.7);
+        0 30px 110px
+        rgba(0,0,0,.72);
+
+    transform:
+        scale(.96);
+
+    transition:
+        transform .35s ease;
+}
+
+.lightbox.active img{
+    transform:
+        scale(1);
 }
 
 .lightbox-close{
@@ -1256,7 +1393,8 @@ main{
     border-radius:50%;
 
     border:
-        1px solid rgba(212,175,55,.4);
+        1px solid
+        rgba(212,175,55,.4);
 
     background:
         rgba(0,0,0,.25);
@@ -1339,19 +1477,21 @@ main{
 
     border-radius:50%;
 
-    background:var(--gold-light);
+    background:
+        var(--gold-light);
 
     box-shadow:
-        0 0 18px rgba(212,175,55,.58);
+        0 0 20px
+        rgba(212,175,55,.6);
+
+    z-index:2;
 }
 
-.timeline-item:nth-child(odd)
-.timeline-dot{
+.timeline-item:nth-child(odd) .timeline-dot{
     right:-6px;
 }
 
-.timeline-item:nth-child(even)
-.timeline-dot{
+.timeline-item:nth-child(even) .timeline-dot{
     left:-6px;
 }
 
@@ -1364,7 +1504,7 @@ main{
 
     line-height:1;
 
-    margin-bottom:9px;
+    margin-bottom:8px;
 }
 
 .timeline-title{
@@ -1393,12 +1533,13 @@ main{
 
     margin:auto;
 
-    padding:40px 35px;
+    padding:38px 30px;
 
     text-align:center;
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     border-radius:30px;
 
@@ -1407,6 +1548,14 @@ main{
 
     box-shadow:
         var(--shadow);
+}
+
+.contact-intro{
+    color:var(--muted);
+
+    font-size:15px;
+
+    margin-bottom:25px;
 }
 
 .contact-icons{
@@ -1419,34 +1568,30 @@ main{
 }
 
 .social{
-    width:60px;
-    height:60px;
+    width:61px;
+    height:61px;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
     border-radius:50%;
 
     border:
-        1px solid rgba(212,175,55,.42);
+        1px solid
+        rgba(212,175,55,.42);
 
     background:
         rgba(255,255,255,.02);
 
     color:var(--gold-light);
 
-    transition:
-        transform .35s var(--ease),
-        background .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease;
+    transition:.3s ease;
 }
 
 .social:hover{
     transform:
-        translateY(-6px)
+        translateY(-5px)
         scale(1.04);
 
     background:
@@ -1456,7 +1601,8 @@ main{
         var(--gold-light);
 
     box-shadow:
-        0 15px 40px rgba(212,175,55,.13);
+        0 15px 40px
+        rgba(212,175,55,.13);
 }
 
 .social svg{
@@ -1466,16 +1612,28 @@ main{
     fill:currentColor;
 }
 
+.email-text{
+    margin-top:20px;
+
+    color:var(--text);
+
+    font-size:14px;
+
+    direction:ltr;
+
+    word-break:break-word;
+}
+
 .qr-button{
     margin-top:24px;
 
-    padding:
-        11px 25px;
+    padding:11px 25px;
 
     border-radius:999px;
 
     border:
-        1px solid rgba(212,175,55,.38);
+        1px solid
+        rgba(212,175,55,.38);
 
     background:transparent;
 
@@ -1483,20 +1641,15 @@ main{
 
     cursor:pointer;
 
-    transition:
-        transform .3s var(--ease),
-        background .3s ease,
-        border-color .3s ease;
+    transition:.3s ease;
 }
 
 .qr-button:hover{
     background:
         rgba(212,175,55,.08);
 
-    border-color:
-        var(--gold-light);
-
-    transform:translateY(-3px);
+    transform:
+        translateY(-3px);
 }
 
 
@@ -1506,22 +1659,21 @@ main{
 
 .qr-modal{
     position:fixed;
-
     inset:0;
 
-    z-index:2100;
+    z-index:3100;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
     padding:20px;
 
     background:
-        rgba(0,0,0,.82);
+        rgba(0,0,0,.80);
 
-    backdrop-filter:blur(9px);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
 
     opacity:0;
     visibility:hidden;
@@ -1537,26 +1689,32 @@ main{
 .qr-box{
     width:min(360px,92vw);
 
-    padding:30px;
+    padding:31px;
 
     text-align:center;
 
     border:
-        1px solid rgba(212,175,55,.35);
+        1px solid
+        rgba(212,175,55,.35);
 
     border-radius:30px;
 
-    background:#07172a;
+    background:
+        linear-gradient(
+            145deg,
+            #0a1d34,
+            #050e1b
+        );
 
     box-shadow:
-        0 30px 100px rgba(0,0,0,.55);
+        0 30px 100px
+        rgba(0,0,0,.58);
 
     transform:
         translateY(20px)
-        scale(.97);
+        scale(.96);
 
-    transition:
-        transform .4s var(--ease);
+    transition:.35s ease;
 }
 
 .qr-modal.active .qr-box{
@@ -1571,6 +1729,14 @@ main{
     direction:ltr;
 
     letter-spacing:2px;
+}
+
+.qr-box p{
+    color:var(--muted);
+
+    font-size:13px;
+
+    margin-top:4px;
 }
 
 .qr-box img{
@@ -1589,13 +1755,13 @@ main{
 }
 
 .qr-close{
-    padding:
-        10px 25px;
+    padding:10px 25px;
 
     border-radius:999px;
 
     border:
-        1px solid rgba(212,175,55,.35);
+        1px solid
+        rgba(212,175,55,.35);
 
     background:transparent;
 
@@ -1617,12 +1783,14 @@ main{
 ========================================================= */
 
 footer{
-    padding:45px 20px;
+    padding:
+        42px 20px;
 
     text-align:center;
 
     border-top:
-        1px solid rgba(212,175,55,.12);
+        1px solid
+        rgba(212,175,55,.12);
 
     background:
         rgba(2,8,17,.72);
@@ -1643,9 +1811,79 @@ footer{
 
     color:var(--gold);
 
-    letter-spacing:6px;
+    letter-spacing:7px;
 
     font-weight:700;
+}
+
+.footer-link{
+    display:inline-block;
+
+    margin-top:7px;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    direction:ltr;
+
+    transition:.3s ease;
+}
+
+.footer-link:hover{
+    color:var(--gold-light);
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:
+        translateY(28px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+.scroll-progress{
+    position:fixed;
+
+    top:0;
+    right:0;
+
+    height:2px;
+
+    width:0;
+
+    z-index:2000;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold-dark),
+            var(--gold-light)
+        );
+
+    box-shadow:
+        0 0 10px
+        rgba(212,175,55,.45);
 }
 
 
@@ -1665,32 +1903,30 @@ footer{
     border-radius:50%;
 
     border:
-        1px solid var(--border-strong);
+        1px solid
+        var(--border-strong);
 
     background:
-        rgba(2,9,20,.78);
-
-    backdrop-filter:blur(12px);
+        rgba(4,15,27,.84);
 
     color:var(--gold-light);
 
     cursor:pointer;
 
-    z-index:800;
+    z-index:900;
 
     opacity:0;
     visibility:hidden;
 
     transform:
-        translateY(15px);
+        translateY(10px);
 
-    transition:
-        opacity .3s ease,
-        visibility .3s ease,
-        transform .3s var(--ease);
+    transition:.3s ease;
+
+    backdrop-filter:blur(10px);
 }
 
-.back-top.visible{
+.back-top.show{
     opacity:1;
     visibility:visible;
 
@@ -1700,86 +1936,13 @@ footer{
 
 .back-top:hover{
     background:
-        rgba(212,175,55,.08);
+        rgba(212,175,55,.10);
 
     border-color:
         var(--gold-light);
 
     transform:
-        translateY(-4px);
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast{
-    position:fixed;
-
-    bottom:25px;
-    right:50%;
-
-    transform:
-        translate(50%,20px);
-
-    z-index:5000;
-
-    padding:
-        12px 20px;
-
-    border-radius:999px;
-
-    border:
-        1px solid rgba(212,175,55,.3);
-
-    background:
-        rgba(4,15,28,.94);
-
-    color:var(--white);
-
-    font-size:13px;
-
-    box-shadow:
-        0 15px 50px rgba(0,0,0,.4);
-
-    opacity:0;
-    visibility:hidden;
-
-    transition:
-        opacity .3s ease,
-        transform .35s var(--ease);
-}
-
-.toast.show{
-    opacity:1;
-    visibility:visible;
-
-    transform:
-        translate(50%,0);
-}
-
-
-/* =========================================================
-   REVEAL
-========================================================= */
-
-.reveal{
-    opacity:0;
-
-    transform:
-        translateY(30px);
-
-    transition:
-        opacity .8s ease,
-        transform .8s var(--ease);
-}
-
-.reveal.visible{
-    opacity:1;
-
-    transform:
-        translateY(0);
+        translateY(-3px);
 }
 
 
@@ -1788,6 +1951,10 @@ footer{
 ========================================================= */
 
 @media(max-width:760px){
+
+    :root{
+        --header-height:70px;
+    }
 
     header{
         height:70px;
@@ -1803,22 +1970,45 @@ footer{
     }
 
     main{
-        width:min(92%,520px);
+        width:
+            min(92%,520px);
     }
 
     .hero{
         padding:
-            100px 0 45px;
+            100px 0 48px;
+    }
+
+    .hero-corner{
+        width:45px;
+        height:45px;
+    }
+
+    .hero-corner.top{
+        top:88px;
+    }
+
+    .hero-corner.bottom{
+        bottom:28px;
+    }
+
+    .hero-eyebrow{
+        font-size:9px;
+        letter-spacing:3px;
     }
 
     .hero-name{
         max-width:100%;
 
         padding:
-            0 12px;
+            0 10px;
 
         font-size:
-            clamp(32px,9vw,47px);
+            clamp(
+                32px,
+                9vw,
+                47px
+            );
 
         line-height:1.55;
 
@@ -1826,17 +2016,18 @@ footer{
     }
 
     .photo-frame{
-        width:min(390px,88vw);
+        width:
+            min(390px,88vw);
 
-        margin-bottom:18px;
+        margin-bottom:19px;
     }
 
     .section{
-        padding:60px 0;
+        padding:58px 0;
     }
 
     .section-header{
-        margin-bottom:28px;
+        margin-bottom:29px;
     }
 
     .about-card{
@@ -1868,7 +2059,14 @@ footer{
     }
 
     .gallery-item,
-    .gallery-item:nth-child(n){
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3),
+    .gallery-item:nth-child(4),
+    .gallery-item:nth-child(5),
+    .gallery-item:nth-child(6),
+    .gallery-item:nth-child(7),
+    .gallery-item:nth-child(8){
         grid-column:span 1;
 
         aspect-ratio:16/10;
@@ -1881,7 +2079,6 @@ footer{
     .timeline-item,
     .timeline-item:nth-child(odd),
     .timeline-item:nth-child(even){
-
         width:100%;
 
         margin:0;
@@ -1892,12 +2089,8 @@ footer{
         text-align:right;
     }
 
-    .timeline-item:nth-child(odd)
-    .timeline-dot,
-
-    .timeline-item:nth-child(even)
-    .timeline-dot{
-
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot{
         right:7px;
         left:auto;
     }
@@ -1911,20 +2104,10 @@ footer{
             30px 20px;
     }
 
-    .hero-corner{
-        width:45px;
-        height:45px;
-    }
-
-    .hero-corner.top{
-        top:90px;
-    }
-
     .back-top{
-        bottom:18px;
         left:18px;
+        bottom:18px;
     }
-
 }
 
 
@@ -1938,7 +2121,7 @@ footer{
         font-size:34px;
 
         padding:
-            0 8px;
+            0 6px;
     }
 
     .photo-frame{
@@ -1954,6 +2137,10 @@ footer{
         font-size:16px;
     }
 
+    .side-menu{
+        padding-left:25px;
+        padding-right:25px;
+    }
 }
 
 
@@ -1966,7 +2153,6 @@ footer{
     *,
     *::before,
     *::after{
-
         animation:none!important;
 
         transition:none!important;
@@ -1974,42 +2160,78 @@ footer{
         scroll-behavior:auto!important;
     }
 
+    .reveal{
+        opacity:1;
+        transform:none;
+    }
 }
 
 </style>
 </head>
 
+
 <body>
 
-<div class="scroll-progress" id="scrollProgress"></div>
 
-<div class="cursor-glow" id="cursorGlow"></div>
+<!-- =======================================================
+     PRELOADER
+======================================================= -->
+
+<div class="preloader" id="preloader">
+
+    <div class="loader-content">
+
+        <div class="loader-logo">
+            MBK
+        </div>
+
+        <div class="loader-line"></div>
+
+    </div>
+
+</div>
 
 
-<!-- ======================================================
+<!-- =======================================================
+     SCROLL PROGRESS
+======================================================= -->
+
+<div
+    class="scroll-progress"
+    id="scrollProgress"
+></div>
+
+
+<!-- =======================================================
      HEADER
-====================================================== -->
+======================================================= -->
 
 <header id="header">
 
-    <a href="#home" class="logo">
+    <a
+        href="#home"
+        class="logo"
+        aria-label="MBK"
+    >
         MBK
     </a>
 
     <button
         class="menu-btn"
         id="menuBtn"
+        type="button"
         aria-label="فتح القائمة"
+        aria-expanded="false"
     >
-        ☰
+        <span>☰</span>
     </button>
 
 </header>
 
 
-<!-- ======================================================
-     SIDE MENU
-====================================================== -->
+<!-- =======================================================
+     OVERLAY
+======================================================= -->
 
 <div
     class="overlay"
@@ -2017,15 +2239,21 @@ footer{
 ></div>
 
 
+<!-- =======================================================
+     SIDE MENU
+======================================================= -->
+
 <nav
     class="side-menu"
     id="sideMenu"
+    aria-label="القائمة الرئيسية"
 >
 
     <button
         class="close-menu"
         id="closeMenu"
-        aria-label="إغلاق"
+        type="button"
+        aria-label="إغلاق القائمة"
     >
         ×
     </button>
@@ -2061,16 +2289,16 @@ footer{
 </nav>
 
 
-<!-- ======================================================
+<!-- =======================================================
      MAIN
-====================================================== -->
+======================================================= -->
 
 <main>
 
 
-<!-- ======================================================
+<!-- =======================================================
      HERO
-====================================================== -->
+======================================================= -->
 
 <section
     class="hero"
@@ -2081,11 +2309,13 @@ footer{
 
     <div class="hero-corner bottom"></div>
 
+    <div class="hero-eyebrow">
+        PERSONAL IDENTITY
+    </div>
 
     <h1 class="hero-name">
         مبخوت بن عبدالله
     </h1>
-
 
     <div class="gold-line"></div>
 
@@ -2095,7 +2325,8 @@ footer{
         <img
             class="profile-photo"
             src="file_00000000202482468d4027eb8c5919f7.png"
-            alt="مبخوت بن عبدالله"
+            alt="صورة مبخوت بن عبدالله"
+            loading="eager"
         >
 
     </div>
@@ -2108,9 +2339,9 @@ footer{
 </section>
 
 
-<!-- ======================================================
+<!-- =======================================================
      ABOUT
-====================================================== -->
+======================================================= -->
 
 <section
     class="section reveal"
@@ -2163,9 +2394,9 @@ footer{
 </section>
 
 
-<!-- ======================================================
+<!-- =======================================================
      VALUES
-====================================================== -->
+======================================================= -->
 
 <section
     class="section reveal"
@@ -2247,9 +2478,9 @@ footer{
 </section>
 
 
-<!-- ======================================================
+<!-- =======================================================
      GALLERY
-====================================================== -->
+======================================================= -->
 
 <section
     class="section reveal"
@@ -2469,9 +2700,9 @@ footer{
 </section>
 
 
-<!-- ======================================================
+<!-- =======================================================
      JOURNEY
-====================================================== -->
+======================================================= -->
 
 <section
     class="section reveal"
@@ -2599,9 +2830,9 @@ footer{
 </section>
 
 
-<!-- ======================================================
+<!-- =======================================================
      CONTACT
-====================================================== -->
+======================================================= -->
 
 <section
     class="section reveal"
@@ -2623,6 +2854,11 @@ footer{
 
     <div class="contact-card">
 
+        <p class="contact-intro">
+            للتواصل والاستفسارات، يمكنك الوصول إلي عبر الوسائل التالية.
+        </p>
+
+
         <div class="contact-icons">
 
 
@@ -2635,9 +2871,10 @@ footer{
 
                 <svg viewBox="0 0 24 24">
 
-                    <path
-                        d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
-                    />
+                    <path d="
+                        M3 5h18v14H3V5zm2 2v.5l7
+                        5 7-5V7l-7 5-7-5z
+                    "/>
 
                 </svg>
 
@@ -2655,9 +2892,10 @@ footer{
 
                 <svg viewBox="0 0 24 24">
 
-                    <path
-                        d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
-                    />
+                    <path d="
+                        M14 8h3V4h-3c-3.31 0-5
+                        1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z
+                    "/>
 
                 </svg>
 
@@ -2667,9 +2905,15 @@ footer{
         </div>
 
 
+        <div class="email-text">
+            mabkhout@mabkhut.com
+        </div>
+
+
         <button
             class="qr-button"
             id="qrButton"
+            type="button"
         >
             مشاركة الموقع عبر QR
         </button>
@@ -2682,18 +2926,22 @@ footer{
 </main>
 
 
-<!-- ======================================================
+<!-- =======================================================
      LIGHTBOX
-====================================================== -->
+======================================================= -->
 
 <div
     class="lightbox"
     id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="عرض الصورة"
 >
 
     <button
         class="lightbox-close"
         id="lightboxClose"
+        type="button"
         aria-label="إغلاق"
     >
         ×
@@ -2708,13 +2956,16 @@ footer{
 </div>
 
 
-<!-- ======================================================
+<!-- =======================================================
      QR MODAL
-====================================================== -->
+======================================================= -->
 
 <div
     class="qr-modal"
     id="qrModal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="رمز QR"
 >
 
     <div class="qr-box">
@@ -2723,14 +2974,19 @@ footer{
             mabkhut.com
         </h3>
 
+        <p>
+            امسح الرمز لزيارة الموقع
+        </p>
+
         <img
             src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com"
-            alt="QR Code"
+            alt="QR Code لموقع mabkhut.com"
         >
 
         <button
             class="qr-close"
             id="qrClose"
+            type="button"
         >
             إغلاق
         </button>
@@ -2740,34 +2996,23 @@ footer{
 </div>
 
 
-<!-- ======================================================
-     TOAST
-====================================================== -->
-
-<div
-    class="toast"
-    id="toast"
->
-    تم نسخ البريد الإلكتروني
-</div>
-
-
-<!-- ======================================================
+<!-- =======================================================
      BACK TO TOP
-====================================================== -->
+======================================================= -->
 
 <button
     class="back-top"
     id="backTop"
-    aria-label="العودة للأعلى"
+    type="button"
+    aria-label="العودة إلى الأعلى"
 >
     ↑
 </button>
 
 
-<!-- ======================================================
+<!-- =======================================================
      FOOTER
-====================================================== -->
+======================================================= -->
 
 <footer>
 
@@ -2779,14 +3024,30 @@ footer{
         MBK
     </div>
 
+    <a
+        href="https://mabkhut.com/"
+        class="footer-link"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        mabkhut.com
+    </a>
+
 </footer>
 
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
 
 <script>
 
 /* =========================================================
    ELEMENTS
 ========================================================= */
+
+const body =
+    document.body;
 
 const header =
     document.getElementById("header");
@@ -2803,17 +3064,55 @@ const sideMenu =
 const overlay =
     document.getElementById("overlay");
 
+const preloader =
+    document.getElementById("preloader");
+
 const scrollProgress =
     document.getElementById("scrollProgress");
 
 const backTop =
     document.getElementById("backTop");
 
-const cursorGlow =
-    document.getElementById("cursorGlow");
+const lightbox =
+    document.getElementById("lightbox");
 
-const toast =
-    document.getElementById("toast");
+const lightboxImage =
+    document.getElementById("lightboxImage");
+
+const lightboxClose =
+    document.getElementById("lightboxClose");
+
+const qrButton =
+    document.getElementById("qrButton");
+
+const qrModal =
+    document.getElementById("qrModal");
+
+const qrClose =
+    document.getElementById("qrClose");
+
+
+/* =========================================================
+   PRELOADER
+========================================================= */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        setTimeout(
+            () => {
+
+                preloader.classList.add(
+                    "hide"
+                );
+
+            },
+            450
+        );
+
+    }
+);
 
 
 /* =========================================================
@@ -2822,22 +3121,44 @@ const toast =
 
 function openMenu(){
 
-    sideMenu.classList.add("active");
+    sideMenu.classList.add(
+        "active"
+    );
 
-    overlay.classList.add("active");
+    overlay.classList.add(
+        "active"
+    );
 
-    document.body.style.overflow="hidden";
+    body.classList.add(
+        "menu-open"
+    );
+
+    menuBtn.setAttribute(
+        "aria-expanded",
+        "true"
+    );
 
 }
 
 
 function closeSideMenu(){
 
-    sideMenu.classList.remove("active");
+    sideMenu.classList.remove(
+        "active"
+    );
 
-    overlay.classList.remove("active");
+    overlay.classList.remove(
+        "active"
+    );
 
-    document.body.style.overflow="";
+    body.classList.remove(
+        "menu-open"
+    );
+
+    menuBtn.setAttribute(
+        "aria-expanded",
+        "false"
+    );
 
 }
 
@@ -2862,40 +3183,28 @@ overlay.addEventListener(
 
 document
     .querySelectorAll(".side-menu a")
-    .forEach(link => {
+    .forEach(
+        link => {
 
-        link.addEventListener(
-            "click",
-            closeSideMenu
-        );
+            link.addEventListener(
+                "click",
+                closeSideMenu
+            );
 
-    });
+        }
+    );
 
 
 /* =========================================================
-   SCROLL
+   SCROLL EFFECTS
 ========================================================= */
 
 function handleScroll(){
 
-    const scrollTop =
+    const scrollY =
         window.scrollY;
 
-    const pageHeight =
-        document.documentElement.scrollHeight
-        -
-        document.documentElement.clientHeight;
-
-    const progress =
-        pageHeight > 0
-            ? (scrollTop / pageHeight) * 100
-            : 0;
-
-    scrollProgress.style.width =
-        progress + "%";
-
-
-    if(scrollTop > 40){
+    if(scrollY > 30){
 
         header.classList.add(
             "scrolled"
@@ -2910,16 +3219,34 @@ function handleScroll(){
     }
 
 
-    if(scrollTop > 500){
+    /* Progress */
+
+    const documentHeight =
+        document.documentElement.scrollHeight
+        -
+        document.documentElement.clientHeight;
+
+    const progress =
+        documentHeight > 0
+            ? (scrollY / documentHeight) * 100
+            : 0;
+
+    scrollProgress.style.width =
+        progress + "%";
+
+
+    /* Back top */
+
+    if(scrollY > 500){
 
         backTop.classList.add(
-            "visible"
+            "show"
         );
 
     }else{
 
         backTop.classList.remove(
-            "visible"
+            "show"
         );
 
     }
@@ -2957,36 +3284,7 @@ backTop.addEventListener(
 
 
 /* =========================================================
-   CURSOR GLOW
-========================================================= */
-
-if(
-    window.matchMedia(
-        "(pointer:fine)"
-    ).matches
-){
-
-    window.addEventListener(
-        "mousemove",
-        event => {
-
-            cursorGlow.style.left =
-                event.clientX + "px";
-
-            cursorGlow.style.top =
-                event.clientY + "px";
-
-        },
-        {
-            passive:true
-        }
-    );
-
-}
-
-
-/* =========================================================
-   SCROLL REVEAL
+   REVEAL
 ========================================================= */
 
 const revealElements =
@@ -2995,46 +3293,65 @@ const revealElements =
     );
 
 
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
+if(
+    "IntersectionObserver"
+    in window
+){
 
-            entries.forEach(
-                entry => {
+    const revealObserver =
+        new IntersectionObserver(
+            entries => {
 
-                    if(
-                        entry.isIntersecting
-                    ){
+                entries.forEach(
+                    entry => {
 
-                        entry.target.classList.add(
-                            "visible"
-                        );
+                        if(
+                            entry.isIntersecting
+                        ){
 
-                        revealObserver.unobserve(
-                            entry.target
-                        );
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
 
                     }
+                );
 
-                }
+            },
+            {
+                threshold:.12
+            }
+        );
+
+
+    revealElements.forEach(
+        element => {
+
+            revealObserver.observe(
+                element
             );
 
-        },
-        {
-            threshold:.12
         }
     );
 
+}else{
 
-revealElements.forEach(
-    element => {
+    revealElements.forEach(
+        element => {
 
-        revealObserver.observe(
-            element
-        );
+            element.classList.add(
+                "visible"
+            );
 
-    }
-);
+        }
+    );
+
+}
 
 
 /* =========================================================
@@ -3044,21 +3361,6 @@ revealElements.forEach(
 const galleryItems =
     document.querySelectorAll(
         ".gallery-item"
-    );
-
-const lightbox =
-    document.getElementById(
-        "lightbox"
-    );
-
-const lightboxImage =
-    document.getElementById(
-        "lightboxImage"
-    );
-
-const lightboxClose =
-    document.getElementById(
-        "lightboxClose"
     );
 
 
@@ -3072,15 +3374,24 @@ galleryItems.forEach(
                 const image =
                     item.dataset.full;
 
+                const alt =
+                    item.querySelector("img")
+                        ?.getAttribute("alt")
+                    || "صورة";
+
                 lightboxImage.src =
                     image;
+
+                lightboxImage.alt =
+                    alt;
 
                 lightbox.classList.add(
                     "active"
                 );
 
-                document.body.style.overflow =
-                    "hidden";
+                body.classList.add(
+                    "modal-open"
+                );
 
             }
         );
@@ -3098,8 +3409,9 @@ function closeLightbox(){
     lightboxImage.src =
         "";
 
-    document.body.style.overflow =
-        "";
+    body.classList.remove(
+        "modal-open"
+    );
 
 }
 
@@ -3130,52 +3442,41 @@ lightbox.addEventListener(
    QR MODAL
 ========================================================= */
 
-const qrButton =
-    document.getElementById(
-        "qrButton"
+function openQR(){
+
+    qrModal.classList.add(
+        "active"
     );
 
-const qrModal =
-    document.getElementById(
-        "qrModal"
+    body.classList.add(
+        "modal-open"
     );
 
-const qrClose =
-    document.getElementById(
-        "qrClose"
-    );
+}
 
 
-qrButton.addEventListener(
-    "click",
-    () => {
-
-        qrModal.classList.add(
-            "active"
-        );
-
-        document.body.style.overflow =
-            "hidden";
-
-    }
-);
-
-
-function closeQr(){
+function closeQR(){
 
     qrModal.classList.remove(
         "active"
     );
 
-    document.body.style.overflow =
-        "";
+    body.classList.remove(
+        "modal-open"
+    );
 
 }
 
 
+qrButton.addEventListener(
+    "click",
+    openQR
+);
+
+
 qrClose.addEventListener(
     "click",
-    closeQr
+    closeQR
 );
 
 
@@ -3187,7 +3488,7 @@ qrModal.addEventListener(
             event.target === qrModal
         ){
 
-            closeQr();
+            closeQR();
 
         }
 
@@ -3196,94 +3497,7 @@ qrModal.addEventListener(
 
 
 /* =========================================================
-   COPY EMAIL
-========================================================= */
-
-const emailLink =
-    document.querySelector(
-        'a[href^="mailto:"]'
-    );
-
-
-emailLink.addEventListener(
-    "contextmenu",
-    event => {
-
-        event.preventDefault();
-
-    }
-);
-
-
-emailLink.addEventListener(
-    "click",
-    async event => {
-
-        if(
-            navigator.clipboard
-        ){
-
-            try{
-
-                await navigator.clipboard.writeText(
-                    "mabkhout@mabkhut.com"
-                );
-
-                showToast(
-                    "تم نسخ البريد الإلكتروني"
-                );
-
-            }catch(error){
-
-                /* fallback: open mail client */
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-
-function showToast(message){
-
-    toast.textContent =
-        message;
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        toastTimer
-    );
-
-
-    toastTimer =
-        setTimeout(
-            () => {
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            },
-            2400
-        );
-
-}
-
-
-/* =========================================================
-   ESCAPE KEY
+   ESC KEY
 ========================================================= */
 
 document.addEventListener(
@@ -3298,7 +3512,7 @@ document.addEventListener(
 
             closeLightbox();
 
-            closeQr();
+            closeQR();
 
         }
 
@@ -3310,17 +3524,70 @@ document.addEventListener(
    IMAGE ERROR FALLBACK
 ========================================================= */
 
+const profilePhoto =
+    document.querySelector(
+        ".profile-photo"
+    );
+
+
+profilePhoto.addEventListener(
+    "error",
+    () => {
+
+        profilePhoto.alt =
+            "صورة مبخوت بن عبدالله";
+
+        profilePhoto.style.objectFit =
+            "contain";
+
+    }
+);
+
+
+/* =========================================================
+   PREVENT BROKEN HASH JUMPS
+========================================================= */
+
 document
-    .querySelectorAll("img")
+    .querySelectorAll('a[href^="#"]')
     .forEach(
-        image => {
+        link => {
 
-            image.addEventListener(
-                "error",
-                () => {
+            link.addEventListener(
+                "click",
+                event => {
 
-                    image.style.opacity =
-                        ".35";
+                    const id =
+                        link.getAttribute(
+                            "href"
+                        );
+
+                    if(
+                        !id ||
+                        id === "#"
+                    ){
+
+                        return;
+
+                    }
+
+                    const target =
+                        document.querySelector(
+                            id
+                        );
+
+                    if(!target){
+
+                        return;
+
+                    }
+
+                    event.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior:"smooth",
+                        block:"start"
+                    });
 
                 }
             );
@@ -3330,15 +3597,17 @@ document
 
 
 /* =========================================================
-   PREVENT BODY SCROLL STATE ISSUES
+   INITIAL STATE
 ========================================================= */
 
 window.addEventListener(
     "pageshow",
     () => {
 
-        document.body.style.overflow =
-            "";
+        body.classList.remove(
+            "menu-open",
+            "modal-open"
+        );
 
     }
 );
