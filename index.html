@@ -1,2857 +1,2157 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>مبخوت بن عبدالله | MBK</title>
+
+  <meta
+    name="description"
+    content="الموقع الشخصي الرسمي لمبخوت بن عبدالله — MBK."
+  >
+
+  <meta
+    name="author"
+    content="مبخوت بن عبدالله"
+  >
+
+  <meta
+    name="theme-color"
+    content="#07110d"
+  >
+
+  <meta
+    property="og:title"
+    content="مبخوت بن عبدالله | MBK"
+  >
+
+  <meta
+    property="og:description"
+    content="الموقع الشخصي الرسمي لمبخوت بن عبدالله."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:url"
+    content="https://mabkhut.com/"
+  >
 
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
-
-    <title>مبخوت بن عبدالله | MBK</title>
-
-    <meta
-        name="description"
-        content="الموقع الشخصي لمبخوت بن عبدالله — MBK"
-    >
-
-    <meta
-        name="theme-color"
-        content="#050505"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
-
-    <style>
-
-        /* =========================================================
-           ROOT
-        ========================================================= */
-
-        :root {
-
-            --black: #050505;
-            --black-2: #090909;
-            --black-3: #0e0e0e;
-
-            --gold: #c9a34e;
-            --gold-light: #e5c878;
-            --gold-dark: #806328;
-
-            --white: #f5f3ed;
-            --text: #c6c3bb;
-            --muted: #77756f;
-
-            --line: rgba(255,255,255,.09);
-            --gold-line: rgba(201,163,78,.30);
-
-            --max: 1240px;
-
-            --ease: cubic-bezier(.22,1,.36,1);
-        }
-
-
-        /* =========================================================
-           RESET
-        ========================================================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            background: var(--black);
-        }
-
-        body {
-            min-height: 100vh;
-
-            overflow-x: hidden;
-
-            background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(201,163,78,.055),
-                    transparent 30%
-                ),
-                var(--black);
-
-            color: var(--white);
-
-            font-family:
-                "Cairo",
-                sans-serif;
-
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-        }
-
-        body.menu-open {
-            overflow: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button {
-            font: inherit;
-        }
-
-        img {
-            max-width: 100%;
-        }
-
-
-        /* =========================================================
-           GRAIN
-        ========================================================= */
-
-        body::before {
-
-            content: "";
-
-            position: fixed;
-            inset: 0;
-
-            z-index: 9999;
-
-            pointer-events: none;
-
-            opacity: .035;
-
-            background-image:
-                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-        }
-
-
-        /* =========================================================
-           LOADER
-        ========================================================= */
-
-        .loader {
-
-            position: fixed;
-            inset: 0;
-
-            z-index: 10000;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: var(--black);
-
-            transition:
-                opacity .8s var(--ease),
-                visibility .8s var(--ease);
-        }
-
-        .loader.hide {
-
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-logo {
-
-            direction: ltr;
-
-            font-family: "Inter", sans-serif;
-
-            font-size: 28px;
-            font-weight: 600;
-
-            letter-spacing: 12px;
-
-            color: var(--gold-light);
-
-            animation:
-                loaderPulse 1.4s ease-in-out infinite;
-        }
-
-        @keyframes loaderPulse {
-
-            0%,
-            100% {
-                opacity: .35;
-            }
-
-            50% {
-                opacity: 1;
-            }
-        }
-
-
-        /* =========================================================
-           CURSOR GLOW
-        ========================================================= */
-
-        .cursor-glow {
-
-            position: fixed;
-
-            width: 280px;
-            height: 280px;
-
-            border-radius: 50%;
-
-            pointer-events: none;
-
-            z-index: 0;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(201,163,78,.045),
-                    transparent 68%
-                );
-
-            transform:
-                translate(-50%,-50%);
-
-            transition:
-                left .15s ease,
-                top .15s ease;
-        }
-
-
-        /* =========================================================
-           HEADER
-        ========================================================= */
-
-        .header {
-
-            position: fixed;
-
-            top: 0;
-            right: 0;
-            left: 0;
-
-            z-index: 1000;
-
-            height: 82px;
-
-            transition:
-                background .45s ease,
-                border-color .45s ease,
-                height .45s ease;
-        }
-
-        .header.scrolled {
-
-            height: 70px;
-
-            background:
-                rgba(5,5,5,.78);
-
-            border-bottom:
-                1px solid var(--line);
-
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-        }
-
-        .header-inner {
-
-            width: min(
-                var(--max),
-                calc(100% - 64px)
-            );
-
-            height: 100%;
-
-            margin: auto;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-        }
-
-        .brand {
-
-            direction: ltr;
-
-            display: flex;
-            align-items: center;
-
-            gap: 11px;
-
-            cursor: pointer;
-        }
-
-        .brand-mark {
-
-            font-family: "Inter", sans-serif;
-
-            font-size: 22px;
-
-            font-weight: 600;
-
-            letter-spacing: 7px;
-
-            color: var(--white);
-        }
-
-        .brand-dot {
-
-            width: 5px;
-            height: 5px;
-
-            border-radius: 50%;
-
-            background: var(--gold-light);
-
-            box-shadow:
-                0 0 14px rgba(201,163,78,.55);
-        }
-
-        .menu-button {
-
-            width: 48px;
-            height: 48px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid var(--gold-line);
-
-            background: rgba(255,255,255,.015);
-
-            color: var(--gold-light);
-
-            cursor: pointer;
-
-            transition:
-                .35s var(--ease);
-        }
-
-        .menu-button:hover {
-
-            background:
-                rgba(201,163,78,.08);
-
-            border-color:
-                rgba(229,200,120,.7);
-
-            transform: translateY(-2px);
-        }
-
-        .menu-lines {
-
-            width: 19px;
-
-            display: flex;
-            flex-direction: column;
-
-            gap: 5px;
-        }
-
-        .menu-lines span {
-
-            display: block;
-
-            width: 100%;
-            height: 1px;
-
-            background: currentColor;
-
-            transition: .35s ease;
-        }
-
-        .menu-lines span:nth-child(2) {
-
-            width: 70%;
-
-            margin-right: auto;
-        }
-
-
-        /* =========================================================
-           SIDE MENU
-        ========================================================= */
-
-        .menu-overlay {
-
-            position: fixed;
-            inset: 0;
-
-            z-index: 1500;
-
-            background:
-                rgba(0,0,0,.62);
-
-            opacity: 0;
-            visibility: hidden;
-
-            transition: .45s ease;
-
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-        }
-
-        .menu-overlay.active {
-
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .side-menu {
-
-            position: fixed;
-
-            top: 0;
-            right: 0;
-
-            z-index: 1600;
-
-            width: min(440px, 100%);
-
-            height: 100dvh;
-
-            padding:
-                34px
-                42px
-                42px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #11100d,
-                    #070707 65%
-                );
-
-            border-left:
-                1px solid var(--gold-line);
-
-            transform: translateX(105%);
-
-            transition:
-                transform .65s var(--ease);
-
-            box-shadow:
-                -35px 0 100px rgba(0,0,0,.55);
-        }
-
-        .side-menu.active {
-
-            transform: translateX(0);
-        }
-
-        .menu-top {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            margin-bottom: 70px;
-        }
-
-        .menu-small {
-
-            direction: ltr;
-
-            color: var(--gold);
-
-            font-family: "Inter", sans-serif;
-
-            font-size: 10px;
-
-            letter-spacing: 5px;
-        }
-
-        .close-button {
-
-            width: 45px;
-            height: 45px;
-
-            border: 1px solid var(--gold-line);
-
-            background: transparent;
-
-            color: var(--gold-light);
-
-            font-size: 23px;
-
-            cursor: pointer;
-
-            transition: .3s ease;
-        }
-
-        .close-button:hover {
-
-            background:
-                rgba(201,163,78,.08);
-
-            transform: rotate(90deg);
-        }
-
-        .menu-navigation {
-
-            display: flex;
-
-            flex-direction: column;
-        }
-
-        .menu-link {
-
-            position: relative;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding: 20px 0;
-
-            border-bottom:
-                1px solid rgba(255,255,255,.07);
-
-            color: #d8d5cd;
-
-            font-size: 18px;
-
-            transition: .35s ease;
-        }
-
-        .menu-link span:first-child {
-
-            transition: .35s ease;
-        }
-
-        .menu-link span:last-child {
-
-            direction: ltr;
-
-            color: var(--gold);
-
-            font-family: "Inter", sans-serif;
-
-            font-size: 10px;
-
-            letter-spacing: 3px;
-
-            opacity: .6;
-        }
-
-        .menu-link:hover {
-
-            color: var(--gold-light);
-
-            padding-right: 10px;
-        }
-
-        .menu-footer {
-
-            margin-top: auto;
-
-            color: var(--muted);
-
-            font-size: 11px;
-
-            line-height: 2;
-        }
-
-        .menu-footer strong {
-
-            display: block;
-
-            direction: ltr;
-
-            margin-top: 5px;
-
-            color: var(--gold);
-
-            font-family: "Inter", sans-serif;
-
-            letter-spacing: 5px;
-        }
-
-
-        /* =========================================================
-           MAIN
-        ========================================================= */
-
-        main {
-
-            position: relative;
-
-            z-index: 1;
-        }
-
-        .container {
-
-            width: min(
-                var(--max),
-                calc(100% - 64px)
-            );
-
-            margin: auto;
-        }
-
-
-        /* =========================================================
-           HERO
-        ========================================================= */
-
-        .hero {
-
-            position: relative;
-
-            min-height: 100svh;
-
-            padding:
-                130px 0
-                70px;
-
-            display: flex;
-
-            align-items: center;
-
-            overflow: hidden;
-        }
-
-        .hero-grid {
-
-            width: 100%;
-
-            display: grid;
-
-            grid-template-columns:
-                minmax(0, 1fr)
-                minmax(360px, 500px);
-
-            align-items: center;
-
-            gap: 90px;
-        }
-
-        .hero-copy {
-
-            text-align: right;
-        }
-
-        .eyebrow {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 15px;
-
-            margin-bottom: 28px;
-
-            direction: ltr;
-
-            color: var(--gold);
-
-            font-family: "Inter", sans-serif;
-
-            font-size: 10px;
-
-            letter-spacing: 5px;
-        }
-
-        .eyebrow::before {
-
-            content: "";
-
-            width: 45px;
-            height: 1px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    var(--gold)
-                );
-        }
-
-        .hero-title {
-
-            max-width: 760px;
-
-            color: var(--white);
-
-            font-size:
-                clamp(
-                    46px,
-                    7vw,
-                    92px
-                );
-
-            font-weight: 800;
-
-            line-height: 1.18;
-
-            letter-spacing: -3px;
-        }
-
-        .hero-title .gold {
-
-            display: block;
-
-            background:
-                linear-gradient(
-                    110deg,
-                    #8d6b2e,
-                    #f0d27c 42%,
-                    #ad873d 75%,
-                    #e4c26d
-                );
-
-            -webkit-background-clip: text;
-            background-clip: text;
-
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-quote {
-
-            margin-top: 34px;
-
-            color: #aaa69d;
-
-            font-family: "Amiri", serif;
-
-            font-size:
-                clamp(
-                    21px,
-                    2.5vw,
-                    30px
-                );
-
-            line-height: 1.8;
-        }
-
-        .hero-actions {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 18px;
-
-            margin-top: 42px;
-        }
-
-        .primary-button {
-
-            position: relative;
-
-            min-width: 155px;
-
-            padding: 14px 25px;
-
-            overflow: hidden;
-
-            border: 1px solid var(--gold);
-
-            background: var(--gold);
-
-            color: #080808;
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-            cursor: pointer;
-
-            transition: .4s var(--ease);
-        }
-
-        .primary-button::before {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            background: var(--gold-light);
-
-            transform: translateY(100%);
-
-            transition:
-                transform .4s var(--ease);
-        }
-
-        .primary-button span {
-
-            position: relative;
-
-            z-index: 2;
-        }
-
-        .primary-button:hover::before {
-
-            transform: translateY(0);
-        }
-
-        .secondary-button {
-
-            padding: 14px 22px;
-
-            border: 1px solid var(--line);
-
-            background: transparent;
-
-            color: #aaa69d;
-
-            font-size: 13px;
-
-            cursor: pointer;
-
-            transition: .35s ease;
-        }
-
-        .secondary-button:hover {
-
-            color: var(--gold-light);
-
-            border-color: var(--gold-line);
-        }
-
-
-        /* =========================================================
-           HERO VISUAL
-        ========================================================= */
-
-        .hero-visual {
-
-            position: relative;
-
-            display: flex;
-
-            justify-content: center;
-        }
-
-        .portrait-wrap {
-
-            position: relative;
-
-            width: min(470px, 100%);
-
-            aspect-ratio: 4 / 5;
-
-            padding: 12px;
-        }
-
-        .portrait-wrap::before {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            border:
-                1px solid
-                rgba(201,163,78,.55);
-
-            transform:
-                translate(15px, 15px);
-        }
-
-        .portrait-wrap::after {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            border:
-                1px solid
-                rgba(255,255,255,.08);
-
-            transform:
-                translate(-9px, -9px);
-        }
-
-        .portrait {
-
-            position: relative;
-
-            width: 100%;
-            height: 100%;
-
-            z-index: 2;
-
-            overflow: hidden;
-
-            background: #101010;
-
-            border:
-                1px solid
-                rgba(255,255,255,.12);
-
-            box-shadow:
-                0 45px 100px
-                rgba(0,0,0,.58);
-        }
-
-        .portrait img {
-
-            width: 100%;
-            height: 100%;
-
-            display: block;
-
-            object-fit: cover;
-
-            object-position: center;
-
-            filter:
-                grayscale(12%)
-                contrast(1.04);
-
-            transition:
-                transform 1s var(--ease),
-                filter 1s ease;
-        }
-
-        .portrait:hover img {
-
-            transform: scale(1.035);
-
-            filter:
-                grayscale(0%)
-                contrast(1.04);
-        }
-
-        .portrait-overlay {
-
-            position: absolute;
-            inset: 0;
-
-            z-index: 3;
-
-            pointer-events: none;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(0,0,0,.03),
-                    transparent 55%,
-                    rgba(0,0,0,.42)
-                );
-        }
-
-        .portrait-label {
-
-            position: absolute;
-
-            z-index: 5;
-
-            left: 22px;
-            bottom: 18px;
-
-            direction: ltr;
-
-            color: rgba(255,255,255,.65);
-
-            font-family: "Inter", sans-serif;
-
-            font-size: 8px;
-
-            letter-spacing: 4px;
-        }
-
-        .visual-number {
-
-            position: absolute;
-
-            right: -20px;
-            bottom: -24px;
-
-            direction: ltr;
-
-            color:
-                rgba(201,163,78,.16);
-
-            font-family: "Inter", sans-serif;
-
-            font-size: 80px;
-
-            font-weight: 700;
-
-            line-height: 1;
-        }
-
-
-        /* =========================================================
-           SECTION BASE
-        ========================================================= */
-
-        .section {
-
-            position: relative;
-
-            padding:
-                135px 0;
-        }
-
-        .section + .section {
-
-            border-top:
-                1px solid rgba(255,255,255,.045);
-        }
-
-        .section-heading {
-
-            margin-bottom: 70px;
-        }
-
-        .section-index {
-
-            display: block;
-
-            margin-bottom: 14px;
-
-            direction: ltr;
-
-            color: var(--gold);
-
-            font-family: "Inter", sans-serif;
-
-            font-size: 10px;
-
-            letter-spacing: 5px;
-        }
-
-        .section-title {
-
-            color: var(--white);
-
-            font-size:
-                clamp(
-                    34px,
-                    5vw,
-                    58px
-                );
-
-            font-weight: 700;
-
-            line-height: 1.3;
-
-            letter-spacing: -1px;
-        }
-
-        .section-title::after {
-
-            content: "";
-
-            display: block;
-
-            width: 55px;
-            height: 1px;
-
-            margin-top: 20px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    var(--gold),
-                    transparent
-                );
-        }
-
-
-        /* =========================================================
-           ABOUT
-        ========================================================= */
-
-        .about-layout {
-
-            display: grid;
-
-            grid-template-columns:
-                1fr
-                1.2fr;
-
-            gap: 100px;
-
-            align-items: start;
-        }
-
-        .about-lead {
-
-            color: #e4e1d9;
-
-            font-size:
-                clamp(
-                    25px,
-                    3vw,
-                    39px
-                );
-
-            font-weight: 500;
-
-            line-height: 1.65;
-        }
-
-        .about-lead span {
-
-            color: var(--gold-light);
-        }
-
-        .about-text {
-
-            color: var(--text);
-
-            font-size: 16px;
-
-            line-height: 2.2;
-        }
-
-        .about-text p + p {
-
-            margin-top: 24px;
-        }
-
-        .signature {
-
-            margin-top: 35px;
-
-            color: var(--gold);
-
-            font-family: "Amiri", serif;
-
-            font-size: 30px;
-        }
-
-
-        /* =========================================================
-           VALUES
-        ========================================================= */
-
-        .values-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            border-top:
-                1px solid var(--line);
-
-            border-bottom:
-                1px solid var(--line);
-        }
-
-        .value {
-
-            position: relative;
-
-            min-height: 320px;
-
-            padding: 38px;
-
-            border-left:
-                1px solid var(--line);
-
-            transition:
-                background .45s ease;
-        }
-
-        .value:first-child {
-
-            border-left: none;
-        }
-
-        .value:hover {
-
-            background:
-                rgba(201,163,78,.025);
-        }
-
-        .value-number {
-
-            direction: ltr;
-
-            color: var(--gold);
-
-            font-family: "Inter", sans-serif;
-
-            font-size: 11px;
-
-            letter-spacing: 3px;
-        }
-
-        .value-icon {
-
-            width: 45px;
-            height: 45px;
-
-            margin-top: 55px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            border:
-                1px solid var(--gold-line);
-
-            color: var(--gold-light);
-
-            font-size: 17px;
-        }
-
-        .value h3 {
-
-            margin-top: 24px;
-
-            color: var(--white);
-
-            font-size: 23px;
-        }
-
-        .value p {
-
-            margin-top: 12px;
-
-            color: var(--muted);
-
-            font-size: 14px;
-
-            line-height: 1.9;
-        }
-
-
-        /* =========================================================
-           STATEMENT
-        ========================================================= */
-
-        .statement {
-
-            min-height: 65vh;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            background:
-                radial-gradient(
-                    ellipse at center,
-                    rgba(201,163,78,.07),
-                    transparent 55%
-                );
-        }
-
-        .statement-inner {
-
-            max-width: 900px;
-        }
-
-        .statement-label {
-
-            direction: ltr;
-
-            color: var(--gold);
-
-            font-family: "Inter", sans-serif;
-
-            font-size: 10px;
-
-            letter-spacing: 6px;
-        }
-
-        .statement h2 {
-
-            margin-top: 35px;
-
-            color: #e8e5dc;
-
-            font-family: "Amiri", serif;
-
-            font-size:
-                clamp(
-                    35px,
-                    6vw,
-                    72px
-                );
-
-            font-weight: 400;
-
-            line-height: 1.6;
-        }
-
-        .statement-line {
-
-            width: 90px;
-            height: 1px;
-
-            margin: 35px auto 0;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    var(--gold),
-                    transparent
-                );
-        }
-
-
-        /* =========================================================
-           CONTACT
-        ========================================================= */
-
-        .contact-layout {
-
-            display: grid;
-
-            grid-template-columns:
-                1fr
-                1fr;
-
-            gap: 80px;
-
-            align-items: end;
-        }
-
-        .contact-title {
-
-            color: var(--white);
-
-            font-size:
-                clamp(
-                    35px,
-                    5vw,
-                    65px
-                );
-
-            line-height: 1.25;
-        }
-
-        .contact-title span {
-
-            color: var(--gold-light);
-        }
-
-        .contact-list {
-
-            display: flex;
-
-            flex-direction: column;
-        }
-
-        .contact-item {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding: 22px 0;
-
-            border-bottom:
-                1px solid var(--line);
-
-            transition: .35s ease;
-        }
-
-        .contact-item:first-child {
-
-            border-top:
-                1px solid var(--line);
-        }
-
-        .contact-item:hover {
-
-            padding-right: 8px;
-        }
-
-        .contact-meta {
-
-            color: var(--muted);
-
-            font-size: 11px;
-
-            margin-bottom: 5px;
-        }
-
-        .contact-value {
-
-            direction: ltr;
-
-            color: #ddd9d0;
-
-            font-family: "Inter", sans-serif;
-
-            font-size: 14px;
-
-            letter-spacing: .5px;
-        }
-
-        .contact-arrow {
-
-            color: var(--gold);
-
-            font-size: 20px;
-
-            transition: .35s ease;
-        }
-
-        .contact-item:hover .contact-arrow {
-
-            transform:
-                translateX(-7px);
-        }
-
-
-        /* =========================================================
-           FOOTER
-        ========================================================= */
-
-        footer {
-
-            padding:
-                35px 0
-                45px;
-
-            border-top:
-                1px solid var(--line);
-        }
-
-        .footer-inner {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-        .footer-copy {
-
-            color: #5f5d58;
-
-            font-size: 11px;
-        }
-
-        .footer-brand {
-
-            direction: ltr;
-
-            color: var(--gold);
-
-            font-family: "Inter", sans-serif;
-
-            font-size: 13px;
-
-            font-weight: 600;
-
-            letter-spacing: 6px;
-        }
-
-
-        /* =========================================================
-           REVEAL
-        ========================================================= */
-
-        .reveal {
-
-            opacity: 0;
-
-            transform:
-                translateY(35px);
-
-            transition:
-                opacity .9s var(--ease),
-                transform .9s var(--ease);
-        }
-
-        .reveal.visible {
-
-            opacity: 1;
-
-            transform:
-                translateY(0);
-        }
-
-
-        /* =========================================================
-           RESPONSIVE TABLET
-        ========================================================= */
-
-        @media (max-width: 950px) {
-
-            .hero-grid {
-
-                grid-template-columns:
-                    1fr;
-
-                gap: 70px;
-
-                text-align: center;
-            }
-
-            .hero-copy {
-
-                order: 2;
-
-                text-align: center;
-            }
-
-            .hero-visual {
-
-                order: 1;
-            }
-
-            .eyebrow {
-
-                justify-content: center;
-            }
-
-            .hero-title {
-
-                margin-inline: auto;
-            }
-
-            .hero-actions {
-
-                justify-content: center;
-            }
-
-            .portrait-wrap {
-
-                width: min(430px, 78vw);
-            }
-
-            .about-layout {
-
-                grid-template-columns:
-                    1fr;
-
-                gap: 45px;
-            }
-
-            .values-grid {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-            .value {
-
-                min-height: auto;
-
-                border-left: none;
-
-                border-bottom:
-                    1px solid var(--line);
-            }
-
-            .value:last-child {
-
-                border-bottom: none;
-            }
-
-            .contact-layout {
-
-                grid-template-columns:
-                    1fr;
-
-                gap: 55px;
-            }
-        }
-
-
-        /* =========================================================
-           RESPONSIVE MOBILE
-        ========================================================= */
-
-        @media (max-width: 600px) {
-
-            .container,
-            .header-inner {
-
-                width:
-                    calc(100% - 36px);
-            }
-
-            .header {
-
-                height: 68px;
-            }
-
-            .header.scrolled {
-
-                height: 62px;
-            }
-
-            .brand-mark {
-
-                font-size: 19px;
-
-                letter-spacing: 6px;
-            }
-
-            .menu-button {
-
-                width: 44px;
-                height: 44px;
-            }
-
-            .side-menu {
-
-                width: 100%;
-
-                padding:
-                    25px
-                    25px
-                    30px;
-            }
-
-            .menu-top {
-
-                margin-bottom: 45px;
-            }
-
-            .menu-link {
-
-                font-size: 17px;
-
-                padding: 17px 0;
-            }
-
-            .hero {
-
-                min-height: auto;
-
-                padding:
-                    125px 0
-                    75px;
-            }
-
-            .hero-grid {
-
-                gap: 58px;
-            }
-
-            .portrait-wrap {
-
-                width:
-                    min(
-                        330px,
-                        82vw
-                    );
-
-                padding: 8px;
-            }
-
-            .portrait-wrap::before {
-
-                transform:
-                    translate(9px, 9px);
-            }
-
-            .portrait-wrap::after {
-
-                transform:
-                    translate(-6px, -6px);
-            }
-
-            .visual-number {
-
-                right: -8px;
-
-                font-size: 55px;
-
-                bottom: -17px;
-            }
-
-            .hero-title {
-
-                font-size:
-                    clamp(
-                        42px,
-                        13vw,
-                        62px
-                    );
-
-                letter-spacing: -2px;
-            }
-
-            .hero-quote {
-
-                margin-top: 25px;
-
-                font-size: 22px;
-            }
-
-            .hero-actions {
-
-                flex-direction: column;
-
-                width: 100%;
-
-                gap: 11px;
-
-                margin-top: 32px;
-            }
-
-            .primary-button,
-            .secondary-button {
-
-                width: 100%;
-
-                padding: 14px 20px;
-            }
-
-            .section {
-
-                padding:
-                    85px 0;
-            }
-
-            .section-heading {
-
-                margin-bottom: 45px;
-            }
-
-            .section-title {
-
-                font-size: 37px;
-            }
-
-            .about-lead {
-
-                font-size: 26px;
-            }
-
-            .about-text {
-
-                font-size: 15px;
-
-                line-height: 2;
-            }
-
-            .value {
-
-                padding:
-                    30px 22px;
-            }
-
-            .value-icon {
-
-                margin-top: 38px;
-            }
-
-            .statement {
-
-                min-height: 58vh;
-
-                padding:
-                    80px 0;
-            }
-
-            .statement h2 {
-
-                font-size: 35px;
-            }
-
-            .contact-title {
-
-                font-size: 42px;
-            }
-
-            .contact-value {
-
-                font-size: 12px;
-            }
-
-            .footer-inner {
-
-                flex-direction: column;
-
-                text-align: center;
-            }
-        }
-
-
-        /* =========================================================
-           VERY SMALL
-        ========================================================= */
-
-        @media (max-width: 370px) {
-
-            .container,
-            .header-inner {
-
-                width:
-                    calc(100% - 28px);
-            }
-
-            .hero-title {
-
-                font-size: 39px;
-            }
-
-            .hero-quote {
-
-                font-size: 20px;
-            }
-
-            .section-title {
-
-                font-size: 34px;
-            }
-
-            .contact-title {
-
-                font-size: 38px;
-            }
-        }
-
-
-        /* =========================================================
-           REDUCED MOTION
-        ========================================================= */
-
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-
-                scroll-behavior: auto !important;
-
-                animation-duration:
-                    .01ms !important;
-
-                animation-iteration-count:
-                    1 !important;
-
-                transition-duration:
-                    .01ms !important;
-            }
-
-            .reveal {
-
-                opacity: 1;
-
-                transform: none;
-            }
-        }
-
-    </style>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Tajawal", sans-serif;
+      background: #06100c;
+      color: #f4f1e8;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    ::selection {
+      background: #c9a65a;
+      color: #07100c;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #06100c;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #94763d;
+      border-radius: 20px;
+    }
+
+
+    /* =========================================================
+       VARIABLES
+    ========================================================= */
+
+    :root {
+      --bg: #06100c;
+      --bg-2: #09150f;
+      --bg-3: #0d1c14;
+
+      --gold: #c9a65a;
+      --gold-light: #ead49b;
+      --gold-dark: #80632d;
+
+      --white: #f5f2ea;
+      --muted: #a6aaa2;
+      --line: rgba(201, 166, 90, 0.22);
+
+      --max: 1200px;
+
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+
+    /* =========================================================
+       GLOBAL
+    ========================================================= */
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .gold {
+      color: var(--gold);
+    }
+
+    .gold-text {
+      background: linear-gradient(
+        120deg,
+        #f0d89c,
+        #c9a65a,
+        #85652d
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section {
+      padding: 130px 0;
+      position: relative;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .section-label::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: "Amiri", serif;
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: 1.15;
+      font-weight: 700;
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 650px;
+      margin-top: 22px;
+      font-size: 17px;
+      line-height: 2;
+    }
+
+
+    /* =========================================================
+       PRELOADER
+    ========================================================= */
+
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #06100c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition:
+        opacity .8s ease,
+        visibility .8s ease;
+    }
+
+    .loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-inner {
+      text-align: center;
+    }
+
+    .loader-logo {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: .35em;
+      color: var(--white);
+    }
+
+    .loader-logo span {
+      color: var(--gold);
+    }
+
+    .loader-line {
+      width: 100px;
+      height: 1px;
+      background: rgba(255,255,255,.15);
+      margin: 22px auto;
+      overflow: hidden;
+    }
+
+    .loader-line::after {
+      content: "";
+      display: block;
+      height: 100%;
+      width: 50%;
+      background: var(--gold);
+      animation: loader 1.2s infinite ease-in-out;
+    }
+
+    @keyframes loader {
+      0% {
+        transform: translateX(-120%);
+      }
+
+      100% {
+        transform: translateX(220%);
+      }
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 84px;
+      transition:
+        background .4s ease,
+        border .4s ease,
+        backdrop-filter .4s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(6,16,12,.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(201,166,90,.12);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: .3em;
+      color: var(--white);
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: rgba(245,242,234,.78);
+      font-size: 14px;
+      transition: color .3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -8px;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width .3s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-contact {
+      padding: 10px 20px;
+      border: 1px solid var(--line);
+      color: var(--gold-light) !important;
+    }
+
+    .nav-contact::after {
+      display: none;
+    }
+
+    .menu-button {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--gold);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 900;
+      background: rgba(3,9,6,.98);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: .4s ease;
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-links {
+      text-align: center;
+    }
+
+    .mobile-links a {
+      display: block;
+      font-family: "Amiri", serif;
+      font-size: 38px;
+      margin: 18px 0;
+      color: var(--white);
+      transition: color .3s ease;
+    }
+
+    .mobile-links a:hover {
+      color: var(--gold);
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at 70% 30%,
+          rgba(201,166,90,.08),
+          transparent 35%
+        ),
+        #06100c;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .08;
+      background-image:
+        linear-gradient(
+          rgba(201,166,90,.3) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(201,166,90,.3) 1px,
+          transparent 1px
+        );
+      background-size: 80px 80px;
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent
+      );
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: rgba(201,166,90,.07);
+      filter: blur(100px);
+      top: 10%;
+      left: 10%;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding-top: 100px;
+      display: grid;
+      grid-template-columns: 1fr .9fr;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: .25em;
+      margin-bottom: 25px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 45px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: "Amiri", serif;
+      font-size: clamp(55px, 7vw, 100px);
+      line-height: 1;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    .hero-title span {
+      display: block;
+      color: var(--gold);
+    }
+
+    .hero-quote {
+      font-family: "Amiri", serif;
+      font-size: clamp(25px, 3vw, 34px);
+      color: var(--gold-light);
+      margin-bottom: 25px;
+    }
+
+    .hero-description {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 560px;
+      line-height: 2;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      margin-top: 38px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 145px;
+      padding: 13px 24px;
+      border: 1px solid var(--line);
+      transition:
+        transform .3s ease,
+        background .3s ease,
+        color .3s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      background: var(--gold);
+      color: #07100c;
+      border-color: var(--gold);
+    }
+
+    .button-primary:hover {
+      background: var(--gold-light);
+    }
+
+    .button-secondary {
+      color: var(--white);
+    }
+
+    .button-secondary:hover {
+      background: rgba(201,166,90,.08);
+      border-color: var(--gold);
+    }
+
+
+    /* =========================================================
+       HERO IMAGE
+    ========================================================= */
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .portrait-frame {
+      position: relative;
+      width: min(430px, 90vw);
+      aspect-ratio: 4 / 5;
+      padding: 12px;
+    }
+
+    .portrait-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(201,166,90,.3);
+      transform: translate(22px,22px);
+      pointer-events: none;
+    }
+
+    .portrait-frame::after {
+      content: "MBK";
+      position: absolute;
+      bottom: -25px;
+      left: -35px;
+      font-size: 80px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      color: rgba(201,166,90,.06);
+      z-index: -1;
+    }
+
+    .portrait {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #101812;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    /* اسم ملف الصورة الشخصية */
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.85);
+      transition: transform 1s var(--ease);
+    }
+
+    .portrait:hover img {
+      transform: scale(1.04);
+    }
+
+    .portrait-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(3,9,6,.65),
+          transparent 50%
+        );
+    }
+
+    .portrait-label {
+      position: absolute;
+      bottom: 25px;
+      right: 25px;
+      left: 25px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--gold-light);
+      font-size: 11px;
+      letter-spacing: .25em;
+    }
+
+
+    /* =========================================================
+       MARQUEE
+    ========================================================= */
+
+    .marquee {
+      overflow: hidden;
+      border-top: 1px solid rgba(201,166,90,.12);
+      border-bottom: 1px solid rgba(201,166,90,.12);
+      padding: 18px 0;
+      background: #08130e;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 25s linear infinite;
+    }
+
+    .marquee-item {
+      padding: 0 35px;
+      color: rgba(201,166,90,.6);
+      font-size: 12px;
+      letter-spacing: .35em;
+      white-space: nowrap;
+    }
+
+    @keyframes marquee {
+      to {
+        transform: translateX(50%);
+      }
+    }
+
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+
+    .about {
+      background: #09150f;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .about-number {
+      font-size: 12px;
+      letter-spacing: .3em;
+      color: var(--gold);
+      margin-bottom: 25px;
+    }
+
+    .about-text {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 2.1;
+      margin-top: 30px;
+    }
+
+    .about-text + .about-text {
+      margin-top: 20px;
+    }
+
+    .about-signature {
+      font-family: "Amiri", serif;
+      font-size: 30px;
+      color: var(--gold-light);
+      margin-top: 40px;
+    }
+
+    .about-cards {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 16px;
+    }
+
+    .info-card {
+      padding: 35px;
+      border: 1px solid rgba(255,255,255,.07);
+      background: rgba(255,255,255,.015);
+      min-height: 220px;
+      transition:
+        transform .4s var(--ease),
+        border-color .4s ease,
+        background .4s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-7px);
+      border-color: var(--line);
+      background: rgba(201,166,90,.035);
+    }
+
+    .card-number {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: .2em;
+    }
+
+    .info-card h3 {
+      font-family: "Amiri", serif;
+      font-size: 30px;
+      margin: 35px 0 12px;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+
+    /* =========================================================
+       VALUES
+    ========================================================= */
+
+    .values {
+      background: #06100c;
+    }
+
+    .values-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .values-header .section-label {
+      justify-content: center;
+    }
+
+    .values-header .section-label::before {
+      display: none;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      border-top: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .value {
+      padding: 55px 35px;
+      border-left: 1px solid rgba(255,255,255,.08);
+      transition: background .4s ease;
+    }
+
+    .value:last-child {
+      border-left: 0;
+    }
+
+    .value:hover {
+      background: rgba(201,166,90,.035);
+    }
+
+    .value-icon {
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      margin-bottom: 30px;
+    }
+
+    .value h3 {
+      font-family: "Amiri", serif;
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .value p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 2;
+    }
+
+
+    /* =========================================================
+       IDENTITY
+    ========================================================= */
+
+    .identity {
+      background:
+        linear-gradient(
+          135deg,
+          #0b1912,
+          #06100c
+        );
+    }
+
+    .identity-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .identity-box {
+      position: relative;
+      min-height: 470px;
+      border: 1px solid rgba(201,166,90,.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .identity-box::before {
+      content: "MBK";
+      position: absolute;
+      font-size: 210px;
+      font-weight: 800;
+      color: rgba(201,166,90,.025);
+      letter-spacing: .1em;
+    }
+
+    .identity-center {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .identity-center strong {
+      display: block;
+      font-size: 80px;
+      letter-spacing: .25em;
+      margin-left: .25em;
+      color: var(--gold);
+    }
+
+    .identity-center span {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .4em;
+    }
+
+    .identity-list {
+      margin-top: 40px;
+    }
+
+    .identity-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .identity-row span:first-child {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .identity-row span:last-child {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+
+    /* =========================================================
+       QUOTE
+    ========================================================= */
+
+    .quote-section {
+      padding: 150px 0;
+      text-align: center;
+      background: #08130e;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-mark {
+      font-family: "Amiri", serif;
+      font-size: 150px;
+      line-height: .5;
+      color: rgba(201,166,90,.12);
+    }
+
+    .quote-text {
+      font-family: "Amiri", serif;
+      font-size: clamp(35px, 5vw, 65px);
+      color: var(--gold-light);
+      max-width: 900px;
+      margin: 40px auto;
+      line-height: 1.5;
+    }
+
+    .quote-caption {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .2em;
+    }
+
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+
+    .contact {
+      background: #06100c;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: end;
+    }
+
+    .contact-title {
+      font-family: "Amiri", serif;
+      font-size: clamp(50px,7vw,90px);
+      line-height: 1;
+    }
+
+    .contact-description {
+      color: var(--muted);
+      max-width: 500px;
+      margin-top: 25px;
+      line-height: 2;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      transition: color .3s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--gold);
+    }
+
+    .contact-link small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+
+    .contact-link strong {
+      font-size: 16px;
+      direction: ltr;
+      display: block;
+    }
+
+    .arrow {
+      color: var(--gold);
+      font-size: 22px;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      background: #030806;
+      border-top: 1px solid rgba(201,166,90,.12);
+      padding: 35px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: .25em;
+    }
+
+    .footer-logo span {
+      color: var(--gold);
+    }
+
+    .copyright {
+      color: #70766f;
+      font-size: 12px;
+    }
+
+    .footer-quote {
+      color: var(--gold-dark);
+      font-family: "Amiri", serif;
+      font-size: 18px;
+    }
+
+
+    /* =========================================================
+       REVEAL ANIMATION
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition:
+        opacity .9s var(--ease),
+        transform .9s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      transition-delay: .1s;
+    }
+
+    .delay-2 {
+      transition-delay: .2s;
+    }
+
+    .delay-3 {
+      transition-delay: .3s;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 900px) {
+
+      .container {
+        width: min(var(--max), calc(100% - 32px));
+      }
+
+      .navbar {
+        height: 72px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-button {
+        display: flex;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+        padding-top: 120px;
+      }
+
+      .hero-copy {
+        max-width: none;
+      }
+
+      .eyebrow {
+        justify-content: center;
+      }
+
+      .hero-description {
+        margin-inline: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        order: 2;
+      }
+
+      .portrait-frame {
+        width: min(350px, 80vw);
+      }
+
+      .about-layout,
+      .identity-layout,
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .value {
+        border-left: 0;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+      }
+
+      .value:last-child {
+        border-bottom: 0;
+      }
+
+      .identity-box {
+        min-height: 360px;
+      }
+
+      .identity-center strong {
+        font-size: 60px;
+      }
+
+      .contact-layout {
+        align-items: start;
+      }
+    }
+
+
+    @media (max-width: 600px) {
+
+      .section {
+        padding: 90px 0;
+      }
+
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero-title {
+        font-size: 58px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .portrait-frame {
+        width: 78vw;
+      }
+
+      .about-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .info-card {
+        min-height: auto;
+      }
+
+      .section-title {
+        font-size: 48px;
+      }
+
+      .identity-box {
+        min-height: 300px;
+      }
+
+      .identity-center strong {
+        font-size: 48px;
+      }
+
+      .identity-box::before {
+        font-size: 130px;
+      }
+
+      .quote-section {
+        padding: 100px 20px;
+      }
+
+      .quote-text {
+        font-size: 38px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .mobile-links a {
+        font-size: 32px;
+      }
+    }
+
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+    }
+
+  </style>
 </head>
 
 
 <body>
 
 
-    <!-- =========================================================
-         LOADER
-    ========================================================= -->
+  <!-- =======================================================
+       LOADER
+  ======================================================== -->
 
-    <div
-        class="loader"
-        id="loader"
-    >
+  <div class="loader" id="loader">
 
-        <div class="loader-logo">
-            MBK
+    <div class="loader-inner">
+
+      <div class="loader-logo">
+        M<span>B</span>K
+      </div>
+
+      <div class="loader-line"></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       NAVIGATION
+  ======================================================== -->
+
+  <header class="navbar" id="navbar">
+
+    <div class="container nav-inner">
+
+      <a href="#home" class="logo">
+        M<span>B</span>K
+      </a>
+
+      <nav class="nav-links">
+
+        <a href="#home">الرئيسية</a>
+
+        <a href="#about">عنّي</a>
+
+        <a href="#values">القيم</a>
+
+        <a href="#identity">الهوية</a>
+
+        <a href="#contact" class="nav-contact">
+          تواصل معي
+        </a>
+
+      </nav>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="فتح القائمة"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- =======================================================
+       MOBILE MENU
+  ======================================================== -->
+
+  <div class="mobile-menu" id="mobileMenu">
+
+    <nav class="mobile-links">
+
+      <a href="#home">الرئيسية</a>
+
+      <a href="#about">عنّي</a>
+
+      <a href="#values">القيم</a>
+
+      <a href="#identity">الهوية</a>
+
+      <a href="#contact">تواصل معي</a>
+
+    </nav>
+
+  </div>
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+  <main>
+
+    <section class="hero" id="home">
+
+      <div class="hero-grid"></div>
+
+      <div class="hero-glow"></div>
+
+      <div class="container hero-inner">
+
+        <div class="hero-copy">
+
+          <div class="eyebrow reveal">
+            PERSONAL IDENTITY
+          </div>
+
+          <h1 class="hero-title reveal delay-1">
+            مبخوت
+            <span>بن عبدالله</span>
+          </h1>
+
+          <div class="hero-quote reveal delay-2">
+            « وما توفيقي إلا بالله »
+          </div>
+
+          <p class="hero-description reveal delay-3">
+            مساحة شخصية تعبّر عن هويتي، رؤيتي، ومبادئي.
+            حضور هادئ وواثق، يبحث عن المعنى قبل المظهر
+            ويؤمن بأن التفاصيل تصنع الفرق.
+          </p>
+
+          <div class="hero-buttons reveal delay-3">
+
+            <a
+              href="#about"
+              class="button button-primary"
+            >
+              اكتشف المزيد
+            </a>
+
+            <a
+              href="#contact"
+              class="button button-secondary"
+            >
+              تواصل معي
+            </a>
+
+          </div>
+
         </div>
+
+
+        <div class="hero-visual reveal delay-2">
+
+          <div class="portrait-frame">
+
+            <div class="portrait">
+
+              <!-- =================================================
+                   ضع صورتك الشخصية هنا باسم profile.jpg
+                   أو غيّر الاسم إلى اسم ملف صورتك
+              ================================================== -->
+
+              <img
+                src="profile.jpg"
+                alt="مبخوت بن عبدالله"
+                onerror="this.style.display='none'; this.parentElement.classList.add('no-image')"
+              >
+
+              <div class="portrait-overlay"></div>
+
+              <div class="portrait-label">
+
+                <span>MBK</span>
+
+                <span>PERSONAL</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MARQUEE
+    ====================================================== -->
+
+    <div class="marquee">
+
+      <div class="marquee-track">
+
+        <span class="marquee-item">
+          MBK
+        </span>
+
+        <span class="marquee-item">
+          PERSONAL IDENTITY
+        </span>
+
+        <span class="marquee-item">
+          VISION
+        </span>
+
+        <span class="marquee-item">
+          AUTHENTICITY
+        </span>
+
+        <span class="marquee-item">
+          EXCELLENCE
+        </span>
+
+        <span class="marquee-item">
+          MBK
+        </span>
+
+        <span class="marquee-item">
+          PERSONAL IDENTITY
+        </span>
+
+        <span class="marquee-item">
+          VISION
+        </span>
+
+        <span class="marquee-item">
+          AUTHENTICITY
+        </span>
+
+      </div>
 
     </div>
 
 
-    <!-- =========================================================
-         CURSOR
-    ========================================================= -->
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
 
-    <div
-        class="cursor-glow"
-        id="cursorGlow"
-    ></div>
+    <section class="section about" id="about">
 
+      <div class="container">
 
-    <!-- =========================================================
-         HEADER
-    ========================================================= -->
+        <div class="about-layout">
 
-    <header
-        class="header"
-        id="header"
-    >
+          <div class="reveal">
 
-        <div class="header-inner">
-
-            <a
-                href="#home"
-                class="brand"
-            >
-
-                <span class="brand-mark">
-                    MBK
-                </span>
-
-                <span class="brand-dot"></span>
-
-            </a>
-
-
-            <button
-                class="menu-button"
-                id="menuButton"
-                aria-label="فتح القائمة"
-                aria-expanded="false"
-            >
-
-                <span class="menu-lines">
-
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                </span>
-
-            </button>
-
-        </div>
-
-    </header>
-
-
-    <!-- =========================================================
-         MENU OVERLAY
-    ========================================================= -->
-
-    <div
-        class="menu-overlay"
-        id="menuOverlay"
-    ></div>
-
-
-    <!-- =========================================================
-         SIDE MENU
-    ========================================================= -->
-
-    <aside
-        class="side-menu"
-        id="sideMenu"
-        aria-hidden="true"
-    >
-
-        <div class="menu-top">
-
-            <div class="menu-small">
-                PERSONAL IDENTITY
+            <div class="about-number">
+              01 — ABOUT
             </div>
 
-            <button
-                class="close-button"
-                id="closeButton"
-                aria-label="إغلاق القائمة"
-            >
-                ×
-            </button>
+            <div class="section-label">
+              نبذة شخصية
+            </div>
+
+            <h2 class="section-title">
+              رحلة تُبنى
+              <br>
+              <span class="gold-text">
+                على المعنى
+              </span>
+            </h2>
+
+          </div>
+
+
+          <div class="reveal delay-2">
+
+            <p class="about-text">
+              أؤمن بأن الحضور الحقيقي لا يعتمد على كثرة
+              الكلام، بل على وضوح الرؤية وصدق المبدأ.
+              لكل إنسان قصة، ومسار، وأثر يسعى إلى تركه.
+            </p>
+
+            <p class="about-text">
+              هذه المساحة تمثل جانبًا من هويتي الشخصية،
+              وتجمع بين ما أؤمن به وما أسعى إليه،
+              بأسلوب بسيط، هادئ، وأصيل.
+            </p>
+
+            <div class="about-signature">
+              مبخوت بن عبدالله
+            </div>
+
+          </div>
 
         </div>
 
 
-        <nav class="menu-navigation">
+        <div
+          class="about-cards"
+          style="margin-top:80px;"
+        >
 
-            <a
-                href="#home"
-                class="menu-link"
-            >
+          <article class="info-card reveal">
 
-                <span>
-                    الرئيسية
-                </span>
+            <div class="card-number">
+              01
+            </div>
 
-                <span>
-                    01
-                </span>
+            <h3>
+              الرؤية
+            </h3>
 
-            </a>
+            <p>
+              النظر إلى المستقبل بعين واضحة،
+              وتحويل الأفكار إلى خطوات حقيقية
+              ذات قيمة وأثر.
+            </p>
 
-
-            <a
-                href="#about"
-                class="menu-link"
-            >
-
-                <span>
-                    عنّي
-                </span>
-
-                <span>
-                    02
-                </span>
-
-            </a>
+          </article>
 
 
-            <a
-                href="#values"
-                class="menu-link"
-            >
+          <article class="info-card reveal delay-1">
 
-                <span>
-                    القيم
-                </span>
+            <div class="card-number">
+              02
+            </div>
 
-                <span>
-                    03
-                </span>
+            <h3>
+              المبادئ
+            </h3>
 
-            </a>
+            <p>
+              الأصالة والصدق والالتزام بالقيم
+              هي الأساس الذي تُبنى عليه
+              القرارات والمواقف.
+            </p>
 
-
-            <a
-                href="#statement"
-                class="menu-link"
-            >
-
-                <span>
-                    الرؤية
-                </span>
-
-                <span>
-                    04
-                </span>
-
-            </a>
+          </article>
 
 
-            <a
-                href="#contact"
-                class="menu-link"
-            >
+          <article class="info-card reveal delay-2">
 
-                <span>
-                    تواصل
-                </span>
+            <div class="card-number">
+              03
+            </div>
 
-                <span>
-                    05
-                </span>
+            <h3>
+              الطموح
+            </h3>
 
-            </a>
+            <p>
+              الاستمرار في التعلم والتطور،
+              وعدم الاكتفاء بما تم الوصول إليه.
+            </p>
 
-        </nav>
+          </article>
 
 
-        <div class="menu-footer">
+          <article class="info-card reveal delay-3">
 
-            الموقع الشخصي لمبخوت بن عبدالله
+            <div class="card-number">
+              04
+            </div>
 
-            <strong>
+            <h3>
+              الأثر
+            </h3>
+
+            <p>
+              القيمة الحقيقية ليست فيما نملكه،
+              بل فيما نتركه خلفنا من أثر جيد.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         VALUES
+    ====================================================== -->
+
+    <section class="section values" id="values">
+
+      <div class="container">
+
+        <div class="values-header reveal">
+
+          <div class="section-label">
+            CORE VALUES
+          </div>
+
+          <h2 class="section-title">
+            القيم التي
+            <span class="gold-text">
+              أؤمن بها
+            </span>
+          </h2>
+
+          <p class="section-description" style="margin-inline:auto;">
+            مبادئ بسيطة لكنها أساسية؛ تشكل طريقة التفكير
+            والتعامل مع الحياة والعمل والمستقبل.
+          </p>
+
+        </div>
+
+
+        <div class="values-grid">
+
+          <article class="value reveal">
+
+            <div class="value-icon">
+              01
+            </div>
+
+            <h3>
+              الأصالة
+            </h3>
+
+            <p>
+              أن أكون صادقًا مع هويتي وقيمي،
+              وألا أفقد جذوري أثناء السعي نحو المستقبل.
+            </p>
+
+          </article>
+
+
+          <article class="value reveal delay-1">
+
+            <div class="value-icon">
+              02
+            </div>
+
+            <h3>
+              الطموح
+            </h3>
+
+            <p>
+              الطموح بالنسبة لي ليس مجرد وصول،
+              بل رغبة مستمرة في التطور وصناعة الأفضل.
+            </p>
+
+          </article>
+
+
+          <article class="value reveal delay-2">
+
+            <div class="value-icon">
+              03
+            </div>
+
+            <h3>
+              الإتقان
+            </h3>
+
+            <p>
+              الاهتمام بالتفاصيل، لأن الجودة لا تأتي
+              من الصدفة، وإنما من العمل المتقن.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         IDENTITY
+    ====================================================== -->
+
+    <section class="section identity" id="identity">
+
+      <div class="container">
+
+        <div class="identity-layout">
+
+          <div class="identity-box reveal">
+
+            <div class="identity-center">
+
+              <strong>
                 MBK
-            </strong>
+              </strong>
+
+              <span>
+                PERSONAL IDENTITY
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="reveal delay-2">
+
+            <div class="section-label">
+              PERSONAL IDENTITY
+            </div>
+
+            <h2 class="section-title">
+              هويتي في
+              <span class="gold-text">
+                تفاصيلها
+              </span>
+            </h2>
+
+            <p class="section-description">
+              هوية شخصية بسيطة وواضحة، تجمع بين الاسم
+              والرمز والرؤية في تجربة رقمية واحدة.
+            </p>
+
+
+            <div class="identity-list">
+
+              <div class="identity-row">
+
+                <span>
+                  الاسم
+                </span>
+
+                <span>
+                  مبخوت بن عبدالله
+                </span>
+
+              </div>
+
+
+              <div class="identity-row">
+
+                <span>
+                  الهوية المختصرة
+                </span>
+
+                <span>
+                  MBK
+                </span>
+
+              </div>
+
+
+              <div class="identity-row">
+
+                <span>
+                  الموقع
+                </span>
+
+                <span>
+                  mabkhut.com
+                </span>
+
+              </div>
+
+
+              <div class="identity-row">
+
+                <span>
+                  المجال
+                </span>
+
+                <span>
+                  Personal Identity
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
-    </aside>
+      </div>
+
+    </section>
 
 
-    <!-- =========================================================
-         MAIN
-    ========================================================= -->
+    <!-- =====================================================
+         QUOTE
+    ====================================================== -->
 
-    <main>
+    <section class="quote-section">
 
+      <div class="container">
 
-        <!-- =====================================================
-             HERO
-        ===================================================== -->
+        <div class="quote-mark">
+          “
+        </div>
 
-        <section
-            class="hero"
-            id="home"
-        >
+        <div class="quote-text reveal">
+          « وما توفيقي إلا بالله »
+        </div>
 
-            <div class="container">
+        <div class="quote-caption reveal delay-1">
+          PRINCIPLE • FAITH • PURPOSE
+        </div>
 
-                <div class="hero-grid">
+      </div>
 
-
-                    <!-- TEXT -->
-
-                    <div class="hero-copy">
-
-
-                        <div class="eyebrow reveal">
-                            PERSONAL IDENTITY
-                        </div>
+    </section>
 
 
-                        <h1
-                            class="hero-title reveal"
-                        >
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
 
-                            مبخوت
+    <section class="section contact" id="contact">
 
-                            <span class="gold">
-                                بن عبدالله
-                            </span>
+      <div class="container">
 
-                        </h1>
+        <div class="contact-layout">
 
+          <div class="reveal">
 
-                        <p
-                            class="hero-quote reveal"
-                        >
-                            « وما توفيقي إلا بالله »
-                        </p>
-
-
-                        <div
-                            class="hero-actions reveal"
-                        >
-
-                            <button
-                                class="primary-button"
-                                onclick="scrollToSection('about')"
-                            >
-
-                                <span>
-                                    اكتشف المزيد
-                                </span>
-
-                            </button>
-
-
-                            <button
-                                class="secondary-button"
-                                onclick="scrollToSection('contact')"
-                            >
-
-                                تواصل معي
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- IMAGE -->
-
-                    <div class="hero-visual reveal">
-
-                        <div class="portrait-wrap">
-
-                            <div class="portrait">
-
-                                <img
-                                    src="file_00000000202482468d4027eb8c5919f7.png"
-                                    alt="مبخوت بن عبدالله"
-                                    loading="eager"
-                                >
-
-                                <div class="portrait-overlay"></div>
-
-                                <div class="portrait-label">
-                                    MBK / PERSONAL
-                                </div>
-
-                            </div>
-
-
-                            <div class="visual-number">
-                                01
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
+            <div class="section-label">
+              GET IN TOUCH
             </div>
 
-        </section>
+            <h2 class="contact-title">
+              لنبقى
+              <span class="gold-text">
+                على تواصل
+              </span>
+            </h2>
 
+            <p class="contact-description">
+              للتواصل والاستفسارات، يمكن الوصول إليّ
+              من خلال البريد الإلكتروني أو الموقع الرسمي.
+            </p>
 
-        <!-- =====================================================
-             ABOUT
-        ===================================================== -->
+          </div>
 
-        <section
-            class="section"
-            id="about"
-        >
 
-            <div class="container">
+          <div class="contact-links reveal delay-2">
 
-                <div class="section-heading reveal">
+            <a
+              href="mailto:mabkhout@mabkhut.com"
+              class="contact-link"
+            >
 
-                    <span class="section-index">
-                        02 — ABOUT
-                    </span>
+              <div>
 
-                    <h2 class="section-title">
-                        عنّي
-                    </h2>
+                <small>
+                  EMAIL
+                </small>
 
-                </div>
+                <strong>
+                  mabkhout@mabkhut.com
+                </strong>
 
+              </div>
 
-                <div class="about-layout">
+              <span class="arrow">
+                ←
+              </span>
 
+            </a>
 
-                    <div class="about-lead reveal">
 
-                        شخصية تُبنى على
-                        <span>
-                            الطموح
-                        </span>
-                        ،
-                        والتجربة،
-                        والإتقان.
+            <a
+              href="https://mabkhut.com"
+              target="_blank"
+              rel="noopener"
+              class="contact-link"
+            >
 
-                    </div>
+              <div>
 
+                <small>
+                  WEBSITE
+                </small>
 
-                    <div class="about-text reveal">
+                <strong>
+                  mabkhut.com
+                </strong>
 
-                        <p>
-                            أنا مبخوت بن عبدالله. أؤمن بأن قيمة الإنسان
-                            لا تُقاس بما يملك فقط، بل بما يتركه من أثر،
-                            وبالطريقة التي يصنع بها طريقه ويحافظ بها
-                            على هويته.
-                        </p>
+              </div>
 
-                        <p>
-                            هذه المساحة تمثل جانبًا من شخصيتي؛
-                            أفكاري، رؤيتي، اهتمامي بالتفاصيل،
-                            وسعيي المستمر إلى التطور وصناعة شيء
-                            يحمل بصمتي الخاصة.
-                        </p>
+              <span class="arrow">
+                ←
+              </span>
 
-                        <p>
-                            لا أبحث عن الكمال بقدر ما أبحث عن
-                            التقدم المستمر، وعن نتيجة تعبّر عن
-                            الجهد الذي سبقها.
-                        </p>
+            </a>
 
-
-                        <div class="signature">
-                            مبخوت بن عبدالله
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             VALUES
-        ===================================================== -->
-
-        <section
-            class="section"
-            id="values"
-        >
-
-            <div class="container">
-
-                <div class="section-heading reveal">
-
-                    <span class="section-index">
-                        03 — VALUES
-                    </span>
-
-                    <h2 class="section-title">
-                        القيم
-                    </h2>
-
-                </div>
-
-
-                <div class="values-grid">
-
-
-                    <article class="value reveal">
-
-                        <div class="value-number">
-                            01
-                        </div>
-
-                        <div class="value-icon">
-                            ✦
-                        </div>
-
-                        <h3>
-                            الأصالة
-                        </h3>
-
-                        <p>
-                            أحافظ على هويتي ومبادئي،
-                            وأمنح التطور مساحة دون أن أفقد
-                            ما يميزني.
-                        </p>
-
-                    </article>
-
-
-                    <article
-                        class="value reveal"
-                        style="transition-delay:100ms"
-                    >
-
-                        <div class="value-number">
-                            02
-                        </div>
-
-                        <div class="value-icon">
-                            ◇
-                        </div>
-
-                        <h3>
-                            الطموح
-                        </h3>
-
-                        <p>
-                            أضع لنفسي أهدافًا أكبر من الواقع
-                            الحالي، وأتعامل مع كل مرحلة
-                            باعتبارها بداية لما بعدها.
-                        </p>
-
-                    </article>
-
-
-                    <article
-                        class="value reveal"
-                        style="transition-delay:200ms"
-                    >
-
-                        <div class="value-number">
-                            03
-                        </div>
-
-                        <div class="value-icon">
-                            ◆
-                        </div>
-
-                        <h3>
-                            الإتقان
-                        </h3>
-
-                        <p>
-                            التفاصيل الصغيرة تصنع الصورة
-                            الكبيرة؛ لذلك أتعامل مع الجودة
-                            باعتبارها جزءًا من الهوية.
-                        </p>
-
-                    </article>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             STATEMENT
-        ===================================================== -->
-
-        <section
-            class="section statement"
-            id="statement"
-        >
-
-            <div class="container">
-
-                <div class="statement-inner reveal">
-
-                    <span class="statement-label">
-                        PERSONAL PHILOSOPHY
-                    </span>
-
-                    <h2>
-                        إن أصبت فمن الله،
-                        <br>
-                        وإن أخطأت فمن نفسي.
-                    </h2>
-
-                    <div class="statement-line"></div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             CONTACT
-        ===================================================== -->
-
-        <section
-            class="section"
-            id="contact"
-        >
-
-            <div class="container">
-
-                <div class="contact-layout">
-
-
-                    <div class="reveal">
-
-                        <span class="section-index">
-                            05 — CONTACT
-                        </span>
-
-                        <h2 class="contact-title">
-
-                            لنبقَ على
-                            <span>
-                                تواصل.
-                            </span>
-
-                        </h2>
-
-                    </div>
-
-
-                    <div class="contact-list reveal">
-
-
-                        <a
-                            class="contact-item"
-                            href="mailto:mabkhout@mabkhut.com"
-                        >
-
-                            <div>
-
-                                <div class="contact-meta">
-                                    البريد الإلكتروني
-                                </div>
-
-                                <div class="contact-value">
-                                    mabkhout@mabkhut.com
-                                </div>
-
-                            </div>
-
-                            <div class="contact-arrow">
-                                ←
-                            </div>
-
-                        </a>
-
-
-                        <a
-                            class="contact-item"
-                            href="https://mabkhut.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-
-                            <div>
-
-                                <div class="contact-meta">
-                                    الموقع الرسمي
-                                </div>
-
-                                <div class="contact-value">
-                                    mabkhut.com
-                                </div>
-
-                            </div>
-
-                            <div class="contact-arrow">
-                                ←
-                            </div>
-
-                        </a>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-    </main>
-
-
-    <!-- =========================================================
-         FOOTER
-    ========================================================= -->
-
-    <footer>
-
-        <div class="container">
-
-            <div class="footer-inner">
-
-                <div class="footer-copy">
-                    © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
-                </div>
-
-                <div class="footer-brand">
-                    MBK
-                </div>
-
-            </div>
+          </div>
 
         </div>
 
-    </footer>
+      </div>
+
+    </section>
+
+  </main>
 
 
-    <!-- =========================================================
-         JAVASCRIPT
-    ========================================================= -->
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
 
-    <script>
+  <footer>
 
-        /* =====================================================
-           LOADER
-        ===================================================== */
+    <div class="container footer-inner">
 
-        window.addEventListener("load", () => {
+      <div class="footer-logo">
+        M<span>B</span>K
+      </div>
 
-            const loader =
-                document.getElementById("loader");
+      <div class="copyright">
+        © <span id="year"></span>
+        مبخوت بن عبدالله. جميع الحقوق محفوظة.
+      </div>
 
-            setTimeout(() => {
+      <div class="footer-quote">
+        « وما توفيقي إلا بالله »
+      </div>
 
-                loader.classList.add("hide");
+    </div>
 
-            }, 450);
-
-        });
-
-
-        /* =====================================================
-           HEADER SCROLL
-        ===================================================== */
-
-        const header =
-            document.getElementById("header");
+  </footer>
 
 
-        function updateHeader() {
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
 
-            if (window.scrollY > 35) {
+  <script>
 
-                header.classList.add("scrolled");
+    /* =======================================================
+       LOADER
+    ======================================================== */
 
-            } else {
+    window.addEventListener("load", function () {
 
-                header.classList.remove("scrolled");
+      const loader = document.getElementById("loader");
+
+      setTimeout(function () {
+
+        loader.classList.add("hide");
+
+      }, 500);
+
+    });
+
+
+    /* =======================================================
+       NAVBAR SCROLL
+    ======================================================== */
+
+    const navbar =
+      document.getElementById("navbar");
+
+    function updateNavbar() {
+
+      if (window.scrollY > 50) {
+
+        navbar.classList.add("scrolled");
+
+      } else {
+
+        navbar.classList.remove("scrolled");
+
+      }
+
+    }
+
+    window.addEventListener(
+      "scroll",
+      updateNavbar,
+      { passive: true }
+    );
+
+    updateNavbar();
+
+
+    /* =======================================================
+       MOBILE MENU
+    ======================================================== */
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+    menuButton.addEventListener(
+      "click",
+      function () {
+
+        mobileMenu.classList.toggle("open");
+
+        document.body.classList.toggle(
+          "menu-open"
+        );
+
+        menuButton.textContent =
+          mobileMenu.classList.contains("open")
+            ? "×"
+            : "☰";
+
+      }
+    );
+
+
+    /* =======================================================
+       CLOSE MOBILE MENU
+    ======================================================== */
+
+    document
+      .querySelectorAll(".mobile-links a")
+      .forEach(function (link) {
+
+        link.addEventListener(
+          "click",
+          function () {
+
+            mobileMenu.classList.remove("open");
+
+            document.body.classList.remove(
+              "menu-open"
+            );
+
+            menuButton.textContent = "☰";
+
+          }
+        );
+
+      });
+
+
+    /* =======================================================
+       REVEAL ON SCROLL
+    ======================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver =
+      new IntersectionObserver(
+        function (entries, observer) {
+
+          entries.forEach(function (entry) {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
 
             }
 
+          });
+
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -40px 0px"
         }
+      );
 
 
-        window.addEventListener(
-            "scroll",
-            updateHeader,
-            { passive: true }
-        );
+    revealElements.forEach(
+      function (element) {
+
+        revealObserver.observe(element);
+
+      }
+    );
 
 
-        updateHeader();
+    /* =======================================================
+       CURRENT YEAR
+    ======================================================== */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
 
-        /* =====================================================
-           MENU
-        ===================================================== */
+    /* =======================================================
+       ESC KEY
+    ======================================================== */
 
-        const menuButton =
-            document.getElementById("menuButton");
+    document.addEventListener(
+      "keydown",
+      function (event) {
 
-        const closeButton =
-            document.getElementById("closeButton");
+        if (event.key === "Escape") {
 
-        const sideMenu =
-            document.getElementById("sideMenu");
+          mobileMenu.classList.remove("open");
 
-        const menuOverlay =
-            document.getElementById("menuOverlay");
+          document.body.classList.remove(
+            "menu-open"
+          );
 
-
-        function openMenu() {
-
-            sideMenu.classList.add("active");
-
-            menuOverlay.classList.add("active");
-
-            document.body.classList.add("menu-open");
-
-            menuButton.setAttribute(
-                "aria-expanded",
-                "true"
-            );
-
-            sideMenu.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-        }
-
-
-        function closeMenu() {
-
-            sideMenu.classList.remove("active");
-
-            menuOverlay.classList.remove("active");
-
-            document.body.classList.remove("menu-open");
-
-            menuButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            sideMenu.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-        }
-
-
-        menuButton.addEventListener(
-            "click",
-            openMenu
-        );
-
-
-        closeButton.addEventListener(
-            "click",
-            closeMenu
-        );
-
-
-        menuOverlay.addEventListener(
-            "click",
-            closeMenu
-        );
-
-
-        document
-            .querySelectorAll(".menu-link")
-            .forEach(link => {
-
-                link.addEventListener(
-                    "click",
-                    closeMenu
-                );
-
-            });
-
-
-        /* =====================================================
-           ESC KEY
-        ===================================================== */
-
-        document.addEventListener(
-            "keydown",
-            event => {
-
-                if (
-                    event.key === "Escape"
-                ) {
-
-                    closeMenu();
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           SMOOTH SCROLL
-        ===================================================== */
-
-        function scrollToSection(id) {
-
-            const element =
-                document.getElementById(id);
-
-            if (!element) return;
-
-            element.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+          menuButton.textContent = "☰";
 
         }
 
+      }
+    );
 
-        /* =====================================================
-           REVEAL
-        ===================================================== */
-
-        const revealElements =
-            document.querySelectorAll(".reveal");
-
-
-        const observer =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target.classList.add(
-                                "visible"
-                            );
-
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: .12,
-                    rootMargin:
-                        "0px 0px -40px 0px"
-                }
-            );
-
-
-        revealElements.forEach(
-            element => {
-
-                observer.observe(element);
-
-            }
-        );
-
-
-        /* =====================================================
-           CURSOR GLOW
-        ===================================================== */
-
-        const cursorGlow =
-            document.getElementById("cursorGlow");
-
-
-        let cursorX = 0;
-        let cursorY = 0;
-
-
-        document.addEventListener(
-            "mousemove",
-            event => {
-
-                cursorX = event.clientX;
-
-                cursorY = event.clientY;
-
-                cursorGlow.style.left =
-                    cursorX + "px";
-
-                cursorGlow.style.top =
-                    cursorY + "px";
-
-            },
-            { passive: true }
-        );
-
-
-        /* =====================================================
-           DISABLE CURSOR GLOW ON TOUCH
-        ===================================================== */
-
-        if (
-            "ontouchstart" in window ||
-            navigator.maxTouchPoints > 0
-        ) {
-
-            cursorGlow.style.display =
-                "none";
-
-        }
-
-
-        /* =====================================================
-           IMAGE FALLBACK
-        ===================================================== */
-
-        const profileImage =
-            document.querySelector(
-                ".portrait img"
-            );
-
-
-        profileImage.addEventListener(
-            "error",
-            () => {
-
-                profileImage.style.display =
-                    "none";
-
-                profileImage.parentElement.style.background =
-                    "linear-gradient(145deg,#171717,#080808)";
-
-            }
-        );
-
-    </script>
+  </script>
 
 </body>
-
 </html>
