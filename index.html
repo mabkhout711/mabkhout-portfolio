@@ -1,66 +1,58 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>مبخوت بن عبدالله | MBK</title>
 
 <meta name="description"
-      content="الموقع الشخصي لمبخوت بن عبدالله">
+      content="الموقع الشخصي لمبخوت بن عبدالله — MBK">
 
 <meta name="theme-color"
-      content="#020914">
+      content="#020814">
 
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap"
       rel="stylesheet">
 
-
 <style>
 
 /* =========================================================
-   ROOT
+   MBK V6
+   GLOBAL SYSTEM
 ========================================================= */
 
 :root{
 
-    --navy:#020914;
-    --navy-2:#061426;
-    --navy-3:#0a1b30;
+    --bg:#020814;
+    --bg2:#061426;
+    --bg3:#091b31;
 
     --gold:#d4af37;
-    --gold-light:#f3d86b;
-    --gold-bright:#ffe99a;
+    --gold2:#f4d96b;
+    --gold3:#9f7c18;
 
-    --white:#f8f7f2;
-    --text:#d7dce3;
-    --muted:#8793a1;
-
-    --border:rgba(212,175,55,.20);
-    --border-strong:rgba(212,175,55,.48);
+    --white:#f8f8f4;
+    --text:#d7dbe1;
+    --muted:#8793a2;
 
     --glass:rgba(255,255,255,.035);
+    --glass2:rgba(255,255,255,.055);
 
-    --shadow:
-        0 30px 90px rgba(0,0,0,.40);
+    --border:rgba(212,175,55,.18);
+    --border2:rgba(212,175,55,.42);
 
+    --shadow:0 30px 90px rgba(0,0,0,.42);
+
+    --radius:28px;
+
+    --ease:cubic-bezier(.22,.61,.36,1);
 }
 
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     margin:0;
@@ -68,10 +60,11 @@
     box-sizing:border-box;
 }
 
+
 html{
     scroll-behavior:smooth;
-    background:var(--navy);
 }
+
 
 body{
 
@@ -90,35 +83,24 @@ body{
 
         radial-gradient(
             circle at 50% -10%,
-            rgba(212,175,55,.10),
-            transparent 30%
+            rgba(212,175,55,.11),
+            transparent 32%
         ),
 
         radial-gradient(
-            circle at 0% 45%,
-            rgba(18,54,88,.28),
-            transparent 34%
-        ),
-
-        radial-gradient(
-            circle at 100% 75%,
-            rgba(212,175,55,.035),
-            transparent 28%
+            circle at 0% 40%,
+            rgba(13,48,80,.38),
+            transparent 35%
         ),
 
         linear-gradient(
             145deg,
-            #010611 0%,
-            #020914 45%,
+            #01050c,
+            #020814 45%,
             #061426 100%
         );
-
 }
 
-
-/* =========================================================
-   BACKGROUND GRID
-========================================================= */
 
 body::before{
 
@@ -132,7 +114,7 @@ body::before{
 
     z-index:-10;
 
-    opacity:.045;
+    opacity:.035;
 
     background-image:
 
@@ -147,15 +129,9 @@ body::before{
             transparent 1px
         );
 
-    background-size:
-        80px 80px;
-
+    background-size:70px 70px;
 }
 
-
-/* =========================================================
-   BACKGROUND GLOW
-========================================================= */
 
 body::after{
 
@@ -163,8 +139,8 @@ body::after{
 
     position:fixed;
 
-    width:520px;
-    height:520px;
+    width:500px;
+    height:500px;
 
     left:50%;
     top:30%;
@@ -173,21 +149,33 @@ body::after{
 
     border-radius:50%;
 
-    background:
-        rgba(212,175,55,.035);
+    background:rgba(212,175,55,.025);
 
-    filter:blur(130px);
+    filter:blur(120px);
 
     pointer-events:none;
 
     z-index:-9;
+}
 
+
+body.locked{
+    overflow:hidden;
+}
+
+
+a{
+    color:inherit;
+}
+
+
+button{
+    font-family:inherit;
 }
 
 
 /* =========================================================
-   SPLASH SCREEN
-   EXACTLY 1 SECOND
+   LOADING SCREEN
 ========================================================= */
 
 #preloader{
@@ -204,158 +192,170 @@ body::after{
 
     justify-content:center;
 
-    background:
-
-        radial-gradient(
-            circle at center,
-            rgba(15,38,63,.42),
-            transparent 45%
-        ),
-
-        #020914;
+    background:#020814;
 
     transition:
         opacity .35s ease,
         visibility .35s ease;
-
 }
 
 
-#preloader.loaded{
+#preloader.hide{
 
     opacity:0;
 
     visibility:hidden;
 
     pointer-events:none;
-
 }
 
 
-.splash-content{
+.loader-content{
 
     width:90%;
 
+    max-width:380px;
+
     text-align:center;
-
-    animation:
-        splashIn .65s ease both;
-
 }
 
 
-.splash-logo{
+.loader-logo{
 
     direction:ltr;
 
     font-family:Arial,sans-serif;
 
-    font-size:
-        clamp(58px,16vw,105px);
+    font-size:72px;
 
-    font-weight:500;
+    font-weight:700;
 
-    letter-spacing:
-        clamp(12px,4vw,26px);
+    letter-spacing:18px;
 
     color:var(--gold);
 
-    text-shadow:
-        0 0 35px rgba(212,175,55,.16);
+    margin-left:18px;
 
+    animation:
+        loaderLogo .65s ease both;
 }
 
 
-.splash-line{
+.loader-line{
 
-    width:245px;
+    width:140px;
 
-    max-width:60vw;
+    height:1px;
 
-    height:2px;
+    margin:24px auto;
 
-    margin:
-        22px auto 30px;
+    position:relative;
 
-    background:
+    overflow:hidden;
 
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold),
-            var(--gold-light),
-            var(--gold),
-            transparent
-        );
-
+    background:rgba(212,175,55,.18);
 }
 
 
-.splash-subtitle{
+.loader-line::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:45%;
+
+    height:100%;
+
+    background:var(--gold2);
+
+    animation:
+        loaderLine .8s ease forwards;
+}
+
+
+.loader-text{
+
+    color:#7f8a98;
 
     direction:ltr;
 
-    font-family:Arial,sans-serif;
+    letter-spacing:8px;
 
-    color:#8f9aaa;
+    font-size:11px;
 
-    font-size:
-        clamp(11px,3vw,15px);
-
-    letter-spacing:
-        clamp(5px,2vw,9px);
-
+    animation:
+        loaderText .7s ease both;
 }
 
 
-@keyframes splashIn{
+@keyframes loaderLogo{
 
     from{
-
         opacity:0;
-
-        transform:
-            translateY(15px)
-            scale(.97);
-
+        transform:translateY(15px);
     }
 
     to{
-
         opacity:1;
+        transform:translateY(0);
+    }
+}
 
-        transform:
-            translateY(0)
-            scale(1);
 
+@keyframes loaderLine{
+
+    from{
+        left:-50%;
     }
 
+    to{
+        left:100%;
+    }
+}
+
+
+@keyframes loaderText{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
 }
 
 
 /* =========================================================
-   LINKS / BUTTONS
+   PROGRESS
 ========================================================= */
 
-a{
+#progress{
 
-    color:inherit;
+    position:fixed;
 
-    text-decoration:none;
+    top:0;
+    right:0;
 
-    -webkit-tap-highlight-color:
-        transparent;
+    height:2px;
 
-}
+    width:0;
 
+    z-index:10000;
 
-button{
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold3),
+            var(--gold2)
+        );
 
-    font-family:inherit;
-
-    -webkit-tap-highlight-color:
-        transparent;
-
+    box-shadow:
+        0 0 14px rgba(212,175,55,.6);
 }
 
 
@@ -374,7 +374,7 @@ header{
     height:78px;
 
     padding:
-        0 5.5%;
+        0 clamp(20px,6vw,80px);
 
     display:flex;
 
@@ -385,18 +385,29 @@ header{
     z-index:5000;
 
     background:
-        rgba(2,9,20,.74);
+        rgba(2,8,18,.72);
 
     border-bottom:
-        1px solid
-        rgba(212,175,55,.10);
+        1px solid rgba(212,175,55,.10);
 
     backdrop-filter:
-        blur(22px);
+        blur(20px);
 
     -webkit-backdrop-filter:
-        blur(22px);
+        blur(20px);
 
+    transition:
+        background .3s ease,
+        height .3s ease;
+}
+
+
+header.scrolled{
+
+    height:68px;
+
+    background:
+        rgba(2,8,18,.91);
 }
 
 
@@ -404,70 +415,74 @@ header{
 
     direction:ltr;
 
+    text-decoration:none;
+
     font-family:Arial,sans-serif;
 
-    font-size:23px;
+    font-size:22px;
 
     font-weight:700;
 
     letter-spacing:7px;
 
-    color:var(--gold-light);
+    color:var(--gold2);
 
+    transition:.3s ease;
+}
+
+
+.logo:hover{
+
+    letter-spacing:9px;
 }
 
 
 .menu-btn{
 
-    width:48px;
-    height:48px;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        var(--border-strong);
-
-    background:
-        rgba(255,255,255,.025);
-
-    color:var(--gold-light);
-
-    cursor:pointer;
+    width:50px;
+    height:50px;
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
+
+    border-radius:50%;
+
+    border:
+        1px solid var(--border2);
+
+    background:
+        rgba(255,255,255,.025);
+
+    color:var(--gold2);
+
+    cursor:pointer;
 
     font-size:21px;
 
     transition:
-        .3s ease;
-
+        transform .3s var(--ease),
+        background .3s ease,
+        box-shadow .3s ease;
 }
 
 
 .menu-btn:hover{
 
-    transform:scale(1.05);
+    transform:
+        scale(1.06);
 
     background:
         rgba(212,175,55,.08);
 
-    border-color:
-        var(--gold-light);
-
     box-shadow:
-        0 0 30px
-        rgba(212,175,55,.12);
-
+        0 0 35px rgba(212,175,55,.12);
 }
 
 
 /* =========================================================
-   SIDE MENU
+   MENU
 ========================================================= */
 
 .overlay{
@@ -484,15 +499,11 @@ header{
     backdrop-filter:
         blur(7px);
 
-    -webkit-backdrop-filter:
-        blur(7px);
-
     opacity:0;
 
     visibility:hidden;
 
     transition:.35s ease;
-
 }
 
 
@@ -501,7 +512,6 @@ header{
     opacity:1;
 
     visibility:visible;
-
 }
 
 
@@ -512,10 +522,9 @@ header{
     top:0;
     right:0;
 
-    width:
-        min(390px,88vw);
+    width:min(390px,88vw);
 
-    height:100dvh;
+    height:100vh;
 
     z-index:7000;
 
@@ -525,26 +534,22 @@ header{
     background:
 
         linear-gradient(
-            150deg,
-            rgba(8,27,48,.99),
+            145deg,
+            rgba(8,28,49,.99),
             rgba(2,9,20,.99)
         );
 
     border-left:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
     transform:
         translateX(105%);
 
     transition:
-        transform .45s
-        cubic-bezier(.77,0,.18,1);
+        transform .5s var(--ease);
 
     box-shadow:
-        -30px 0 90px
-        rgba(0,0,0,.48);
-
+        -30px 0 100px rgba(0,0,0,.5);
 }
 
 
@@ -552,7 +557,6 @@ header{
 
     transform:
         translateX(0);
-
 }
 
 
@@ -560,71 +564,84 @@ header{
 
     position:absolute;
 
-    top:24px;
-    left:24px;
+    top:23px;
+    left:23px;
 
-    width:44px;
-    height:44px;
+    width:45px;
+    height:45px;
 
     border-radius:50%;
 
     border:
-        1px solid
-        var(--border-strong);
+        1px solid var(--border2);
 
     background:transparent;
 
-    color:var(--gold-light);
+    color:var(--gold2);
 
     cursor:pointer;
 
     font-size:23px;
-
 }
 
 
 .menu-label{
 
-    direction:ltr;
-
     color:var(--gold);
 
-    font-family:Arial,sans-serif;
+    font-size:10px;
 
-    font-size:11px;
+    letter-spacing:5px;
 
-    letter-spacing:4px;
+    direction:ltr;
 
-    margin-bottom:28px;
-
+    margin-bottom:25px;
 }
 
 
 .side-menu a{
 
-    display:block;
+    display:flex;
 
-    padding:17px 0;
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:18px 0;
 
     border-bottom:
-        1px solid
-        rgba(255,255,255,.055);
+        1px solid rgba(255,255,255,.055);
 
-    color:var(--white);
+    text-decoration:none;
 
     font-size:17px;
 
-    transition:.3s ease;
+    transition:
+        color .3s ease,
+        padding .3s ease;
+}
 
+
+.side-menu a::before{
+
+    content:"";
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:var(--gold);
+
+    opacity:.45;
 }
 
 
 .side-menu a:hover{
 
-    color:var(--gold-light);
+    color:var(--gold2);
 
     padding-right:10px;
-
 }
 
 
@@ -634,11 +651,9 @@ header{
 
 main{
 
-    width:
-        min(1120px,92%);
+    width:min(1160px,92%);
 
     margin:auto;
-
 }
 
 
@@ -648,11 +663,10 @@ main{
 
 .hero{
 
-    min-height:
-        100svh;
+    min-height:100svh;
 
     padding:
-        120px 0 60px;
+        120px 0 65px;
 
     display:flex;
 
@@ -666,6 +680,47 @@ main{
 
     position:relative;
 
+    overflow:hidden;
+}
+
+
+.hero-glow{
+
+    position:absolute;
+
+    width:520px;
+    height:520px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.10),
+            transparent 68%
+        );
+
+    pointer-events:none;
+}
+
+
+.hero-grid{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.25;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 49.9%,
+            rgba(212,175,55,.08) 50%,
+            transparent 50.1%
+        );
 }
 
 
@@ -673,25 +728,23 @@ main{
 
     position:absolute;
 
-    width:76px;
-    height:76px;
+    width:75px;
+    height:75px;
 
     border-color:
-        rgba(212,175,55,.65);
+        rgba(212,175,55,.62);
 
     pointer-events:none;
-
 }
 
 
 .hero-corner.top{
 
-    top:112px;
+    top:105px;
     right:0;
 
     border-top:1px solid;
     border-right:1px solid;
-
 }
 
 
@@ -702,65 +755,66 @@ main{
 
     border-bottom:1px solid;
     border-left:1px solid;
-
 }
 
 
-/* =========================================================
-   HERO NAME
-========================================================= */
+.hero-kicker{
+
+    direction:ltr;
+
+    color:var(--gold);
+
+    font-size:10px;
+
+    letter-spacing:7px;
+
+    margin-bottom:13px;
+
+    opacity:.9;
+}
+
 
 .hero-name{
+
+    position:relative;
+
+    z-index:2;
 
     width:100%;
 
     max-width:900px;
 
-    padding:
-        0 15px;
-
-    margin:
-        0 auto 14px;
+    padding:0 15px;
 
     font-size:
-        clamp(34px,6vw,62px);
+        clamp(35px,6vw,65px);
 
     font-weight:800;
 
     line-height:1.45;
 
-    text-align:center;
-
     background:
-
         linear-gradient(
             135deg,
-            #b88918 0%,
-            #f7df78 24%,
+            #9e7815,
+            #f6df78 25%,
             #d4af37 50%,
-            #fff0a3 74%,
-            #b88918 100%
+            #fff0a2 75%,
+            #a77e18
         );
 
     -webkit-background-clip:text;
 
     background-clip:text;
 
-    -webkit-text-fill-color:
-        transparent;
-
-    text-shadow:
-        0 0 20px
-        rgba(212,175,55,.10);
+    -webkit-text-fill-color:transparent;
 
     animation:
-        heroText .9s .05s
-        ease both;
-
+        heroName .9s .15s both;
 }
 
 
-@keyframes heroText{
+@keyframes heroName{
 
     from{
 
@@ -768,7 +822,6 @@ main{
 
         transform:
             translateY(25px);
-
     }
 
     to{
@@ -777,9 +830,7 @@ main{
 
         transform:
             translateY(0);
-
     }
-
 }
 
 
@@ -790,43 +841,81 @@ main{
     height:2px;
 
     margin:
-        0 auto 28px;
+        15px auto 30px;
 
     background:
-
         linear-gradient(
             90deg,
             transparent,
-            #b88918,
-            #f1d56a,
-            #b88918,
+            var(--gold),
+            var(--gold2),
+            var(--gold),
             transparent
         );
 
     box-shadow:
-        0 0 16px
-        rgba(212,175,55,.28);
+        0 0 20px rgba(212,175,55,.28);
 
+    animation:
+        lineIn .9s .35s both;
+}
+
+
+@keyframes lineIn{
+
+    from{
+        opacity:0;
+        width:0;
+    }
+
+    to{
+        opacity:1;
+        width:110px;
+    }
 }
 
 
 /* =========================================================
-   PROFILE PHOTO
+   PHOTO
 ========================================================= */
 
 .photo-frame{
 
+    position:relative;
+
     width:
-        min(470px,88vw);
+        min(480px,88vw);
 
     aspect-ratio:1/1;
 
     padding:10px;
 
-    position:relative;
+    margin-bottom:22px;
 
-    margin-bottom:23px;
+    animation:
+        photoIn 1s .25s both;
+}
 
+
+@keyframes photoIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(30px)
+            scale(.97);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
 }
 
 
@@ -840,13 +929,12 @@ main{
 
     border:
         1px solid
-        rgba(212,175,55,.82);
+        rgba(212,175,55,.85);
 
-    border-radius:31px;
+    border-radius:34px;
 
     transform:
         rotate(-1deg);
-
 }
 
 
@@ -860,13 +948,12 @@ main{
 
     border:
         1px solid
-        rgba(212,175,55,.22);
+        rgba(212,175,55,.25);
 
-    border-radius:27px;
+    border-radius:30px;
 
     transform:
         rotate(1deg);
-
 }
 
 
@@ -881,37 +968,33 @@ main{
 
     display:block;
 
-    object-fit:contain;
+    object-fit:cover;
 
     object-position:center;
 
-    border-radius:24px;
-
     border:
-        5px solid
-        #07172a;
+        5px solid #07172a;
+
+    border-radius:26px;
 
     background:#07172a;
 
     box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.52);
+        0 35px 90px rgba(0,0,0,.55);
 
-    transition:.6s ease;
-
+    transition:
+        transform .6s ease,
+        box-shadow .6s ease;
 }
 
 
-.photo-frame:hover
-.profile-photo{
+.photo-frame:hover .profile-photo{
 
     transform:
         scale(1.012);
 
     box-shadow:
-        0 35px 95px
-        rgba(0,0,0,.58);
-
+        0 40px 110px rgba(0,0,0,.65);
 }
 
 
@@ -920,24 +1003,45 @@ main{
     color:var(--white);
 
     font-size:
-        clamp(20px,4vw,29px);
+        clamp(19px,4vw,29px);
 
     font-weight:500;
 
+    animation:
+        quoteIn .9s .55s both;
+}
+
+
+@keyframes quoteIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
 }
 
 
 /* =========================================================
-   SECTION
+   SECTIONS
 ========================================================= */
 
 .section{
 
     padding:
-        80px 0;
+        85px 0;
 
     position:relative;
-
 }
 
 
@@ -945,8 +1049,7 @@ main{
 
     text-align:center;
 
-    margin-bottom:35px;
-
+    margin-bottom:38px;
 }
 
 
@@ -958,26 +1061,22 @@ main{
 
     color:var(--gold);
 
-    font-family:Arial,sans-serif;
+    font-size:10px;
 
-    font-size:11px;
-
-    letter-spacing:4px;
+    letter-spacing:5px;
 
     margin-bottom:8px;
-
 }
 
 
 .section-title{
 
     font-size:
-        clamp(30px,5vw,47px);
+        clamp(31px,5vw,48px);
 
     font-weight:800;
 
     line-height:1.4;
-
 }
 
 
@@ -992,17 +1091,15 @@ main{
     height:2px;
 
     margin:
-        12px auto 0;
+        11px auto 0;
 
     background:
-
         linear-gradient(
             90deg,
             transparent,
             var(--gold),
             transparent
         );
-
 }
 
 
@@ -1017,27 +1114,28 @@ main{
     margin:auto;
 
     padding:
-        38px 42px;
+        clamp(28px,5vw,45px);
 
     text-align:center;
 
     border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
-    border-radius:30px;
+    border-radius:
+        var(--radius);
 
     background:
-
         linear-gradient(
             145deg,
-            rgba(255,255,255,.038),
+            rgba(255,255,255,.045),
             rgba(255,255,255,.012)
         );
 
     box-shadow:
         var(--shadow);
 
+    backdrop-filter:
+        blur(12px);
 }
 
 
@@ -1045,17 +1143,18 @@ main{
 
     color:var(--text);
 
-    font-size:18px;
+    font-size:
+        clamp(15px,2vw,18px);
 
-    line-height:2.1;
-
+    line-height:2.15;
 }
 
 
 .about-card strong{
 
-    color:var(--gold-light);
+    color:var(--gold2);
 
+    font-weight:700;
 }
 
 
@@ -1071,56 +1170,80 @@ main{
         repeat(3,1fr);
 
     gap:18px;
-
 }
 
 
 .value-card{
 
+    position:relative;
+
     padding:
-        32px 25px;
+        34px 25px;
 
     text-align:center;
 
     border:
-        1px solid
-        rgba(212,175,55,.15);
+        1px solid var(--border);
 
-    border-radius:25px;
+    border-radius:
+        var(--radius);
 
     background:
-        rgba(255,255,255,.022);
+        rgba(255,255,255,.025);
 
     transition:
-        transform .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease;
+        transform .4s var(--ease),
+        border-color .4s ease,
+        background .4s ease,
+        box-shadow .4s ease;
+}
 
+
+.value-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    right:20%;
+    left:20%;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(212,175,55,.5),
+            transparent
+        );
 }
 
 
 .value-card:hover{
 
     transform:
-        translateY(-8px);
+        translateY(-9px);
 
     border-color:
-        rgba(212,175,55,.42);
+        var(--border2);
+
+    background:
+        rgba(212,175,55,.035);
 
     box-shadow:
-        0 22px 55px
-        rgba(212,175,55,.07);
-
+        0 25px 60px rgba(0,0,0,.28);
 }
 
 
 .value-icon{
 
-    width:56px;
-    height:56px;
+    width:58px;
+    height:58px;
 
     margin:
-        0 auto 15px;
+        0 auto 16px;
 
     display:flex;
 
@@ -1130,13 +1253,14 @@ main{
     border-radius:50%;
 
     border:
-        1px solid
-        rgba(212,175,55,.35);
+        1px solid rgba(212,175,55,.35);
 
-    color:var(--gold-light);
+    color:var(--gold2);
 
-    font-size:22px;
+    font-size:23px;
 
+    background:
+        rgba(212,175,55,.025);
 }
 
 
@@ -1145,7 +1269,6 @@ main{
     font-size:20px;
 
     margin-bottom:8px;
-
 }
 
 
@@ -1156,7 +1279,6 @@ main{
     font-size:14px;
 
     line-height:1.9;
-
 }
 
 
@@ -1171,8 +1293,7 @@ main{
     grid-template-columns:
         repeat(12,1fr);
 
-    gap:15px;
-
+    gap:16px;
 }
 
 
@@ -1182,100 +1303,39 @@ main{
 
     overflow:hidden;
 
-    border-radius:25px;
+    border-radius:
+        var(--radius);
 
     border:
-        1px solid
-        rgba(212,175,55,.17);
+        1px solid var(--border);
 
     background:#07172a;
 
     cursor:pointer;
 
+    isolation:isolate;
 }
 
 
-.gallery-item:nth-child(1){
-
-    grid-column:
-        span 7;
-
-    aspect-ratio:
-        16/10;
-
-}
-
-
-.gallery-item:nth-child(2){
-
-    grid-column:
-        span 5;
-
-    aspect-ratio:1/1;
-
-}
-
-
-.gallery-item:nth-child(3){
-
-    grid-column:
-        span 5;
-
-    aspect-ratio:1/1;
-
-}
-
-
-.gallery-item:nth-child(4){
-
-    grid-column:
-        span 7;
-
-    aspect-ratio:
-        16/10;
-
-}
-
-
-.gallery-item:nth-child(5){
-
-    grid-column:
-        span 7;
-
-    aspect-ratio:
-        16/10;
-
-}
-
-
-.gallery-item:nth-child(6){
-
-    grid-column:
-        span 5;
-
-    aspect-ratio:1/1;
-
-}
-
-
-.gallery-item:nth-child(7){
-
-    grid-column:
-        span 5;
-
-    aspect-ratio:1/1;
-
-}
-
-
+.gallery-item:nth-child(1),
+.gallery-item:nth-child(4),
+.gallery-item:nth-child(5),
 .gallery-item:nth-child(8){
 
-    grid-column:
-        span 7;
+    grid-column:span 7;
 
-    aspect-ratio:
-        16/10;
+    aspect-ratio:16/10;
+}
 
+
+.gallery-item:nth-child(2),
+.gallery-item:nth-child(3),
+.gallery-item:nth-child(6),
+.gallery-item:nth-child(7){
+
+    grid-column:span 5;
+
+    aspect-ratio:1/1;
 }
 
 
@@ -1289,8 +1349,8 @@ main{
     object-fit:cover;
 
     transition:
-        transform .7s ease;
-
+        transform .8s var(--ease),
+        filter .8s ease;
 }
 
 
@@ -1302,16 +1362,14 @@ main{
 
     inset:0;
 
-    background:
+    z-index:1;
 
+    background:
         linear-gradient(
             to top,
             rgba(0,0,0,.82),
-            transparent 55%
+            rgba(0,0,0,.05) 60%
         );
-
-    pointer-events:none;
-
 }
 
 
@@ -1320,6 +1378,8 @@ main{
     transform:
         scale(1.07);
 
+    filter:
+        saturate(1.08);
 }
 
 
@@ -1327,12 +1387,11 @@ main{
 
     position:absolute;
 
-    right:22px;
-    left:22px;
+    right:23px;
+    left:23px;
     bottom:18px;
 
     z-index:2;
-
 }
 
 
@@ -1342,16 +1401,13 @@ main{
 
     direction:ltr;
 
-    color:var(--gold-light);
-
-    font-family:Arial,sans-serif;
+    color:var(--gold2);
 
     font-size:10px;
 
-    letter-spacing:2px;
+    letter-spacing:3px;
 
-    margin-bottom:3px;
-
+    margin-bottom:4px;
 }
 
 
@@ -1360,7 +1416,6 @@ main{
     font-size:18px;
 
     font-weight:600;
-
 }
 
 
@@ -1376,26 +1431,25 @@ main{
 
     z-index:9000;
 
-    padding:25px;
-
     display:flex;
 
     align-items:center;
 
     justify-content:center;
 
+    padding:20px;
+
     background:
         rgba(0,0,0,.90);
 
     backdrop-filter:
-        blur(12px);
+        blur(14px);
 
     opacity:0;
 
     visibility:hidden;
 
     transition:.3s ease;
-
 }
 
 
@@ -1404,28 +1458,24 @@ main{
     opacity:1;
 
     visibility:visible;
-
 }
 
 
 .lightbox img{
 
-    max-width:92vw;
+    max-width:94vw;
 
-    max-height:86vh;
+    max-height:88vh;
 
     object-fit:contain;
 
-    border-radius:15px;
+    border-radius:16px;
 
     border:
-        1px solid
-        rgba(212,175,55,.30);
+        1px solid rgba(212,175,55,.3);
 
     box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.70);
-
+        0 30px 120px rgba(0,0,0,.75);
 }
 
 
@@ -1433,27 +1483,25 @@ main{
 
     position:absolute;
 
-    top:22px;
-    left:25px;
+    top:20px;
+    left:22px;
 
-    width:45px;
-    height:45px;
+    width:46px;
+    height:46px;
 
     border-radius:50%;
 
     border:
-        1px solid
-        rgba(212,175,55,.4);
+        1px solid var(--border2);
 
     background:
-        rgba(0,0,0,.30);
+        rgba(0,0,0,.3);
 
-    color:var(--gold-light);
+    color:var(--gold2);
 
     font-size:23px;
 
     cursor:pointer;
-
 }
 
 
@@ -1463,12 +1511,11 @@ main{
 
 .timeline{
 
-    max-width:850px;
+    max-width:900px;
 
     margin:auto;
 
     position:relative;
-
 }
 
 
@@ -1486,13 +1533,11 @@ main{
     width:1px;
 
     background:
-
         linear-gradient(
             transparent,
-            var(--gold),
+            rgba(212,175,55,.75),
             transparent
         );
-
 }
 
 
@@ -1503,15 +1548,13 @@ main{
     width:50%;
 
     padding:
-        0 36px 48px;
-
+        0 38px 48px;
 }
 
 
 .timeline-item:nth-child(odd){
 
     text-align:left;
-
 }
 
 
@@ -1520,7 +1563,6 @@ main{
     margin-right:50%;
 
     text-align:right;
-
 }
 
 
@@ -1528,7 +1570,7 @@ main{
 
     position:absolute;
 
-    top:4px;
+    top:5px;
 
     width:13px;
     height:13px;
@@ -1536,12 +1578,10 @@ main{
     border-radius:50%;
 
     background:
-        var(--gold-light);
+        var(--gold2);
 
     box-shadow:
-        0 0 18px
-        rgba(212,175,55,.58);
-
+        0 0 22px rgba(212,175,55,.65);
 }
 
 
@@ -1549,7 +1589,6 @@ main{
 .timeline-dot{
 
     right:-6px;
-
 }
 
 
@@ -1557,22 +1596,20 @@ main{
 .timeline-dot{
 
     left:-6px;
-
 }
 
 
 .timeline-year{
 
-    color:var(--gold-light);
+    color:var(--gold2);
 
-    font-size:28px;
+    font-size:29px;
 
     font-weight:800;
 
     line-height:1;
 
     margin-bottom:9px;
-
 }
 
 
@@ -1583,7 +1620,6 @@ main{
     font-weight:600;
 
     margin-bottom:7px;
-
 }
 
 
@@ -1594,7 +1630,6 @@ main{
     font-size:14px;
 
     line-height:1.9;
-
 }
 
 
@@ -1604,23 +1639,35 @@ main{
 
 .contact-card{
 
-    max-width:700px;
+    max-width:720px;
 
     margin:auto;
 
-    padding:38px 30px;
+    padding:40px 25px;
 
     text-align:center;
 
     border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
-    border-radius:30px;
+    border-radius:
+        var(--radius);
 
     background:
-        rgba(255,255,255,.022);
+        rgba(255,255,255,.025);
 
+    box-shadow:
+        var(--shadow);
+}
+
+
+.contact-description{
+
+    color:var(--muted);
+
+    font-size:14px;
+
+    margin-bottom:25px;
 }
 
 
@@ -1632,15 +1679,14 @@ main{
 
     align-items:center;
 
-    gap:17px;
-
+    gap:15px;
 }
 
 
 .social{
 
-    width:60px;
-    height:60px;
+    width:61px;
+    height:61px;
 
     display:flex;
 
@@ -1650,74 +1696,64 @@ main{
     border-radius:50%;
 
     border:
-        1px solid
-        rgba(212,175,55,.42);
+        1px solid var(--border2);
 
     background:
         rgba(255,255,255,.02);
 
-    color:var(--gold-light);
+    color:var(--gold2);
 
-    transition:.3s ease;
+    text-decoration:none;
 
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
 }
 
 
 .social:hover{
 
     transform:
-        translateY(-5px)
-        scale(1.04);
+        translateY(-5px);
 
     background:
         rgba(212,175,55,.08);
 
-    border-color:
-        var(--gold-light);
-
     box-shadow:
-        0 15px 40px
-        rgba(212,175,55,.13);
-
+        0 15px 40px rgba(212,175,55,.13);
 }
 
 
 .social svg{
 
-    width:26px;
-
-    height:26px;
+    width:25px;
+    height:25px;
 
     fill:currentColor;
-
 }
 
 
-/* =========================================================
-   QR
-========================================================= */
-
 .qr-button{
 
-    margin-top:23px;
+    margin-top:24px;
 
     padding:
-        11px 24px;
+        12px 25px;
 
     border-radius:999px;
 
     border:
-        1px solid
-        rgba(212,175,55,.38);
+        1px solid var(--border2);
 
-    background:transparent;
+    background:
+        transparent;
 
-    color:var(--gold-light);
+    color:var(--gold2);
 
     cursor:pointer;
 
     transition:.3s ease;
-
 }
 
 
@@ -1728,9 +1764,12 @@ main{
 
     transform:
         translateY(-3px);
-
 }
 
+
+/* =========================================================
+   QR MODAL
+========================================================= */
 
 .qr-modal{
 
@@ -1743,23 +1782,21 @@ main{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     padding:20px;
 
     background:
-        rgba(0,0,0,.80);
+        rgba(0,0,0,.82);
 
     backdrop-filter:
-        blur(8px);
+        blur(10px);
 
     opacity:0;
 
     visibility:hidden;
 
     transition:.3s ease;
-
 }
 
 
@@ -1768,7 +1805,6 @@ main{
     opacity:1;
 
     visibility:visible;
-
 }
 
 
@@ -1782,17 +1818,16 @@ main{
     text-align:center;
 
     border:
-        1px solid
-        rgba(212,175,55,.35);
+        1px solid var(--border2);
 
-    border-radius:30px;
+    border-radius:
+        var(--radius);
 
-    background:#07172a;
+    background:
+        #07172a;
 
     box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.55);
-
+        0 30px 100px rgba(0,0,0,.65);
 }
 
 
@@ -1800,12 +1835,9 @@ main{
 
     direction:ltr;
 
-    color:var(--gold-light);
+    color:var(--gold2);
 
-    font-family:Arial,sans-serif;
-
-    letter-spacing:2px;
-
+    letter-spacing:3px;
 }
 
 
@@ -1816,35 +1848,84 @@ main{
 
     display:block;
 
-    margin:
-        18px auto;
+    margin:18px auto;
 
     padding:9px;
 
-    background:white;
+    background:#fff;
 
-    border-radius:14px;
-
+    border-radius:15px;
 }
 
 
 .qr-close{
 
     padding:
-        10px 25px;
+        10px 26px;
 
     border-radius:999px;
 
     border:
-        1px solid
-        rgba(212,175,55,.35);
+        1px solid var(--border2);
 
     background:transparent;
 
-    color:white;
+    color:#fff;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+#topBtn{
+
+    position:fixed;
+
+    left:22px;
+    bottom:22px;
+
+    width:48px;
+    height:48px;
+
+    z-index:4000;
+
+    border-radius:50%;
+
+    border:
+        1px solid var(--border2);
+
+    background:
+        rgba(2,9,20,.8);
+
+    color:var(--gold2);
 
     cursor:pointer;
 
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:
+        translateY(10px);
+
+    transition:.3s ease;
+
+    backdrop-filter:
+        blur(10px);
+}
+
+
+#topBtn.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+        translateY(0);
 }
 
 
@@ -1855,43 +1936,39 @@ main{
 footer{
 
     padding:
-        40px 20px;
+        45px 20px;
 
     text-align:center;
 
     border-top:
-        1px solid
-        rgba(212,175,55,.12);
+        1px solid rgba(212,175,55,.12);
 
     background:
-        rgba(2,8,17,.75);
-
+        rgba(2,8,17,.72);
 }
 
 
 .footer-copy{
 
-    color:#858f9b;
+    color:#7f8995;
 
     font-size:12px;
-
 }
 
 
 .footer-mbk{
 
-    margin-top:10px;
-
     direction:ltr;
 
-    font-family:Arial,sans-serif;
+    margin-top:10px;
 
     color:var(--gold);
 
-    letter-spacing:6px;
+    font-family:Arial,sans-serif;
 
     font-weight:700;
 
+    letter-spacing:7px;
 }
 
 
@@ -1904,12 +1981,11 @@ footer{
     opacity:0;
 
     transform:
-        translateY(28px);
+        translateY(25px);
 
     transition:
-        opacity .8s ease,
-        transform .8s ease;
-
+        opacity .75s ease,
+        transform .75s var(--ease);
 }
 
 
@@ -1919,7 +1995,6 @@ footer{
 
     transform:
         translateY(0);
-
 }
 
 
@@ -1934,17 +2009,28 @@ footer{
         height:70px;
 
         padding:
-            0 20px;
+            0 18px;
+    }
 
+
+    header.scrolled{
+
+        height:64px;
     }
 
 
     .logo{
 
-        font-size:21px;
+        font-size:20px;
 
         letter-spacing:6px;
+    }
 
+
+    .menu-btn{
+
+        width:48px;
+        height:48px;
     }
 
 
@@ -1952,28 +2038,45 @@ footer{
 
         width:
             min(92%,520px);
-
     }
 
 
     .hero{
 
-        padding:
-            105px 0 50px;
+        min-height:100svh;
 
+        padding:
+            105px 0 45px;
+    }
+
+
+    .hero-kicker{
+
+        font-size:9px;
+
+        letter-spacing:5px;
     }
 
 
     .hero-name{
 
-        padding:
-            0 8px;
-
         font-size:
             clamp(32px,9vw,48px);
 
         line-height:1.55;
+    }
 
+
+    .hero-corner{
+
+        width:45px;
+        height:45px;
+    }
+
+
+    .hero-corner.top{
+
+        top:90px;
     }
 
 
@@ -1981,41 +2084,41 @@ footer{
 
         width:
             min(390px,88vw);
+    }
 
-        margin-bottom:19px;
 
+    .quote{
+
+        font-size:
+            clamp(18px,5vw,24px);
     }
 
 
     .section{
 
         padding:
-            58px 0;
-
+            62px 0;
     }
 
 
     .section-header{
 
         margin-bottom:28px;
-
     }
 
 
     .about-card{
 
         padding:
-            28px 22px;
-
+            27px 21px;
     }
 
 
     .about-card p{
 
-        font-size:16px;
+        font-size:15.5px;
 
         line-height:2;
-
     }
 
 
@@ -2024,15 +2127,13 @@ footer{
         grid-template-columns:1fr;
 
         gap:14px;
-
     }
 
 
     .value-card{
 
         padding:
-            28px 22px;
-
+            28px 21px;
     }
 
 
@@ -2041,7 +2142,6 @@ footer{
         grid-template-columns:1fr;
 
         gap:13px;
-
     }
 
 
@@ -2055,19 +2155,15 @@ footer{
     .gallery-item:nth-child(7),
     .gallery-item:nth-child(8){
 
-        grid-column:
-            span 1;
+        grid-column:span 1;
 
-        aspect-ratio:
-            16/10;
-
+        aspect-ratio:16/10;
     }
 
 
     .timeline::before{
 
         right:13px;
-
     }
 
 
@@ -2080,10 +2176,9 @@ footer{
         margin:0;
 
         padding:
-            0 42px 40px 0;
+            0 42px 38px 0;
 
         text-align:right;
-
     }
 
 
@@ -2095,48 +2190,28 @@ footer{
         right:7px;
 
         left:auto;
-
     }
 
 
     .timeline-year{
 
         font-size:25px;
-
     }
 
 
     .contact-card{
 
         padding:
-            30px 20px;
-
+            30px 18px;
     }
 
 
-    .hero-corner{
+    #topBtn{
 
-        width:45px;
-        height:45px;
+        left:15px;
 
+        bottom:18px;
     }
-
-
-    .hero-corner.top{
-
-        top:88px;
-
-    }
-
-
-    .splash-logo{
-
-        font-size:62px;
-
-        letter-spacing:12px;
-
-    }
-
 
 }
 
@@ -2151,13 +2226,13 @@ footer{
 
         font-size:34px;
 
+        padding:0 6px;
     }
 
 
     .photo-frame{
 
         width:92vw;
-
     }
 
 
@@ -2165,14 +2240,12 @@ footer{
 
         width:56px;
         height:56px;
-
     }
 
 
     .gallery-info h3{
 
         font-size:16px;
-
     }
 
 }
@@ -2193,13 +2266,11 @@ footer{
         transition:none!important;
 
         scroll-behavior:auto!important;
-
     }
 
 }
 
 </style>
-
 </head>
 
 
@@ -2207,21 +2278,28 @@ footer{
 
 
 <!-- =====================================================
-     SPLASH
-     1 SECOND ONLY
+     PROGRESS
+===================================================== -->
+
+<div id="progress"></div>
+
+
+<!-- =====================================================
+     PRELOADER
+     EXACTLY ~1 SECOND
 ===================================================== -->
 
 <div id="preloader">
 
-    <div class="splash-content">
+    <div class="loader-content">
 
-        <div class="splash-logo">
+        <div class="loader-logo">
             MBK
         </div>
 
-        <div class="splash-line"></div>
+        <div class="loader-line"></div>
 
-        <div class="splash-subtitle">
+        <div class="loader-text">
             DIGITAL IDENTITY
         </div>
 
@@ -2234,10 +2312,12 @@ footer{
      HEADER
 ===================================================== -->
 
-<header>
+<header id="header">
 
-    <a href="#home"
-       class="logo">
+    <a
+        href="#home"
+        class="logo"
+    >
         MBK
     </a>
 
@@ -2245,37 +2325,39 @@ footer{
     <button
         class="menu-btn"
         id="menuBtn"
-        aria-label="فتح القائمة">
-
+        aria-label="فتح القائمة"
+    >
         ☰
-
     </button>
 
 </header>
 
 
 <!-- =====================================================
-     MENU
+     OVERLAY
 ===================================================== -->
 
 <div
     class="overlay"
-    id="overlay">
-</div>
+    id="overlay"
+></div>
 
+
+<!-- =====================================================
+     SIDE MENU
+===================================================== -->
 
 <nav
     class="side-menu"
-    id="sideMenu">
-
+    id="sideMenu"
+>
 
     <button
         class="close-menu"
         id="closeMenu"
-        aria-label="إغلاق">
-
+        aria-label="إغلاق"
+    >
         ×
-
     </button>
 
 
@@ -2285,34 +2367,39 @@ footer{
 
 
     <a href="#home">
-        الرئيسية
+        <span>الرئيسية</span>
+        <span>01</span>
     </a>
 
 
     <a href="#about">
-        نبذة
+        <span>نبذة</span>
+        <span>02</span>
     </a>
 
 
     <a href="#values">
-        بصمتي
+        <span>بصمتي</span>
+        <span>03</span>
     </a>
 
 
     <a href="#gallery">
-        مختاراتي
+        <span>مختاراتي</span>
+        <span>04</span>
     </a>
 
 
     <a href="#journey">
-        رحلتي
+        <span>رحلتي</span>
+        <span>05</span>
     </a>
 
 
     <a href="#contact">
-        تواصل
+        <span>تواصل</span>
+        <span>06</span>
     </a>
-
 
 </nav>
 
@@ -2330,16 +2417,20 @@ footer{
 
 <section
     class="hero"
-    id="home">
+    id="home"
+>
+
+    <div class="hero-glow"></div>
+
+    <div class="hero-grid"></div>
+
+    <div class="hero-corner top"></div>
+
+    <div class="hero-corner bottom"></div>
 
 
-    <div
-        class="hero-corner top">
-    </div>
-
-
-    <div
-        class="hero-corner bottom">
+    <div class="hero-kicker">
+        PERSONAL DIGITAL IDENTITY
     </div>
 
 
@@ -2353,13 +2444,11 @@ footer{
 
     <div class="photo-frame">
 
-
         <img
             class="profile-photo"
             src="file_00000000202482468d4027eb8c5919f7.png"
             alt="مبخوت بن عبدالله"
-            loading="eager">
-
+        >
 
     </div>
 
@@ -2367,7 +2456,6 @@ footer{
     <p class="quote">
         وما توفيقي إلا بالله
     </p>
-
 
 </section>
 
@@ -2378,27 +2466,23 @@ footer{
 
 <section
     class="section reveal"
-    id="about">
-
+    id="about"
+>
 
     <div class="section-header">
-
 
         <span class="section-label">
             ABOUT
         </span>
 
-
         <h2 class="section-title">
             نبذة
         </h2>
-
 
     </div>
 
 
     <div class="about-card">
-
 
         <p>
 
@@ -2426,9 +2510,7 @@ footer{
 
         </p>
 
-
     </div>
-
 
 </section>
 
@@ -2439,21 +2521,18 @@ footer{
 
 <section
     class="section reveal"
-    id="values">
-
+    id="values"
+>
 
     <div class="section-header">
-
 
         <span class="section-label">
             MY VALUES
         </span>
 
-
         <h2 class="section-title">
             بصمتي
         </h2>
-
 
     </div>
 
@@ -2463,72 +2542,59 @@ footer{
 
         <div class="value-card">
 
-
             <div class="value-icon">
                 ✦
             </div>
 
-
             <h3>
                 الإبداع
             </h3>
-
 
             <p>
                 أبحث دائمًا عن الأفكار المختلفة
                 والأسلوب الذي يحمل طابعًا خاصًا.
             </p>
 
-
         </div>
 
 
         <div class="value-card">
 
-
             <div class="value-icon">
                 ◇
             </div>
 
-
             <h3>
                 الجودة
             </h3>
-
 
             <p>
                 أهتم بالتفاصيل الصغيرة لأنها
                 تصنع الفرق في النتيجة النهائية.
             </p>
 
-
         </div>
 
 
         <div class="value-card">
 
-
             <div class="value-icon">
                 ◆
             </div>
 
-
             <h3>
                 الأصالة
             </h3>
-
 
             <p>
                 أحافظ على هويتي وأطورها
                 بأسلوب حديث ومتوازن.
             </p>
 
-
         </div>
 
 
     </div>
-
 
 </section>
 
@@ -2539,21 +2605,18 @@ footer{
 
 <section
     class="section reveal"
-    id="gallery">
-
+    id="gallery"
+>
 
     <div class="section-header">
-
 
         <span class="section-label">
             SELECTED
         </span>
 
-
         <h2 class="section-title">
             مختاراتي
         </h2>
-
 
     </div>
 
@@ -2563,20 +2626,18 @@ footer{
 
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90">
-
+            data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
+        >
 
             <img
                 src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
                 alt="جبال وطبيعة"
-                loading="lazy">
-
+                loading="lazy"
+            >
 
             <div class="gallery-info">
 
-                <small>
-                    NATURE
-                </small>
+                <small>NATURE</small>
 
                 <h3>
                     هدوء الجبال
@@ -2584,26 +2645,23 @@ footer{
 
             </div>
 
-
         </div>
 
 
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90">
-
+            data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
+        >
 
             <img
                 src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"
                 alt="طبيعة ريفية"
-                loading="lazy">
-
+                loading="lazy"
+            >
 
             <div class="gallery-info">
 
-                <small>
-                    LIFE
-                </small>
+                <small>LIFE</small>
 
                 <h3>
                     تفاصيل هادئة
@@ -2611,26 +2669,23 @@ footer{
 
             </div>
 
-
         </div>
 
 
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90">
-
+            data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
+        >
 
             <img
                 src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=85"
                 alt="مدينة حديثة"
-                loading="lazy">
-
+                loading="lazy"
+            >
 
             <div class="gallery-info">
 
-                <small>
-                    CITY
-                </small>
+                <small>CITY</small>
 
                 <h3>
                     نبض المدينة
@@ -2638,26 +2693,23 @@ footer{
 
             </div>
 
-
         </div>
 
 
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90">
-
+            data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
+        >
 
             <img
                 src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85"
                 alt="شوارع المدينة"
-                loading="lazy">
-
+                loading="lazy"
+            >
 
             <div class="gallery-info">
 
-                <small>
-                    STREETS
-                </small>
+                <small>STREETS</small>
 
                 <h3>
                     بين الشوارع
@@ -2665,26 +2717,23 @@ footer{
 
             </div>
 
-
         </div>
 
 
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90">
-
+            data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90"
+        >
 
             <img
                 src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=85"
                 alt="مدينة من الأعلى"
-                loading="lazy">
-
+                loading="lazy"
+            >
 
             <div class="gallery-info">
 
-                <small>
-                    URBAN
-                </small>
+                <small>URBAN</small>
 
                 <h3>
                     أفق جديد
@@ -2692,26 +2741,23 @@ footer{
 
             </div>
 
-
         </div>
 
 
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90">
-
+            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+        >
 
             <img
                 src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
                 alt="طريق وسط الطبيعة"
-                loading="lazy">
-
+                loading="lazy"
+            >
 
             <div class="gallery-info">
 
-                <small>
-                    JOURNEY
-                </small>
+                <small>JOURNEY</small>
 
                 <h3>
                     الطريق
@@ -2719,26 +2765,23 @@ footer{
 
             </div>
 
-
         </div>
 
 
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90">
-
+            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+        >
 
             <img
                 src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
                 alt="منظر طبيعي"
-                loading="lazy">
-
+                loading="lazy"
+            >
 
             <div class="gallery-info">
 
-                <small>
-                    CALM
-                </small>
+                <small>CALM</small>
 
                 <h3>
                     لحظة هدوء
@@ -2746,26 +2789,23 @@ footer{
 
             </div>
 
-
         </div>
 
 
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90">
-
+            data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
+        >
 
             <img
                 src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85"
                 alt="العمارة والحياة"
-                loading="lazy">
-
+                loading="lazy"
+            >
 
             <div class="gallery-info">
 
-                <small>
-                    ARCHITECTURE
-                </small>
+                <small>ARCHITECTURE</small>
 
                 <h3>
                     تفاصيل المكان
@@ -2773,12 +2813,10 @@ footer{
 
             </div>
 
-
         </div>
 
 
     </div>
-
 
 </section>
 
@@ -2789,21 +2827,18 @@ footer{
 
 <section
     class="section reveal"
-    id="journey">
-
+    id="journey"
+>
 
     <div class="section-header">
-
 
         <span class="section-label">
             MY JOURNEY
         </span>
 
-
         <h2 class="section-title">
             رحلتي
         </h2>
-
 
     </div>
 
@@ -2840,7 +2875,7 @@ footer{
             </div>
 
             <div class="timeline-title">
-                مرحلة من التجربة والتعلّم
+                التجربة والتعلّم
             </div>
 
             <div class="timeline-text">
@@ -2913,7 +2948,6 @@ footer{
 
     </div>
 
-
 </section>
 
 
@@ -2923,26 +2957,27 @@ footer{
 
 <section
     class="section reveal"
-    id="contact">
-
+    id="contact"
+>
 
     <div class="section-header">
-
 
         <span class="section-label">
             CONTACT
         </span>
 
-
         <h2 class="section-title">
             تواصل
         </h2>
-
 
     </div>
 
 
     <div class="contact-card">
+
+        <p class="contact-description">
+            للتواصل أو مشاركة فكرة، يمكنك الوصول إليّ من خلال القنوات التالية.
+        </p>
 
 
         <div class="contact-icons">
@@ -2952,16 +2987,16 @@ footer{
                 class="social"
                 href="mailto:mabkhout@mabkhut.com"
                 aria-label="البريد الإلكتروني"
-                title="البريد الإلكتروني">
-
+                title="البريد الإلكتروني"
+            >
 
                 <svg viewBox="0 0 24 24">
 
                     <path
-                        d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"/>
+                        d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
+                    />
 
                 </svg>
-
 
             </a>
 
@@ -2972,16 +3007,16 @@ footer{
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                title="Facebook">
-
+                title="Facebook"
+            >
 
                 <svg viewBox="0 0 24 24">
 
                     <path
-                        d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"/>
+                        d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
+                    />
 
                 </svg>
-
 
             </a>
 
@@ -2991,15 +3026,12 @@ footer{
 
         <button
             class="qr-button"
-            id="qrButton">
-
+            id="qrButton"
+        >
             مشاركة الموقع عبر QR
-
         </button>
 
-
     </div>
-
 
 </section>
 
@@ -3013,23 +3045,23 @@ footer{
 
 <div
     class="lightbox"
-    id="lightbox">
-
+    id="lightbox"
+>
 
     <button
         class="lightbox-close"
         id="lightboxClose"
-        aria-label="إغلاق">
-
+        aria-label="إغلاق"
+    >
         ×
-
     </button>
 
 
     <img
         id="lightboxImage"
         src=""
-        alt="">
+        alt=""
+    >
 
 </div>
 
@@ -3040,11 +3072,10 @@ footer{
 
 <div
     class="qr-modal"
-    id="qrModal">
-
+    id="qrModal"
+>
 
     <div class="qr-box">
-
 
         <h3>
             mabkhut.com
@@ -3053,22 +3084,32 @@ footer{
 
         <img
             src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com"
-            alt="QR Code">
+            alt="QR Code"
+        >
 
 
         <button
             class="qr-close"
-            id="qrClose">
-
+            id="qrClose"
+        >
             إغلاق
-
         </button>
-
 
     </div>
 
-
 </div>
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<button
+    id="topBtn"
+    aria-label="العودة للأعلى"
+>
+    ↑
+</button>
 
 
 <!-- =====================================================
@@ -3077,20 +3118,14 @@ footer{
 
 <footer>
 
-
     <div class="footer-copy">
-
         © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
-
     </div>
 
 
     <div class="footer-mbk">
-
         MBK
-
     </div>
-
 
 </footer>
 
@@ -3101,57 +3136,65 @@ footer{
 
 <script>
 
+/* =========================================================
+   PRELOADER
+   1 SECOND ONLY
+========================================================= */
 
-/* =====================================================
-   SPLASH — EXACTLY 1 SECOND
-===================================================== */
-
-(function(){
-
-    const preloader =
-        document.getElementById("preloader");
+const preloader =
+    document.getElementById("preloader");
 
 
-    /*
-       مهم:
-       لا ننتظر الصور أو الخطوط أو أي
-       شيء خارجي.
-       بعد 1000ms تختفي الشاشة.
-    */
+window.addEventListener("load", () => {
 
-    setTimeout(function(){
+    setTimeout(() => {
 
-        if(preloader){
+        preloader.classList.add("hide");
 
-            preloader.classList.add("loaded");
+    }, 1000);
 
-            document.body.style.overflow = "";
+});
 
-            document.documentElement.style.overflow = "";
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+const header =
+    document.getElementById("header");
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if(window.scrollY > 40){
+
+            header.classList.add("scrolled");
+
+        }else{
+
+            header.classList.remove("scrolled");
 
         }
 
-    },1000);
+    },
+    {passive:true}
+);
 
 
-})();
-
-
-/* =====================================================
+/* =========================================================
    MENU
-===================================================== */
+========================================================= */
 
 const menuBtn =
     document.getElementById("menuBtn");
 
-
 const closeMenu =
     document.getElementById("closeMenu");
 
-
 const sideMenu =
     document.getElementById("sideMenu");
-
 
 const overlay =
     document.getElementById("overlay");
@@ -3163,8 +3206,7 @@ function openMenu(){
 
     overlay.classList.add("active");
 
-    document.body.style.overflow =
-        "hidden";
+    document.body.classList.add("locked");
 
 }
 
@@ -3175,8 +3217,7 @@ function closeSideMenu(){
 
     overlay.classList.remove("active");
 
-    document.body.style.overflow =
-        "";
+    document.body.classList.remove("locked");
 
 }
 
@@ -3200,20 +3241,20 @@ overlay.addEventListener(
 
 
 document
-    .querySelectorAll(".side-menu a")
-    .forEach(function(link){
+.querySelectorAll(".side-menu a")
+.forEach(link => {
 
-        link.addEventListener(
-            "click",
-            closeSideMenu
-        );
+    link.addEventListener(
+        "click",
+        closeSideMenu
+    );
 
-    });
+});
 
 
-/* =====================================================
+/* =========================================================
    SCROLL REVEAL
-===================================================== */
+========================================================= */
 
 const revealElements =
     document.querySelectorAll(".reveal");
@@ -3221,29 +3262,25 @@ const revealElements =
 
 if("IntersectionObserver" in window){
 
-    const revealObserver =
+    const observer =
         new IntersectionObserver(
-            function(entries){
+            entries => {
 
-                entries.forEach(
-                    function(entry){
+                entries.forEach(entry => {
 
-                        if(
-                            entry.isIntersecting
-                        ){
+                    if(entry.isIntersecting){
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
+                        entry.target.classList.add(
+                            "visible"
+                        );
 
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-
-                        }
+                        observer.unobserve(
+                            entry.target
+                        );
 
                     }
-                );
+
+                });
 
             },
             {
@@ -3253,93 +3290,60 @@ if("IntersectionObserver" in window){
 
 
     revealElements.forEach(
-        function(element){
-
-            revealObserver.observe(
-                element
-            );
-
-        }
+        element => observer.observe(element)
     );
 
 }else{
 
     revealElements.forEach(
-        function(element){
-
-            element.classList.add(
-                "visible"
-            );
-
-        }
+        element =>
+            element.classList.add("visible")
     );
 
 }
 
 
-/* =====================================================
-   GALLERY LIGHTBOX
-===================================================== */
+/* =========================================================
+   GALLERY
+========================================================= */
 
 const galleryItems =
-    document.querySelectorAll(
-        ".gallery-item"
-    );
-
+    document.querySelectorAll(".gallery-item");
 
 const lightbox =
-    document.getElementById(
-        "lightbox"
-    );
-
+    document.getElementById("lightbox");
 
 const lightboxImage =
-    document.getElementById(
-        "lightboxImage"
-    );
-
+    document.getElementById("lightboxImage");
 
 const lightboxClose =
-    document.getElementById(
-        "lightboxClose"
+    document.getElementById("lightboxClose");
+
+
+galleryItems.forEach(item => {
+
+    item.addEventListener(
+        "click",
+        () => {
+
+            const image =
+                item.dataset.full;
+
+            lightboxImage.src =
+                image;
+
+            lightbox.classList.add(
+                "active"
+            );
+
+            document.body.classList.add(
+                "locked"
+            );
+
+        }
     );
 
-
-galleryItems.forEach(
-    function(item){
-
-        item.addEventListener(
-            "click",
-            function(){
-
-                const image =
-                    item.dataset.full;
-
-
-                if(!image){
-
-                    return;
-
-                }
-
-
-                lightboxImage.src =
-                    image;
-
-
-                lightbox.classList.add(
-                    "active"
-                );
-
-
-                document.body.style.overflow =
-                    "hidden";
-
-            }
-        );
-
-    }
-);
+});
 
 
 function closeLightbox(){
@@ -3348,11 +3352,11 @@ function closeLightbox(){
         "active"
     );
 
-    lightboxImage.src =
-        "";
+    lightboxImage.src = "";
 
-    document.body.style.overflow =
-        "";
+    document.body.classList.remove(
+        "locked"
+    );
 
 }
 
@@ -3365,7 +3369,7 @@ lightboxClose.addEventListener(
 
 lightbox.addEventListener(
     "click",
-    function(event){
+    event => {
 
         if(
             event.target === lightbox
@@ -3379,72 +3383,64 @@ lightbox.addEventListener(
 );
 
 
-/* =====================================================
-   QR MODAL
-===================================================== */
+/* =========================================================
+   QR
+========================================================= */
 
 const qrButton =
-    document.getElementById(
-        "qrButton"
-    );
-
+    document.getElementById("qrButton");
 
 const qrModal =
-    document.getElementById(
-        "qrModal"
-    );
-
+    document.getElementById("qrModal");
 
 const qrClose =
-    document.getElementById(
-        "qrClose"
-    );
+    document.getElementById("qrClose");
 
 
 qrButton.addEventListener(
     "click",
-    function(){
+    () => {
 
         qrModal.classList.add(
             "active"
         );
 
-        document.body.style.overflow =
-            "hidden";
+        document.body.classList.add(
+            "locked"
+        );
 
     }
 );
 
 
+function closeQR(){
+
+    qrModal.classList.remove(
+        "active"
+    );
+
+    document.body.classList.remove(
+        "locked"
+    );
+
+}
+
+
 qrClose.addEventListener(
     "click",
-    function(){
-
-        qrModal.classList.remove(
-            "active"
-        );
-
-        document.body.style.overflow =
-            "";
-
-    }
+    closeQR
 );
 
 
 qrModal.addEventListener(
     "click",
-    function(event){
+    event => {
 
         if(
             event.target === qrModal
         ){
 
-            qrModal.classList.remove(
-                "active"
-            );
-
-            document.body.style.overflow =
-                "";
+            closeQR();
 
         }
 
@@ -3452,28 +3448,99 @@ qrModal.addEventListener(
 );
 
 
-/* =====================================================
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+const topBtn =
+    document.getElementById("topBtn");
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if(window.scrollY > 500){
+
+            topBtn.classList.add("show");
+
+        }else{
+
+            topBtn.classList.remove("show");
+
+        }
+
+    },
+    {passive:true}
+);
+
+
+topBtn.addEventListener(
+    "click",
+    () => {
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+);
+
+
+/* =========================================================
+   PAGE PROGRESS
+========================================================= */
+
+const progress =
+    document.getElementById("progress");
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const scrollTop =
+            window.scrollY;
+
+        const height =
+            document.documentElement.scrollHeight
+            - window.innerHeight;
+
+        if(height <= 0){
+
+            progress.style.width = "0%";
+
+            return;
+
+        }
+
+        const percent =
+            (scrollTop / height) * 100;
+
+        progress.style.width =
+            percent + "%";
+
+    },
+    {passive:true}
+);
+
+
+/* =========================================================
    ESC KEY
-===================================================== */
+========================================================= */
 
 document.addEventListener(
     "keydown",
-    function(event){
+    event => {
 
-        if(
-            event.key === "Escape"
-        ){
+        if(event.key === "Escape"){
 
             closeSideMenu();
 
             closeLightbox();
 
-            qrModal.classList.remove(
-                "active"
-            );
-
-            document.body.style.overflow =
-                "";
+            closeQR();
 
         }
 
@@ -3481,78 +3548,28 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   IMAGE ERROR PROTECTION
-===================================================== */
+/* =========================================================
+   PREVENT BROKEN IMAGE LOOK
+========================================================= */
 
 document
-    .querySelectorAll("img")
-    .forEach(function(img){
+.querySelectorAll("img")
+.forEach(img => {
 
-        img.addEventListener(
-            "error",
-            function(){
+    img.addEventListener(
+        "error",
+        () => {
 
-                /*
-                   الصور الخارجية إذا فشلت
-                   لا توقف الموقع.
-                */
-
-                if(
-                    img.classList.contains(
-                        "profile-photo"
-                    )
-                ){
-
-                    img.style.opacity =
-                        "0";
-
-                }
-
-            }
-        );
-
-    });
-
-
-/* =====================================================
-   SAFETY UNLOCK
-===================================================== */
-
-/*
-   حماية إضافية:
-   إذا حدث خطأ في أي جزء آخر من
-   JavaScript، لا نسمح للـ Splash
-   بالبقاء على الشاشة.
-*/
-
-window.addEventListener(
-    "error",
-    function(){
-
-        const splash =
-            document.getElementById(
-                "preloader"
-            );
-
-        if(splash){
-
-            splash.classList.add(
-                "loaded"
-            );
-
-            splash.style.pointerEvents =
-                "none";
+            img.style.visibility =
+                "hidden";
 
         }
+    );
 
-    }
-);
+});
 
 
 </script>
 
-
 </body>
-
 </html>
