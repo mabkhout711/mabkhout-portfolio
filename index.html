@@ -1,2276 +1,1243 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#020914">
-<meta name="description" content="MBK — Mabkhout personal portfolio">
-<title>MBK — Mabkhout</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-:root{
---bg:#020914;
---bg2:#061525;
---gold:#e8c65a;
---gold2:#fff0a1;
---text:#f5f7fa;
---muted:#99a7b8;
---line:rgba(232,198,90,.2);
---wl:rgba(255,255,255,.09);
---ease:cubic-bezier(.22,1,.36,1)
-}
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0
-}
-
-html{
-scroll-behavior:smooth;
-background:var(--bg)
-}
-
-body{
-background:
-radial-gradient(circle at 50% 10%,#0b2943 0,transparent 35%),
-var(--bg);
-color:var(--text);
-font-family:Inter,Cairo,sans-serif;
-overflow-x:hidden
-}
-
-a{
-color:inherit;
-text-decoration:none
-}
-
-button{
-font:inherit;
-color:inherit
-}
-
-::selection{
-background:var(--gold);
-color:#07111b
-}
-
-#progress{
-position:fixed;
-z-index:10000;
-top:0;
-left:0;
-width:0;
-height:2px;
-background:linear-gradient(90deg,#a77816,var(--gold2),var(--gold));
-box-shadow:0 0 14px #e8c65a99
-}
-
-#loader{
-position:fixed;
-inset:0;
-z-index:99999;
-display:grid;
-place-items:center;
-background:#020914;
-transition:.7s var(--ease)
-}
-
-#loader.hide{
-opacity:0;
-visibility:hidden;
-pointer-events:none
-}
-
-.loader{
-text-align:center
-}
-
-.loader b{
-font-size:clamp(55px,13vw,105px);
-letter-spacing:.32em;
-margin-left:.32em;
-color:var(--gold2);
-font-weight:700
-}
-
-.loader i{
-display:block;
-width:180px;
-height:2px;
-margin:38px auto 0;
-background:linear-gradient(90deg,transparent,var(--gold),transparent);
-animation:pulse 1.5s infinite
-}
-
-.loader small{
-display:block;
-margin-top:18px;
-color:#718096;
-font-size:9px;
-letter-spacing:.4em;
-text-transform:uppercase
-}
-
-@keyframes pulse{
-50%{
-opacity:.25;
-transform:scaleX(.7)
-}
-}
-
-.noise{
-position:fixed;
-inset:-50%;
-z-index:9990;
-pointer-events:none;
-opacity:.025;
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
-}
-
-.particles{
-position:fixed;
-inset:0;
-pointer-events:none;
-overflow:hidden
-}
-
-.particle{
-position:absolute;
-width:2px;
-height:2px;
-border-radius:50%;
-background:var(--gold);
-opacity:.2;
-animation:float linear infinite
-}
-
-@keyframes float{
-from{
-transform:translateY(105vh)
-}
-to{
-transform:translateY(-10vh)
-}
-}
-
-header{
-position:fixed;
-z-index:900;
-top:0;
-left:0;
-right:0;
-padding:22px clamp(18px,5vw,72px);
-display:flex;
-justify-content:space-between;
-align-items:center;
-transition:.4s
-}
-
-header.scrolled{
-padding:13px clamp(18px,5vw,72px);
-background:#020914b8;
-backdrop-filter:blur(18px);
-border-bottom:1px solid var(--wl)
-}
-
-.logo{
-font-weight:800;
-letter-spacing:.2em;
-display:flex;
-gap:10px;
-align-items:center
-}
-
-.logo-dot{
-width:8px;
-height:8px;
-border-radius:50%;
-background:var(--gold);
-box-shadow:0 0 14px var(--gold)
-}
-
-nav{
-display:flex;
-gap:28px
-}
-
-nav a{
-font-size:11px;
-color:#c5ced8;
-transition:.25s
-}
-
-nav a:hover{
-color:var(--gold)
-}
-
-.menu{
-width:45px;
-height:45px;
-border:1px solid var(--wl);
-border-radius:50%;
-background:#ffffff08;
-display:grid;
-place-items:center;
-cursor:pointer
-}
-
-.menu span,
-.menu span:after{
-display:block;
-width:18px;
-height:1px;
-background:#fff;
-content:"";
-position:relative
-}
-
-.menu span:after{
-position:absolute;
-top:6px;
-width:12px;
-right:0
-}
-
-.hero{
-min-height:100svh;
-position:relative;
-display:grid;
-place-items:center;
-text-align:center;
-padding:120px 20px 80px;
-overflow:hidden
-}
-
-.grid{
-position:absolute;
-inset:0;
-opacity:.07;
-background-image:
-linear-gradient(var(--gold) 1px,transparent 1px),
-linear-gradient(90deg,var(--gold) 1px,transparent 1px);
-background-size:90px 90px;
-mask-image:radial-gradient(circle,#000,transparent 72%)
-}
-
-.glow{
-position:absolute;
-width:75vw;
-max-width:850px;
-aspect-ratio:1;
-border-radius:50%;
-background:radial-gradient(circle,#0d3555 0,transparent 68%);
-filter:blur(12px)
-}
-
-.hero-content{
-position:relative
-}
-
-.eyebrow,
-.kicker{
-color:var(--gold);
-font-size:9px;
-letter-spacing:.35em;
-text-transform:uppercase
-}
-
-.eyebrow{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:12px;
-margin-bottom:28px
-}
-
-.eyebrow:before,
-.eyebrow:after{
-content:"";
-width:34px;
-height:1px;
-background:var(--gold)
-}
-
-.hero h1{
-font-size:clamp(75px,17vw,210px);
-line-height:.8;
-letter-spacing:-.08em;
-color:var(--gold);
-background:linear-gradient(#fff7c9,var(--gold),#ae7d19);
--webkit-background-clip:text;
-background-clip:text;
-color:transparent
-}
-
-.hero h2{
-margin-top:30px;
-font-size:clamp(13px,2vw,20px);
-font-weight:400;
-letter-spacing:.32em;
-text-transform:uppercase
-}
-
-.hero p{
-max-width:620px;
-margin:23px auto;
-color:var(--muted);
-font-size:13px;
-line-height:1.9
-}
-
-.actions{
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap;
-margin-top:30px
-}
-
-.btn{
-border:1px solid var(--line);
-background:#e8c65a0b;
-border-radius:999px;
-padding:12px 19px;
-font-size:10px;
-letter-spacing:.12em;
-text-transform:uppercase;
-cursor:pointer;
-transition:.3s
-}
-
-.btn:hover{
-transform:translateY(-3px)
-}
-
-.primary{
-background:var(--gold);
-border-color:var(--gold);
-color:#07111b;
-font-weight:700
-}
-
-.scroll{
-position:absolute;
-bottom:25px;
-left:50%;
-transform:translateX(-50%);
-font-size:8px;
-color:#718096;
-letter-spacing:.25em
-}
-
-.scroll:after{
-content:"";
-display:block;
-width:1px;
-height:40px;
-margin:9px auto 0;
-background:linear-gradient(var(--gold),transparent)
-}
-
-section{
-position:relative;
-z-index:2;
-padding:115px clamp(18px,6vw,100px)
-}
-
-.container{
-max-width:1180px;
-margin:auto
-}
-
-.head{
-display:flex;
-justify-content:space-between;
-gap:30px;
-align-items:end;
-margin-bottom:48px
-}
-
-.head h2{
-font-size:clamp(38px,5vw,68px);
-line-height:.95;
-letter-spacing:-.05em;
-margin-top:12px
-}
-
-.head p{
-max-width:390px;
-color:var(--muted);
-font-size:12px;
-line-height:1.9
-}
-
-.identity{
-padding-top:55px;
-padding-bottom:65px
-}
-
-.identity-card,
-.future,
-.contact-card,
-.value{
-border:1px solid var(--line);
-background:#ffffff05;
-border-radius:26px
-}
-
-.identity-card{
-padding:32px;
-display:flex;
-justify-content:space-between;
-align-items:center
-}
-
-.identity-card strong{
-font-size:clamp(28px,4vw,48px)
-}
-
-.identity-card span{
-display:block;
-color:var(--muted);
-font-size:11px;
-margin-top:8px
-}
-
-.monogram{
-width:82px;
-height:82px;
-border:1px solid var(--line);
-border-radius:20px;
-display:grid;
-place-items:center;
-color:var(--gold);
-font-weight:800;
-letter-spacing:.15em
-}
-
-.about{
-display:grid;
-grid-template-columns:1.05fr .95fr;
-gap:70px
-}
-
-.about .lead{
-font-size:clamp(21px,2.5vw,33px);
-line-height:1.55;
-letter-spacing:-.025em
-}
-
-.about em{
-color:var(--gold);
-font-style:normal
-}
-
-.detail{
-color:var(--muted);
-font-size:13px;
-line-height:2
-}
-
-.signature{
-color:var(--gold);
-margin-top:28px;
-font-size:10px;
-letter-spacing:.2em
-}
-
-.values{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:14px
-}
-
-.value{
-padding:28px;
-min-height:250px;
-transition:.4s
-}
-
-.value:hover{
-transform:translateY(-7px);
-border-color:var(--line);
-box-shadow:0 25px 70px #0008
-}
-
-.value small{
-color:var(--gold);
-letter-spacing:.2em
-}
-
-.value h3{
-margin-top:65px;
-font-size:24px
-}
-
-.value p{
-margin-top:9px;
-color:var(--muted);
-font-size:12px;
-line-height:1.8
-}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(12,1fr);
-grid-auto-rows:180px;
-gap:12px
-}
-
-.shot{
-position:relative;
-overflow:hidden;
-border:1px solid var(--wl);
-border-radius:20px;
-cursor:pointer;
-background:#071321
-}
-
-.shot:nth-child(1),
-.shot:nth-child(7){
-grid-column:span 7;
-grid-row:span 2
-}
-
-.shot:nth-child(2),
-.shot:nth-child(6){
-grid-column:span 5;
-grid-row:span 2
-}
-
-.shot:nth-child(3),
-.shot:nth-child(4),
-.shot:nth-child(5){
-grid-column:span 4
-}
-
-.shot:nth-child(8){
-grid-column:span 6
-}
-
-.shot img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:1s;
-filter:saturate(.7)
-}
-
-.shot:hover img{
-transform:scale(1.07);
-filter:saturate(1)
-}
-
-.shot:after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(transparent 35%,#000b)
-}
-
-.shot figcaption{
-position:absolute;
-z-index:2;
-bottom:17px;
-left:19px
-}
-
-.shot b{
-font-size:12px
-}
-
-.shot small{
-display:block;
-color:#aeb7c3;
-font-size:8px;
-letter-spacing:.15em;
-margin-top:5px;
-text-transform:uppercase
-}
-
-.timeline{
-border-left:1px solid var(--line);
-margin-left:8px
-}
-
-.event{
-position:relative;
-display:grid;
-grid-template-columns:100px 1fr;
-gap:24px;
-padding:0 0 52px 34px
-}
-
-.event:before{
-content:"";
-position:absolute;
-left:-7px;
-top:3px;
-width:12px;
-height:12px;
-border:1px solid var(--gold);
-border-radius:50%;
-background:var(--bg)
-}
-
-.year{
-color:var(--gold);
-font-size:11px
-}
-
-.event h3{
-font-size:21px
-}
-
-.event p{
-color:var(--muted);
-font-size:12px;
-line-height:1.9;
-margin-top:8px
-}
-
-.future{
-text-align:center;
-padding:65px 30px;
-background:radial-gradient(circle at 50% 0,#e8c65a14,transparent 55%)
-}
-
-.future h2{
-font-size:clamp(40px,6vw,75px);
-letter-spacing:-.06em;
-margin:12px
-}
-
-.future p{
-max-width:580px;
-margin:auto;
-color:var(--muted);
-font-size:12px;
-line-height:1.9
-}
-
-.contacts{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px
-}
-
-.contact-card{
-min-height:175px;
-padding:27px;
-display:flex;
-flex-direction:column;
-justify-content:space-between
-}
-
-.contact-card small{
-color:var(--gold);
-font-size:8px;
-letter-spacing:.24em;
-text-transform:uppercase
-}
-
-.contact-card strong{
-font-size:clamp(18px,2vw,25px);
-word-break:break-word
-}
-
-.mini{
-border:1px solid var(--wl);
-background:#ffffff05;
-border-radius:999px;
-padding:8px 13px;
-font-size:9px;
-cursor:pointer;
-margin-right:5px
-}
-
-footer{
-border-top:1px solid var(--wl);
-padding:40px 20px
-}
-
-.foot{
-max-width:1180px;
-margin:auto;
-display:flex;
-justify-content:space-between
-}
-
-.foot b{
-color:var(--gold);
-letter-spacing:.2em
-}
-
-.foot small{
-color:#687688
-}
-
-#top{
-position:fixed;
-right:20px;
-bottom:20px;
-z-index:800;
-width:43px;
-height:43px;
-border-radius:50%;
-border:1px solid var(--line);
-background:#030b16e8;
-color:var(--gold);
-opacity:0;
-visibility:hidden;
-cursor:pointer;
-transition:.3s
-}
-
-#top.show{
-opacity:1;
-visibility:visible
-}
-
-.overlay{
-position:fixed;
-inset:0;
-z-index:5000;
-background:#01060de8;
-backdrop-filter:blur(20px);
-display:grid;
-place-items:center;
-opacity:0;
-visibility:hidden;
-transition:.4s
-}
-
-.overlay.open{
-opacity:1;
-visibility:visible
-}
-
-.side-nav{
-display:grid;
-gap:12px
-}
-
-.side-nav a{
-font-size:clamp(38px,8vw,75px);
-letter-spacing:-.06em;
-color:#cbd2da
-}
-
-.side-nav a:hover{
-color:var(--gold)
-}
-
-.close{
-position:absolute;
-top:24px;
-right:24px;
-width:45px;
-height:45px;
-border:1px solid var(--wl);
-border-radius:50%;
-background:transparent;
-font-size:20px;
-cursor:pointer
-}
-
-#lightbox{
-padding:25px
-}
-
-.light-img{
-max-width:92vw;
-max-height:82vh;
-border-radius:18px;
-box-shadow:0 40px 100px #000
-}
-
-.caption{
-position:absolute;
-bottom:20px;
-color:#b4bdc8;
-font-size:9px;
-letter-spacing:.16em;
-text-transform:uppercase
-}
-
-#command{
-width:min(600px,92vw);
-background:#07121f;
-border:1px solid var(--line);
-border-radius:22px;
-box-shadow:0 40px 120px #000;
-padding:0;
-display:block
-}
-
-.cmdinput{
-width:100%;
-padding:20px;
-background:transparent;
-border:0;
-border-bottom:1px solid var(--wl);
-outline:0;
-color:#fff;
-font-size:16px
-}
-
-.cmds{
-padding:9px
-}
-
-.cmds button{
-display:block;
-width:100%;
-padding:13px;
-text-align:left;
-background:transparent;
-border:0;
-border-radius:10px;
-cursor:pointer;
-font-size:11px
-}
-
-.cmds button:hover{
-background:#e8c65a12;
-color:var(--gold)
-}
-
-.hint{
-padding:11px 16px;
-border-top:1px solid var(--wl);
-color:#687688;
-font-size:8px
-}
-
-.toast{
-position:fixed;
-z-index:10001;
-left:50%;
-bottom:25px;
-transform:translate(-50%,20px);
-padding:10px 16px;
-background:#08131f;
-border:1px solid var(--line);
-border-radius:999px;
-font-size:10px;
-opacity:0;
-visibility:hidden;
-transition:.3s
-}
-
-.toast.show{
-opacity:1;
-visibility:visible;
-transform:translate(-50%,0)
-}
-
-.reveal{
-opacity:0;
-transform:translateY(30px);
-transition:.8s var(--ease)
-}
-
-.reveal.visible{
-opacity:1;
-transform:none
-}
-
-#cursor{
-position:fixed;
-z-index:10002;
-pointer-events:none;
-width:17px;
-height:17px;
-border:1px solid #e8c65a99;
-border-radius:50%;
-transform:translate(-50%,-50%)
-}
-
-@media(hover:none){
-#cursor{
-display:none
-}
-}
-
-@media(max-width:800px){
-
-nav{
-display:none
-}
-
-.head{
-display:block
-}
-
-.head p{
-margin-top:18px
-}
-
-.about{
-grid-template-columns:1fr;
-gap:35px
-}
-
-.values,
-.contacts{
-grid-template-columns:1fr
-}
-
-.gallery{
-grid-template-columns:1fr 1fr;
-grid-auto-rows:140px
-}
-
-.shot:nth-child(n){
-grid-column:span 1;
-grid-row:span 1
-}
-
-.shot:nth-child(1),
-.shot:nth-child(4),
-.shot:nth-child(7){
-grid-column:span 2
-}
-
-.identity-card{
-gap:22px
-}
-
-.event{
-grid-template-columns:70px 1fr
-}
-
-.foot{
-display:block
-}
-
-.foot small{
-display:block;
-margin-top:10px
-}
-}
-
-@media(prefers-reduced-motion:reduce){
-
-*,
-*:before,
-*:after{
-animation:none!important;
-transition:none!important;
-scroll-behavior:auto!important
-}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>مبخوت بن عبدالله | Mabkhout Saqra</title>
+  <meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #0b0b0b;
+      --card: rgba(255,255,255,.045);
+      --card-hover: rgba(255,255,255,.075);
+      --gold: #d4af37;
+      --gold-light: #f1d777;
+      --gold-dark: #8e7220;
+      --text: #f7f4ea;
+      --muted: #aaa59a;
+      --border: rgba(212,175,55,.20);
+      --radius: 24px;
+      --transition: .35s cubic-bezier(.2,.8,.2,1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(212,175,55,.12), transparent 35%),
+        radial-gradient(circle at 100% 50%, rgba(212,175,55,.045), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Cairo", sans-serif;
+      overflow-x: hidden;
+      transition: direction .3s ease;
+    }
+
+    html[dir="ltr"] body {
+      font-family: "Inter", sans-serif;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: #000;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* =========================
+       BACKGROUND
+    ========================= */
+
+    .background {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -2;
+    }
+
+    .orb {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: .08;
+      background: var(--gold);
+    }
+
+    .orb.one {
+      top: -220px;
+      right: -150px;
+    }
+
+    .orb.two {
+      bottom: -250px;
+      left: -180px;
+    }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      opacity: .025;
+      background-image:
+        linear-gradient(rgba(212,175,55,.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,.5) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+
+    .particles span {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      box-shadow: 0 0 12px var(--gold);
+      animation: floatParticle linear infinite;
+      opacity: .6;
+    }
+
+    @keyframes floatParticle {
+      from {
+        transform: translateY(110vh);
+      }
+      to {
+        transform: translateY(-20vh);
+      }
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 18px 5%;
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      padding: 10px 5%;
+    }
+
+    .nav {
+      max-width: 1250px;
+      margin: auto;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(5,5,5,.60);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-radius: 18px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.25);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: var(--gold-light);
+      background: linear-gradient(145deg, rgba(212,175,55,.15), rgba(255,255,255,.025));
+      box-shadow: inset 0 0 20px rgba(212,175,55,.05);
+    }
+
+    .logo-text {
+      font-size: 15px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -7px;
+      right: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: var(--transition);
+    }
+
+    html[dir="ltr"] .nav-links a::after {
+      right: auto;
+      left: 0;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lang-btn,
+    .menu-btn {
+      border: 1px solid rgba(212,175,55,.20);
+      background: rgba(212,175,55,.06);
+      color: var(--gold-light);
+      border-radius: 12px;
+      min-height: 40px;
+      padding: 0 13px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .lang-btn:hover,
+    .menu-btn:hover {
+      background: rgba(212,175,55,.14);
+      border-color: rgba(212,175,55,.45);
+      transform: translateY(-2px);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 40px;
+      padding: 0;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      max-width: 1250px;
+      margin: auto;
+      padding: 140px 5% 90px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 80px;
+    }
+
+    html[dir="rtl"] .hero {
+      grid-template-columns: .95fr 1.05fr;
+    }
+
+    .hero-content {
+      animation: heroIn .9s ease both;
+    }
+
+    @keyframes heroIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--gold-light);
+      font-size: 13px;
+      margin-bottom: 20px;
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      background: rgba(212,175,55,.05);
+      border-radius: 999px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 14px var(--gold);
+    }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 88px);
+      line-height: 1.08;
+      letter-spacing: -3px;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    h1 .gold {
+      color: var(--gold);
+      text-shadow: 0 0 45px rgba(212,175,55,.16);
+    }
+
+    .hero-description {
+      max-width: 650px;
+      color: var(--muted);
+      line-height: 2;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      color: #050505;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      box-shadow: 0 10px 35px rgba(212,175,55,.15);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 45px rgba(212,175,55,.25);
+    }
+
+    .btn-secondary {
+      color: var(--gold-light);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      background: rgba(212,175,55,.08);
+    }
+
+    /* =========================
+       PROFILE IMAGE
+    ========================= */
+
+    .hero-visual {
+      position: relative;
+      min-height: 550px;
+      display: grid;
+      place-items: center;
+      animation: visualIn 1.1s .15s ease both;
+    }
+
+    @keyframes visualIn {
+      from {
+        opacity: 0;
+        transform: scale(.94);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .image-glow {
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      background: var(--gold);
+      filter: blur(100px);
+      opacity: .12;
+      border-radius: 50%;
+    }
+
+    .image-frame {
+      position: relative;
+      width: min(430px, 80vw);
+      aspect-ratio: 1 / 1.18;
+      border-radius: 32px;
+      padding: 8px;
+      background:
+        linear-gradient(135deg, rgba(212,175,55,.75), transparent 28%, transparent 72%, rgba(212,175,55,.45)),
+        rgba(255,255,255,.04);
+      box-shadow:
+        0 30px 90px rgba(0,0,0,.65),
+        0 0 80px rgba(212,175,55,.08);
+      transform: rotate(2deg);
+      transition: var(--transition);
+    }
+
+    html[dir="ltr"] .image-frame {
+      transform: rotate(-2deg);
+    }
+
+    .image-frame:hover {
+      transform: rotate(0) translateY(-8px);
+    }
+
+    .image-inner {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 26px;
+      background:
+        linear-gradient(145deg, #17140b, #050505);
+      position: relative;
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,.58),
+        transparent 45%,
+        rgba(212,175,55,.06)
+      );
+      pointer-events: none;
+    }
+
+    .image-corner {
+      position: absolute;
+      width: 55px;
+      height: 55px;
+      border-color: var(--gold);
+      border-style: solid;
+      opacity: .75;
+    }
+
+    .image-corner.tl {
+      top: -13px;
+      right: -13px;
+      border-width: 1px 1px 0 0;
+      border-radius: 0 15px 0 0;
+    }
+
+    .image-corner.br {
+      bottom: -13px;
+      left: -13px;
+      border-width: 0 0 1px 1px;
+      border-radius: 0 0 0 15px;
+    }
+
+    .floating-badge {
+      position: absolute;
+      bottom: 35px;
+      right: -30px;
+      padding: 13px 17px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(10,10,10,.72);
+      backdrop-filter: blur(20px);
+      color: var(--gold-light);
+      font-size: 12px;
+      box-shadow: 0 15px 40px rgba(0,0,0,.4);
+    }
+
+    html[dir="ltr"] .floating-badge {
+      right: auto;
+      left: -30px;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      max-width: 1250px;
+      margin: auto;
+      padding: 100px 5%;
+    }
+
+    .section-heading {
+      margin-bottom: 45px;
+    }
+
+    .section-kicker {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 650px;
+      line-height: 1.9;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .glass-card {
+      border: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.055),
+        rgba(255,255,255,.018)
+      );
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius);
+      padding: 30px;
+      transition: var(--transition);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(212,175,55,.25);
+      background: var(--card-hover);
+    }
+
+    .glass-card h3 {
+      color: var(--gold-light);
+      margin-bottom: 13px;
+      font-size: 19px;
+    }
+
+    .glass-card p {
+      color: var(--muted);
+      line-height: 2;
+      font-size: 14px;
+    }
+
+    /* =========================
+       VALUES
+    ========================= */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .value-card {
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .value-number {
+      font-size: 58px;
+      font-weight: 800;
+      color: rgba(212,175,55,.09);
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    .value-card h3 {
+      color: var(--text);
+    }
+
+    .value-card p {
+      margin-top: 10px;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-box {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 70px 30px;
+      border-radius: 30px;
+      border: 1px solid rgba(212,175,55,.18);
+      background:
+        radial-gradient(circle at center, rgba(212,175,55,.09), transparent 60%),
+        rgba(255,255,255,.025);
+    }
+
+    .contact-box h2 {
+      font-size: clamp(30px, 5vw, 55px);
+      margin-bottom: 15px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 35px 5%;
+      text-align: center;
+      color: #77736b;
+      font-size: 12px;
+    }
+
+    footer strong {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* =========================
+       REVEAL
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: .8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 5%;
+        right: 5%;
+        padding: 20px;
+        flex-direction: column;
+        align-items: stretch;
+        background: rgba(7,7,7,.94);
+        backdrop-filter: blur(25px);
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 18px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: var(--transition);
+      }
+
+      .nav-links.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .nav-links a {
+        padding: 10px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 50px;
+      }
+
+      .hero-content {
+        order: 1;
+      }
+
+      .hero-visual {
+        order: 2;
+        min-height: 450px;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .eyebrow {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .about-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-badge {
+        right: 0;
+      }
+
+      html[dir="ltr"] .floating-badge {
+        left: 0;
+      }
+    }
+
+    @media (max-width: 520px) {
+      header {
+        padding: 12px 4%;
+      }
+
+      .nav {
+        padding: 8px 10px;
+      }
+
+      .logo-text {
+        display: none;
+      }
+
+      .hero {
+        padding: 120px 5% 60px;
+      }
+
+      h1 {
+        font-size: 46px;
+        letter-spacing: -2px;
+      }
+
+      section {
+        padding: 70px 5%;
+      }
+
+      .hero-visual {
+        min-height: 400px;
+      }
+
+      .image-frame {
+        width: min(330px, 78vw);
+      }
+
+      .floating-badge {
+        bottom: 20px;
+      }
+
+      .glass-card {
+        padding: 24px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div id="loader">
-<div class="loader">
-<b>MBK</b>
-<i></i>
-<small>Mabkhout · Digital Identity</small>
-</div>
-</div>
+  <!-- BACKGROUND -->
+  <div class="background">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="grid"></div>
+
+    <div class="particles">
+      <span style="left:8%; animation-duration:14s; animation-delay:0s"></span>
+      <span style="left:17%; animation-duration:18s; animation-delay:2s"></span>
+      <span style="left:29%; animation-duration:12s; animation-delay:4s"></span>
+      <span style="left:42%; animation-duration:20s; animation-delay:1s"></span>
+      <span style="left:56%; animation-duration:15s; animation-delay:5s"></span>
+      <span style="left:68%; animation-duration:19s; animation-delay:3s"></span>
+      <span style="left:79%; animation-duration:13s; animation-delay:6s"></span>
+      <span style="left:91%; animation-duration:17s; animation-delay:1s"></span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="header">
+    <nav class="nav">
+
+      <a href="#home" class="logo">
+        <span class="logo-mark">MB</span>
+        <span class="logo-text">مبخوت</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+        <a href="#about" data-ar="نبذة عني" data-en="About">نبذة عني</a>
+        <a href="#values" data-ar="رؤيتي" data-en="Vision">رؤيتي</a>
+        <a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
+      </div>
+
+      <div class="actions">
+        <button class="lang-btn" id="langBtn" aria-label="Change language">
+          English
+        </button>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Menu">
+          ☰
+        </button>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main id="home">
+
+    <div class="hero">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          <span data-ar="مرحباً بك في موقعي الشخصي" data-en="Welcome to my personal website">
+            مرحباً بك في موقعي الشخصي
+          </span>
+        </div>
+
+        <h1>
+          <span data-ar="أنا" data-en="I am">أنا</span>
+          <br>
+          <span class="gold" data-ar="مبخوت بن عبدالله" data-en="Mabkhout Saqra">
+            مبخوت بن عبدالله
+          </span>
+        </h1>
+
+        <p
+          class="hero-description"
+          data-ar="مساحتي الرقمية التي أشارك فيها أفكاري، رؤيتي، وأعمالي. أسعى دائماً إلى التعلم والتطور وصناعة شيء يستحق أن يُروى."
+          data-en="My digital space where I share my thoughts, vision, and work. I am always focused on learning, growing, and creating something worth telling."
+        >
+          مساحتي الرقمية التي أشارك فيها أفكاري، رؤيتي، وأعمالي. أسعى دائماً إلى التعلم والتطور وصناعة شيء يستحق أن يُروى.
+        </p>
+
+        <div class="hero-buttons">
+          <a
+            href="#about"
+            class="btn btn-primary"
+            data-ar="اكتشف المزيد"
+            data-en="Discover More"
+          >
+            اكتشف المزيد
+          </a>
+
+          <a
+            href="#contact"
+            class="btn btn-secondary"
+            data-ar="تواصل معي"
+            data-en="Contact Me"
+          >
+            تواصل معي
+          </a>
+        </div>
+
+      </div>
+
+      <!-- IMAGE -->
+      <div class="hero-visual">
+
+        <div class="image-glow"></div>
+
+        <div class="image-frame">
+
+          <div class="image-inner">
 
-<div class="noise"></div>
-<div class="particles" id="particles"></div>
-<div id="progress"></div>
-
-<header id="header">
-
-<a class="logo" href="#home">
-<i class="logo-dot"></i>MBK
-</a>
-
-<nav>
-<a href="#about">About</a>
-<a href="#values">Values</a>
-<a href="#gallery">Gallery</a>
-<a href="#journey">Journey</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<button class="menu" id="menu" aria-label="Menu">
-<span></span>
-</button>
-
-</header>
-
-<main>
-
-<section class="hero" id="home">
-
-<div class="grid"></div>
-<div class="glow"></div>
-
-<div class="hero-content reveal">
-
-<div class="eyebrow">
-Personal Digital Identity
-</div>
-
-<h1>MBK</h1>
-
-<h2>Mabkhout</h2>
-
-<p>
-A quiet identity built around character, vision, precision and the belief that what matters should be made to last.
-</p>
-
-<div class="actions">
-
-<a class="btn primary" href="#about">
-Explore Identity
-</a>
-
-<a class="btn" href="#contact">
-Contact
-</a>
-
-</div>
-
-</div>
-
-<div class="scroll">
-SCROLL
-</div>
-
-</section>
-
-<section class="identity">
-
-<div class="container">
-
-<div class="identity-card reveal">
-
-<div>
-
-<strong>Mabkhout</strong>
-
-<span>
-MBK · Personal digital identity / portfolio
-</span>
-
-</div>
-
-<div class="monogram">
-MBK
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="about">
-
-<div class="container">
-
-<div class="head reveal">
-
-<div>
-
-<div class="kicker">
-01 · Philosophy
-</div>
-
-<h2>
-Built with<br>
-intention.
-</h2>
-
-</div>
-
-<p>
-Not everything needs to be loud. The strongest identity is often the one that remains clear when everything else disappears.
-</p>
-
-</div>
-
-<div class="about">
-
-<div class="lead reveal">
-
-“إن أصبت فمن الله، وإن أخطأت فمن نفسي والشيطان.”
-
-<br><br>
-
-I am not perfect.
-<em>I am trying to become better.</em>
-
-</div>
-
-<div class="detail reveal">
-
-This space is a personal digital signature: a place for ideas, projects, visual work and the story behind the person.
-
-<br><br>
-
-Minimal by design. Precise by choice. Gold is the accent; deep navy is the atmosphere.
-
-<div class="signature">
-Mabkhout · MBK
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="values">
-
-<div class="container">
-
-<div class="head reveal">
-
-<div>
-
-<div class="kicker">
-02 · Values
-</div>
-
-<h2>
-What stays.
-</h2>
-
-</div>
-
-<p>
-Three principles that shape the identity and the way every project is approached.
-</p>
-
-</div>
-
-<div class="values">
-
-<article class="value reveal">
-
-<small>01</small>
-
-<h3>
-Integrity
-</h3>
-
-<p>
-Stay honest with the work, the process and the person behind it.
-</p>
-
-</article>
-
-<article class="value reveal">
-
-<small>02</small>
-
-<h3>
-Precision
-</h3>
-
-<p>
-Details are not decoration. They are part of the result.
-</p>
-
-</article>
-
-<article class="value reveal">
-
-<small>03</small>
-
-<h3>
-Growth
-</h3>
-
-<p>
-Keep learning, refining and moving forward without losing the foundation.
-</p>
-
-</article>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="gallery">
-
-<div class="container">
-
-<div class="head reveal">
-
-<div>
-
-<div class="kicker">
-03 · Visual Archive
-</div>
-
-<h2>
-Selected<br>
-frames.
-</h2>
-
-</div>
-
-<p>
-A cinematic visual collection. Tap any frame to open the full lightbox.
-</p>
-
-</div>
-
-<div class="gallery">
-
-<figure class="shot reveal" data-title="Mountain Light">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=88"
-alt="Mountain">
-
-<figcaption>
-<b>Mountain Light</b>
-<small>Perspective</small>
-</figcaption>
-
-</figure>
-
-<figure class="shot reveal" data-title="Night Architecture">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1400&q=88"
-alt="Architecture">
-
-<figcaption>
-<b>Night Architecture</b>
-<small>Structure</small>
-</figcaption>
-
-</figure>
-
-<figure class="shot reveal" data-title="Quiet Road">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=88"
-alt="Road">
-
-<figcaption>
-<b>Quiet Road</b>
-<small>Motion</small>
-</figcaption>
-
-</figure>
-
-<figure class="shot reveal" data-title="Deep Blue">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=88"
-alt="Mountains">
-
-<figcaption>
-<b>Deep Blue</b>
-<small>Atmosphere</small>
-</figcaption>
-
-</figure>
-
-<figure class="shot reveal" data-title="Golden Hour">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=88"
-alt="Landscape">
-
-<figcaption>
-<b>Golden Hour</b>
-<small>Light</small>
-</figcaption>
-
-</figure>
-
-<figure class="shot reveal" data-title="Forest">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1400&q=88"
-alt="Forest">
-
-<figcaption>
-<b>Forest</b>
-<small>Silence</small>
-</figcaption>
-
-</figure>
-
-<figure class="shot reveal" data-title="The Horizon">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=88"
-alt="Lake">
-
-<figcaption>
-<b>The Horizon</b>
-<small>Direction</small>
-</figcaption>
-
-</figure>
-
-<figure class="shot reveal" data-title="Minimal Form">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=88"
-alt="Interior">
-
-<figcaption>
-<b>Minimal Form</b>
-<small>Balance</small>
-</figcaption>
-
-</figure>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="journey">
-
-<div class="container">
-
-<div class="head reveal">
-
-<div>
-
-<div class="kicker">
-04 · Journey
-</div>
-
-<h2>
-The road<br>
-continues.
-</h2>
-
-</div>
-
-<p>
-A simple timeline of chapters, milestones and the direction ahead.
-</p>
-
-</div>
-
-<div class="timeline">
-
-<article class="event reveal">
-
-<div class="year">
-2015
-</div>
-
-<div>
-
-<h3>
-The Beginning
-</h3>
-
-<p>
-The first chapter: curiosity, learning and discovering what could be built.
-</p>
-
-</div>
-
-</article>
-
-<article class="event reveal">
-
-<div class="year">
-2018
-</div>
-
-<div>
-
-<h3>
-Exploration
-</h3>
-
-<p>
-More ideas, more experiments and a growing interest in digital creation.
-</p>
-
-</div>
-
-</article>
-
-<article class="event reveal">
-
-<div class="year">
-2021
-</div>
-
-<div>
-
-<h3>
-Digital Identity
-</h3>
-
-<p>
-The personal identity became more intentional: a name, a visual language and a direction.
-</p>
-
-</div>
-
-</article>
-
-<article class="event reveal">
-
-<div class="year">
-2024
-</div>
-
-<div>
-
-<h3>
-Refinement
-</h3>
-
-<p>
-Projects became more focused, visual standards became higher and details started to matter more.
-</p>
-
-</div>
-
-</article>
-
-<article class="event reveal">
-
-<div class="year">
-2026
-</div>
-
-<div>
-
-<h3>
-MBK
-</h3>
-
-<p>
-A new chapter: turning the identity into a complete digital presence with a long-term vision.
-</p>
-
-</div>
-
-</article>
-
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<div class="container">
-
-<div class="future reveal">
-
-<div class="kicker">
-05 · Next
-</div>
-
-<h2>
-Still becoming.
-</h2>
-
-<p>
-The final version is never the destination. Build. Learn. Refine. Repeat.
-</p>
-
-<div class="actions">
-
-<a class="btn primary" href="#contact">
-Start a Conversation
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="contact">
-
-<div class="container">
-
-<div class="head reveal">
-
-<div>
-
-<div class="kicker">
-06 · Contact
-</div>
-
-<h2>
-Open<br>
-channel.
-</h2>
-
-</div>
-
-<p>
-For a conversation, collaboration or simply a message — use the channels below.
-</p>
-
-</div>
-
-<div class="contacts">
-
-<article class="contact-card reveal">
-
-<small>
-Email
-</small>
-
-<strong id="email">
-Mabkhut505g@gmail.com
-</strong>
-
-<div>
-
-<button class="mini" id="copyEmail">
-Copy
-</button>
-
-<a class="mini" href="mailto:Mabkhut505g@gmail.com">
-Open Mail
-</a>
-
-</div>
-
-</article>
-
-<article class="contact-card reveal">
-
-<small>
-Social
-</small>
-
-<strong>
-Facebook
-</strong>
-
-<div>
-
-<a
-class="mini"
-href="https://www.facebook.com/"
-target="_blank"
-rel="noopener">
-Open Facebook
-</a>
-
-<button class="mini" id="share">
-Share
-</button>
-
-</div>
-
-</article>
-
-<article class="contact-card reveal">
-
-<small>
-Website
-</small>
-
-<strong>
-mabkhut.com
-</strong>
-
-<div>
-
-<button class="mini" id="copySite">
-Copy Domain
-</button>
-
-</div>
-
-</article>
-
-<article class="contact-card reveal">
-
-<small>
-Quick Access
-</small>
-
-<strong>
-MBK Command Center
-</strong>
-
-<div>
-
-<button class="mini" id="cmdOpen">
-Open Command
-</button>
-
-</div>
-
-</article>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-<footer>
-
-<div class="foot">
-
-<b>
-MBK
-</b>
-
-<small>
-© <span id="year"></span> Mabkhout. All rights reserved.
-</small>
-
-</div>
-
-</footer>
-
-<button id="top" aria-label="Top">
-↑
-</button>
-
-<div class="overlay" id="side">
-
-<button class="close" id="sideClose">
-×
-</button>
-
-<div class="side-nav">
-
-<a href="#home">
-Home
-</a>
-
-<a href="#about">
-About
-</a>
-
-<a href="#values">
-Values
-</a>
-
-<a href="#gallery">
-Gallery
-</a>
-
-<a href="#journey">
-Journey
-</a>
-
-<a href="#contact">
-Contact
-</a>
-
-</div>
-
-</div>
-
-<div class="overlay" id="lightbox">
-
-<button class="close" id="lbClose">
-×
-</button>
-
-<img class="light-img" id="lbImg" alt="">
-
-<div class="caption" id="caption"></div>
-
-</div>
-
-<div class="overlay" id="cmdOverlay">
-
-<div id="command">
-
-<input
-class="cmdinput"
-id="cmdInput"
-placeholder="Type a command…">
-
-<div class="cmds">
-
-<button data-go="home">
-Go to Home
-</button>
-
-<button data-go="about">
-Open About
-</button>
-
-<button data-go="gallery">
-Open Gallery
-</button>
-
-<button data-go="journey">
-Open Journey
-</button>
-
-<button data-go="contact">
-Open Contact
-</button>
-
-<button data-go="email">
-Copy Email
-</button>
-
-</div>
-
-<div class="hint">
-ESC to close · Press / anywhere to open
-</div>
-
-</div>
-
-</div>
-
-<div class="toast" id="toast"></div>
-<div id="cursor"></div>
-
-<script>
-(()=>{
-"use strict";
-
-const $=s=>document.querySelector(s);
-const $$=s=>[...document.querySelectorAll(s)];
-
-/*
-FIX V20:
-The loader no longer depends on images,
-fonts or any external resource.
-
-It ALWAYS releases after a short timeout.
-*/
-
-const loader=$("#loader");
-let closed=false;
-
-function closeLoader(){
-
-if(closed)return;
-
-closed=true;
-
-loader.classList.add("hide");
-
-setTimeout(()=>{
-loader.remove();
-},900);
-
-}
-
-setTimeout(closeLoader,1100);
-
-window.addEventListener(
-"load",
-()=>{
-setTimeout(closeLoader,150);
-},
-{once:true}
-);
-
-window.addEventListener(
-"pageshow",
-()=>{
-setTimeout(closeLoader,80);
-},
-{once:true}
-);
-
-/* PARTICLES */
-
-for(let i=0;i<34;i++){
-
-let p=document.createElement("i");
-
-p.className="particle";
-
-p.style.left=
-Math.random()*100+"%";
-
-p.style.animationDuration=
-12+Math.random()*18+"s";
-
-p.style.animationDelay=
--Math.random()*25+"s";
-
-$("#particles").appendChild(p);
-
-}
-
-/* YEAR */
-
-$("#year").textContent=
-new Date().getFullYear();
-
-/* SCROLL */
-
-const header=$("#header");
-const top=$("#top");
-const progress=$("#progress");
-
-function scroll(){
-
-header.classList.toggle(
-"scrolled",
-scrollY>35
-);
-
-let m=
-document.documentElement.scrollHeight-
-innerHeight;
-
-progress.style.width=
-(m?scrollY/m*100:0)+"%";
-
-top.classList.toggle(
-"show",
-scrollY>600
-);
-
-}
-
-addEventListener(
-"scroll",
-scroll,
-{passive:true}
-);
-
-scroll();
-
-top.onclick=()=>scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-/* REVEAL */
-
-const observer=
-new IntersectionObserver(
-es=>{
-es.forEach(e=>{
-
-if(e.isIntersecting){
-
-e.target.classList.add("visible");
-
-observer.unobserve(e.target);
-
-}
-
-});
-},
-{
-threshold:.1
-}
-);
-
-$$(".reveal").forEach(
-x=>observer.observe(x)
-);
-
-/* SIDE MENU */
-
-const side=$("#side");
-
-$("#menu").onclick=()=>{
-side.classList.add("open");
-};
-
-$("#sideClose").onclick=()=>{
-side.classList.remove("open");
-};
-
-$$(".side-nav a").forEach(
-a=>{
-a.onclick=()=>{
-side.classList.remove("open");
-};
-}
-);
-
-/* LIGHTBOX */
-
-const lb=$("#lightbox");
-const li=$("#lbImg");
-const cap=$("#caption");
-
-$$(".shot").forEach(
-s=>{
-
-s.onclick=()=>{
-
-let i=s.querySelector("img");
-
-li.src=
-i.currentSrc||
-i.src;
-
-li.alt=i.alt;
-
-cap.textContent=
-s.dataset.title;
-
-lb.classList.add("open");
-
-};
-
-}
-);
-
-$("#lbClose").onclick=()=>{
-lb.classList.remove("open");
-};
-
-lb.onclick=e=>{
-
-if(e.target===lb){
-lb.classList.remove("open");
-}
-
-};
-
-/* TOAST */
-
-const toast=$("#toast");
-let tt;
-
-function show(t){
-
-clearTimeout(tt);
-
-toast.textContent=t;
-
-toast.classList.add("show");
-
-tt=setTimeout(
-()=>{
-toast.classList.remove("show");
-},
-2100
-);
-
-}
-
-/* COPY */
-
-async function copy(t,n){
-
-try{
-
-await navigator.clipboard.writeText(t);
-
-}catch{
-
-let a=
-document.createElement("textarea");
-
-a.value=t;
-
-document.body.append(a);
-
-a.select();
-
-document.execCommand("copy");
-
-a.remove();
-
-}
-
-show(n+" copied");
-
-}
-
-$("#copyEmail").onclick=()=>{
-copy(
-"Mabkhut505g@gmail.com",
-"Email"
-);
-};
-
-$("#copySite").onclick=()=>{
-copy(
-"https://mabkhut.com",
-"Domain"
-);
-};
-
-/* SHARE */
-
-$("#share").onclick=async()=>{
-
-if(navigator.share){
-
-try{
-
-await navigator.share({
-title:"MBK — Mabkhout",
-text:"MBK — Mabkhout",
-url:"https://mabkhut.com"
-});
-
-}catch{}
-
-}else{
-
-copy(
-"https://mabkhut.com",
-"Website"
-);
-
-}
-
-};
-
-/* COMMAND CENTER */
-
-const co=$("#cmdOverlay");
-const input=$("#cmdInput");
-
-function openCmd(){
-
-co.classList.add("open");
-
-setTimeout(
-()=>{
-input.focus();
-},
-50
-);
-
-}
-
-function closeCmd(){
-
-co.classList.remove("open");
-
-}
-
-$("#cmdOpen").onclick=
-openCmd;
-
-$$("[data-go]").forEach(
-b=>{
-
-b.onclick=()=>{
-
-let a=b.dataset.go;
-
-if(a==="email"){
-
-copy(
-"Mabkhut505g@gmail.com",
-"Email"
-);
-
-}else{
-
-$("#"+a)?.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-closeCmd();
-
-};
-
-}
-);
-
-input.onkeydown=e=>{
-
-if(e.key==="Escape"){
-
-closeCmd();
-
-}
-
-if(e.key==="Enter"){
-
-let q=
-input.value.toLowerCase();
-
-let m=[
-"home",
-"about",
-"values",
-"gallery",
-"journey",
-"contact"
-];
-
-let k=
-m.find(x=>q.includes(x));
-
-if(k){
-
-$("#"+k).scrollIntoView({
-behavior:"smooth"
-});
-
-closeCmd();
-
-}else if(q.includes("email")){
-
-copy(
-"Mabkhut505g@gmail.com",
-"Email"
-);
-
-closeCmd();
-
-}
-
-}
-
-};
-
-/* KEYBOARD */
-
-addEventListener(
-"keydown",
-e=>{
-
-if(e.key==="Escape"){
-
-side.classList.remove("open");
-
-lb.classList.remove("open");
-
-closeCmd();
-
-}
-
-if(
-e.key==="/" &&
-!/input|textarea/i.test(
-document.activeElement.tagName
-)
-){
-
-e.preventDefault();
-
-openCmd();
-
-}
-
-}
-);
-
-/* CURSOR */
-
-const cursor=$("#cursor");
-
-addEventListener(
-"pointermove",
-e=>{
-
-cursor.style.left=
-e.clientX+"px";
-
-cursor.style.top=
-e.clientY+"px";
-
-},
-{passive:true}
-);
-
-$$("a,button,.shot").forEach(
-x=>{
-
-x.onmouseenter=()=>{
-
-cursor.style.width="29px";
-
-cursor.style.height="29px";
-
-};
-
-x.onmouseleave=()=>{
-
-cursor.style.width="17px";
-
-cursor.style.height="17px";
-
-};
-
-}
-);
-
-/* HERO PARALLAX */
-
-const hc=$(".hero-content");
-const gl=$(".glow");
-
-addEventListener(
-"pointermove",
-e=>{
-
-if(
-matchMedia("(hover:none)").matches
-)return;
-
-let x=
-e.clientX/innerWidth-.5;
-
-let y=
-e.clientY/innerHeight-.5;
-
-hc.style.transform=
-`translate(${x*6}px,${y*4}px)`;
-
-gl.style.transform=
-`translate(${x*-18}px,${y*-12}px)`;
-
-},
-{passive:true}
-);
-
-/* IMAGE ERROR FALLBACK */
-
-$$(".shot img").forEach(
-i=>{
-
-i.onerror=()=>{
-
-i.style.display="none";
-
-};
-
-}
-);
-
-})();
-</script>
+            <!-- ضع صورتك هنا باسم profile.jpg -->
+            <img
+              src="profile.jpg"
+              alt="Mabkhout Saqra"
+              class="profile-image"
+              onerror="this.style.display='none'; this.parentElement.classList.add('image-fallback')"
+            >
+
+            <div class="image-overlay"></div>
+
+          </div>
+
+          <span class="image-corner tl"></span>
+          <span class="image-corner br"></span>
+
+        </div>
+
+        <div
+          class="floating-badge"
+          data-ar="MBK • Personal Brand"
+          data-en="MBK • Personal Brand"
+        >
+          MBK • Personal Brand
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ABOUT -->
+  <section id="about" class="reveal">
+
+    <div class="section-heading">
+      <div class="section-kicker">ABOUT</div>
+
+      <h2
+        class="section-title"
+        data-ar="نبذة عني"
+        data-en="About Me"
+      >
+        نبذة عني
+      </h2>
+
+      <p
+        class="section-description"
+        data-ar="هذا الموقع يمثل مساحتي الشخصية على الإنترنت، ومكاناً أجمع فيه أفكاري ومشاريعي وما أتعلمه في رحلتي."
+        data-en="This website represents my personal space on the internet — a place where I bring together my thoughts, projects, and what I learn throughout my journey."
+      >
+        هذا الموقع يمثل مساحتي الشخصية على الإنترنت، ومكاناً أجمع فيه أفكاري ومشاريعي وما أتعلمه في رحلتي.
+      </p>
+    </div>
+
+    <div class="about-grid">
+
+      <div class="glass-card">
+        <h3
+          data-ar="رحلة مستمرة"
+          data-en="A Continuous Journey"
+        >
+          رحلة مستمرة
+        </h3>
+
+        <p
+          data-ar="أؤمن أن التطور لا يتوقف، وأن كل تجربة وكل معرفة جديدة يمكن أن تصنع فرقاً حقيقياً."
+          data-en="I believe growth never stops, and every experience and every new piece of knowledge can make a real difference."
+        >
+          أؤمن أن التطور لا يتوقف، وأن كل تجربة وكل معرفة جديدة يمكن أن تصنع فرقاً حقيقياً.
+        </p>
+      </div>
+
+      <div class="glass-card">
+        <h3
+          data-ar="مبادئي"
+          data-en="My Principles"
+        >
+          مبادئي
+        </h3>
+
+        <p
+          data-ar="إن أصبت فمن الله، وإن أخطأت فمن نفسي والشيطان. لست معصوماً، ولكني أحاول إصلاح نفسي."
+          data-en="If I am right, it is from Allah; if I am wrong, it is from myself and Satan. I am not perfect, but I keep trying to improve myself."
+        >
+          إن أصبت فمن الله، وإن أخطأت فمن نفسي والشيطان. لست معصوماً، ولكني أحاول إصلاح نفسي.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- VALUES -->
+  <section id="values" class="reveal">
+
+    <div class="section-heading">
+
+      <div class="section-kicker">VISION</div>
+
+      <h2
+        class="section-title"
+        data-ar="ما أؤمن به"
+        data-en="What I Believe"
+      >
+        ما أؤمن به
+      </h2>
+
+      <p
+        class="section-description"
+        data-ar="ثلاثة مبادئ بسيطة أريد أن تكون حاضرة في كل ما أصنعه."
+        data-en="Three simple principles I want to carry into everything I create."
+      >
+        ثلاثة مبادئ بسيطة أريد أن تكون حاضرة في كل ما أصنعه.
+      </p>
+
+    </div>
+
+    <div class="cards">
+
+      <div class="glass-card value-card">
+        <div class="value-number">01</div>
+
+        <h3
+          data-ar="التعلم"
+          data-en="Learning"
+        >
+          التعلم
+        </h3>
+
+        <p
+          data-ar="كل يوم فرصة لفهم شيء جديد وتطوير المهارات."
+          data-en="Every day is an opportunity to understand something new and improve."
+        >
+          كل يوم فرصة لفهم شيء جديد وتطوير المهارات.
+        </p>
+      </div>
+
+      <div class="glass-card value-card">
+        <div class="value-number">02</div>
+
+        <h3
+          data-ar="الإبداع"
+          data-en="Creativity"
+        >
+          الإبداع
+        </h3>
+
+        <p
+          data-ar="الفكرة الجيدة تصبح أقوى عندما تتحول إلى شيء حقيقي."
+          data-en="A good idea becomes more powerful when it turns into something real."
+        >
+          الفكرة الجيدة تصبح أقوى عندما تتحول إلى شيء حقيقي.
+        </p>
+      </div>
+
+      <div class="glass-card value-card">
+        <div class="value-number">03</div>
+
+        <h3
+          data-ar="التطور"
+          data-en="Growth"
+        >
+          التطور
+        </h3>
+
+        <p
+          data-ar="لا أبحث عن الكمال، بل عن نسخة أفضل من نفسي."
+          data-en="I am not chasing perfection; I am building a better version of myself."
+        >
+          لا أبحث عن الكمال، بل عن نسخة أفضل من نفسي.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="reveal">
+
+    <div class="contact-box">
+
+      <h2
+        data-ar="لنبقَ على تواصل"
+        data-en="Let's Stay Connected"
+      >
+        لنبقَ على تواصل
+      </h2>
+
+      <p
+        data-ar="يسعدني أن تسمعني وتتعرف أكثر على ما أصنعه."
+        data-en="Feel free to connect and learn more about what I create."
+      >
+        يسعدني أن تسمعني وتتعرف أكثر على ما أصنعه.
+      </p>
+
+      <a
+        href="mailto:Mabkhut505g@gmail.com"
+        class="btn btn-primary"
+        data-ar="راسلني"
+        data-en="Email Me"
+      >
+        راسلني
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+
+    <span data-ar="© جميع الحقوق محفوظة" data-en="© All rights reserved">
+      © جميع الحقوق محفوظة
+    </span>
+
+    <strong> MBK </strong>
+
+    <span data-ar="2026" data-en="2026">
+      2026
+    </span>
+
+  </footer>
+
+  <script>
+    /* =========================
+       LANGUAGE SYSTEM
+    ========================= */
+
+    const langBtn = document.getElementById("langBtn");
+    const html = document.documentElement;
+
+    let currentLanguage = localStorage.getItem("siteLanguage") || "ar";
+
+    function setLanguage(lang) {
+      currentLanguage = lang;
+
+      html.lang = lang;
+      html.dir = lang === "ar" ? "rtl" : "ltr";
+
+      document.querySelectorAll("[data-ar][data-en]").forEach(element => {
+        element.textContent = element.dataset[lang];
+      });
+
+      langBtn.textContent = lang === "ar" ? "English" : "العربية";
+
+      localStorage.setItem("siteLanguage", lang);
+    }
+
+    langBtn.addEventListener("click", () => {
+      setLanguage(currentLanguage === "ar" ? "en" : "ar");
+    });
+
+    /* العربية هي الافتراضية */
+    setLanguage(currentLanguage);
+
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+      });
+    });
+
+
+    /* =========================
+       HEADER SCROLL
+    ========================= */
+
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 30) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      {
+        threshold: .12
+      }
+    );
+
+    document.querySelectorAll(".reveal").forEach(element => {
+      observer.observe(element);
+    });
+
+
+    /* =========================
+       SMOOTH ANCHOR
+    ========================= */
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function(e) {
+        const target = document.querySelector(this.getAttribute("href"));
+
+        if (target) {
+          e.preventDefault();
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
