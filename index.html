@@ -1,2877 +1,3215 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>MBK — مبخوت بن عبدالله</title>
+<title>MBK — مبخوت بن عبدالله</title>
 
-  <meta
-    name="description"
-    content="MBK — مبخوت بن عبدالله | Digital Creative Portfolio"
-  >
+<meta name="description"
+content="MBK — Mabkhout Bin Abdullah. Independent digital creative portfolio.">
 
-  <meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+<style>
 
-  <style>
+/* =========================================================
+   01 — FOUNDATION
+========================================================= */
 
-    /* =====================================================
-       CORE
-    ===================================================== */
+:root{
+  --white:#ffffff;
+  --paper:#f8f8f5;
+  --black:#0b0b0a;
+  --gray:#777773;
+  --line:#e7e6df;
 
-    :root {
-      --white: #ffffff;
-      --off-white: #fafaf8;
-      --black: #11110f;
-      --gray: #777771;
-      --light-gray: #e9e7df;
+  --gold:#c9a44d;
+  --gold2:#a9822e;
 
-      --gold: #c6a44a;
-      --gold-dark: #98772b;
-      --gold-soft: #eadca8;
+  --ease:cubic-bezier(.16,1,.3,1);
 
-      --container: min(1380px, 90vw);
+  --container:min(1420px,90vw);
+}
 
-      --ease: cubic-bezier(.16,1,.3,1);
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+body{
+  background:var(--white);
+  color:var(--black);
+  font-family:"Cairo",sans-serif;
+  overflow-x:hidden;
+}
 
-    body {
-      background: var(--white);
-      color: var(--black);
+body.locked{
+  overflow:hidden;
+}
 
-      font-family: "Cairo", sans-serif;
+::selection{
+  background:var(--gold);
+  color:white;
+}
 
-      overflow-x: hidden;
-    }
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-    body.menu-open {
-      overflow: hidden;
-    }
+button{
+  font:inherit;
+  border:0;
+  background:none;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+img{
+  display:block;
+  max-width:100%;
+}
 
-    button {
-      font: inherit;
-      border: 0;
-      background: none;
-    }
+.ltr{
+  direction:ltr;
+}
 
-    ::selection {
-      background: var(--gold);
-      color: white;
-    }
 
+/* =========================================================
+   02 — CURSOR
+========================================================= */
 
-    /* =====================================================
-       LOADER
-    ===================================================== */
+.cursor{
+  position:fixed;
+  z-index:99999;
 
-    .loader {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
+  width:8px;
+  height:8px;
 
-      background: white;
+  border-radius:50%;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  background:var(--gold);
 
-      transition:
-        opacity .8s var(--ease),
-        visibility .8s;
-    }
+  pointer-events:none;
 
-    .loader.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
+  transform:translate(-50%,-50%);
 
-    .loader-box {
-      width: 220px;
-    }
+  transition:
+    width .35s var(--ease),
+    height .35s var(--ease),
+    background .35s;
+}
+
+.cursor-ring{
+  position:fixed;
+  z-index:99998;
+
+  width:38px;
+  height:38px;
 
-    .loader-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  border:1px solid rgba(201,164,77,.65);
 
-      margin-bottom: 15px;
-    }
+  border-radius:50%;
 
-    .loader-logo {
-      direction: ltr;
+  pointer-events:none;
 
-      font:
-        800 30px/1 "DM Sans";
+  transform:translate(-50%,-50%);
 
-      letter-spacing: -.12em;
-    }
+  transition:
+    width .45s var(--ease),
+    height .45s var(--ease),
+    border .35s;
+}
 
-    .loader-number {
-      direction: ltr;
+body.cursor-hover .cursor{
+  width:12px;
+  height:12px;
+}
 
-      font:
-        500 10px "DM Sans";
+body.cursor-hover .cursor-ring{
+  width:65px;
+  height:65px;
+  border-color:var(--gold);
+}
 
-      color: #999;
-    }
 
-    .loader-line {
-      width: 100%;
-      height: 1px;
+/* =========================================================
+   03 — LOADER
+========================================================= */
 
-      background: #e8e8e8;
-    }
+.loader{
+  position:fixed;
+  inset:0;
+  z-index:99990;
 
-    .loader-progress {
-      width: 0;
-      height: 100%;
+  background:var(--white);
 
-      background: var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-      animation:
-        loading 1.5s var(--ease) forwards;
-    }
+  transition:
+    opacity 1s var(--ease),
+    visibility 1s;
+}
 
-    @keyframes loading {
-      to {
-        width: 100%;
-      }
-    }
+.loader.done{
+  opacity:0;
+  visibility:hidden;
+}
 
+.loader-inner{
+  width:min(320px,70vw);
+}
 
-    /* =====================================================
-       HEADER
-    ===================================================== */
+.loader-brand{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-    .header {
-      position: fixed;
+  direction:ltr;
 
-      top: 0;
-      left: 0;
+  margin-bottom:16px;
+}
 
-      width: 100%;
+.loader-logo{
+  font:800 30px/1 "DM Sans";
+  letter-spacing:-.13em;
+}
 
-      z-index: 1000;
+.loader-count{
+  font:500 10px "DM Sans";
+  color:#999;
+}
 
-      padding: 24px 5vw;
+.loader-track{
+  width:100%;
+  height:1px;
+  background:#e7e7e2;
+  overflow:hidden;
+}
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+.loader-bar{
+  width:0;
+  height:100%;
+  background:var(--gold);
+  transition:width .15s linear;
+}
 
-      transition:
-        background .5s var(--ease),
-        padding .5s var(--ease);
-    }
 
-    .header.scrolled {
-      padding-top: 15px;
-      padding-bottom: 15px;
+/* =========================================================
+   04 — HEADER
+========================================================= */
 
-      background: rgba(255,255,255,.92);
+.header{
+  position:fixed;
+  z-index:900;
 
-      backdrop-filter: blur(16px);
+  top:0;
+  left:0;
 
-      border-bottom:
-        1px solid rgba(0,0,0,.05);
-    }
+  width:100%;
 
-    .logo {
-      direction: ltr;
+  padding:27px 5vw;
 
-      font:
-        800 26px/1 "DM Sans";
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-      letter-spacing: -.13em;
-    }
+  transition:
+    padding .6s var(--ease),
+    background .6s var(--ease),
+    color .6s;
+}
 
-    .logo span {
-      color: var(--gold);
-    }
+.header.scrolled{
+  padding-top:16px;
+  padding-bottom:16px;
 
-    .header-center {
-      position: absolute;
+  background:rgba(255,255,255,.86);
 
-      left: 50%;
+  backdrop-filter:blur(18px);
 
-      transform: translateX(-50%);
+  border-bottom:1px solid rgba(0,0,0,.05);
+}
 
-      direction: ltr;
+.header.dark{
+  color:white;
+}
 
-      font:
-        500 9px "DM Sans";
+.header.dark.scrolled{
+  background:rgba(11,11,10,.86);
+  border-bottom-color:rgba(255,255,255,.08);
+}
 
-      letter-spacing: .2em;
+.logo{
+  direction:ltr;
 
-      color: #888;
-    }
+  font:800 26px/1 "DM Sans";
+  letter-spacing:-.13em;
+}
 
-    .menu-btn {
-      width: 44px;
-      height: 44px;
+.logo b{
+  color:var(--gold);
+  font-weight:800;
+}
 
-      border:
-        1px solid var(--light-gray);
+.header-status{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
 
-      border-radius: 50%;
+  direction:ltr;
 
-      display: flex;
-      flex-direction: column;
+  font:500 8px "DM Sans";
+  letter-spacing:.22em;
 
-      align-items: center;
-      justify-content: center;
+  color:#888;
+}
 
-      gap: 5px;
+.header.dark .header-status{
+  color:#aaa;
+}
 
-      cursor: pointer;
+.menu-button{
+  width:46px;
+  height:46px;
 
-      transition:
-        transform .4s var(--ease),
-        background .4s var(--ease);
-    }
+  border:1px solid var(--line);
 
-    .menu-btn:hover {
-      transform: rotate(8deg);
-      background: var(--off-white);
-    }
+  border-radius:50%;
 
-    .menu-btn span {
-      width: 15px;
-      height: 1px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-      background: var(--black);
+  flex-direction:column;
+  gap:5px;
 
-      transition: .4s var(--ease);
-    }
+  cursor:pointer;
 
-    .menu-btn.active span:first-child {
-      transform:
-        translateY(3px)
-        rotate(45deg);
-    }
+  transition:
+    background .4s var(--ease),
+    transform .4s var(--ease),
+    border .4s;
+}
 
-    .menu-btn.active span:last-child {
-      transform:
-        translateY(-3px)
-        rotate(-45deg);
-    }
+.header.dark .menu-button{
+  border-color:rgba(255,255,255,.2);
+}
 
+.menu-button:hover{
+  background:var(--gold);
+  border-color:var(--gold);
 
-    /* =====================================================
-       MENU
-    ===================================================== */
+  transform:rotate(8deg);
+}
 
-    .menu {
-      position: fixed;
-      inset: 0;
+.menu-button span{
+  width:15px;
+  height:1px;
+  background:currentColor;
 
-      z-index: 900;
+  transition:.4s var(--ease);
+}
 
-      background: var(--black);
+.menu-button.active span:first-child{
+  transform:translateY(3px) rotate(45deg);
+}
 
-      color: white;
+.menu-button.active span:last-child{
+  transform:translateY(-3px) rotate(-45deg);
+}
 
-      display: flex;
-      align-items: center;
 
-      opacity: 0;
-      visibility: hidden;
+/* =========================================================
+   05 — FULL MENU
+========================================================= */
 
-      transition:
-        opacity .5s var(--ease),
-        visibility .5s;
-    }
+.menu{
+  position:fixed;
+  inset:0;
+  z-index:800;
 
-    .menu.open {
-      opacity: 1;
-      visibility: visible;
-    }
+  background:var(--black);
+  color:white;
 
-    .menu-inner {
-      width: var(--container);
-      margin: auto;
-    }
+  opacity:0;
+  visibility:hidden;
 
-    .menu-label {
-      direction: ltr;
+  transition:
+    opacity .7s var(--ease),
+    visibility .7s;
+}
 
-      color: var(--gold-soft);
+.menu.open{
+  opacity:1;
+  visibility:visible;
+}
 
-      font:
-        500 9px "DM Sans";
+.menu-grid{
+  width:var(--container);
+  height:100%;
 
-      letter-spacing: .25em;
-    }
+  margin:auto;
 
-    .menu-links {
-      margin-top: 40px;
+  display:flex;
+  align-items:center;
 
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+  position:relative;
+}
 
-    .menu-links a {
-      width: fit-content;
+.menu-small{
+  position:absolute;
 
-      direction: ltr;
+  top:120px;
+  left:0;
 
-      font:
-        700 clamp(48px, 8vw, 115px)/.95 "DM Sans";
+  direction:ltr;
 
-      letter-spacing: -.07em;
+  color:var(--gold);
 
-      transition:
-        color .3s,
-        transform .5s var(--ease);
-    }
+  font:500 9px "DM Sans";
+  letter-spacing:.25em;
+}
 
-    .menu-links a:hover {
-      color: var(--gold);
-      transform: translateX(15px);
-    }
+.menu-links{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
 
-    .menu-footer {
-      position: absolute;
+.menu-links a{
+  direction:ltr;
 
-      left: 5vw;
-      right: 5vw;
-      bottom: 30px;
+  font:700 clamp(55px,9vw,145px)/.88 "DM Sans";
 
-      display: flex;
-      justify-content: space-between;
+  letter-spacing:-.085em;
 
-      direction: ltr;
+  color:white;
 
-      color: #777;
+  transition:
+    color .4s,
+    transform .7s var(--ease);
+}
 
-      font:
-        500 9px "DM Sans";
-    }
+.menu-links a:hover{
+  color:var(--gold);
+  transform:translateX(20px);
+}
 
+.menu-footer{
+  position:absolute;
 
-    /* =====================================================
-       COMMON
-    ===================================================== */
+  bottom:35px;
+  left:5vw;
+  right:5vw;
 
-    .container {
-      width: var(--container);
-      margin-inline: auto;
-    }
+  display:flex;
+  justify-content:space-between;
 
-    .section {
-      padding:
-        150px 0;
-    }
+  direction:ltr;
 
-    .section-label {
-      display: flex;
-      align-items: center;
-      gap: 14px;
+  color:#777;
 
-      direction: ltr;
+  font:500 9px "DM Sans";
+}
 
-      color: var(--gold-dark);
 
-      font:
-        500 9px "DM Sans";
+/* =========================================================
+   06 — COMMON
+========================================================= */
 
-      letter-spacing: .22em;
-    }
+.container{
+  width:var(--container);
+  margin-inline:auto;
+}
 
-    .section-label::before {
-      content: "";
+.section{
+  padding:170px 0;
+}
 
-      width: 30px;
-      height: 1px;
+.label{
+  display:flex;
+  align-items:center;
+  gap:13px;
 
-      background: var(--gold);
-    }
+  direction:ltr;
 
-    .section-number {
-      direction: ltr;
+  color:var(--gold2);
 
-      color: #aaa;
+  font:500 9px "DM Sans";
+  letter-spacing:.22em;
+}
 
-      font:
-        500 9px "DM Sans";
-    }
+.label:before{
+  content:"";
 
-    .reveal {
-      opacity: 0;
+  width:30px;
+  height:1px;
 
-      transform:
-        translateY(35px);
+  background:var(--gold);
+}
 
-      transition:
-        opacity 1s var(--ease),
-        transform 1s var(--ease);
-    }
+.number{
+  direction:ltr;
 
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
+  color:#999;
 
+  font:500 9px "DM Sans";
+}
 
-    /* =====================================================
-       HERO
-    ===================================================== */
+.reveal{
+  opacity:0;
 
-    .hero {
-      min-height: 100svh;
+  transform:translateY(45px);
 
-      position: relative;
+  transition:
+    opacity 1.1s var(--ease),
+    transform 1.1s var(--ease);
+}
 
-      display: flex;
-      align-items: center;
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
 
-      overflow: hidden;
-    }
 
-    .hero-grid {
-      position: absolute;
-      inset: 0;
+/* =========================================================
+   07 — HERO
+========================================================= */
 
-      pointer-events: none;
-    }
+.hero{
+  position:relative;
 
-    .hero-grid::before,
-    .hero-grid::after {
-      content: "";
+  min-height:100svh;
 
-      position: absolute;
+  display:flex;
+  align-items:center;
 
-      top: 0;
-      bottom: 0;
+  overflow:hidden;
 
-      width: 1px;
+  background:white;
+}
 
-      background: var(--light-gray);
-    }
+.hero-lines{
+  position:absolute;
+  inset:0;
 
-    .hero-grid::before {
-      left: 10%;
-    }
+  pointer-events:none;
+}
 
-    .hero-grid::after {
-      right: 10%;
-    }
+.hero-lines:before,
+.hero-lines:after{
+  content:"";
 
-    .hero-bg-letter {
-      position: absolute;
+  position:absolute;
 
-      left: -3vw;
-      bottom: -12vw;
+  top:0;
+  bottom:0;
 
-      direction: ltr;
+  width:1px;
 
-      font:
-        800 40vw/1 "DM Sans";
+  background:#eeeeea;
+}
 
-      letter-spacing: -.15em;
+.hero-lines:before{
+  left:5%;
+}
 
-      color: #faf9f5;
+.hero-lines:after{
+  right:5%;
+}
 
-      user-select: none;
-      pointer-events: none;
-    }
+.hero-orbit{
+  position:absolute;
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
+  width:50vw;
+  height:50vw;
 
-      width: var(--container);
-      margin-inline: auto;
+  max-width:760px;
+  max-height:760px;
 
-      padding-top: 80px;
-    }
+  border:1px solid rgba(201,164,77,.25);
 
-    .hero-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+  border-radius:50%;
 
-      margin-bottom: 35px;
-    }
+  right:-14vw;
+  top:14%;
 
-    .availability {
-      display: flex;
-      align-items: center;
-      gap: 9px;
+  animation:
+    orbit 18s linear infinite;
+}
 
-      direction: ltr;
+.hero-orbit:before{
+  content:"";
 
-      color: #777;
+  position:absolute;
 
-      font:
-        500 9px "DM Sans";
+  width:8px;
+  height:8px;
 
-      letter-spacing: .1em;
-    }
+  border-radius:50%;
 
-    .availability-dot {
-      width: 6px;
-      height: 6px;
+  background:var(--gold);
 
-      border-radius: 50%;
+  left:18%;
+  top:4%;
+}
 
-      background: var(--gold);
+@keyframes orbit{
+  to{
+    transform:rotate(360deg);
+  }
+}
 
-      box-shadow:
-        0 0 0 5px
-        rgba(198,164,74,.1);
-    }
+.hero-content{
+  position:relative;
+  z-index:2;
 
-    .hero-title {
-      direction: ltr;
+  width:var(--container);
 
-      font:
-        800 clamp(100px, 22vw, 320px)/.72 "DM Sans";
+  margin:auto;
 
-      letter-spacing: -.15em;
+  padding-top:90px;
+}
 
-      margin-left: -.07em;
+.hero-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 
-      color: var(--black);
+  margin-bottom:35px;
+}
 
-      position: relative;
+.available{
+  display:flex;
+  align-items:center;
+  gap:10px;
 
-      display: inline-block;
-    }
+  direction:ltr;
 
-    .hero-title::after {
-      content: "";
+  color:#777;
 
-      position: absolute;
+  font:500 8px "DM Sans";
+  letter-spacing:.12em;
+}
 
-      width: clamp(90px, 14vw, 200px);
-      aspect-ratio: 1;
+.available-dot{
+  width:6px;
+  height:6px;
 
-      border:
-        1px solid var(--gold);
+  background:var(--gold);
 
-      border-radius: 50%;
+  border-radius:50%;
 
-      right: 2%;
-      top: 8%;
+  box-shadow:0 0 0 5px rgba(201,164,77,.12);
+}
 
-      opacity: .5;
+.hero-display{
+  position:relative;
 
-      animation:
-        rotateCircle 14s linear infinite;
-    }
+  direction:ltr;
 
-    @keyframes rotateCircle {
-      to {
-        transform: rotate(360deg);
-      }
-    }
+  font:800 clamp(115px,23vw,340px)/.72 "DM Sans";
 
-    .hero-info {
-      margin-top: 60px;
+  letter-spacing:-.16em;
 
-      display: grid;
+  margin-left:-.08em;
 
-      grid-template-columns:
-        1fr 1.4fr 1fr;
+  white-space:nowrap;
 
-      gap: 40px;
+  will-change:transform;
+}
 
-      align-items: end;
-    }
+.hero-display span{
+  color:var(--gold);
+}
 
-    .hero-name {
-      font-size:
-        clamp(25px, 3vw, 40px);
+.hero-display:after{
+  content:"";
 
-      line-height: 1.05;
+  position:absolute;
 
-      font-weight: 700;
-    }
+  width:clamp(80px,12vw,180px);
+  aspect-ratio:1;
 
-    .hero-description {
-      max-width: 500px;
+  border:1px solid var(--gold);
 
-      color: var(--gray);
+  border-radius:50%;
 
-      font-size: 12px;
+  right:2%;
+  top:7%;
 
-      line-height: 2.1;
-    }
+  opacity:.65;
 
-    .hero-meta {
-      direction: ltr;
+  animation:
+    orbit 12s linear infinite;
+}
 
-      text-align: left;
+.hero-bottom{
+  margin-top:70px;
 
-      font:
-        500 9px/2 "DM Sans";
+  display:grid;
 
-      color: #999;
-    }
+  grid-template-columns:
+    1fr 1.5fr 1fr;
 
-    .hero-meta strong {
-      color: var(--black);
-      font-weight: 600;
-    }
+  gap:50px;
 
-    .hero-scroll {
-      position: absolute;
+  align-items:end;
+}
 
-      bottom: 35px;
-      left: 50%;
+.hero-name{
+  font-size:clamp(25px,3vw,42px);
+  line-height:1.05;
+  font-weight:700;
+}
 
-      transform: translateX(-50%);
+.hero-copy{
+  max-width:500px;
 
-      display: flex;
-      align-items: center;
-      gap: 12px;
+  color:#70706b;
 
-      direction: ltr;
+  font-size:12px;
+  line-height:2.15;
+}
 
-      color: #999;
+.hero-meta{
+  direction:ltr;
+  text-align:left;
 
-      font:
-        500 8px "DM Sans";
+  font:500 9px/2 "DM Sans";
+  color:#999;
+}
 
-      letter-spacing: .18em;
-    }
+.hero-meta strong{
+  color:var(--black);
+}
 
-    .hero-scroll-line {
-      width: 45px;
-      height: 1px;
+.hero-scroll{
+  position:absolute;
 
-      background: linear-gradient(
-        90deg,
-        var(--gold),
-        transparent
-      );
-    }
+  bottom:35px;
+  left:50%;
 
+  transform:translateX(-50%);
 
-    /* =====================================================
-       STATEMENT
-    ===================================================== */
+  display:flex;
+  align-items:center;
+  gap:12px;
 
-    .statement {
-      padding:
-        170px 0 180px;
+  direction:ltr;
 
-      background: var(--off-white);
-    }
+  color:#999;
 
-    .statement-grid {
-      display: grid;
+  font:500 8px "DM Sans";
+  letter-spacing:.18em;
+}
 
-      grid-template-columns:
-        .5fr 2fr;
+.hero-scroll i{
+  display:block;
 
-      gap: 80px;
-    }
+  width:45px;
+  height:1px;
 
-    .statement-text {
-      font-size:
-        clamp(45px, 7vw, 105px);
+  background:linear-gradient(
+    90deg,
+    var(--gold),
+    transparent
+  );
+}
 
-      line-height: .98;
 
-      letter-spacing: -.065em;
+/* =========================================================
+   08 — STATEMENT
+========================================================= */
 
-      font-weight: 700;
-    }
+.statement{
+  position:relative;
 
-    .statement-text span {
-      color: var(--gold);
-    }
+  padding:210px 0;
 
-    .statement-sub {
-      max-width: 580px;
+  background:var(--paper);
 
-      margin-top: 45px;
+  overflow:hidden;
+}
 
-      color: var(--gray);
+.statement-bg{
+  position:absolute;
 
-      font-size: 13px;
+  right:-10vw;
+  bottom:-15vw;
 
-      line-height: 2.1;
-    }
+  direction:ltr;
 
+  font:800 40vw/1 "DM Sans";
 
-    /* =====================================================
-       WORK
-    ===================================================== */
+  letter-spacing:-.16em;
 
-    .work {
-      padding:
-        170px 0;
-    }
+  color:#f0efe9;
 
-    .work-header {
-      display: flex;
+  pointer-events:none;
+}
 
-      justify-content: space-between;
-      align-items: end;
+.statement-content{
+  position:relative;
+  z-index:2;
 
-      padding-bottom: 35px;
+  display:grid;
 
-      border-bottom:
-        1px solid var(--light-gray);
-    }
+  grid-template-columns:.5fr 2fr;
 
-    .work-heading {
-      margin-top: 18px;
+  gap:80px;
+}
 
-      direction: ltr;
+.statement-title{
+  font-size:clamp(50px,8vw,125px);
+  line-height:.93;
 
-      font:
-        700 clamp(55px, 8vw, 120px)/.9 "DM Sans";
+  letter-spacing:-.07em;
 
-      letter-spacing: -.08em;
-    }
+  font-weight:700;
+}
 
-    .work-count {
-      direction: ltr;
+.statement-title em{
+  font-style:normal;
+  color:var(--gold);
+}
 
-      color: #999;
+.statement-text{
+  max-width:580px;
 
-      font:
-        500 9px "DM Sans";
-    }
+  margin-top:50px;
 
-    .project-main {
-      margin-top: 80px;
-    }
+  color:#73736e;
 
-    .project-image {
-      position: relative;
+  font-size:13px;
 
-      width: 100%;
-      aspect-ratio: 16 / 8;
+  line-height:2.2;
+}
 
-      overflow: hidden;
 
-      background:
-        radial-gradient(
-          circle at 50% 45%,
-          #ead899 0,
-          #c6a44a 14%,
-          #9d7b30 28%,
-          #f1eee4 29%,
-          #faf9f5 70%
-        );
+/* =========================================================
+   09 — WORK INTRO
+========================================================= */
 
-      cursor: pointer;
-    }
+.work{
+  padding:180px 0 0;
+}
 
-    .project-image::before {
-      content: "MBK";
+.work-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
 
-      position: absolute;
+  padding-bottom:40px;
 
-      left: 50%;
-      top: 50%;
+  border-bottom:1px solid var(--line);
+}
 
-      transform:
-        translate(-50%, -50%);
+.work-title{
+  margin-top:20px;
 
-      direction: ltr;
+  direction:ltr;
 
-      font:
-        800 clamp(80px, 15vw, 220px) "DM Sans";
+  font:700 clamp(65px,10vw,150px)/.8 "DM Sans";
 
-      letter-spacing: -.14em;
+  letter-spacing:-.09em;
+}
 
-      color: rgba(255,255,255,.8);
 
-      transition:
-        transform 1s var(--ease);
-    }
+/* =========================================================
+   10 — PROJECT 01
+========================================================= */
 
-    .project-image:hover::before {
-      transform:
-        translate(-50%, -50%)
-        scale(1.08)
-        rotate(-3deg);
-    }
+.project{
+  padding:110px 0 170px;
+}
 
-    .project-circle {
-      position: absolute;
+.project-visual{
+  position:relative;
 
-      width: 30%;
-      aspect-ratio: 1;
+  width:100%;
 
-      border-radius: 50%;
+  aspect-ratio:16/8;
 
-      border:
-        1px solid rgba(255,255,255,.8);
+  overflow:hidden;
 
-      left: 50%;
-      top: 50%;
+  background:
+    linear-gradient(
+      135deg,
+      #f4f1e7,
+      #d0ad56
+    );
 
-      transform:
-        translate(-50%, -50%);
+  cursor:pointer;
+}
 
-      transition:
-        transform 1s var(--ease);
-    }
+.project-visual:before{
+  content:"";
 
-    .project-image:hover .project-circle {
-      transform:
-        translate(-50%, -50%)
-        scale(1.2);
-    }
+  position:absolute;
+  inset:0;
 
-    .project-main-info {
-      margin-top: 35px;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255,255,255,.95) 0,
+      rgba(255,255,255,.25) 18%,
+      transparent 43%
+    );
+}
 
-      display: grid;
+.project-monogram{
+  position:absolute;
 
-      grid-template-columns:
-        1fr 2fr 1fr;
+  left:50%;
+  top:50%;
 
-      gap: 40px;
+  transform:translate(-50%,-50%);
 
-      align-items: start;
-    }
+  direction:ltr;
 
-    .project-index {
-      direction: ltr;
+  font:800 clamp(100px,18vw,280px)/1 "DM Sans";
 
-      color: var(--gold-dark);
+  letter-spacing:-.15em;
 
-      font:
-        500 9px "DM Sans";
-    }
+  color:rgba(255,255,255,.75);
 
-    .project-main-info h3 {
-      font-size:
-        clamp(32px, 5vw, 70px);
+  transition:
+    transform 1.2s var(--ease);
+}
 
-      line-height: .95;
+.project-visual:hover .project-monogram{
+  transform:
+    translate(-50%,-50%)
+    scale(1.08)
+    rotate(-4deg);
+}
 
-      letter-spacing: -.06em;
-    }
+.project-orbit{
+  position:absolute;
 
-    .project-main-info p {
-      color: var(--gray);
+  width:35%;
+  aspect-ratio:1;
 
-      font-size: 12px;
+  left:50%;
+  top:50%;
 
-      line-height: 2;
-    }
+  transform:translate(-50%,-50%);
 
-    .project-link {
-      margin-top: 25px;
+  border:1px solid rgba(255,255,255,.8);
 
-      display: inline-flex;
+  border-radius:50%;
 
-      align-items: center;
-      gap: 12px;
+  transition:
+    transform 1s var(--ease);
+}
 
-      direction: ltr;
+.project-visual:hover .project-orbit{
+  transform:
+    translate(-50%,-50%)
+    scale(1.25);
+}
 
-      font:
-        600 9px "DM Sans";
+.project-tag{
+  position:absolute;
 
-      border-bottom:
-        1px solid var(--black);
+  top:25px;
+  left:25px;
 
-      padding-bottom: 7px;
+  direction:ltr;
 
-      transition:
-        color .3s,
-        border-color .3s;
-    }
+  padding:8px 12px;
 
-    .project-link:hover {
-      color: var(--gold-dark);
-      border-color: var(--gold);
-    }
+  border:1px solid rgba(255,255,255,.6);
 
-    .project-secondary {
-      margin-top: 130px;
+  color:white;
 
-      display: grid;
+  font:500 8px "DM Sans";
+  letter-spacing:.12em;
+}
 
-      grid-template-columns:
-        1fr 1fr;
+.project-info{
+  margin-top:35px;
 
-      gap: 70px;
-    }
+  display:grid;
 
-    .secondary-item:nth-child(2) {
-      margin-top: 130px;
-    }
+  grid-template-columns:1fr 2fr 1fr;
 
-    .secondary-image {
-      position: relative;
+  gap:40px;
+}
 
-      aspect-ratio: 4 / 3;
+.project-number{
+  direction:ltr;
 
-      overflow: hidden;
+  color:var(--gold2);
 
-      background: var(--off-white);
-    }
+  font:500 9px "DM Sans";
+}
 
-    .secondary-image::before {
-      content: "";
+.project-name{
+  direction:ltr;
 
-      position: absolute;
+  font:700 clamp(35px,5vw,75px)/.88 "DM Sans";
 
-      width: 55%;
-      aspect-ratio: 1;
+  letter-spacing:-.07em;
+}
 
-      border-radius: 50%;
+.project-name span{
+  color:var(--gold);
+}
 
-      left: 50%;
-      top: 50%;
+.project-description{
+  color:#777;
 
-      transform:
-        translate(-50%, -50%);
+  font-size:11px;
+  line-height:2;
+}
 
-      border:
-        1px solid var(--gold);
+.explore{
+  display:inline-flex;
 
-      background:
-        radial-gradient(
-          circle,
-          var(--gold-soft),
-          transparent 65%
-        );
+  align-items:center;
+  gap:13px;
 
-      transition:
-        transform 1s var(--ease);
-    }
+  margin-top:25px;
 
-    .secondary-item:hover
-    .secondary-image::before {
-      transform:
-        translate(-50%, -50%)
-        scale(1.15);
-    }
+  direction:ltr;
 
-    .secondary-item:nth-child(2)
-    .secondary-image::before {
-      border-radius: 15%;
+  padding-bottom:8px;
 
-      transform:
-        translate(-50%, -50%)
-        rotate(30deg);
-    }
+  border-bottom:1px solid var(--black);
 
-    .secondary-info {
-      margin-top: 25px;
-    }
+  font:600 9px "DM Sans";
 
-    .secondary-number {
-      direction: ltr;
+  transition:
+    color .3s,
+    border .3s;
+}
 
-      color: var(--gold-dark);
+.explore:hover{
+  color:var(--gold2);
+  border-color:var(--gold);
+}
 
-      font:
-        500 9px "DM Sans";
-    }
 
-    .secondary-info h4 {
-      margin-top: 13px;
+/* =========================================================
+   11 — PROJECT GRID
+========================================================= */
 
-      direction: ltr;
+.project-grid{
+  display:grid;
 
-      font:
-        700 clamp(30px, 4vw, 55px)/.95 "DM Sans";
+  grid-template-columns:1fr 1fr;
 
-      letter-spacing: -.06em;
-    }
+  gap:80px;
 
-    .secondary-info p {
-      margin-top: 15px;
+  padding-bottom:180px;
+}
 
-      max-width: 420px;
+.small-project:nth-child(2){
+  margin-top:130px;
+}
 
-      color: var(--gray);
+.small-visual{
+  position:relative;
 
-      font-size: 11px;
+  aspect-ratio:4/3;
 
-      line-height: 2;
-    }
+  overflow:hidden;
 
+  background:var(--paper);
 
-    /* =====================================================
-       ABOUT
-    ===================================================== */
+  cursor:pointer;
+}
 
-    .about {
-      padding:
-        160px 0;
+.small-shape{
+  position:absolute;
 
-      background: var(--off-white);
-    }
+  width:55%;
+  aspect-ratio:1;
 
-    .about-grid {
-      display: grid;
+  left:50%;
+  top:50%;
 
-      grid-template-columns:
-        1fr 1fr;
+  transform:translate(-50%,-50%);
 
-      gap: 110px;
+  border-radius:50%;
 
-      align-items: center;
-    }
+  border:1px solid var(--gold);
 
-    .about-art {
-      position: relative;
+  background:
+    radial-gradient(
+      circle,
+      #eadba8,
+      transparent 65%
+    );
 
-      aspect-ratio: 1;
+  transition:
+    transform 1s var(--ease);
+}
 
-      background: white;
+.small-project:hover .small-shape{
+  transform:
+    translate(-50%,-50%)
+    scale(1.15);
+}
 
-      overflow: hidden;
-    }
+.small-project:nth-child(2)
+.small-shape{
+  border-radius:16%;
 
-    .about-art::before {
-      content: "M";
+  transform:
+    translate(-50%,-50%)
+    rotate(30deg);
+}
 
-      position: absolute;
+.small-project:nth-child(2):hover
+.small-shape{
+  transform:
+    translate(-50%,-50%)
+    rotate(48deg)
+    scale(1.15);
+}
 
-      left: 50%;
-      top: 50%;
+.small-info{
+  margin-top:25px;
+}
 
-      transform:
-        translate(-50%, -50%);
+.small-number{
+  direction:ltr;
 
-      direction: ltr;
+  color:var(--gold2);
 
-      font:
-        800 25vw/1 "DM Sans";
+  font:500 9px "DM Sans";
+}
 
-      letter-spacing: -.15em;
+.small-title{
+  margin-top:12px;
 
-      color: #faf9f5;
-    }
+  direction:ltr;
 
-    .about-orbit {
-      position: absolute;
+  font:700 clamp(32px,4vw,58px)/.9 "DM Sans";
 
-      width: 50%;
-      aspect-ratio: 1;
+  letter-spacing:-.06em;
+}
 
-      border:
-        1px solid var(--gold);
+.small-description{
+  max-width:450px;
 
-      border-radius: 50%;
+  margin-top:15px;
 
-      left: 50%;
-      top: 50%;
+  color:#777;
 
-      transform:
-        translate(-50%, -50%);
+  font-size:11px;
+  line-height:2;
+}
 
-      animation:
-        rotateCircle 18s linear infinite;
-    }
 
-    .about-orbit::before {
-      content: "";
+/* =========================================================
+   12 — ABOUT
+========================================================= */
 
-      position: absolute;
+.about{
+  padding:190px 0;
 
-      width: 8px;
-      height: 8px;
+  background:var(--paper);
+}
 
-      border-radius: 50%;
+.about-grid{
+  display:grid;
 
-      background: var(--gold);
+  grid-template-columns:1fr 1fr;
 
-      top: -4px;
-      left: 50%;
-    }
+  gap:110px;
 
-    .about-copy .section-label {
-      margin-bottom: 25px;
-    }
+  align-items:center;
+}
 
-    .about-copy h2 {
-      font-size:
-        clamp(45px, 6vw, 90px);
+.about-art{
+  position:relative;
 
-      line-height: .95;
+  aspect-ratio:1;
 
-      letter-spacing: -.065em;
-    }
+  background:white;
 
-    .about-copy h2 span {
-      color: var(--gold);
-    }
+  overflow:hidden;
+}
 
-    .about-copy p {
-      margin-top: 30px;
+.about-letter{
+  position:absolute;
 
-      max-width: 540px;
+  left:50%;
+  top:50%;
 
-      color: var(--gray);
+  transform:translate(-50%,-50%);
 
-      font-size: 13px;
+  direction:ltr;
 
-      line-height: 2.1;
-    }
+  font:800 30vw/1 "DM Sans";
 
-    .about-details {
-      margin-top: 50px;
+  letter-spacing:-.17em;
 
-      border-top:
-        1px solid var(--light-gray);
-    }
+  color:#f6f5ef;
+}
 
-    .detail-row {
-      display: flex;
+.about-ring{
+  position:absolute;
 
-      justify-content: space-between;
+  width:50%;
+  aspect-ratio:1;
 
-      padding: 16px 0;
+  left:50%;
+  top:50%;
 
-      border-bottom:
-        1px solid var(--light-gray);
+  transform:translate(-50%,-50%);
 
-      direction: ltr;
+  border:1px solid var(--gold);
 
-      font:
-        500 9px "DM Sans";
-    }
+  border-radius:50%;
 
-    .detail-row span:last-child {
-      color: #999;
-    }
+  animation:orbit 17s linear infinite;
+}
 
+.about-ring:before{
+  content:"";
 
-    /* =====================================================
-       SERVICES
-    ===================================================== */
+  position:absolute;
 
-    .services {
-      padding:
-        170px 0;
-    }
+  width:8px;
+  height:8px;
 
-    .services-header {
-      display: flex;
+  border-radius:50%;
 
-      justify-content: space-between;
-      align-items: start;
-    }
+  background:var(--gold);
 
-    .services-title {
-      margin-top: 20px;
+  top:-4px;
+  left:50%;
+}
 
-      direction: ltr;
+.about-cross{
+  position:absolute;
 
-      font:
-        700 clamp(50px, 8vw, 115px)/.9 "DM Sans";
+  width:18px;
+  height:18px;
 
-      letter-spacing: -.08em;
-    }
+  left:50%;
+  top:50%;
 
-    .services-list {
-      margin-top: 90px;
+  transform:translate(-50%,-50%);
+}
 
-      border-top:
-        1px solid var(--light-gray);
-    }
+.about-cross:before,
+.about-cross:after{
+  content:"";
 
-    .service {
-      display: grid;
+  position:absolute;
 
-      grid-template-columns:
-        80px 1.2fr 1fr 50px;
+  background:var(--gold);
+}
 
-      gap: 30px;
+.about-cross:before{
+  width:18px;
+  height:1px;
 
-      align-items: center;
+  top:9px;
+}
 
-      padding: 28px 0;
+.about-cross:after{
+  width:1px;
+  height:18px;
 
-      border-bottom:
-        1px solid var(--light-gray);
+  left:9px;
+}
 
-      transition:
-        padding .5s var(--ease);
-    }
+.about-title{
+  margin-top:25px;
 
-    .service:hover {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
+  font-size:clamp(50px,7vw,105px);
 
-    .service-number {
-      direction: ltr;
+  line-height:.9;
 
-      color: var(--gold-dark);
+  letter-spacing:-.07em;
+}
 
-      font:
-        500 9px "DM Sans";
-    }
+.about-title span{
+  color:var(--gold);
+}
 
-    .service-name {
-      direction: ltr;
+.about-description{
+  max-width:550px;
 
-      font:
-        600 clamp(22px, 3vw, 38px) "DM Sans";
+  margin-top:35px;
 
-      letter-spacing: -.04em;
-    }
+  color:#777;
 
-    .service-description {
-      color: var(--gray);
+  font-size:13px;
+  line-height:2.15;
+}
 
-      font-size: 10px;
+.details{
+  margin-top:50px;
 
-      line-height: 1.8;
-    }
+  border-top:1px solid var(--line);
+}
 
-    .service-arrow {
-      direction: ltr;
+.detail{
+  display:flex;
+  justify-content:space-between;
 
-      color: var(--gold);
+  direction:ltr;
 
-      font-size: 20px;
+  padding:16px 0;
 
-      transition:
-        transform .5s var(--ease);
-    }
+  border-bottom:1px solid var(--line);
 
-    .service:hover .service-arrow {
-      transform: translateX(-8px);
-    }
+  font:500 9px "DM Sans";
+}
 
+.detail span:last-child{
+  color:#999;
+}
 
-    /* =====================================================
-       PHILOSOPHY
-    ===================================================== */
 
-    .philosophy {
-      padding:
-        180px 0;
+/* =========================================================
+   13 — NUMBERS
+========================================================= */
 
-      background: var(--black);
+.numbers{
+  padding:150px 0;
 
-      color: white;
+  background:white;
+}
 
-      overflow: hidden;
-    }
+.number-grid{
+  display:grid;
 
-    .philosophy-top {
-      display: flex;
+  grid-template-columns:repeat(3,1fr);
 
-      justify-content: space-between;
-      align-items: start;
-    }
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
 
-    .philosophy .section-label {
-      color: var(--gold-soft);
-    }
+.stat{
+  padding:50px 30px;
 
-    .philosophy-title {
-      margin-top: 65px;
+  border-left:1px solid var(--line);
 
-      direction: ltr;
+  text-align:center;
+}
 
-      font:
-        700 clamp(55px, 10vw, 145px)/.9 "DM Sans";
+.stat:first-child{
+  border-left:0;
+}
 
-      letter-spacing: -.08em;
-    }
+.stat-value{
+  direction:ltr;
 
-    .philosophy-title span {
-      color: var(--gold);
-    }
+  font:700 clamp(55px,7vw,100px)/.8 "DM Sans";
 
-    .philosophy-copy {
-      margin-top: 70px;
+  letter-spacing:-.08em;
+}
 
-      max-width: 600px;
+.stat-value span{
+  color:var(--gold);
+}
 
-      color: #999;
+.stat-label{
+  margin-top:18px;
 
-      font-size: 13px;
+  direction:ltr;
 
-      line-height: 2.2;
-    }
+  color:#888;
 
+  font:500 9px "DM Sans";
+  letter-spacing:.12em;
+}
 
-    /* =====================================================
-       CONTACT
-    ===================================================== */
 
-    .contact {
-      padding:
-        180px 0 100px;
+/* =========================================================
+   14 — SERVICES
+========================================================= */
 
-      background: var(--off-white);
-    }
+.services{
+  padding:190px 0;
+}
 
-    .contact-grid {
-      display: grid;
+.services-top{
+  display:flex;
 
-      grid-template-columns:
-        1.2fr 1fr;
+  justify-content:space-between;
+  align-items:end;
+}
 
-      gap: 100px;
-    }
+.services-title{
+  margin-top:20px;
 
-    .contact-title {
-      direction: ltr;
+  direction:ltr;
 
-      font:
-        700 clamp(70px, 12vw, 175px)/.82 "DM Sans";
+  font:700 clamp(60px,10vw,145px)/.82 "DM Sans";
 
-      letter-spacing: -.1em;
-    }
+  letter-spacing:-.09em;
+}
 
-    .contact-title span {
-      color: var(--gold);
-    }
+.services-list{
+  margin-top:90px;
 
-    .contact-copy {
-      padding-top: 20px;
-    }
+  border-top:1px solid var(--line);
+}
 
-    .contact-copy p {
-      max-width: 470px;
+.service{
+  display:grid;
 
-      color: var(--gray);
+  grid-template-columns:70px 1.2fr 1fr 40px;
 
-      font-size: 13px;
+  gap:30px;
 
-      line-height: 2.1;
-    }
+  align-items:center;
 
-    .email {
-      display: inline-block;
+  padding:32px 0;
 
-      margin-top: 45px;
+  border-bottom:1px solid var(--line);
 
-      direction: ltr;
+  transition:
+    padding .6s var(--ease),
+    background .4s;
+}
 
-      font:
-        600 clamp(17px, 2.2vw, 28px) "DM Sans";
+.service:hover{
+  padding-left:18px;
+  padding-right:18px;
 
-      padding-bottom: 10px;
+  background:var(--paper);
+}
 
-      border-bottom:
-        1px solid var(--gold);
+.service-index{
+  direction:ltr;
 
-      transition:
-        color .3s;
-    }
+  color:var(--gold2);
 
-    .email:hover {
-      color: var(--gold-dark);
-    }
+  font:500 9px "DM Sans";
+}
 
-    .contact-bottom {
-      margin-top: 120px;
+.service-name{
+  direction:ltr;
 
-      padding-top: 20px;
+  font:600 clamp(23px,3vw,40px) "DM Sans";
 
-      border-top:
-        1px solid var(--light-gray);
+  letter-spacing:-.04em;
+}
 
-      display: flex;
+.service-copy{
+  color:#777;
 
-      justify-content: space-between;
+  font-size:10px;
+  line-height:1.9;
+}
 
-      direction: ltr;
+.service-arrow{
+  direction:ltr;
 
-      color: #999;
+  color:var(--gold);
 
-      font:
-        500 9px "DM Sans";
-    }
+  font-size:21px;
 
+  transition:
+    transform .5s var(--ease);
+}
 
-    /* =====================================================
-       FOOTER
-    ===================================================== */
+.service:hover .service-arrow{
+  transform:translateX(-8px);
+}
 
-    .footer {
-      padding:
-        30px 5vw 45px;
 
-      background: var(--off-white);
+/* =========================================================
+   15 — PHILOSOPHY
+========================================================= */
 
-      display: flex;
+.philosophy{
+  padding:210px 0;
 
-      justify-content: space-between;
-      align-items: center;
+  background:var(--black);
 
-      direction: ltr;
+  color:white;
 
-      color: #999;
+  overflow:hidden;
+}
 
-      font:
-        500 9px "DM Sans";
-    }
+.philosophy-top{
+  display:flex;
 
-    .footer-logo {
-      font:
-        800 20px "DM Sans";
+  justify-content:space-between;
+}
 
-      letter-spacing: -.12em;
+.philosophy .label{
+  color:var(--gold);
+}
 
-      color: var(--black);
-    }
+.philosophy-title{
+  margin-top:75px;
 
-    .footer-logo span {
-      color: var(--gold);
-    }
+  direction:ltr;
 
+  font:700 clamp(60px,11vw,165px)/.86 "DM Sans";
 
-    /* =====================================================
-       RESPONSIVE
-    ===================================================== */
+  letter-spacing:-.1em;
+}
 
-    @media (max-width: 900px) {
+.philosophy-title span{
+  color:var(--gold);
+}
 
-      .header {
-        padding:
-          18px 5vw;
-      }
+.philosophy-text{
+  max-width:650px;
 
-      .header-center {
-        display: none;
-      }
+  margin-top:80px;
 
-      .hero-content {
-        padding-top: 80px;
-      }
+  color:#888;
 
-      .hero-title {
-        font-size:
-          clamp(95px, 28vw, 190px);
-      }
+  font-size:13px;
+  line-height:2.25;
+}
 
-      .hero-info {
-        grid-template-columns: 1fr;
 
-        gap: 25px;
+/* =========================================================
+   16 — CONTACT
+========================================================= */
 
-        margin-top: 45px;
-      }
+.contact{
+  padding:200px 0 100px;
 
-      .hero-meta {
-        text-align: right;
-        direction: rtl;
-      }
+  background:var(--paper);
+}
 
-      .hero-scroll {
-        display: none;
-      }
+.contact-grid{
+  display:grid;
 
-      .statement-grid {
-        grid-template-columns: 1fr;
+  grid-template-columns:1.3fr 1fr;
 
-        gap: 35px;
-      }
+  gap:110px;
+}
 
-      .statement-text {
-        font-size:
-          clamp(48px, 13vw, 90px);
-      }
+.contact-title{
+  direction:ltr;
 
-      .project-main-info {
-        grid-template-columns:
-          1fr;
+  font:700 clamp(75px,13vw,190px)/.78 "DM Sans";
 
-        gap: 20px;
-      }
+  letter-spacing:-.11em;
+}
 
-      .project-secondary {
-        grid-template-columns:
-          1fr;
+.contact-title span{
+  color:var(--gold);
+}
 
-        gap: 80px;
+.contact-copy{
+  padding-top:25px;
+}
 
-        margin-top: 90px;
-      }
+.contact-copy p{
+  max-width:500px;
 
-      .secondary-item:nth-child(2) {
-        margin-top: 0;
-      }
+  color:#777;
 
-      .about-grid {
-        grid-template-columns:
-          1fr;
+  font-size:13px;
+  line-height:2.15;
+}
 
-        gap: 60px;
-      }
+.email{
+  display:inline-block;
 
-      .about-art {
-        order: 2;
-      }
+  margin-top:45px;
 
-      .about-copy {
-        order: 1;
-      }
+  direction:ltr;
 
-      .service {
-        grid-template-columns:
-          45px 1fr 30px;
-      }
+  font:600 clamp(17px,2.3vw,30px) "DM Sans";
 
-      .service-description {
-        display: none;
-      }
+  padding-bottom:10px;
 
-      .contact-grid {
-        grid-template-columns:
-          1fr;
+  border-bottom:1px solid var(--gold);
 
-        gap: 70px;
-      }
+  transition:color .3s;
+}
 
-      .contact-title {
-        font-size:
-          clamp(75px, 20vw, 140px);
-      }
+.email:hover{
+  color:var(--gold2);
+}
 
-    }
+.contact-meta{
+  margin-top:120px;
 
+  padding-top:20px;
 
-    @media (max-width: 600px) {
+  border-top:1px solid var(--line);
 
-      .section {
-        padding:
-          100px 0;
-      }
+  display:flex;
 
-      .hero {
-        min-height: 100svh;
-      }
+  justify-content:space-between;
 
-      .hero-grid::before {
-        left: 5%;
-      }
+  direction:ltr;
 
-      .hero-grid::after {
-        right: 5%;
-      }
+  color:#999;
 
-      .hero-title {
-        font-size:
-          clamp(90px, 29vw, 150px);
-      }
+  font:500 9px "DM Sans";
+}
 
-      .hero-title::after {
-        width: 80px;
-      }
 
-      .statement {
-        padding:
-          110px 0;
-      }
+/* =========================================================
+   17 — FOOTER
+========================================================= */
 
-      .work {
-        padding:
-          110px 0;
-      }
+.footer{
+  padding:35px 5vw 45px;
 
-      .work-header {
-        display: block;
-      }
+  background:var(--paper);
 
-      .work-count {
-        margin-top: 20px;
-      }
+  display:flex;
 
-      .project-main {
-        margin-top: 55px;
-      }
+  justify-content:space-between;
+  align-items:center;
 
-      .project-image {
-        aspect-ratio: 1 / 1;
-      }
+  direction:ltr;
 
-      .project-circle {
-        width: 42%;
-      }
+  color:#999;
 
-      .project-secondary {
-        margin-top: 80px;
-      }
+  font:500 9px "DM Sans";
+}
 
-      .about {
-        padding:
-          110px 0;
-      }
+.footer-logo{
+  color:var(--black);
 
-      .about-art {
-        aspect-ratio: 1;
-      }
+  font:800 22px "DM Sans";
 
-      .about-art::before {
-        font-size:
-          45vw;
-      }
+  letter-spacing:-.13em;
+}
 
-      .services {
-        padding:
-          110px 0;
-      }
+.footer-logo span{
+  color:var(--gold);
+}
 
-      .services-list {
-        margin-top: 55px;
-      }
 
-      .service {
-        grid-template-columns:
-          35px 1fr 25px;
+/* =========================================================
+   18 — RESPONSIVE
+========================================================= */
 
-        padding: 22px 0;
-      }
+@media(max-width:900px){
 
-      .service-name {
-        font-size: 21px;
-      }
+  .header-status{
+    display:none;
+  }
 
-      .philosophy {
-        padding:
-          110px 0;
-      }
+  .hero-display{
+    font-size:27vw;
+  }
 
-      .philosophy-title {
-        margin-top: 45px;
+  .hero-bottom{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
 
-        font-size:
-          clamp(48px, 14vw, 85px);
-      }
+  .hero-meta{
+    text-align:right;
+    direction:rtl;
+  }
 
-      .contact {
-        padding:
-          110px 0 70px;
-      }
+  .statement-content{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
 
-      .contact-bottom {
-        margin-top: 70px;
-      }
+  .project-info{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
 
-      .footer {
-        flex-direction: column;
+  .project-grid{
+    gap:50px;
+  }
 
-        gap: 14px;
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:70px;
+  }
 
-        text-align: center;
-      }
+  .about-art{
+    order:2;
+  }
 
-    }
+  .about-copy{
+    order:1;
+  }
 
-  </style>
+  .number-grid{
+    grid-template-columns:1fr;
+  }
+
+  .stat{
+    border-left:0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .stat:last-child{
+    border-bottom:0;
+  }
+
+  .service{
+    grid-template-columns:45px 1fr 30px;
+  }
+
+  .service-copy{
+    display:none;
+  }
+
+  .contact-grid{
+    grid-template-columns:1fr;
+    gap:70px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .section{
+    padding:110px 0;
+  }
+
+  .hero-content{
+    padding-top:80px;
+  }
+
+  .hero-display{
+    font-size:29vw;
+  }
+
+  .hero-orbit{
+    width:90vw;
+    height:90vw;
+    right:-35vw;
+  }
+
+  .hero-scroll{
+    display:none;
+  }
+
+  .statement{
+    padding:120px 0;
+  }
+
+  .statement-title{
+    font-size:14vw;
+  }
+
+  .work{
+    padding-top:110px;
+  }
+
+  .project{
+    padding:70px 0 100px;
+  }
+
+  .project-visual{
+    aspect-ratio:1/1;
+  }
+
+  .project-orbit{
+    width:45%;
+  }
+
+  .project-grid{
+    grid-template-columns:1fr;
+    padding-bottom:110px;
+  }
+
+  .small-project:nth-child(2){
+    margin-top:0;
+  }
+
+  .about{
+    padding:120px 0;
+  }
+
+  .about-art{
+    aspect-ratio:1;
+  }
+
+  .numbers{
+    padding:100px 0;
+  }
+
+  .services{
+    padding:120px 0;
+  }
+
+  .services-list{
+    margin-top:60px;
+  }
+
+  .service{
+    padding:25px 0;
+  }
+
+  .service-name{
+    font-size:21px;
+  }
+
+  .philosophy{
+    padding:120px 0;
+  }
+
+  .philosophy-title{
+    margin-top:55px;
+    font-size:15vw;
+  }
+
+  .contact{
+    padding:120px 0 70px;
+  }
+
+  .contact-meta{
+    margin-top:75px;
+  }
+
+  .footer{
+    flex-direction:column;
+    gap:15px;
+  }
+
+}
+
+
+/* =========================================================
+   19 — REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *:before,
+  *:after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+
+}
+
+</style>
 </head>
 
 
 <body>
 
+<!-- =======================================================
+     CURSOR
+======================================================= -->
 
-  <!-- ===================================================
-       LOADER
-  ==================================================== -->
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
 
-  <div class="loader" id="loader">
 
-    <div class="loader-box">
+<!-- =======================================================
+     LOADER
+======================================================= -->
 
-      <div class="loader-top">
+<div class="loader" id="loader">
 
-        <div class="loader-logo">
-          MBK
-        </div>
+  <div class="loader-inner">
 
-        <div class="loader-number" id="loaderNumber">
-          00
-        </div>
+    <div class="loader-brand">
 
+      <div class="loader-logo">
+        MBK
       </div>
 
-      <div class="loader-line">
-        <div class="loader-progress"></div>
+      <div class="loader-count" id="loaderCount">
+        00
       </div>
+
+    </div>
+
+    <div class="loader-track">
+
+      <div class="loader-bar" id="loaderBar"></div>
 
     </div>
 
   </div>
 
+</div>
 
-  <!-- ===================================================
-       HEADER
-  ==================================================== -->
 
-  <header class="header" id="header">
+<!-- =======================================================
+     HEADER
+======================================================= -->
 
-    <a href="#home" class="logo">
-      M<span>BK</span>
-    </a>
+<header class="header" id="header">
 
-    <div class="header-center">
-      DIGITAL / CREATIVE / 2026
+  <a href="#home" class="logo">
+    M<b>BK</b>
+  </a>
+
+  <div class="header-status">
+    INDEPENDENT DIGITAL CREATIVE — 2026
+  </div>
+
+  <button
+    class="menu-button"
+    id="menuButton"
+    aria-label="Open menu"
+  >
+
+    <span></span>
+    <span></span>
+
+  </button>
+
+</header>
+
+
+<!-- =======================================================
+     MENU
+======================================================= -->
+
+<div class="menu" id="menu">
+
+  <div class="menu-grid">
+
+    <div class="menu-small">
+      NAVIGATION / 2026
     </div>
 
-    <button
-      class="menu-btn"
-      id="menuBtn"
-      aria-label="Menu"
+    <nav class="menu-links">
+
+      <a href="#home">
+        Home
+      </a>
+
+      <a href="#work">
+        Work
+      </a>
+
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#services">
+        Services
+      </a>
+
+      <a href="#contact">
+        Contact
+      </a>
+
+    </nav>
+
+  </div>
+
+  <div class="menu-footer">
+
+    <span>
+      MBK / DIGITAL CREATIVE
+    </span>
+
+    <span>
+      mabkhout@mabkhut.com
+    </span>
+
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<main>
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<section class="hero" id="home">
+
+  <div class="hero-lines"></div>
+
+  <div class="hero-orbit"></div>
+
+  <div class="hero-content">
+
+    <div class="hero-top">
+
+      <div class="available">
+
+        <span class="available-dot"></span>
+
+        AVAILABLE FOR SELECTED PROJECTS
+
+      </div>
+
+      <div class="number">
+        01 / 08
+      </div>
+
+    </div>
+
+
+    <h1
+      class="hero-display"
+      data-parallax="hero"
     >
-      <span></span>
-      <span></span>
-    </button>
-
-  </header>
+      M<span>BK</span>
+    </h1>
 
 
-  <!-- ===================================================
-       MENU
-  ==================================================== -->
+    <div class="hero-bottom">
 
-  <div class="menu" id="menu">
+      <div class="hero-name">
 
-    <div class="menu-inner">
+        مبخوت
 
-      <div class="menu-label">
-        NAVIGATION
+        <br>
+
+        بن عبدالله
+
       </div>
 
-      <nav class="menu-links">
 
-        <a href="#home">
-          Home
-        </a>
+      <p class="hero-copy">
 
-        <a href="#work">
-          Work
-        </a>
+        أبني هويات رقمية وتجارب بصرية
+        تجمع بين الفكرة، الدقة، والبساطة.
 
-        <a href="#about">
-          About
-        </a>
+        <br><br>
 
-        <a href="#services">
-          Services
-        </a>
+        كل مشروع يبدأ بفكرة،
+        ثم يتحول إلى تجربة.
 
-        <a href="#contact">
-          Contact
-        </a>
+      </p>
 
-      </nav>
 
-    </div>
+      <div class="hero-meta">
 
-    <div class="menu-footer">
+        <strong>
+          DIGITAL CREATIVE
+        </strong>
 
-      <span>
-        MBK / 2026
-      </span>
+        <br>
 
-      <span>
-        mabkhout@mabkhut.com
-      </span>
+        IDENTITY / WEB / EXPERIENCE
+
+        <br>
+
+        YEMEN — WORLDWIDE
+
+      </div>
 
     </div>
 
   </div>
 
 
-  <!-- ===================================================
-       MAIN
-  ==================================================== -->
+  <div class="hero-scroll">
 
-  <main>
+    SCROLL TO EXPLORE
 
+    <i></i>
 
-    <!-- ===============================================
-         HERO
-    ================================================ -->
+  </div>
 
-    <section class="hero" id="home">
-
-      <div class="hero-grid"></div>
-
-      <div class="hero-bg-letter">
-        M
-      </div>
-
-      <div class="hero-content">
-
-        <div class="hero-top">
-
-          <div class="availability">
-
-            <span class="availability-dot"></span>
-
-            AVAILABLE FOR SELECTED PROJECTS
-
-          </div>
-
-          <div class="section-number">
-            01 / 07
-          </div>
-
-        </div>
+</section>
 
 
-        <h1 class="hero-title">
-          MBK
-        </h1>
+<!-- =======================================================
+     STATEMENT
+======================================================= -->
 
+<section class="statement">
 
-        <div class="hero-info">
+  <div class="statement-bg">
+    M
+  </div>
 
-          <div class="hero-name">
+  <div class="container">
 
-            مبخوت
-            <br>
-            بن عبدالله
+    <div class="statement-content reveal">
 
-          </div>
+      <div>
 
-
-          <p class="hero-description">
-
-            أصنع تجارب رقمية وهوية بصرية
-            تجمع بين البساطة، الدقة، والفكرة
-            الواضحة.
-
-            <br><br>
-
-            التصميم بالنسبة لي ليس مجرد شكل.
-            إنه الطريقة التي يشعر بها الناس
-            تجاه الفكرة.
-
-          </p>
-
-
-          <div class="hero-meta">
-
-            <strong>
-              DIGITAL CREATIVE
-            </strong>
-
-            <br>
-
-            PORTFOLIO / 2026
-
-            <br>
-
-            YEMEN — WORLDWIDE
-
-          </div>
-
+        <div class="label">
+          02 / VISION
         </div>
 
       </div>
 
 
-      <div class="hero-scroll">
+      <div>
 
-        SCROLL TO EXPLORE
+        <h2 class="statement-title">
 
-        <span class="hero-scroll-line"></span>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===============================================
-         STATEMENT
-    ================================================ -->
-
-    <section class="statement">
-
-      <div class="container">
-
-        <div class="statement-grid reveal">
-
-          <div>
-
-            <div class="section-label">
-              02 / IDEA
-            </div>
-
-          </div>
-
-
-          <div>
-
-            <h2 class="statement-text">
-
-              أصنع أشياء
-
-              <br>
-
-              تستحق أن
-
-              <br>
-
-              <span>
-                تُرى.
-              </span>
-
-            </h2>
-
-
-            <p class="statement-sub">
-
-              لا أؤمن بأن التصميم الجيد يحتاج
-              إلى الصراخ.
-
-              <br><br>
-
-              عندما تكون الفكرة قوية،
-              يكفي أن نعطيها المساحة الصحيحة
-              لتظهر.
-
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===============================================
-         WORK
-    ================================================ -->
-
-    <section class="work" id="work">
-
-      <div class="container">
-
-
-        <div class="work-header reveal">
-
-          <div>
-
-            <div class="section-label">
-              03 / SELECTED WORK
-            </div>
-
-            <h2 class="work-heading">
-              WORK
-            </h2>
-
-          </div>
-
-          <div class="work-count">
-            03 PROJECTS
-          </div>
-
-        </div>
-
-
-        <!-- MAIN PROJECT -->
-
-        <article class="project-main reveal">
-
-          <div class="project-image">
-
-            <div class="project-circle"></div>
-
-          </div>
-
-
-          <div class="project-main-info">
-
-            <div class="project-index">
-              01 / 03
-            </div>
-
-
-            <div>
-
-              <h3>
-
-                Personal
-
-                <br>
-
-                <span style="color:var(--gold)">
-                  Digital Identity.
-                </span>
-
-              </h3>
-
-              <a
-                href="#contact"
-                class="project-link"
-              >
-
-                EXPLORE PROJECT
-
-                <span>
-                  →
-                </span>
-
-              </a>
-
-            </div>
-
-
-            <p>
-
-              هوية رقمية شخصية مبنية
-              حول البساطة، الحضور،
-              والمرونة المستقبلية.
-
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <!-- SECONDARY PROJECTS -->
-
-        <div class="project-secondary">
-
-
-          <article class="secondary-item reveal">
-
-            <div class="secondary-image"></div>
-
-            <div class="secondary-info">
-
-              <div class="secondary-number">
-                02 / DIGITAL PRODUCT
-              </div>
-
-              <h4>
-                Product Experience.
-              </h4>
-
-              <p>
-
-                تصميم تجربة رقمية تركز
-                على وضوح المنتج وسهولة
-                استخدامه.
-
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <article class="secondary-item reveal">
-
-            <div class="secondary-image"></div>
-
-            <div class="secondary-info">
-
-              <div class="secondary-number">
-                03 / EXPERIMENT
-              </div>
-
-              <h4>
-                Future Direction.
-              </h4>
-
-              <p>
-
-                تجارب بصرية وتفاعلية
-                تستكشف الشكل القادم
-                للمنتجات الرقمية.
-
-              </p>
-
-            </div>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===============================================
-         ABOUT
-    ================================================ -->
-
-    <section class="about" id="about">
-
-      <div class="container">
-
-        <div class="about-grid">
-
-
-          <div class="about-art reveal">
-
-            <div class="about-orbit"></div>
-
-          </div>
-
-
-          <div class="about-copy reveal">
-
-            <div class="section-label">
-              04 / ABOUT
-            </div>
-
-            <h2>
-
-              مبخوت
-
-              <br>
-
-              <span>
-                بن عبدالله.
-              </span>
-
-            </h2>
-
-
-            <p>
-
-              أبني حضورًا رقميًا يعتمد
-              على الفكرة قبل الزخرفة.
-
-              <br><br>
-
-              أركز على صناعة تجارب
-              واضحة، هادئة، ومميزة
-              بصريًا، مع الاهتمام بالتفاصيل
-              الصغيرة التي تصنع الفرق.
-
-            </p>
-
-
-            <div class="about-details">
-
-              <div class="detail-row">
-
-                <span>
-                  FOCUS
-                </span>
-
-                <span>
-                  DIGITAL EXPERIENCE
-                </span>
-
-              </div>
-
-
-              <div class="detail-row">
-
-                <span>
-                  STYLE
-                </span>
-
-                <span>
-                  MINIMAL / PREMIUM
-                </span>
-
-              </div>
-
-
-              <div class="detail-row">
-
-                <span>
-                  IDENTITY
-                </span>
-
-                <span>
-                  WHITE / GOLD
-                </span>
-
-              </div>
-
-
-              <div class="detail-row">
-
-                <span>
-                  BASE
-                </span>
-
-                <span>
-                  YEMEN / WORLDWIDE
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===============================================
-         SERVICES
-    ================================================ -->
-
-    <section class="services" id="services">
-
-      <div class="container">
-
-
-        <div class="services-header reveal">
-
-          <div>
-
-            <div class="section-label">
-              05 / CAPABILITIES
-            </div>
-
-            <h2 class="services-title">
-              SERVICES
-            </h2>
-
-          </div>
-
-          <div class="section-number">
-            WHAT I BUILD
-          </div>
-
-        </div>
-
-
-        <div class="services-list">
-
-
-          <div class="service reveal">
-
-            <div class="service-number">
-              01
-            </div>
-
-            <div class="service-name">
-              Digital Identity
-            </div>
-
-            <div class="service-description">
-
-              هوية رقمية متكاملة
-              تعكس الشخصية والقيمة.
-
-            </div>
-
-            <div class="service-arrow">
-              →
-            </div>
-
-          </div>
-
-
-          <div class="service reveal">
-
-            <div class="service-number">
-              02
-            </div>
-
-            <div class="service-name">
-              Web Design
-            </div>
-
-            <div class="service-description">
-
-              مواقع عصرية مبنية
-              حول تجربة المستخدم.
-
-            </div>
-
-            <div class="service-arrow">
-              →
-            </div>
-
-          </div>
-
-
-          <div class="service reveal">
-
-            <div class="service-number">
-              03
-            </div>
-
-            <div class="service-name">
-              UI / UX
-            </div>
-
-            <div class="service-description">
-
-              واجهات واضحة،
-              دقيقة، وقابلة للاستخدام.
-
-            </div>
-
-            <div class="service-arrow">
-              →
-            </div>
-
-          </div>
-
-
-          <div class="service reveal">
-
-            <div class="service-number">
-              04
-            </div>
-
-            <div class="service-name">
-              Creative Direction
-            </div>
-
-            <div class="service-description">
-
-              بناء الاتجاه البصري
-              والفكرة العامة للمشروع.
-
-            </div>
-
-            <div class="service-arrow">
-              →
-            </div>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===============================================
-         PHILOSOPHY
-    ================================================ -->
-
-    <section class="philosophy">
-
-      <div class="container">
-
-
-        <div class="philosophy-top reveal">
-
-          <div class="section-label">
-            06 / PHILOSOPHY
-          </div>
-
-          <div class="section-number">
-            PRINCIPLE
-          </div>
-
-        </div>
-
-
-        <h2 class="philosophy-title reveal">
-
-          MAKE IT
+          لا أصنع
 
           <br>
 
-          <span>
-            SIMPLE.
-          </span>
+          مواقع فقط.
 
           <br>
 
-          MAKE IT
-
-          <br>
-
-          UNFORGETTABLE.
+          أصنع <em>حضورًا.</em>
 
         </h2>
 
 
-        <p class="philosophy-copy reveal">
+        <p class="statement-text">
 
-          البساطة ليست حذف التفاصيل.
-          البساطة هي معرفة أي التفاصيل
-          تستحق أن تبقى.
+          في عالم يمتلئ بالمواقع،
+          الفرق الحقيقي ليس في عدد
+          المؤثرات، بل في الفكرة التي
+          تبقى في ذهن الزائر بعد أن
+          يغادر.
 
           <br><br>
 
-          لذلك كل عنصر هنا له وظيفة:
-          إما أن يوضح، أو يوجّه، أو يترك
-          انطباعًا.
+          لذلك صُممت MBK كرحلة،
+          وليس كصفحة معلومات.
 
         </p>
 
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     WORK
+======================================================= -->
+
+<section class="work" id="work">
+
+  <div class="container">
+
+    <div class="work-heading reveal">
+
+      <div>
+
+        <div class="label">
+          03 / SELECTED WORK
+        </div>
+
+        <h2 class="work-title">
+          WORK
+        </h2>
 
       </div>
 
-    </section>
+      <div class="number">
+        03 CASE STUDIES
+      </div>
+
+    </div>
 
 
-    <!-- ===============================================
-         CONTACT
-    ================================================ -->
+    <!-- PROJECT 01 -->
 
-    <section class="contact" id="contact">
+    <article class="project reveal">
 
-      <div class="container">
+      <div class="project-visual">
+
+        <div class="project-tag">
+          DIGITAL IDENTITY / 01
+        </div>
+
+        <div class="project-monogram">
+          MBK
+        </div>
+
+        <div class="project-orbit"></div>
+
+      </div>
 
 
-        <div class="contact-grid reveal">
+      <div class="project-info">
+
+        <div class="project-number">
+          01 / 03
+        </div>
 
 
-          <h2 class="contact-title">
+        <div>
 
-            LET'S
+          <h3 class="project-name">
+
+            PERSONAL
 
             <br>
 
             <span>
-              BUILD.
+              DIGITAL IDENTITY.
             </span>
 
-          </h2>
+          </h3>
+
+          <a
+            href="#contact"
+            class="explore"
+          >
+
+            EXPLORE CASE STUDY
+
+            <span>→</span>
+
+          </a>
+
+        </div>
 
 
-          <div class="contact-copy">
+        <p class="project-description">
 
-            <p>
+          بناء هوية رقمية شخصية
+          تعكس الهدوء، الثقة،
+          والطابع المعاصر.
 
-              لديك فكرة تستحق أن تُبنى؟
+        </p>
 
-              <br>
+      </div>
 
-              أرسل التفاصيل،
-              ودعنا نحولها إلى تجربة
-              تستحق أن تُرى.
-
-            </p>
+    </article>
 
 
-            <a
-              class="email"
-              href="mailto:mabkhout@mabkhut.com"
-            >
-              mabkhout@mabkhut.com
-            </a>
+    <!-- PROJECTS 02 / 03 -->
+
+    <div class="project-grid">
 
 
-            <div class="contact-bottom">
+      <article class="small-project reveal">
 
-              <span>
-                AVAILABLE FOR SELECTED PROJECTS
-              </span>
+        <div class="small-visual">
 
-              <span>
-                2026
-              </span>
+          <div class="small-shape"></div>
 
-            </div>
+        </div>
+
+        <div class="small-info">
+
+          <div class="small-number">
+            02 / DIGITAL PRODUCT
+          </div>
+
+          <h3 class="small-title">
+            PRODUCT
+            <br>
+            EXPERIENCE.
+          </h3>
+
+          <p class="small-description">
+
+            تجربة رقمية مصممة
+            حول الوضوح وسهولة
+            الاستخدام.
+
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="small-project reveal">
+
+        <div class="small-visual">
+
+          <div class="small-shape"></div>
+
+        </div>
+
+        <div class="small-info">
+
+          <div class="small-number">
+            03 / EXPERIMENT
+          </div>
+
+          <h3 class="small-title">
+            FUTURE
+            <br>
+            DIRECTION.
+          </h3>
+
+          <p class="small-description">
+
+            تجربة بصرية تستكشف
+            العلاقة بين الهوية
+            والتقنية.
+
+          </p>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
+
+<section class="about" id="about">
+
+  <div class="container">
+
+    <div class="about-grid">
+
+
+      <div class="about-art reveal">
+
+        <div class="about-letter">
+          M
+        </div>
+
+        <div class="about-ring"></div>
+
+        <div class="about-cross"></div>
+
+      </div>
+
+
+      <div class="about-copy reveal">
+
+        <div class="label">
+          04 / ABOUT
+        </div>
+
+        <h2 class="about-title">
+
+          مبخوت
+
+          <br>
+
+          <span>
+            بن عبدالله.
+          </span>
+
+        </h2>
+
+
+        <p class="about-description">
+
+          أتعامل مع التصميم كوسيلة
+          لصناعة الانطباع، وليس كزخرفة.
+
+          <br><br>
+
+          أبحث عن التوازن بين الفكرة
+          والشكل، بين الجرأة والبساطة،
+          وبين التقنية والتجربة الإنسانية.
+
+        </p>
+
+
+        <div class="details">
+
+          <div class="detail">
+
+            <span>
+              DISCIPLINE
+            </span>
+
+            <span>
+              DIGITAL CREATIVE
+            </span>
 
           </div>
 
+
+          <div class="detail">
+
+            <span>
+              FOCUS
+            </span>
+
+            <span>
+              BRAND / WEB / UI
+            </span>
+
+          </div>
+
+
+          <div class="detail">
+
+            <span>
+              APPROACH
+            </span>
+
+            <span>
+              MINIMAL / PREMIUM
+            </span>
+
+          </div>
+
+
+          <div class="detail">
+
+            <span>
+              BASE
+            </span>
+
+            <span>
+              YEMEN / WORLDWIDE
+            </span>
+
+          </div>
 
         </div>
 
       </div>
 
-    </section>
 
-
-  </main>
-
-
-  <!-- ===================================================
-       FOOTER
-  ==================================================== -->
-
-  <footer class="footer">
-
-    <div class="footer-logo">
-      M<span>BK</span>
     </div>
 
-    <div>
-      © 2026 — ALL RIGHTS RESERVED
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     NUMBERS
+======================================================= -->
+
+<section class="numbers">
+
+  <div class="container">
+
+    <div class="number-grid reveal">
+
+
+      <div class="stat">
+
+        <div class="stat-value">
+          01<span>.</span>
+        </div>
+
+        <div class="stat-label">
+          PERSONAL STANDARD
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-value">
+          100<span>%</span>
+        </div>
+
+        <div class="stat-label">
+          ATTENTION TO DETAIL
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-value">
+          ∞
+        </div>
+
+        <div class="stat-label">
+          ROOM TO CREATE
+        </div>
+
+      </div>
+
+
     </div>
 
-    <div>
-      DIGITAL / CREATIVE
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     SERVICES
+======================================================= -->
+
+<section class="services" id="services">
+
+  <div class="container">
+
+    <div class="services-top reveal">
+
+      <div>
+
+        <div class="label">
+          05 / CAPABILITIES
+        </div>
+
+        <h2 class="services-title">
+          SERVICES
+        </h2>
+
+      </div>
+
+      <div class="number">
+        WHAT I BUILD
+      </div>
+
     </div>
 
-  </footer>
+
+    <div class="services-list">
 
 
-  <!-- ===================================================
-       JAVASCRIPT
-  ==================================================== -->
+      <div class="service reveal">
 
-  <script>
+        <div class="service-index">
+          01
+        </div>
 
-    /* ================================================
-       LOADER
-    ================================================= */
+        <div class="service-name">
+          Digital Identity
+        </div>
 
-    const loader =
-      document.getElementById("loader");
+        <div class="service-copy">
 
-    const loaderNumber =
-      document.getElementById("loaderNumber");
+          بناء حضور رقمي
+          متكامل ومميز.
 
-    let progress = 0;
+        </div>
 
-    const loaderTimer =
-      setInterval(() => {
+        <div class="service-arrow">
+          →
+        </div>
 
-        progress +=
-          Math.floor(Math.random() * 15) + 5;
-
-        if (progress >= 100) {
-
-          progress = 100;
-
-          clearInterval(loaderTimer);
-
-          setTimeout(() => {
-
-            loader.classList.add("hide");
-
-          }, 250);
-
-        }
-
-        loaderNumber.textContent =
-          String(progress).padStart(2, "0");
-
-      }, 100);
+      </div>
 
 
-    /* ================================================
-       HEADER
-    ================================================= */
+      <div class="service reveal">
 
-    const header =
-      document.getElementById("header");
+        <div class="service-index">
+          02
+        </div>
 
-    window.addEventListener(
-      "scroll",
-      () => {
+        <div class="service-name">
+          Web Experience
+        </div>
 
-        if (window.scrollY > 50) {
+        <div class="service-copy">
 
-          header.classList.add("scrolled");
+          مواقع وتجارب رقمية
+          مصممة حول المستخدم.
 
-        } else {
+        </div>
 
-          header.classList.remove("scrolled");
+        <div class="service-arrow">
+          →
+        </div>
 
-        }
+      </div>
 
-      },
-      { passive: true }
+
+      <div class="service reveal">
+
+        <div class="service-index">
+          03
+        </div>
+
+        <div class="service-name">
+          UI / UX
+        </div>
+
+        <div class="service-copy">
+
+          واجهات واضحة،
+          دقيقة، وقابلة للاستخدام.
+
+        </div>
+
+        <div class="service-arrow">
+          →
+        </div>
+
+      </div>
+
+
+      <div class="service reveal">
+
+        <div class="service-index">
+          04
+        </div>
+
+        <div class="service-name">
+          Creative Direction
+        </div>
+
+        <div class="service-copy">
+
+          تطوير الفكرة واللغة
+          البصرية للمشروع.
+
+        </div>
+
+        <div class="service-arrow">
+          →
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     PHILOSOPHY
+======================================================= -->
+
+<section class="philosophy">
+
+  <div class="container">
+
+    <div class="philosophy-top reveal">
+
+      <div class="label">
+        06 / PHILOSOPHY
+      </div>
+
+      <div class="number">
+        PRINCIPLE
+      </div>
+
+    </div>
+
+
+    <h2 class="philosophy-title reveal">
+
+      MAKE IT
+
+      <br>
+
+      <span>
+        SIMPLE.
+      </span>
+
+      <br>
+
+      MAKE IT
+
+      <br>
+
+      UNFORGETTABLE.
+
+    </h2>
+
+
+    <p class="philosophy-text reveal">
+
+      الفخامة لا تحتاج إلى كثرة.
+
+      <br><br>
+
+      تحتاج إلى قرار صحيح،
+      ومساحة كافية، وتفاصيل
+      يعرف المصمم متى يستخدمها
+      ومتى يحذفها.
+
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     CONTACT
+======================================================= -->
+
+<section class="contact" id="contact">
+
+  <div class="container">
+
+    <div class="contact-grid reveal">
+
+
+      <h2 class="contact-title">
+
+        LET'S
+
+        <br>
+
+        <span>
+          BUILD.
+        </span>
+
+      </h2>
+
+
+      <div class="contact-copy">
+
+        <p>
+
+          لديك فكرة تستحق أن تتحول
+          إلى شيء مختلف؟
+
+          <br><br>
+
+          أخبرني عنها.
+
+        </p>
+
+
+        <a
+          href="mailto:mabkhout@mabkhut.com"
+          class="email"
+        >
+          mabkhout@mabkhut.com
+        </a>
+
+
+        <div class="contact-meta">
+
+          <span>
+            AVAILABLE FOR SELECTED PROJECTS
+          </span>
+
+          <span>
+            2026
+          </span>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer class="footer">
+
+  <div class="footer-logo">
+    M<span>BK</span>
+  </div>
+
+  <div>
+    © 2026 — ALL RIGHTS RESERVED
+  </div>
+
+  <div>
+    DIGITAL / CREATIVE
+  </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   01 — LOADER
+========================================================= */
+
+const loader =
+  document.getElementById("loader");
+
+const loaderBar =
+  document.getElementById("loaderBar");
+
+const loaderCount =
+  document.getElementById("loaderCount");
+
+let progress = 0;
+
+const loadInterval =
+  setInterval(() => {
+
+    progress +=
+      Math.floor(Math.random() * 9) + 4;
+
+    if(progress >= 100){
+
+      progress = 100;
+
+      clearInterval(loadInterval);
+
+      setTimeout(() => {
+
+        loader.classList.add("done");
+
+      },450);
+
+    }
+
+    loaderBar.style.width =
+      progress + "%";
+
+    loaderCount.textContent =
+      String(progress).padStart(2,"0");
+
+  },90);
+
+
+/* =========================================================
+   02 — HEADER
+========================================================= */
+
+const header =
+  document.getElementById("header");
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    header.classList.toggle(
+      "scrolled",
+      window.scrollY > 60
     );
 
+  },
+  {passive:true}
+);
 
-    /* ================================================
-       MENU
-    ================================================= */
 
-    const menuBtn =
-      document.getElementById("menuBtn");
+/* =========================================================
+   03 — MENU
+========================================================= */
 
-    const menu =
-      document.getElementById("menu");
+const menuButton =
+  document.getElementById("menuButton");
 
-    menuBtn.addEventListener(
-      "click",
-      () => {
+const menu =
+  document.getElementById("menu");
 
-        const open =
-          menu.classList.toggle("open");
+menuButton.addEventListener(
+  "click",
+  () => {
 
-        menuBtn.classList.toggle(
-          "active",
-          open
-        );
+    const open =
+      menu.classList.toggle("open");
 
-        document.body.classList.toggle(
-          "menu-open",
-          open
-        );
-
-      }
+    menuButton.classList.toggle(
+      "active",
+      open
     );
 
+    document.body.classList.toggle(
+      "locked",
+      open
+    );
 
-    document
-      .querySelectorAll(".menu-links a")
-      .forEach(link => {
+  }
+);
 
-        link.addEventListener(
-          "click",
-          () => {
 
-            menu.classList.remove("open");
+document
+.querySelectorAll(".menu-links a")
+.forEach(link => {
 
-            menuBtn.classList.remove("active");
+  link.addEventListener(
+    "click",
+    () => {
 
-            document.body.classList.remove(
-              "menu-open"
+      menu.classList.remove("open");
+
+      menuButton.classList.remove("active");
+
+      document.body.classList.remove(
+        "locked"
+      );
+
+    }
+  );
+
+});
+
+
+document.addEventListener(
+  "keydown",
+  e => {
+
+    if(e.key === "Escape"){
+
+      menu.classList.remove("open");
+
+      menuButton.classList.remove("active");
+
+      document.body.classList.remove(
+        "locked"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   04 — REVEAL
+========================================================= */
+
+const observer =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(
+        entry => {
+
+          if(entry.isIntersecting){
+
+            entry.target.classList.add(
+              "show"
+            );
+
+            observer.unobserve(
+              entry.target
             );
 
           }
-        );
-
-      });
-
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (event.key === "Escape") {
-
-          menu.classList.remove("open");
-
-          menuBtn.classList.remove("active");
-
-          document.body.classList.remove(
-            "menu-open"
-          );
-
-        }
-
-      }
-    );
-
-
-    /* ================================================
-       REVEAL
-    ================================================= */
-
-    const revealObserver =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add(
-                "visible"
-              );
-
-              revealObserver.unobserve(
-                entry.target
-              );
-
-            }
-
-          });
-
-        },
-        {
-          threshold: .12,
-          rootMargin:
-            "0px 0px -40px 0px"
-        }
-      );
-
-
-    document
-      .querySelectorAll(".reveal")
-      .forEach(element => {
-
-        revealObserver.observe(element);
-
-      });
-
-
-    /* ================================================
-       SMOOTH LINKS
-    ================================================= */
-
-    document
-      .querySelectorAll('a[href^="#"]')
-      .forEach(link => {
-
-        link.addEventListener(
-          "click",
-          event => {
-
-            const target =
-              document.querySelector(
-                link.getAttribute("href")
-              );
-
-            if (!target) return;
-
-            event.preventDefault();
-
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start"
-            });
-
-          }
-        );
-
-      });
-
-
-    /* ================================================
-       PROJECT PARALLAX
-    ================================================= */
-
-    const mainProject =
-      document.querySelector(".project-image");
-
-    const mainCircle =
-      document.querySelector(".project-circle");
-
-    if (
-      mainProject &&
-      mainCircle &&
-      window.matchMedia(
-        "(pointer:fine)"
-      ).matches
-    ) {
-
-      mainProject.addEventListener(
-        "mousemove",
-        event => {
-
-          const rect =
-            mainProject.getBoundingClientRect();
-
-          const x =
-            (event.clientX - rect.left)
-            / rect.width - .5;
-
-          const y =
-            (event.clientY - rect.top)
-            / rect.height - .5;
-
-          mainCircle.style.transform =
-            `
-            translate(
-              calc(-50% + ${x * 25}px),
-              calc(-50% + ${y * 25}px)
-            )
-            scale(1.08)
-            `;
 
         }
       );
 
+    },
+    {
+      threshold:.12,
+      rootMargin:"0px 0px -50px 0px"
+    }
+  );
 
-      mainProject.addEventListener(
-        "mouseleave",
-        () => {
 
-          mainCircle.style.transform =
-            "translate(-50%, -50%)";
+document
+.querySelectorAll(".reveal")
+.forEach(el => {
 
-        }
+  observer.observe(el);
+
+});
+
+
+/* =========================================================
+   05 — CUSTOM CURSOR
+========================================================= */
+
+const cursor =
+  document.querySelector(".cursor");
+
+const cursorRing =
+  document.querySelector(".cursor-ring");
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+
+let ringX = mouseX;
+let ringY = mouseY;
+
+window.addEventListener(
+  "mousemove",
+  e => {
+
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    cursor.style.left =
+      mouseX + "px";
+
+    cursor.style.top =
+      mouseY + "px";
+
+  },
+  {passive:true}
+);
+
+
+function animateCursor(){
+
+  ringX +=
+    (mouseX - ringX) * .12;
+
+  ringY +=
+    (mouseY - ringY) * .12;
+
+  cursorRing.style.left =
+    ringX + "px";
+
+  cursorRing.style.top =
+    ringY + "px";
+
+  requestAnimationFrame(
+    animateCursor
+  );
+
+}
+
+animateCursor();
+
+
+document
+.querySelectorAll(
+  "a,button,.project-visual,.small-visual,.service"
+)
+.forEach(el => {
+
+  el.addEventListener(
+    "mouseenter",
+    () => {
+
+      document.body.classList.add(
+        "cursor-hover"
       );
 
     }
+  );
+
+  el.addEventListener(
+    "mouseleave",
+    () => {
+
+      document.body.classList.remove(
+        "cursor-hover"
+      );
+
+    }
+  );
+
+});
 
 
-    /* ================================================
-       HERO PARALLAX
-    ================================================= */
+/* =========================================================
+   06 — HERO PARALLAX
+========================================================= */
 
-    const heroTitle =
-      document.querySelector(".hero-title");
+const heroDisplay =
+  document.querySelector(".hero-display");
 
-    const heroBg =
-      document.querySelector(".hero-bg-letter");
+const heroOrbit =
+  document.querySelector(".hero-orbit");
 
-    window.addEventListener(
-      "scroll",
-      () => {
+window.addEventListener(
+  "scroll",
+  () => {
 
-        if (
-          window.innerWidth <= 900
-        ) return;
+    const y =
+      window.scrollY;
 
-        const scroll =
-          window.scrollY;
+    if(heroDisplay){
 
-        if (heroTitle) {
-
-          heroTitle.style.transform =
-            `
-            translateY(${scroll * .05}px)
-            scale(
-              ${Math.max(
-                .94,
-                1 - scroll * .00005
-              )}
-            )
-            `;
-
-        }
-
-        if (heroBg) {
-
-          heroBg.style.transform =
-            `
-            translateY(${scroll * .1}px)
-            `;
-
-        }
-
-      },
-      { passive: true }
-    );
-
-
-    /* ================================================
-       REDUCED MOTION
-    ================================================= */
-
-    if (
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches
-    ) {
-
-      document.documentElement.style
-        .scrollBehavior = "auto";
+      heroDisplay.style.transform =
+        `translateY(${y * .045}px)`;
 
     }
 
-  </script>
+    if(heroOrbit){
+
+      heroOrbit.style.transform =
+        `translateY(${y * .08}px)`;
+
+    }
+
+  },
+  {passive:true}
+);
+
+
+/* =========================================================
+   07 — PROJECT MOUSE DEPTH
+========================================================= */
+
+const projectVisual =
+  document.querySelector(".project-visual");
+
+const projectOrbit =
+  document.querySelector(".project-orbit");
+
+if(
+  projectVisual &&
+  projectOrbit &&
+  window.matchMedia(
+    "(pointer:fine)"
+  ).matches
+){
+
+  projectVisual.addEventListener(
+    "mousemove",
+    e => {
+
+      const rect =
+        projectVisual.getBoundingClientRect();
+
+      const x =
+        (e.clientX - rect.left)
+        / rect.width - .5;
+
+      const y =
+        (e.clientY - rect.top)
+        / rect.height - .5;
+
+      projectOrbit.style.transform =
+        `
+        translate(
+          calc(-50% + ${x * 30}px),
+          calc(-50% + ${y * 30}px)
+        )
+        scale(1.08)
+        `;
+
+    }
+  );
+
+
+  projectVisual.addEventListener(
+    "mouseleave",
+    () => {
+
+      projectOrbit.style.transform =
+        "translate(-50%,-50%)";
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   08 — SMOOTH ANCHORS
+========================================================= */
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(link => {
+
+  link.addEventListener(
+    "click",
+    e => {
+
+      const target =
+        document.querySelector(
+          link.getAttribute("href")
+        );
+
+      if(!target) return;
+
+      e.preventDefault();
+
+      target.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+    }
+  );
+
+});
+
+
+/* =========================================================
+   09 — DARK HEADER ON PHILOSOPHY
+========================================================= */
+
+const philosophy =
+  document.querySelector(".philosophy");
+
+const darkObserver =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          header.classList.add("dark");
+
+        }else{
+
+          header.classList.remove("dark");
+
+        }
+
+      });
+
+    },
+    {
+      threshold:.05
+    }
+  );
+
+darkObserver.observe(philosophy);
+
+
+/* =========================================================
+   10 — MAGNETIC MENU BUTTON
+========================================================= */
+
+if(
+  window.matchMedia(
+    "(pointer:fine)"
+  ).matches
+){
+
+  menuButton.addEventListener(
+    "mousemove",
+    e => {
+
+      const rect =
+        menuButton.getBoundingClientRect();
+
+      const x =
+        (e.clientX - rect.left - rect.width/2)
+        * .22;
+
+      const y =
+        (e.clientY - rect.top - rect.height/2)
+        * .22;
+
+      menuButton.style.transform =
+        `translate(${x}px,${y}px)`;
+
+    }
+  );
+
+
+  menuButton.addEventListener(
+    "mouseleave",
+    () => {
+
+      menuButton.style.transform =
+        "";
+
+    }
+  );
+
+}
+
+</script>
 
 </body>
-</html>
+  </html>
