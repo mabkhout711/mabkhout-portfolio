@@ -1,2563 +1,447 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
+<!-- =========================================================
+     MBK V30 — CINEMATIC MOTION ENGINE
+========================================================= -->
 
-<meta charset="UTF-8">
+<style id="MBK-V30">
 
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1.0,viewport-fit=cover"
->
-
-<title>مبخوت بن عبدالله | MBK</title>
-
-<meta
-    name="description"
-    content="الموقع الشخصي الرسمي لمبخوت بن عبدالله — MBK."
->
-
-<meta name="author" content="مبخوت بن عبدالله">
-<meta name="theme-color" content="#061426">
-<meta name="color-scheme" content="dark">
-<meta name="robots" content="index,follow">
-
-<link
-    rel="canonical"
-    href="https://mabkhut.com/"
->
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="مبخوت بن عبدالله | MBK">
-<meta
-    property="og:description"
-    content="الموقع الشخصي الرسمي لمبخوت بن عبدالله."
->
-<meta
-    property="og:url"
-    content="https://mabkhut.com/"
->
-<meta property="og:site_name" content="MBK">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta
-    name="twitter:title"
-    content="مبخوت بن عبدالله | MBK"
->
-<meta
-    name="twitter:description"
-    content="الموقع الشخصي الرسمي لمبخوت بن عبدالله."
->
-
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
-
-<link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
->
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
->
-
-
-<style>
-
-/* =========================================================
-   MBK V21
-   CLEAN / FIXED VERSION
-========================================================= */
+/* ---------- V30 CORE ---------- */
 
 :root{
-
-    --navy:#061426;
-    --navy-2:#081b31;
-    --navy-3:#0b223c;
-
-    --deep:#020914;
-    --deep-2:#030d1b;
-
-    --gold:#d4af37;
-    --gold-2:#b88918;
-
-    --gold-light:#f5df7a;
-    --gold-pale:#fff1a8;
-
-    --white:#f8f7f2;
-    --text:#d8dce2;
-    --muted:#8b97a6;
-
-    --line:rgba(212,175,55,.17);
-    --line-strong:rgba(212,175,55,.42);
-
-    --glass:rgba(255,255,255,.035);
-
-    --shadow:
-        0 30px 100px rgba(0,0,0,.45);
-
-    --ease:
-        cubic-bezier(.22,1,.36,1);
+    --v30-gold:#d4af37;
+    --v30-gold-light:#fff0a0;
+    --v30-blue:#123b62;
 }
 
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-
-html{
-
-    scroll-behavior:smooth;
-
-    background:
-        var(--deep);
-
-}
-
+/* ---------- CINEMATIC AURA ---------- */
 
 body{
-
-    min-height:100vh;
-
-    overflow-x:hidden;
-
-    font-family:
-        "Cairo",
-        "Noto Kufi Arabic",
-        sans-serif;
-
-    color:var(--white);
-
     background:
-
         radial-gradient(
-            circle at 50% -10%,
-            rgba(212,175,55,.12),
-            transparent 30%
+            circle at 50% 0%,
+            rgba(212,175,55,.13),
+            transparent 28%
         ),
-
         radial-gradient(
-            circle at 0% 35%,
-            rgba(20,58,96,.30),
-            transparent 38%
-        ),
-
-        radial-gradient(
-            circle at 100% 70%,
-            rgba(212,175,55,.035),
-            transparent 30%
-        ),
-
-        linear-gradient(
-            145deg,
-            #020914 0%,
-            #061426 45%,
-            #030b16 100%
-        );
-
-    -webkit-font-smoothing:antialiased;
-
-    text-rendering:optimizeLegibility;
-}
-
-
-body.locked{
-    overflow:hidden;
-}
-
-
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    z-index:-10;
-
-    opacity:.045;
-
-    background-image:
-
-        linear-gradient(
-            rgba(255,255,255,.08) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.08) 1px,
-            transparent 1px
-        );
-
-    background-size:80px 80px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 85%
-        );
-}
-
-
-body::after{
-
-    content:"";
-
-    position:fixed;
-
-    width:500px;
-    height:500px;
-
-    top:15%;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    border-radius:50%;
-
-    background:
-        rgba(212,175,55,.035);
-
-    filter:blur(120px);
-
-    pointer-events:none;
-
-    z-index:-9;
-}
-
-
-::selection{
-
-    color:#020914;
-
-    background:
-        var(--gold-light);
-}
-
-
-a{
-
-    color:inherit;
-
-    text-decoration:none;
-}
-
-
-button{
-
-    font-family:inherit;
-}
-
-
-img{
-
-    max-width:100%;
-}
-
-
-button,
-a{
-
-    -webkit-tap-highlight-color:
-        transparent;
-}
-
-
-/* =========================================================
-   LOADER
-========================================================= */
-
-.loader{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:99999;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            #0a1d34,
-            #020914 65%
-        );
-
-    opacity:1;
-
-    visibility:visible;
-
-    transition:
-        opacity .35s ease,
-        visibility .35s ease;
-}
-
-
-.loader.hide{
-
-    opacity:0;
-
-    visibility:hidden;
-
-    pointer-events:none;
-}
-
-
-.loader-inner{
-
-    text-align:center;
-}
-
-
-.loader-logo{
-
-    direction:ltr;
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size:42px;
-
-    font-weight:700;
-
-    letter-spacing:12px;
-
-    color:
-        var(--gold-light);
-
-    animation:
-        loaderPulse 1s ease both;
-}
-
-
-.loader-line{
-
-    width:120px;
-
-    height:1px;
-
-    margin:
-        20px auto 0;
-
-    overflow:hidden;
-
-    background:
-        rgba(212,175,55,.15);
-}
-
-
-.loader-line::after{
-
-    content:"";
-
-    display:block;
-
-    width:100%;
-
-    height:100%;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold-light),
-            transparent
-        );
-
-    animation:
-        loaderLine 1s ease both;
-}
-
-
-@keyframes loaderPulse{
-
-    0%{
-        opacity:0;
-        transform:scale(.9);
-    }
-
-    100%{
-        opacity:1;
-        transform:scale(1);
-    }
-
-}
-
-
-@keyframes loaderLine{
-
-    0%{
-        transform:translateX(-100%);
-    }
-
-    100%{
-        transform:translateX(100%);
-    }
-
-}
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-.progress{
-
-    position:fixed;
-
-    top:0;
-    right:0;
-    left:0;
-
-    height:2px;
-
-    z-index:10000;
-
-    pointer-events:none;
-
-    background:
-        rgba(255,255,255,.02);
-}
-
-
-.progress-bar{
-
-    width:0;
-
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold-2),
-            var(--gold-light)
-        );
-
-    transition:
-        width .1s linear;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-header{
-
-    position:fixed;
-
-    top:0;
-    right:0;
-    left:0;
-
-    height:82px;
-
-    padding:
-        0 34px;
-
-    z-index:8000;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    border-bottom:
-        1px solid
-        rgba(212,175,55,.10);
-
-    background:
-        rgba(2,9,20,.18);
-
-    backdrop-filter:
-        blur(10px);
-
-    transition:
-        background .35s ease,
-        border-color .35s ease,
-        height .35s ease;
-}
-
-
-header.scrolled{
-
-    height:70px;
-
-    background:
-        rgba(2,9,20,.86);
-
-    border-bottom-color:
-        rgba(212,175,55,.18);
-}
-
-
-.logo{
-
-    direction:ltr;
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size:25px;
-
-    font-weight:700;
-
-    letter-spacing:8px;
-
-    color:
-        var(--gold-light);
-}
-
-
-.header-status{
-
-    position:absolute;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    direction:ltr;
-
-    color:#69788a;
-
-    font-size:9px;
-
-    letter-spacing:3px;
-}
-
-
-.status-dot{
-
-    width:6px;
-
-    height:6px;
-
-    border-radius:50%;
-
-    background:
-        var(--gold-light);
-
-    box-shadow:
-        0 0 12px
-        rgba(245,223,122,.8);
-}
-
-
-.menu-btn{
-
-    width:48px;
-
-    height:48px;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(212,175,55,.45);
-
-    background:
-        rgba(255,255,255,.02);
-
-    color:
-        var(--gold-light);
-
-    cursor:pointer;
-
-    font-size:24px;
-
-    line-height:1;
-
-    transition:.3s ease;
-}
-
-
-.menu-btn:hover{
-
-    transform:scale(1.06);
-
-    border-color:
-        var(--gold-light);
-
-    background:
-        rgba(212,175,55,.08);
-
-    box-shadow:
-        0 0 30px
-        rgba(212,175,55,.12);
-}
-
-
-/* =========================================================
-   SIDE MENU
-========================================================= */
-
-.overlay{
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-        rgba(0,0,0,.62);
-
-    backdrop-filter:
-        blur(6px);
-
-    z-index:9100;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.35s ease;
-}
-
-
-.overlay.active{
-
-    opacity:1;
-
-    visibility:visible;
-}
-
-
-.side-menu{
-
-    position:fixed;
-
-    top:0;
-
-    right:0;
-
-    width:min(390px,89vw);
-
-    height:100vh;
-
-    padding:
-        105px 35px 35px;
-
-    z-index:9200;
-
-    background:
-
-        radial-gradient(
-            circle at top right,
-            rgba(212,175,55,.08),
+            circle at 10% 40%,
+            rgba(18,59,98,.18),
             transparent 35%
         ),
-
-        linear-gradient(
-            150deg,
-            rgba(8,26,47,.99),
-            rgba(2,9,20,.99)
-        );
-
-    border-left:
-        1px solid
-        var(--line);
-
-    transform:
-        translateX(105%);
-
-    transition:
-        transform .5s var(--ease);
-
-    box-shadow:
-        -30px 0 100px
-        rgba(0,0,0,.55);
-}
-
-
-.side-menu.active{
-
-    transform:
-        translateX(0);
-}
-
-
-.close-menu{
-
-    position:absolute;
-
-    top:24px;
-
-    left:24px;
-
-    width:42px;
-
-    height:42px;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        var(--line-strong);
-
-    background:transparent;
-
-    color:
-        var(--gold-light);
-
-    cursor:pointer;
-
-    font-size:22px;
-
-    transition:.3s ease;
-}
-
-
-.close-menu:hover{
-
-    transform:
-        rotate(90deg);
-
-    background:
-        rgba(212,175,55,.08);
-}
-
-
-.menu-label{
-
-    color:
-        var(--gold);
-
-    font-size:10px;
-
-    letter-spacing:4px;
-
-    margin-bottom:25px;
-
-    direction:ltr;
-}
-
-
-.side-menu a{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:16px 0;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.055);
-
-    font-size:16px;
-
-    color:
-        var(--white);
-
-    transition:.3s ease;
-}
-
-
-.side-menu a::after{
-
-    content:"↗";
-
-    opacity:0;
-
-    color:
-        var(--gold-light);
-
-    transform:
-        translateX(8px);
-
-    transition:.3s ease;
-}
-
-
-.side-menu a:hover{
-
-    color:
-        var(--gold-light);
-
-    padding-right:10px;
-}
-
-
-.side-menu a:hover::after{
-
-    opacity:1;
-
-    transform:
-        translateX(0);
-}
-
-
-.menu-footer{
-
-    position:absolute;
-
-    right:35px;
-    left:35px;
-
-    bottom:28px;
-
-    padding-top:18px;
-
-    border-top:
-        1px solid
-        rgba(212,175,55,.12);
-
-    color:#647181;
-
-    font-size:11px;
-
-    text-align:center;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-
-    min-height:100vh;
-
-    padding:
-        130px 0 60px;
-
-    position:relative;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-    overflow:hidden;
-}
-
-
-.hero::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:650px;
-    height:650px;
-
-    border-radius:50%;
-
-    top:50%;
-    left:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    border:
-        1px solid
-        rgba(212,175,55,.045);
-
-    box-shadow:
-
-        0 0 0 80px
-        rgba(212,175,55,.012),
-
-        0 0 0 160px
-        rgba(212,175,55,.008);
-
-    pointer-events:none;
-}
-
-
-.hero-grid{
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-    opacity:.32;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            transparent 49.95%,
-            rgba(212,175,55,.07) 50%,
-            transparent 50.05%
+        radial-gradient(
+            circle at 90% 75%,
+            rgba(212,175,55,.07),
+            transparent 30%
         ),
-
         linear-gradient(
-            transparent 49.95%,
-            rgba(212,175,55,.04) 50%,
-            transparent 50.05%
+            145deg,
+            #01060d,
+            #061426 45%,
+            #020812
         );
 }
 
+/* ---------- MOVING AURORA ---------- */
 
-.hero-corner{
+body::after{
+    width:700px;
+    height:700px;
 
-    position:absolute;
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.055),
+            transparent 65%
+        );
 
-    width:75px;
-    height:75px;
+    filter:blur(100px);
 
-    border-color:
-        rgba(212,175,55,.62);
-
-    pointer-events:none;
-}
-
-
-.hero-corner.top{
-
-    top:110px;
-
-    right:0;
-
-    border-top:1px solid;
-    border-right:1px solid;
-}
-
-
-.hero-corner.bottom{
-
-    bottom:35px;
-
-    left:0;
-
-    border-bottom:1px solid;
-    border-left:1px solid;
-}
-
-
-.hero-mini{
-
-    position:relative;
-
-    margin-bottom:17px;
-
-    direction:ltr;
-
-    color:
-        var(--gold-light);
-
-    font-size:10px;
-
-    letter-spacing:5px;
+    animation:
+        v30Aurora 14s ease-in-out infinite alternate;
 
     opacity:.9;
-
-    animation:
-        heroReveal .8s .05s both;
 }
 
+@keyframes v30Aurora{
 
-.hero-name{
-
-    position:relative;
-
-    width:100%;
-
-    max-width:900px;
-
-    padding:0 20px;
-
-    margin-bottom:12px;
-
-    font-size:
-        clamp(37px,6vw,64px);
-
-    font-weight:800;
-
-    line-height:1.5;
-
-    letter-spacing:-1.5px;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #a87810 0%,
-            #f8e27c 25%,
-            #d4af37 50%,
-            #fff2ac 75%,
-            #b88918 100%
-        );
-
-    -webkit-background-clip:text;
-
-    background-clip:text;
-
-    -webkit-text-fill-color:
-        transparent;
-
-    animation:
-        heroReveal .9s .12s both;
-}
-
-
-.gold-line{
-
-    width:105px;
-
-    height:2px;
-
-    margin:
-        0 auto 26px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            transparent,
-            #b88918,
-            #f1d56a,
-            #b88918,
-            transparent
-        );
-
-    box-shadow:
-        0 0 18px
-        rgba(212,175,55,.3);
-
-    animation:
-        heroReveal .8s .2s both;
-}
-
-
-/*
-    تم حذف:
-    حضور شخصي · رؤية · أصالة
-
-    وتم حذف الـ margin الخاص به أيضًا.
-*/
-
-
-@keyframes heroReveal{
-
-    from{
-
-        opacity:0;
-
+    0%{
         transform:
-            translateY(22px);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            translateY(0);
-    }
-
-}
-
-
-/* =========================================================
-   PROFILE PHOTO
-========================================================= */
-
-.photo-frame{
-
-    width:
-        min(430px,86vw);
-
-    aspect-ratio:1/1;
-
-    padding:10px;
-
-    position:relative;
-
-    margin-bottom:21px;
-
-    animation:
-
-        heroReveal .9s .28s both,
-
-        floating 7s 1.4s
-        ease-in-out infinite;
-}
-
-
-.photo-frame::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    border:
-        1px solid
-        rgba(212,175,55,.86);
-
-    border-radius:31px;
-
-    transform:
-        rotate(-1deg);
-
-    box-shadow:
-        0 0 35px
-        rgba(212,175,55,.05);
-}
-
-
-.photo-frame::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:7px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.23);
-
-    border-radius:27px;
-
-    transform:
-        rotate(1deg);
-}
-
-
-/*
-   تم حذف:
-   photo-corner.a
-   photo-corner.b
-*/
-
-
-.profile-photo{
-
-    position:relative;
-
-    z-index:2;
-
-    width:100%;
-
-    height:100%;
-
-    display:block;
-
-    object-fit:contain;
-
-    object-position:center;
-
-    border-radius:24px;
-
-    border:
-        5px solid
-        #07172a;
-
-    background:
-        #07172a;
-
-    box-shadow:
-        0 30px 85px
-        rgba(0,0,0,.52);
-
-    transition:
-        transform .7s var(--ease),
-        box-shadow .7s ease;
-}
-
-
-.photo-frame:hover
-.profile-photo{
-
-    transform:
-        scale(1.015);
-
-    box-shadow:
-        0 38px 105px
-        rgba(0,0,0,.65);
-}
-
-
-@keyframes floating{
-
-    0%,100%{
-        transform:
-            translateY(0);
+            translate(-50%,-8%)
+            scale(.85);
     }
 
     50%{
         transform:
-            translateY(-5px);
+            translate(-42%,8%)
+            scale(1.08);
+    }
+
+    100%{
+        transform:
+            translate(-58%,-3%)
+            scale(.92);
     }
 
 }
 
+/* ---------- HERO DEPTH ---------- */
 
-.quote{
-
-    position:relative;
-
-    color:
-        var(--white);
-
-    font-size:
-        clamp(20px,4vw,28px);
-
-    font-weight:500;
-
-    animation:
-        heroReveal .8s .36s both;
+.hero{
+    isolation:isolate;
+    perspective:1200px;
 }
 
+.hero::after{
+    content:"";
 
-.quote::before,
-.quote::after{
+    position:absolute;
 
-    color:
-        var(--gold);
+    width:520px;
+    height:520px;
 
-    opacity:.7;
+    left:50%;
+    top:35%;
 
-    font-size:20px;
-}
+    transform:
+        translate(-50%,-50%);
 
-
-.quote::before{
-
-    content:"«";
-
-    margin-left:7px;
-}
-
-
-.quote::after{
-
-    content:"»";
-
-    margin-right:7px;
-}
-
-
-.hero-info{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:14px;
-
-    margin-top:26px;
-
-    color:#667487;
-
-    font-size:10px;
-
-    direction:ltr;
-
-    animation:
-        heroReveal .8s .45s both;
-}
-
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.section{
-
-    width:
-        min(1120px,92%);
-
-    margin:auto;
-
-    padding:
-        100px 0;
-}
-
-
-.section-header{
-
-    text-align:center;
-
-    margin-bottom:42px;
-}
-
-
-.section-label{
-
-    display:block;
-
-    color:
-        var(--gold);
-
-    font-size:10px;
-
-    letter-spacing:4px;
-
-    direction:ltr;
-
-    margin-bottom:10px;
-}
-
-
-.section-title{
-
-    font-size:
-        clamp(32px,5vw,48px);
-
-    line-height:1.4;
-
-    margin-bottom:10px;
-}
-
-
-.section-description{
-
-    color:
-        var(--muted);
-
-    font-size:13px;
-
-    line-height:1.9;
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about-card{
-
-    position:relative;
-
-    padding:
-        42px 35px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.17);
-
-    border-radius:30px;
+    border-radius:50%;
 
     background:
-
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.012)
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.12),
+            transparent 65%
         );
 
-    box-shadow:
-        0 25px 70px
-        rgba(0,0,0,.16);
+    filter:blur(45px);
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    animation:
+        v30HeroGlow 6s ease-in-out infinite;
 }
 
+@keyframes v30HeroGlow{
 
-.about-card p{
+    0%,100%{
+        opacity:.35;
+        transform:
+            translate(-50%,-50%)
+            scale(.85);
+    }
 
-    color:
-        #cdd2d9;
+    50%{
+        opacity:.8;
+        transform:
+            translate(-50%,-50%)
+            scale(1.08);
+    }
 
-    font-size:15px;
-
-    line-height:2.15;
-
-    text-align:center;
 }
 
+/* ---------- GOLD SHIMMER ---------- */
 
-.about-card strong{
+.hero-name{
+    background-size:250% 100%;
 
-    color:
-        var(--gold-light);
+    animation:
+        heroReveal .9s .12s both,
+        v30GoldShimmer 5s ease-in-out 1s infinite;
 }
 
+@keyframes v30GoldShimmer{
 
-.facts{
+    0%{
+        background-position:100% 50%;
+    }
 
-    display:grid;
+    50%{
+        background-position:0% 50%;
+    }
 
-    grid-template-columns:
-        repeat(3,1fr);
+    100%{
+        background-position:100% 50%;
+    }
 
-    gap:15px;
-
-    margin-top:18px;
 }
 
+/* ---------- PHOTO CINEMATIC FRAME ---------- */
 
-.fact{
+.photo-frame{
+    transform-style:preserve-3d;
 
-    padding:
-        25px 15px;
-
-    text-align:center;
-
-    border:
-        1px solid
-        rgba(212,175,55,.12);
-
-    border-radius:22px;
-
-    background:
-        rgba(255,255,255,.02);
-}
-
-
-.fact-value{
-
-    color:
-        var(--gold-light);
-
-    font-size:24px;
-
-    font-weight:700;
-
-    direction:ltr;
-}
-
-
-.fact-label{
-
-    color:#778494;
-
-    margin-top:3px;
-
-    font-size:11px;
-}
-
-
-/* =========================================================
-   VALUES
-========================================================= */
-
-.values{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:18px;
-}
-
-
-.value-card{
-
-    position:relative;
-
-    padding:
-        33px 25px;
-
-    overflow:hidden;
-
-    text-align:center;
-
-    border:
-        1px solid
-        rgba(212,175,55,.14);
-
-    border-radius:26px;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.012)
-        );
+    will-change:
+        transform;
 
     transition:
-        transform .4s var(--ease),
-        border-color .35s ease,
-        box-shadow .35s ease;
+        transform .25s ease-out;
 }
 
+.photo-frame::before{
+    animation:
+        v30FramePulse 4s ease-in-out infinite;
+}
+
+.photo-frame::after{
+    animation:
+        v30FrameRotate 12s linear infinite;
+}
+
+@keyframes v30FramePulse{
+
+    0%,100%{
+        box-shadow:
+            0 0 25px
+            rgba(212,175,55,.05);
+    }
+
+    50%{
+        box-shadow:
+            0 0 65px
+            rgba(212,175,55,.18);
+    }
+
+}
+
+@keyframes v30FrameRotate{
+
+    0%{
+        transform:rotate(1deg);
+    }
+
+    50%{
+        transform:rotate(-1deg);
+    }
+
+    100%{
+        transform:rotate(1deg);
+    }
+
+}
+
+/* ---------- GOLD LIGHT SWEEP ---------- */
+
+.photo-frame::after{
+    background:
+        linear-gradient(
+            115deg,
+            transparent 25%,
+            rgba(255,240,160,.18),
+            transparent 75%
+        ),
+        transparent;
+
+    background-size:
+        220% 220%,
+        auto;
+
+    animation:
+        v30Sweep 6s ease-in-out infinite;
+}
+
+@keyframes v30Sweep{
+
+    0%,55%,100%{
+        background-position:
+            -180% -180%,
+            0 0;
+    }
+
+    75%{
+        background-position:
+            180% 180%,
+            0 0;
+    }
+
+}
+
+/* ---------- FLOATING PARTICLES ---------- */
+
+#v30Particles{
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+
+    z-index:0;
+
+    opacity:.7;
+}
+
+/* ---------- CONTENT ABOVE PARTICLES ---------- */
+
+header,
+main,
+footer{
+    position:relative;
+    z-index:2;
+}
+
+/* ---------- PREMIUM CARDS ---------- */
+
+.about-card,
+.value-card,
+.gallery-item,
+.contact-card,
+.fact{
+    transform-style:preserve-3d;
+
+    will-change:
+        transform,
+        box-shadow;
+
+    transition:
+        transform .5s
+        cubic-bezier(.22,1,.36,1),
+        border-color .4s ease,
+        box-shadow .4s ease;
+}
+
+.about-card:hover,
+.fact:hover{
+    transform:
+        translateY(-7px)
+        scale(1.01);
+
+    border-color:
+        rgba(212,175,55,.38);
+
+    box-shadow:
+        0 30px 80px
+        rgba(212,175,55,.08);
+}
+
+/* ---------- VALUE CARDS ---------- */
 
 .value-card:hover{
 
     transform:
-        translateY(-9px);
-
-    border-color:
-        rgba(212,175,55,.42);
+        translateY(-12px)
+        rotateX(2deg);
 
     box-shadow:
-        0 25px 65px
-        rgba(212,175,55,.07);
+        0 30px 80px
+        rgba(212,175,55,.11);
 }
-
 
 .value-icon{
 
-    width:58px;
-
-    height:58px;
-
-    margin:
-        0 auto 16px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(212,175,55,.34);
-
-    color:
-        var(--gold-light);
-
-    font-size:23px;
+    animation:
+        v30IconFloat
+        4s
+        ease-in-out
+        infinite;
 }
 
-
-.value-card h3{
-
-    font-size:20px;
-
-    margin-bottom:8px;
+.value-card:nth-child(2)
+.value-icon{
+    animation-delay:.8s;
 }
 
-
-.value-card p{
-
-    color:
-        var(--muted);
-
-    font-size:13px;
-
-    line-height:1.9;
+.value-card:nth-child(3)
+.value-icon{
+    animation-delay:1.6s;
 }
 
+@keyframes v30IconFloat{
 
-/* =========================================================
-   GALLERY
-========================================================= */
+    0%,100%{
+        transform:translateY(0);
+    }
 
-.gallery{
+    50%{
+        transform:
+            translateY(-6px)
+            rotate(4deg);
+    }
 
-    display:grid;
-
-    grid-template-columns:
-        repeat(12,1fr);
-
-    gap:15px;
 }
 
+/* ---------- GALLERY ---------- */
 
 .gallery-item{
+    transform:
+        translateZ(0);
 
-    position:relative;
-
-    overflow:hidden;
-
-    border-radius:25px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.17);
-
-    background:
-        #07172a;
-
-    cursor:pointer;
-
-    isolation:isolate;
+    transition:
+        transform .65s
+        cubic-bezier(.22,1,.36,1),
+        box-shadow .5s ease,
+        border-color .4s ease;
 }
 
+.gallery-item:hover{
 
-.gallery-item:nth-child(1),
-.gallery-item:nth-child(4),
-.gallery-item:nth-child(5),
-.gallery-item:nth-child(8){
+    transform:
+        translateY(-10px)
+        scale(1.015);
 
-    grid-column:
-        span 7;
+    box-shadow:
+        0 35px 90px
+        rgba(0,0,0,.5),
+        0 0 35px
+        rgba(212,175,55,.08);
 
-    aspect-ratio:
-        16/10;
+    border-color:
+        rgba(212,175,55,.5);
 }
-
-
-.gallery-item:nth-child(2),
-.gallery-item:nth-child(3),
-.gallery-item:nth-child(6),
-.gallery-item:nth-child(7){
-
-    grid-column:
-        span 5;
-
-    aspect-ratio:
-        1/1;
-}
-
 
 .gallery-item img{
 
-    width:100%;
-
-    height:100%;
-
-    display:block;
-
-    object-fit:cover;
+    will-change:
+        transform;
 
     transition:
-        transform .8s var(--ease),
-        filter .5s ease;
+        transform 1.2s
+        cubic-bezier(.22,1,.36,1),
+        filter .6s ease;
 }
-
-
-.gallery-item::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    z-index:1;
-
-    background:
-
-        linear-gradient(
-            to top,
-            rgba(0,0,0,.82),
-            rgba(0,0,0,.05) 65%
-        );
-}
-
 
 .gallery-item:hover img{
 
     transform:
-        scale(1.08);
+        scale(1.13);
 
     filter:
-        saturate(1.05);
+        saturate(1.1)
+        contrast(1.04);
 }
 
+/* ---------- GALLERY SHINE ---------- */
 
-.gallery-info{
-
-    position:absolute;
-
-    right:22px;
-
-    left:22px;
-
-    bottom:18px;
-
-    z-index:3;
+.gallery-item{
+    overflow:hidden;
 }
 
-
-.gallery-info small{
-
-    display:block;
-
-    color:
-        var(--gold-light);
-
-    font-size:9px;
-
-    letter-spacing:3px;
-
-    direction:ltr;
-
-    margin-bottom:4px;
-}
-
-
-.gallery-info h3{
-
-    font-size:18px;
-
-    font-weight:600;
-}
-
-
-.gallery-number{
-
-    position:absolute;
-
-    top:16px;
-
-    left:18px;
-
-    z-index:3;
-
-    direction:ltr;
-
-    color:
-        rgba(255,255,255,.7);
-
-    font-size:10px;
-}
-
-
-/* =========================================================
-   LIGHTBOX
-========================================================= */
-
-.lightbox{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:20000;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:25px;
-
-    background:
-        rgba(0,0,0,.88);
-
-    backdrop-filter:
-        blur(12px);
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.3s ease;
-}
-
-
-.lightbox.active{
-
-    opacity:1;
-
-    visibility:visible;
-}
-
-
-.lightbox img{
-
-    max-width:92vw;
-
-    max-height:84vh;
-
-    object-fit:contain;
-
-    border-radius:15px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.28);
-
-    box-shadow:
-        0 30px 110px
-        rgba(0,0,0,.7);
-}
-
-
-.lightbox-close{
-
-    position:absolute;
-
-    top:22px;
-
-    left:25px;
-
-    width:45px;
-
-    height:45px;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(212,175,55,.4);
-
-    background:
-        rgba(0,0,0,.25);
-
-    color:
-        var(--gold-light);
-
-    font-size:23px;
-
-    cursor:pointer;
-}
-
-
-.lightbox-title{
-
-    position:absolute;
-
-    right:25px;
-
-    bottom:25px;
-
-    color:#dce1e7;
-
-    font-size:12px;
-
-    background:
-        rgba(0,0,0,.45);
-
-    padding:
-        8px 15px;
-
-    border-radius:999px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.15);
-}
-
-
-/* =========================================================
-   JOURNEY
-========================================================= */
-
-.timeline{
-
-    max-width:850px;
-
-    margin:auto;
-
-    position:relative;
-}
-
-
-.timeline::before{
+.gallery-item::before{
 
     content:"";
 
     position:absolute;
 
-    top:0;
+    top:-120%;
+    left:-70%;
 
-    bottom:0;
+    width:45%;
+    height:350%;
 
-    right:50%;
+    z-index:4;
 
-    width:1px;
+    transform:
+        rotate(25deg);
 
     background:
-
         linear-gradient(
+            90deg,
             transparent,
-            var(--gold),
+            rgba(255,240,160,.22),
             transparent
         );
-}
-
-
-.timeline-item{
-
-    position:relative;
-
-    width:50%;
-
-    padding:
-        0 36px 50px;
-}
-
-
-.timeline-item:nth-child(odd){
-
-    text-align:left;
-}
-
-
-.timeline-item:nth-child(even){
-
-    margin-right:50%;
-
-    text-align:right;
-}
-
-
-.timeline-dot{
-
-    position:absolute;
-
-    top:4px;
-
-    width:13px;
-
-    height:13px;
-
-    border-radius:50%;
-
-    background:
-        var(--gold-light);
-
-    box-shadow:
-        0 0 18px
-        rgba(212,175,55,.6);
-}
-
-
-.timeline-item:nth-child(odd)
-.timeline-dot{
-
-    right:-6px;
-}
-
-
-.timeline-item:nth-child(even)
-.timeline-dot{
-
-    left:-6px;
-}
-
-
-.timeline-year{
-
-    color:
-        var(--gold-light);
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size:28px;
-
-    font-weight:800;
-
-    line-height:1;
-
-    margin-bottom:8px;
-
-    direction:ltr;
-}
-
-
-.timeline-title{
-
-    font-size:18px;
-
-    font-weight:600;
-
-    margin-bottom:6px;
-}
-
-
-.timeline-text{
-
-    color:
-        var(--muted);
-
-    font-size:13px;
-
-    line-height:1.9;
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact-card{
-
-    position:relative;
-
-    max-width:760px;
-
-    margin:auto;
-
-    padding:
-        40px 30px;
-
-    text-align:center;
-
-    overflow:hidden;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:30px;
-
-    background:
-
-        radial-gradient(
-            circle at center top,
-            rgba(212,175,55,.07),
-            transparent 45%
-        ),
-
-        rgba(255,255,255,.022);
-}
-
-
-/*
-   تم حذف الاسم والبريد الظاهرين
-   من بطاقة التواصل.
-*/
-
-
-.contact-icons{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:14px;
-
-    margin:0;
-}
-
-
-.social{
-
-    width:58px;
-
-    height:58px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(212,175,55,.4);
-
-    background:
-        rgba(255,255,255,.02);
-
-    color:
-        var(--gold-light);
-
-    transition:
-        transform .35s var(--ease),
-        background .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease;
-}
-
-
-.social:hover{
-
-    transform:
-        translateY(-6px)
-        scale(1.04);
-
-    background:
-        rgba(212,175,55,.08);
-
-    border-color:
-        var(--gold-light);
-
-    box-shadow:
-        0 15px 40px
-        rgba(212,175,55,.14);
-}
-
-
-.social svg{
-
-    width:25px;
-
-    height:25px;
-
-    fill:currentColor;
-}
-
-
-.contact-actions{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    margin-top:24px;
-}
-
-
-.action-btn{
-
-    min-height:42px;
-
-    padding:
-        9px 18px;
-
-    border-radius:999px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.3);
-
-    background:
-        rgba(255,255,255,.015);
-
-    color:#d8dde4;
-
-    cursor:pointer;
-
-    font-size:12px;
-
-    transition:.3s ease;
-}
-
-
-.action-btn:hover{
-
-    color:
-        var(--gold-light);
-
-    border-color:
-        var(--gold-light);
-
-    background:
-        rgba(212,175,55,.06);
-
-    transform:
-        translateY(-2px);
-}
-
-
-/* =========================================================
-   QR
-========================================================= */
-
-.qr-modal{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:21000;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:20px;
-
-    background:
-        rgba(0,0,0,.8);
-
-    backdrop-filter:
-        blur(10px);
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.3s ease;
-}
-
-
-.qr-modal.active{
-
-    opacity:1;
-
-    visibility:visible;
-}
-
-
-.qr-box{
-
-    width:
-        min(360px,92vw);
-
-    padding:30px;
-
-    text-align:center;
-
-    border:
-        1px solid
-        rgba(212,175,55,.35);
-
-    border-radius:30px;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            #0a2039,
-            #061426
-        );
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.6);
-}
-
-
-.qr-box h3{
-
-    color:
-        var(--gold-light);
-
-    direction:ltr;
-
-    letter-spacing:2px;
-}
-
-
-.qr-box p{
-
-    color:
-        var(--muted);
-
-    font-size:11px;
-
-    margin-top:4px;
-}
-
-
-.qr-box img{
-
-    width:220px;
-
-    height:220px;
-
-    display:block;
-
-    margin:
-        18px auto;
-
-    padding:9px;
-
-    background:white;
-
-    border-radius:14px;
-}
-
-
-.qr-close{
-
-    padding:
-        10px 25px;
-
-    border-radius:999px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.35);
-
-    background:transparent;
-
-    color:white;
-
-    cursor:pointer;
-
-    transition:.3s ease;
-}
-
-
-.qr-close:hover{
-
-    border-color:
-        var(--gold-light);
-
-    color:
-        var(--gold-light);
-}
-
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
-
-.top-btn{
-
-    position:fixed;
-
-    right:22px;
-
-    bottom:22px;
-
-    z-index:7000;
-
-    width:45px;
-
-    height:45px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(212,175,55,.38);
-
-    background:
-        rgba(3,13,27,.8);
-
-    color:
-        var(--gold-light);
-
-    cursor:pointer;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transform:
-        translateY(12px);
-
-    transition:.3s ease;
-
-    backdrop-filter:
-        blur(10px);
-}
-
-
-.top-btn.visible{
-
-    opacity:1;
-
-    visibility:visible;
-
-    transform:
-        translateY(0);
-}
-
-
-.top-btn:hover{
-
-    transform:
-        translateY(-4px);
-
-    border-color:
-        var(--gold-light);
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast{
-
-    position:fixed;
-
-    left:50%;
-
-    bottom:25px;
-
-    z-index:30000;
-
-    transform:
-        translate(-50%,20px);
-
-    opacity:0;
-
-    visibility:hidden;
-
-    padding:
-        11px 18px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.25);
-
-    border-radius:999px;
-
-    background:
-        rgba(5,18,33,.94);
-
-    color:#e9edf2;
-
-    font-size:11px;
-
-    box-shadow:
-        0 15px 50px
-        rgba(0,0,0,.35);
-
-    transition:.35s var(--ease);
-
-    backdrop-filter:
-        blur(12px);
-}
-
-
-.toast.show{
-
-    opacity:1;
-
-    visibility:visible;
-
-    transform:
-        translate(-50%,0);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-
-    position:relative;
-
-    padding:
-        55px 20px 38px;
-
-    text-align:center;
-
-    border-top:
-        1px solid
-        rgba(212,175,55,.11);
-
-    background:
-
-        linear-gradient(
-            to bottom,
-            rgba(2,8,17,.45),
-            rgba(2,8,17,.85)
-        );
-}
-
-
-.footer-symbol{
-
-    direction:ltr;
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size:34px;
-
-    font-weight:700;
-
-    letter-spacing:10px;
-
-    color:
-        var(--gold);
-
-    margin-bottom:15px;
-}
-
-
-.footer-copy{
-
-    color:#77818d;
-
-    font-size:11px;
-}
-
-
-.footer-links{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:18px;
-
-    margin-top:13px;
-
-    color:#677383;
-
-    font-size:10px;
-}
-
-
-.footer-links a:hover{
-
-    color:
-        var(--gold-light);
-}
-
-
-.footer-quote{
-
-    margin-top:18px;
-
-    color:#596574;
-
-    font-size:10px;
-}
-
-
-/* =========================================================
-   CURSOR
-========================================================= */
-
-.cursor-glow{
-
-    position:fixed;
-
-    width:180px;
-
-    height:180px;
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    z-index:1;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(212,175,55,.055),
-            transparent 68%
-        );
-
-    transform:
-        translate(-50%,-50%);
 
     opacity:0;
 
@@ -2565,2581 +449,1022 @@ footer{
         opacity .3s ease;
 }
 
+.gallery-item:hover::before{
 
-/* =========================================================
-   REVEAL
-========================================================= */
+    opacity:1;
 
-.reveal{
+    animation:
+        v30GalleryShine
+        1.2s
+        ease;
+}
+
+@keyframes v30GalleryShine{
+
+    from{
+        left:-70%;
+    }
+
+    to{
+        left:140%;
+    }
+
+}
+
+/* ---------- TIMELINE ---------- */
+
+.timeline-dot{
+
+    animation:
+        v30DotPulse
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+.timeline-item:nth-child(2)
+.timeline-dot{
+    animation-delay:.4s;
+}
+
+.timeline-item:nth-child(3)
+.timeline-dot{
+    animation-delay:.8s;
+}
+
+.timeline-item:nth-child(4)
+.timeline-dot{
+    animation-delay:1.2s;
+}
+
+.timeline-item:nth-child(5)
+.timeline-dot{
+    animation-delay:1.6s;
+}
+
+@keyframes v30DotPulse{
+
+    0%,100%{
+        box-shadow:
+            0 0 12px
+            rgba(212,175,55,.35);
+    }
+
+    50%{
+        box-shadow:
+            0 0 30px
+            rgba(212,175,55,.85);
+    }
+
+}
+
+/* ---------- SOCIAL BUTTONS ---------- */
+
+.social{
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.social::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:0;
+    height:0;
+
+    left:50%;
+    top:50%;
+
+    border-radius:50%;
+
+    background:
+        rgba(212,175,55,.14);
+
+    transform:
+        translate(-50%,-50%);
+
+    transition:
+        width .5s ease,
+        height .5s ease;
+}
+
+.social:hover::before{
+
+    width:130px;
+    height:130px;
+}
+
+.social svg{
+
+    position:relative;
+
+    z-index:2;
+
+    transition:
+        transform .4s
+        cubic-bezier(.22,1,.36,1);
+}
+
+.social:hover svg{
+
+    transform:
+        scale(1.15)
+        rotate(5deg);
+}
+
+/* ---------- BUTTON SHINE ---------- */
+
+.action-btn{
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.action-btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:70%;
+    height:100%;
+
+    transform:
+        skewX(-25deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.16),
+            transparent
+        );
+}
+
+.action-btn:hover::after{
+
+    animation:
+        v30ButtonShine
+        .8s
+        ease;
+}
+
+@keyframes v30ButtonShine{
+
+    from{
+        left:-120%;
+    }
+
+    to{
+        left:150%;
+    }
+
+}
+
+/* ---------- MENU ---------- */
+
+.side-menu a{
 
     opacity:0;
 
     transform:
-        translateY(25px);
+        translateX(25px);
 
     transition:
-        opacity .8s ease,
-        transform .8s var(--ease);
+        opacity .5s ease,
+        transform .6s
+        cubic-bezier(.22,1,.36,1),
+        color .3s ease;
 }
 
-
-.reveal.visible{
+.side-menu.active a{
 
     opacity:1;
 
     transform:
-        translateY(0);
+        translateX(0);
 }
 
+.side-menu.active a:nth-of-type(1){
+    transition-delay:.08s;
+}
 
-/* =========================================================
-   MOBILE
-========================================================= */
+.side-menu.active a:nth-of-type(2){
+    transition-delay:.14s;
+}
+
+.side-menu.active a:nth-of-type(3){
+    transition-delay:.20s;
+}
+
+.side-menu.active a:nth-of-type(4){
+    transition-delay:.26s;
+}
+
+.side-menu.active a:nth-of-type(5){
+    transition-delay:.32s;
+}
+
+.side-menu.active a:nth-of-type(6){
+    transition-delay:.38s;
+}
+
+/* ---------- HEADER ---------- */
+
+.logo{
+
+    position:relative;
+
+    transition:
+        transform .35s
+        ease,
+        text-shadow .35s ease;
+}
+
+.logo:hover{
+
+    transform:
+        scale(1.08);
+
+    text-shadow:
+        0 0 25px
+        rgba(212,175,55,.6);
+}
+
+/* ---------- SCROLL PROGRESS ---------- */
+
+.progress-bar{
+
+    box-shadow:
+        0 0 12px
+        rgba(212,175,55,.8);
+}
+
+/* ---------- BACK TO TOP ---------- */
+
+.top-btn:hover{
+
+    box-shadow:
+        0 0 35px
+        rgba(212,175,55,.25);
+}
+
+/* ---------- FOOTER MBK ---------- */
+
+.footer-symbol{
+
+    animation:
+        v30FooterGlow
+        4s
+        ease-in-out
+        infinite;
+}
+
+@keyframes v30FooterGlow{
+
+    0%,100%{
+        text-shadow:
+            0 0 0
+            rgba(212,175,55,0);
+    }
+
+    50%{
+        text-shadow:
+            0 0 25px
+            rgba(212,175,55,.35);
+    }
+
+}
+
+/* ---------- MOBILE ---------- */
 
 @media(max-width:760px){
 
-    header{
-
-        height:70px;
-
-        padding:
-            0 20px;
+    #v30Particles{
+        opacity:.42;
     }
 
-
-    .logo{
-
-        font-size:21px;
-
-        letter-spacing:6px;
+    body::after{
+        width:420px;
+        height:420px;
     }
 
-
-    .header-status{
-
-        display:none;
-    }
-
-
-    .menu-btn{
-
-        width:44px;
-
-        height:44px;
-    }
-
-
-    .hero{
-
-        padding:
-            100px 0 45px;
-    }
-
-
-    .hero::before{
-
-        width:430px;
-
-        height:430px;
-    }
-
-
-    .hero-corner{
-
-        width:45px;
-
-        height:45px;
-    }
-
-
-    .hero-corner.top{
-
-        top:90px;
-    }
-
-
-    .hero-name{
-
-        max-width:100%;
-
-        padding:0 10px;
-
-        font-size:
-            clamp(
-                32px,
-                9vw,
-                48px
-            );
-
-        line-height:1.55;
-    }
-
-
-    .photo-frame{
-
-        width:
-            min(390px,88vw);
-
-        margin-bottom:18px;
-    }
-
-
-    .hero-info{
-
-        gap:9px;
-
-        font-size:8px;
-    }
-
-
-    .section{
-
-        padding:
-            62px 0;
-    }
-
-
-    .section-header{
-
-        margin-bottom:28px;
-    }
-
-
-    .about-card{
-
-        padding:
-            30px 22px;
-    }
-
-
-    .about-card p{
-
-        font-size:15px;
-
-        line-height:2.05;
-    }
-
-
-    .facts{
-
-        grid-template-columns:1fr;
-
-        gap:10px;
-    }
-
-
-    .values{
-
-        grid-template-columns:1fr;
-
-        gap:14px;
-    }
-
-
-    .value-card{
-
-        padding:
-            28px 22px;
-    }
-
-
-    .gallery{
-
-        grid-template-columns:1fr;
-
-        gap:13px;
-    }
-
-
-    .gallery-item,
-    .gallery-item:nth-child(1),
-    .gallery-item:nth-child(2),
-    .gallery-item:nth-child(3),
-    .gallery-item:nth-child(4),
-    .gallery-item:nth-child(5),
-    .gallery-item:nth-child(6),
-    .gallery-item:nth-child(7),
-    .gallery-item:nth-child(8){
-
-        grid-column:
-            span 1;
-
-        aspect-ratio:
-            16/10;
-    }
-
-
-    .timeline::before{
-
-        right:13px;
-    }
-
-
-    .timeline-item,
-    .timeline-item:nth-child(odd),
-    .timeline-item:nth-child(even){
-
-        width:100%;
-
-        margin:0;
-
-        padding:
-            0 42px 40px 0;
-
-        text-align:right;
-    }
-
-
-    .timeline-item:nth-child(odd)
-    .timeline-dot,
-
-    .timeline-item:nth-child(even)
-    .timeline-dot{
-
-        right:7px;
-
-        left:auto;
-    }
-
-
-    .timeline-year{
-
-        font-size:25px;
-    }
-
-
-    .contact-card{
-
-        padding:
-            32px 20px;
-    }
-
-
-    .contact-icons{
-
-        gap:10px;
-    }
-
-
-    .social{
-
-        width:54px;
-
-        height:54px;
-    }
-
-
-    .top-btn{
-
-        right:15px;
-
-        bottom:15px;
-    }
-
-
-    .cursor-glow{
-
-        display:none;
+    .gallery-item:hover{
+        transform:
+            translateY(-5px)
+            scale(1.005);
     }
 
 }
 
-
-@media(max-width:420px){
-
-    .hero-name{
-
-        font-size:34px;
-    }
-
-
-    .photo-frame{
-
-        width:92vw;
-    }
-
-
-    .quote{
-
-        font-size:20px;
-    }
-
-
-    .gallery-info h3{
-
-        font-size:16px;
-    }
-
-
-    .contact-actions{
-
-        flex-direction:column;
-    }
-
-
-    .action-btn{
-
-        width:100%;
-    }
-
-}
-
+/* ---------- REDUCED MOTION ---------- */
 
 @media(prefers-reduced-motion:reduce){
 
-    *,
-    *::before,
-    *::after{
+    #v30Particles{
+        display:none;
+    }
 
+    body::after,
+    .hero::after,
+    .value-icon,
+    .timeline-dot,
+    .footer-symbol{
         animation:none!important;
-
-        transition:none!important;
-
-        scroll-behavior:auto!important;
     }
 
 }
 
 </style>
 
-</head>
 
-
-<body>
-
-
-<!-- =========================================================
-     LOADER
-========================================================= -->
-
-<div
-    class="loader"
-    id="loader"
->
-
-    <div class="loader-inner">
-
-        <div class="loader-logo">
-            MBK
-        </div>
-
-        <div class="loader-line"></div>
-
-    </div>
-
-</div>
-
-
-<div class="progress">
-
-    <div
-        class="progress-bar"
-        id="progressBar"
-    ></div>
-
-</div>
-
-
-<div
-    class="cursor-glow"
-    id="cursorGlow"
-></div>
-
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
-
-<header id="header">
-
-    <a
-        href="#home"
-        class="logo"
-        aria-label="MBK"
-    >
-        MBK
-    </a>
-
-
-    <div class="header-status">
-
-        <span class="status-dot"></span>
-
-        <span>
-            ONLINE
-        </span>
-
-    </div>
-
-
-    <button
-        class="menu-btn"
-        id="menuBtn"
-        aria-label="فتح القائمة"
-        aria-controls="sideMenu"
-        aria-expanded="false"
-    >
-        ☰
-    </button>
-
-</header>
-
-
-<!-- =========================================================
-     SIDE MENU
-========================================================= -->
-
-<div
-    class="overlay"
-    id="overlay"
-></div>
-
-
-<nav
-    class="side-menu"
-    id="sideMenu"
-    aria-label="القائمة الرئيسية"
->
-
-    <button
-        class="close-menu"
-        id="closeMenu"
-        aria-label="إغلاق القائمة"
-    >
-        ×
-    </button>
-
-
-    <div class="menu-label">
-        NAVIGATION
-    </div>
-
-
-    <a href="#home">
-        الرئيسية
-    </a>
-
-    <a href="#about">
-        نبذة
-    </a>
-
-    <a href="#values">
-        بصمتي
-    </a>
-
-    <a href="#gallery">
-        مختاراتي
-    </a>
-
-    <a href="#journey">
-        رحلتي
-    </a>
-
-    <a href="#contact">
-        تواصل
-    </a>
-
-
-    <div class="menu-footer">
-        MBK — PERSONAL IDENTITY
-    </div>
-
-</nav>
-
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
-
-<main>
-
-
-<!-- =========================================================
-     HERO
-========================================================= -->
-
-<section
-    class="hero"
-    id="home"
->
-
-    <div class="hero-grid"></div>
-
-    <div class="hero-corner top"></div>
-
-    <div class="hero-corner bottom"></div>
-
-
-    <div class="hero-mini">
-        PERSONAL IDENTITY
-    </div>
-
-
-    <h1 class="hero-name">
-        مبخوت بن عبدالله
-    </h1>
-
-
-    <div class="gold-line"></div>
-
-
-    <!--
-        تم حذف:
-        حضور شخصي · رؤية · أصالة
-    -->
-
-
-    <div class="photo-frame">
-
-        <img
-            class="profile-photo"
-            src="file_00000000202482468d4027eb8c5919f7.png"
-            alt="مبخوت بن عبدالله"
-            loading="eager"
-        >
-
-    </div>
-
-
-    <p class="quote">
-        وما توفيقي إلا بالله
-    </p>
-
-
-    <div class="hero-info">
-
-        <span>
-            <i>◆</i>
-            MBK
-        </span>
-
-        <span>•</span>
-
-        <span>
-            mabkhut.com
-        </span>
-
-        <span>•</span>
-
-        <span>
-            2026
-        </span>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     ABOUT
-========================================================= -->
-
-<section
-    class="section reveal"
-    id="about"
->
-
-    <div class="section-header">
-
-        <span class="section-label">
-            ABOUT
-        </span>
-
-        <h2 class="section-title">
-            نبذة
-        </h2>
-
-        <p class="section-description">
-            مساحة تعكس الهوية، الرؤية، والتجربة.
-        </p>
-
-    </div>
-
-
-    <div class="about-card">
-
-        <p>
-
-            أنا
-            <strong>
-                مبخوت بن عبدالله
-            </strong>.
-
-            <br><br>
-
-            أؤمن بأن الشخصية الحقيقية تُبنى بالطموح،
-            والتجربة، والاهتمام بالتفاصيل. أسعى دائمًا
-            إلى تطوير نفسي، واكتشاف أفكار جديدة،
-            وصناعة هوية تعكس رؤيتي وشخصيتي بأسلوب
-            يجمع بين الأصالة، الأناقة، والطموح.
-
-            <br><br>
-
-            هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا
-            من اهتماماتي، أعمالي، اختياراتي، والأشياء
-            التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
-
-            <br><br>
-
-            <strong>
-                أطمح للأفضل، وأسعى لأن أترك أثرًا يستحق أن يُذكر.
-            </strong>
-
-        </p>
-
-    </div>
-
-
-    <div class="facts">
-
-        <div class="fact">
-
-            <div class="fact-value">
-                MBK
-            </div>
-
-            <div class="fact-label">
-                PERSONAL IDENTITY
-            </div>
-
-        </div>
-
-
-        <div class="fact">
-
-            <div class="fact-value">
-                2026
-            </div>
-
-            <div class="fact-label">
-                CURRENT CHAPTER
-            </div>
-
-        </div>
-
-
-        <div class="fact">
-
-            <div
-                class="fact-value"
-                id="liveClock"
-            >
-                --:--
-            </div>
-
-            <div class="fact-label">
-                LOCAL TIME
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     VALUES
-========================================================= -->
-
-<section
-    class="section reveal"
-    id="values"
->
-
-    <div class="section-header">
-
-        <span class="section-label">
-            MY VALUES
-        </span>
-
-        <h2 class="section-title">
-            بصمتي
-        </h2>
-
-        <p class="section-description">
-            مبادئ بسيطة، لكنها تصنع الفرق.
-        </p>
-
-    </div>
-
-
-    <div class="values">
-
-
-        <div class="value-card">
-
-            <div class="value-icon">
-                ✦
-            </div>
-
-            <h3>
-                الإبداع
-            </h3>
-
-            <p>
-                أبحث دائمًا عن الأفكار المختلفة
-                والأسلوب الذي يحمل طابعًا خاصًا.
-            </p>
-
-        </div>
-
-
-        <div class="value-card">
-
-            <div class="value-icon">
-                ◇
-            </div>
-
-            <h3>
-                الجودة
-            </h3>
-
-            <p>
-                أهتم بالتفاصيل الصغيرة لأنها
-                تصنع الفرق في النتيجة النهائية.
-            </p>
-
-        </div>
-
-
-        <div class="value-card">
-
-            <div class="value-icon">
-                ◆
-            </div>
-
-            <h3>
-                الأصالة
-            </h3>
-
-            <p>
-                أحافظ على هويتي وأطورها
-                بأسلوب حديث ومتوازن.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     GALLERY
-========================================================= -->
-
-<section
-    class="section reveal"
-    id="gallery"
->
-
-    <div class="section-header">
-
-        <span class="section-label">
-            SELECTED
-        </span>
-
-        <h2 class="section-title">
-            مختاراتي
-        </h2>
-
-        <p class="section-description">
-            صور ولحظات تحمل طابعًا خاصًا.
-        </p>
-
-    </div>
-
-
-    <div class="gallery">
-
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
-            data-title="هدوء الجبال"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
-                alt="جبال وطبيعة"
-                loading="lazy"
-            >
-
-            <span class="gallery-number">
-                01
-            </span>
-
-            <div class="gallery-info">
-
-                <small>
-                    NATURE
-                </small>
-
-                <h3>
-                    هدوء الجبال
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
-            data-title="تفاصيل هادئة"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"
-                alt="طبيعة ريفية"
-                loading="lazy"
-            >
-
-            <span class="gallery-number">
-                02
-            </span>
-
-            <div class="gallery-info">
-
-                <small>
-                    LIFE
-                </small>
-
-                <h3>
-                    تفاصيل هادئة
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
-            data-title="نبض المدينة"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=85"
-                alt="مدينة حديثة"
-                loading="lazy"
-            >
-
-            <span class="gallery-number">
-                03
-            </span>
-
-            <div class="gallery-info">
-
-                <small>
-                    CITY
-                </small>
-
-                <h3>
-                    نبض المدينة
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
-            data-title="بين الشوارع"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85"
-                alt="شوارع المدينة"
-                loading="lazy"
-            >
-
-            <span class="gallery-number">
-                04
-            </span>
-
-            <div class="gallery-info">
-
-                <small>
-                    STREETS
-                </small>
-
-                <h3>
-                    بين الشوارع
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90"
-            data-title="أفق جديد"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=85"
-                alt="مدينة من الأعلى"
-                loading="lazy"
-            >
-
-            <span class="gallery-number">
-                05
-            </span>
-
-            <div class="gallery-info">
-
-                <small>
-                    URBAN
-                </small>
-
-                <h3>
-                    أفق جديد
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
-            data-title="الطريق"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
-                alt="طريق وسط الطبيعة"
-                loading="lazy"
-            >
-
-            <span class="gallery-number">
-                06
-            </span>
-
-            <div class="gallery-info">
-
-                <small>
-                    JOURNEY
-                </small>
-
-                <h3>
-                    الطريق
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
-            data-title="لحظة هدوء"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
-                alt="منظر طبيعي"
-                loading="lazy"
-            >
-
-            <span class="gallery-number">
-                07
-            </span>
-
-            <div class="gallery-info">
-
-                <small>
-                    CALM
-                </small>
-
-                <h3>
-                    لحظة هدوء
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
-            data-title="تفاصيل المكان"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85"
-                alt="العمارة والحياة"
-                loading="lazy"
-            >
-
-            <span class="gallery-number">
-                08
-            </span>
-
-            <div class="gallery-info">
-
-                <small>
-                    ARCHITECTURE
-                </small>
-
-                <h3>
-                    تفاصيل المكان
-                </h3>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     JOURNEY
-========================================================= -->
-
-<section
-    class="section reveal"
-    id="journey"
->
-
-    <div class="section-header">
-
-        <span class="section-label">
-            MY JOURNEY
-        </span>
-
-        <h2 class="section-title">
-            رحلتي
-        </h2>
-
-        <p class="section-description">
-            مراحل صنعت جزءًا من الحكاية.
-        </p>
-
-    </div>
-
-
-    <div class="timeline">
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2015
-            </div>
-
-            <div class="timeline-title">
-                البداية
-            </div>
-
-            <div class="timeline-text">
-                بداية الرحلة، ومنها بدأت مرحلة
-                جديدة من التجارب والتعلم.
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2018
-            </div>
-
-            <div class="timeline-title">
-                مرحلة التجربة والتعلّم
-            </div>
-
-            <div class="timeline-text">
-                سنوات من التجربة واكتشاف الاهتمامات
-                وتطوير المهارات والنظرة الخاصة.
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2021
-            </div>
-
-            <div class="timeline-title">
-                تطور ونضج
-            </div>
-
-            <div class="timeline-text">
-                مرحلة أصبح فيها الطموح أكثر وضوحًا
-                وأصبحت التجارب السابقة جزءًا من الهوية.
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2024
-            </div>
-
-            <div class="timeline-title">
-                مرحلة جديدة
-            </div>
-
-            <div class="timeline-text">
-                بداية مرحلة مختلفة، برؤية أوسع
-                وطموح أكبر للمستقبل.
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2026
-            </div>
-
-            <div class="timeline-title">
-                رؤية للمستقبل
-            </div>
-
-            <div class="timeline-text">
-                الاستمرار في التطور وبناء المستقبل
-                بخطوات أكثر وضوحًا وثباتًا.
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     CONTACT
-========================================================= -->
-
-<section
-    class="section reveal"
-    id="contact"
->
-
-    <div class="section-header">
-
-        <span class="section-label">
-            CONTACT
-        </span>
-
-        <h2 class="section-title">
-            تواصل
-        </h2>
-
-        <p class="section-description">
-            للتواصل والاستفسارات والمراسلات.
-        </p>
-
-    </div>
-
-
-    <div class="contact-card">
-
-
-        <!--
-            تم حذف:
-            مبخوت بن عبدالله
-            mabkhout@mabkhut.com
-        -->
-
-
-        <div class="contact-icons">
-
-
-            <a
-                class="social"
-                href="mailto:mabkhout@mabkhut.com"
-                aria-label="البريد الإلكتروني"
-                title="البريد الإلكتروني"
-            >
-
-                <svg viewBox="0 0 24 24">
-
-                    <path
-                        d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
-                    />
-
-                </svg>
-
-            </a>
-
-
-            <a
-                class="social"
-                href="https://www.facebook.com/share/19JG7PQiHL/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                title="Facebook"
-            >
-
-                <svg viewBox="0 0 24 24">
-
-                    <path
-                        d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
-                    />
-
-                </svg>
-
-            </a>
-
-
-        </div>
-
-
-        <div class="contact-actions">
-
-
-            <button
-                class="action-btn"
-                id="copyEmail"
-            >
-                نسخ البريد
-            </button>
-
-
-            <button
-                class="action-btn"
-                id="shareSite"
-            >
-                مشاركة الموقع
-            </button>
-
-
-            <button
-                class="action-btn"
-                id="qrButton"
-            >
-                مشاركة عبر QR
-            </button>
-
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-<!-- =========================================================
-     LIGHTBOX
-========================================================= -->
-
-<div
-    class="lightbox"
-    id="lightbox"
-    role="dialog"
-    aria-modal="true"
-    aria-label="عرض الصورة"
->
-
-    <button
-        class="lightbox-close"
-        id="lightboxClose"
-        aria-label="إغلاق"
-    >
-        ×
-    </button>
-
-
-    <img
-        id="lightboxImage"
-        src=""
-        alt=""
-    >
-
-
-    <div
-        class="lightbox-title"
-        id="lightboxTitle"
-    ></div>
-
-</div>
-
-
-<!-- =========================================================
-     QR
-========================================================= -->
-
-<div
-    class="qr-modal"
-    id="qrModal"
-    role="dialog"
-    aria-modal="true"
->
-
-    <div class="qr-box">
-
-        <h3>
-            mabkhut.com
-        </h3>
-
-        <p>
-            امسح الرمز لفتح الموقع
-        </p>
-
-
-        <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com"
-            alt="QR Code لموقع mabkhut.com"
-        >
-
-
-        <button
-            class="qr-close"
-            id="qrClose"
-        >
-            إغلاق
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     BACK TO TOP
-========================================================= -->
-
-<button
-    class="top-btn"
-    id="topBtn"
-    aria-label="العودة للأعلى"
->
-    ↑
-</button>
-
-
-<!-- =========================================================
-     TOAST
-========================================================= -->
-
-<div
-    class="toast"
-    id="toast"
-    role="status"
-    aria-live="polite"
-></div>
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer>
-
-    <div class="footer-symbol">
-        MBK
-    </div>
-
-
-    <div class="footer-copy">
-        © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
-    </div>
-
-
-    <div class="footer-links">
-
-        <a href="#home">
-            الرئيسية
-        </a>
-
-        <a href="#about">
-            نبذة
-        </a>
-
-        <a href="#contact">
-            تواصل
-        </a>
-
-    </div>
-
-
-    <div class="footer-quote">
-        وما توفيقي إلا بالله
-    </div>
-
-</footer>
-
-
-<script>
-
-/* =========================================================
-   MBK V21 JAVASCRIPT
-========================================================= */
+<script id="MBK-V30-ENGINE">
 
 (function(){
 
 "use strict";
 
-
 /* =========================================================
-   ELEMENTS
+   MBK V30 — PARTICLE ENGINE
 ========================================================= */
 
-const body =
-    document.body;
+const canvas =
+    document.createElement("canvas");
 
-const loader =
-    document.getElementById("loader");
+canvas.id =
+    "v30Particles";
 
-const header =
-    document.getElementById("header");
+document.body.prepend(canvas);
 
-const progressBar =
-    document.getElementById("progressBar");
+const ctx =
+    canvas.getContext("2d");
 
-const menuBtn =
-    document.getElementById("menuBtn");
+let width =
+    0;
 
-const closeMenu =
-    document.getElementById("closeMenu");
+let height =
+    0;
 
-const sideMenu =
-    document.getElementById("sideMenu");
+let particles =
+    [];
 
-const overlay =
-    document.getElementById("overlay");
+const reducedMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-const topBtn =
-    document.getElementById("topBtn");
+function resize(){
 
-const toast =
-    document.getElementById("toast");
+    width =
+        canvas.width =
+        window.innerWidth;
 
-const cursorGlow =
-    document.getElementById("cursorGlow");
-
-const liveClock =
-    document.getElementById("liveClock");
-
-
-/* =========================================================
-   FIXED NON-BLOCKING LOADER
-========================================================= */
-
-/*
-   الإصدار القديم كان ينتظر window.load.
-   إذا تأخرت صورة أو Google Fonts أو QR API
-   كان من الممكن أن تبقى شاشة MBK معلقة.
-
-   الآن:
-   - نبدأ العد فورًا.
-   - نخفي الـLoader بعد 700ms.
-   - يوجد fallback بعد 1800ms.
-*/
-
-let loaderHidden = false;
-
-
-function hideLoader(){
-
-    if(loaderHidden){
-
-        return;
-
-    }
-
-    loaderHidden = true;
-
-
-    if(loader){
-
-        loader.classList.add("hide");
-
-    }
-
-
-    body.classList.remove(
-        "locked"
-    );
-
-}
-
-
-setTimeout(
-    hideLoader,
-    700
-);
-
-
-/* حماية إضافية */
-
-setTimeout(
-    hideLoader,
-    1800
-);
-
-
-/* لا ننتظر window.load */
-
-
-/* =========================================================
-   MENU
-========================================================= */
-
-function openMenu(){
-
-    sideMenu.classList.add(
-        "active"
-    );
-
-    overlay.classList.add(
-        "active"
-    );
-
-    body.classList.add(
-        "locked"
-    );
-
-    menuBtn.setAttribute(
-        "aria-expanded",
-        "true"
-    );
-
-}
-
-
-function closeSideMenu(){
-
-    sideMenu.classList.remove(
-        "active"
-    );
-
-    overlay.classList.remove(
-        "active"
-    );
-
-    body.classList.remove(
-        "locked"
-    );
-
-    menuBtn.setAttribute(
-        "aria-expanded",
-        "false"
-    );
-
-}
-
-
-menuBtn.addEventListener(
-    "click",
-    openMenu
-);
-
-
-closeMenu.addEventListener(
-    "click",
-    closeSideMenu
-);
-
-
-overlay.addEventListener(
-    "click",
-    closeSideMenu
-);
-
-
-document
-.querySelectorAll(
-    ".side-menu a"
-)
-.forEach(
-    function(link){
-
-        link.addEventListener(
-            "click",
-            closeSideMenu
-        );
-
-    }
-);
-
-
-/* =========================================================
-   HEADER + SCROLL
-========================================================= */
-
-function handleScroll(){
-
-    const scrollTop =
-        window.scrollY;
-
-
-    const documentHeight =
-        document.documentElement
-            .scrollHeight
-        -
+    height =
+        canvas.height =
         window.innerHeight;
 
-
-    const percentage =
-        documentHeight > 0
-        ?
-        (
-            scrollTop /
-            documentHeight
-        ) * 100
-        :
-        0;
-
-
-    progressBar.style.width =
-        percentage + "%";
-
-
-    if(scrollTop > 35){
-
-        header.classList.add(
-            "scrolled"
-        );
-
-        topBtn.classList.add(
-            "visible"
-        );
-
-    }else{
-
-        header.classList.remove(
-            "scrolled"
-        );
-
-        topBtn.classList.remove(
-            "visible"
-        );
-
-    }
-
 }
 
+resize();
 
 window.addEventListener(
-    "scroll",
-    handleScroll,
-    {
-        passive:true
-    }
+    "resize",
+    resize,
+    {passive:true}
 );
 
+if(!reducedMotion){
 
-handleScroll();
+    const count =
+        Math.min(
+            90,
+            Math.max(
+                35,
+                Math.floor(
+                    window.innerWidth / 15
+                )
+            )
+        );
 
+    for(
+        let i=0;
+        i<count;
+        i++
+    ){
 
-/* =========================================================
-   BACK TO TOP
-========================================================= */
+        particles.push({
 
-topBtn.addEventListener(
-    "click",
-    function(){
+            x:
+                Math.random()
+                * window.innerWidth,
 
-        window.scrollTo({
+            y:
+                Math.random()
+                * window.innerHeight,
 
-            top:0,
+            r:
+                Math.random()
+                * 1.7
+                + .35,
 
-            behavior:"smooth"
+            vx:
+                (Math.random()-.5)
+                * .18,
+
+            vy:
+                Math.random()
+                * -.25
+                - .04,
+
+            alpha:
+                Math.random()
+                * .55
+                + .12,
+
+            phase:
+                Math.random()
+                * Math.PI
+                * 2
 
         });
 
     }
-);
-
-
-/* =========================================================
-   REVEAL
-========================================================= */
-
-const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
-
-
-if(
-    "IntersectionObserver"
-    in window
-){
-
-    const revealObserver =
-        new IntersectionObserver(
-
-            function(entries){
-
-                entries.forEach(
-                    function(entry){
-
-                        if(
-                            entry.isIntersecting
-                        ){
-
-                            entry.target
-                                .classList
-                                .add(
-                                    "visible"
-                                );
-
-                            revealObserver
-                                .unobserve(
-                                    entry.target
-                                );
-
-                        }
-
-                    }
-                );
-
-            },
-            {
-                threshold:.12
-            }
-        );
-
-
-    revealElements.forEach(
-        function(element){
-
-            revealObserver.observe(
-                element
-            );
-
-        }
-    );
-
-}else{
-
-    revealElements.forEach(
-        function(element){
-
-            element.classList.add(
-                "visible"
-            );
-
-        }
-    );
 
 }
 
+function draw(){
 
-/* =========================================================
-   LIVE CLOCK
-========================================================= */
-
-function updateClock(){
-
-    if(!liveClock){
-
-        return;
-
-    }
-
-
-    const now =
-        new Date();
-
-
-    liveClock.textContent =
-        now.toLocaleTimeString(
-            "ar-YE",
-            {
-                hour:"2-digit",
-                minute:"2-digit",
-                hour12:false
-            }
-        );
-
-}
-
-
-updateClock();
-
-
-setInterval(
-    updateClock,
-    1000
-);
-
-
-/* =========================================================
-   GALLERY LIGHTBOX
-========================================================= */
-
-const galleryItems =
-    document.querySelectorAll(
-        ".gallery-item"
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
     );
 
+    if(!reducedMotion){
 
-const lightbox =
-    document.getElementById(
-        "lightbox"
-    );
+        const time =
+            performance.now()
+            * .001;
 
+        particles.forEach(
+            function(p){
 
-const lightboxImage =
-    document.getElementById(
-        "lightboxImage"
-    );
+                p.x += p.vx;
 
+                p.y += p.vy;
 
-const lightboxTitle =
-    document.getElementById(
-        "lightboxTitle"
-    );
+                p.phase += .01;
 
+                if(p.y < -10){
 
-const lightboxClose =
-    document.getElementById(
-        "lightboxClose"
-    );
+                    p.y =
+                        height + 10;
 
+                    p.x =
+                        Math.random()
+                        * width;
 
-function openLightbox(item){
+                }
 
-    const image =
-        item.dataset.full;
+                if(p.x < -10)
+                    p.x = width + 10;
 
+                if(p.x > width + 10)
+                    p.x = -10;
 
-    const title =
-        item.dataset.title || "";
-
-
-    lightboxImage.src =
-        image;
-
-
-    lightboxImage.alt =
-        title;
-
-
-    lightboxTitle.textContent =
-        title;
-
-
-    lightbox.classList.add(
-        "active"
-    );
-
-
-    body.classList.add(
-        "locked"
-    );
-
-}
-
-
-function closeLightbox(){
-
-    lightbox.classList.remove(
-        "active"
-    );
-
-
-    lightboxImage.src =
-        "";
-
-
-    lightboxTitle.textContent =
-        "";
-
-
-    body.classList.remove(
-        "locked"
-    );
-
-}
-
-
-galleryItems.forEach(
-    function(item){
-
-        item.addEventListener(
-            "click",
-            function(){
-
-                openLightbox(
-                    item
-                );
-
-            }
-        );
-
-    }
-);
-
-
-lightboxClose.addEventListener(
-    "click",
-    closeLightbox
-);
-
-
-lightbox.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            event.target ===
-            lightbox
-        ){
-
-            closeLightbox();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   QR
-========================================================= */
-
-const qrButton =
-    document.getElementById(
-        "qrButton"
-    );
-
-
-const qrModal =
-    document.getElementById(
-        "qrModal"
-    );
-
-
-const qrClose =
-    document.getElementById(
-        "qrClose"
-    );
-
-
-function openQR(){
-
-    qrModal.classList.add(
-        "active"
-    );
-
-    body.classList.add(
-        "locked"
-    );
-
-}
-
-
-function closeQR(){
-
-    qrModal.classList.remove(
-        "active"
-    );
-
-    body.classList.remove(
-        "locked"
-    );
-
-}
-
-
-qrButton.addEventListener(
-    "click",
-    openQR
-);
-
-
-qrClose.addEventListener(
-    "click",
-    closeQR
-);
-
-
-qrModal.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            event.target ===
-            qrModal
-        ){
-
-            closeQR();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-
-function showToast(message){
-
-    toast.textContent =
-        message;
-
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        toastTimer
-    );
-
-
-    toastTimer =
-        setTimeout(
-            function(){
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            },
-            2200
-        );
-
-}
-
-
-/* =========================================================
-   COPY EMAIL
-========================================================= */
-
-const copyEmail =
-    document.getElementById(
-        "copyEmail"
-    );
-
-
-copyEmail.addEventListener(
-    "click",
-    async function(){
-
-        const email =
-            "mabkhout@mabkhut.com";
-
-
-        try{
-
-            await navigator
-                .clipboard
-                .writeText(
-                    email
-                );
-
-
-            showToast(
-                "تم نسخ البريد الإلكتروني"
-            );
-
-
-        }catch(error){
-
-            const temp =
-                document.createElement(
-                    "textarea"
-                );
-
-
-            temp.value =
-                email;
-
-
-            document.body.appendChild(
-                temp
-            );
-
-
-            temp.select();
-
-
-            document.execCommand(
-                "copy"
-            );
-
-
-            temp.remove();
-
-
-            showToast(
-                "تم نسخ البريد الإلكتروني"
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   SHARE
-========================================================= */
-
-const shareSite =
-    document.getElementById(
-        "shareSite"
-    );
-
-
-shareSite.addEventListener(
-    "click",
-    async function(){
-
-        const shareData = {
-
-            title:
-                "مبخوت بن عبدالله | MBK",
-
-            text:
-                "الموقع الشخصي لمبخوت بن عبدالله",
-
-            url:
-                "https://mabkhut.com/"
-
-        };
-
-
-        if(
-            navigator.share
-        ){
-
-            try{
-
-                await navigator.share(
-                    shareData
-                );
-
-            }catch(error){
-
-                /* المستخدم ألغى المشاركة */
-
-            }
-
-        }else{
-
-            try{
-
-                await navigator
-                    .clipboard
-                    .writeText(
-                        "https://mabkhut.com/"
+                const glow =
+                    p.alpha *
+                    (
+                        .65 +
+                        Math.sin(
+                            time * 1.4
+                            + p.phase
+                        ) * .35
                     );
 
+                const gradient =
+                    ctx.createRadialGradient(
+                        p.x,
+                        p.y,
+                        0,
+                        p.x,
+                        p.y,
+                        p.r * 6
+                    );
 
-                showToast(
-                    "تم نسخ رابط الموقع"
+                gradient.addColorStop(
+                    0,
+                    "rgba(255,240,160," +
+                    glow +
+                    ")"
                 );
 
-
-            }catch(error){
-
-                showToast(
-                    "mabkhut.com"
+                gradient.addColorStop(
+                    1,
+                    "rgba(212,175,55,0)"
                 );
+
+                ctx.fillStyle =
+                    gradient;
+
+                ctx.beginPath();
+
+                ctx.arc(
+                    p.x,
+                    p.y,
+                    p.r * 6,
+                    0,
+                    Math.PI * 2
+                );
+
+                ctx.fill();
 
             }
-
-        }
+        );
 
     }
-);
+
+    requestAnimationFrame(
+        draw
+    );
+
+}
+
+draw();
 
 
 /* =========================================================
-   KEYBOARD
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            event.key ===
-            "Escape"
-        ){
-
-            closeSideMenu();
-
-            closeLightbox();
-
-            closeQR();
-
-        }
-
-
-        if(
-            event.key === "/" &&
-            !event.ctrlKey &&
-            !event.metaKey &&
-            !event.altKey
-        ){
-
-            const tag =
-                document.activeElement
-                    ?.tagName;
-
-
-            if(
-                tag !== "INPUT" &&
-                tag !== "TEXTAREA"
-            ){
-
-                openMenu();
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   CURSOR GLOW
+   MBK V30 — 3D CARD TILT
 ========================================================= */
 
 if(
     window.matchMedia(
         "(pointer:fine)"
-    ).matches
+    ).matches &&
+    !reducedMotion
 ){
 
-    let glowX = 0;
-
-    let glowY = 0;
-
-    let targetX = 0;
-
-    let targetY = 0;
-
-
-    window.addEventListener(
-        "mousemove",
-        function(event){
-
-            targetX =
-                event.clientX;
-
-            targetY =
-                event.clientY;
-
-
-            cursorGlow.style.opacity =
-                "1";
-
-        },
-        {
-            passive:true
-        }
-    );
-
-
-    window.addEventListener(
-        "mouseleave",
-        function(){
-
-            cursorGlow.style.opacity =
-                "0";
-
-        }
-    );
-
-
-    function animateGlow(){
-
-        glowX +=
-            (
-                targetX -
-                glowX
-            ) * .09;
-
-
-        glowY +=
-            (
-                targetY -
-                glowY
-            ) * .09;
-
-
-        cursorGlow.style.left =
-            glowX + "px";
-
-
-        cursorGlow.style.top =
-            glowY + "px";
-
-
-        requestAnimationFrame(
-            animateGlow
+    const cards =
+        document.querySelectorAll(
+            ".value-card, .about-card, .fact, .contact-card"
         );
 
-    }
+    cards.forEach(
+        function(card){
 
+            card.addEventListener(
+                "mousemove",
+                function(event){
 
-    animateGlow();
+                    const rect =
+                        card.getBoundingClientRect();
 
-}
+                    const x =
+                        event.clientX -
+                        rect.left;
 
+                    const y =
+                        event.clientY -
+                        rect.top;
 
-/* =========================================================
-   ACTIVE SECTION NAVIGATION
-========================================================= */
+                    const rotateY =
+                        (
+                            x /
+                            rect.width
+                            -.5
+                        ) * 5;
 
-const sections =
-    document.querySelectorAll(
-        "main section[id]"
-    );
+                    const rotateX =
+                        (
+                            .5 -
+                            y /
+                            rect.height
+                        ) * 5;
 
+                    card.style.transform =
+                        "perspective(900px) " +
+                        "rotateX(" +
+                        rotateX +
+                        "deg) " +
+                        "rotateY(" +
+                        rotateY +
+                        "deg) " +
+                        "translateY(-5px)";
 
-const menuLinks =
-    document.querySelectorAll(
-        ".side-menu a"
-    );
+                },
+                {passive:true}
+            );
 
+            card.addEventListener(
+                "mouseleave",
+                function(){
 
-if(
-    "IntersectionObserver"
-    in window
-){
+                    card.style.transform =
+                        "";
 
-    const sectionObserver =
-        new IntersectionObserver(
-
-            function(entries){
-
-                entries.forEach(
-                    function(entry){
-
-                        if(
-                            entry.isIntersecting
-                        ){
-
-                            menuLinks.forEach(
-                                function(link){
-
-                                    link.style.color =
-                                        "";
-
-
-                                    const href =
-                                        link.getAttribute(
-                                            "href"
-                                        );
-
-
-                                    if(
-                                        href ===
-                                        "#" +
-                                        entry.target.id
-                                    ){
-
-                                        link.style.color =
-                                            "var(--gold-light)";
-
-                                    }
-
-                                }
-                            );
-
-                        }
-
-                    }
-                );
-
-            },
-            {
-                rootMargin:
-                    "-30% 0px -55% 0px"
-            }
-        );
-
-
-    sections.forEach(
-        function(section){
-
-            sectionObserver.observe(
-                section
+                }
             );
 
         }
     );
 
+
+    /* =====================================================
+       HERO PHOTO TILT
+    ===================================================== */
+
+    const photo =
+        document.querySelector(
+            ".photo-frame"
+        );
+
+    if(photo){
+
+        photo.addEventListener(
+            "mousemove",
+            function(event){
+
+                const rect =
+                    photo.getBoundingClientRect();
+
+                const x =
+                    (
+                        event.clientX -
+                        rect.left
+                    ) /
+                    rect.width -
+                    .5;
+
+                const y =
+                    (
+                        event.clientY -
+                        rect.top
+                    ) /
+                    rect.height -
+                    .5;
+
+                photo.style.transform =
+                    "perspective(1100px) " +
+                    "rotateY(" +
+                    x * 8 +
+                    "deg) " +
+                    "rotateX(" +
+                    y * -8 +
+                    "deg) " +
+                    "translateZ(8px)";
+
+            },
+            {passive:true}
+        );
+
+        photo.addEventListener(
+            "mouseleave",
+            function(){
+
+                photo.style.transform =
+                    "";
+
+            }
+        );
+
+    }
+
 }
 
 
 /* =========================================================
-   IMAGE FALLBACK
+   V30 MAGNETIC BUTTONS
 ========================================================= */
 
-document
-.querySelectorAll("img")
-.forEach(
-    function(image){
+if(
+    window.matchMedia(
+        "(pointer:fine)"
+    ).matches &&
+    !reducedMotion
+){
 
-        image.addEventListener(
-            "error",
-            function(){
+    document
+        .querySelectorAll(
+            ".action-btn, .social, .menu-btn, .top-btn"
+        )
+        .forEach(
+            function(button){
 
-                if(
-                    image.classList.contains(
-                        "profile-photo"
-                    )
-                ){
+                button.addEventListener(
+                    "mousemove",
+                    function(event){
 
-                    image.style.objectFit =
-                        "cover";
+                        const rect =
+                            button.getBoundingClientRect();
 
-                }
+                        const x =
+                            event.clientX -
+                            (
+                                rect.left +
+                                rect.width / 2
+                            );
+
+                        const y =
+                            event.clientY -
+                            (
+                                rect.top +
+                                rect.height / 2
+                            );
+
+                        button.style.transform =
+                            "translate(" +
+                            x * .12 +
+                            "px," +
+                            y * .12 +
+                            "px)";
+
+                    },
+                    {passive:true}
+                );
+
+                button.addEventListener(
+                    "mouseleave",
+                    function(){
+
+                        button.style.transform =
+                            "";
+
+                    }
+                );
 
             }
         );
+
+}
+
+
+/* =========================================================
+   V30 SCROLL PARALLAX
+========================================================= */
+
+if(!reducedMotion){
+
+    let ticking =
+        false;
+
+    function parallax(){
+
+        const scroll =
+            window.scrollY;
+
+        const heroGrid =
+            document.querySelector(
+                ".hero-grid"
+            );
+
+        if(heroGrid){
+
+            heroGrid.style.transform =
+                "translateY(" +
+                scroll * .12 +
+                "px)";
+
+        }
+
+        const corners =
+            document.querySelectorAll(
+                ".hero-corner"
+            );
+
+        corners.forEach(
+            function(corner,index){
+
+                corner.style.transform =
+                    "translateY(" +
+                    scroll *
+                    (
+                        index
+                        ? -.04
+                        : .04
+                    ) +
+                    "px)";
+
+            }
+        );
+
+        ticking =
+            false;
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        function(){
+
+            if(!ticking){
+
+                requestAnimationFrame(
+                    parallax
+                );
+
+                ticking =
+                    true;
+
+            }
+
+        },
+        {passive:true}
+    );
+
+}
+
+
+/* =========================================================
+   V30 TIMELINE STAGGER
+========================================================= */
+
+const timelineItems =
+    document.querySelectorAll(
+        ".timeline-item"
+    );
+
+timelineItems.forEach(
+    function(item,index){
+
+        item.style.transitionDelay =
+            (
+                index * .12
+            ) +
+            "s";
 
     }
 );
 
 
 /* =========================================================
-   SMOOTH INTERNAL LINKS
+   V30 CURSOR RING
 ========================================================= */
 
-document
-.querySelectorAll(
-    'a[href^="#"]'
-)
-.forEach(
-    function(link){
+if(
+    window.matchMedia(
+        "(pointer:fine)"
+    ).matches &&
+    !reducedMotion
+){
 
-        link.addEventListener(
-            "click",
-            function(event){
+    const ring =
+        document.createElement(
+            "div"
+        );
 
-                const id =
-                    link.getAttribute(
-                        "href"
-                    );
+    ring.id =
+        "v30CursorRing";
 
+    Object.assign(
+        ring.style,
+        {
+            position:"fixed",
+            width:"24px",
+            height:"24px",
+            border:"1px solid rgba(212,175,55,.5)",
+            borderRadius:"50%",
+            pointerEvents:"none",
+            zIndex:"999999",
+            transform:"translate(-50%,-50%)",
+            transition:
+                "width .25s ease," +
+                "height .25s ease," +
+                "border-color .25s ease," +
+                "opacity .25s ease",
+            opacity:"0"
+        }
+    );
 
-                if(
-                    id === "#"
-                ){
+    document.body.appendChild(
+        ring
+    );
 
-                    return;
+    let x =
+        window.innerWidth / 2;
 
-                }
+    let y =
+        window.innerHeight / 2;
 
+    let tx =
+        x;
 
-                const target =
-                    document.querySelector(
-                        id
-                    );
+    let ty =
+        y;
 
+    window.addEventListener(
+        "mousemove",
+        function(event){
 
-                if(
-                    !target
-                ){
+            tx =
+                event.clientX;
 
-                    return;
+            ty =
+                event.clientY;
 
-                }
+            ring.style.opacity =
+                "1";
 
+        },
+        {passive:true}
+    );
 
-                event.preventDefault();
+    function animateCursor(){
 
+        x +=
+            (tx-x) * .18;
 
-                const headerHeight =
-                    header.offsetHeight;
+        y +=
+            (ty-y) * .18;
 
+        ring.style.left =
+            x + "px";
 
-                const targetTop =
-                    target
-                        .getBoundingClientRect()
-                        .top
-                    +
-                    window.scrollY
-                    -
-                    headerHeight
-                    -
-                    12;
+        ring.style.top =
+            y + "px";
 
+        requestAnimationFrame(
+            animateCursor
+        );
 
-                window.scrollTo({
+    }
 
-                    top:
-                        targetTop,
+    animateCursor();
 
-                    behavior:
-                        "smooth"
+    document
+        .querySelectorAll(
+            "a,button,.gallery-item"
+        )
+        .forEach(
+            function(element){
 
-                });
+                element.addEventListener(
+                    "mouseenter",
+                    function(){
+
+                        ring.style.width =
+                            "46px";
+
+                        ring.style.height =
+                            "46px";
+
+                        ring.style.borderColor =
+                            "rgba(255,240,160,.9)";
+
+                    }
+                );
+
+                element.addEventListener(
+                    "mouseleave",
+                    function(){
+
+                        ring.style.width =
+                            "24px";
+
+                        ring.style.height =
+                            "24px";
+
+                        ring.style.borderColor =
+                            "rgba(212,175,55,.5)";
+
+                    }
+                );
 
             }
         );
 
-    }
-);
+}
 
 
 /* =========================================================
-   INITIAL STATE
+   V30 SECTION REVEAL ENHANCEMENT
 ========================================================= */
 
-setTimeout(
-    function(){
+const v30Reveal =
+    document.querySelectorAll(
+        ".section.reveal"
+    );
 
-        handleScroll();
+v30Reveal.forEach(
+    function(section,index){
 
-    },
-    100
+        section.style.transitionDelay =
+            (
+                Math.min(index * .05,.25)
+            ) +
+            "s";
+
+    }
 );
-
 
 })();
 
-</script>
-
-
-</body>
-    </html>
+                    </script>
