@@ -1,33 +1,102 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1.0,viewport-fit=cover"
+>
 
 <title>مبخوت بن عبدالله | MBK</title>
 
-<meta name="description" content="الموقع الشخصي الرسمي لمبخوت بن عبدالله — MBK.">
-<meta name="author" content="مبخوت بن عبدالله">
-<meta name="theme-color" content="#061426">
-<meta name="color-scheme" content="dark">
-<meta name="robots" content="index,follow">
+<meta
+    name="description"
+    content="الموقع الشخصي الرسمي لمبخوت بن عبدالله — MBK."
+>
 
-<link rel="canonical" href="https://mabkhut.com/">
+<meta
+    name="author"
+    content="مبخوت بن عبدالله"
+>
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="مبخوت بن عبدالله | MBK">
-<meta property="og:description" content="الموقع الشخصي الرسمي لمبخوت بن عبدالله.">
-<meta property="og:url" content="https://mabkhut.com/">
-<meta property="og:site_name" content="MBK">
+<meta
+    name="theme-color"
+    content="#061426"
+>
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="مبخوت بن عبدالله | MBK">
-<meta name="twitter:description" content="الموقع الشخصي الرسمي لمبخوت بن عبدالله.">
+<meta
+    name="color-scheme"
+    content="dark"
+>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta
+    name="robots"
+    content="index,follow"
+>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link
+    rel="canonical"
+    href="https://mabkhut.com/"
+>
+
+<meta
+    property="og:type"
+    content="website"
+>
+
+<meta
+    property="og:title"
+    content="مبخوت بن عبدالله | MBK"
+>
+
+<meta
+    property="og:description"
+    content="الموقع الشخصي الرسمي لمبخوت بن عبدالله."
+>
+
+<meta
+    property="og:url"
+    content="https://mabkhut.com/"
+>
+
+<meta
+    property="og:site_name"
+    content="MBK"
+>
+
+<meta
+    name="twitter:card"
+    content="summary_large_image"
+>
+
+<meta
+    name="twitter:title"
+    content="مبخوت بن عبدالله | MBK"
+>
+
+<meta
+    name="twitter:description"
+    content="الموقع الشخصي الرسمي لمبخوت بن عبدالله."
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
 
 <style>
 
@@ -37,9 +106,11 @@
 ========================================================= */
 
 :root{
+
     --navy:#061426;
     --navy-2:#081b31;
     --navy-3:#0b223c;
+
     --deep:#020914;
     --deep-2:#030d1b;
 
@@ -63,41 +134,53 @@
     --ease:cubic-bezier(.22,1,.36,1);
 }
 
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+
 html{
     scroll-behavior:smooth;
     background:var(--deep);
 }
 
+
 body{
+
     min-height:100vh;
+
     overflow-x:hidden;
 
-    font-family:"Cairo","Noto Kufi Arabic",sans-serif;
+    font-family:
+        "Cairo",
+        "Noto Kufi Arabic",
+        sans-serif;
 
     color:var(--white);
 
     background:
+
         radial-gradient(
             circle at 50% -10%,
             rgba(212,175,55,.12),
             transparent 30%
         ),
+
         radial-gradient(
             circle at 0% 35%,
             rgba(20,58,96,.30),
             transparent 38%
         ),
+
         radial-gradient(
             circle at 100% 70%,
             rgba(212,175,55,.035),
             transparent 30%
         ),
+
         linear-gradient(
             145deg,
             #020914 0%,
@@ -106,29 +189,37 @@ body{
         );
 
     -webkit-font-smoothing:antialiased;
+
     text-rendering:optimizeLegibility;
 }
+
 
 body.locked{
     overflow:hidden;
 }
 
+
 body::before{
+
     content:"";
 
     position:fixed;
+
     inset:0;
 
     pointer-events:none;
+
     z-index:-10;
 
     opacity:.045;
 
     background-image:
+
         linear-gradient(
             rgba(255,255,255,.08) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
             rgba(255,255,255,.08) 1px,
@@ -137,14 +228,17 @@ body::before{
 
     background-size:80px 80px;
 
-    mask-image:linear-gradient(
-        to bottom,
-        black,
-        transparent 85%
-    );
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 85%
+        );
 }
 
+
 body::after{
+
     content:"";
 
     position:fixed;
@@ -168,49 +262,70 @@ body::after{
     z-index:-9;
 }
 
+
 ::selection{
+
     color:#020914;
+
     background:var(--gold-light);
 }
 
+
 a{
+
     color:inherit;
+
     text-decoration:none;
 }
 
+
 button{
+
     font-family:inherit;
 }
 
+
 img{
+
     max-width:100%;
 }
 
+
 button,
 a{
+
     -webkit-tap-highlight-color:transparent;
 }
 
+
 .container{
+
     width:min(1120px,92%);
+
     margin:auto;
 }
 
+
 /* =========================================================
-   LOADER — EXACTLY ~1 SECOND
+   LOADER — 1 SECOND
 ========================================================= */
 
 .loader{
+
     position:fixed;
+
     inset:0;
 
     z-index:99999;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     background:
+
         radial-gradient(
             circle at center,
             #0a1d34,
@@ -218,65 +333,87 @@ a{
         );
 
     transition:
+
         opacity .35s ease,
         visibility .35s ease;
 }
 
+
 .loader.hide{
+
     opacity:0;
+
     visibility:hidden;
+
     pointer-events:none;
 }
 
+
 .loader-inner{
+
     text-align:center;
 }
 
+
 .loader-logo{
+
     direction:ltr;
 
     font-family:Arial,sans-serif;
 
     font-size:42px;
+
     font-weight:700;
 
     letter-spacing:12px;
 
     color:var(--gold-light);
 
-    animation:loaderPulse 1s ease both;
+    animation:
+        loaderPulse 1s ease both;
 }
 
+
 .loader-line{
+
     width:120px;
+
     height:1px;
 
     margin:20px auto 0;
 
     overflow:hidden;
 
-    background:rgba(212,175,55,.15);
+    background:
+        rgba(212,175,55,.15);
 }
 
+
 .loader-line::after{
+
     content:"";
 
     display:block;
 
     width:100%;
+
     height:100%;
 
-    background:linear-gradient(
-        90deg,
-        transparent,
-        var(--gold-light),
-        transparent
-    );
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold-light),
+            transparent
+        );
 
-    animation:loaderLine 1s ease both;
+    animation:
+        loaderLine 1s ease both;
 }
 
+
 @keyframes loaderPulse{
+
     0%{
         opacity:0;
         transform:scale(.92);
@@ -292,7 +429,9 @@ a{
     }
 }
 
+
 @keyframes loaderLine{
+
     from{
         transform:translateX(-100%);
     }
@@ -302,11 +441,13 @@ a{
     }
 }
 
+
 /* =========================================================
-   TOP PROGRESS
+   PROGRESS
 ========================================================= */
 
 .progress{
+
     position:fixed;
 
     top:0;
@@ -320,11 +461,15 @@ a{
     pointer-events:none;
 }
 
+
 .progress-bar{
+
     width:0;
+
     height:100%;
 
     background:
+
         linear-gradient(
             90deg,
             var(--gold-2),
@@ -335,14 +480,17 @@ a{
     box-shadow:
         0 0 14px rgba(212,175,55,.65);
 
-    transition:width .08s linear;
+    transition:
+        width .08s linear;
 }
+
 
 /* =========================================================
    HEADER
 ========================================================= */
 
 header{
+
     position:fixed;
 
     top:0;
@@ -354,39 +502,52 @@ header{
     padding:0 6%;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     z-index:9000;
 
-    background:rgba(2,9,20,.54);
+    background:
+        rgba(2,9,20,.54);
 
-    border-bottom:1px solid rgba(212,175,55,.09);
+    border-bottom:
+        1px solid rgba(212,175,55,.09);
 
     backdrop-filter:blur(18px);
+
     -webkit-backdrop-filter:blur(18px);
 
     transition:
+
         background .35s ease,
         border-color .35s ease,
         box-shadow .35s ease;
 }
 
-header.scrolled{
-    background:rgba(2,9,20,.88);
 
-    border-color:rgba(212,175,55,.16);
+header.scrolled{
+
+    background:
+        rgba(2,9,20,.88);
+
+    border-color:
+        rgba(212,175,55,.16);
 
     box-shadow:
         0 15px 60px rgba(0,0,0,.25);
 }
 
+
 .logo{
+
     direction:ltr;
 
     font-family:Arial,sans-serif;
 
     font-size:23px;
+
     font-weight:700;
 
     letter-spacing:7px;
@@ -396,12 +557,16 @@ header.scrolled{
     transition:.3s ease;
 }
 
+
 .logo:hover{
+
     text-shadow:
         0 0 20px rgba(212,175,55,.4);
 }
 
+
 .header-status{
+
     position:absolute;
 
     left:50%;
@@ -409,7 +574,9 @@ header.scrolled{
     transform:translateX(-50%);
 
     display:flex;
+
     align-items:center;
+
     gap:8px;
 
     color:#8d99a7;
@@ -421,8 +588,11 @@ header.scrolled{
     direction:ltr;
 }
 
+
 .status-dot{
+
     width:6px;
+
     height:6px;
 
     border-radius:50%;
@@ -432,10 +602,13 @@ header.scrolled{
     box-shadow:
         0 0 10px rgba(119,198,110,.8);
 
-    animation:statusBlink 2s infinite;
+    animation:
+        statusBlink 2s infinite;
 }
 
+
 @keyframes statusBlink{
+
     0%,100%{
         opacity:1;
     }
@@ -445,76 +618,94 @@ header.scrolled{
     }
 }
 
+
 .menu-btn{
+
     width:47px;
+
     height:47px;
 
     border-radius:50%;
 
-    border:1px solid var(--line-strong);
+    border:
+        1px solid var(--line-strong);
 
-    background:rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 
     color:var(--gold-light);
 
     cursor:pointer;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     font-size:21px;
 
-    transition:
-        transform .3s var(--ease),
-        border-color .3s ease,
-        background .3s ease,
-        box-shadow .3s ease;
+    transition:.3s var(--ease);
 }
 
+
 .menu-btn:hover{
+
     transform:scale(1.06);
 
     border-color:var(--gold-light);
 
-    background:rgba(212,175,55,.08);
+    background:
+        rgba(212,175,55,.08);
 
     box-shadow:
         0 0 30px rgba(212,175,55,.12);
 }
+
 
 /* =========================================================
    SIDE MENU
 ========================================================= */
 
 .overlay{
+
     position:fixed;
+
     inset:0;
 
-    background:rgba(0,0,0,.62);
+    background:
+        rgba(0,0,0,.62);
 
     backdrop-filter:blur(6px);
 
     z-index:9100;
 
     opacity:0;
+
     visibility:hidden;
 
     transition:.35s ease;
 }
 
+
 .overlay.active{
+
     opacity:1;
+
     visibility:visible;
 }
 
+
 .side-menu{
+
     position:fixed;
 
     top:0;
+
     right:0;
 
     width:min(390px,89vw);
+
     height:100vh;
 
     padding:105px 35px 35px;
@@ -522,18 +713,21 @@ header.scrolled{
     z-index:9200;
 
     background:
+
         radial-gradient(
             circle at top right,
             rgba(212,175,55,.08),
             transparent 35%
         ),
+
         linear-gradient(
             150deg,
             rgba(8,26,47,.99),
             rgba(2,9,20,.99)
         );
 
-    border-left:1px solid var(--line);
+    border-left:
+        1px solid var(--line);
 
     transform:translateX(105%);
 
@@ -544,22 +738,29 @@ header.scrolled{
         -30px 0 100px rgba(0,0,0,.55);
 }
 
+
 .side-menu.active{
+
     transform:translateX(0);
 }
 
+
 .close-menu{
+
     position:absolute;
 
     top:24px;
+
     left:24px;
 
     width:42px;
+
     height:42px;
 
     border-radius:50%;
 
-    border:1px solid var(--line-strong);
+    border:
+        1px solid var(--line-strong);
 
     background:transparent;
 
@@ -572,13 +773,18 @@ header.scrolled{
     transition:.3s ease;
 }
 
+
 .close-menu:hover{
+
     transform:rotate(90deg);
 
-    background:rgba(212,175,55,.08);
+    background:
+        rgba(212,175,55,.08);
 }
 
+
 .menu-label{
+
     color:var(--gold);
 
     font-size:10px;
@@ -590,16 +796,21 @@ header.scrolled{
     direction:ltr;
 }
 
+
 .side-menu a{
+
     position:relative;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     padding:16px 0;
 
-    border-bottom:1px solid rgba(255,255,255,.055);
+    border-bottom:
+        1px solid rgba(255,255,255,.055);
 
     font-size:16px;
 
@@ -608,7 +819,9 @@ header.scrolled{
     transition:.3s ease;
 }
 
+
 .side-menu a::after{
+
     content:"↗";
 
     opacity:0;
@@ -620,26 +833,37 @@ header.scrolled{
     transition:.3s ease;
 }
 
+
 .side-menu a:hover{
+
     color:var(--gold-light);
+
     padding-right:10px;
 }
 
+
 .side-menu a:hover::after{
+
     opacity:1;
+
     transform:translateX(0);
 }
 
+
 .menu-footer{
+
     position:absolute;
 
     right:35px;
+
     left:35px;
+
     bottom:28px;
 
     padding-top:18px;
 
-    border-top:1px solid rgba(212,175,55,.12);
+    border-top:
+        1px solid rgba(212,175,55,.12);
 
     color:#647181;
 
@@ -648,11 +872,13 @@ header.scrolled{
     text-align:center;
 }
 
+
 /* =========================================================
    HERO
 ========================================================= */
 
 .hero{
+
     min-height:100vh;
 
     padding:
@@ -661,8 +887,11 @@ header.scrolled{
         60px;
 
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     justify-content:center;
 
     position:relative;
@@ -672,31 +901,40 @@ header.scrolled{
     overflow:hidden;
 }
 
+
 .hero::before{
+
     content:"";
 
     position:absolute;
 
     width:650px;
+
     height:650px;
 
     border-radius:50%;
 
     top:50%;
+
     left:50%;
 
     transform:translate(-50%,-50%);
 
-    border:1px solid rgba(212,175,55,.045);
+    border:
+        1px solid rgba(212,175,55,.045);
 
     box-shadow:
+
         0 0 0 80px rgba(212,175,55,.012),
+
         0 0 0 160px rgba(212,175,55,.008);
 
     pointer-events:none;
 }
 
+
 .hero-grid{
+
     position:absolute;
 
     inset:0;
@@ -706,12 +944,14 @@ header.scrolled{
     opacity:.32;
 
     background:
+
         linear-gradient(
             90deg,
             transparent 49.95%,
             rgba(212,175,55,.07) 50%,
             transparent 50.05%
         ),
+
         linear-gradient(
             transparent 49.95%,
             rgba(212,175,55,.04) 50%,
@@ -723,34 +963,17 @@ header.scrolled{
         100% 100%;
 }
 
-.hero-corner{
-    position:absolute;
 
-    width:75px;
-    height:75px;
+/*
+   تم حذف:
+   hero-corner top
+   hero-corner bottom
+   لأنهما من العناصر المحددة باللون الأحمر.
+*/
 
-    border-color:rgba(212,175,55,.62);
-
-    pointer-events:none;
-}
-
-.hero-corner.top{
-    top:110px;
-    right:0;
-
-    border-top:1px solid;
-    border-right:1px solid;
-}
-
-.hero-corner.bottom{
-    bottom:35px;
-    left:0;
-
-    border-bottom:1px solid;
-    border-left:1px solid;
-}
 
 .hero-mini{
+
     position:relative;
 
     margin-bottom:17px;
@@ -765,20 +988,25 @@ header.scrolled{
 
     opacity:.9;
 
-    animation:heroReveal .8s .05s both;
+    animation:
+        heroReveal .8s .05s both;
 }
 
+
 .hero-name{
+
     position:relative;
 
     width:100%;
+
     max-width:900px;
 
     padding:0 20px;
 
     margin-bottom:12px;
 
-    font-size:clamp(37px,6vw,64px);
+    font-size:
+        clamp(37px,6vw,64px);
 
     font-weight:800;
 
@@ -787,6 +1015,7 @@ header.scrolled{
     letter-spacing:-1.5px;
 
     background:
+
         linear-gradient(
             135deg,
             #a87810 0%,
@@ -797,22 +1026,30 @@ header.scrolled{
         );
 
     -webkit-background-clip:text;
+
     background-clip:text;
+
     -webkit-text-fill-color:transparent;
 
     text-shadow:
         0 0 20px rgba(212,175,55,.12);
 
-    animation:heroReveal .9s .12s both;
+    animation:
+        heroReveal .9s .12s both;
 }
 
+
 .gold-line{
+
     width:105px;
+
     height:2px;
 
-    margin:0 auto 26px;
+    margin:
+        0 auto 26px;
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
@@ -825,39 +1062,46 @@ header.scrolled{
     box-shadow:
         0 0 18px rgba(212,175,55,.3);
 
-    animation:heroReveal .8s .2s both;
+    animation:
+        heroReveal .8s .2s both;
 }
 
-.hero-subtitle{
-    margin-bottom:25px;
 
-    color:var(--muted);
+/*
+   تم حذف:
+   hero-subtitle
+   "حضور شخصي · رؤية · أصالة"
+*/
 
-    font-size:13px;
-
-    letter-spacing:1px;
-
-    animation:heroReveal .8s .25s both;
-}
 
 @keyframes heroReveal{
+
     from{
+
         opacity:0;
-        transform:translateY(22px);
+
+        transform:
+            translateY(22px);
     }
 
     to{
+
         opacity:1;
-        transform:translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
+
 
 /* =========================================================
    PROFILE PHOTO
 ========================================================= */
 
 .photo-frame{
+
     width:min(430px,86vw);
+
     aspect-ratio:1/1;
 
     padding:10px;
@@ -867,17 +1111,24 @@ header.scrolled{
     margin-bottom:21px;
 
     animation:
+
         heroReveal .9s .32s both,
-        floating 7s 1.4s ease-in-out infinite;
+
+        floating 7s 1.4s
+        ease-in-out infinite;
 }
 
+
 .photo-frame::before{
+
     content:"";
 
     position:absolute;
+
     inset:0;
 
-    border:1px solid rgba(212,175,55,.86);
+    border:
+        1px solid rgba(212,175,55,.86);
 
     border-radius:31px;
 
@@ -887,62 +1138,51 @@ header.scrolled{
         0 0 35px rgba(212,175,55,.05);
 }
 
+
 .photo-frame::after{
+
     content:"";
 
     position:absolute;
+
     inset:7px;
 
-    border:1px solid rgba(212,175,55,.23);
+    border:
+        1px solid rgba(212,175,55,.23);
 
     border-radius:27px;
 
     transform:rotate(1deg);
 }
 
-.photo-corner{
-    position:absolute;
 
-    width:26px;
-    height:26px;
+/*
+   تم حذف:
+   photo-corner.a
+   photo-corner.b
+*/
 
-    z-index:4;
-
-    border-color:var(--gold-light);
-}
-
-.photo-corner.a{
-    top:1px;
-    right:1px;
-
-    border-top:2px solid;
-    border-right:2px solid;
-}
-
-.photo-corner.b{
-    bottom:1px;
-    left:1px;
-
-    border-bottom:2px solid;
-    border-left:2px solid;
-}
 
 .profile-photo{
+
     position:relative;
 
     z-index:2;
 
     width:100%;
+
     height:100%;
 
     display:block;
 
     object-fit:contain;
+
     object-position:center;
 
     border-radius:24px;
 
-    border:5px solid #07172a;
+    border:
+        5px solid #07172a;
 
     background:#07172a;
 
@@ -950,41 +1190,58 @@ header.scrolled{
         0 30px 85px rgba(0,0,0,.52);
 
     transition:
+
         transform .7s var(--ease),
+
         box-shadow .7s ease;
 }
 
-.photo-frame:hover .profile-photo{
+
+.photo-frame:hover
+.profile-photo{
+
     transform:scale(1.015);
 
     box-shadow:
         0 38px 105px rgba(0,0,0,.65);
 }
 
+
 @keyframes floating{
+
     0%,100%{
-        transform:translateY(0);
+
+        transform:
+            translateY(0);
     }
 
     50%{
-        transform:translateY(-5px);
+
+        transform:
+            translateY(-5px);
     }
 }
 
+
 .quote{
+
     position:relative;
 
     color:var(--white);
 
-    font-size:clamp(20px,4vw,28px);
+    font-size:
+        clamp(20px,4vw,28px);
 
     font-weight:500;
 
-    animation:heroReveal .8s .4s both;
+    animation:
+        heroReveal .8s .4s both;
 }
+
 
 .quote::before,
 .quote::after{
+
     color:var(--gold);
 
     opacity:.7;
@@ -992,23 +1249,33 @@ header.scrolled{
     font-size:20px;
 }
 
+
 .quote::before{
+
     content:"«";
+
     margin-left:7px;
 }
 
+
 .quote::after{
+
     content:"»";
+
     margin-right:7px;
 }
 
+
 /* =========================================================
-   HERO INFO BAR
+   HERO INFO
 ========================================================= */
 
 .hero-info{
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     gap:14px;
@@ -1021,36 +1288,49 @@ header.scrolled{
 
     direction:ltr;
 
-    animation:heroReveal .8s .5s both;
+    animation:
+        heroReveal .8s .5s both;
 }
 
+
 .hero-info span{
+
     display:flex;
+
     align-items:center;
+
     gap:6px;
 }
 
+
 .hero-info i{
+
     color:var(--gold);
 }
 
+
 /* =========================================================
-   SECTION
+   SECTIONS
 ========================================================= */
 
 .section{
+
     position:relative;
 
     padding:90px 0;
 }
 
+
 .section-header{
+
     text-align:center;
 
     margin-bottom:38px;
 }
 
+
 .section-label{
+
     display:block;
 
     margin-bottom:8px;
@@ -1064,25 +1344,33 @@ header.scrolled{
     direction:ltr;
 }
 
+
 .section-title{
-    font-size:clamp(31px,5vw,47px);
+
+    font-size:
+        clamp(31px,5vw,47px);
 
     font-weight:800;
 
     line-height:1.4;
 }
 
+
 .section-title::after{
+
     content:"";
 
     display:block;
 
     width:70px;
+
     height:2px;
 
-    margin:12px auto 0;
+    margin:
+        12px auto 0;
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
@@ -1091,10 +1379,13 @@ header.scrolled{
         );
 }
 
+
 .section-description{
+
     max-width:600px;
 
-    margin:15px auto 0;
+    margin:
+        15px auto 0;
 
     color:var(--muted);
 
@@ -1103,30 +1394,41 @@ header.scrolled{
     line-height:2;
 }
 
+
 /* =========================================================
    REVEAL
 ========================================================= */
 
 .reveal{
+
     opacity:0;
 
-    transform:translateY(35px);
+    transform:
+        translateY(35px);
 
     transition:
+
         opacity .8s ease,
+
         transform .8s var(--ease);
 }
 
+
 .reveal.visible{
+
     opacity:1;
-    transform:translateY(0);
+
+    transform:
+        translateY(0);
 }
+
 
 /* =========================================================
    ABOUT
 ========================================================= */
 
 .about-card{
+
     position:relative;
 
     max-width:920px;
@@ -1137,11 +1439,13 @@ header.scrolled{
 
     overflow:hidden;
 
-    border:1px solid var(--line);
+    border:
+        1px solid var(--line);
 
     border-radius:30px;
 
     background:
+
         linear-gradient(
             145deg,
             rgba(255,255,255,.045),
@@ -1152,12 +1456,15 @@ header.scrolled{
         0 30px 90px rgba(0,0,0,.2);
 }
 
+
 .about-card::before{
+
     content:"MBK";
 
     position:absolute;
 
     left:-25px;
+
     bottom:-55px;
 
     direction:ltr;
@@ -1170,31 +1477,40 @@ header.scrolled{
 
     letter-spacing:10px;
 
-    color:rgba(212,175,55,.025);
+    color:
+        rgba(212,175,55,.025);
 
     pointer-events:none;
 }
 
+
 .about-card::after{
+
     content:"";
 
     position:absolute;
 
     width:180px;
+
     height:180px;
 
     top:-100px;
+
     right:-80px;
 
     border-radius:50%;
 
-    background:rgba(212,175,55,.06);
+    background:
+        rgba(212,175,55,.06);
 
     filter:blur(50px);
 }
 
+
 .about-card p{
+
     position:relative;
+
     z-index:2;
 
     color:var(--text);
@@ -1206,19 +1522,25 @@ header.scrolled{
     text-align:center;
 }
 
+
 .about-card strong{
+
     color:var(--gold-light);
+
     font-weight:700;
 }
 
+
 /* =========================================================
-   QUICK FACTS
+   FACTS
 ========================================================= */
 
 .facts{
+
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap:15px;
 
@@ -1227,19 +1549,25 @@ header.scrolled{
     margin:20px auto 0;
 }
 
+
 .fact{
+
     padding:23px 18px;
 
     text-align:center;
 
-    border:1px solid rgba(212,175,55,.12);
+    border:
+        1px solid rgba(212,175,55,.12);
 
     border-radius:20px;
 
-    background:rgba(255,255,255,.018);
+    background:
+        rgba(255,255,255,.018);
 }
 
+
 .fact-value{
+
     color:var(--gold-light);
 
     font-size:23px;
@@ -1249,7 +1577,9 @@ header.scrolled{
     direction:ltr;
 }
 
+
 .fact-label{
+
     color:#778494;
 
     margin-top:3px;
@@ -1257,19 +1587,24 @@ header.scrolled{
     font-size:11px;
 }
 
+
 /* =========================================================
    VALUES
 ========================================================= */
 
 .values{
+
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap:18px;
 }
 
+
 .value-card{
+
     position:relative;
 
     padding:33px 25px;
@@ -1278,11 +1613,13 @@ header.scrolled{
 
     text-align:center;
 
-    border:1px solid rgba(212,175,55,.14);
+    border:
+        1px solid rgba(212,175,55,.14);
 
     border-radius:26px;
 
     background:
+
         linear-gradient(
             145deg,
             rgba(255,255,255,.035),
@@ -1290,23 +1627,31 @@ header.scrolled{
         );
 
     transition:
+
         transform .4s var(--ease),
+
         border-color .35s ease,
+
         box-shadow .35s ease;
 }
 
+
 .value-card::before{
+
     content:"";
 
     position:absolute;
 
     top:0;
+
     right:0;
+
     left:0;
 
     height:1px;
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
@@ -1319,48 +1664,66 @@ header.scrolled{
     transition:.4s ease;
 }
 
-.value-card:hover{
-    transform:translateY(-9px);
 
-    border-color:rgba(212,175,55,.42);
+.value-card:hover{
+
+    transform:
+        translateY(-9px);
+
+    border-color:
+        rgba(212,175,55,.42);
 
     box-shadow:
         0 25px 65px rgba(212,175,55,.07);
 }
 
+
 .value-card:hover::before{
+
     transform:scaleX(1);
 }
 
+
 .value-icon{
+
     width:58px;
+
     height:58px;
 
-    margin:0 auto 16px;
+    margin:
+        0 auto 16px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     border-radius:50%;
 
-    border:1px solid rgba(212,175,55,.34);
+    border:
+        1px solid rgba(212,175,55,.34);
 
     color:var(--gold-light);
 
     font-size:23px;
 
     box-shadow:
-        inset 0 0 20px rgba(212,175,55,.025);
+        inset 0 0 20px
+        rgba(212,175,55,.025);
 }
 
+
 .value-card h3{
+
     font-size:20px;
 
     margin-bottom:8px;
 }
 
+
 .value-card p{
+
     color:var(--muted);
 
     font-size:13px;
@@ -1368,26 +1731,32 @@ header.scrolled{
     line-height:1.9;
 }
 
+
 /* =========================================================
    GALLERY
 ========================================================= */
 
 .gallery{
+
     display:grid;
 
-    grid-template-columns:repeat(12,1fr);
+    grid-template-columns:
+        repeat(12,1fr);
 
     gap:15px;
 }
 
+
 .gallery-item{
+
     position:relative;
 
     overflow:hidden;
 
     border-radius:25px;
 
-    border:1px solid rgba(212,175,55,.17);
+    border:
+        1px solid rgba(212,175,55,.17);
 
     background:#07172a;
 
@@ -1396,26 +1765,33 @@ header.scrolled{
     isolation:isolate;
 }
 
+
 .gallery-item:nth-child(1),
 .gallery-item:nth-child(4),
 .gallery-item:nth-child(5),
 .gallery-item:nth-child(8){
+
     grid-column:span 7;
 
     aspect-ratio:16/10;
 }
 
+
 .gallery-item:nth-child(2),
 .gallery-item:nth-child(3),
 .gallery-item:nth-child(6),
 .gallery-item:nth-child(7){
+
     grid-column:span 5;
 
     aspect-ratio:1/1;
 }
 
+
 .gallery-item img{
+
     width:100%;
+
     height:100%;
 
     display:block;
@@ -1423,19 +1799,25 @@ header.scrolled{
     object-fit:cover;
 
     transition:
+
         transform .8s var(--ease),
+
         filter .5s ease;
 }
 
+
 .gallery-item::before{
+
     content:"";
 
     position:absolute;
+
     inset:0;
 
     z-index:1;
 
     background:
+
         linear-gradient(
             135deg,
             rgba(212,175,55,.15),
@@ -1449,15 +1831,19 @@ header.scrolled{
     transition:.5s ease;
 }
 
+
 .gallery-item::after{
+
     content:"";
 
     position:absolute;
+
     inset:0;
 
     z-index:1;
 
     background:
+
         linear-gradient(
             to top,
             rgba(0,0,0,.82),
@@ -1465,27 +1851,37 @@ header.scrolled{
         );
 }
 
+
 .gallery-item:hover img{
+
     transform:scale(1.08);
 
     filter:saturate(1.05);
 }
 
+
 .gallery-item:hover::before{
+
     opacity:1;
 }
 
+
 .gallery-info{
+
     position:absolute;
 
     right:22px;
+
     left:22px;
+
     bottom:18px;
 
     z-index:3;
 }
 
+
 .gallery-info small{
+
     display:block;
 
     color:var(--gold-light);
@@ -1499,23 +1895,29 @@ header.scrolled{
     margin-bottom:4px;
 }
 
+
 .gallery-info h3{
+
     font-size:18px;
 
     font-weight:600;
 }
 
+
 .gallery-number{
+
     position:absolute;
 
     top:16px;
+
     left:18px;
 
     z-index:3;
 
     direction:ltr;
 
-    color:rgba(255,255,255,.6);
+    color:
+        rgba(255,255,255,.6);
 
     font-family:Arial,sans-serif;
 
@@ -1524,12 +1926,15 @@ header.scrolled{
     letter-spacing:2px;
 }
 
+
 /* =========================================================
    LIGHTBOX
 ========================================================= */
 
 .lightbox{
+
     position:fixed;
+
     inset:0;
 
     z-index:20000;
@@ -1537,52 +1942,69 @@ header.scrolled{
     padding:25px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
-    background:rgba(0,0,0,.9);
+    background:
+        rgba(0,0,0,.9);
 
     backdrop-filter:blur(13px);
 
     opacity:0;
+
     visibility:hidden;
 
     transition:.3s ease;
 }
 
+
 .lightbox.active{
+
     opacity:1;
+
     visibility:visible;
 }
 
+
 .lightbox img{
+
     max-width:92vw;
+
     max-height:84vh;
 
     object-fit:contain;
 
     border-radius:15px;
 
-    border:1px solid rgba(212,175,55,.28);
+    border:
+        1px solid rgba(212,175,55,.28);
 
     box-shadow:
         0 30px 110px rgba(0,0,0,.7);
 }
 
+
 .lightbox-close{
+
     position:absolute;
 
     top:22px;
+
     left:25px;
 
     width:45px;
+
     height:45px;
 
     border-radius:50%;
 
-    border:1px solid rgba(212,175,55,.4);
+    border:
+        1px solid rgba(212,175,55,.4);
 
-    background:rgba(0,0,0,.25);
+    background:
+        rgba(0,0,0,.25);
 
     color:var(--gold-light);
 
@@ -1591,30 +2013,37 @@ header.scrolled{
     cursor:pointer;
 }
 
+
 .lightbox-title{
+
     position:absolute;
 
     right:25px;
+
     bottom:25px;
 
     color:#dce1e7;
 
     font-size:12px;
 
-    background:rgba(0,0,0,.45);
+    background:
+        rgba(0,0,0,.45);
 
     padding:8px 15px;
 
     border-radius:999px;
 
-    border:1px solid rgba(212,175,55,.15);
+    border:
+        1px solid rgba(212,175,55,.15);
 }
+
 
 /* =========================================================
    JOURNEY
 ========================================================= */
 
 .timeline{
+
     max-width:850px;
 
     margin:auto;
@@ -1622,12 +2051,15 @@ header.scrolled{
     position:relative;
 }
 
+
 .timeline::before{
+
     content:"";
 
     position:absolute;
 
     top:0;
+
     bottom:0;
 
     right:50%;
@@ -1635,6 +2067,7 @@ header.scrolled{
     width:1px;
 
     background:
+
         linear-gradient(
             transparent,
             var(--gold),
@@ -1642,30 +2075,40 @@ header.scrolled{
         );
 }
 
+
 .timeline-item{
+
     position:relative;
 
     width:50%;
 
-    padding:0 36px 50px;
+    padding:
+        0 36px 50px;
 }
 
+
 .timeline-item:nth-child(odd){
+
     text-align:left;
 }
 
+
 .timeline-item:nth-child(even){
+
     margin-right:50%;
 
     text-align:right;
 }
 
+
 .timeline-dot{
+
     position:absolute;
 
     top:4px;
 
     width:13px;
+
     height:13px;
 
     border-radius:50%;
@@ -1676,15 +2119,23 @@ header.scrolled{
         0 0 18px rgba(212,175,55,.6);
 }
 
-.timeline-item:nth-child(odd) .timeline-dot{
+
+.timeline-item:nth-child(odd)
+.timeline-dot{
+
     right:-6px;
 }
 
-.timeline-item:nth-child(even) .timeline-dot{
+
+.timeline-item:nth-child(even)
+.timeline-dot{
+
     left:-6px;
 }
 
+
 .timeline-year{
+
     color:var(--gold-light);
 
     font-family:Arial,sans-serif;
@@ -1700,7 +2151,9 @@ header.scrolled{
     direction:ltr;
 }
 
+
 .timeline-title{
+
     font-size:18px;
 
     font-weight:600;
@@ -1708,7 +2161,9 @@ header.scrolled{
     margin-bottom:6px;
 }
 
+
 .timeline-text{
+
     color:var(--muted);
 
     font-size:13px;
@@ -1716,11 +2171,13 @@ header.scrolled{
     line-height:1.9;
 }
 
+
 /* =========================================================
    CONTACT
 ========================================================= */
 
 .contact-card{
+
     position:relative;
 
     max-width:760px;
@@ -1733,91 +2190,109 @@ header.scrolled{
 
     overflow:hidden;
 
-    border:1px solid var(--line);
+    border:
+        1px solid var(--line);
 
     border-radius:30px;
 
     background:
+
         radial-gradient(
             circle at center top,
             rgba(212,175,55,.07),
             transparent 45%
         ),
+
         rgba(255,255,255,.022);
 }
 
-.contact-card h3{
-    font-size:21px;
 
-    margin-bottom:7px;
-}
+/*
+   تم حذف h3 و contact-email
+   من داخل البطاقة كما طلبت.
+*/
 
-.contact-email{
-    color:var(--gold-light);
-
-    direction:ltr;
-
-    font-size:13px;
-
-    margin-bottom:25px;
-
-    word-break:break-word;
-}
 
 .contact-icons{
+
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
     gap:14px;
 }
 
+
 .social{
+
     width:58px;
+
     height:58px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     border-radius:50%;
 
-    border:1px solid rgba(212,175,55,.4);
+    border:
+        1px solid rgba(212,175,55,.4);
 
-    background:rgba(255,255,255,.02);
+    background:
+        rgba(255,255,255,.02);
 
     color:var(--gold-light);
 
     transition:
+
         transform .35s var(--ease),
+
         background .3s ease,
+
         border-color .3s ease,
+
         box-shadow .3s ease;
 }
 
+
 .social:hover{
-    transform:translateY(-6px) scale(1.04);
 
-    background:rgba(212,175,55,.08);
+    transform:
+        translateY(-6px)
+        scale(1.04);
 
-    border-color:var(--gold-light);
+    background:
+        rgba(212,175,55,.08);
+
+    border-color:
+        var(--gold-light);
 
     box-shadow:
-        0 15px 40px rgba(212,175,55,.14);
+        0 15px 40px
+        rgba(212,175,55,.14);
 }
 
+
 .social svg{
+
     width:25px;
+
     height:25px;
 
     fill:currentColor;
 }
 
+
 .contact-actions{
+
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     flex-wrap:wrap;
@@ -1827,16 +2302,20 @@ header.scrolled{
     margin-top:24px;
 }
 
+
 .action-btn{
+
     min-height:42px;
 
     padding:9px 18px;
 
     border-radius:999px;
 
-    border:1px solid rgba(212,175,55,.3);
+    border:
+        1px solid rgba(212,175,55,.3);
 
-    background:rgba(255,255,255,.015);
+    background:
+        rgba(255,255,255,.015);
 
     color:#d8dde4;
 
@@ -1847,59 +2326,78 @@ header.scrolled{
     transition:.3s ease;
 }
 
+
 .action-btn:hover{
+
     color:var(--gold-light);
 
-    border-color:var(--gold-light);
+    border-color:
+        var(--gold-light);
 
-    background:rgba(212,175,55,.06);
+    background:
+        rgba(212,175,55,.06);
 
-    transform:translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
+
 /* =========================================================
-   QR MODAL
+   QR
 ========================================================= */
 
 .qr-modal{
+
     position:fixed;
+
     inset:0;
 
     z-index:21000;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     padding:20px;
 
-    background:rgba(0,0,0,.8);
+    background:
+        rgba(0,0,0,.8);
 
     backdrop-filter:blur(10px);
 
     opacity:0;
+
     visibility:hidden;
 
     transition:.3s ease;
 }
 
+
 .qr-modal.active{
+
     opacity:1;
+
     visibility:visible;
 }
 
+
 .qr-box{
+
     width:min(360px,92vw);
 
     padding:30px;
 
     text-align:center;
 
-    border:1px solid rgba(212,175,55,.35);
+    border:
+        1px solid rgba(212,175,55,.35);
 
     border-radius:30px;
 
     background:
+
         linear-gradient(
             145deg,
             #0a2039,
@@ -1910,7 +2408,9 @@ header.scrolled{
         0 30px 100px rgba(0,0,0,.6);
 }
 
+
 .qr-box h3{
+
     color:var(--gold-light);
 
     direction:ltr;
@@ -1918,7 +2418,9 @@ header.scrolled{
     letter-spacing:2px;
 }
 
+
 .qr-box p{
+
     color:var(--muted);
 
     font-size:11px;
@@ -1926,8 +2428,11 @@ header.scrolled{
     margin-top:4px;
 }
 
+
 .qr-box img{
+
     width:220px;
+
     height:220px;
 
     display:block;
@@ -1941,12 +2446,15 @@ header.scrolled{
     border-radius:14px;
 }
 
+
 .qr-close{
+
     padding:10px 25px;
 
     border-radius:999px;
 
-    border:1px solid rgba(212,175,55,.35);
+    border:
+        1px solid rgba(212,175,55,.35);
 
     background:transparent;
 
@@ -1957,75 +2465,100 @@ header.scrolled{
     transition:.3s ease;
 }
 
+
 .qr-close:hover{
-    border-color:var(--gold-light);
+
+    border-color:
+        var(--gold-light);
 
     color:var(--gold-light);
 }
+
 
 /* =========================================================
    BACK TO TOP
 ========================================================= */
 
 .top-btn{
+
     position:fixed;
 
     right:22px;
+
     bottom:22px;
 
     z-index:7000;
 
     width:45px;
+
     height:45px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     border-radius:50%;
 
-    border:1px solid rgba(212,175,55,.38);
+    border:
+        1px solid rgba(212,175,55,.38);
 
-    background:rgba(3,13,27,.8);
+    background:
+        rgba(3,13,27,.8);
 
     color:var(--gold-light);
 
     cursor:pointer;
 
     opacity:0;
+
     visibility:hidden;
 
-    transform:translateY(12px);
+    transform:
+        translateY(12px);
 
     transition:.3s ease;
 
     backdrop-filter:blur(10px);
 }
 
+
 .top-btn.visible{
+
     opacity:1;
+
     visibility:visible;
 
-    transform:translateY(0);
+    transform:
+        translateY(0);
 }
+
 
 .top-btn:hover{
-    transform:translateY(-4px);
 
-    border-color:var(--gold-light);
+    transform:
+        translateY(-4px);
+
+    border-color:
+        var(--gold-light);
 
     box-shadow:
-        0 10px 30px rgba(212,175,55,.1);
+        0 10px 30px
+        rgba(212,175,55,.1);
 }
+
 
 /* =========================================================
    TOAST
 ========================================================= */
 
 .toast{
+
     position:fixed;
 
     left:50%;
+
     bottom:25px;
 
     z-index:30000;
@@ -2039,11 +2572,13 @@ header.scrolled{
 
     padding:11px 18px;
 
-    border:1px solid rgba(212,175,55,.25);
+    border:
+        1px solid rgba(212,175,55,.25);
 
     border-radius:999px;
 
-    background:rgba(5,18,33,.94);
+    background:
+        rgba(5,18,33,.94);
 
     color:#e9edf2;
 
@@ -2052,33 +2587,42 @@ header.scrolled{
     box-shadow:
         0 15px 50px rgba(0,0,0,.35);
 
-    transition:.35s var(--ease);
+    transition:
+        .35s var(--ease);
 
     backdrop-filter:blur(12px);
 }
 
+
 .toast.show{
+
     opacity:1;
+
     visibility:visible;
 
     transform:
         translate(-50%,0);
 }
 
+
 /* =========================================================
    FOOTER
 ========================================================= */
 
 footer{
+
     position:relative;
 
-    padding:55px 20px 38px;
+    padding:
+        55px 20px 38px;
 
     text-align:center;
 
-    border-top:1px solid rgba(212,175,55,.11);
+    border-top:
+        1px solid rgba(212,175,55,.11);
 
     background:
+
         linear-gradient(
             to bottom,
             rgba(2,8,17,.45),
@@ -2086,7 +2630,9 @@ footer{
         );
 }
 
+
 .footer-symbol{
+
     direction:ltr;
 
     font-family:Arial,sans-serif;
@@ -2102,13 +2648,17 @@ footer{
     margin-bottom:15px;
 }
 
+
 .footer-copy{
+
     color:#77818d;
 
     font-size:11px;
 }
 
+
 .footer-links{
+
     display:flex;
 
     justify-content:center;
@@ -2122,15 +2672,21 @@ footer{
     font-size:10px;
 }
 
+
 .footer-links a{
+
     transition:.3s ease;
 }
 
+
 .footer-links a:hover{
+
     color:var(--gold-light);
 }
 
+
 .footer-quote{
+
     margin-top:18px;
 
     color:#596574;
@@ -2138,14 +2694,17 @@ footer{
     font-size:10px;
 }
 
+
 /* =========================================================
    CURSOR GLOW
 ========================================================= */
 
 .cursor-glow{
+
     position:fixed;
 
     width:180px;
+
     height:180px;
 
     border-radius:50%;
@@ -2155,18 +2714,22 @@ footer{
     z-index:1;
 
     background:
+
         radial-gradient(
             circle,
             rgba(212,175,55,.055),
             transparent 68%
         );
 
-    transform:translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
     opacity:0;
 
-    transition:opacity .3s ease;
+    transition:
+        opacity .3s ease;
 }
+
 
 /* =========================================================
    MOBILE
@@ -2175,49 +2738,53 @@ footer{
 @media(max-width:760px){
 
     header{
+
         height:70px;
 
         padding:
-            0
-            20px;
+            0 20px;
     }
 
+
     .logo{
+
         font-size:21px;
+
         letter-spacing:6px;
     }
 
+
     .header-status{
+
         display:none;
     }
 
+
     .menu-btn{
+
         width:44px;
+
         height:44px;
     }
 
+
     .hero{
+
         padding:
-            100px
-            0
-            45px;
+            100px 0 45px;
     }
 
+
     .hero::before{
+
         width:430px;
+
         height:430px;
     }
 
-    .hero-corner{
-        width:45px;
-        height:45px;
-    }
-
-    .hero-corner.top{
-        top:90px;
-    }
 
     .hero-name{
+
         max-width:100%;
 
         padding:0 10px;
@@ -2232,61 +2799,81 @@ footer{
         line-height:1.55;
     }
 
-    .hero-subtitle{
-        font-size:11px;
-    }
 
     .photo-frame{
-        width:min(390px,88vw);
+
+        width:
+            min(390px,88vw);
 
         margin-bottom:18px;
     }
 
+
     .hero-info{
+
         gap:9px;
 
         font-size:8px;
     }
 
+
     .section{
+
         padding:62px 0;
     }
 
+
     .section-header{
+
         margin-bottom:28px;
     }
 
+
     .about-card{
-        padding:30px 22px;
+
+        padding:
+            30px 22px;
     }
 
+
     .about-card p{
+
         font-size:15px;
 
         line-height:2.05;
     }
 
+
     .facts{
+
         grid-template-columns:1fr;
 
         gap:10px;
     }
 
+
     .values{
+
         grid-template-columns:1fr;
 
         gap:14px;
     }
 
+
     .value-card{
-        padding:28px 22px;
+
+        padding:
+            28px 22px;
     }
 
+
     .gallery{
+
         grid-template-columns:1fr;
 
         gap:13px;
     }
+
 
     .gallery-item,
     .gallery-item:nth-child(1),
@@ -2297,64 +2884,87 @@ footer{
     .gallery-item:nth-child(6),
     .gallery-item:nth-child(7),
     .gallery-item:nth-child(8){
+
         grid-column:span 1;
 
         aspect-ratio:16/10;
     }
 
+
     .timeline::before{
+
         right:13px;
     }
+
 
     .timeline-item,
     .timeline-item:nth-child(odd),
     .timeline-item:nth-child(even){
+
         width:100%;
 
         margin:0;
 
         padding:
-            0
-            42px
-            40px
-            0;
+            0 42px 40px 0;
 
         text-align:right;
     }
 
-    .timeline-item:nth-child(odd) .timeline-dot,
-    .timeline-item:nth-child(even) .timeline-dot{
+
+    .timeline-item:nth-child(odd)
+    .timeline-dot,
+    .timeline-item:nth-child(even)
+    .timeline-dot{
+
         right:7px;
+
         left:auto;
     }
 
+
     .timeline-year{
+
         font-size:25px;
     }
 
+
     .contact-card{
-        padding:32px 20px;
+
+        padding:
+            32px 20px;
     }
 
+
     .contact-icons{
+
         gap:10px;
     }
 
+
     .social{
+
         width:54px;
+
         height:54px;
     }
 
+
     .top-btn{
+
         right:15px;
+
         bottom:15px;
     }
 
+
     .cursor-glow{
+
         display:none;
     }
 
 }
+
 
 /* =========================================================
    SMALL MOBILE
@@ -2363,30 +2973,42 @@ footer{
 @media(max-width:420px){
 
     .hero-name{
+
         font-size:34px;
     }
 
+
     .photo-frame{
+
         width:92vw;
     }
 
+
     .quote{
+
         font-size:20px;
     }
 
+
     .gallery-info h3{
+
         font-size:16px;
     }
 
+
     .contact-actions{
+
         flex-direction:column;
     }
 
+
     .action-btn{
+
         width:100%;
     }
 
 }
+
 
 /* =========================================================
    REDUCED MOTION
@@ -2397,6 +3019,7 @@ footer{
     *,
     *::before,
     *::after{
+
         animation:none!important;
 
         transition:none!important;
@@ -2409,13 +3032,18 @@ footer{
 </style>
 </head>
 
+
 <body>
+
 
 <!-- =========================================================
      LOADER
 ========================================================= -->
 
-<div class="loader" id="loader">
+<div
+    class="loader"
+    id="loader"
+>
 
     <div class="loader-inner">
 
@@ -2429,14 +3057,18 @@ footer{
 
 </div>
 
+
 <!-- PROGRESS -->
 
 <div class="progress">
+
     <div
         class="progress-bar"
         id="progressBar"
     ></div>
+
 </div>
+
 
 <!-- CURSOR -->
 
@@ -2460,6 +3092,7 @@ footer{
         MBK
     </a>
 
+
     <div class="header-status">
 
         <span class="status-dot"></span>
@@ -2469,6 +3102,7 @@ footer{
         </span>
 
     </div>
+
 
     <button
         class="menu-btn"
@@ -2492,6 +3126,7 @@ footer{
     id="overlay"
 ></div>
 
+
 <nav
     class="side-menu"
     id="sideMenu"
@@ -2506,33 +3141,41 @@ footer{
         ×
     </button>
 
+
     <div class="menu-label">
         NAVIGATION
     </div>
+
 
     <a href="#home">
         الرئيسية
     </a>
 
+
     <a href="#about">
         نبذة
     </a>
+
 
     <a href="#values">
         بصمتي
     </a>
 
+
     <a href="#gallery">
         مختاراتي
     </a>
+
 
     <a href="#journey">
         رحلتي
     </a>
 
+
     <a href="#contact">
         تواصل
     </a>
+
 
     <div class="menu-footer">
         MBK — PERSONAL IDENTITY
@@ -2559,27 +3202,21 @@ footer{
 
     <div class="hero-grid"></div>
 
-    <div class="hero-corner top"></div>
-    <div class="hero-corner bottom"></div>
 
     <div class="hero-mini">
         PERSONAL IDENTITY
     </div>
 
+
     <h1 class="hero-name">
         مبخوت بن عبدالله
     </h1>
 
+
     <div class="gold-line"></div>
 
-    <div class="hero-subtitle">
-        حضور شخصي · رؤية · أصالة
-    </div>
 
     <div class="photo-frame">
-
-        <span class="photo-corner a"></span>
-        <span class="photo-corner b"></span>
 
         <img
             class="profile-photo"
@@ -2590,24 +3227,37 @@ footer{
 
     </div>
 
+
     <p class="quote">
         وما توفيقي إلا بالله
     </p>
 
+
     <div class="hero-info">
 
         <span>
+
             <i>◆</i>
+
             MBK
+
         </span>
 
-        <span>•</span>
+
+        <span>
+            •
+        </span>
+
 
         <span>
             mabkhut.com
         </span>
 
-        <span>•</span>
+
+        <span>
+            •
+        </span>
+
 
         <span>
             2026
@@ -2633,15 +3283,18 @@ footer{
             ABOUT
         </span>
 
+
         <h2 class="section-title">
             نبذة
         </h2>
+
 
         <p class="section-description">
             مساحة تعكس الهوية، الرؤية، والتجربة.
         </p>
 
     </div>
+
 
     <div class="about-card">
 
@@ -2673,6 +3326,7 @@ footer{
 
     </div>
 
+
     <div class="facts">
 
         <div class="fact">
@@ -2687,6 +3341,7 @@ footer{
 
         </div>
 
+
         <div class="fact">
 
             <div class="fact-value">
@@ -2698,6 +3353,7 @@ footer{
             </div>
 
         </div>
+
 
         <div class="fact">
 
@@ -2734,9 +3390,11 @@ footer{
             MY VALUES
         </span>
 
+
         <h2 class="section-title">
             بصمتي
         </h2>
+
 
         <p class="section-description">
             مبادئ بسيطة، لكنها تصنع الفرق.
@@ -2744,7 +3402,9 @@ footer{
 
     </div>
 
+
     <div class="values">
+
 
         <div class="value-card">
 
@@ -2819,15 +3479,18 @@ footer{
             SELECTED
         </span>
 
+
         <h2 class="section-title">
             مختاراتي
         </h2>
+
 
         <p class="section-description">
             لحظات وأماكن وتفاصيل تحمل إحساسًا خاصًا.
         </p>
 
     </div>
+
 
     <div class="gallery">
 
@@ -3079,7 +3742,6 @@ footer{
 
         </div>
 
-
     </div>
 
 </section>
@@ -3100,9 +3762,11 @@ footer{
             MY JOURNEY
         </span>
 
+
         <h2 class="section-title">
             رحلتي
         </h2>
+
 
         <p class="section-description">
             مراحل صنعت جزءًا من الحكاية.
@@ -3213,7 +3877,6 @@ footer{
 
         </div>
 
-
     </div>
 
 </section>
@@ -3234,9 +3897,11 @@ footer{
             CONTACT
         </span>
 
+
         <h2 class="section-title">
             تواصل
         </h2>
+
 
         <p class="section-description">
             للتواصل والاستفسارات والمراسلات.
@@ -3247,13 +3912,6 @@ footer{
 
     <div class="contact-card">
 
-        <h3>
-            مبخوت بن عبدالله
-        </h3>
-
-        <div class="contact-email">
-            mabkhout@mabkhut.com
-        </div>
 
         <div class="contact-icons">
 
@@ -3268,7 +3926,11 @@ footer{
             >
 
                 <svg viewBox="0 0 24 24">
-                    <path d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"/>
+
+                    <path
+                        d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
+                    />
+
                 </svg>
 
             </a>
@@ -3286,16 +3948,20 @@ footer{
             >
 
                 <svg viewBox="0 0 24 24">
-                    <path d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"/>
+
+                    <path
+                        d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
+                    />
+
                 </svg>
 
             </a>
-
 
         </div>
 
 
         <div class="contact-actions">
+
 
             <button
                 class="action-btn"
@@ -3304,12 +3970,14 @@ footer{
                 نسخ البريد
             </button>
 
+
             <button
                 class="action-btn"
                 id="shareSite"
             >
                 مشاركة الموقع
             </button>
+
 
             <button
                 class="action-btn"
@@ -3348,11 +4016,13 @@ footer{
         ×
     </button>
 
+
     <img
         id="lightboxImage"
         src=""
         alt=""
     >
+
 
     <div
         class="lightbox-title"
@@ -3379,14 +4049,17 @@ footer{
             mabkhut.com
         </h3>
 
+
         <p>
             امسح الرمز لفتح الموقع
         </p>
+
 
         <img
             src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com"
             alt="QR Code لموقع mabkhut.com"
         >
+
 
         <button
             class="qr-close"
@@ -3435,9 +4108,11 @@ footer{
         MBK
     </div>
 
+
     <div class="footer-copy">
         © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
     </div>
+
 
     <div class="footer-links">
 
@@ -3445,15 +4120,18 @@ footer{
             الرئيسية
         </a>
 
+
         <a href="#about">
             نبذة
         </a>
+
 
         <a href="#contact">
             تواصل
         </a>
 
     </div>
+
 
     <div class="footer-quote">
         وما توفيقي إلا بالله
@@ -3521,10 +4199,13 @@ const liveClock =
 const startTime =
     performance.now();
 
+
 function finishLoader(){
 
     const elapsed =
-        performance.now() - startTime;
+        performance.now()
+        -
+        startTime;
 
     const remaining =
         Math.max(
@@ -3532,18 +4213,27 @@ function finishLoader(){
             1000 - elapsed
         );
 
-    setTimeout(function(){
+    setTimeout(
+        function(){
 
-        loader.classList.add("hide");
+            loader.classList.add(
+                "hide"
+            );
 
-        body.classList.remove("locked");
+            body.classList.remove(
+                "locked"
+            );
 
-    },remaining);
+        },
+        remaining
+    );
 
 }
 
+
 if(
-    document.readyState === "complete"
+    document.readyState ===
+    "complete"
 ){
 
     finishLoader();
@@ -3565,11 +4255,17 @@ if(
 
 function openMenu(){
 
-    sideMenu.classList.add("active");
+    sideMenu.classList.add(
+        "active"
+    );
 
-    overlay.classList.add("active");
+    overlay.classList.add(
+        "active"
+    );
 
-    body.classList.add("locked");
+    body.classList.add(
+        "locked"
+    );
 
     menuBtn.setAttribute(
         "aria-expanded",
@@ -3578,13 +4274,20 @@ function openMenu(){
 
 }
 
+
 function closeSideMenu(){
 
-    sideMenu.classList.remove("active");
+    sideMenu.classList.remove(
+        "active"
+    );
 
-    overlay.classList.remove("active");
+    overlay.classList.remove(
+        "active"
+    );
 
-    body.classList.remove("locked");
+    body.classList.remove(
+        "locked"
+    );
 
     menuBtn.setAttribute(
         "aria-expanded",
@@ -3593,31 +4296,39 @@ function closeSideMenu(){
 
 }
 
+
 menuBtn.addEventListener(
     "click",
     openMenu
 );
+
 
 closeMenu.addEventListener(
     "click",
     closeSideMenu
 );
 
+
 overlay.addEventListener(
     "click",
     closeSideMenu
 );
 
+
 document
-    .querySelectorAll(".side-menu a")
-    .forEach(function(link){
+    .querySelectorAll(
+        ".side-menu a"
+    )
+    .forEach(
+        function(link){
 
-        link.addEventListener(
-            "click",
-            closeSideMenu
-        );
+            link.addEventListener(
+                "click",
+                closeSideMenu
+            );
 
-    });
+        }
+    );
 
 
 /* =========================================================
@@ -3630,20 +4341,33 @@ function handleScroll(){
         window.scrollY;
 
     const documentHeight =
-        document.documentElement.scrollHeight
+        document.documentElement
+            .scrollHeight
         -
         window.innerHeight;
 
     const percentage =
         documentHeight > 0
-        ? (scrollTop / documentHeight) * 100
-        : 0;
+
+        ?
+
+        (
+            scrollTop /
+            documentHeight
+        ) * 100
+
+        :
+
+        0;
+
 
     progressBar.style.width =
         percentage + "%";
 
 
-    if(scrollTop > 35){
+    if(
+        scrollTop > 35
+    ){
 
         header.classList.add(
             "scrolled"
@@ -3667,845 +4391,9 @@ function handleScroll(){
 
 }
 
+
 window.addEventListener(
     "scroll",
     handleScroll,
     {passive:true}
 );
-
-handleScroll();
-
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
-
-topBtn.addEventListener(
-    "click",
-    function(){
-
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
-
-    }
-);
-
-
-/* =========================================================
-   REVEAL
-========================================================= */
-
-const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
-
-if(
-    "IntersectionObserver"
-    in window
-){
-
-    const revealObserver =
-        new IntersectionObserver(
-            function(entries){
-
-                entries.forEach(
-                    function(entry){
-
-                        if(
-                            entry.isIntersecting
-                        ){
-
-                            entry.target.classList.add(
-                                "visible"
-                            );
-
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    }
-                );
-
-            },
-            {
-                threshold:.12
-            }
-        );
-
-    revealElements.forEach(
-        function(element){
-
-            revealObserver.observe(
-                element
-            );
-
-        }
-    );
-
-}else{
-
-    revealElements.forEach(
-        function(element){
-
-            element.classList.add(
-                "visible"
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   LIVE CLOCK
-========================================================= */
-
-function updateClock(){
-
-    if(!liveClock){
-        return;
-    }
-
-    const now =
-        new Date();
-
-    liveClock.textContent =
-        now.toLocaleTimeString(
-            "ar-YE",
-            {
-                hour:"2-digit",
-                minute:"2-digit",
-                hour12:false
-            }
-        );
-
-}
-
-updateClock();
-
-setInterval(
-    updateClock,
-    1000
-);
-
-
-/* =========================================================
-   GALLERY LIGHTBOX
-========================================================= */
-
-const galleryItems =
-    document.querySelectorAll(
-        ".gallery-item"
-    );
-
-const lightbox =
-    document.getElementById(
-        "lightbox"
-    );
-
-const lightboxImage =
-    document.getElementById(
-        "lightboxImage"
-    );
-
-const lightboxTitle =
-    document.getElementById(
-        "lightboxTitle"
-    );
-
-const lightboxClose =
-    document.getElementById(
-        "lightboxClose"
-    );
-
-function openLightbox(item){
-
-    const image =
-        item.dataset.full;
-
-    const title =
-        item.dataset.title || "";
-
-    lightboxImage.src =
-        image;
-
-    lightboxImage.alt =
-        title;
-
-    lightboxTitle.textContent =
-        title;
-
-    lightbox.classList.add(
-        "active"
-    );
-
-    body.classList.add(
-        "locked"
-    );
-
-}
-
-function closeLightbox(){
-
-    lightbox.classList.remove(
-        "active"
-    );
-
-    lightboxImage.src =
-        "";
-
-    lightboxTitle.textContent =
-        "";
-
-    body.classList.remove(
-        "locked"
-    );
-
-}
-
-galleryItems.forEach(
-    function(item){
-
-        item.addEventListener(
-            "click",
-            function(){
-
-                openLightbox(
-                    item
-                );
-
-            }
-        );
-
-    }
-);
-
-lightboxClose.addEventListener(
-    "click",
-    closeLightbox
-);
-
-lightbox.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            event.target ===
-            lightbox
-        ){
-
-            closeLightbox();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   QR
-========================================================= */
-
-const qrButton =
-    document.getElementById(
-        "qrButton"
-    );
-
-const qrModal =
-    document.getElementById(
-        "qrModal"
-    );
-
-const qrClose =
-    document.getElementById(
-        "qrClose"
-    );
-
-function openQR(){
-
-    qrModal.classList.add(
-        "active"
-    );
-
-    body.classList.add(
-        "locked"
-    );
-
-}
-
-function closeQR(){
-
-    qrModal.classList.remove(
-        "active"
-    );
-
-    body.classList.remove(
-        "locked"
-    );
-
-}
-
-qrButton.addEventListener(
-    "click",
-    openQR
-);
-
-qrClose.addEventListener(
-    "click",
-    closeQR
-);
-
-qrModal.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            event.target ===
-            qrModal
-        ){
-
-            closeQR();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-function showToast(message){
-
-    toast.textContent =
-        message;
-
-    toast.classList.add(
-        "show"
-    );
-
-    clearTimeout(
-        toastTimer
-    );
-
-    toastTimer =
-        setTimeout(
-            function(){
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            },
-            2200
-        );
-
-}
-
-
-/* =========================================================
-   COPY EMAIL
-========================================================= */
-
-const copyEmail =
-    document.getElementById(
-        "copyEmail"
-    );
-
-copyEmail.addEventListener(
-    "click",
-    async function(){
-
-        const email =
-            "mabkhout@mabkhut.com";
-
-        try{
-
-            await navigator.clipboard.writeText(
-                email
-            );
-
-            showToast(
-                "تم نسخ البريد الإلكتروني"
-            );
-
-        }catch(error){
-
-            const temp =
-                document.createElement(
-                    "textarea"
-                );
-
-            temp.value =
-                email;
-
-            document.body.appendChild(
-                temp
-            );
-
-            temp.select();
-
-            document.execCommand(
-                "copy"
-            );
-
-            temp.remove();
-
-            showToast(
-                "تم نسخ البريد الإلكتروني"
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   SHARE
-========================================================= */
-
-const shareSite =
-    document.getElementById(
-        "shareSite"
-    );
-
-shareSite.addEventListener(
-    "click",
-    async function(){
-
-        const shareData = {
-            title:
-                "مبخوت بن عبدالله | MBK",
-
-            text:
-                "الموقع الشخصي لمبخوت بن عبدالله",
-
-            url:
-                "https://mabkhut.com/"
-        };
-
-        if(
-            navigator.share
-        ){
-
-            try{
-
-                await navigator.share(
-                    shareData
-                );
-
-            }catch(error){
-
-                /* User cancelled share */
-
-            }
-
-        }else{
-
-            try{
-
-                await navigator.clipboard.writeText(
-                    "https://mabkhut.com/"
-                );
-
-                showToast(
-                    "تم نسخ رابط الموقع"
-                );
-
-            }catch(error){
-
-                showToast(
-                    "mabkhut.com"
-                );
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   KEYBOARD SHORTCUTS
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            event.key ===
-            "Escape"
-        ){
-
-            closeSideMenu();
-
-            closeLightbox();
-
-            closeQR();
-
-        }
-
-        if(
-            event.key === "/" &&
-            !event.ctrlKey &&
-            !event.metaKey &&
-            !event.altKey
-        ){
-
-            /* Don't interfere with inputs */
-            const tag =
-                document.activeElement
-                    ?.tagName;
-
-            if(
-                tag !== "INPUT" &&
-                tag !== "TEXTAREA"
-            ){
-
-                openMenu();
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   CURSOR GLOW — DESKTOP
-========================================================= */
-
-if(
-    window.matchMedia(
-        "(pointer:fine)"
-    ).matches
-){
-
-    let glowX = 0;
-    let glowY = 0;
-
-    let targetX = 0;
-    let targetY = 0;
-
-    window.addEventListener(
-        "mousemove",
-        function(event){
-
-            targetX =
-                event.clientX;
-
-            targetY =
-                event.clientY;
-
-            cursorGlow.style.opacity =
-                "1";
-
-        },
-        {passive:true}
-    );
-
-    window.addEventListener(
-        "mouseleave",
-        function(){
-
-            cursorGlow.style.opacity =
-                "0";
-
-        }
-    );
-
-    function animateGlow(){
-
-        glowX +=
-            (targetX - glowX)
-            * .09;
-
-        glowY +=
-            (targetY - glowY)
-            * .09;
-
-        cursorGlow.style.left =
-            glowX + "px";
-
-        cursorGlow.style.top =
-            glowY + "px";
-
-        requestAnimationFrame(
-            animateGlow
-        );
-
-    }
-
-    animateGlow();
-
-}
-
-
-/* =========================================================
-   ACTIVE SECTION NAVIGATION
-========================================================= */
-
-const sections =
-    document.querySelectorAll(
-        "main section[id]"
-    );
-
-const menuLinks =
-    document.querySelectorAll(
-        ".side-menu a"
-    );
-
-if(
-    "IntersectionObserver"
-    in window
-){
-
-    const sectionObserver =
-        new IntersectionObserver(
-            function(entries){
-
-                entries.forEach(
-                    function(entry){
-
-                        if(
-                            entry.isIntersecting
-                        ){
-
-                            menuLinks.forEach(
-                                function(link){
-
-                                    link.style.color =
-                                        "";
-
-                                    const href =
-                                        link.getAttribute(
-                                            "href"
-                                        );
-
-                                    if(
-                                        href ===
-                                        "#" +
-                                        entry.target.id
-                                    ){
-
-                                        link.style.color =
-                                            "var(--gold-light)";
-
-                                    }
-
-                                }
-                            );
-
-                        }
-
-                    }
-                );
-
-            },
-            {
-                rootMargin:
-                    "-30% 0px -55% 0px"
-            }
-        );
-
-    sections.forEach(
-        function(section){
-
-            sectionObserver.observe(
-                section
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   IMAGE ERROR FALLBACK
-========================================================= */
-
-document
-    .querySelectorAll("img")
-    .forEach(
-        function(image){
-
-            image.addEventListener(
-                "error",
-                function(){
-
-                    if(
-                        image.classList.contains(
-                            "profile-photo"
-                        )
-                    ){
-
-                        image.style.objectFit =
-                            "cover";
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   SMOOTH INTERNAL LINKS
-========================================================= */
-
-document
-    .querySelectorAll(
-        'a[href^="#"]'
-    )
-    .forEach(
-        function(link){
-
-            link.addEventListener(
-                "click",
-                function(event){
-
-                    const id =
-                        link.getAttribute(
-                            "href"
-                        );
-
-                    if(
-                        id === "#"
-                    ){
-
-                        return;
-
-                    }
-
-                    const target =
-                        document.querySelector(
-                            id
-                        );
-
-                    if(
-                        !target
-                    ){
-
-                        return;
-
-                    }
-
-                    event.preventDefault();
-
-                    const headerHeight =
-                        header.offsetHeight;
-
-                    const targetTop =
-                        target.getBoundingClientRect()
-                            .top
-                        +
-                        window.scrollY
-                        -
-                        headerHeight
-                        -
-                        12;
-
-                    window.scrollTo({
-                        top:
-                            targetTop,
-
-                        behavior:
-                            "smooth"
-                    });
-
-                }
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   PARALLAX — VERY LIGHT
-========================================================= */
-
-const heroPhoto =
-    document.querySelector(
-        ".photo-frame"
-    );
-
-if(
-    heroPhoto &&
-    window.matchMedia(
-        "(pointer:fine)"
-    ).matches
-){
-
-    window.addEventListener(
-        "mousemove",
-        function(event){
-
-            const x =
-                (event.clientX /
-                window.innerWidth
-                - .5);
-
-            const y =
-                (event.clientY /
-                window.innerHeight
-                - .5);
-
-            heroPhoto.style.transform =
-                "translate(" +
-                x * 4 +
-                "px," +
-                y * 4 +
-                "px)";
-
-        },
-        {passive:true}
-    );
-
-    window.addEventListener(
-        "mouseleave",
-        function(){
-
-            heroPhoto.style.transform =
-                "";
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   INITIAL STATE
-========================================================= */
-
-window.setTimeout(
-    function(){
-
-        handleScroll();
-
-    },
-    100
-);
-
-})();
-
-</script>
-
-</body>
-</html>
