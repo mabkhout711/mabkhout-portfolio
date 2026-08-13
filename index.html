@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#020914">
-<meta name="description" content="MBK — Mabkhout personal portfolio">
-<title>MBK — Mabkhout</title>
+<meta name="description" content="MBK — مبخوت">
+<title>MBK — مبخوت</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +40,7 @@ background:
 radial-gradient(circle at 50% 10%,#0b2943 0,transparent 35%),
 var(--bg);
 color:var(--text);
-font-family:Inter,Cairo,sans-serif;
+font-family:Cairo,Inter,sans-serif;
 overflow-x:hidden
 }
 
@@ -63,7 +63,7 @@ color:#07111b
 position:fixed;
 z-index:10000;
 top:0;
-left:0;
+right:0;
 width:0;
 height:2px;
 background:linear-gradient(90deg,#a77816,var(--gold2),var(--gold));
@@ -112,8 +112,7 @@ display:block;
 margin-top:18px;
 color:#718096;
 font-size:9px;
-letter-spacing:.4em;
-text-transform:uppercase
+letter-spacing:.2em
 }
 
 @keyframes pulse{
@@ -245,40 +244,9 @@ place-items:center;
 text-align:center;
 padding:120px 20px 80px;
 overflow:hidden;
-isolation:isolate
-}
-
-/* صورة الخلفية للواجهة الرئيسية */
-.hero::before{
-content:"";
-position:absolute;
-inset:0;
-z-index:-3;
-background-image:
-linear-gradient(
-rgba(2,9,20,.38),
-rgba(2,9,20,.62)
-),
-url("file_00000000202482468d4027eb8c5919f7.png");
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-}
-
-/* طبقة إضافية خفيفة فوق الصورة */
-.hero::after{
-content:"";
-position:absolute;
-inset:0;
-z-index:-2;
 background:
-linear-gradient(
-180deg,
-rgba(2,9,20,.18) 0%,
-rgba(2,9,20,.12) 45%,
-rgba(2,9,20,.78) 100%
-);
-pointer-events:none
+linear-gradient(#02091466,#020914bb),
+url("file_00000000202482468d4027eb8c5919f7.png") center/cover no-repeat
 }
 
 .grid{
@@ -299,8 +267,7 @@ max-width:850px;
 aspect-ratio:1;
 border-radius:50%;
 background:radial-gradient(circle,#0d3555 0,transparent 68%);
-filter:blur(12px);
-opacity:.5
+filter:blur(12px)
 }
 
 .hero-content{
@@ -308,13 +275,27 @@ position:relative;
 z-index:2
 }
 
-/* تم حذف:
-Personal Digital Identity
-و Mabkhout
-من الواجهة الرئيسية */
+.eyebrow,
+.kicker{
+color:var(--gold);
+font-size:9px;
+letter-spacing:.2em
+}
 
 .eyebrow{
-display:none
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+margin-bottom:28px
+}
+
+.eyebrow:before,
+.eyebrow:after{
+content:"";
+width:34px;
+height:1px;
+background:var(--gold)
 }
 
 .hero h1{
@@ -329,15 +310,19 @@ color:transparent
 }
 
 .hero h2{
-display:none
+margin-top:30px;
+font-size:clamp(13px,2vw,20px);
+font-weight:400;
+letter-spacing:.12em
 }
 
 .hero p{
 max-width:620px;
 margin:23px auto;
-color:var(--muted);
-font-size:13px;
-line-height:1.9
+color:#fff;
+font-size:18px;
+line-height:1.9;
+font-weight:600
 }
 
 .actions{
@@ -354,8 +339,7 @@ background:#e8c65a0b;
 border-radius:999px;
 padding:12px 19px;
 font-size:10px;
-letter-spacing:.12em;
-text-transform:uppercase;
+letter-spacing:.08em;
 cursor:pointer;
 transition:.3s
 }
@@ -378,7 +362,7 @@ left:50%;
 transform:translateX(-50%);
 font-size:8px;
 color:#718096;
-letter-spacing:.25em
+letter-spacing:.2em
 }
 
 .scroll:after{
@@ -494,7 +478,7 @@ line-height:2
 color:var(--gold);
 margin-top:28px;
 font-size:10px;
-letter-spacing:.2em
+letter-spacing:.15em
 }
 
 .values{
@@ -594,7 +578,7 @@ background:linear-gradient(transparent 35%,#000b)
 position:absolute;
 z-index:2;
 bottom:17px;
-left:19px
+right:19px
 }
 
 .shot b{
@@ -605,14 +589,13 @@ font-size:12px
 display:block;
 color:#aeb7c3;
 font-size:8px;
-letter-spacing:.15em;
-margin-top:5px;
-text-transform:uppercase
+letter-spacing:.12em;
+margin-top:5px
 }
 
 .timeline{
-border-left:1px solid var(--line);
-margin-left:8px
+border-right:1px solid var(--line);
+margin-right:8px
 }
 
 .event{
@@ -620,13 +603,13 @@ position:relative;
 display:grid;
 grid-template-columns:100px 1fr;
 gap:24px;
-padding:0 0 52px 34px
+padding:0 34px 52px 0
 }
 
 .event:before{
 content:"";
 position:absolute;
-left:-7px;
+right:-7px;
 top:3px;
 width:12px;
 height:12px;
@@ -688,8 +671,7 @@ justify-content:space-between
 .contact-card small{
 color:var(--gold);
 font-size:8px;
-letter-spacing:.24em;
-text-transform:uppercase
+letter-spacing:.2em
 }
 
 .contact-card strong{
@@ -704,7 +686,7 @@ border-radius:999px;
 padding:8px 13px;
 font-size:9px;
 cursor:pointer;
-margin-right:5px
+margin-left:5px
 }
 
 footer{
@@ -730,7 +712,7 @@ color:#687688
 
 #top{
 position:fixed;
-right:20px;
+left:20px;
 bottom:20px;
 z-index:800;
 width:43px;
@@ -770,7 +752,8 @@ visibility:visible
 
 .side-nav{
 display:grid;
-gap:12px
+gap:12px;
+text-align:center
 }
 
 .side-nav a{
@@ -786,7 +769,7 @@ color:var(--gold)
 .close{
 position:absolute;
 top:24px;
-right:24px;
+left:24px;
 width:45px;
 height:45px;
 border:1px solid var(--wl);
@@ -812,8 +795,7 @@ position:absolute;
 bottom:20px;
 color:#b4bdc8;
 font-size:9px;
-letter-spacing:.16em;
-text-transform:uppercase
+letter-spacing:.12em
 }
 
 #command{
@@ -834,7 +816,8 @@ border:0;
 border-bottom:1px solid var(--wl);
 outline:0;
 color:#fff;
-font-size:16px
+font-size:16px;
+direction:rtl
 }
 
 .cmds{
@@ -845,7 +828,7 @@ padding:9px
 display:block;
 width:100%;
 padding:13px;
-text-align:left;
+text-align:right;
 background:transparent;
 border:0;
 border-radius:10px;
@@ -992,7 +975,7 @@ scroll-behavior:auto!important
 <div class="loader">
 <b>MBK</b>
 <i></i>
-<small>Mabkhout · Digital Identity</small>
+<small>مبخوت</small>
 </div>
 </div>
 
@@ -1007,14 +990,14 @@ scroll-behavior:auto!important
 </a>
 
 <nav>
-<a href="#about">About</a>
-<a href="#values">Values</a>
-<a href="#gallery">Gallery</a>
-<a href="#journey">Journey</a>
-<a href="#contact">Contact</a>
+<a href="#about">من أنا</a>
+<a href="#values">القيم</a>
+<a href="#gallery">المعرض</a>
+<a href="#journey">المسيرة</a>
+<a href="#contact">التواصل</a>
 </nav>
 
-<button class="menu" id="menu" aria-label="Menu">
+<button class="menu" id="menu" aria-label="القائمة">
 <span></span>
 </button>
 
@@ -1031,18 +1014,20 @@ scroll-behavior:auto!important
 
 <h1>MBK</h1>
 
+<h2>مبخوت</h2>
+
 <p>
-A quiet identity built around character, vision, precision and the belief that what matters should be made to last.
+وما توفيقي إلا بالله
 </p>
 
 <div class="actions">
 
 <a class="btn primary" href="#about">
-Explore Identity
+استكشف الهوية
 </a>
 
 <a class="btn" href="#contact">
-Contact
+تواصل
 </a>
 
 </div>
@@ -1050,7 +1035,7 @@ Contact
 </div>
 
 <div class="scroll">
-SCROLL
+مرر للأسفل
 </div>
 
 </section>
@@ -1063,10 +1048,10 @@ SCROLL
 
 <div>
 
-<strong>Mabkhout</strong>
+<strong>مبخوت</strong>
 
 <span>
-MBK · Personal digital identity / portfolio
+MBK · الهوية الرقمية الشخصية / الملف التعريفي
 </span>
 
 </div>
@@ -1090,18 +1075,18 @@ MBK
 <div>
 
 <div class="kicker">
-01 · Philosophy
+01 · الفلسفة
 </div>
 
 <h2>
-Built with<br>
-intention.
+صُنع<br>
+بقصد.
 </h2>
 
 </div>
 
 <p>
-Not everything needs to be loud. The strongest identity is often the one that remains clear when everything else disappears.
+ليس كل شيء يحتاج إلى أن يكون صاخبًا. أقوى هوية هي التي تبقى واضحة عندما يختفي كل شيء آخر.
 </p>
 
 </div>
@@ -1110,25 +1095,25 @@ Not everything needs to be loud. The strongest identity is often the one that re
 
 <div class="lead reveal">
 
-“إن أصبت فمن الله، وإن أخطأت فمن نفسي والشيطان.”
+«إن أصبت فمن الله، وإن أخطأت فمن نفسي والشيطان.»
 
 <br><br>
 
-I am not perfect.
-<em>I am trying to become better.</em>
+لست كاملاً.
+<em>ولكنني أحاول أن أصبح أفضل.</em>
 
 </div>
 
 <div class="detail reveal">
 
-This space is a personal digital signature: a place for ideas, projects, visual work and the story behind the person.
+هذا المكان هو توقيع رقمي شخصي: مساحة للأفكار والمشاريع والأعمال البصرية والقصة التي تقف خلف الشخص.
 
 <br><br>
 
-Minimal by design. Precise by choice. Gold is the accent; deep navy is the atmosphere.
+البساطة في التصميم. الدقة في الاختيار. الذهبي هو اللمسة، والكحلي العميق هو الأجواء.
 
 <div class="signature">
-Mabkhout · MBK
+مبخوت · MBK
 </div>
 
 </div>
@@ -1148,17 +1133,17 @@ Mabkhout · MBK
 <div>
 
 <div class="kicker">
-02 · Values
+02 · القيم
 </div>
 
 <h2>
-What stays.
+ما يبقى.
 </h2>
 
 </div>
 
 <p>
-Three principles that shape the identity and the way every project is approached.
+ثلاثة مبادئ تشكل الهوية والطريقة التي يتم بها التعامل مع كل مشروع.
 </p>
 
 </div>
@@ -1170,11 +1155,11 @@ Three principles that shape the identity and the way every project is approached
 <small>01</small>
 
 <h3>
-Integrity
+النزاهة
 </h3>
 
 <p>
-Stay honest with the work, the process and the person behind it.
+الصدق مع العمل، ومع العملية، ومع الشخص الذي يقف خلفها.
 </p>
 
 </article>
@@ -1184,11 +1169,11 @@ Stay honest with the work, the process and the person behind it.
 <small>02</small>
 
 <h3>
-Precision
+الدقة
 </h3>
 
 <p>
-Details are not decoration. They are part of the result.
+التفاصيل ليست مجرد زينة، بل جزء أساسي من النتيجة.
 </p>
 
 </article>
@@ -1198,11 +1183,11 @@ Details are not decoration. They are part of the result.
 <small>03</small>
 
 <h3>
-Growth
+النمو
 </h3>
 
 <p>
-Keep learning, refining and moving forward without losing the foundation.
+الاستمرار في التعلم والتحسين والتقدم دون فقدان الأساس.
 </p>
 
 </article>
@@ -1222,132 +1207,124 @@ Keep learning, refining and moving forward without losing the foundation.
 <div>
 
 <div class="kicker">
-03 · Visual Archive
+03 · الأرشيف البصري
 </div>
 
 <h2>
-Selected<br>
-frames.
+إطارات<br>
+مختارة.
 </h2>
 
 </div>
 
 <p>
-A cinematic visual collection. Tap any frame to open the full lightbox.
+مجموعة بصرية سينمائية. اضغط على أي صورة لفتحها بالحجم الكامل.
 </p>
 
 </div>
 
 <div class="gallery">
 
-<figure class="shot reveal" data-title="Mountain Light">
+<figure class="shot reveal" data-title="ضوء الجبل">
 
-<img
-loading="lazy"
+<img loading="lazy"
 src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=88"
-alt="Mountain">
+alt="الجبل">
 
 <figcaption>
-<b>Mountain Light</b>
-<small>Perspective</small>
+<b>ضوء الجبل</b>
+<small>منظور</small>
 </figcaption>
 
 </figure>
 
-<figure class="shot reveal" data-title="Night Architecture">
+<figure class="shot reveal" data-title="هندسة الليل">
 
-<img
-loading="lazy"
+<img loading="lazy"
 src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1400&q=88"
-alt="Architecture">
+alt="الهندسة">
 
 <figcaption>
-<b>Night Architecture</b>
-<small>Structure</small>
+<b>هندسة الليل</b>
+<small>هيكل</small>
 </figcaption>
 
 </figure>
 
-<figure class="shot reveal" data-title="Quiet Road">
+<figure class="shot reveal" data-title="الطريق الهادئ">
 
-<img
-loading="lazy"
+<img loading="lazy"
 src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=88"
-alt="Road">
+alt="الطريق">
 
 <figcaption>
-<b>Quiet Road</b>
-<small>Motion</small>
+<b>الطريق الهادئ</b>
+<small>حركة</small>
 </figcaption>
 
 </figure>
 
-<figure class="shot reveal" data-title="Deep Blue">
+<figure class="shot reveal" data-title="الأزرق العميق">
 
-<img
-loading="lazy"
+<img loading="lazy"
 src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=88"
-alt="Mountains">
+alt="الجبال">
 
 <figcaption>
-<b>Deep Blue</b>
-<small>Atmosphere</small>
+<b>الأزرق العميق</b>
+<small>أجواء</small>
 </figcaption>
 
 </figure>
 
-<figure class="shot reveal" data-title="Golden Hour">
+<figure class="shot reveal" data-title="الساعة الذهبية">
 
-<img
-loading="lazy"
+<img loading="lazy"
 src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=88"
-alt="Landscape">
+alt="المنظر الطبيعي">
 
 <figcaption>
-<b>Golden Hour</b>
-<small>Light</small>
+<b>الساعة الذهبية</b>
+<small>ضوء</small>
 </figcaption>
 
 </figure>
 
-<figure class="shot reveal" data-title="Forest">
+<figure class="shot reveal" data-title="الغابة">
 
-<img
-loading="lazy"
+<img loading="lazy"
 src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1400&q=88"
-alt="Forest">
+alt="الغابة">
 
 <figcaption>
-<b>Forest</b>
-<small>Silence</small>
+<b>الغابة</b>
+<small>صمت</small>
 </figcaption>
 
 </figure>
 
-<figure class="shot reveal" data-title="The Horizon">
+<figure class="shot reveal" data-title="الأفق">
 
-<img
-loading="lazy"
+<img loading="lazy"
 src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=88"
-alt="Lake">
+alt="البحيرة">
 
 <figcaption>
-<b>The Horizon</b>
-<small>Direction</small>
+<b>الأفق</b>
+<small>اتجاه</small>
 </figcaption>
 
 </figure>
 
-<figure class="shot reveal" data-title="Minimal Form">
+<figure class="shot reveal" data-title="الشكل البسيط">
 
-<img
-loading="lazy"
+<img loading="lazy"
 src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=88"
-alt="Interior">
+alt="التصميم الداخلي">
 
 <figcaption>
-<b>Minimal Form</b>
-<small>Balance</small>
+<b>الشكل البسيط</b>
+<small>توازن</small>
 </figcaption>
 
 </figure>
@@ -1367,18 +1344,18 @@ alt="Interior">
 <div>
 
 <div class="kicker">
-04 · Journey
+04 · المسيرة
 </div>
 
 <h2>
-The road<br>
-continues.
+الطريق<br>
+مستمر.
 </h2>
 
 </div>
 
 <p>
-A simple timeline of chapters, milestones and the direction ahead.
+خط زمني بسيط للفصول والمحطات والاتجاه القادم.
 </p>
 
 </div>
@@ -1394,11 +1371,11 @@ A simple timeline of chapters, milestones and the direction ahead.
 <div>
 
 <h3>
-The Beginning
+البداية
 </h3>
 
 <p>
-The first chapter: curiosity, learning and discovering what could be built.
+الفصل الأول: الفضول والتعلم واكتشاف ما يمكن بناؤه.
 </p>
 
 </div>
@@ -1414,11 +1391,11 @@ The first chapter: curiosity, learning and discovering what could be built.
 <div>
 
 <h3>
-Exploration
+الاستكشاف
 </h3>
 
 <p>
-More ideas, more experiments and a growing interest in digital creation.
+أفكار أكثر وتجارب أكثر واهتمام متزايد بصناعة المحتوى الرقمي.
 </p>
 
 </div>
@@ -1434,11 +1411,11 @@ More ideas, more experiments and a growing interest in digital creation.
 <div>
 
 <h3>
-Digital Identity
+الهوية الرقمية
 </h3>
 
 <p>
-The personal identity became more intentional: a name, a visual language and a direction.
+أصبحت الهوية الشخصية أكثر وضوحًا: اسم ولغة بصرية واتجاه.
 </p>
 
 </div>
@@ -1454,11 +1431,11 @@ The personal identity became more intentional: a name, a visual language and a d
 <div>
 
 <h3>
-Refinement
+التطوير
 </h3>
 
 <p>
-Projects became more focused, visual standards became higher and details started to matter more.
+أصبحت المشاريع أكثر تركيزًا، وارتفعت المعايير البصرية، وأصبحت التفاصيل أكثر أهمية.
 </p>
 
 </div>
@@ -1478,7 +1455,7 @@ MBK
 </h3>
 
 <p>
-A new chapter: turning the identity into a complete digital presence with a long-term vision.
+فصل جديد: تحويل الهوية إلى حضور رقمي متكامل برؤية طويلة المدى.
 </p>
 
 </div>
@@ -1498,21 +1475,21 @@ A new chapter: turning the identity into a complete digital presence with a long
 <div class="future reveal">
 
 <div class="kicker">
-05 · Next
+05 · القادم
 </div>
 
 <h2>
-Still becoming.
+ما زلت أتطور.
 </h2>
 
 <p>
-The final version is never the destination. Build. Learn. Refine. Repeat.
+النسخة النهائية ليست الوجهة. ابنِ. تعلّم. طوّر. كرر.
 </p>
 
 <div class="actions">
 
 <a class="btn primary" href="#contact">
-Start a Conversation
+ابدأ محادثة
 </a>
 
 </div>
@@ -1532,18 +1509,18 @@ Start a Conversation
 <div>
 
 <div class="kicker">
-06 · Contact
+06 · التواصل
 </div>
 
 <h2>
-Open<br>
-channel.
+قناة<br>
+مفتوحة.
 </h2>
 
 </div>
 
 <p>
-For a conversation, collaboration or simply a message — use the channels below.
+للمحادثة أو التعاون أو مجرد إرسال رسالة — استخدم القنوات أدناه.
 </p>
 
 </div>
@@ -1553,21 +1530,21 @@ For a conversation, collaboration or simply a message — use the channels below
 <article class="contact-card reveal">
 
 <small>
-Email
+البريد الإلكتروني
 </small>
 
 <strong id="email">
-Mabkhut505g@gmail.com
+mabkhout@mabkhut.com
 </strong>
 
 <div>
 
 <button class="mini" id="copyEmail">
-Copy
+نسخ
 </button>
 
-<a class="mini" href="mailto:Mabkhut505g@gmail.com">
-Open Mail
+<a class="mini" href="mailto:mabkhout@mabkhut.com">
+فتح البريد
 </a>
 
 </div>
@@ -1577,25 +1554,24 @@ Open Mail
 <article class="contact-card reveal">
 
 <small>
-Social
+التواصل الاجتماعي
 </small>
 
 <strong>
-Facebook
+فيسبوك
 </strong>
 
 <div>
 
-<a
-class="mini"
+<a class="mini"
 href="https://www.facebook.com/"
 target="_blank"
 rel="noopener">
-Open Facebook
+فتح فيسبوك
 </a>
 
 <button class="mini" id="share">
-Share
+مشاركة
 </button>
 
 </div>
@@ -1605,7 +1581,7 @@ Share
 <article class="contact-card reveal">
 
 <small>
-Website
+الموقع
 </small>
 
 <strong>
@@ -1615,7 +1591,7 @@ mabkhut.com
 <div>
 
 <button class="mini" id="copySite">
-Copy Domain
+نسخ النطاق
 </button>
 
 </div>
@@ -1625,17 +1601,17 @@ Copy Domain
 <article class="contact-card reveal">
 
 <small>
-Quick Access
+وصول سريع
 </small>
 
 <strong>
-MBK Command Center
+مركز أوامر MBK
 </strong>
 
 <div>
 
 <button class="mini" id="cmdOpen">
-Open Command
+فتح الأوامر
 </button>
 
 </div>
@@ -1659,14 +1635,14 @@ MBK
 </b>
 
 <small>
-© <span id="year"></span> Mabkhout. All rights reserved.
+© <span id="year"></span> مبخوت. جميع الحقوق محفوظة.
 </small>
 
 </div>
 
 </footer>
 
-<button id="top" aria-label="Top">
+<button id="top" aria-label="الأعلى">
 ↑
 </button>
 
@@ -1679,27 +1655,27 @@ MBK
 <div class="side-nav">
 
 <a href="#home">
-Home
+الرئيسية
 </a>
 
 <a href="#about">
-About
+من أنا
 </a>
 
 <a href="#values">
-Values
+القيم
 </a>
 
 <a href="#gallery">
-Gallery
+المعرض
 </a>
 
 <a href="#journey">
-Journey
+المسيرة
 </a>
 
 <a href="#contact">
-Contact
+التواصل
 </a>
 
 </div>
@@ -1725,38 +1701,38 @@ Contact
 <input
 class="cmdinput"
 id="cmdInput"
-placeholder="Type a command…">
+placeholder="اكتب أمرًا…">
 
 <div class="cmds">
 
 <button data-go="home">
-Go to Home
+الذهاب إلى الرئيسية
 </button>
 
 <button data-go="about">
-Open About
+فتح من أنا
 </button>
 
 <button data-go="gallery">
-Open Gallery
+فتح المعرض
 </button>
 
 <button data-go="journey">
-Open Journey
+فتح المسيرة
 </button>
 
 <button data-go="contact">
-Open Contact
+فتح التواصل
 </button>
 
 <button data-go="email">
-Copy Email
+نسخ البريد الإلكتروني
 </button>
 
 </div>
 
 <div class="hint">
-ESC to close · Press / anywhere to open
+ESC للإغلاق · اضغط / في أي مكان للفتح
 </div>
 
 </div>
@@ -2008,21 +1984,21 @@ a.remove();
 
 }
 
-show(n+" copied");
+show(n+" تم نسخه");
 
 }
 
 $("#copyEmail").onclick=()=>{
 copy(
-"Mabkhut505g@gmail.com",
-"Email"
+"mabkhout@mabkhut.com",
+"البريد"
 );
 };
 
 $("#copySite").onclick=()=>{
 copy(
 "https://mabkhut.com",
-"Domain"
+"النطاق"
 );
 };
 
@@ -2035,8 +2011,8 @@ if(navigator.share){
 try{
 
 await navigator.share({
-title:"MBK — Mabkhout",
-text:"MBK — Mabkhout",
+title:"MBK — مبخوت",
+text:"MBK — مبخوت",
 url:"https://mabkhut.com"
 });
 
@@ -2046,7 +2022,7 @@ url:"https://mabkhut.com"
 
 copy(
 "https://mabkhut.com",
-"Website"
+"الموقع"
 );
 
 }
@@ -2090,8 +2066,8 @@ let a=b.dataset.go;
 if(a==="email"){
 
 copy(
-"Mabkhut505g@gmail.com",
-"Email"
+"mabkhout@mabkhut.com",
+"البريد"
 );
 
 }else{
@@ -2142,11 +2118,14 @@ behavior:"smooth"
 
 closeCmd();
 
-}else if(q.includes("email")){
+}else if(
+q.includes("email")||
+q.includes("بريد")
+){
 
 copy(
-"Mabkhut505g@gmail.com",
-"Email"
+"mabkhout@mabkhut.com",
+"البريد"
 );
 
 closeCmd();
