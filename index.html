@@ -2,21 +2,20 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
     <meta charset="UTF-8">
 
-    <!-- إعداد الجوال -->
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
-    >
+    <meta name="viewport"
+          content="width=device-width,
+                   initial-scale=1.0,
+                   maximum-scale=1.0,
+                   user-scalable=no,
+                   viewport-fit=cover">
 
     <meta name="theme-color" content="#02050b">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <title>MABKHOUT</title>
-
 
     <style>
 
@@ -31,32 +30,22 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-
         html {
             width: 100%;
             height: 100%;
-
             margin: 0;
             padding: 0;
-
-            overflow: hidden;
-
             background: #02050b;
+            overflow: hidden;
         }
-
 
         body {
             width: 100%;
             height: 100%;
-
             min-width: 100%;
-            max-width: 100%;
-
             margin: 0;
             padding: 0;
-
             overflow: hidden;
-
             background: #02050b;
 
             font-family:
@@ -75,10 +64,7 @@
 
             position: fixed;
 
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            inset: 0;
 
             width: 100%;
             height: 100%;
@@ -94,15 +80,39 @@
             justify-content: center;
 
             background:
+
                 radial-gradient(
                     circle at 50% 45%,
-                    rgba(218, 173, 43, 0.09) 0%,
-                    rgba(218, 173, 43, 0.035) 20%,
-                    transparent 45%
+                    rgba(218, 173, 43, 0.10) 0%,
+                    rgba(218, 173, 43, 0.035) 22%,
+                    transparent 48%
                 ),
+
                 #02050b;
 
             z-index: 999999;
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transition:
+                opacity 0.9s ease,
+                visibility 0.9s ease;
+        }
+
+
+        /* =====================================================
+           عند انتهاء التحميل
+        ===================================================== */
+
+        #loader.hide {
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            pointer-events: none;
         }
 
 
@@ -119,9 +129,9 @@
             bottom: -12%;
 
             width: 150%;
-            height: 70%;
+            height: 72%;
 
-            opacity: 0.28;
+            opacity: 0.27;
 
             background-image:
 
@@ -145,7 +155,8 @@
                 rotateX(63deg)
                 scale(1.25);
 
-            transform-origin: bottom center;
+            transform-origin:
+                bottom center;
 
             pointer-events: none;
         }
@@ -206,12 +217,12 @@
             justify-content: center;
 
             padding-top:
-                max(25px, env(safe-area-inset-top));
+                max(20px, env(safe-area-inset-top));
 
             padding-right: 20px;
 
             padding-bottom:
-                max(25px, env(safe-area-inset-bottom));
+                max(20px, env(safe-area-inset-bottom));
 
             padding-left: 20px;
 
@@ -235,14 +246,16 @@
 
             justify-content: center;
 
-            margin-top: -25px;
+            margin-top: -20px;
 
             animation:
                 logoAppear 1.2s ease both;
         }
 
 
-        /* MB */
+        /* =====================================================
+           MB
+        ===================================================== */
 
         .logo-mark {
 
@@ -279,7 +292,7 @@
 
 
         /* =====================================================
-           اسم MABKHOUT
+           MABKHOUT
         ===================================================== */
 
         .brand-name {
@@ -325,6 +338,7 @@
             line-height: 1.4;
 
             text-shadow:
+
                 0 0 18px
                 rgba(240, 212, 119, 0.16);
 
@@ -348,7 +362,9 @@
         }
 
 
-        /* الخط */
+        /* =====================================================
+           الخط
+        ===================================================== */
 
         .progress-line {
 
@@ -365,7 +381,9 @@
         }
 
 
-        /* خط التحميل */
+        /* =====================================================
+           خط التحميل
+        ===================================================== */
 
         .progress-fill {
 
@@ -379,20 +397,31 @@
             height: 100%;
 
             background:
-                #dfb536;
+                linear-gradient(
+                    90deg,
+                    #b88716,
+                    #dfb536,
+                    #f5d76e
+                );
 
             box-shadow:
+
                 0 0 14px
-                rgba(223, 181, 54, 0.65);
+                rgba(223, 181, 54, 0.65),
+
+                0 0 30px
+                rgba(223, 181, 54, 0.25);
 
             transition:
-                width 0.1s linear;
+                width 0.08s linear;
 
             z-index: 2;
         }
 
 
-        /* لمعان متحرك */
+        /* =====================================================
+           لمعان الخط
+        ===================================================== */
 
         .progress-line::after {
 
@@ -401,16 +430,17 @@
             position: absolute;
 
             top: 0;
-            left: 0;
+            left: -100%;
 
             width: 100%;
             height: 100%;
 
             background:
+
                 linear-gradient(
                     90deg,
                     transparent,
-                    rgba(255, 222, 108, 0.8),
+                    rgba(255, 222, 108, 0.85),
                     transparent
                 );
 
@@ -441,8 +471,135 @@
             letter-spacing: 4px;
 
             text-shadow:
+
                 0 0 12px
                 rgba(229, 194, 75, 0.12);
+        }
+
+
+        /* =====================================================
+           الصفحة الرئيسية
+        ===================================================== */
+
+        #home {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            min-height: 100vh;
+            min-height: 100dvh;
+
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(218, 173, 43, 0.08),
+                    transparent 42%
+                ),
+
+                #02050b;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                opacity 0.9s ease,
+                visibility 0.9s ease;
+        }
+
+
+        /* الصفحة الرئيسية تظهر بعد التحميل */
+
+        #home.show {
+
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+
+        /* =====================================================
+           محتوى الصفحة الرئيسية
+        ===================================================== */
+
+        .home-content {
+
+            width: 100%;
+
+            max-width: 900px;
+
+            padding:
+                40px 25px;
+
+            text-align: center;
+        }
+
+
+        .home-logo {
+
+            direction: ltr;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(80px, 18vw, 150px);
+
+            font-weight: 700;
+
+            line-height: 0.8;
+
+            letter-spacing: -10px;
+
+            color: #e3b52e;
+
+            text-shadow:
+                0 0 35px
+                rgba(227, 181, 46, 0.12);
+        }
+
+
+        .home-name {
+
+            direction: ltr;
+
+            margin-top: 30px;
+
+            color: #768196;
+
+            font-size: 16px;
+
+            letter-spacing: 9px;
+
+            padding-left: 9px;
+        }
+
+
+        .home-title {
+
+            margin-top: 45px;
+
+            color: #f0d477;
+
+            font-size:
+                clamp(30px, 7vw, 55px);
+
+            font-weight: 500;
         }
 
 
@@ -543,7 +700,7 @@
             to {
 
                 transform:
-                    translateX(100%);
+                    translateX(200%);
             }
         }
 
@@ -567,10 +724,7 @@
             #loader {
 
                 width: 100%;
-                max-width: 100%;
-
-                left: 0;
-                right: 0;
+                height: 100%;
 
                 min-height: 100dvh;
             }
@@ -580,6 +734,8 @@
 
                 width: 100%;
                 max-width: 100%;
+
+                min-height: 100dvh;
 
                 padding-left: 20px;
                 padding-right: 20px;
@@ -646,7 +802,7 @@
 
 
         /* =====================================================
-           الجوالات ذات الارتفاع الصغير
+           الشاشات القصيرة
         ===================================================== */
 
         @media (max-height: 700px) {
@@ -672,6 +828,8 @@
             .welcome {
 
                 margin-top: 28px;
+
+                font-size: 26px;
             }
 
 
@@ -723,19 +881,15 @@
 
 
     <!-- =====================================================
-         شاشة الدخول الوحيدة
+         شاشة الدخول الأولى فقط
     ===================================================== -->
 
     <section id="loader">
 
-        <!-- الخلفية -->
         <div class="grid"></div>
 
-        <!-- الإضاءة -->
         <div class="gold-glow"></div>
 
-
-        <!-- المحتوى -->
 
         <div class="loader-content">
 
@@ -765,7 +919,6 @@
 
             <div class="progress-area">
 
-
                 <div class="progress-line">
 
                     <div
@@ -782,7 +935,6 @@
                     0%
                 </div>
 
-
             </div>
 
 
@@ -793,92 +945,156 @@
 
 
     <!-- =====================================================
+         الصفحة الرئيسية
+         تظهر فقط بعد انتهاء شاشة الدخول
+    ===================================================== -->
+
+    <main id="home">
+
+        <div class="home-content">
+
+            <div class="home-logo">
+                MB
+            </div>
+
+            <div class="home-name">
+                MABKHOUT
+            </div>
+
+            <div class="home-title">
+                مرحباً بك
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
          JAVASCRIPT
     ===================================================== -->
 
     <script>
 
-        (() => {
-
-            const progressFill =
-                document.getElementById(
-                    "progressFill"
-                );
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
 
 
-            const percentage =
-                document.getElementById(
-                    "percentage"
-                );
+                const loader =
+                    document.getElementById(
+                        "loader"
+                    );
 
 
-            let progress = 0;
+                const home =
+                    document.getElementById(
+                        "home"
+                    );
 
 
-            /*
-             * يبدأ التحميل من 0%
-             * ويصل إلى 100%
-             *
-             * بعد 100%
-             * لا يحدث أي انتقال.
-             *
-             * تبقى شاشة الدخول موجودة
-             * كما طلبت.
-             */
+                const progressFill =
+                    document.getElementById(
+                        "progressFill"
+                    );
 
 
-            const loading =
-                setInterval(() => {
+                const percentage =
+                    document.getElementById(
+                        "percentage"
+                    );
 
 
-                    progress += 1;
+                let progress = 0;
 
 
-                    /* تحديث الخط */
+                /*
+                 * سرعة التحميل
+                 *
+                 * كل 25ms تزيد النسبة
+                 * بمقدار 1%.
+                 *
+                 * المدة تقريباً:
+                 *
+                 * 100 × 25ms = 2.5 ثانية
+                 */
 
-                    progressFill.style.width =
-                        progress + "%";
-
-
-                    /* تحديث الرقم */
-
-                    percentage.textContent =
-                        progress + "%";
-
-
-                    /* عند الوصول إلى 100% */
-
-                    if (progress >= 100) {
-
-                        clearInterval(loading);
+                const loading =
+                    setInterval(
+                        function () {
 
 
-                        progress = 100;
+                            progress++;
 
 
-                        progressFill.style.width =
-                            "100%";
+                            /* تحديث الخط */
+
+                            progressFill.style.width =
+                                progress + "%";
 
 
-                        percentage.textContent =
-                            "100%";
+                            /* تحديث الرقم */
+
+                            percentage.textContent =
+                                progress + "%";
 
 
-                        /*
-                         * لا يوجد redirect
-                         * لا توجد صفحة ثانية
-                         * لا يوجد إخفاء للشاشة
-                         *
-                         * تبقى شاشة الدخول كما هي.
-                         */
+                            /*
+                             * عند الوصول إلى 100%
+                             */
 
-                    }
+                            if (progress >= 100) {
 
 
-                }, 25);
+                                clearInterval(
+                                    loading
+                                );
 
 
-        })();
+                                progress = 100;
+
+
+                                progressFill.style.width =
+                                    "100%";
+
+
+                                percentage.textContent =
+                                    "100%";
+
+
+                                /*
+                                 * ننتظر قليلاً
+                                 * ثم نخرج من شاشة الدخول
+                                 */
+
+                                setTimeout(
+                                    function () {
+
+
+                                        loader.classList.add(
+                                            "hide"
+                                        );
+
+
+                                        home.classList.add(
+                                            "show"
+                                        );
+
+
+                                    },
+                                    450
+                                );
+
+                            }
+
+
+                        },
+                        25
+                    );
+
+            }
+        );
 
     </script>
 
