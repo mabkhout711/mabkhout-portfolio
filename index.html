@@ -3,136 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مبحوت بن عبدالله | مطور ومصمم</title>
+    <title>مبحوت بن عبدالله | MBK</title>
+    <!-- استدعاء خط كايرو العصري -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* إعدادات الألوان والخطوط الأساسية */
         :root {
-            --primary-color: #3b82f6; /* أزرق عصري */
-            --bg-color: #0f172a; /* خلفية داكنة */
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --bg-base: #050505; /* أسود عميق جداً */
+            --gold-luxury: #D4AF37; /* ذهبي فاخر */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-sec: #a1a1aa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
+            background-color: var(--bg-base);
             color: var(--text-main);
-            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* شريط التنقل (Navbar) */
+        /* إضاءات خلفية ضبابية تعطي طابعاً فخماً */
+        .glow-orb {
+            position: absolute;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            top: -10%;
+            right: -10%;
+            animation: float 10s infinite alternate;
+        }
+        
+        .glow-orb-2 {
+            top: 50%;
+            left: -10%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0,0,0,0) 70%);
+            animation: float 15s infinite alternate-reverse;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* شريط التنقل الزجاجي */
         header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 900;
-            color: var(--primary-color);
+            color: var(--gold-luxury);
             text-decoration: none;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
         nav a {
             color: var(--text-main);
             text-decoration: none;
-            margin-right: 2rem;
+            margin-right: 30px;
             font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s;
         }
 
         nav a:hover {
-            color: var(--primary-color);
+            color: var(--gold-luxury);
         }
 
-        /* القسم الرئيسي (Hero Section) */
+        /* القسم الرئيسي - Hero */
         .hero {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 75vh;
             text-align: center;
             padding: 0 20px;
+            position: relative;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            margin: 0 0 10px 0;
-            background: linear-gradient(to left, #fff, #94a3b8);
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #a1a1aa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.3s;
         }
 
-        .hero h2 {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            font-weight: 400;
-            margin-bottom: 2.5rem;
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--gold-luxury);
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.6s;
         }
 
-        .cta-button {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 32px;
-            border-radius: 8px;
+        /* زر فاخر */
+        .btn-luxury {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--bg-base);
+            background: var(--gold-luxury);
+            border: 1px solid var(--gold-luxury);
+            border-radius: 50px;
             text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            opacity: 0;
+            animation: fadeUp 1s forwards 0.9s;
+        }
+
+        .btn-luxury:hover {
+            background: transparent;
+            color: var(--gold-luxury);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+        }
+
+        /* قسم البطاقات الزجاجية (الخدمات/الأعمال) */
+        .services {
+            padding: 100px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.4s, border-color 0.4s;
+            text-align: right;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-luxury);
+        }
+
+        .glass-card h3 {
+            font-size: 1.8rem;
+            color: var(--gold-luxury);
+            margin-bottom: 15px;
+        }
+
+        .glass-card p {
+            color: var(--text-sec);
             font-size: 1.1rem;
-            font-weight: bold;
-            transition: transform 0.2s, background-color 0.2s;
+            line-height: 1.8;
         }
 
-        .cta-button:hover {
-            background-color: #2563eb;
-            transform: translateY(-2px);
-        }
-
-        /* قسم التواصل البسيط */
-        .contact {
+        /* Footer */
+        footer {
             text-align: center;
-            padding: 4rem 20px;
-            background-color: rgba(255, 255, 255, 0.02);
-        }
-
-        .contact p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
+            padding: 50px 20px;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 50px;
         }
 
         .contact-email {
-            font-size: 1.5rem;
-            color: var(--primary-color);
+            font-size: 2rem;
+            color: var(--text-main);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .contact-email:hover {
+            color: var(--gold-luxury);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* استجابة الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem; }
+            .hero-subtitle { font-size: 1.3rem; }
+            nav { display: none; /* يمكن إضافة قائمة برجر لاحقاً */ }
         }
     </style>
 </head>
 <body>
 
+    <div class="glow-orb"></div>
+    <div class="glow-orb glow-orb-2"></div>
+
     <header>
         <a href="#" class="logo">MBK</a>
         <nav>
-            <a href="#about">من أنا</a>
-            <a href="#portfolio">الأعمال</a>
-            <a href="#contact">تواصل</a>
+            <a href="#about">الرؤية</a>
+            <a href="#portfolio">المنجزات</a>
+            <a href="#contact">تواصل معي</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>مبحوت بن عبدالله</h1>
-        <h2>مطور ومصمم واجهات رقمية</h2>
-        <a href="mailto:mabkhout@mabkhout.com" class="cta-button">لنعمل معاً</a>
+        <h1 class="hero-title">مبحوت بن عبدالله</h1>
+        <h2 class="hero-subtitle">حيث تلتقي فخامة التصميم بعبقرية الكود.</h2>
+        <a href="mailto:mabkhout@mabkhout.com" class="btn-luxury">ابدأ مشروعك الاستثنائي</a>
     </section>
 
-    <section id="contact" class="contact">
-        <p>جاهز لتحويل فكرتك إلى منتج حقيقي؟</p>
-        <a href="mailto:mabkhout@mabkhout.com" class="contact-email">mabkhout@mabkhout.com</a>
+    <section class="services" id="about">
+        <div class="glass-card">
+            <h3>تصميم واجهات (UI/UX)</h3>
+            <p>أصمم تجارب استخدام لا تُنسى، تجمع بين الأناقة المطلقة وسهولة الاستخدام لتعكس قيمة علامتك التجارية.</p>
+        </div>
+        <div class="glass-card">
+            <h3>تطوير الويب (Development)</h3>
+            <p>أبني مواقع ويب سريعة، آمنة، وقابلة للتوسع باستخدام أحدث التقنيات لضمان أداء لا يُضاهى.</p>
+        </div>
+        <div class="glass-card">
+            <h3>هوية رقمية متكاملة</h3>
+            <p>من الفكرة إلى الإطلاق، أرافقك لبناء حضور رقمي يليق بطموحاتك ويترك بصمة في السوق.</p>
+        </div>
     </section>
+
+    <footer id="contact">
+        <p style="color: var(--text-sec); margin-bottom: 20px;">لتحديد موعد استشارة أو مناقشة مشروعك</p>
+        <a href="mailto:mabkhout@mabkhout.com" class="contact-email">mabkhout@mabkhout.com</a>
+    </footer>
 
 </body>
 </html>
