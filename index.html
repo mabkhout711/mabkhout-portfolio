@@ -3,36 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="MBK — Mabkhout Bin Abdullah — Digital Creative Portfolio">
 
-<title>MBK — مبخوت بن عبدالله</title>
-
-<meta name="description"
-content="MBK — Mabkhout Bin Abdullah. Independent digital creative portfolio.">
+<title>MBK — AETHER</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================================================
-   01 — FOUNDATION
-========================================================= */
-
 :root{
-  --white:#ffffff;
-  --paper:#f8f8f5;
-  --black:#0b0b0a;
-  --gray:#777773;
-  --line:#e7e6df;
-
-  --gold:#c9a44d;
-  --gold2:#a9822e;
-
+  --white:#fff;
+  --ivory:#fafaf7;
+  --black:#090909;
+  --muted:#777773;
+  --line:#deddd6;
+  --gold:#c8a34b;
+  --gold-light:#ead8a0;
+  --gold-dark:#98772d;
   --ease:cubic-bezier(.16,1,.3,1);
-
-  --container:min(1420px,90vw);
+  --ease2:cubic-bezier(.77,0,.175,1);
+  --width:min(1460px,90vw);
 }
 
 *{
@@ -43,22 +35,25 @@ content="MBK — Mabkhout Bin Abdullah. Independent digital creative portfolio."
 
 html{
   scroll-behavior:smooth;
+  background:#fff;
 }
 
 body{
-  background:var(--white);
+  margin:0;
+  background:#fff;
   color:var(--black);
   font-family:"Cairo",sans-serif;
   overflow-x:hidden;
 }
 
-body.locked{
+body.loading,
+body.menu-open{
   overflow:hidden;
 }
 
 ::selection{
   background:var(--gold);
-  color:white;
+  color:#fff;
 }
 
 a{
@@ -68,285 +63,245 @@ a{
 
 button{
   font:inherit;
-  border:0;
-  background:none;
 }
 
 img{
   display:block;
-  max-width:100%;
+  width:100%;
 }
 
 .ltr{
   direction:ltr;
 }
 
+.container{
+  width:var(--width);
+  margin:auto;
+}
+
+.gold{
+  color:var(--gold);
+}
 
 /* =========================================================
-   02 — CURSOR
+   PRELOADER
 ========================================================= */
 
-.cursor{
-  position:fixed;
-  z-index:99999;
-
-  width:8px;
-  height:8px;
-
-  border-radius:50%;
-
-  background:var(--gold);
-
-  pointer-events:none;
-
-  transform:translate(-50%,-50%);
-
-  transition:
-    width .35s var(--ease),
-    height .35s var(--ease),
-    background .35s;
-}
-
-.cursor-ring{
-  position:fixed;
-  z-index:99998;
-
-  width:38px;
-  height:38px;
-
-  border:1px solid rgba(201,164,77,.65);
-
-  border-radius:50%;
-
-  pointer-events:none;
-
-  transform:translate(-50%,-50%);
-
-  transition:
-    width .45s var(--ease),
-    height .45s var(--ease),
-    border .35s;
-}
-
-body.cursor-hover .cursor{
-  width:12px;
-  height:12px;
-}
-
-body.cursor-hover .cursor-ring{
-  width:65px;
-  height:65px;
-  border-color:var(--gold);
-}
-
-
-/* =========================================================
-   03 — LOADER
-========================================================= */
-
-.loader{
+.preloader{
   position:fixed;
   inset:0;
-  z-index:99990;
-
-  background:var(--white);
-
+  z-index:99999;
+  background:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-
-  transition:
-    opacity 1s var(--ease),
-    visibility 1s;
+  transition:opacity 1s var(--ease),visibility 1s;
 }
 
-.loader.done{
+.preloader.hide{
   opacity:0;
   visibility:hidden;
 }
 
-.loader-inner{
-  width:min(320px,70vw);
+.preloader-core{
+  width:min(420px,75vw);
 }
 
-.loader-brand{
+.preloader-top{
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   direction:ltr;
-
   margin-bottom:16px;
 }
 
-.loader-logo{
-  font:800 30px/1 "DM Sans";
-  letter-spacing:-.13em;
+.preloader-logo{
+  font:800 25px/1 "DM Sans";
+  letter-spacing:-.14em;
 }
 
-.loader-count{
+.preloader-percent{
   font:500 10px "DM Sans";
-  color:#999;
+  color:#888;
+  letter-spacing:.1em;
 }
 
-.loader-track{
+.preloader-line{
   width:100%;
   height:1px;
-  background:#e7e7e2;
+  background:#e8e7e0;
   overflow:hidden;
 }
 
-.loader-bar{
+.preloader-progress{
   width:0;
   height:100%;
   background:var(--gold);
-  transition:width .15s linear;
 }
 
+/* =========================================================
+   CURSOR
+========================================================= */
+
+.cursor-dot,
+.cursor-ring{
+  position:fixed;
+  z-index:99990;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+}
+
+.cursor-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--gold);
+}
+
+.cursor-ring{
+  width:38px;
+  height:38px;
+  border:1px solid rgba(200,163,75,.65);
+  border-radius:50%;
+  transition:
+    width .5s var(--ease),
+    height .5s var(--ease),
+    border-color .3s;
+}
+
+body.hovering .cursor-ring{
+  width:72px;
+  height:72px;
+  border-color:var(--gold);
+}
+
+@media(pointer:coarse){
+  .cursor-dot,
+  .cursor-ring{
+    display:none;
+  }
+}
 
 /* =========================================================
-   04 — HEADER
+   HEADER
 ========================================================= */
 
 .header{
   position:fixed;
-  z-index:900;
-
+  z-index:5000;
   top:0;
   left:0;
-
   width:100%;
-
   padding:27px 5vw;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
+  color:#111;
   transition:
     padding .6s var(--ease),
+    color .5s,
     background .6s var(--ease),
-    color .6s;
+    backdrop-filter .6s;
 }
 
 .header.scrolled{
-  padding-top:16px;
-  padding-bottom:16px;
-
-  background:rgba(255,255,255,.86);
-
-  backdrop-filter:blur(18px);
-
-  border-bottom:1px solid rgba(0,0,0,.05);
+  padding-top:15px;
+  padding-bottom:15px;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.06);
 }
 
 .header.dark{
-  color:white;
+  color:#fff;
 }
 
 .header.dark.scrolled{
-  background:rgba(11,11,10,.86);
+  background:rgba(9,9,9,.82);
   border-bottom-color:rgba(255,255,255,.08);
 }
 
 .logo{
   direction:ltr;
-
-  font:800 26px/1 "DM Sans";
-  letter-spacing:-.13em;
+  font:800 27px/1 "DM Sans";
+  letter-spacing:-.14em;
 }
 
-.logo b{
+.logo span{
   color:var(--gold);
-  font-weight:800;
 }
 
-.header-status{
+.header-center{
   position:absolute;
   left:50%;
   transform:translateX(-50%);
-
   direction:ltr;
-
+  color:#8a8a84;
   font:500 8px "DM Sans";
-  letter-spacing:.22em;
-
-  color:#888;
+  letter-spacing:.24em;
 }
 
-.header.dark .header-status{
+.header.dark .header-center{
   color:#aaa;
 }
 
-.menu-button{
-  width:46px;
-  height:46px;
-
-  border:1px solid var(--line);
-
+.menu-trigger{
+  width:48px;
+  height:48px;
+  border:1px solid #dcdcd5;
   border-radius:50%;
-
+  color:inherit;
+  background:transparent;
   display:flex;
   align-items:center;
   justify-content:center;
-
   flex-direction:column;
   gap:5px;
-
   cursor:pointer;
-
   transition:
-    background .4s var(--ease),
-    transform .4s var(--ease),
-    border .4s;
+    background .5s var(--ease),
+    border-color .5s,
+    transform .5s var(--ease);
 }
 
-.header.dark .menu-button{
+.header.dark .menu-trigger{
   border-color:rgba(255,255,255,.2);
 }
 
-.menu-button:hover{
+.menu-trigger:hover{
   background:var(--gold);
   border-color:var(--gold);
-
   transform:rotate(8deg);
 }
 
-.menu-button span{
+.menu-trigger span{
   width:15px;
   height:1px;
   background:currentColor;
-
-  transition:.4s var(--ease);
+  transition:transform .5s var(--ease);
 }
 
-.menu-button.active span:first-child{
+.menu-trigger.active span:first-child{
   transform:translateY(3px) rotate(45deg);
 }
 
-.menu-button.active span:last-child{
+.menu-trigger.active span:last-child{
   transform:translateY(-3px) rotate(-45deg);
 }
 
-
 /* =========================================================
-   05 — FULL MENU
+   FULLSCREEN MENU
 ========================================================= */
 
 .menu{
   position:fixed;
   inset:0;
-  z-index:800;
-
-  background:var(--black);
-  color:white;
-
+  z-index:4000;
+  background:#090909;
+  color:#fff;
   opacity:0;
   visibility:hidden;
-
-  transition:
-    opacity .7s var(--ease),
-    visibility .7s;
+  transition:opacity .7s var(--ease),visibility .7s;
 }
 
 .menu.open{
@@ -354,28 +309,21 @@ body.cursor-hover .cursor-ring{
   visibility:visible;
 }
 
-.menu-grid{
-  width:var(--container);
+.menu-inner{
+  width:var(--width);
   height:100%;
-
   margin:auto;
-
+  position:relative;
   display:flex;
   align-items:center;
-
-  position:relative;
 }
 
-.menu-small{
+.menu-label{
   position:absolute;
-
   top:120px;
   left:0;
-
   direction:ltr;
-
   color:var(--gold);
-
   font:500 9px "DM Sans";
   letter-spacing:.25em;
 }
@@ -383,18 +331,15 @@ body.cursor-hover .cursor-ring{
 .menu-links{
   display:flex;
   flex-direction:column;
-  gap:3px;
+  gap:0;
 }
 
 .menu-links a{
   direction:ltr;
-
-  font:700 clamp(55px,9vw,145px)/.88 "DM Sans";
-
-  letter-spacing:-.085em;
-
-  color:white;
-
+  width:max-content;
+  color:#fff;
+  font:700 clamp(55px,10vw,150px)/.84 "DM Sans";
+  letter-spacing:-.1em;
   transition:
     color .4s,
     transform .7s var(--ease);
@@ -402,876 +347,716 @@ body.cursor-hover .cursor-ring{
 
 .menu-links a:hover{
   color:var(--gold);
-  transform:translateX(20px);
+  transform:translateX(25px);
 }
 
 .menu-footer{
   position:absolute;
-
-  bottom:35px;
   left:5vw;
   right:5vw;
-
+  bottom:30px;
   display:flex;
   justify-content:space-between;
-
   direction:ltr;
-
   color:#777;
-
   font:500 9px "DM Sans";
 }
 
-
 /* =========================================================
-   06 — COMMON
+   COMMON
 ========================================================= */
 
-.container{
-  width:var(--container);
-  margin-inline:auto;
-}
-
-.section{
-  padding:170px 0;
-}
-
-.label{
+.section-label{
   display:flex;
   align-items:center;
   gap:13px;
-
   direction:ltr;
-
-  color:var(--gold2);
-
+  color:var(--gold-dark);
   font:500 9px "DM Sans";
-  letter-spacing:.22em;
+  letter-spacing:.23em;
 }
 
-.label:before{
+.section-label:before{
   content:"";
-
-  width:30px;
+  width:34px;
   height:1px;
-
   background:var(--gold);
 }
 
-.number{
+.section-index{
   direction:ltr;
-
   color:#999;
-
   font:500 9px "DM Sans";
 }
 
 .reveal{
   opacity:0;
-
-  transform:translateY(45px);
-
+  transform:translateY(50px);
   transition:
     opacity 1.1s var(--ease),
     transform 1.1s var(--ease);
 }
 
-.reveal.show{
+.reveal.visible{
   opacity:1;
   transform:none;
 }
 
-
 /* =========================================================
-   07 — HERO
+   HERO — AETHER
 ========================================================= */
 
 .hero{
   position:relative;
-
   min-height:100svh;
-
+  overflow:hidden;
   display:flex;
   align-items:center;
-
-  overflow:hidden;
-
-  background:white;
+  background:#fff;
 }
 
-.hero-lines{
+.hero-grid{
   position:absolute;
   inset:0;
-
   pointer-events:none;
+  background-image:
+    linear-gradient(to right,transparent 49.95%,rgba(0,0,0,.045) 50%,transparent 50.05%),
+    linear-gradient(to bottom,transparent 49.95%,rgba(0,0,0,.045) 50%,transparent 50.05%);
+  background-size:100% 100%,100% 100%;
 }
 
-.hero-lines:before,
-.hero-lines:after{
-  content:"";
-
+.hero-circle{
   position:absolute;
-
-  top:0;
-  bottom:0;
-
-  width:1px;
-
-  background:#eeeeea;
-}
-
-.hero-lines:before{
-  left:5%;
-}
-
-.hero-lines:after{
-  right:5%;
-}
-
-.hero-orbit{
-  position:absolute;
-
-  width:50vw;
-  height:50vw;
-
-  max-width:760px;
-  max-height:760px;
-
-  border:1px solid rgba(201,164,77,.25);
-
+  width:min(72vw,1050px);
+  aspect-ratio:1;
+  right:-26vw;
+  top:-18vw;
+  border:1px solid rgba(200,163,75,.28);
   border-radius:50%;
-
-  right:-14vw;
-  top:14%;
-
-  animation:
-    orbit 18s linear infinite;
+  animation:slowRotate 25s linear infinite;
 }
 
-.hero-orbit:before{
+.hero-circle:before{
   content:"";
-
   position:absolute;
-
-  width:8px;
-  height:8px;
-
+  width:9px;
+  height:9px;
   border-radius:50%;
-
   background:var(--gold);
-
-  left:18%;
+  left:24%;
   top:4%;
+  box-shadow:0 0 0 8px rgba(200,163,75,.08);
 }
 
-@keyframes orbit{
-  to{
-    transform:rotate(360deg);
-  }
+.hero-circle-2{
+  position:absolute;
+  width:min(43vw,620px);
+  aspect-ratio:1;
+  right:-5vw;
+  top:13vw;
+  border:1px solid rgba(200,163,75,.14);
+  border-radius:50%;
+  animation:slowRotateReverse 19s linear infinite;
 }
 
-.hero-content{
+@keyframes slowRotate{
+  to{transform:rotate(360deg)}
+}
+
+@keyframes slowRotateReverse{
+  to{transform:rotate(-360deg)}
+}
+
+.hero-inner{
+  width:var(--width);
+  margin:auto;
   position:relative;
   z-index:2;
-
-  width:var(--container);
-
-  margin:auto;
-
-  padding-top:90px;
-}
-
-.hero-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  margin-bottom:35px;
-}
-
-.available{
-  display:flex;
-  align-items:center;
-  gap:10px;
-
-  direction:ltr;
-
-  color:#777;
-
-  font:500 8px "DM Sans";
-  letter-spacing:.12em;
-}
-
-.available-dot{
-  width:6px;
-  height:6px;
-
-  background:var(--gold);
-
-  border-radius:50%;
-
-  box-shadow:0 0 0 5px rgba(201,164,77,.12);
-}
-
-.hero-display{
-  position:relative;
-
-  direction:ltr;
-
-  font:800 clamp(115px,23vw,340px)/.72 "DM Sans";
-
-  letter-spacing:-.16em;
-
-  margin-left:-.08em;
-
-  white-space:nowrap;
-
-  will-change:transform;
-}
-
-.hero-display span{
-  color:var(--gold);
-}
-
-.hero-display:after{
-  content:"";
-
-  position:absolute;
-
-  width:clamp(80px,12vw,180px);
-  aspect-ratio:1;
-
-  border:1px solid var(--gold);
-
-  border-radius:50%;
-
-  right:2%;
-  top:7%;
-
-  opacity:.65;
-
-  animation:
-    orbit 12s linear infinite;
-}
-
-.hero-bottom{
-  margin-top:70px;
-
-  display:grid;
-
-  grid-template-columns:
-    1fr 1.5fr 1fr;
-
-  gap:50px;
-
-  align-items:end;
-}
-
-.hero-name{
-  font-size:clamp(25px,3vw,42px);
-  line-height:1.05;
-  font-weight:700;
-}
-
-.hero-copy{
-  max-width:500px;
-
-  color:#70706b;
-
-  font-size:12px;
-  line-height:2.15;
+  padding-top:80px;
 }
 
 .hero-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   direction:ltr;
-  text-align:left;
+  margin-bottom:34px;
+}
 
-  font:500 9px/2 "DM Sans";
+.hero-availability{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font:500 8px "DM Sans";
+  letter-spacing:.15em;
+  color:#777;
+}
+
+.live-dot{
+  width:6px;
+  height:6px;
+  background:var(--gold);
+  border-radius:50%;
+  box-shadow:0 0 0 5px rgba(200,163,75,.1);
+}
+
+.hero-index{
+  font:500 9px "DM Sans";
   color:#999;
 }
 
-.hero-meta strong{
-  color:var(--black);
+.hero-word{
+  direction:ltr;
+  position:relative;
+  font:800 clamp(115px,24vw,360px)/.68 "DM Sans";
+  letter-spacing:-.17em;
+  white-space:nowrap;
+  margin-left:-.09em;
+  will-change:transform;
+  user-select:none;
+}
+
+.hero-word .gold{
+  color:var(--gold);
+}
+
+.hero-word-ring{
+  position:absolute;
+  width:clamp(100px,13vw,190px);
+  aspect-ratio:1;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  right:7%;
+  top:1%;
+  animation:slowRotate 13s linear infinite;
+}
+
+.hero-word-ring:after{
+  content:"";
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:var(--gold);
+  border-radius:50%;
+  right:-3px;
+  top:50%;
+}
+
+.hero-sub{
+  display:grid;
+  grid-template-columns:.75fr 1.5fr .8fr;
+  gap:60px;
+  align-items:end;
+  margin-top:70px;
+}
+
+.hero-name{
+  font-size:clamp(26px,3vw,43px);
+  line-height:1;
+  font-weight:700;
+}
+
+.hero-description{
+  max-width:530px;
+  color:#70706c;
+  font-size:12px;
+  line-height:2.2;
+}
+
+.hero-details{
+  direction:ltr;
+  text-align:left;
+  color:#999;
+  font:500 9px/2 "DM Sans";
+}
+
+.hero-details strong{
+  color:#111;
 }
 
 .hero-scroll{
   position:absolute;
-
-  bottom:35px;
+  bottom:30px;
   left:50%;
-
   transform:translateX(-50%);
-
+  direction:ltr;
   display:flex;
   align-items:center;
   gap:12px;
-
-  direction:ltr;
-
   color:#999;
-
   font:500 8px "DM Sans";
-  letter-spacing:.18em;
+  letter-spacing:.2em;
 }
 
-.hero-scroll i{
-  display:block;
-
-  width:45px;
+.hero-scroll span{
+  width:48px;
   height:1px;
-
-  background:linear-gradient(
-    90deg,
-    var(--gold),
-    transparent
-  );
+  background:linear-gradient(90deg,var(--gold),transparent);
 }
-
 
 /* =========================================================
-   08 — STATEMENT
+   MANIFESTO
 ========================================================= */
 
-.statement{
+.manifesto{
   position:relative;
-
-  padding:210px 0;
-
-  background:var(--paper);
-
+  padding:220px 0;
+  background:var(--ivory);
   overflow:hidden;
 }
 
-.statement-bg{
+.manifesto-bg{
   position:absolute;
-
-  right:-10vw;
-  bottom:-15vw;
-
+  right:-8vw;
+  bottom:-16vw;
   direction:ltr;
-
-  font:800 40vw/1 "DM Sans";
-
-  letter-spacing:-.16em;
-
-  color:#f0efe9;
-
+  font:800 42vw/1 "DM Sans";
+  letter-spacing:-.18em;
+  color:#f0efe8;
   pointer-events:none;
 }
 
-.statement-content{
+.manifesto-grid{
   position:relative;
   z-index:2;
-
   display:grid;
-
-  grid-template-columns:.5fr 2fr;
-
-  gap:80px;
+  grid-template-columns:.45fr 2fr;
+  gap:90px;
 }
 
-.statement-title{
-  font-size:clamp(50px,8vw,125px);
-  line-height:.93;
-
-  letter-spacing:-.07em;
-
+.manifesto-title{
+  font-size:clamp(58px,9vw,135px);
+  line-height:.9;
+  letter-spacing:-.08em;
   font-weight:700;
 }
 
-.statement-title em{
-  font-style:normal;
+.manifesto-title em{
   color:var(--gold);
+  font-style:normal;
 }
 
-.statement-text{
-  max-width:580px;
-
-  margin-top:50px;
-
-  color:#73736e;
-
+.manifesto-copy{
+  max-width:590px;
+  margin-top:55px;
+  color:#74746f;
   font-size:13px;
-
-  line-height:2.2;
+  line-height:2.25;
 }
-
 
 /* =========================================================
-   09 — WORK INTRO
+   WORK INTRO
 ========================================================= */
 
 .work{
-  padding:180px 0 0;
+  padding:190px 0 0;
 }
 
-.work-heading{
+.work-top{
   display:flex;
   justify-content:space-between;
   align-items:end;
-
-  padding-bottom:40px;
-
   border-bottom:1px solid var(--line);
+  padding-bottom:45px;
 }
 
 .work-title{
-  margin-top:20px;
-
   direction:ltr;
-
-  font:700 clamp(65px,10vw,150px)/.8 "DM Sans";
-
-  letter-spacing:-.09em;
+  margin-top:22px;
+  font:700 clamp(75px,12vw,175px)/.77 "DM Sans";
+  letter-spacing:-.1em;
 }
-
 
 /* =========================================================
-   10 — PROJECT 01
+   FEATURED PROJECT
 ========================================================= */
 
-.project{
-  padding:110px 0 170px;
+.featured{
+  padding:110px 0 180px;
 }
 
-.project-visual{
+.featured-frame{
   position:relative;
-
-  width:100%;
-
-  aspect-ratio:16/8;
-
+  aspect-ratio:16/8.7;
   overflow:hidden;
-
   background:
-    linear-gradient(
-      135deg,
-      #f4f1e7,
-      #d0ad56
-    );
-
+    radial-gradient(circle at 50% 42%,#fff 0%,#f0e8d2 19%,#c8a34b 50%,#85703f 100%);
   cursor:pointer;
 }
 
-.project-visual:before{
+.featured-frame:after{
   content:"";
-
   position:absolute;
   inset:0;
-
   background:
-    radial-gradient(
-      circle at 50% 45%,
-      rgba(255,255,255,.95) 0,
-      rgba(255,255,255,.25) 18%,
-      transparent 43%
-    );
+    linear-gradient(90deg,rgba(255,255,255,.08),transparent 50%,rgba(0,0,0,.1)),
+    radial-gradient(circle at center,transparent 35%,rgba(0,0,0,.18));
+  pointer-events:none;
 }
 
-.project-monogram{
+.featured-label{
   position:absolute;
-
-  left:50%;
-  top:50%;
-
-  transform:translate(-50%,-50%);
-
-  direction:ltr;
-
-  font:800 clamp(100px,18vw,280px)/1 "DM Sans";
-
-  letter-spacing:-.15em;
-
-  color:rgba(255,255,255,.75);
-
-  transition:
-    transform 1.2s var(--ease);
-}
-
-.project-visual:hover .project-monogram{
-  transform:
-    translate(-50%,-50%)
-    scale(1.08)
-    rotate(-4deg);
-}
-
-.project-orbit{
-  position:absolute;
-
-  width:35%;
-  aspect-ratio:1;
-
-  left:50%;
-  top:50%;
-
-  transform:translate(-50%,-50%);
-
-  border:1px solid rgba(255,255,255,.8);
-
-  border-radius:50%;
-
-  transition:
-    transform 1s var(--ease);
-}
-
-.project-visual:hover .project-orbit{
-  transform:
-    translate(-50%,-50%)
-    scale(1.25);
-}
-
-.project-tag{
-  position:absolute;
-
   top:25px;
   left:25px;
-
+  z-index:3;
   direction:ltr;
-
   padding:8px 12px;
-
   border:1px solid rgba(255,255,255,.6);
-
-  color:white;
-
+  color:#fff;
   font:500 8px "DM Sans";
-  letter-spacing:.12em;
+  letter-spacing:.13em;
 }
 
-.project-info{
-  margin-top:35px;
+.art-core{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:30%;
+  aspect-ratio:1;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 30%,#fff,#f4df9d 25%,#c8a34b 54%,#81662c 100%);
+  box-shadow:
+    0 50px 100px rgba(0,0,0,.25),
+    inset -25px -30px 60px rgba(0,0,0,.2);
+  transition:transform 1.2s var(--ease);
+}
 
+.featured-frame:hover .art-core{
+  transform:
+    translate(-50%,-50%)
+    scale(1.12)
+    rotate(6deg);
+}
+
+.art-ring{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:43%;
+  aspect-ratio:1;
+  transform:translate(-50%,-50%) rotate(25deg);
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:50%;
+  transition:transform 1.2s var(--ease);
+}
+
+.featured-frame:hover .art-ring{
+  transform:
+    translate(-50%,-50%)
+    rotate(-15deg)
+    scale(1.15);
+}
+
+.art-ring-2{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:55%;
+  aspect-ratio:1;
+  transform:translate(-50%,-50%) rotate(-35deg);
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:50%;
+}
+
+.art-mbk{
+  position:absolute;
+  z-index:2;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  direction:ltr;
+  color:rgba(255,255,255,.8);
+  font:800 clamp(80px,15vw,230px)/1 "DM Sans";
+  letter-spacing:-.17em;
+  transition:transform 1.2s var(--ease);
+}
+
+.featured-frame:hover .art-mbk{
+  transform:
+    translate(-50%,-50%)
+    scale(1.08);
+}
+
+.featured-info{
   display:grid;
-
-  grid-template-columns:1fr 2fr 1fr;
-
+  grid-template-columns:.55fr 2fr 1fr;
   gap:40px;
+  margin-top:35px;
 }
 
 .project-number{
   direction:ltr;
-
-  color:var(--gold2);
-
+  color:var(--gold-dark);
   font:500 9px "DM Sans";
 }
 
-.project-name{
+.project-title{
   direction:ltr;
-
-  font:700 clamp(35px,5vw,75px)/.88 "DM Sans";
-
-  letter-spacing:-.07em;
+  font:700 clamp(38px,5.3vw,80px)/.86 "DM Sans";
+  letter-spacing:-.075em;
 }
 
-.project-name span{
+.project-title span{
   color:var(--gold);
 }
 
 .project-description{
   color:#777;
-
   font-size:11px;
   line-height:2;
 }
 
-.explore{
+.case-link{
   display:inline-flex;
-
   align-items:center;
-  gap:13px;
-
-  margin-top:25px;
-
+  gap:14px;
   direction:ltr;
-
-  padding-bottom:8px;
-
-  border-bottom:1px solid var(--black);
-
+  margin-top:25px;
+  padding-bottom:9px;
+  border-bottom:1px solid #111;
   font:600 9px "DM Sans";
-
   transition:
     color .3s,
-    border .3s;
+    border-color .3s,
+    gap .5s var(--ease);
 }
 
-.explore:hover{
-  color:var(--gold2);
+.case-link:hover{
+  color:var(--gold-dark);
   border-color:var(--gold);
+  gap:22px;
 }
-
 
 /* =========================================================
-   11 — PROJECT GRID
+   SECONDARY WORK
 ========================================================= */
 
-.project-grid{
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:80px;
-
-  padding-bottom:180px;
+.secondary-work{
+  padding-bottom:190px;
 }
 
-.small-project:nth-child(2){
+.work-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+}
+
+.work-card:nth-child(2){
   margin-top:130px;
 }
 
-.small-visual{
+.card-visual{
   position:relative;
-
   aspect-ratio:4/3;
-
   overflow:hidden;
-
-  background:var(--paper);
-
+  background:#f5f4ef;
   cursor:pointer;
 }
 
-.small-shape{
+.card-visual.dark-art{
+  background:
+    radial-gradient(circle at center,#f6e8b5,#d1ae55 42%,#302918 100%);
+}
+
+.card-visual.white-art{
+  background:#fff;
+  border:1px solid var(--line);
+}
+
+.card-shape{
   position:absolute;
-
-  width:55%;
-  aspect-ratio:1;
-
   left:50%;
   top:50%;
-
+  width:47%;
+  aspect-ratio:1;
   transform:translate(-50%,-50%);
-
-  border-radius:50%;
-
   border:1px solid var(--gold);
-
-  background:
-    radial-gradient(
-      circle,
-      #eadba8,
-      transparent 65%
-    );
-
-  transition:
-    transform 1s var(--ease);
+  border-radius:50%;
+  transition:transform 1s var(--ease);
 }
 
-.small-project:hover .small-shape{
+.card-shape:after{
+  content:"";
+  position:absolute;
+  inset:15%;
+  border:1px solid rgba(200,163,75,.55);
+  border-radius:50%;
+}
+
+.work-card:hover .card-shape{
   transform:
     translate(-50%,-50%)
-    scale(1.15);
+    rotate(25deg)
+    scale(1.16);
 }
 
-.small-project:nth-child(2)
-.small-shape{
-  border-radius:16%;
-
+.card-shape.square{
+  border-radius:8%;
   transform:
     translate(-50%,-50%)
     rotate(30deg);
 }
 
-.small-project:nth-child(2):hover
-.small-shape{
+.work-card:hover .card-shape.square{
   transform:
     translate(-50%,-50%)
-    rotate(48deg)
-    scale(1.15);
+    rotate(52deg)
+    scale(1.16);
 }
 
-.small-info{
+.card-letter{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  direction:ltr;
+  color:rgba(255,255,255,.8);
+  font:800 16vw/1 "DM Sans";
+  letter-spacing:-.17em;
+}
+
+.card-info{
   margin-top:25px;
 }
 
-.small-number{
+.card-index{
   direction:ltr;
-
-  color:var(--gold2);
-
+  color:var(--gold-dark);
   font:500 9px "DM Sans";
 }
 
-.small-title{
-  margin-top:12px;
-
+.card-title{
   direction:ltr;
-
-  font:700 clamp(32px,4vw,58px)/.9 "DM Sans";
-
-  letter-spacing:-.06em;
+  margin-top:10px;
+  font:700 clamp(35px,4.5vw,66px)/.87 "DM Sans";
+  letter-spacing:-.07em;
 }
 
-.small-description{
-  max-width:450px;
-
+.card-copy{
+  max-width:470px;
   margin-top:15px;
-
   color:#777;
-
   font-size:11px;
   line-height:2;
 }
 
-
 /* =========================================================
-   12 — ABOUT
+   ABOUT
 ========================================================= */
 
 .about{
-  padding:190px 0;
-
-  background:var(--paper);
+  padding:200px 0;
+  background:var(--ivory);
 }
 
 .about-grid{
   display:grid;
-
   grid-template-columns:1fr 1fr;
-
   gap:110px;
-
   align-items:center;
 }
 
 .about-art{
   position:relative;
-
   aspect-ratio:1;
-
-  background:white;
-
   overflow:hidden;
+  background:#fff;
 }
 
-.about-letter{
+.about-big-m{
   position:absolute;
-
   left:50%;
   top:50%;
-
   transform:translate(-50%,-50%);
-
   direction:ltr;
-
-  font:800 30vw/1 "DM Sans";
-
-  letter-spacing:-.17em;
-
-  color:#f6f5ef;
+  color:#f2f0e8;
+  font:800 31vw/1 "DM Sans";
+  letter-spacing:-.18em;
 }
 
-.about-ring{
+.about-orbit{
   position:absolute;
-
-  width:50%;
+  width:52%;
   aspect-ratio:1;
-
   left:50%;
   top:50%;
-
   transform:translate(-50%,-50%);
-
   border:1px solid var(--gold);
-
   border-radius:50%;
-
-  animation:orbit 17s linear infinite;
+  animation:slowRotate 17s linear infinite;
 }
 
-.about-ring:before{
+.about-orbit:before{
   content:"";
-
   position:absolute;
-
   width:8px;
   height:8px;
-
-  border-radius:50%;
-
   background:var(--gold);
-
-  top:-4px;
+  border-radius:50%;
   left:50%;
+  top:-4px;
 }
 
 .about-cross{
   position:absolute;
-
-  width:18px;
-  height:18px;
-
+  width:25px;
+  height:25px;
   left:50%;
   top:50%;
-
   transform:translate(-50%,-50%);
 }
 
 .about-cross:before,
 .about-cross:after{
   content:"";
-
   position:absolute;
-
   background:var(--gold);
 }
 
 .about-cross:before{
-  width:18px;
+  width:25px;
   height:1px;
-
-  top:9px;
+  top:12px;
 }
 
 .about-cross:after{
   width:1px;
-  height:18px;
-
-  left:9px;
+  height:25px;
+  left:12px;
 }
 
 .about-title{
   margin-top:25px;
-
-  font-size:clamp(50px,7vw,105px);
-
-  line-height:.9;
-
-  letter-spacing:-.07em;
+  font-size:clamp(55px,8vw,120px);
+  line-height:.88;
+  letter-spacing:-.08em;
 }
 
 .about-title span{
   color:var(--gold);
 }
 
-.about-description{
-  max-width:550px;
-
+.about-copy{
+  max-width:570px;
   margin-top:35px;
-
-  color:#777;
-
+  color:#757570;
   font-size:13px;
-  line-height:2.15;
+  line-height:2.2;
 }
 
 .details{
   margin-top:50px;
-
   border-top:1px solid var(--line);
 }
 
 .detail{
   display:flex;
   justify-content:space-between;
-
   direction:ltr;
-
   padding:16px 0;
-
   border-bottom:1px solid var(--line);
-
   font:500 9px "DM Sans";
 }
 
@@ -1279,231 +1064,137 @@ body.cursor-hover .cursor-ring{
   color:#999;
 }
 
-
 /* =========================================================
-   13 — NUMBERS
+   PRINCIPLES
 ========================================================= */
 
-.numbers{
-  padding:150px 0;
-
-  background:white;
-}
-
-.number-grid{
-  display:grid;
-
-  grid-template-columns:repeat(3,1fr);
-
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
-
-.stat{
-  padding:50px 30px;
-
-  border-left:1px solid var(--line);
-
-  text-align:center;
-}
-
-.stat:first-child{
-  border-left:0;
-}
-
-.stat-value{
-  direction:ltr;
-
-  font:700 clamp(55px,7vw,100px)/.8 "DM Sans";
-
-  letter-spacing:-.08em;
-}
-
-.stat-value span{
-  color:var(--gold);
-}
-
-.stat-label{
-  margin-top:18px;
-
-  direction:ltr;
-
-  color:#888;
-
-  font:500 9px "DM Sans";
-  letter-spacing:.12em;
-}
-
-
-/* =========================================================
-   14 — SERVICES
-========================================================= */
-
-.services{
+.principles{
   padding:190px 0;
 }
 
-.services-top{
+.principles-heading{
   display:flex;
-
   justify-content:space-between;
   align-items:end;
 }
 
-.services-title{
-  margin-top:20px;
-
+.principles-title{
   direction:ltr;
-
-  font:700 clamp(60px,10vw,145px)/.82 "DM Sans";
-
-  letter-spacing:-.09em;
+  margin-top:22px;
+  font:700 clamp(70px,11vw,165px)/.8 "DM Sans";
+  letter-spacing:-.1em;
 }
 
-.services-list{
-  margin-top:90px;
-
+.principles-list{
+  margin-top:100px;
   border-top:1px solid var(--line);
 }
 
-.service{
+.principle{
   display:grid;
-
   grid-template-columns:70px 1.2fr 1fr 40px;
-
   gap:30px;
-
   align-items:center;
-
   padding:32px 0;
-
   border-bottom:1px solid var(--line);
-
   transition:
-    padding .6s var(--ease),
-    background .4s;
+    background .4s,
+    padding .6s var(--ease);
 }
 
-.service:hover{
-  padding-left:18px;
-  padding-right:18px;
-
-  background:var(--paper);
+.principle:hover{
+  background:var(--ivory);
+  padding-left:20px;
+  padding-right:20px;
 }
 
-.service-index{
+.principle-number{
   direction:ltr;
-
-  color:var(--gold2);
-
+  color:var(--gold-dark);
   font:500 9px "DM Sans";
 }
 
-.service-name{
+.principle-name{
   direction:ltr;
-
-  font:600 clamp(23px,3vw,40px) "DM Sans";
-
-  letter-spacing:-.04em;
+  font:600 clamp(24px,3vw,42px) "DM Sans";
+  letter-spacing:-.045em;
 }
 
-.service-copy{
+.principle-copy{
   color:#777;
-
   font-size:10px;
   line-height:1.9;
 }
 
-.service-arrow{
+.principle-arrow{
   direction:ltr;
-
   color:var(--gold);
-
-  font-size:21px;
-
-  transition:
-    transform .5s var(--ease);
+  font-size:22px;
+  transition:transform .5s var(--ease);
 }
 
-.service:hover .service-arrow{
-  transform:translateX(-8px);
+.principle:hover .principle-arrow{
+  transform:translateX(-9px);
 }
-
 
 /* =========================================================
-   15 — PHILOSOPHY
+   DARK PHILOSOPHY
 ========================================================= */
 
 .philosophy{
-  padding:210px 0;
-
-  background:var(--black);
-
-  color:white;
-
+  padding:220px 0;
+  background:#090909;
+  color:#fff;
   overflow:hidden;
 }
 
 .philosophy-top{
   display:flex;
-
   justify-content:space-between;
 }
 
-.philosophy .label{
+.philosophy .section-label{
   color:var(--gold);
 }
 
 .philosophy-title{
-  margin-top:75px;
-
+  margin-top:80px;
   direction:ltr;
-
-  font:700 clamp(60px,11vw,165px)/.86 "DM Sans";
-
-  letter-spacing:-.1em;
+  font:700 clamp(62px,11.5vw,175px)/.82 "DM Sans";
+  letter-spacing:-.105em;
 }
 
 .philosophy-title span{
   color:var(--gold);
 }
 
-.philosophy-text{
+.philosophy-copy{
   max-width:650px;
-
-  margin-top:80px;
-
-  color:#888;
-
+  margin-top:85px;
+  color:#858581;
   font-size:13px;
   line-height:2.25;
 }
 
-
 /* =========================================================
-   16 — CONTACT
+   CONTACT
 ========================================================= */
 
 .contact{
-  padding:200px 0 100px;
-
-  background:var(--paper);
+  padding:210px 0 100px;
+  background:var(--ivory);
 }
 
 .contact-grid{
   display:grid;
-
-  grid-template-columns:1.3fr 1fr;
-
+  grid-template-columns:1.25fr 1fr;
   gap:110px;
 }
 
 .contact-title{
   direction:ltr;
-
-  font:700 clamp(75px,13vw,190px)/.78 "DM Sans";
-
-  letter-spacing:-.11em;
+  font:700 clamp(80px,14vw,205px)/.75 "DM Sans";
+  letter-spacing:-.12em;
 }
 
 .contact-title span{
@@ -1516,122 +1207,90 @@ body.cursor-hover .cursor-ring{
 
 .contact-copy p{
   max-width:500px;
-
   color:#777;
-
   font-size:13px;
-  line-height:2.15;
+  line-height:2.2;
 }
 
 .email{
   display:inline-block;
-
   margin-top:45px;
-
   direction:ltr;
-
-  font:600 clamp(17px,2.3vw,30px) "DM Sans";
-
+  font:600 clamp(18px,2.5vw,32px) "DM Sans";
   padding-bottom:10px;
-
   border-bottom:1px solid var(--gold);
-
   transition:color .3s;
 }
 
 .email:hover{
-  color:var(--gold2);
+  color:var(--gold-dark);
 }
 
 .contact-meta{
   margin-top:120px;
-
   padding-top:20px;
-
   border-top:1px solid var(--line);
-
   display:flex;
-
   justify-content:space-between;
-
   direction:ltr;
-
   color:#999;
-
   font:500 9px "DM Sans";
 }
 
-
 /* =========================================================
-   17 — FOOTER
+   FOOTER
 ========================================================= */
 
 .footer{
+  background:var(--ivory);
   padding:35px 5vw 45px;
-
-  background:var(--paper);
-
+  border-top:1px solid var(--line);
   display:flex;
-
   justify-content:space-between;
   align-items:center;
-
   direction:ltr;
-
   color:#999;
-
   font:500 9px "DM Sans";
 }
 
 .footer-logo{
-  color:var(--black);
-
-  font:800 22px "DM Sans";
-
-  letter-spacing:-.13em;
+  color:#111;
+  font:800 23px "DM Sans";
+  letter-spacing:-.14em;
 }
 
 .footer-logo span{
   color:var(--gold);
 }
 
-
 /* =========================================================
-   18 — RESPONSIVE
+   RESPONSIVE
 ========================================================= */
 
-@media(max-width:900px){
+@media(max-width:950px){
 
-  .header-status{
+  .header-center{
     display:none;
   }
 
-  .hero-display{
-    font-size:27vw;
-  }
-
-  .hero-bottom{
+  .hero-sub{
     grid-template-columns:1fr;
     gap:25px;
   }
 
-  .hero-meta{
+  .hero-details{
     text-align:right;
     direction:rtl;
   }
 
-  .statement-content{
+  .manifesto-grid{
     grid-template-columns:1fr;
     gap:40px;
   }
 
-  .project-info{
+  .featured-info{
     grid-template-columns:1fr;
     gap:20px;
-  }
-
-  .project-grid{
-    gap:50px;
   }
 
   .about-grid{
@@ -1643,28 +1302,15 @@ body.cursor-hover .cursor-ring{
     order:2;
   }
 
-  .about-copy{
+  .about-content{
     order:1;
   }
 
-  .number-grid{
-    grid-template-columns:1fr;
+  .principle{
+    grid-template-columns:45px 1fr 35px;
   }
 
-  .stat{
-    border-left:0;
-    border-bottom:1px solid var(--line);
-  }
-
-  .stat:last-child{
-    border-bottom:0;
-  }
-
-  .service{
-    grid-template-columns:45px 1fr 30px;
-  }
-
-  .service-copy{
+  .principle-copy{
     display:none;
   }
 
@@ -1672,63 +1318,72 @@ body.cursor-hover .cursor-ring{
     grid-template-columns:1fr;
     gap:70px;
   }
-
 }
 
-@media(max-width:600px){
+@media(max-width:650px){
 
-  .section{
-    padding:110px 0;
-  }
-
-  .hero-content{
+  .hero-inner{
     padding-top:80px;
   }
 
-  .hero-display{
+  .hero-word{
     font-size:29vw;
   }
 
-  .hero-orbit{
-    width:90vw;
-    height:90vw;
-    right:-35vw;
+  .hero-circle{
+    width:110vw;
+    right:-48vw;
+    top:-15vw;
+  }
+
+  .hero-circle-2{
+    width:70vw;
+    right:-25vw;
+    top:45vw;
   }
 
   .hero-scroll{
     display:none;
   }
 
-  .statement{
+  .manifesto{
     padding:120px 0;
   }
 
-  .statement-title{
-    font-size:14vw;
+  .manifesto-title{
+    font-size:15vw;
   }
 
   .work{
-    padding-top:110px;
+    padding-top:120px;
   }
 
-  .project{
-    padding:70px 0 100px;
+  .featured{
+    padding:75px 0 110px;
   }
 
-  .project-visual{
+  .featured-frame{
     aspect-ratio:1/1;
   }
 
-  .project-orbit{
-    width:45%;
+  .art-core{
+    width:42%;
   }
 
-  .project-grid{
-    grid-template-columns:1fr;
+  .art-ring{
+    width:58%;
+  }
+
+  .secondary-work{
     padding-bottom:110px;
   }
 
-  .small-project:nth-child(2){
+  .work-grid{
+    grid-template-columns:1fr;
+    gap:70px;
+  }
+
+  .work-card:nth-child(2){
     margin-top:0;
   }
 
@@ -1736,45 +1391,37 @@ body.cursor-hover .cursor-ring{
     padding:120px 0;
   }
 
-  .about-art{
-    aspect-ratio:1;
-  }
-
-  .numbers{
-    padding:100px 0;
-  }
-
-  .services{
+  .principles{
     padding:120px 0;
   }
 
-  .services-list{
+  .principles-list{
     margin-top:60px;
   }
 
-  .service{
+  .principle{
     padding:25px 0;
   }
 
-  .service-name{
+  .principle-name{
     font-size:21px;
   }
 
   .philosophy{
-    padding:120px 0;
+    padding:125px 0;
   }
 
   .philosophy-title{
-    margin-top:55px;
+    margin-top:60px;
     font-size:15vw;
   }
 
   .contact{
-    padding:120px 0 70px;
+    padding:125px 0 70px;
   }
 
   .contact-meta{
-    margin-top:75px;
+    margin-top:70px;
   }
 
   .footer{
@@ -1784,66 +1431,61 @@ body.cursor-hover .cursor-ring{
 
 }
 
-
 /* =========================================================
-   19 — REDUCED MOTION
+   REDUCED MOTION
 ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
   *,
-  *:before,
-  *:after{
+  *::before,
+  *::after{
     animation:none!important;
     transition:none!important;
     scroll-behavior:auto!important;
   }
 
 }
-
 </style>
 </head>
 
-
-<body>
-
-<!-- =======================================================
-     CURSOR
-======================================================= -->
-
-<div class="cursor"></div>
-<div class="cursor-ring"></div>
-
+<body class="loading">
 
 <!-- =======================================================
-     LOADER
+     PRELOADER
 ======================================================= -->
 
-<div class="loader" id="loader">
+<div class="preloader" id="preloader">
 
-  <div class="loader-inner">
+  <div class="preloader-core">
 
-    <div class="loader-brand">
+    <div class="preloader-top">
 
-      <div class="loader-logo">
+      <div class="preloader-logo">
         MBK
       </div>
 
-      <div class="loader-count" id="loaderCount">
+      <div class="preloader-percent" id="percent">
         00
       </div>
 
     </div>
 
-    <div class="loader-track">
-
-      <div class="loader-bar" id="loaderBar"></div>
-
+    <div class="preloader-line">
+      <div class="preloader-progress" id="progress"></div>
     </div>
 
   </div>
 
 </div>
+
+
+<!-- =======================================================
+     CURSOR
+======================================================= -->
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
 
 <!-- =======================================================
@@ -1853,22 +1495,20 @@ body.cursor-hover .cursor-ring{
 <header class="header" id="header">
 
   <a href="#home" class="logo">
-    M<b>BK</b>
+    M<span>BK</span>
   </a>
 
-  <div class="header-status">
-    INDEPENDENT DIGITAL CREATIVE — 2026
+  <div class="header-center">
+    AETHER / DIGITAL CREATIVE / 2026
   </div>
 
   <button
-    class="menu-button"
-    id="menuButton"
-    aria-label="Open menu"
+    class="menu-trigger"
+    id="menuTrigger"
+    aria-label="Menu"
   >
-
     <span></span>
     <span></span>
-
   </button>
 
 </header>
@@ -1880,33 +1520,19 @@ body.cursor-hover .cursor-ring{
 
 <div class="menu" id="menu">
 
-  <div class="menu-grid">
+  <div class="menu-inner">
 
-    <div class="menu-small">
-      NAVIGATION / 2026
+    <div class="menu-label">
+      AETHER / NAVIGATION
     </div>
 
     <nav class="menu-links">
 
-      <a href="#home">
-        Home
-      </a>
-
-      <a href="#work">
-        Work
-      </a>
-
-      <a href="#about">
-        About
-      </a>
-
-      <a href="#services">
-        Services
-      </a>
-
-      <a href="#contact">
-        Contact
-      </a>
+      <a href="#home">Home</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#principles">Principles</a>
+      <a href="#contact">Contact</a>
 
     </nav>
 
@@ -1914,25 +1540,16 @@ body.cursor-hover .cursor-ring{
 
   <div class="menu-footer">
 
-    <span>
-      MBK / DIGITAL CREATIVE
-    </span>
+    <span>MBK / DIGITAL CREATIVE</span>
 
-    <span>
-      mabkhout@mabkhut.com
-    </span>
+    <span>mabkhout@mabkhut.com</span>
 
   </div>
 
 </div>
 
 
-<!-- =======================================================
-     MAIN
-======================================================= -->
-
 <main>
-
 
 <!-- =======================================================
      HERO
@@ -1940,38 +1557,37 @@ body.cursor-hover .cursor-ring{
 
 <section class="hero" id="home">
 
-  <div class="hero-lines"></div>
+  <div class="hero-grid"></div>
 
-  <div class="hero-orbit"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-circle-2"></div>
 
-  <div class="hero-content">
+  <div class="hero-inner">
 
-    <div class="hero-top">
+    <div class="hero-meta">
 
-      <div class="available">
-
-        <span class="available-dot"></span>
-
+      <div class="hero-availability">
+        <span class="live-dot"></span>
         AVAILABLE FOR SELECTED PROJECTS
-
       </div>
 
-      <div class="number">
-        01 / 08
+      <div class="hero-index">
+        00 / 07
       </div>
 
     </div>
 
 
-    <h1
-      class="hero-display"
-      data-parallax="hero"
-    >
+    <h1 class="hero-word" id="heroWord">
+
       M<span>BK</span>
+
+      <i class="hero-word-ring"></i>
+
     </h1>
 
 
-    <div class="hero-bottom">
+    <div class="hero-sub">
 
       <div class="hero-name">
 
@@ -1984,24 +1600,19 @@ body.cursor-hover .cursor-ring{
       </div>
 
 
-      <p class="hero-copy">
+      <p class="hero-description">
 
-        أبني هويات رقمية وتجارب بصرية
-        تجمع بين الفكرة، الدقة، والبساطة.
-
-        <br><br>
-
-        كل مشروع يبدأ بفكرة،
-        ثم يتحول إلى تجربة.
+        أصنع هويات وتجارب رقمية
+        لا تعتمد على الزخرفة،
+        بل على الفكرة، التوازن،
+        والدقة.
 
       </p>
 
 
-      <div class="hero-meta">
+      <div class="hero-details">
 
-        <strong>
-          DIGITAL CREATIVE
-        </strong>
+        <strong>DIGITAL CREATIVE</strong>
 
         <br>
 
@@ -2020,9 +1631,9 @@ body.cursor-hover .cursor-ring{
 
   <div class="hero-scroll">
 
-    SCROLL TO EXPLORE
+    SCROLL TO ENTER
 
-    <i></i>
+    <span></span>
 
   </div>
 
@@ -2030,23 +1641,23 @@ body.cursor-hover .cursor-ring{
 
 
 <!-- =======================================================
-     STATEMENT
+     MANIFESTO
 ======================================================= -->
 
-<section class="statement">
+<section class="manifesto">
 
-  <div class="statement-bg">
-    M
+  <div class="manifesto-bg">
+    A
   </div>
 
   <div class="container">
 
-    <div class="statement-content reveal">
+    <div class="manifesto-grid reveal">
 
       <div>
 
-        <div class="label">
-          02 / VISION
+        <div class="section-label">
+          01 / MANIFESTO
         </div>
 
       </div>
@@ -2054,33 +1665,41 @@ body.cursor-hover .cursor-ring{
 
       <div>
 
-        <h2 class="statement-title">
+        <h2 class="manifesto-title">
 
-          لا أصنع
-
-          <br>
-
-          مواقع فقط.
+          ليس الهدف
 
           <br>
 
-          أصنع <em>حضورًا.</em>
+          أن تكون
+
+          <br>
+
+          <em>أجمل.</em>
+
+          <br>
+
+          بل أن تكون
+
+          <br>
+
+          <strong>الأكثر حضورًا.</strong>
 
         </h2>
 
 
-        <p class="statement-text">
+        <p class="manifesto-copy">
 
-          في عالم يمتلئ بالمواقع،
-          الفرق الحقيقي ليس في عدد
-          المؤثرات، بل في الفكرة التي
-          تبقى في ذهن الزائر بعد أن
-          يغادر.
+          التصميم القوي لا يصرخ.
+          يعرف أين يضع الصمت،
+          أين يضع الضوء،
+          وأين يترك العين تكمل القصة.
 
           <br><br>
 
-          لذلك صُممت MBK كرحلة،
-          وليس كصفحة معلومات.
+          لهذا تم بناء AETHER
+          كتجربة متكاملة، وليس
+          كمجموعة أقسام منفصلة.
 
         </p>
 
@@ -2101,12 +1720,12 @@ body.cursor-hover .cursor-ring{
 
   <div class="container">
 
-    <div class="work-heading reveal">
+    <div class="work-top reveal">
 
       <div>
 
-        <div class="label">
-          03 / SELECTED WORK
+        <div class="section-label">
+          02 / SELECTED WORK
         </div>
 
         <h2 class="work-title">
@@ -2115,33 +1734,36 @@ body.cursor-hover .cursor-ring{
 
       </div>
 
-      <div class="number">
-        03 CASE STUDIES
+      <div class="section-index">
+        03 EXPERIENCES
       </div>
 
     </div>
 
 
-    <!-- PROJECT 01 -->
+    <!-- FEATURED -->
 
-    <article class="project reveal">
+    <article class="featured reveal">
 
-      <div class="project-visual">
+      <div class="featured-frame">
 
-        <div class="project-tag">
-          DIGITAL IDENTITY / 01
+        <div class="featured-label">
+          MBK / IDENTITY SYSTEM
         </div>
 
-        <div class="project-monogram">
+        <div class="art-ring-2"></div>
+        <div class="art-ring"></div>
+
+        <div class="art-core"></div>
+
+        <div class="art-mbk">
           MBK
         </div>
-
-        <div class="project-orbit"></div>
 
       </div>
 
 
-      <div class="project-info">
+      <div class="featured-info">
 
         <div class="project-number">
           01 / 03
@@ -2150,24 +1772,25 @@ body.cursor-hover .cursor-ring{
 
         <div>
 
-          <h3 class="project-name">
+          <h3 class="project-title">
 
-            PERSONAL
+            DIGITAL
 
             <br>
 
             <span>
-              DIGITAL IDENTITY.
+              IDENTITY.
             </span>
 
           </h3>
 
+
           <a
             href="#contact"
-            class="explore"
+            class="case-link"
           >
 
-            EXPLORE CASE STUDY
+            VIEW CASE STUDY
 
             <span>→</span>
 
@@ -2178,9 +1801,10 @@ body.cursor-hover .cursor-ring{
 
         <p class="project-description">
 
-          بناء هوية رقمية شخصية
-          تعكس الهدوء، الثقة،
-          والطابع المعاصر.
+          هوية رقمية شخصية
+          مبنية على البساطة،
+          الثقة، والتفاصيل
+          الهندسية الدقيقة.
 
         </p>
 
@@ -2189,76 +1813,99 @@ body.cursor-hover .cursor-ring{
     </article>
 
 
-    <!-- PROJECTS 02 / 03 -->
+    <!-- SECONDARY -->
 
-    <div class="project-grid">
+    <div class="secondary-work">
+
+      <div class="work-grid">
 
 
-      <article class="small-project reveal">
+        <article class="work-card reveal">
 
-        <div class="small-visual">
+          <div class="card-visual dark-art">
 
-          <div class="small-shape"></div>
+            <div class="card-shape"></div>
 
-        </div>
+            <div class="card-letter">
+              02
+            </div>
 
-        <div class="small-info">
-
-          <div class="small-number">
-            02 / DIGITAL PRODUCT
           </div>
 
-          <h3 class="small-title">
-            PRODUCT
-            <br>
-            EXPERIENCE.
-          </h3>
 
-          <p class="small-description">
+          <div class="card-info">
 
-            تجربة رقمية مصممة
-            حول الوضوح وسهولة
-            الاستخدام.
+            <div class="card-index">
+              02 / DIGITAL PRODUCT
+            </div>
 
-          </p>
+            <h3 class="card-title">
 
-        </div>
+              PRODUCT
 
-      </article>
+              <br>
 
+              EXPERIENCE.
 
-      <article class="small-project reveal">
+            </h3>
 
-        <div class="small-visual">
+            <p class="card-copy">
 
-          <div class="small-shape"></div>
+              تجربة رقمية تركّز
+              على الوضوح،
+              التسلسل، وسهولة
+              الاستخدام.
 
-        </div>
+            </p>
 
-        <div class="small-info">
-
-          <div class="small-number">
-            03 / EXPERIMENT
           </div>
 
-          <h3 class="small-title">
-            FUTURE
-            <br>
-            DIRECTION.
-          </h3>
+        </article>
 
-          <p class="small-description">
 
-            تجربة بصرية تستكشف
-            العلاقة بين الهوية
-            والتقنية.
+        <article class="work-card reveal">
 
-          </p>
+          <div class="card-visual white-art">
 
-        </div>
+            <div class="card-shape square"></div>
 
-      </article>
+            <div class="card-letter" style="color:#f2f0e8">
+              03
+            </div>
 
+          </div>
+
+
+          <div class="card-info">
+
+            <div class="card-index">
+              03 / ART DIRECTION
+            </div>
+
+            <h3 class="card-title">
+
+              FUTURE
+
+              <br>
+
+              DIRECTION.
+
+            </h3>
+
+            <p class="card-copy">
+
+              نظام بصري يستكشف
+              العلاقة بين الهوية،
+              التقنية، والمساحة.
+
+            </p>
+
+          </div>
+
+        </article>
+
+
+      </div>
 
     </div>
 
@@ -2277,25 +1924,25 @@ body.cursor-hover .cursor-ring{
 
     <div class="about-grid">
 
-
       <div class="about-art reveal">
 
-        <div class="about-letter">
+        <div class="about-big-m">
           M
         </div>
 
-        <div class="about-ring"></div>
+        <div class="about-orbit"></div>
 
         <div class="about-cross"></div>
 
       </div>
 
 
-      <div class="about-copy reveal">
+      <div class="about-content reveal">
 
-        <div class="label">
-          04 / ABOUT
+        <div class="section-label">
+          03 / THE PERSON
         </div>
+
 
         <h2 class="about-title">
 
@@ -2310,16 +1957,23 @@ body.cursor-hover .cursor-ring{
         </h2>
 
 
-        <p class="about-description">
+        <p class="about-copy">
 
-          أتعامل مع التصميم كوسيلة
-          لصناعة الانطباع، وليس كزخرفة.
+          أتعامل مع التصميم كمساحة
+          لصناعة الانطباع.
 
           <br><br>
 
-          أبحث عن التوازن بين الفكرة
-          والشكل، بين الجرأة والبساطة،
-          وبين التقنية والتجربة الإنسانية.
+          أحب المساحات الهادئة،
+          الأنظمة الدقيقة، والواجهات
+          التي تشعر بأنها صُممت
+          خصيصًا لشخص واحد.
+
+          <br><br>
+
+          الهدف دائمًا:
+          أن يكون كل شيء واضحًا،
+          لكن لا يكون عاديًا.
 
         </p>
 
@@ -2327,60 +1981,28 @@ body.cursor-hover .cursor-ring{
         <div class="details">
 
           <div class="detail">
-
-            <span>
-              DISCIPLINE
-            </span>
-
-            <span>
-              DIGITAL CREATIVE
-            </span>
-
+            <span>DISCIPLINE</span>
+            <span>DIGITAL CREATIVE</span>
           </div>
 
-
           <div class="detail">
-
-            <span>
-              FOCUS
-            </span>
-
-            <span>
-              BRAND / WEB / UI
-            </span>
-
+            <span>FOCUS</span>
+            <span>IDENTITY / WEB / UI</span>
           </div>
 
-
           <div class="detail">
-
-            <span>
-              APPROACH
-            </span>
-
-            <span>
-              MINIMAL / PREMIUM
-            </span>
-
+            <span>APPROACH</span>
+            <span>MINIMAL / PREMIUM</span>
           </div>
 
-
           <div class="detail">
-
-            <span>
-              BASE
-            </span>
-
-            <span>
-              YEMEN / WORLDWIDE
-            </span>
-
+            <span>BASE</span>
+            <span>YEMEN / WORLDWIDE</span>
           </div>
 
         </div>
 
       </div>
-
 
     </div>
 
@@ -2390,184 +2012,116 @@ body.cursor-hover .cursor-ring{
 
 
 <!-- =======================================================
-     NUMBERS
+     PRINCIPLES
 ======================================================= -->
 
-<section class="numbers">
+<section class="principles" id="principles">
 
   <div class="container">
 
-    <div class="number-grid reveal">
-
-
-      <div class="stat">
-
-        <div class="stat-value">
-          01<span>.</span>
-        </div>
-
-        <div class="stat-label">
-          PERSONAL STANDARD
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="stat-value">
-          100<span>%</span>
-        </div>
-
-        <div class="stat-label">
-          ATTENTION TO DETAIL
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="stat-value">
-          ∞
-        </div>
-
-        <div class="stat-label">
-          ROOM TO CREATE
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     SERVICES
-======================================================= -->
-
-<section class="services" id="services">
-
-  <div class="container">
-
-    <div class="services-top reveal">
+    <div class="principles-heading reveal">
 
       <div>
 
-        <div class="label">
-          05 / CAPABILITIES
+        <div class="section-label">
+          04 / PRINCIPLES
         </div>
 
-        <h2 class="services-title">
-          SERVICES
+        <h2 class="principles-title">
+          PRINCIPLES
         </h2>
 
       </div>
 
-      <div class="number">
-        WHAT I BUILD
+      <div class="section-index">
+        THE STANDARD
       </div>
 
     </div>
 
 
-    <div class="services-list">
+    <div class="principles-list">
 
 
-      <div class="service reveal">
+      <div class="principle reveal">
 
-        <div class="service-index">
+        <div class="principle-number">
           01
         </div>
 
-        <div class="service-name">
-          Digital Identity
+        <div class="principle-name">
+          Clarity
         </div>
 
-        <div class="service-copy">
-
-          بناء حضور رقمي
-          متكامل ومميز.
-
+        <div class="principle-copy">
+          الوضوح قبل الزخرفة.
         </div>
 
-        <div class="service-arrow">
+        <div class="principle-arrow">
           →
         </div>
 
       </div>
 
 
-      <div class="service reveal">
+      <div class="principle reveal">
 
-        <div class="service-index">
+        <div class="principle-number">
           02
         </div>
 
-        <div class="service-name">
-          Web Experience
+        <div class="principle-name">
+          Precision
         </div>
 
-        <div class="service-copy">
-
-          مواقع وتجارب رقمية
-          مصممة حول المستخدم.
-
+        <div class="principle-copy">
+          التفاصيل الصغيرة تصنع
+          الفرق الكبير.
         </div>
 
-        <div class="service-arrow">
+        <div class="principle-arrow">
           →
         </div>
 
       </div>
 
 
-      <div class="service reveal">
+      <div class="principle reveal">
 
-        <div class="service-index">
+        <div class="principle-number">
           03
         </div>
 
-        <div class="service-name">
-          UI / UX
+        <div class="principle-name">
+          Restraint
         </div>
 
-        <div class="service-copy">
-
-          واجهات واضحة،
-          دقيقة، وقابلة للاستخدام.
-
+        <div class="principle-copy">
+          الفخامة تعرف متى تتوقف.
         </div>
 
-        <div class="service-arrow">
+        <div class="principle-arrow">
           →
         </div>
 
       </div>
 
 
-      <div class="service reveal">
+      <div class="principle reveal">
 
-        <div class="service-index">
+        <div class="principle-number">
           04
         </div>
 
-        <div class="service-name">
-          Creative Direction
+        <div class="principle-name">
+          Character
         </div>
 
-        <div class="service-copy">
-
-          تطوير الفكرة واللغة
-          البصرية للمشروع.
-
+        <div class="principle-copy">
+          التصميم الجيد يمكن تذكره.
         </div>
 
-        <div class="service-arrow">
+        <div class="principle-arrow">
           →
         </div>
 
@@ -2591,12 +2145,12 @@ body.cursor-hover .cursor-ring{
 
     <div class="philosophy-top reveal">
 
-      <div class="label">
-        06 / PHILOSOPHY
+      <div class="section-label">
+        05 / PHILOSOPHY
       </div>
 
-      <div class="number">
-        PRINCIPLE
+      <div class="section-index">
+        AETHER
       </div>
 
     </div>
@@ -2604,35 +2158,36 @@ body.cursor-hover .cursor-ring{
 
     <h2 class="philosophy-title reveal">
 
-      MAKE IT
+      LESS
 
       <br>
 
       <span>
-        SIMPLE.
+        NOISE.
       </span>
 
       <br>
 
-      MAKE IT
+      MORE
 
       <br>
 
-      UNFORGETTABLE.
+      PRESENCE.
 
     </h2>
 
 
-    <p class="philosophy-text reveal">
+    <p class="philosophy-copy reveal">
 
-      الفخامة لا تحتاج إلى كثرة.
+      التصميم الفخم ليس الذي يضع
+      كل شيء أمامك.
 
       <br><br>
 
-      تحتاج إلى قرار صحيح،
-      ومساحة كافية، وتفاصيل
-      يعرف المصمم متى يستخدمها
-      ومتى يحذفها.
+      هو الذي يعرف ما الذي يجب
+      أن تراه أولًا،
+      وما الذي يجب أن تكتشفه
+      بعد ذلك.
 
     </p>
 
@@ -2659,7 +2214,7 @@ body.cursor-hover .cursor-ring{
         <br>
 
         <span>
-          BUILD.
+          CREATE.
         </span>
 
       </h2>
@@ -2669,12 +2224,13 @@ body.cursor-hover .cursor-ring{
 
         <p>
 
-          لديك فكرة تستحق أن تتحول
-          إلى شيء مختلف؟
+          إذا كانت لديك فكرة
+          تستحق تجربة مختلفة،
+          لنبدأ من الفكرة.
 
           <br><br>
 
-          أخبرني عنها.
+          ثم نبني كل شيء حولها.
 
         </p>
 
@@ -2690,24 +2246,22 @@ body.cursor-hover .cursor-ring{
         <div class="contact-meta">
 
           <span>
-            AVAILABLE FOR SELECTED PROJECTS
+            SELECTED PROJECTS / 2026
           </span>
 
           <span>
-            2026
+            MBK
           </span>
 
         </div>
 
       </div>
 
-
     </div>
 
   </div>
 
 </section>
-
 
 </main>
 
@@ -2727,489 +2281,403 @@ body.cursor-hover .cursor-ring{
   </div>
 
   <div>
-    DIGITAL / CREATIVE
+    AETHER / DIGITAL CREATIVE
   </div>
 
 </footer>
 
 
 <script>
-
 /* =========================================================
-   01 — LOADER
+   PRELOADER
 ========================================================= */
 
-const loader =
-  document.getElementById("loader");
+const preloader = document.getElementById("preloader");
+const progress = document.getElementById("progress");
+const percent = document.getElementById("percent");
 
-const loaderBar =
-  document.getElementById("loaderBar");
+let value = 0;
 
-const loaderCount =
-  document.getElementById("loaderCount");
+const loaderTimer = setInterval(() => {
 
-let progress = 0;
+  value += Math.floor(Math.random() * 8) + 3;
 
-const loadInterval =
-  setInterval(() => {
+  if(value >= 100){
 
-    progress +=
-      Math.floor(Math.random() * 9) + 4;
+    value = 100;
 
-    if(progress >= 100){
+    clearInterval(loaderTimer);
 
-      progress = 100;
+    setTimeout(() => {
 
-      clearInterval(loadInterval);
+      preloader.classList.add("hide");
+      document.body.classList.remove("loading");
 
-      setTimeout(() => {
-
-        loader.classList.add("done");
-
-      },450);
-
-    }
-
-    loaderBar.style.width =
-      progress + "%";
-
-    loaderCount.textContent =
-      String(progress).padStart(2,"0");
-
-  },90);
-
-
-/* =========================================================
-   02 — HEADER
-========================================================= */
-
-const header =
-  document.getElementById("header");
-
-window.addEventListener(
-  "scroll",
-  () => {
-
-    header.classList.toggle(
-      "scrolled",
-      window.scrollY > 60
-    );
-
-  },
-  {passive:true}
-);
-
-
-/* =========================================================
-   03 — MENU
-========================================================= */
-
-const menuButton =
-  document.getElementById("menuButton");
-
-const menu =
-  document.getElementById("menu");
-
-menuButton.addEventListener(
-  "click",
-  () => {
-
-    const open =
-      menu.classList.toggle("open");
-
-    menuButton.classList.toggle(
-      "active",
-      open
-    );
-
-    document.body.classList.toggle(
-      "locked",
-      open
-    );
-
+    },500);
   }
-);
 
+  progress.style.width = value + "%";
+  percent.textContent = String(value).padStart(2,"0");
 
-document
-.querySelectorAll(".menu-links a")
-.forEach(link => {
-
-  link.addEventListener(
-    "click",
-    () => {
-
-      menu.classList.remove("open");
-
-      menuButton.classList.remove("active");
-
-      document.body.classList.remove(
-        "locked"
-      );
-
-    }
-  );
-
-});
-
-
-document.addEventListener(
-  "keydown",
-  e => {
-
-    if(e.key === "Escape"){
-
-      menu.classList.remove("open");
-
-      menuButton.classList.remove("active");
-
-      document.body.classList.remove(
-        "locked"
-      );
-
-    }
-
-  }
-);
+},85);
 
 
 /* =========================================================
-   04 — REVEAL
+   HEADER
 ========================================================= */
 
-const observer =
-  new IntersectionObserver(
-    entries => {
+const header = document.getElementById("header");
 
-      entries.forEach(
-        entry => {
+window.addEventListener("scroll",() => {
 
-          if(entry.isIntersecting){
-
-            entry.target.classList.add(
-              "show"
-            );
-
-            observer.unobserve(
-              entry.target
-            );
-
-          }
-
-        }
-      );
-
-    },
-    {
-      threshold:.12,
-      rootMargin:"0px 0px -50px 0px"
-    }
+  header.classList.toggle(
+    "scrolled",
+    window.scrollY > 60
   );
 
-
-document
-.querySelectorAll(".reveal")
-.forEach(el => {
-
-  observer.observe(el);
-
-});
+},{passive:true});
 
 
 /* =========================================================
-   05 — CUSTOM CURSOR
+   MENU
 ========================================================= */
 
-const cursor =
-  document.querySelector(".cursor");
+const menu = document.getElementById("menu");
+const trigger = document.getElementById("menuTrigger");
 
-const cursorRing =
-  document.querySelector(".cursor-ring");
+function closeMenu(){
 
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
-
-let ringX = mouseX;
-let ringY = mouseY;
-
-window.addEventListener(
-  "mousemove",
-  e => {
-
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-
-    cursor.style.left =
-      mouseX + "px";
-
-    cursor.style.top =
-      mouseY + "px";
-
-  },
-  {passive:true}
-);
-
-
-function animateCursor(){
-
-  ringX +=
-    (mouseX - ringX) * .12;
-
-  ringY +=
-    (mouseY - ringY) * .12;
-
-  cursorRing.style.left =
-    ringX + "px";
-
-  cursorRing.style.top =
-    ringY + "px";
-
-  requestAnimationFrame(
-    animateCursor
-  );
+  menu.classList.remove("open");
+  trigger.classList.remove("active");
+  document.body.classList.remove("menu-open");
 
 }
 
-animateCursor();
+trigger.addEventListener("click",() => {
 
+  const opened =
+    menu.classList.toggle("open");
 
-document
-.querySelectorAll(
-  "a,button,.project-visual,.small-visual,.service"
-)
-.forEach(el => {
-
-  el.addEventListener(
-    "mouseenter",
-    () => {
-
-      document.body.classList.add(
-        "cursor-hover"
-      );
-
-    }
+  trigger.classList.toggle(
+    "active",
+    opened
   );
 
-  el.addEventListener(
-    "mouseleave",
-    () => {
-
-      document.body.classList.remove(
-        "cursor-hover"
-      );
-
-    }
+  document.body.classList.toggle(
+    "menu-open",
+    opened
   );
+
+});
+
+document.querySelectorAll(".menu a").forEach(link => {
+
+  link.addEventListener("click",closeMenu);
+
+});
+
+document.addEventListener("keydown",e => {
+
+  if(e.key === "Escape") closeMenu();
 
 });
 
 
 /* =========================================================
-   06 — HERO PARALLAX
+   REVEAL SYSTEM
 ========================================================= */
 
-const heroDisplay =
-  document.querySelector(".hero-display");
+const revealObserver =
+new IntersectionObserver(entries => {
 
-const heroOrbit =
-  document.querySelector(".hero-orbit");
+  entries.forEach(entry => {
 
-window.addEventListener(
-  "scroll",
-  () => {
+    if(entry.isIntersecting){
 
-    const y =
-      window.scrollY;
+      entry.target.classList.add("visible");
 
-    if(heroDisplay){
-
-      heroDisplay.style.transform =
-        `translateY(${y * .045}px)`;
+      revealObserver.unobserve(entry.target);
 
     }
 
-    if(heroOrbit){
+  });
 
-      heroOrbit.style.transform =
-        `translateY(${y * .08}px)`;
+},{
+  threshold:.1,
+  rootMargin:"0px 0px -40px 0px"
+});
 
-    }
+document.querySelectorAll(".reveal").forEach(el => {
 
-  },
-  {passive:true}
-);
+  revealObserver.observe(el);
+
+});
 
 
 /* =========================================================
-   07 — PROJECT MOUSE DEPTH
+   CURSOR
 ========================================================= */
 
-const projectVisual =
-  document.querySelector(".project-visual");
+const dot = document.getElementById("cursorDot");
+const ring = document.getElementById("cursorRing");
 
-const projectOrbit =
-  document.querySelector(".project-orbit");
+let mx = innerWidth/2;
+let my = innerHeight/2;
+
+let rx = mx;
+let ry = my;
+
+window.addEventListener("mousemove",e => {
+
+  mx = e.clientX;
+  my = e.clientY;
+
+  dot.style.left = mx + "px";
+  dot.style.top = my + "px";
+
+},{passive:true});
+
+function cursorLoop(){
+
+  rx += (mx-rx)*.12;
+  ry += (my-ry)*.12;
+
+  ring.style.left = rx + "px";
+  ring.style.top = ry + "px";
+
+  requestAnimationFrame(cursorLoop);
+
+}
+
+cursorLoop();
+
+
+document.querySelectorAll(
+  "a,button,.featured-frame,.card-visual,.principle"
+).forEach(el => {
+
+  el.addEventListener("mouseenter",() => {
+
+    document.body.classList.add("hovering");
+
+  });
+
+  el.addEventListener("mouseleave",() => {
+
+    document.body.classList.remove("hovering");
+
+  });
+
+});
+
+
+/* =========================================================
+   HERO PARALLAX
+========================================================= */
+
+const heroWord =
+document.getElementById("heroWord");
+
+const heroCircle =
+document.querySelector(".hero-circle");
+
+window.addEventListener("scroll",() => {
+
+  const y = window.scrollY;
+
+  if(heroWord){
+
+    heroWord.style.transform =
+      `translateY(${y * .055}px)`;
+
+  }
+
+  if(heroCircle){
+
+    heroCircle.style.marginTop =
+      `${y * .04}px`;
+
+  }
+
+},{passive:true});
+
+
+/* =========================================================
+   FEATURED ART — MOUSE DEPTH
+========================================================= */
+
+const frame =
+document.querySelector(".featured-frame");
+
+const core =
+document.querySelector(".art-core");
+
+const ringArt =
+document.querySelector(".art-ring");
+
+const mbk =
+document.querySelector(".art-mbk");
 
 if(
-  projectVisual &&
-  projectOrbit &&
-  window.matchMedia(
-    "(pointer:fine)"
-  ).matches
+  frame &&
+  window.matchMedia("(pointer:fine)").matches
 ){
 
-  projectVisual.addEventListener(
-    "mousemove",
-    e => {
+  frame.addEventListener("mousemove",e => {
 
-      const rect =
-        projectVisual.getBoundingClientRect();
+    const rect =
+      frame.getBoundingClientRect();
 
-      const x =
-        (e.clientX - rect.left)
-        / rect.width - .5;
+    const x =
+      (e.clientX - rect.left)
+      / rect.width - .5;
 
-      const y =
-        (e.clientY - rect.top)
-        / rect.height - .5;
+    const y =
+      (e.clientY - rect.top)
+      / rect.height - .5;
 
-      projectOrbit.style.transform =
-        `
-        translate(
-          calc(-50% + ${x * 30}px),
-          calc(-50% + ${y * 30}px)
-        )
-        scale(1.08)
-        `;
+    core.style.transform =
+      `
+      translate(
+        calc(-50% + ${x*35}px),
+        calc(-50% + ${y*35}px)
+      )
+      scale(1.05)
+      `;
 
-    }
-  );
+    ringArt.style.transform =
+      `
+      translate(
+        calc(-50% + ${x*18}px),
+        calc(-50% + ${y*18}px)
+      )
+      rotate(${25+x*10}deg)
+      `;
 
+    mbk.style.transform =
+      `
+      translate(
+        calc(-50% + ${x*12}px),
+        calc(-50% + ${y*12}px)
+      )
+      `;
 
-  projectVisual.addEventListener(
-    "mouseleave",
-    () => {
+  });
 
-      projectOrbit.style.transform =
-        "translate(-50%,-50%)";
+  frame.addEventListener("mouseleave",() => {
 
-    }
-  );
+    core.style.transform =
+      "translate(-50%,-50%)";
+
+    ringArt.style.transform =
+      "translate(-50%,-50%) rotate(25deg)";
+
+    mbk.style.transform =
+      "translate(-50%,-50%)";
+
+  });
 
 }
 
 
 /* =========================================================
-   08 — SMOOTH ANCHORS
+   SMOOTH ANCHORS
 ========================================================= */
 
-document
-.querySelectorAll('a[href^="#"]')
-.forEach(link => {
+document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-  link.addEventListener(
-    "click",
-    e => {
+  link.addEventListener("click",e => {
 
-      const target =
-        document.querySelector(
-          link.getAttribute("href")
-        );
+    const target =
+      document.querySelector(
+        link.getAttribute("href")
+      );
 
-      if(!target) return;
+    if(!target) return;
 
-      e.preventDefault();
+    e.preventDefault();
 
-      target.scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-      });
+    target.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
 
-    }
-  );
+  });
 
 });
 
 
 /* =========================================================
-   09 — DARK HEADER ON PHILOSOPHY
+   DARK HEADER WHEN PHILOSOPHY ENTERS
 ========================================================= */
 
 const philosophy =
-  document.querySelector(".philosophy");
+document.querySelector(".philosophy");
 
 const darkObserver =
-  new IntersectionObserver(
-    entries => {
+new IntersectionObserver(entries => {
 
-      entries.forEach(entry => {
+  entries.forEach(entry => {
 
-        if(entry.isIntersecting){
+    header.classList.toggle(
+      "dark",
+      entry.isIntersecting
+    );
 
-          header.classList.add("dark");
+  });
 
-        }else{
-
-          header.classList.remove("dark");
-
-        }
-
-      });
-
-    },
-    {
-      threshold:.05
-    }
-  );
+},{
+  threshold:.08
+});
 
 darkObserver.observe(philosophy);
 
 
 /* =========================================================
-   10 — MAGNETIC MENU BUTTON
+   MAGNETIC MENU
 ========================================================= */
 
-if(
-  window.matchMedia(
-    "(pointer:fine)"
-  ).matches
-){
+if(window.matchMedia("(pointer:fine)").matches){
 
-  menuButton.addEventListener(
-    "mousemove",
-    e => {
+  trigger.addEventListener("mousemove",e => {
 
-      const rect =
-        menuButton.getBoundingClientRect();
+    const rect =
+      trigger.getBoundingClientRect();
 
-      const x =
-        (e.clientX - rect.left - rect.width/2)
-        * .22;
+    const x =
+      (e.clientX -
+      rect.left -
+      rect.width/2) * .2;
 
-      const y =
-        (e.clientY - rect.top - rect.height/2)
-        * .22;
+    const y =
+      (e.clientY -
+      rect.top -
+      rect.height/2) * .2;
 
-      menuButton.style.transform =
-        `translate(${x}px,${y}px)`;
+    trigger.style.transform =
+      `translate(${x}px,${y}px)`;
 
-    }
-  );
+  });
 
+  trigger.addEventListener("mouseleave",() => {
 
-  menuButton.addEventListener(
-    "mouseleave",
-    () => {
+    trigger.style.transform = "";
 
-      menuButton.style.transform =
-        "";
-
-    }
-  );
+  });
 
 }
 
+
+/* =========================================================
+   IMAGE / CONTENT SAFE INIT
+========================================================= */
+
+window.addEventListener("load",() => {
+
+  document.documentElement.classList.add("ready");
+
+});
 </script>
 
 </body>
-  </html>
+</html>
