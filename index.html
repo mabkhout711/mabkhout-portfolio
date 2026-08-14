@@ -2994,4 +2994,158 @@ aiForm.onsubmit=e=>{
  e.preventDefault();
 
  const text=
-  aiInput.value.trim
+  aiInput.value.trim();
+
+ if(!text)return;
+
+ const user=
+  document.createElement('div');
+
+ user.className='ai-message';
+
+ user.style.marginRight='auto';
+
+ user.textContent=text;
+
+ aiBody.appendChild(user);
+
+ aiInput.value='';
+
+
+ setTimeout(()=>{
+
+  const reply=
+   document.createElement('div');
+
+  reply.className='ai-message';
+
+  reply.textContent=
+   'وصلت رسالتك ✦ هذه واجهة MB AI التجريبية. يمكن ربطها لاحقاً بواجهة ذكاء اصطناعي حقيقية.';
+
+  aiBody.appendChild(reply);
+
+  aiBody.scrollTop=
+   aiBody.scrollHeight;
+
+ },450);
+
+
+ aiBody.scrollTop=
+  aiBody.scrollHeight;
+
+};
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+const canvas=
+ document.getElementById('particles');
+
+const ctx=
+ canvas.getContext('2d');
+
+let particles=[];
+
+
+function resizeCanvas(){
+
+ canvas.width=innerWidth;
+
+ canvas.height=innerHeight;
+
+}
+
+
+function makeParticles(){
+
+ particles=
+  Array.from(
+   {
+    length:
+     innerWidth<700
+      ?35
+      :70
+   },
+   ()=>({
+
+    x:
+     Math.random()*innerWidth,
+
+    y:
+     Math.random()*innerHeight,
+
+    r:
+     Math.random()*1.4+.2,
+
+    v:
+     Math.random()*.25+.05
+
+   })
+  );
+
+}
+
+
+function draw(){
+
+ ctx.clearRect(
+  0,
+  0,
+  canvas.width,
+  canvas.height
+ );
+
+ ctx.fillStyle=
+  'rgba(212,175,55,.45)';
+
+ particles.forEach(p=>{
+
+  p.y-=p.v;
+
+  if(p.y<0){
+
+   p.y=innerHeight;
+
+   p.x=Math.random()*innerWidth;
+
+  }
+
+  ctx.beginPath();
+
+  ctx.arc(
+   p.x,
+   p.y,
+   p.r,
+   0,
+   Math.PI*2
+  );
+
+  ctx.fill();
+
+ });
+
+ requestAnimationFrame(draw);
+
+}
+
+
+resizeCanvas();
+
+makeParticles();
+
+draw();
+
+addEventListener(
+ 'resize',
+ ()=>{
+  resizeCanvas();
+  makeParticles();
+ }
+);
+
+</script>
+
+</body>
+</html>
