@@ -2244,4 +2244,33 @@ document.addEventListener(
   event => {
 
     if(
-      event.key === "Enter
+      event.key === "Enter" &&
+      document.activeElement?.classList.contains(
+        "gate-enter"
+      )
+    ){
+      document.activeElement.click();
+    }
+
+  }
+);
+
+
+/* =====================================================
+   PAGE READY
+===================================================== */
+
+window.addEventListener(
+  "load",
+  () => {
+
+    document.documentElement.classList.add(
+      "ready"
+    );
+
+  }
+);
+</script>
+
+</body>
+</html>
