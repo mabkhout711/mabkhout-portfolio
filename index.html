@@ -1,676 +1,797 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#030407">
-<meta name="description" content="MABKHOUT — تجربة رقمية شخصية فاخرة">
-<title>MABKHOUT — مرحبًا بك</title>
+    <meta charset="UTF-8">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
 
-<style>
-:root{
-    --bg:#030407;
-    --gold:#d9aa35;
-    --gold-light:#f4d477;
-    --white:#f7f4eb;
-    --muted:#8e919c;
-    --line:rgba(255,255,255,.10);
-}
+    <meta name="theme-color" content="#020307">
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
-}
+    <meta
+        name="description"
+        content="Mabkhout — مرحبًا بك في تجربتي الرقمية."
+    >
 
-html{
-    scroll-behavior:smooth;
-}
+    <title>MABKHOUT — مرحبًا بك</title>
 
-body{
-    min-height:100vh;
-    overflow:hidden;
-    background:var(--bg);
-    color:var(--white);
-    font-family:"Cairo",sans-serif;
-}
+    <style>
+        /* =========================================================
+           RESET
+        ========================================================= */
 
-/* =========================
-   LOADING SCREEN
-========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.loader{
-    position:fixed;
-    inset:0;
-    z-index:9999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(217,170,53,.12),
-            transparent 30%
-        ),
-        #030407;
-    transition:
-        opacity .8s ease,
-        visibility .8s ease;
-}
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
 
-.loader.hide{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-}
+        body {
+            background: #020307;
+            color: #ffffff;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-.loader-content{
-    width:min(650px,88%);
-    text-align:center;
-    animation:loaderIn 1.2s ease both;
-}
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
 
-.logo{
-    position:relative;
-    display:inline-flex;
-    justify-content:center;
-    align-items:center;
-    font-family:"Playfair Display",serif;
-    font-size:clamp(90px,20vw,160px);
-    line-height:.8;
-    letter-spacing:-12px;
-    color:var(--gold);
-    text-shadow:
-        0 0 20px rgba(217,170,53,.20),
-        0 0 60px rgba(217,170,53,.10);
-    direction:ltr;
-}
+        button {
+            font-family: inherit;
+        }
 
-.logo::after{
-    content:"";
-    position:absolute;
-    width:110%;
-    height:45%;
-    bottom:-15%;
-    left:-5%;
-    background:rgba(217,170,53,.13);
-    filter:blur(40px);
-    z-index:-1;
-}
+        /* =========================================================
+           LOADER
+        ========================================================= */
 
-.brand{
-    margin-top:30px;
-    direction:ltr;
-    font-size:14px;
-    font-weight:500;
-    letter-spacing:10px;
-    color:#8d929d;
-}
+        #loader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
 
-.progress-area{
-    margin-top:65px;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.progress-line{
-    position:relative;
-    width:100%;
-    height:2px;
-    background:rgba(255,255,255,.10);
-    overflow:hidden;
-}
+            background:
+                radial-gradient(
+                    circle at 50% 42%,
+                    rgba(214, 166, 47, 0.08),
+                    transparent 30%
+                ),
+                #020307;
 
-.progress-line::after{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        var(--gold),
-        var(--gold-light)
-    );
-    transform:translateX(-100%);
-    animation:progress 1.4s cubic-bezier(.65,0,.35,1) forwards;
-}
+            transition:
+                opacity 0.9s ease,
+                visibility 0.9s ease;
+        }
 
-.percent{
-    margin-top:22px;
-    font-family:"Playfair Display",serif;
-    font-size:30px;
-    color:var(--gold-light);
-    direction:ltr;
-}
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
 
-.welcome{
-    margin-top:40px;
-    font-size:18px;
-    font-weight:500;
-    letter-spacing:4px;
-    color:#aeb1bb;
-}
+        /* =========================================================
+           BACKGROUND GRID
+        ========================================================= */
 
-.enter{
-    margin-top:34px;
-    padding:14px 38px;
-    border:1px solid rgba(217,170,53,.45);
-    border-radius:50px;
-    background:rgba(217,170,53,.04);
-    color:var(--gold-light);
-    font-family:inherit;
-    font-size:14px;
-    cursor:pointer;
-    opacity:0;
-    transform:translateY(10px);
-    animation:buttonIn .7s 1.5s ease forwards;
-    transition:.3s ease;
-}
+        .loader-grid {
+            position: absolute;
+            inset: 0;
 
-.enter:hover{
-    background:var(--gold);
-    color:#111;
-    box-shadow:0 0 30px rgba(217,170,53,.25);
-}
+            opacity: 0.35;
 
-/* =========================
-   MAIN SITE
-========================= */
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                );
 
-.site{
-    min-height:100vh;
-    overflow:auto;
-    opacity:0;
-    transform:translateY(15px);
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
-}
+            background-size:
+                70px 70px;
 
-.site.show{
-    opacity:1;
-    transform:none;
-}
+            transform:
+                perspective(500px)
+                rotateX(55deg)
+                scale(1.6)
+                translateY(25%);
 
-.hero{
-    position:relative;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:40px 20px;
-    overflow:hidden;
-    background:
-        radial-gradient(
-            circle at 50% 40%,
-            rgba(217,170,53,.10),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 20% 80%,
-            rgba(61,77,110,.12),
-            transparent 30%
-        );
-}
+            transform-origin: center bottom;
 
-.grid{
-    position:absolute;
-    inset:0;
-    opacity:.18;
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.035) 1px,
-            transparent 1px
-        );
-    background-size:70px 70px;
-    transform:perspective(600px) rotateX(58deg) scale(1.8);
-    transform-origin:center bottom;
-}
+            mask-image:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,1),
+                    transparent 75%
+                );
 
-.glow{
-    position:absolute;
-    width:350px;
-    height:350px;
-    border-radius:50%;
-    background:rgba(217,170,53,.07);
-    filter:blur(80px);
-}
+            -webkit-mask-image:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,1),
+                    transparent 75%
+                );
+        }
 
-.glow.one{
-    top:5%;
-    left:10%;
-}
+        /* =========================================================
+           CENTER
+        ========================================================= */
 
-.glow.two{
-    bottom:0;
-    right:5%;
-}
+        .loader-content {
+            position: relative;
+            z-index: 2;
 
-.hero-content{
-    position:relative;
-    z-index:2;
-    max-width:900px;
-}
+            width: min(90%, 520px);
 
-.small-title{
-    color:var(--gold);
-    font-size:13px;
-    letter-spacing:7px;
-    direction:ltr;
-    margin-bottom:25px;
-}
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-.main-title{
-    font-family:"Playfair Display",serif;
-    font-size:clamp(55px,14vw,150px);
-    line-height:.9;
-    direction:ltr;
-    color:#f4f0e5;
-    letter-spacing:-5px;
-}
+            text-align: center;
+        }
 
-.main-title span{
-    color:var(--gold);
-}
+        /* =========================================================
+           LOGO
+        ========================================================= */
 
-.description{
-    max-width:650px;
-    margin:35px auto 0;
-    color:#9a9da7;
-    font-size:16px;
-    line-height:2;
-}
+        .logo {
+            position: relative;
 
-.buttons{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    margin-top:40px;
-    flex-wrap:wrap;
-}
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
 
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    min-width:150px;
-    padding:14px 25px;
-    border-radius:50px;
-    text-decoration:none;
-    transition:.3s ease;
-    font-family:inherit;
-    font-size:14px;
-}
+            font-size: clamp(92px, 24vw, 150px);
+            line-height: 0.8;
 
-.btn.primary{
-    background:var(--gold);
-    color:#111;
-}
+            letter-spacing: -12px;
 
-.btn.primary:hover{
-    background:var(--gold-light);
-    transform:translateY(-3px);
-    box-shadow:0 15px 40px rgba(217,170,53,.20);
-}
+            color: #dcae32;
 
-.btn.secondary{
-    border:1px solid var(--line);
-    color:#ddd;
-    background:rgba(255,255,255,.02);
-}
+            text-shadow:
+                0 0 15px rgba(220, 174, 50, 0.15),
+                0 0 45px rgba(220, 174, 50, 0.08);
 
-.btn.secondary:hover{
-    border-color:rgba(217,170,53,.5);
-    color:var(--gold-light);
-    transform:translateY(-3px);
-}
+            user-select: none;
 
-.scroll{
-    position:absolute;
-    bottom:30px;
-    left:50%;
-    transform:translateX(-50%);
-    color:#777b85;
-    font-size:11px;
-    letter-spacing:4px;
-    direction:ltr;
-}
+            animation:
+                logoReveal 1.2s ease both;
+        }
 
-/* =========================
-   ANIMATIONS
-========================= */
+        @keyframes logoReveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.92);
+                filter: blur(10px);
+            }
 
-@keyframes progress{
-    to{
-        transform:translateX(0);
-    }
-}
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
 
-@keyframes loaderIn{
-    from{
-        opacity:0;
-        transform:translateY(25px) scale(.97);
-    }
-    to{
-        opacity:1;
-        transform:none;
-    }
-}
+        .brand-name {
+            margin-top: 42px;
 
-@keyframes buttonIn{
-    to{
-        opacity:1;
-        transform:none;
-    }
-}
+            font-size: 15px;
+            letter-spacing: 11px;
 
-/* =========================
-   MOBILE
-========================= */
+            color: rgba(210, 218, 235, 0.65);
 
-@media(max-width:600px){
+            direction: ltr;
 
-    .loader-content{
-        width:86%;
-    }
+            animation:
+                brandReveal 1s ease 0.3s both;
+        }
 
-    .brand{
-        font-size:11px;
-        letter-spacing:7px;
-    }
+        @keyframes brandReveal {
+            from {
+                opacity: 0;
+                letter-spacing: 3px;
+            }
 
-    .progress-area{
-        margin-top:50px;
-    }
+            to {
+                opacity: 1;
+                letter-spacing: 11px;
+            }
+        }
 
-    .welcome{
-        font-size:16px;
-        letter-spacing:2px;
-    }
+        /* =========================================================
+           LINE
+        ========================================================= */
 
-    .main-title{
-        letter-spacing:-2px;
-    }
+        .loading-line {
+            position: relative;
 
-    .description{
-        font-size:14px;
-        padding:0 10px;
-    }
+            width: 100%;
+            height: 2px;
 
-    .buttons{
-        gap:10px;
-    }
+            margin-top: 68px;
 
-    .btn{
-        width:100%;
-        max-width:260px;
-    }
-}
+            background:
+                rgba(255,255,255,0.12);
 
-@media(prefers-reduced-motion:reduce){
+            overflow: hidden;
+        }
 
-    *,
-    *::before,
-    *::after{
-        animation-duration:.01ms !important;
-        animation-iteration-count:1 !important;
-        transition-duration:.01ms !important;
-    }
-}
-</style>
+        .loading-progress {
+            position: absolute;
+
+            right: auto;
+            left: 0;
+            top: 0;
+
+            width: 0%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #9c7620,
+                    #f1c64e,
+                    #fff0a1
+                );
+
+            box-shadow:
+                0 0 12px rgba(241,198,78,0.5);
+
+            transition:
+                width 0.15s linear;
+        }
+
+        /* =========================================================
+           PERCENT
+        ========================================================= */
+
+        .percent {
+            margin-top: 32px;
+
+            min-width: 80px;
+
+            color: #e4bc45;
+
+            font-size: 28px;
+            font-weight: 300;
+
+            letter-spacing: 2px;
+
+            direction: ltr;
+
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* =========================================================
+           WELCOME
+        ========================================================= */
+
+        .welcome {
+            margin-top: 38px;
+
+            font-size: 18px;
+            font-weight: 400;
+
+            color: rgba(255,255,255,0.82);
+
+            letter-spacing: 2px;
+
+            opacity: 0;
+
+            transform: translateY(8px);
+
+            transition:
+                opacity 0.6s ease,
+                transform 0.6s ease;
+        }
+
+        .welcome.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================================
+           ENTER BUTTON
+        ========================================================= */
+
+        .enter-button {
+            margin-top: 28px;
+
+            padding: 13px 30px;
+
+            border: 1px solid rgba(220,174,50,0.5);
+
+            border-radius: 999px;
+
+            background:
+                rgba(220,174,50,0.06);
+
+            color: #e7c65f;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            opacity: 0;
+            pointer-events: none;
+
+            transform: translateY(10px);
+
+            transition:
+                all 0.3s ease;
+        }
+
+        .enter-button.show {
+            opacity: 1;
+            pointer-events: auto;
+
+            transform: translateY(0);
+        }
+
+        .enter-button:hover {
+            background: rgba(220,174,50,0.13);
+
+            border-color:
+                rgba(220,174,50,0.9);
+
+            box-shadow:
+                0 0 25px rgba(220,174,50,0.1);
+        }
+
+        .enter-button:active {
+            transform: scale(0.96);
+        }
+
+        /* =========================================================
+           MAIN WEBSITE
+        ========================================================= */
+
+        #site {
+            position: fixed;
+            inset: 0;
+
+            z-index: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+            background:
+                radial-gradient(
+                    circle at 50% 30%,
+                    rgba(214,166,47,0.07),
+                    transparent 32%
+                ),
+                #020307;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform: scale(1.03);
+
+            transition:
+                opacity 1s ease,
+                visibility 1s ease,
+                transform 1s ease;
+        }
+
+        #site.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .site-content {
+            max-width: 900px;
+
+            text-align: center;
+        }
+
+        .site-logo {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: clamp(70px, 18vw, 140px);
+
+            color: #dcae32;
+
+            line-height: 0.8;
+
+            letter-spacing: -8px;
+
+            text-shadow:
+                0 0 35px rgba(220,174,50,0.1);
+        }
+
+        .site-title {
+            margin-top: 42px;
+
+            font-size: clamp(30px, 7vw, 60px);
+
+            font-weight: 500;
+
+            color: #ffffff;
+        }
+
+        .site-description {
+            margin-top: 18px;
+
+            color:
+                rgba(220,226,238,0.65);
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+        .site-line {
+            width: 80px;
+            height: 1px;
+
+            margin: 32px auto;
+
+            background: #dcae32;
+
+            box-shadow:
+                0 0 15px rgba(220,174,50,0.35);
+        }
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 600px) {
+
+            .loader-content {
+                width: 82%;
+            }
+
+            .logo {
+                font-size: 100px;
+            }
+
+            .brand-name {
+                margin-top: 34px;
+
+                font-size: 12px;
+
+                letter-spacing: 8px;
+            }
+
+            .loading-line {
+                margin-top: 60px;
+            }
+
+            .percent {
+                margin-top: 26px;
+
+                font-size: 25px;
+            }
+
+            .welcome {
+                margin-top: 30px;
+
+                font-size: 17px;
+            }
+
+            .enter-button {
+                margin-top: 24px;
+            }
+        }
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- =========================
-     LOADING SCREEN
-========================= -->
+    <!-- =========================================================
+         LOADING SCREEN
+    ========================================================= -->
 
-<div class="loader" id="loader">
+    <section id="loader">
 
-    <div class="loader-content">
+        <div class="loader-grid"></div>
 
-        <div class="logo">
-            MB
-        </div>
+        <div class="loader-content">
 
-        <div class="brand">
-            MABKHOUT
-        </div>
-
-        <div class="progress-area">
-
-            <div class="progress-line"></div>
-
-            <div class="percent" id="percent">
-                0%
+            <div class="logo">
+                MB
             </div>
 
-        </div>
-
-        <!-- تم استبدال النص القديم -->
-        <div class="welcome">
-            مرحبًا بك
-        </div>
-
-        <button class="enter" id="enter">
-            دخول
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     MAIN WEBSITE
-========================= -->
-
-<main class="site" id="site">
-
-    <section class="hero">
-
-        <div class="grid"></div>
-
-        <div class="glow one"></div>
-        <div class="glow two"></div>
-
-        <div class="hero-content">
-
-            <div class="small-title">
+            <div class="brand-name">
                 MABKHOUT
             </div>
 
-            <h1 class="main-title">
-                M<span>B</span>
+            <div class="loading-line">
+                <div
+                    id="progress"
+                    class="loading-progress">
+                </div>
+            </div>
+
+            <div
+                id="percent"
+                class="percent">
+                0%
+            </div>
+
+            <div
+                id="welcome"
+                class="welcome">
+                مرحبًا بك
+            </div>
+
+            <button
+                id="enterButton"
+                class="enter-button"
+                type="button">
+                دخول الموقع
+            </button>
+
+        </div>
+    </section>
+
+
+    <!-- =========================================================
+         MAIN WEBSITE
+    ========================================================= -->
+
+    <main id="site">
+
+        <div class="site-content">
+
+            <div class="site-logo">
+                MB
+            </div>
+
+            <h1 class="site-title">
+                مرحبًا بك
             </h1>
 
-            <p class="description">
-                مرحبًا بك في مساحتي الرقمية.
-                تجربة تجمع بين الهوية، التصميم، التقنية
-                والتفاصيل التي تصنع الفرق.
-            </p>
+            <div class="site-line"></div>
 
-            <div class="buttons">
-
-                <a href="#about" class="btn primary">
-                    اكتشف الموقع
-                </a>
-
-                <a href="mailto:mabkhut@mabkhut.com" class="btn secondary">
-                    تواصل معي
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="scroll">
-            SCROLL TO EXPLORE
-        </div>
-
-    </section>
-
-
-    <section id="about"
-             style="
-             min-height:60vh;
-             display:flex;
-             align-items:center;
-             justify-content:center;
-             text-align:center;
-             padding:60px 25px;
-             background:#05060a;
-             ">
-
-        <div style="max-width:700px">
-
-            <div style="
-                color:#d9aa35;
-                letter-spacing:5px;
-                font-size:12px;
-                margin-bottom:20px;
-                direction:ltr;
-            ">
-                ABOUT
-            </div>
-
-            <h2 style="
-                font-family:'Playfair Display',serif;
-                font-size:clamp(35px,8vw,70px);
-                margin-bottom:25px;
-            ">
-                أهلاً بك في عالمي
-            </h2>
-
-            <p style="
-                color:#9296a0;
-                line-height:2;
-                font-size:15px;
-            ">
-                هذه البداية فقط.
-                الموقع مصمم ليكون قابلًا للتوسع وإضافة
-                أعمالك ومشاريعك وروابطك وهويتك الشخصية
-                بطريقة فاخرة وعصرية.
+            <p class="site-description">
+                أهلاً بك في عالم مبخوت.
+                <br>
+                تجربة رقمية صُممت بأسلوب مختلف.
             </p>
 
         </div>
 
-    </section>
-
-</main>
+    </main>
 
 
-<script>
-/* =========================================
-   SMART LOADER
-   لن يبقى الموقع عالقًا عند 0%
-========================================= */
+    <script>
 
-const loader = document.getElementById("loader");
-const site = document.getElementById("site");
-const percent = document.getElementById("percent");
-const enter = document.getElementById("enter");
+        /* =========================================================
+           MABKHOUT LOADER
+        ========================================================= */
 
-let progress = 0;
-let opened = false;
+        (() => {
 
-/*
-   تشغيل نسبة التحميل بشكل مستقل.
-   لا نعتمد على تحميل الصور أو الشبكة،
-   لذلك لن تتجمد النسبة عند 0%.
-*/
-
-const progressTimer = setInterval(() => {
-
-    progress += Math.floor(Math.random() * 15) + 8;
-
-    if(progress >= 100){
-        progress = 100;
-        clearInterval(progressTimer);
-    }
-
-    percent.textContent = progress + "%";
-
-}, 100);
+            "use strict";
 
 
-/*
-   فتح الموقع بشكل مضمون بعد وقت قصير.
-*/
+            const loader =
+                document.getElementById("loader");
 
-function openSite(){
+            const site =
+                document.getElementById("site");
 
-    if(opened) return;
+            const progress =
+                document.getElementById("progress");
 
-    opened = true;
+            const percent =
+                document.getElementById("percent");
 
-    progress = 100;
-    percent.textContent = "100%";
+            const welcome =
+                document.getElementById("welcome");
 
-    setTimeout(() => {
-
-        loader.classList.add("hide");
-        site.classList.add("show");
-
-        document.body.style.overflow = "auto";
-
-    }, 250);
-}
+            const enterButton =
+                document.getElementById("enterButton");
 
 
-/*
-   فتح تلقائي.
-*/
+            let currentProgress = 0;
 
-window.addEventListener("load", () => {
-
-    setTimeout(openSite, 1600);
-
-});
+            let finished = false;
 
 
-/*
-   زر الدخول اليدوي.
-*/
+            /* =====================================================
+               تحديث النسبة
+            ===================================================== */
 
-enter.addEventListener("click", openSite);
+            function updateProgress(value) {
+
+                currentProgress =
+                    Math.max(
+                        0,
+                        Math.min(100, value)
+                    );
+
+                progress.style.width =
+                    currentProgress + "%";
+
+                percent.textContent =
+                    Math.round(currentProgress) + "%";
+            }
 
 
-/*
-   حماية إضافية:
-   حتى لو حصل خطأ في أي شيء،
-   الموقع سيدخل بعد 3 ثوانٍ كحد أقصى.
-*/
+            /* =====================================================
+               دخول الموقع
+            ===================================================== */
 
-setTimeout(openSite, 3000);
+            function enterSite() {
+
+                if (finished) {
+                    return;
+                }
+
+                finished = true;
+
+                updateProgress(100);
+
+                welcome.classList.add("show");
+
+                enterButton.classList.add("show");
+
+                /*
+                 * ننتظر قليلًا حتى تظهر 100%
+                 * ثم نفتح الموقع.
+                 */
+
+                setTimeout(() => {
+
+                    loader.classList.add("hidden");
+
+                    site.classList.add("visible");
+
+                    /*
+                     * السماح بالتمرير بعد فتح الموقع
+                     */
+
+                    document.body.style.overflow =
+                        "auto";
+
+                }, 650);
+            }
 
 
-/*
-   الضغط على الشاشة أثناء التحميل
-   يفتح الموقع أيضًا.
-*/
+            /* =====================================================
+               التحميل الآمن
+               
+               مهم:
+               هذا الجزء هو الذي يمنع مشكلة 0%.
+               حتى لو فشل شيء في الصفحة، سيتم الدخول.
+            ===================================================== */
 
-loader.addEventListener("click", (event) => {
+            function startLoader() {
 
-    if(event.target === loader){
-        openSite();
-    }
+                /*
+                 * نستخدم مدة ثابتة بدل انتظار صور
+                 * أو مكتبات خارجية قد تتسبب في التعليق.
+                 */
 
-});
-</script>
+                const duration = 2200;
+
+                const startTime =
+                    performance.now();
+
+
+                function animate(now) {
+
+                    const elapsed =
+                        now - startTime;
+
+                    let value =
+                        (elapsed / duration) * 100;
+
+
+                    /*
+                     * نبطئ قليلًا قرب النهاية
+                     * حتى يبدو التحميل طبيعيًا.
+                     */
+
+                    if (value < 85) {
+
+                        value *= 1;
+
+                    } else {
+
+                        value =
+                            85 +
+                            (value - 85) * 0.75;
+                    }
+
+
+                    updateProgress(value);
+
+
+                    if (elapsed < duration) {
+
+                        requestAnimationFrame(animate);
+
+                    } else {
+
+                        enterSite();
+                    }
+                }
+
+
+                requestAnimationFrame(animate);
+            }
+
+
+            /* =====================================================
+               زر الدخول اليدوي
+            ===================================================== */
+
+            enterButton.addEventListener(
+                "click",
+                enterSite
+            );
+
+
+            /* =====================================================
+               حماية إضافية
+               
+               إذا حدث أي خطأ أو تأخر غير متوقع،
+               لا نترك المستخدم عالقًا.
+            ===================================================== */
+
+            setTimeout(() => {
+
+                if (!finished) {
+                    enterSite();
+                }
+
+            }, 5000);
+
+
+            /* =====================================================
+               بدء التشغيل
+            ===================================================== */
+
+            startLoader();
+
+
+        })();
+
+    </script>
 
 </body>
 </html>
