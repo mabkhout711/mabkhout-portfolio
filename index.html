@@ -1,1818 +1,4765 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-    <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0,
-          maximum-scale=1.0, user-scalable=no,
-          viewport-fit=cover">
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1.0,viewport-fit=cover"
+>
+
+<title>مبخوت بن عبدالله | MBK</title>
+
+<meta
+    name="description"
+    content="الموقع الشخصي الرسمي لمبخوت بن عبدالله — MBK."
+>
 
-    <meta name="theme-color" content="#0b0c0b">
+<meta name="author" content="مبخوت بن عبدالله">
+<meta name="theme-color" content="#061426">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="index,follow">
 
-    <meta name="description"
-          content="الموقع الشخصي الرسمي لمبخوت بن عبدالله — MBK">
+<link
+    rel="canonical"
+    href="https://mabkhut.com/"
+>
 
-    <title>مبخوت بن عبدالله | MBK</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="مبخوت بن عبدالله | MBK">
+<meta
+    property="og:description"
+    content="الموقع الشخصي الرسمي لمبخوت بن عبدالله."
+>
+<meta
+    property="og:url"
+    content="https://mabkhut.com/"
+>
+<meta property="og:site_name" content="MBK">
 
-    <!-- =========================
-         FONTS
-    ========================== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta
+    name="twitter:title"
+    content="مبخوت بن عبدالله | MBK"
+>
+<meta
+    name="twitter:description"
+    content="الموقع الشخصي الرسمي لمبخوت بن عبدالله."
+>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap"
-          rel="stylesheet">
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
 
+<link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
 
-    <style>
 
-        /* =====================================================
-           ROOT
-        ===================================================== */
+<style>
 
-        :root {
-            --black: #090a09;
-            --black-2: #0d0f0d;
-            --black-3: #111310;
+/* =========================================================
+   MBK V21
+   CLEAN / FIXED VERSION
+========================================================= */
 
-            --gold: #d9ad28;
-            --gold-light: #f7d765;
-            --gold-dark: #8e6d0e;
+:root{
 
-            --cream: #fff8dc;
-            --white: #ffffff;
+    --navy:#061426;
+    --navy-2:#081b31;
+    --navy-3:#0b223c;
 
-            --gray: #a5a8a3;
-            --line: rgba(218, 174, 39, .16);
+    --deep:#020914;
+    --deep-2:#030d1b;
 
-            --glass: rgba(17, 18, 16, .72);
+    --gold:#d4af37;
+    --gold-2:#b88918;
 
-            --header-height: 92px;
+    --gold-light:#f5df7a;
+    --gold-pale:#fff1a8;
 
-            --transition:
-                cubic-bezier(.22, 1, .36, 1);
-        }
+    --white:#f8f7f2;
+    --text:#d8dce2;
+    --muted:#8b97a6;
 
+    --line:rgba(212,175,55,.17);
+    --line-strong:rgba(212,175,55,.42);
 
-        /* =====================================================
-           RESET
-        ===================================================== */
+    --glass:rgba(255,255,255,.035);
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    --shadow:
+        0 30px 100px rgba(0,0,0,.45);
 
-        html {
-            width: 100%;
-            min-height: 100%;
-            scroll-behavior: smooth;
-            background: var(--black);
-        }
+    --ease:
+        cubic-bezier(.22,1,.36,1);
+}
 
-        body {
-            width: 100%;
-            min-height: 100%;
-            margin: 0;
 
-            overflow-x: hidden;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-            background:
-                radial-gradient(
-                    circle at 50% 15%,
-                    rgba(205, 161, 35, .06),
-                    transparent 32%
-                ),
-                var(--black);
 
-            color: var(--white);
+html{
 
-            font-family: "Cairo", sans-serif;
+    scroll-behavior:smooth;
 
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-        }
+    background:
+        var(--deep);
 
-        button,
-        a {
-            font-family: inherit;
-        }
+}
 
-        button {
-            border: 0;
-            outline: none;
-        }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+body{
 
+    min-height:100vh;
 
-        /* =====================================================
-           BACKGROUND GRID
-        ===================================================== */
+    overflow-x:hidden;
 
-        body::before {
-            content: "";
+    font-family:
+        "Cairo",
+        "Noto Kufi Arabic",
+        sans-serif;
 
-            position: fixed;
-            inset: 0;
+    color:var(--white);
 
-            z-index: -3;
+    background:
 
-            pointer-events: none;
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(212,175,55,.12),
+            transparent 30%
+        ),
 
-            background-image:
-                linear-gradient(
-                    rgba(215, 174, 42, .055) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(215, 174, 42, .055) 1px,
-                    transparent 1px
-                );
+        radial-gradient(
+            circle at 0% 35%,
+            rgba(20,58,96,.30),
+            transparent 38%
+        ),
 
-            background-size: 100px 100px;
+        radial-gradient(
+            circle at 100% 70%,
+            rgba(212,175,55,.035),
+            transparent 30%
+        ),
 
-            mask-image:
-                linear-gradient(
-                    to bottom,
-                    black,
-                    transparent 92%
-                );
-        }
+        linear-gradient(
+            145deg,
+            #020914 0%,
+            #061426 45%,
+            #030b16 100%
+        );
 
+    -webkit-font-smoothing:antialiased;
 
-        /* =====================================================
-           AMBIENT LIGHT
-        ===================================================== */
+    text-rendering:optimizeLegibility;
+}
 
-        .ambient {
-            position: fixed;
 
-            width: 480px;
-            height: 480px;
+body.locked{
+    overflow:hidden;
+}
 
-            border-radius: 50%;
 
-            pointer-events: none;
+body::before{
 
-            filter: blur(80px);
+    content:"";
 
-            opacity: .13;
+    position:fixed;
 
-            z-index: -2;
-        }
+    inset:0;
 
-        .ambient.one {
-            top: -240px;
-            right: -170px;
+    pointer-events:none;
 
-            background: var(--gold);
-        }
+    z-index:-10;
 
-        .ambient.two {
-            bottom: -250px;
-            left: -180px;
+    opacity:.045;
 
-            background: #9c7614;
-        }
+    background-image:
 
+        linear-gradient(
+            rgba(255,255,255,.08) 1px,
+            transparent 1px
+        ),
 
-        /* =====================================================
-           HEADER
-        ===================================================== */
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.08) 1px,
+            transparent 1px
+        );
 
-        header {
-            position: fixed;
+    background-size:80px 80px;
 
-            top: 0;
-            right: 0;
-            left: 0;
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 85%
+        );
+}
 
-            height: var(--header-height);
 
-            z-index: 1000;
+body::after{
 
-            background:
-                rgba(8, 9, 8, .82);
+    content:"";
 
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+    position:fixed;
 
-            border-bottom:
-                1px solid rgba(218, 174, 39, .06);
-        }
+    width:500px;
+    height:500px;
 
-        .header-inner {
-            width: 100%;
-            height: 100%;
+    top:15%;
+    left:50%;
 
-            padding:
-                0 clamp(20px, 5vw, 70px);
+    transform:translateX(-50%);
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    border-radius:50%;
 
+    background:
+        rgba(212,175,55,.035);
 
-        /* =====================================================
-           LOGO
-        ===================================================== */
+    filter:blur(120px);
 
-        .logo {
-            direction: ltr;
+    pointer-events:none;
 
-            font-family: "Playfair Display", serif;
+    z-index:-9;
+}
 
-            font-size: clamp(29px, 4vw, 45px);
 
-            font-weight: 800;
+::selection{
 
-            letter-spacing: .20em;
+    color:#020914;
 
-            color: var(--gold-light);
+    background:
+        var(--gold-light);
+}
 
-            text-shadow:
-                0 0 24px rgba(218, 174, 39, .12);
-        }
 
+a{
 
-        /* =====================================================
-           MENU BUTTON
-           ↓ تم تصغيره هنا بحوالي 20%
-        ===================================================== */
+    color:inherit;
 
-        .menu-button {
+    text-decoration:none;
+}
 
-            /* كان التصميم أكبر، وتم تصغيره */
-            width: 74px;
-            height: 74px;
 
-            border-radius: 25px;
+button{
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    font-family:inherit;
+}
 
-            cursor: pointer;
 
-            color: var(--white);
+img{
 
-            background:
-                rgba(22, 23, 20, .78);
+    max-width:100%;
+}
 
-            border:
-                1px solid rgba(218, 174, 39, .28);
 
-            box-shadow:
-                inset 0 0 20px rgba(255, 255, 255, .015),
-                0 10px 35px rgba(0, 0, 0, .22);
+button,
+a{
 
-            transition:
-                transform .4s var(--transition),
-                border-color .4s ease,
-                background .4s ease;
-        }
+    -webkit-tap-highlight-color:
+        transparent;
+}
 
-        .menu-button:hover {
-            transform: translateY(-3px);
 
-            border-color:
-                rgba(247, 215, 101, .65);
+/* =========================================================
+   LOADER
+========================================================= */
 
-            background:
-                rgba(30, 30, 24, .9);
-        }
+.loader{
 
-        .hamburger {
-            width: 27px;
-            height: 22px;
+    position:fixed;
 
-            position: relative;
+    inset:0;
 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    z-index:99999;
 
-        .hamburger span {
-            width: 100%;
-            height: 2px;
+    display:flex;
 
-            border-radius: 20px;
+    align-items:center;
 
-            background: var(--white);
+    justify-content:center;
 
-            transition:
-                transform .45s var(--transition),
-                opacity .3s ease;
-        }
+    background:
 
-        .menu-button.active .hamburger span:nth-child(1) {
-            transform:
-                translateY(10px)
-                rotate(45deg);
-        }
+        radial-gradient(
+            circle at center,
+            #0a1d34,
+            #020914 65%
+        );
 
-        .menu-button.active .hamburger span:nth-child(2) {
-            opacity: 0;
-        }
+    opacity:1;
 
-        .menu-button.active .hamburger span:nth-child(3) {
-            transform:
-                translateY(-10px)
-                rotate(-45deg);
-        }
+    visibility:visible;
 
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+}
 
-        /* =====================================================
-           FULLSCREEN MENU
-        ===================================================== */
 
-        .menu-overlay {
+.loader.hide{
 
-            position: fixed;
-            inset: 0;
+    opacity:0;
 
-            z-index: 900;
+    visibility:hidden;
 
-            visibility: hidden;
-            opacity: 0;
+    pointer-events:none;
+}
 
-            background:
-                radial-gradient(
-                    circle at 50% 20%,
-                    rgba(218, 174, 39, .08),
-                    transparent 40%
-                ),
-                rgba(7, 8, 7, .98);
 
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+.loader-inner{
 
-            transition:
-                opacity .5s ease,
-                visibility .5s ease;
-        }
+    text-align:center;
+}
 
-        .menu-overlay.active {
-            visibility: visible;
-            opacity: 1;
-        }
 
-        .menu-content {
+.loader-logo{
 
-            width: 100%;
-            min-height: 100dvh;
+    direction:ltr;
 
-            padding:
-                calc(var(--header-height) + 70px)
-                30px
-                50px;
+    font-family:
+        Arial,
+        sans-serif;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+    font-size:42px;
 
-            gap: 12px;
-        }
+    font-weight:700;
 
-        .menu-link {
+    letter-spacing:12px;
 
-            width: min(520px, 100%);
+    color:
+        var(--gold-light);
 
-            padding: 22px 28px;
+    animation:
+        loaderPulse 1s ease both;
+}
 
-            text-align: center;
 
-            font-size: clamp(24px, 5vw, 38px);
-            font-weight: 700;
+.loader-line{
 
-            color: #eee;
+    width:120px;
 
-            border-bottom:
-                1px solid rgba(218, 174, 39, .12);
+    height:1px;
 
-            transition:
-                color .3s ease,
-                letter-spacing .3s ease;
-        }
+    margin:
+        20px auto 0;
 
-        .menu-link:hover {
-            color: var(--gold-light);
-            letter-spacing: .04em;
-        }
+    overflow:hidden;
 
+    background:
+        rgba(212,175,55,.15);
+}
 
-        /* =====================================================
-           HERO
-        ===================================================== */
 
-        .hero {
+.loader-line::after{
 
-            min-height: 100dvh;
+    content:"";
 
-            position: relative;
+    display:block;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    width:100%;
 
-            padding:
-                calc(var(--header-height) + 70px)
-                25px
-                70px;
+    height:100%;
 
-            overflow: hidden;
-        }
+    background:
 
-        .hero-inner {
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold-light),
+            transparent
+        );
 
-            width: min(1150px, 100%);
+    animation:
+        loaderLine 1s ease both;
+}
 
-            text-align: center;
 
-            position: relative;
+@keyframes loaderPulse{
 
-            z-index: 2;
-        }
+    0%{
+        opacity:0;
+        transform:scale(.9);
+    }
 
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
 
-        /* =====================================================
-           STATUS
-        ===================================================== */
+}
 
-        .status {
 
-            display: inline-flex;
-            align-items: center;
-            gap: 13px;
+@keyframes loaderLine{
 
-            padding:
-                14px 28px;
+    0%{
+        transform:translateX(-100%);
+    }
 
-            margin-bottom: 60px;
+    100%{
+        transform:translateX(100%);
+    }
 
-            border-radius: 100px;
+}
 
-            background:
-                rgba(20, 21, 18, .60);
 
-            border:
-                1px solid rgba(218, 174, 39, .25);
+/* =========================================================
+   PROGRESS
+========================================================= */
 
-            color: #bfc1bc;
+.progress{
 
-            font-size: clamp(15px, 2vw, 20px);
+    position:fixed;
 
-            backdrop-filter: blur(10px);
-        }
+    top:0;
+    right:0;
+    left:0;
 
-        .status-dot {
+    height:2px;
 
-            width: 14px;
-            height: 14px;
+    z-index:10000;
 
-            border-radius: 50%;
+    pointer-events:none;
 
-            background: #3df58c;
+    background:
+        rgba(255,255,255,.02);
+}
 
-            box-shadow:
-                0 0 16px rgba(61, 245, 140, .7);
 
-            animation: pulse 2s infinite;
-        }
+.progress-bar{
 
-        @keyframes pulse {
+    width:0;
 
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+    height:100%;
 
-            50% {
-                transform: scale(.75);
-                opacity: .55;
-            }
-        }
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold-2),
+            var(--gold-light)
+        );
 
+    transition:
+        width .1s linear;
+}
 
-        /* =====================================================
-           HERO TITLE
-        ===================================================== */
 
-        .hero-title {
+/* =========================================================
+   HEADER
+========================================================= */
 
-            font-size:
-                clamp(65px, 12vw, 155px);
+header{
 
-            line-height: .92;
+    position:fixed;
 
-            font-weight: 900;
+    top:0;
+    right:0;
+    left:0;
 
-            letter-spacing: -.045em;
+    height:82px;
 
-            color: var(--cream);
+    padding:
+        0 34px;
 
-            text-shadow:
-                0 5px 35px rgba(0, 0, 0, .4);
+    z-index:8000;
 
-            margin-bottom: 40px;
-        }
+    display:flex;
 
-        .hero-title .gold {
-            color: var(--gold-light);
+    align-items:center;
 
-            text-shadow:
-                0 0 40px rgba(218, 174, 39, .10);
-        }
+    justify-content:space-between;
 
-        .hero-subtitle {
+    border-bottom:
+        1px solid
+        rgba(212,175,55,.10);
 
-            font-size:
-                clamp(20px, 4vw, 36px);
+    background:
+        rgba(2,9,20,.18);
 
-            font-weight: 400;
+    backdrop-filter:
+        blur(10px);
 
-            color: #d0d1cd;
+    transition:
+        background .35s ease,
+        border-color .35s ease,
+        height .35s ease;
+}
 
-            margin-bottom: 34px;
-        }
 
-        .hero-description {
+header.scrolled{
 
-            max-width: 850px;
+    height:70px;
 
-            margin:
-                0 auto 48px;
+    background:
+        rgba(2,9,20,.86);
 
-            color: #9da09b;
+    border-bottom-color:
+        rgba(212,175,55,.18);
+}
 
-            font-size:
-                clamp(16px, 2.2vw, 22px);
 
-            line-height: 2.1;
-        }
+.logo{
 
+    direction:ltr;
 
-        /* =====================================================
-           BUTTONS
-        ===================================================== */
+    font-family:
+        Arial,
+        sans-serif;
 
-        .hero-buttons {
+    font-size:25px;
 
-            display: flex;
+    font-weight:700;
 
-            justify-content: center;
+    letter-spacing:8px;
 
-            align-items: center;
+    color:
+        var(--gold-light);
+}
 
-            gap: 18px;
 
-            flex-wrap: wrap;
-        }
+.header-status{
 
-        .btn {
+    position:absolute;
 
-            min-width: 220px;
+    left:50%;
 
-            padding:
-                19px 34px;
+    transform:translateX(-50%);
 
-            border-radius: 100px;
+    display:flex;
 
-            font-size: 20px;
+    align-items:center;
 
-            font-weight: 500;
+    gap:8px;
 
-            cursor: pointer;
+    direction:ltr;
 
-            display: inline-flex;
+    color:#69788a;
 
-            align-items: center;
+    font-size:9px;
 
-            justify-content: center;
+    letter-spacing:3px;
+}
 
-            gap: 10px;
 
-            transition:
-                transform .4s var(--transition),
-                box-shadow .4s ease,
-                background .4s ease;
-        }
+.status-dot{
 
-        .btn:hover {
-            transform: translateY(-5px);
-        }
+    width:6px;
 
-        .btn-primary {
+    height:6px;
 
-            color: #17130a;
+    border-radius:50%;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #f9db66,
-                    #c69b1b
-                );
+    background:
+        var(--gold-light);
 
-            box-shadow:
-                0 15px 45px rgba(218, 174, 39, .15);
-        }
+    box-shadow:
+        0 0 12px
+        rgba(245,223,122,.8);
+}
 
-        .btn-primary:hover {
-            box-shadow:
-                0 20px 55px rgba(218, 174, 39, .28);
-        }
 
-        .btn-secondary {
+.menu-btn{
 
-            color: #ddd;
+    width:48px;
 
-            background:
-                rgba(24, 25, 22, .60);
+    height:48px;
 
-            border:
-                1px solid rgba(218, 174, 39, .22);
-        }
+    border-radius:50%;
 
+    border:
+        1px solid
+        rgba(212,175,55,.45);
 
-        /* =====================================================
-           HERO DECORATION
-        ===================================================== */
+    background:
+        rgba(255,255,255,.02);
 
-        .hero-circle {
+    color:
+        var(--gold-light);
 
-            position: absolute;
+    cursor:pointer;
 
-            width: min(850px, 90vw);
-            height: min(850px, 90vw);
+    font-size:24px;
 
-            border-radius: 50%;
+    line-height:1;
 
-            border:
-                1px solid rgba(218, 174, 39, .14);
+    transition:.3s ease;
+}
 
-            left: 50%;
-            top: 55%;
 
-            transform:
-                translate(-50%, -50%);
+.menu-btn:hover{
 
-            z-index: -1;
+    transform:scale(1.06);
 
-            pointer-events: none;
-        }
+    border-color:
+        var(--gold-light);
 
-        .hero-circle::before {
+    background:
+        rgba(212,175,55,.08);
 
-            content: "";
+    box-shadow:
+        0 0 30px
+        rgba(212,175,55,.12);
+}
 
-            position: absolute;
 
-            inset: 90px;
+/* =========================================================
+   SIDE MENU
+========================================================= */
 
-            border-radius: 50%;
+.overlay{
 
-            border:
-                1px solid rgba(218, 174, 39, .08);
-        }
+    position:fixed;
 
-        .gold-orb {
+    inset:0;
 
-            position: absolute;
+    background:
+        rgba(0,0,0,.62);
 
-            width: 20px;
-            height: 20px;
+    backdrop-filter:
+        blur(6px);
 
-            border-radius: 50%;
+    z-index:9100;
 
-            background: var(--gold-light);
+    opacity:0;
 
-            box-shadow:
-                0 0 30px rgba(218, 174, 39, .7);
+    visibility:hidden;
 
-            z-index: 3;
-        }
+    transition:.35s ease;
+}
 
-        .orb-one {
-            right: 9%;
-            top: 48%;
-        }
 
-        .orb-two {
-            left: 12%;
-            bottom: 20%;
-            width: 10px;
-            height: 10px;
-        }
+.overlay.active{
 
+    opacity:1;
 
-        /* =====================================================
-           SECTIONS
-        ===================================================== */
+    visibility:visible;
+}
 
-        section:not(.hero) {
 
-            position: relative;
+.side-menu{
 
-            padding:
-                120px 25px;
-        }
+    position:fixed;
 
-        .container {
+    top:0;
 
-            width: min(1150px, 100%);
+    right:0;
 
-            margin: auto;
-        }
+    width:min(390px,89vw);
 
-        .section-label {
+    height:100vh;
 
-            color: var(--gold-light);
+    padding:
+        105px 35px 35px;
 
-            font-size: 14px;
+    z-index:9200;
 
-            letter-spacing: .16em;
+    background:
 
-            margin-bottom: 16px;
-        }
+        radial-gradient(
+            circle at top right,
+            rgba(212,175,55,.08),
+            transparent 35%
+        ),
 
-        .section-title {
+        linear-gradient(
+            150deg,
+            rgba(8,26,47,.99),
+            rgba(2,9,20,.99)
+        );
 
-            font-size:
-                clamp(36px, 6vw, 65px);
+    border-left:
+        1px solid
+        var(--line);
 
-            line-height: 1.1;
+    transform:
+        translateX(105%);
 
-            margin-bottom: 30px;
+    transition:
+        transform .5s var(--ease);
 
-            color: var(--cream);
-        }
+    box-shadow:
+        -30px 0 100px
+        rgba(0,0,0,.55);
+}
 
-        .section-text {
 
-            color: #9da09b;
+.side-menu.active{
 
-            font-size: 18px;
+    transform:
+        translateX(0);
+}
 
-            line-height: 2;
-        }
 
+.close-menu{
 
-        /* =====================================================
-           CARDS
-        ===================================================== */
+    position:absolute;
 
-        .cards {
+    top:24px;
 
-            margin-top: 55px;
+    left:24px;
 
-            display: grid;
+    width:42px;
 
-            grid-template-columns:
-                repeat(3, 1fr);
+    height:42px;
 
-            gap: 20px;
-        }
+    border-radius:50%;
 
-        .card {
+    border:
+        1px solid
+        var(--line-strong);
 
-            min-height: 250px;
+    background:transparent;
 
-            padding: 32px;
+    color:
+        var(--gold-light);
 
-            border-radius: 25px;
+    cursor:pointer;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(25, 26, 23, .80),
-                    rgba(12, 13, 12, .80)
-                );
+    font-size:22px;
 
-            border:
-                1px solid rgba(218, 174, 39, .12);
+    transition:.3s ease;
+}
 
-            transition:
-                transform .4s var(--transition),
-                border-color .4s ease;
-        }
 
-        .card:hover {
+.close-menu:hover{
 
-            transform:
-                translateY(-8px);
+    transform:
+        rotate(90deg);
 
-            border-color:
-                rgba(218, 174, 39, .35);
-        }
+    background:
+        rgba(212,175,55,.08);
+}
 
-        .card-number {
 
-            font-family:
-                "Playfair Display",
-                serif;
+.menu-label{
 
-            font-size: 40px;
+    color:
+        var(--gold);
 
-            color: var(--gold);
+    font-size:10px;
 
-            margin-bottom: 20px;
-        }
+    letter-spacing:4px;
 
-        .card h3 {
+    margin-bottom:25px;
 
-            font-size: 24px;
+    direction:ltr;
+}
 
-            margin-bottom: 12px;
 
-            color: #f7f4e7;
-        }
+.side-menu a{
 
-        .card p {
+    display:flex;
 
-            color: #8e918d;
+    align-items:center;
 
-            line-height: 1.9;
-        }
+    justify-content:space-between;
 
+    padding:16px 0;
 
-        /* =====================================================
-           CONTACT
-        ===================================================== */
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.055);
 
-        .contact {
+    font-size:16px;
 
-            text-align: center;
+    color:
+        var(--white);
 
-            padding-bottom: 150px !important;
-        }
+    transition:.3s ease;
+}
 
-        .contact-box {
 
-            margin-top: 45px;
+.side-menu a::after{
 
-            padding: 60px 30px;
+    content:"↗";
 
-            border-radius: 35px;
+    opacity:0;
 
-            background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(218, 174, 39, .09),
-                    transparent 60%
-                ),
-                rgba(18, 19, 17, .7);
+    color:
+        var(--gold-light);
 
-            border:
-                1px solid rgba(218, 174, 39, .15);
-        }
+    transform:
+        translateX(8px);
 
-        .contact-box h3 {
+    transition:.3s ease;
+}
 
-            font-size:
-                clamp(30px, 5vw, 55px);
 
-            margin-bottom: 25px;
+.side-menu a:hover{
 
-            color: var(--cream);
-        }
+    color:
+        var(--gold-light);
 
+    padding-right:10px;
+}
 
-        /* =====================================================
-           FOOTER
-        ===================================================== */
 
-        footer {
+.side-menu a:hover::after{
 
-            padding:
-                35px 25px;
+    opacity:1;
 
-            text-align: center;
+    transform:
+        translateX(0);
+}
 
-            border-top:
-                1px solid rgba(218, 174, 39, .08);
 
-            color: #777a75;
+.menu-footer{
 
-            font-size: 14px;
-        }
+    position:absolute;
 
-        footer strong {
-            color: var(--gold);
-        }
+    right:35px;
+    left:35px;
 
+    bottom:28px;
 
-        /* =====================================================
-           SCROLL REVEAL
-        ===================================================== */
+    padding-top:18px;
 
-        .reveal {
+    border-top:
+        1px solid
+        rgba(212,175,55,.12);
 
-            opacity: 0;
+    color:#647181;
 
-            transform:
-                translateY(35px);
+    font-size:11px;
 
-            transition:
-                opacity .9s ease,
-                transform .9s var(--transition);
-        }
+    text-align:center;
+}
 
-        .reveal.visible {
 
-            opacity: 1;
+/* =========================================================
+   HERO
+========================================================= */
 
-            transform:
-                translateY(0);
-        }
+.hero{
 
+    min-height:100vh;
 
-        /* =====================================================
-           RESPONSIVE — TABLET
-        ===================================================== */
+    padding:
+        130px 0 60px;
 
-        @media (max-width: 800px) {
+    position:relative;
 
-            :root {
-                --header-height: 82px;
-            }
+    display:flex;
 
-            .header-inner {
-                padding:
-                    0 18px;
-            }
+    flex-direction:column;
 
-            .menu-button {
+    align-items:center;
 
-                /* التصغير المطلوب للجوال */
-                width: 68px;
-                height: 68px;
+    justify-content:center;
 
-                border-radius: 22px;
-            }
+    text-align:center;
 
-            .hamburger {
-                width: 25px;
-                height: 20px;
-            }
+    overflow:hidden;
+}
 
-            .logo {
-                font-size: 31px;
-            }
 
-            .status {
-                margin-bottom: 45px;
-            }
+.hero::before{
 
-            .hero {
-                padding-top:
-                    calc(var(--header-height) + 55px);
-            }
+    content:"";
 
-            .hero-circle {
-                width: 700px;
-                height: 700px;
-            }
+    position:absolute;
 
-            .cards {
-                grid-template-columns:
-                    1fr;
-            }
-        }
+    width:650px;
+    height:650px;
 
+    border-radius:50%;
 
-        /* =====================================================
-           RESPONSIVE — MOBILE
-        ===================================================== */
+    top:50%;
+    left:50%;
 
-        @media (max-width: 600px) {
+    transform:
+        translate(-50%,-50%);
 
-            :root {
-                --header-height: 78px;
-            }
+    border:
+        1px solid
+        rgba(212,175,55,.045);
 
-            header {
-                height: var(--header-height);
-            }
+    box-shadow:
 
-            .header-inner {
-                padding:
-                    0 14px;
-            }
+        0 0 0 80px
+        rgba(212,175,55,.012),
 
-            /* ===============================
-               زر القائمة أصغر من السابق
-               =============================== */
+        0 0 0 160px
+        rgba(212,175,55,.008);
 
-            .menu-button {
+    pointer-events:none;
+}
 
-                width: 64px;
-                height: 64px;
 
-                border-radius: 20px;
-            }
+.hero-grid{
 
-            .hamburger {
-                width: 24px;
-                height: 19px;
-            }
+    position:absolute;
 
-            .logo {
+    inset:0;
 
-                font-size: 29px;
+    pointer-events:none;
 
-                letter-spacing:
-                    .15em;
-            }
+    opacity:.32;
 
-            .hero {
+    background:
 
-                min-height: 100dvh;
+        linear-gradient(
+            90deg,
+            transparent 49.95%,
+            rgba(212,175,55,.07) 50%,
+            transparent 50.05%
+        ),
 
-                padding:
-                    calc(var(--header-height) + 40px)
-                    18px
-                    55px;
-            }
+        linear-gradient(
+            transparent 49.95%,
+            rgba(212,175,55,.04) 50%,
+            transparent 50.05%
+        );
+}
 
-            .status {
 
-                padding:
-                    12px 20px;
+.hero-corner{
 
-                gap: 10px;
+    position:absolute;
 
-                margin-bottom: 38px;
-            }
+    width:75px;
+    height:75px;
 
-            .status-dot {
+    border-color:
+        rgba(212,175,55,.62);
 
-                width: 11px;
-                height: 11px;
-            }
+    pointer-events:none;
+}
 
-            .hero-title {
 
-                font-size:
-                    clamp(55px, 16vw, 90px);
+.hero-corner.top{
 
-                line-height: .95;
+    top:110px;
 
-                margin-bottom: 30px;
-            }
+    right:0;
 
-            .hero-subtitle {
+    border-top:1px solid;
+    border-right:1px solid;
+}
 
-                font-size: 19px;
 
-                margin-bottom: 25px;
-            }
+.hero-corner.bottom{
 
-            .hero-description {
+    bottom:35px;
 
-                font-size: 15px;
+    left:0;
 
-                line-height: 2;
+    border-bottom:1px solid;
+    border-left:1px solid;
+}
 
-                margin-bottom: 35px;
-            }
 
-            .hero-buttons {
+.hero-mini{
 
-                width: 100%;
+    position:relative;
 
-                flex-direction: column;
+    margin-bottom:17px;
 
-                gap: 13px;
-            }
+    direction:ltr;
 
-            .btn {
+    color:
+        var(--gold-light);
 
-                width: min(100%, 400px);
+    font-size:10px;
 
-                min-width: 0;
+    letter-spacing:5px;
 
-                padding:
-                    17px 25px;
+    opacity:.9;
 
-                font-size: 18px;
-            }
+    animation:
+        heroReveal .8s .05s both;
+}
 
-            .hero-circle {
 
-                width: 620px;
-                height: 620px;
+.hero-name{
 
-                top: 55%;
-            }
+    position:relative;
 
-            .orb-one {
-                right: 5%;
-                top: 45%;
-            }
+    width:100%;
 
-            section:not(.hero) {
+    max-width:900px;
 
-                padding:
-                    85px 18px;
-            }
+    padding:0 20px;
 
-            .section-title {
+    margin-bottom:12px;
 
-                font-size: 38px;
-            }
+    font-size:
+        clamp(37px,6vw,64px);
 
-            .section-text {
+    font-weight:800;
 
-                font-size: 16px;
-            }
+    line-height:1.5;
 
-            .card {
+    letter-spacing:-1.5px;
 
-                min-height: auto;
+    background:
 
-                padding: 27px;
-            }
+        linear-gradient(
+            135deg,
+            #a87810 0%,
+            #f8e27c 25%,
+            #d4af37 50%,
+            #fff2ac 75%,
+            #b88918 100%
+        );
 
-            .contact-box {
+    -webkit-background-clip:text;
 
-                padding:
-                    45px 20px;
-            }
-        }
+    background-clip:text;
 
+    -webkit-text-fill-color:
+        transparent;
 
-        /* =====================================================
-           VERY SMALL PHONES
-        ===================================================== */
+    animation:
+        heroReveal .9s .12s both;
+}
 
-        @media (max-width: 380px) {
 
-            .menu-button {
+.gold-line{
 
-                width: 60px;
-                height: 60px;
+    width:105px;
 
-                border-radius: 18px;
-            }
+    height:2px;
 
-            .logo {
-                font-size: 26px;
-            }
+    margin:
+        0 auto 26px;
 
-            .hero-title {
-                font-size: 53px;
-            }
+    background:
 
-            .status {
-                font-size: 14px;
-            }
-        }
+        linear-gradient(
+            90deg,
+            transparent,
+            #b88918,
+            #f1d56a,
+            #b88918,
+            transparent
+        );
 
+    box-shadow:
+        0 0 18px
+        rgba(212,175,55,.3);
 
-        /* =====================================================
-           REDUCE MOTION
-        ===================================================== */
+    animation:
+        heroReveal .8s .2s both;
+}
 
-        @media (prefers-reduced-motion: reduce) {
 
-            *,
-            *::before,
-            *::after {
+/*
+    تم حذف:
+    حضور شخصي · رؤية · أصالة
 
-                scroll-behavior: auto !important;
+    وتم حذف الـ margin الخاص به أيضًا.
+*/
 
-                animation-duration: .01ms !important;
 
-                animation-iteration-count: 1 !important;
+@keyframes heroReveal{
 
-                transition-duration: .01ms !important;
-            }
-        }
+    from{
 
-    </style>
+        opacity:0;
+
+        transform:
+            translateY(22px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   PROFILE PHOTO
+========================================================= */
+
+.photo-frame{
+
+    width:
+        min(430px,86vw);
+
+    aspect-ratio:1/1;
+
+    padding:10px;
+
+    position:relative;
+
+    margin-bottom:21px;
+
+    animation:
+
+        heroReveal .9s .28s both,
+
+        floating 7s 1.4s
+        ease-in-out infinite;
+}
+
+
+.photo-frame::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border:
+        1px solid
+        rgba(212,175,55,.86);
+
+    border-radius:31px;
+
+    transform:
+        rotate(-1deg);
+
+    box-shadow:
+        0 0 35px
+        rgba(212,175,55,.05);
+}
+
+
+.photo-frame::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:7px;
+
+    border:
+        1px solid
+        rgba(212,175,55,.23);
+
+    border-radius:27px;
+
+    transform:
+        rotate(1deg);
+}
+
+
+/*
+   تم حذف:
+   photo-corner.a
+   photo-corner.b
+*/
+
+
+.profile-photo{
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    border-radius:24px;
+
+    border:
+        5px solid
+        #07172a;
+
+    background:
+        #07172a;
+
+    box-shadow:
+        0 30px 85px
+        rgba(0,0,0,.52);
+
+    transition:
+        transform .7s var(--ease),
+        box-shadow .7s ease;
+}
+
+
+.photo-frame:hover
+.profile-photo{
+
+    transform:
+        scale(1.015);
+
+    box-shadow:
+        0 38px 105px
+        rgba(0,0,0,.65);
+}
+
+
+@keyframes floating{
+
+    0%,100%{
+        transform:
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            translateY(-5px);
+    }
+
+}
+
+
+.quote{
+
+    position:relative;
+
+    color:
+        var(--white);
+
+    font-size:
+        clamp(20px,4vw,28px);
+
+    font-weight:500;
+
+    animation:
+        heroReveal .8s .36s both;
+}
+
+
+.quote::before,
+.quote::after{
+
+    color:
+        var(--gold);
+
+    opacity:.7;
+
+    font-size:20px;
+}
+
+
+.quote::before{
+
+    content:"«";
+
+    margin-left:7px;
+}
+
+
+.quote::after{
+
+    content:"»";
+
+    margin-right:7px;
+}
+
+
+.hero-info{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:14px;
+
+    margin-top:26px;
+
+    color:#667487;
+
+    font-size:10px;
+
+    direction:ltr;
+
+    animation:
+        heroReveal .8s .45s both;
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section{
+
+    width:
+        min(1120px,92%);
+
+    margin:auto;
+
+    padding:
+        100px 0;
+}
+
+
+.section-header{
+
+    text-align:center;
+
+    margin-bottom:42px;
+}
+
+
+.section-label{
+
+    display:block;
+
+    color:
+        var(--gold);
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    direction:ltr;
+
+    margin-bottom:10px;
+}
+
+
+.section-title{
+
+    font-size:
+        clamp(32px,5vw,48px);
+
+    line-height:1.4;
+
+    margin-bottom:10px;
+}
+
+
+.section-description{
+
+    color:
+        var(--muted);
+
+    font-size:13px;
+
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-card{
+
+    position:relative;
+
+    padding:
+        42px 35px;
+
+    border:
+        1px solid
+        rgba(212,175,55,.17);
+
+    border-radius:30px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.012)
+        );
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.16);
+}
+
+
+.about-card p{
+
+    color:
+        #cdd2d9;
+
+    font-size:15px;
+
+    line-height:2.15;
+
+    text-align:center;
+}
+
+
+.about-card strong{
+
+    color:
+        var(--gold-light);
+}
+
+
+.facts{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
+
+    margin-top:18px;
+}
+
+
+.fact{
+
+    padding:
+        25px 15px;
+
+    text-align:center;
+
+    border:
+        1px solid
+        rgba(212,175,55,.12);
+
+    border-radius:22px;
+
+    background:
+        rgba(255,255,255,.02);
+}
+
+
+.fact-value{
+
+    color:
+        var(--gold-light);
+
+    font-size:24px;
+
+    font-weight:700;
+
+    direction:ltr;
+}
+
+
+.fact-label{
+
+    color:#778494;
+
+    margin-top:3px;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   VALUES
+========================================================= */
+
+.values{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+
+.value-card{
+
+    position:relative;
+
+    padding:
+        33px 25px;
+
+    overflow:hidden;
+
+    text-align:center;
+
+    border:
+        1px solid
+        rgba(212,175,55,.14);
+
+    border-radius:26px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.012)
+        );
+
+    transition:
+        transform .4s var(--ease),
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.value-card:hover{
+
+    transform:
+        translateY(-9px);
+
+    border-color:
+        rgba(212,175,55,.42);
+
+    box-shadow:
+        0 25px 65px
+        rgba(212,175,55,.07);
+}
+
+
+.value-icon{
+
+    width:58px;
+
+    height:58px;
+
+    margin:
+        0 auto 16px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(212,175,55,.34);
+
+    color:
+        var(--gold-light);
+
+    font-size:23px;
+}
+
+
+.value-card h3{
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+
+.value-card p{
+
+    color:
+        var(--muted);
+
+    font-size:13px;
+
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(12,1fr);
+
+    gap:15px;
+}
+
+
+.gallery-item{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
+    border:
+        1px solid
+        rgba(212,175,55,.17);
+
+    background:
+        #07172a;
+
+    cursor:pointer;
+
+    isolation:isolate;
+}
+
+
+.gallery-item:nth-child(1),
+.gallery-item:nth-child(4),
+.gallery-item:nth-child(5),
+.gallery-item:nth-child(8){
+
+    grid-column:
+        span 7;
+
+    aspect-ratio:
+        16/10;
+}
+
+
+.gallery-item:nth-child(2),
+.gallery-item:nth-child(3),
+.gallery-item:nth-child(6),
+.gallery-item:nth-child(7){
+
+    grid-column:
+        span 5;
+
+    aspect-ratio:
+        1/1;
+}
+
+
+.gallery-item img{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:
+        transform .8s var(--ease),
+        filter .5s ease;
+}
+
+
+.gallery-item::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:1;
+
+    background:
+
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.82),
+            rgba(0,0,0,.05) 65%
+        );
+}
+
+
+.gallery-item:hover img{
+
+    transform:
+        scale(1.08);
+
+    filter:
+        saturate(1.05);
+}
+
+
+.gallery-info{
+
+    position:absolute;
+
+    right:22px;
+
+    left:22px;
+
+    bottom:18px;
+
+    z-index:3;
+}
+
+
+.gallery-info small{
+
+    display:block;
+
+    color:
+        var(--gold-light);
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    direction:ltr;
+
+    margin-bottom:4px;
+}
+
+
+.gallery-info h3{
+
+    font-size:18px;
+
+    font-weight:600;
+}
+
+
+.gallery-number{
+
+    position:absolute;
+
+    top:16px;
+
+    left:18px;
+
+    z-index:3;
+
+    direction:ltr;
+
+    color:
+        rgba(255,255,255,.7);
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:20000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:25px;
+
+    background:
+        rgba(0,0,0,.88);
+
+    backdrop-filter:
+        blur(12px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s ease;
+}
+
+
+.lightbox.active{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+
+.lightbox img{
+
+    max-width:92vw;
+
+    max-height:84vh;
+
+    object-fit:contain;
+
+    border-radius:15px;
+
+    border:
+        1px solid
+        rgba(212,175,55,.28);
+
+    box-shadow:
+        0 30px 110px
+        rgba(0,0,0,.7);
+}
+
+
+.lightbox-close{
+
+    position:absolute;
+
+    top:22px;
+
+    left:25px;
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(212,175,55,.4);
+
+    background:
+        rgba(0,0,0,.25);
+
+    color:
+        var(--gold-light);
+
+    font-size:23px;
+
+    cursor:pointer;
+}
+
+
+.lightbox-title{
+
+    position:absolute;
+
+    right:25px;
+
+    bottom:25px;
+
+    color:#dce1e7;
+
+    font-size:12px;
+
+    background:
+        rgba(0,0,0,.45);
+
+    padding:
+        8px 15px;
+
+    border-radius:999px;
+
+    border:
+        1px solid
+        rgba(212,175,55,.15);
+}
+
+
+/* =========================================================
+   JOURNEY
+========================================================= */
+
+.timeline{
+
+    max-width:850px;
+
+    margin:auto;
+
+    position:relative;
+}
+
+
+.timeline::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    bottom:0;
+
+    right:50%;
+
+    width:1px;
+
+    background:
+
+        linear-gradient(
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+
+.timeline-item{
+
+    position:relative;
+
+    width:50%;
+
+    padding:
+        0 36px 50px;
+}
+
+
+.timeline-item:nth-child(odd){
+
+    text-align:left;
+}
+
+
+.timeline-item:nth-child(even){
+
+    margin-right:50%;
+
+    text-align:right;
+}
+
+
+.timeline-dot{
+
+    position:absolute;
+
+    top:4px;
+
+    width:13px;
+
+    height:13px;
+
+    border-radius:50%;
+
+    background:
+        var(--gold-light);
+
+    box-shadow:
+        0 0 18px
+        rgba(212,175,55,.6);
+}
+
+
+.timeline-item:nth-child(odd)
+.timeline-dot{
+
+    right:-6px;
+}
+
+
+.timeline-item:nth-child(even)
+.timeline-dot{
+
+    left:-6px;
+}
+
+
+.timeline-year{
+
+    color:
+        var(--gold-light);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    line-height:1;
+
+    margin-bottom:8px;
+
+    direction:ltr;
+}
+
+
+.timeline-title{
+
+    font-size:18px;
+
+    font-weight:600;
+
+    margin-bottom:6px;
+}
+
+
+.timeline-text{
+
+    color:
+        var(--muted);
+
+    font-size:13px;
+
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-card{
+
+    position:relative;
+
+    max-width:760px;
+
+    margin:auto;
+
+    padding:
+        40px 30px;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:30px;
+
+    background:
+
+        radial-gradient(
+            circle at center top,
+            rgba(212,175,55,.07),
+            transparent 45%
+        ),
+
+        rgba(255,255,255,.022);
+}
+
+
+/*
+   تم حذف الاسم والبريد الظاهرين
+   من بطاقة التواصل.
+*/
+
+
+.contact-icons{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin:0;
+}
+
+
+.social{
+
+    width:58px;
+
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(212,175,55,.4);
+
+    background:
+        rgba(255,255,255,.02);
+
+    color:
+        var(--gold-light);
+
+    transition:
+        transform .35s var(--ease),
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.social:hover{
+
+    transform:
+        translateY(-6px)
+        scale(1.04);
+
+    background:
+        rgba(212,175,55,.08);
+
+    border-color:
+        var(--gold-light);
+
+    box-shadow:
+        0 15px 40px
+        rgba(212,175,55,.14);
+}
+
+
+.social svg{
+
+    width:25px;
+
+    height:25px;
+
+    fill:currentColor;
+}
+
+
+.contact-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:24px;
+}
+
+
+.action-btn{
+
+    min-height:42px;
+
+    padding:
+        9px 18px;
+
+    border-radius:999px;
+
+    border:
+        1px solid
+        rgba(212,175,55,.3);
+
+    background:
+        rgba(255,255,255,.015);
+
+    color:#d8dde4;
+
+    cursor:pointer;
+
+    font-size:12px;
+
+    transition:.3s ease;
+}
+
+
+.action-btn:hover{
+
+    color:
+        var(--gold-light);
+
+    border-color:
+        var(--gold-light);
+
+    background:
+        rgba(212,175,55,.06);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   QR
+========================================================= */
+
+.qr-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:21000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        rgba(0,0,0,.8);
+
+    backdrop-filter:
+        blur(10px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s ease;
+}
+
+
+.qr-modal.active{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+
+.qr-box{
+
+    width:
+        min(360px,92vw);
+
+    padding:30px;
+
+    text-align:center;
+
+    border:
+        1px solid
+        rgba(212,175,55,.35);
+
+    border-radius:30px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #0a2039,
+            #061426
+        );
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.6);
+}
+
+
+.qr-box h3{
+
+    color:
+        var(--gold-light);
+
+    direction:ltr;
+
+    letter-spacing:2px;
+}
+
+
+.qr-box p{
+
+    color:
+        var(--muted);
+
+    font-size:11px;
+
+    margin-top:4px;
+}
+
+
+.qr-box img{
+
+    width:220px;
+
+    height:220px;
+
+    display:block;
+
+    margin:
+        18px auto;
+
+    padding:9px;
+
+    background:white;
+
+    border-radius:14px;
+}
+
+
+.qr-close{
+
+    padding:
+        10px 25px;
+
+    border-radius:999px;
+
+    border:
+        1px solid
+        rgba(212,175,55,.35);
+
+    background:transparent;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+}
+
+
+.qr-close:hover{
+
+    border-color:
+        var(--gold-light);
+
+    color:
+        var(--gold-light);
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.top-btn{
+
+    position:fixed;
+
+    right:22px;
+
+    bottom:22px;
+
+    z-index:7000;
+
+    width:45px;
+
+    height:45px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(212,175,55,.38);
+
+    background:
+        rgba(3,13,27,.8);
+
+    color:
+        var(--gold-light);
+
+    cursor:pointer;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:
+        translateY(12px);
+
+    transition:.3s ease;
+
+    backdrop-filter:
+        blur(10px);
+}
+
+
+.top-btn.visible{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+        translateY(0);
+}
+
+
+.top-btn:hover{
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        var(--gold-light);
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:25px;
+
+    z-index:30000;
+
+    transform:
+        translate(-50%,20px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    padding:
+        11px 18px;
+
+    border:
+        1px solid
+        rgba(212,175,55,.25);
+
+    border-radius:999px;
+
+    background:
+        rgba(5,18,33,.94);
+
+    color:#e9edf2;
+
+    font-size:11px;
+
+    box-shadow:
+        0 15px 50px
+        rgba(0,0,0,.35);
+
+    transition:.35s var(--ease);
+
+    backdrop-filter:
+        blur(12px);
+}
+
+
+.toast.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+        translate(-50%,0);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    position:relative;
+
+    padding:
+        55px 20px 38px;
+
+    text-align:center;
+
+    border-top:
+        1px solid
+        rgba(212,175,55,.11);
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            rgba(2,8,17,.45),
+            rgba(2,8,17,.85)
+        );
+}
+
+
+.footer-symbol{
+
+    direction:ltr;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    letter-spacing:10px;
+
+    color:
+        var(--gold);
+
+    margin-bottom:15px;
+}
+
+
+.footer-copy{
+
+    color:#77818d;
+
+    font-size:11px;
+}
+
+
+.footer-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin-top:13px;
+
+    color:#677383;
+
+    font-size:10px;
+}
+
+
+.footer-links a:hover{
+
+    color:
+        var(--gold-light);
+}
+
+
+.footer-quote{
+
+    margin-top:18px;
+
+    color:#596574;
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   CURSOR
+========================================================= */
+
+.cursor-glow{
+
+    position:fixed;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:1;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.055),
+            transparent 68%
+        );
+
+    transform:
+        translate(-50%,-50%);
+
+    opacity:0;
+
+    transition:
+        opacity .3s ease;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+
+    opacity:0;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s var(--ease);
+}
+
+
+.reveal.visible{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:760px){
+
+    header{
+
+        height:70px;
+
+        padding:
+            0 20px;
+    }
+
+
+    .logo{
+
+        font-size:21px;
+
+        letter-spacing:6px;
+    }
+
+
+    .header-status{
+
+        display:none;
+    }
+
+
+    .menu-btn{
+
+        width:44px;
+
+        height:44px;
+    }
+
+
+    .hero{
+
+        padding:
+            100px 0 45px;
+    }
+
+
+    .hero::before{
+
+        width:430px;
+
+        height:430px;
+    }
+
+
+    .hero-corner{
+
+        width:45px;
+
+        height:45px;
+    }
+
+
+    .hero-corner.top{
+
+        top:90px;
+    }
+
+
+    .hero-name{
+
+        max-width:100%;
+
+        padding:0 10px;
+
+        font-size:
+            clamp(
+                32px,
+                9vw,
+                48px
+            );
+
+        line-height:1.55;
+    }
+
+
+    .photo-frame{
+
+        width:
+            min(390px,88vw);
+
+        margin-bottom:18px;
+    }
+
+
+    .hero-info{
+
+        gap:9px;
+
+        font-size:8px;
+    }
+
+
+    .section{
+
+        padding:
+            62px 0;
+    }
+
+
+    .section-header{
+
+        margin-bottom:28px;
+    }
+
+
+    .about-card{
+
+        padding:
+            30px 22px;
+    }
+
+
+    .about-card p{
+
+        font-size:15px;
+
+        line-height:2.05;
+    }
+
+
+    .facts{
+
+        grid-template-columns:1fr;
+
+        gap:10px;
+    }
+
+
+    .values{
+
+        grid-template-columns:1fr;
+
+        gap:14px;
+    }
+
+
+    .value-card{
+
+        padding:
+            28px 22px;
+    }
+
+
+    .gallery{
+
+        grid-template-columns:1fr;
+
+        gap:13px;
+    }
+
+
+    .gallery-item,
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3),
+    .gallery-item:nth-child(4),
+    .gallery-item:nth-child(5),
+    .gallery-item:nth-child(6),
+    .gallery-item:nth-child(7),
+    .gallery-item:nth-child(8){
+
+        grid-column:
+            span 1;
+
+        aspect-ratio:
+            16/10;
+    }
+
+
+    .timeline::before{
+
+        right:13px;
+    }
+
+
+    .timeline-item,
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even){
+
+        width:100%;
+
+        margin:0;
+
+        padding:
+            0 42px 40px 0;
+
+        text-align:right;
+    }
+
+
+    .timeline-item:nth-child(odd)
+    .timeline-dot,
+
+    .timeline-item:nth-child(even)
+    .timeline-dot{
+
+        right:7px;
+
+        left:auto;
+    }
+
+
+    .timeline-year{
+
+        font-size:25px;
+    }
+
+
+    .contact-card{
+
+        padding:
+            32px 20px;
+    }
+
+
+    .contact-icons{
+
+        gap:10px;
+    }
+
+
+    .social{
+
+        width:54px;
+
+        height:54px;
+    }
+
+
+    .top-btn{
+
+        right:15px;
+
+        bottom:15px;
+    }
+
+
+    .cursor-glow{
+
+        display:none;
+    }
+
+}
+
+
+@media(max-width:420px){
+
+    .hero-name{
+
+        font-size:34px;
+    }
+
+
+    .photo-frame{
+
+        width:92vw;
+    }
+
+
+    .quote{
+
+        font-size:20px;
+    }
+
+
+    .gallery-info h3{
+
+        font-size:16px;
+    }
+
+
+    .contact-actions{
+
+        flex-direction:column;
+    }
+
+
+    .action-btn{
+
+        width:100%;
+    }
+
+}
+
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+
+        animation:none!important;
+
+        transition:none!important;
+
+        scroll-behavior:auto!important;
+    }
+
+}
+
+</style>
+
 </head>
 
 
 <body>
 
 
-    <!-- Ambient Background -->
-    <div class="ambient one"></div>
-    <div class="ambient two"></div>
+<!-- =========================================================
+     LOADER
+========================================================= -->
 
+<div
+    class="loader"
+    id="loader"
+>
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+    <div class="loader-inner">
 
-    <header>
-
-        <div class="header-inner">
-
-            <button
-                class="menu-button"
-                id="menuButton"
-                aria-label="فتح القائمة"
-                aria-expanded="false">
-
-                <span class="hamburger">
-
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                </span>
-
-            </button>
-
-
-            <a href="#home"
-               class="logo"
-               aria-label="MBK">
-
-                MBK
-
-            </a>
-
+        <div class="loader-logo">
+            MBK
         </div>
 
-    </header>
+        <div class="loader-line"></div>
+
+    </div>
+
+</div>
 
 
-
-    <!-- =====================================================
-         MENU
-    ====================================================== -->
+<div class="progress">
 
     <div
-        class="menu-overlay"
-        id="menuOverlay">
+        class="progress-bar"
+        id="progressBar"
+    ></div>
 
-        <nav class="menu-content">
+</div>
 
-            <a href="#home"
-               class="menu-link">
 
-                الرئيسية
+<div
+    class="cursor-glow"
+    id="cursorGlow"
+></div>
 
-            </a>
 
-            <a href="#about"
-               class="menu-link">
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-                عني
+<header id="header">
 
-            </a>
+    <a
+        href="#home"
+        class="logo"
+        aria-label="MBK"
+    >
+        MBK
+    </a>
 
-            <a href="#vision"
-               class="menu-link">
 
-                الرؤية
+    <div class="header-status">
 
-            </a>
+        <span class="status-dot"></span>
 
-            <a href="#contact"
-               class="menu-link">
-
-                تواصل معي
-
-            </a>
-
-        </nav>
+        <span>
+            ONLINE
+        </span>
 
     </div>
 
 
+    <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="فتح القائمة"
+        aria-controls="sideMenu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
 
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
+</header>
 
-    <main id="home">
 
-        <section class="hero">
+<!-- =========================================================
+     SIDE MENU
+========================================================= -->
 
-            <div class="hero-circle"></div>
+<div
+    class="overlay"
+    id="overlay"
+></div>
 
-            <div class="gold-orb orb-one"></div>
-            <div class="gold-orb orb-two"></div>
 
+<nav
+    class="side-menu"
+    id="sideMenu"
+    aria-label="القائمة الرئيسية"
+>
 
-            <div class="hero-inner">
+    <button
+        class="close-menu"
+        id="closeMenu"
+        aria-label="إغلاق القائمة"
+    >
+        ×
+    </button>
 
 
-                <!-- STATUS -->
+    <div class="menu-label">
+        NAVIGATION
+    </div>
 
-                <div class="status reveal">
 
-                    <span class="status-dot"></span>
+    <a href="#home">
+        الرئيسية
+    </a>
 
-                    <span>
-                        الموقع الشخصي الرسمي
-                    </span>
+    <a href="#about">
+        نبذة
+    </a>
 
-                </div>
+    <a href="#values">
+        بصمتي
+    </a>
 
+    <a href="#gallery">
+        مختاراتي
+    </a>
 
+    <a href="#journey">
+        رحلتي
+    </a>
 
-                <!-- TITLE -->
+    <a href="#contact">
+        تواصل
+    </a>
 
-                <h1 class="hero-title reveal">
 
-                    مبخوت بن
-                    <br>
+    <div class="menu-footer">
+        MBK — PERSONAL IDENTITY
+    </div>
 
-                    <span class="gold">
-                        عبدالله
-                    </span>
+</nav>
 
-                </h1>
 
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
+<main>
 
-                <!-- SUBTITLE -->
 
-                <div class="hero-subtitle reveal">
+<!-- =========================================================
+     HERO
+========================================================= -->
 
-                    هوية شخصية · أصالة · إبداع
+<section
+    class="hero"
+    id="home"
+>
 
-                </div>
+    <div class="hero-grid"></div>
 
+    <div class="hero-corner top"></div>
 
+    <div class="hero-corner bottom"></div>
 
-                <!-- DESCRIPTION -->
 
-                <p class="hero-description reveal">
+    <div class="hero-mini">
+        PERSONAL IDENTITY
+    </div>
 
-                    تجربة رقمية شخصية تجمع بين الهوية،
-                    التقنية، الإبداع، الذكاء الاصطناعي،
-                    المشاريع والأفكار المستقبلية.
 
-                </p>
+    <h1 class="hero-name">
+        مبخوت بن عبدالله
+    </h1>
 
 
+    <div class="gold-line"></div>
 
-                <!-- BUTTONS -->
 
-                <div class="hero-buttons reveal">
+    <!--
+        تم حذف:
+        حضور شخصي · رؤية · أصالة
+    -->
 
-                    <a
-                        href="#about"
-                        class="btn btn-primary">
 
-                        استكشف عالمي
+    <div class="photo-frame">
 
-                        <span>←</span>
+        <img
+            class="profile-photo"
+            src="file_00000000202482468d4027eb8c5919f7.png"
+            alt="مبخوت بن عبدالله"
+            loading="eager"
+        >
 
-                    </a>
+    </div>
 
 
-                    <a
-                        href="#contact"
-                        class="btn btn-secondary">
+    <p class="quote">
+        وما توفيقي إلا بالله
+    </p>
 
-                        تواصل معي
 
-                    </a>
+    <div class="hero-info">
 
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             ABOUT
-        ================================================== -->
-
-        <section id="about">
-
-            <div class="container">
-
-                <div class="reveal">
-
-                    <div class="section-label">
-                        01 — الهوية
-                    </div>
-
-                    <h2 class="section-title">
-                        أكثر من مجرد
-                        <br>
-                        موقع شخصي.
-                    </h2>
-
-                    <p class="section-text">
-
-                        مساحة رقمية تعبّر عن الشخصية،
-                        الأفكار، الطموح، المشاريع
-                        والرؤية المستقبلية.
-
-                    </p>
-
-                </div>
-
-
-                <div class="cards">
-
-
-                    <article class="card reveal">
-
-                        <div class="card-number">
-                            01
-                        </div>
-
-                        <h3>
-                            الهوية
-                        </h3>
-
-                        <p>
-                            حضور رقمي واضح وأصيل
-                            يعكس الشخصية بأسلوب
-                            عصري وفخم.
-                        </p>
-
-                    </article>
-
-
-
-                    <article class="card reveal">
-
-                        <div class="card-number">
-                            02
-                        </div>
-
-                        <h3>
-                            الإبداع
-                        </h3>
-
-                        <p>
-                            أفكار وتجارب رقمية تجمع
-                            بين التصميم والتقنية
-                            والابتكار.
-                        </p>
-
-                    </article>
-
-
-
-                    <article class="card reveal">
-
-                        <div class="card-number">
-                            03
-                        </div>
-
-                        <h3>
-                            المستقبل
-                        </h3>
-
-                        <p>
-                            نظرة مختلفة نحو التقنية
-                            والذكاء الاصطناعي والمشاريع
-                            القادمة.
-                        </p>
-
-                    </article>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             VISION
-        ================================================== -->
-
-        <section id="vision">
-
-            <div class="container">
-
-                <div class="reveal">
-
-                    <div class="section-label">
-                        02 — الرؤية
-                    </div>
-
-                    <h2 class="section-title">
-
-                        نصنع الأفكار،
-                        <br>
-
-                        ثم نجعلها واقعاً.
-
-                    </h2>
-
-                    <p class="section-text">
-
-                        الهدف ليس بناء حضور رقمي فقط،
-                        بل صناعة تجربة تحمل هوية
-                        واضحة وتترك انطباعاً لا يُنسى.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             CONTACT
-        ================================================== -->
-
-        <section
-            id="contact"
-            class="contact">
-
-            <div class="container">
-
-                <div class="contact-box reveal">
-
-                    <div class="section-label">
-                        03 — التواصل
-                    </div>
-
-                    <h3>
-                        لنبنِ شيئاً
-                        استثنائياً.
-                    </h3>
-
-                    <p class="section-text">
-
-                        أهلاً بك في عالمي الرقمي.
-
-                    </p>
-
-                    <br>
-
-                    <a
-                        href="mailto:mabkhut@mabkhut.com"
-                        class="btn btn-primary">
-
-                        تواصل معي
-
-                        <span>←</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <footer>
-
-        ©
-        <span id="year"></span>
-
-        <strong>
+        <span>
+            <i>◆</i>
             MBK
-        </strong>
+        </span>
 
-        — جميع الحقوق محفوظة
+        <span>•</span>
 
-    </footer>
+        <span>
+            mabkhut.com
+        </span>
 
+        <span>•</span>
 
+        <span>
+            2026
+        </span>
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+    </div>
 
-    <script>
-
-        /* ================================================
-           MENU
-        ================================================= */
-
-        const menuButton =
-            document.getElementById("menuButton");
-
-        const menuOverlay =
-            document.getElementById("menuOverlay");
-
-        const menuLinks =
-            document.querySelectorAll(".menu-link");
+</section>
 
 
-        function toggleMenu() {
+<!-- =========================================================
+     ABOUT
+========================================================= -->
 
-            const active =
-                menuOverlay.classList.toggle("active");
+<section
+    class="section reveal"
+    id="about"
+>
 
-            menuButton.classList.toggle(
-                "active",
-                active
-            );
+    <div class="section-header">
 
-            menuButton.setAttribute(
-                "aria-expanded",
-                active
-            );
+        <span class="section-label">
+            ABOUT
+        </span>
 
-            document.body.style.overflow =
-                active ? "hidden" : "";
-        }
+        <h2 class="section-title">
+            نبذة
+        </h2>
+
+        <p class="section-description">
+            مساحة تعكس الهوية، الرؤية، والتجربة.
+        </p>
+
+    </div>
 
 
-        menuButton.addEventListener(
+    <div class="about-card">
+
+        <p>
+
+            أنا
+            <strong>
+                مبخوت بن عبدالله
+            </strong>.
+
+            <br><br>
+
+            أؤمن بأن الشخصية الحقيقية تُبنى بالطموح،
+            والتجربة، والاهتمام بالتفاصيل. أسعى دائمًا
+            إلى تطوير نفسي، واكتشاف أفكار جديدة،
+            وصناعة هوية تعكس رؤيتي وشخصيتي بأسلوب
+            يجمع بين الأصالة، الأناقة، والطموح.
+
+            <br><br>
+
+            هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا
+            من اهتماماتي، أعمالي، اختياراتي، والأشياء
+            التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
+
+            <br><br>
+
+            <strong>
+                أطمح للأفضل، وأسعى لأن أترك أثرًا يستحق أن يُذكر.
+            </strong>
+
+        </p>
+
+    </div>
+
+
+    <div class="facts">
+
+        <div class="fact">
+
+            <div class="fact-value">
+                MBK
+            </div>
+
+            <div class="fact-label">
+                PERSONAL IDENTITY
+            </div>
+
+        </div>
+
+
+        <div class="fact">
+
+            <div class="fact-value">
+                2026
+            </div>
+
+            <div class="fact-label">
+                CURRENT CHAPTER
+            </div>
+
+        </div>
+
+
+        <div class="fact">
+
+            <div
+                class="fact-value"
+                id="liveClock"
+            >
+                --:--
+            </div>
+
+            <div class="fact-label">
+                LOCAL TIME
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     VALUES
+========================================================= -->
+
+<section
+    class="section reveal"
+    id="values"
+>
+
+    <div class="section-header">
+
+        <span class="section-label">
+            MY VALUES
+        </span>
+
+        <h2 class="section-title">
+            بصمتي
+        </h2>
+
+        <p class="section-description">
+            مبادئ بسيطة، لكنها تصنع الفرق.
+        </p>
+
+    </div>
+
+
+    <div class="values">
+
+
+        <div class="value-card">
+
+            <div class="value-icon">
+                ✦
+            </div>
+
+            <h3>
+                الإبداع
+            </h3>
+
+            <p>
+                أبحث دائمًا عن الأفكار المختلفة
+                والأسلوب الذي يحمل طابعًا خاصًا.
+            </p>
+
+        </div>
+
+
+        <div class="value-card">
+
+            <div class="value-icon">
+                ◇
+            </div>
+
+            <h3>
+                الجودة
+            </h3>
+
+            <p>
+                أهتم بالتفاصيل الصغيرة لأنها
+                تصنع الفرق في النتيجة النهائية.
+            </p>
+
+        </div>
+
+
+        <div class="value-card">
+
+            <div class="value-icon">
+                ◆
+            </div>
+
+            <h3>
+                الأصالة
+            </h3>
+
+            <p>
+                أحافظ على هويتي وأطورها
+                بأسلوب حديث ومتوازن.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GALLERY
+========================================================= -->
+
+<section
+    class="section reveal"
+    id="gallery"
+>
+
+    <div class="section-header">
+
+        <span class="section-label">
+            SELECTED
+        </span>
+
+        <h2 class="section-title">
+            مختاراتي
+        </h2>
+
+        <p class="section-description">
+            صور ولحظات تحمل طابعًا خاصًا.
+        </p>
+
+    </div>
+
+
+    <div class="gallery">
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
+            data-title="هدوء الجبال"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
+                alt="جبال وطبيعة"
+                loading="lazy"
+            >
+
+            <span class="gallery-number">
+                01
+            </span>
+
+            <div class="gallery-info">
+
+                <small>
+                    NATURE
+                </small>
+
+                <h3>
+                    هدوء الجبال
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
+            data-title="تفاصيل هادئة"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"
+                alt="طبيعة ريفية"
+                loading="lazy"
+            >
+
+            <span class="gallery-number">
+                02
+            </span>
+
+            <div class="gallery-info">
+
+                <small>
+                    LIFE
+                </small>
+
+                <h3>
+                    تفاصيل هادئة
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
+            data-title="نبض المدينة"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=85"
+                alt="مدينة حديثة"
+                loading="lazy"
+            >
+
+            <span class="gallery-number">
+                03
+            </span>
+
+            <div class="gallery-info">
+
+                <small>
+                    CITY
+                </small>
+
+                <h3>
+                    نبض المدينة
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
+            data-title="بين الشوارع"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85"
+                alt="شوارع المدينة"
+                loading="lazy"
+            >
+
+            <span class="gallery-number">
+                04
+            </span>
+
+            <div class="gallery-info">
+
+                <small>
+                    STREETS
+                </small>
+
+                <h3>
+                    بين الشوارع
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90"
+            data-title="أفق جديد"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=85"
+                alt="مدينة من الأعلى"
+                loading="lazy"
+            >
+
+            <span class="gallery-number">
+                05
+            </span>
+
+            <div class="gallery-info">
+
+                <small>
+                    URBAN
+                </small>
+
+                <h3>
+                    أفق جديد
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+            data-title="الطريق"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
+                alt="طريق وسط الطبيعة"
+                loading="lazy"
+            >
+
+            <span class="gallery-number">
+                06
+            </span>
+
+            <div class="gallery-info">
+
+                <small>
+                    JOURNEY
+                </small>
+
+                <h3>
+                    الطريق
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+            data-title="لحظة هدوء"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
+                alt="منظر طبيعي"
+                loading="lazy"
+            >
+
+            <span class="gallery-number">
+                07
+            </span>
+
+            <div class="gallery-info">
+
+                <small>
+                    CALM
+                </small>
+
+                <h3>
+                    لحظة هدوء
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
+            data-title="تفاصيل المكان"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85"
+                alt="العمارة والحياة"
+                loading="lazy"
+            >
+
+            <span class="gallery-number">
+                08
+            </span>
+
+            <div class="gallery-info">
+
+                <small>
+                    ARCHITECTURE
+                </small>
+
+                <h3>
+                    تفاصيل المكان
+                </h3>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     JOURNEY
+========================================================= -->
+
+<section
+    class="section reveal"
+    id="journey"
+>
+
+    <div class="section-header">
+
+        <span class="section-label">
+            MY JOURNEY
+        </span>
+
+        <h2 class="section-title">
+            رحلتي
+        </h2>
+
+        <p class="section-description">
+            مراحل صنعت جزءًا من الحكاية.
+        </p>
+
+    </div>
+
+
+    <div class="timeline">
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2015
+            </div>
+
+            <div class="timeline-title">
+                البداية
+            </div>
+
+            <div class="timeline-text">
+                بداية الرحلة، ومنها بدأت مرحلة
+                جديدة من التجارب والتعلم.
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2018
+            </div>
+
+            <div class="timeline-title">
+                مرحلة التجربة والتعلّم
+            </div>
+
+            <div class="timeline-text">
+                سنوات من التجربة واكتشاف الاهتمامات
+                وتطوير المهارات والنظرة الخاصة.
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2021
+            </div>
+
+            <div class="timeline-title">
+                تطور ونضج
+            </div>
+
+            <div class="timeline-text">
+                مرحلة أصبح فيها الطموح أكثر وضوحًا
+                وأصبحت التجارب السابقة جزءًا من الهوية.
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2024
+            </div>
+
+            <div class="timeline-title">
+                مرحلة جديدة
+            </div>
+
+            <div class="timeline-text">
+                بداية مرحلة مختلفة، برؤية أوسع
+                وطموح أكبر للمستقبل.
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2026
+            </div>
+
+            <div class="timeline-title">
+                رؤية للمستقبل
+            </div>
+
+            <div class="timeline-text">
+                الاستمرار في التطور وبناء المستقبل
+                بخطوات أكثر وضوحًا وثباتًا.
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section
+    class="section reveal"
+    id="contact"
+>
+
+    <div class="section-header">
+
+        <span class="section-label">
+            CONTACT
+        </span>
+
+        <h2 class="section-title">
+            تواصل
+        </h2>
+
+        <p class="section-description">
+            للتواصل والاستفسارات والمراسلات.
+        </p>
+
+    </div>
+
+
+    <div class="contact-card">
+
+
+        <!--
+            تم حذف:
+            مبخوت بن عبدالله
+            mabkhout@mabkhut.com
+        -->
+
+
+        <div class="contact-icons">
+
+
+            <a
+                class="social"
+                href="mailto:mabkhout@mabkhut.com"
+                aria-label="البريد الإلكتروني"
+                title="البريد الإلكتروني"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
+                    />
+
+                </svg>
+
+            </a>
+
+
+            <a
+                class="social"
+                href="https://www.facebook.com/share/19JG7PQiHL/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                title="Facebook"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
+                    />
+
+                </svg>
+
+            </a>
+
+
+        </div>
+
+
+        <div class="contact-actions">
+
+
+            <button
+                class="action-btn"
+                id="copyEmail"
+            >
+                نسخ البريد
+            </button>
+
+
+            <button
+                class="action-btn"
+                id="shareSite"
+            >
+                مشاركة الموقع
+            </button>
+
+
+            <button
+                class="action-btn"
+                id="qrButton"
+            >
+                مشاركة عبر QR
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+     LIGHTBOX
+========================================================= -->
+
+<div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="عرض الصورة"
+>
+
+    <button
+        class="lightbox-close"
+        id="lightboxClose"
+        aria-label="إغلاق"
+    >
+        ×
+    </button>
+
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt=""
+    >
+
+
+    <div
+        class="lightbox-title"
+        id="lightboxTitle"
+    ></div>
+
+</div>
+
+
+<!-- =========================================================
+     QR
+========================================================= -->
+
+<div
+    class="qr-modal"
+    id="qrModal"
+    role="dialog"
+    aria-modal="true"
+>
+
+    <div class="qr-box">
+
+        <h3>
+            mabkhut.com
+        </h3>
+
+        <p>
+            امسح الرمز لفتح الموقع
+        </p>
+
+
+        <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com"
+            alt="QR Code لموقع mabkhut.com"
+        >
+
+
+        <button
+            class="qr-close"
+            id="qrClose"
+        >
+            إغلاق
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     BACK TO TOP
+========================================================= -->
+
+<button
+    class="top-btn"
+    id="topBtn"
+    aria-label="العودة للأعلى"
+>
+    ↑
+</button>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+></div>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-symbol">
+        MBK
+    </div>
+
+
+    <div class="footer-copy">
+        © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
+    </div>
+
+
+    <div class="footer-links">
+
+        <a href="#home">
+            الرئيسية
+        </a>
+
+        <a href="#about">
+            نبذة
+        </a>
+
+        <a href="#contact">
+            تواصل
+        </a>
+
+    </div>
+
+
+    <div class="footer-quote">
+        وما توفيقي إلا بالله
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   MBK V21 JAVASCRIPT
+========================================================= */
+
+(function(){
+
+"use strict";
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const body =
+    document.body;
+
+const loader =
+    document.getElementById("loader");
+
+const header =
+    document.getElementById("header");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const closeMenu =
+    document.getElementById("closeMenu");
+
+const sideMenu =
+    document.getElementById("sideMenu");
+
+const overlay =
+    document.getElementById("overlay");
+
+const topBtn =
+    document.getElementById("topBtn");
+
+const toast =
+    document.getElementById("toast");
+
+const cursorGlow =
+    document.getElementById("cursorGlow");
+
+const liveClock =
+    document.getElementById("liveClock");
+
+
+/* =========================================================
+   FIXED NON-BLOCKING LOADER
+========================================================= */
+
+/*
+   الإصدار القديم كان ينتظر window.load.
+   إذا تأخرت صورة أو Google Fonts أو QR API
+   كان من الممكن أن تبقى شاشة MBK معلقة.
+
+   الآن:
+   - نبدأ العد فورًا.
+   - نخفي الـLoader بعد 700ms.
+   - يوجد fallback بعد 1800ms.
+*/
+
+let loaderHidden = false;
+
+
+function hideLoader(){
+
+    if(loaderHidden){
+
+        return;
+
+    }
+
+    loaderHidden = true;
+
+
+    if(loader){
+
+        loader.classList.add("hide");
+
+    }
+
+
+    body.classList.remove(
+        "locked"
+    );
+
+}
+
+
+setTimeout(
+    hideLoader,
+    700
+);
+
+
+/* حماية إضافية */
+
+setTimeout(
+    hideLoader,
+    1800
+);
+
+
+/* لا ننتظر window.load */
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+function openMenu(){
+
+    sideMenu.classList.add(
+        "active"
+    );
+
+    overlay.classList.add(
+        "active"
+    );
+
+    body.classList.add(
+        "locked"
+    );
+
+    menuBtn.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+}
+
+
+function closeSideMenu(){
+
+    sideMenu.classList.remove(
+        "active"
+    );
+
+    overlay.classList.remove(
+        "active"
+    );
+
+    body.classList.remove(
+        "locked"
+    );
+
+    menuBtn.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+menuBtn.addEventListener(
+    "click",
+    openMenu
+);
+
+
+closeMenu.addEventListener(
+    "click",
+    closeSideMenu
+);
+
+
+overlay.addEventListener(
+    "click",
+    closeSideMenu
+);
+
+
+document
+.querySelectorAll(
+    ".side-menu a"
+)
+.forEach(
+    function(link){
+
+        link.addEventListener(
             "click",
-            toggleMenu
+            closeSideMenu
         );
 
+    }
+);
 
-        menuLinks.forEach(link => {
 
-            link.addEventListener(
-                "click",
-                () => {
+/* =========================================================
+   HEADER + SCROLL
+========================================================= */
 
-                    menuOverlay.classList.remove(
-                        "active"
-                    );
+function handleScroll(){
 
-                    menuButton.classList.remove(
-                        "active"
-                    );
+    const scrollTop =
+        window.scrollY;
 
-                    menuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
 
-                    document.body.style.overflow =
-                        "";
+    const documentHeight =
+        document.documentElement
+            .scrollHeight
+        -
+        window.innerHeight;
 
-                }
-            );
+
+    const percentage =
+        documentHeight > 0
+        ?
+        (
+            scrollTop /
+            documentHeight
+        ) * 100
+        :
+        0;
+
+
+    progressBar.style.width =
+        percentage + "%";
+
+
+    if(scrollTop > 35){
+
+        header.classList.add(
+            "scrolled"
+        );
+
+        topBtn.classList.add(
+            "visible"
+        );
+
+    }else{
+
+        header.classList.remove(
+            "scrolled"
+        );
+
+        topBtn.classList.remove(
+            "visible"
+        );
+
+    }
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    handleScroll,
+    {
+        passive:true
+    }
+);
+
+
+handleScroll();
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+topBtn.addEventListener(
+    "click",
+    function(){
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
 
         });
 
+    }
+);
 
 
-        /* ================================================
-           ESC CLOSE MENU
-        ================================================= */
+/* =========================================================
+   REVEAL
+========================================================= */
 
-        document.addEventListener(
-            "keydown",
-            event => {
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
 
-                if (
-                    event.key === "Escape" &&
-                    menuOverlay.classList.contains("active")
-                ) {
 
-                    menuOverlay.classList.remove(
-                        "active"
-                    );
+if(
+    "IntersectionObserver"
+    in window
+){
 
-                    menuButton.classList.remove(
-                        "active"
-                    );
+    const revealObserver =
+        new IntersectionObserver(
 
-                    menuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+            function(entries){
 
-                    document.body.style.overflow =
-                        "";
+                entries.forEach(
+                    function(entry){
 
-                }
+                        if(
+                            entry.isIntersecting
+                        ){
 
+                            entry.target
+                                .classList
+                                .add(
+                                    "visible"
+                                );
+
+                            revealObserver
+                                .unobserve(
+                                    entry.target
+                                );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold:.12
             }
         );
 
 
+    revealElements.forEach(
+        function(element){
 
-        /* ================================================
-           YEAR
-        ================================================= */
+            revealObserver.observe(
+                element
+            );
 
-        document.getElementById("year").textContent =
-            new Date().getFullYear();
+        }
+    );
+
+}else{
+
+    revealElements.forEach(
+        function(element){
+
+            element.classList.add(
+                "visible"
+            );
+
+        }
+    );
+
+}
 
 
+/* =========================================================
+   LIVE CLOCK
+========================================================= */
 
-        /* ================================================
-           REVEAL ANIMATION
-        ================================================= */
+function updateClock(){
 
-        const revealElements =
-            document.querySelectorAll(".reveal");
+    if(!liveClock){
+
+        return;
+
+    }
 
 
-        const observer =
-            new IntersectionObserver(
-                entries => {
+    const now =
+        new Date();
 
-                    entries.forEach(entry => {
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+    liveClock.textContent =
+        now.toLocaleTimeString(
+            "ar-YE",
+            {
+                hour:"2-digit",
+                minute:"2-digit",
+                hour12:false
+            }
+        );
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
+}
 
-                            observer.unobserve(
-                                entry.target
-                            );
 
-                        }
+updateClock();
 
-                    });
 
-                },
-                {
-                    threshold: .12
-                }
+setInterval(
+    updateClock,
+    1000
+);
+
+
+/* =========================================================
+   GALLERY LIGHTBOX
+========================================================= */
+
+const galleryItems =
+    document.querySelectorAll(
+        ".gallery-item"
+    );
+
+
+const lightbox =
+    document.getElementById(
+        "lightbox"
+    );
+
+
+const lightboxImage =
+    document.getElementById(
+        "lightboxImage"
+    );
+
+
+const lightboxTitle =
+    document.getElementById(
+        "lightboxTitle"
+    );
+
+
+const lightboxClose =
+    document.getElementById(
+        "lightboxClose"
+    );
+
+
+function openLightbox(item){
+
+    const image =
+        item.dataset.full;
+
+
+    const title =
+        item.dataset.title || "";
+
+
+    lightboxImage.src =
+        image;
+
+
+    lightboxImage.alt =
+        title;
+
+
+    lightboxTitle.textContent =
+        title;
+
+
+    lightbox.classList.add(
+        "active"
+    );
+
+
+    body.classList.add(
+        "locked"
+    );
+
+}
+
+
+function closeLightbox(){
+
+    lightbox.classList.remove(
+        "active"
+    );
+
+
+    lightboxImage.src =
+        "";
+
+
+    lightboxTitle.textContent =
+        "";
+
+
+    body.classList.remove(
+        "locked"
+    );
+
+}
+
+
+galleryItems.forEach(
+    function(item){
+
+        item.addEventListener(
+            "click",
+            function(){
+
+                openLightbox(
+                    item
+                );
+
+            }
+        );
+
+    }
+);
+
+
+lightboxClose.addEventListener(
+    "click",
+    closeLightbox
+);
+
+
+lightbox.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target ===
+            lightbox
+        ){
+
+            closeLightbox();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   QR
+========================================================= */
+
+const qrButton =
+    document.getElementById(
+        "qrButton"
+    );
+
+
+const qrModal =
+    document.getElementById(
+        "qrModal"
+    );
+
+
+const qrClose =
+    document.getElementById(
+        "qrClose"
+    );
+
+
+function openQR(){
+
+    qrModal.classList.add(
+        "active"
+    );
+
+    body.classList.add(
+        "locked"
+    );
+
+}
+
+
+function closeQR(){
+
+    qrModal.classList.remove(
+        "active"
+    );
+
+    body.classList.remove(
+        "locked"
+    );
+
+}
+
+
+qrButton.addEventListener(
+    "click",
+    openQR
+);
+
+
+qrClose.addEventListener(
+    "click",
+    closeQR
+);
+
+
+qrModal.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target ===
+            qrModal
+        ){
+
+            closeQR();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+
+function showToast(message){
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            function(){
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2200
+        );
+
+}
+
+
+/* =========================================================
+   COPY EMAIL
+========================================================= */
+
+const copyEmail =
+    document.getElementById(
+        "copyEmail"
+    );
+
+
+copyEmail.addEventListener(
+    "click",
+    async function(){
+
+        const email =
+            "mabkhout@mabkhut.com";
+
+
+        try{
+
+            await navigator
+                .clipboard
+                .writeText(
+                    email
+                );
+
+
+            showToast(
+                "تم نسخ البريد الإلكتروني"
             );
 
 
-        revealElements.forEach(element => {
+        }catch(error){
 
-            observer.observe(element);
-
-        });
-
-
-
-        /* ================================================
-           PREVENT HORIZONTAL SCROLL
-        ================================================= */
-
-        document.documentElement.style.overflowX =
-            "hidden";
-
-        document.body.style.overflowX =
-            "hidden";
+            const temp =
+                document.createElement(
+                    "textarea"
+                );
 
 
+            temp.value =
+                email;
 
-        /* ================================================
-           SMOOTH ANCHOR
-        ================================================= */
 
-        document.querySelectorAll(
-            'a[href^="#"]'
-        ).forEach(anchor => {
-
-            anchor.addEventListener(
-                "click",
-                function(event) {
-
-                    const target =
-                        document.querySelector(
-                            this.getAttribute("href")
-                        );
-
-                    if (!target) return;
-
-                    event.preventDefault();
-
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-
-                }
+            document.body.appendChild(
+                temp
             );
 
-        });
 
-    </script>
+            temp.select();
 
-</body>
-</html>
+
+            document.execCommand(
+                "copy"
+            );
+
+
+            temp.remove();
+
+
+            showToast(
+                "تم نسخ البريد الإلكتروني"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SHARE
+========================================================= */
+
+const shareSite =
+    document.getElementById(
+        "shareSite"
+    );
+
+
+shareSite.addEventListener(
+    "click",
+    async function(){
+
+        const shareData = {
+
+            title:
+                "مبخوت بن عبدالله | MBK",
+
+            text:
+                "الموقع الشخصي لمبخوت بن عبدالله",
+
+            url:
+                "https://mabkhut.com/"
+
+        };
+
+
+        if(
+            navigator.share
+        ){
+
+            try{
+
+                await navigator.share(
+                    shareData
+                );
+
+            }catch(error){
+
+                /* المستخدم ألغى المشاركة */
+
+            }
+
+        }else{
+
+            try{
+
+       
