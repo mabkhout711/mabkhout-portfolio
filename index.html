@@ -1,295 +1,939 @@
-<!-- =========================================================
-     PROJECTS
-========================================================= -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مبخوت بن عبدالله | MBK 2026</title>
+    <style>
+        :root {
+            --bg: #0a0d14;
+            --surface: #121824;
+            --surface-hover: #1b2436;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.3);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border: rgba(255, 255, 255, 0.08);
+            --font-main: system-ui, -apple-system, sans-serif;
+        }
 
-<section
-    class="section reveal"
-    id="projects"
->
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
 
-    <div class="container">
+        html {
+            scroll-behavior: smooth;
+        }
 
-        <div class="section-head">
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-            <span class="section-label">
-                PORTFOLIO
-            </span>
+        body.locked {
+            overflow: hidden;
+        }
 
-            <h2 class="section-title">
-                الأعمال والمشاريع
-            </h2>
+        /* Scroll Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary);
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
 
-            <p class="section-description">
-                نماذج ومشاريع تعكس الشغف والتطوير المستمر.
-            </p>
+        /* Intro Loader */
+        #intro {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
 
+        #intro.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .intro-brand {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .intro-loader-bar {
+            width: 200px;
+            height: 2px;
+            background: var(--border);
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .intro-loader-line {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 0%;
+            background: var(--primary);
+            transition: width 0.1s linear;
+        }
+
+        .intro-percent {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(10, 13, 20, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .menu-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .menu-btn:hover {
+            background: var(--surface-hover);
+        }
+
+        /* Side Menu */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 320px;
+            height: 100%;
+            background: var(--surface);
+            z-index: 1001;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+            transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            border-left: 1px solid var(--border);
+        }
+
+        .side-menu.active {
+            left: 0;
+        }
+
+        .side-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .side-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .side-menu-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .side-menu-links a:hover {
+            color: var(--primary);
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(3px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* General Container & Section Styles */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-head {
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 600px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size. 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background: var(--surface);
+        }
+
+        /* About & Clock */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media(max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .clock-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .clock-time {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: monospace;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 12px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .skill-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Projects */
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .filter.active, .filter:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .project {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project.hidden {
+            display: none;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: var(--surface-hover);
+        }
+
+        .project-content {
+            padding: 24px;
+        }
+
+        .project-category {
+            font-size: 0.75rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .project-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-right: 30px;
+            border-right: 2px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            right: -37px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: var(--bg);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+        }
+
+        .timeline-year {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .timeline-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Future & Vision */
+        .future {
+            padding: 120px 0;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .future-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 15px 0 30px;
+        }
+
+        .future-title span {
+            color: var(--primary);
+        }
+
+        .future-years {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            color: var(--text-muted);
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        .vision {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .vision-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .vision-text span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        /* Contact & Footer */
+        .contact-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-card h2 {
+            font-size: 2.2rem;
+            margin: 15px 0 20px;
+        }
+
+        .contact-card h2 span {
+            color: var(--primary);
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: border-color 0.3s;
+        }
+
+        .contact-link:hover {
+            border-color: var(--primary);
+        }
+
+        .signature {
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .signature-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .signature-sub {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media(max-width: 768px) {
+            footer {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-brand {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .footer-column h4 {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .footer-column a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Top Button */
+        #top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+        }
+
+        #top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #top:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* Reveal Animation Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="locked">
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Intro Loader -->
+    <div id="intro">
+        <div class="intro-brand">MBK</div>
+        <div class="intro-loader-bar">
+            <div class="intro-loader-line" id="introLine"></div>
         </div>
+        <div class="intro-percent" id="introPercent">0%</div>
+    </div>
 
+    <!-- Header & Navigation -->
+    <header>
+        <a href="#home" class="logo">MBK</a>
+        <button class="menu-btn" id="menuButton">القائمة</button>
+    </header>
 
-        <div class="filters">
-
-            <button
-                class="filter active"
-                data-filter="all"
-            >
-                الكل
-            </button>
-
-            <button
-                class="filter"
-                data-filter="ai"
-            >
-                الذكاء الاصطناعي
-            </button>
-
-            <button
-                class="filter"
-                data-filter="web"
-            >
-                تطوير الويب
-            </button>
-
-            <button
-                class="filter"
-                data-filter="design"
-            >
-                التصميم
-            </button>
-
+    <!-- Side Menu -->
+    <div class="overlay" id="overlay"></div>
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <span class="logo">القائمة</span>
+            <button class="close-menu" id="closeMenu">✕</button>
         </div>
+        <div class="side-menu-links">
+            <a href="#home">الرئيسية</a>
+            <a href="#about">من أنا</a>
+            <a href="#skills">المهارات</a>
+            <a href="#projects">الأعمال</a>
+            <a href="#journey">المسيرة</a>
+            <a href="#contact">تواصل معي</a>
+        </div>
+    </div>
 
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="section-label">PORTFOLIO 2026</span>
+                    <h1>أهلاً بك، أنا <br><span>مبخوت بن عبدالله</span></h1>
+                    <p>مطور ومبتكر رقمي، أدمج بين البرمجة، التقنية الحديثة، والذكاء الاصطناعي لصناعة تجارب ويب متميزة واستثنائية.</p>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn">استعرض الأعمال</a>
+                        <a href="#contact" class="btn btn-outline">تواصل معي</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="projects">
+        <!-- About Section -->
+        <section class="section reveal" id="about">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-label">ABOUT ME</span>
+                    <h2 class="section-title">من أنا</h2>
+                    <p class="section-description">نظرة سريعة على الخلفية المهنية والتوقيت الحالي.</p>
+                </div>
+                <div class="about-grid">
+                    <div class="card">
+                        <h3 style="margin-bottom: 15px;">شغف بلا حدود</h3>
+                        <p style="color: var(--text-muted);">أسعى دائماً لتوظيف أحدث التقنيات البرمجية لتسهيل حياة المستخدمين وبناء أنظمة رقمية مرنة، سريعة، وذات كفاءة عالية.</p>
+                    </div>
+                    <div class="card clock-card">
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">التوقيت المحلي</span>
+                        <div class="clock-time" id="clock">00:00:00</div>
+                        <span style="font-size: 0.8rem; color: var(--primary);">متصل الآن</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <article
-                class="project tilt"
-                data-category="ai"
-            >
+        <!-- Skills Section -->
+        <section class="section reveal" id="skills">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-label">EXPERTISE</span>
+                    <h2 class="section-title">المهارات والقدرات</h2>
+                    <p class="section-description">التقنيات والأدوات الأساسية التي أعتمد عليها.</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>تطوير الواجهات</h3>
+                        <p>HTML5, CSS3, JavaScript متقدم، وتصميم متجاوب.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>الذكاء الاصطناعي</h3>
+                        <p>استخدام أحدث نماذج ونظم الـ AI والأتمتة الذكية.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>التصميم الرقمي</h3>
+                        <p>بناء تجارب المستخدم UI/UX والهويات الرقمية.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>إدارة المشاريع</h3>
+                        <p>التخطيط الاستراتيجي، حل المشكلات، والتطوير المستمر.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <img
-                    class="project-image"
-                    src="file_00000000202482468d4027eb8c5919f7.png"
-                    alt="مشروع الذكاء الاصطناعي"
-                    loading="lazy"
-                >
-
-                <div class="project-overlay"></div>
-
-                <div class="project-content">
-
-                    <span class="project-category">
-                        AI & DATA
-                    </span>
-
-                    <h3>
-                        مساعد ذكي متقدم
-                    </h3>
-
-                    <p>
-                        تجربة تفاعلية مدعومة بالذكاء الاصطناعي.
-                    </p>
-
+        <!-- Projects Section -->
+        <section class="section reveal" id="projects">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-label">PORTFOLIO</span>
+                    <h2 class="section-title">الأعمال والمشاريع</h2>
+                    <p class="section-description">نماذج ومشاريع تعكس الشغف والتطوير المستمر.</p>
+                </div>
+                
+                <div class="filters">
+                    <button class="filter active" data-filter="all">الكل</button>
+                    <button class="filter" data-filter="ai">الذكاء الاصطناعي</button>
+                    <button class="filter" data-filter="web">تطوير الويب</button>
+                    <button class="filter" data-filter="design">التصميم</button>
                 </div>
 
-                <div class="project-open">↗</div>
+                <div class="projects">
+                    <article class="project" data-category="ai">
+                        <div class="project-image" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);"></div>
+                        <div class="project-content">
+                            <span class="project-category">AI & DATA</span>
+                            <h3>مساعد ذكي متقدم</h3>
+                            <p>تجربة تفاعلية مدعومة بالذكاء الاصطناعي والأتمتة.</p>
+                        </div>
+                    </article>
 
-            </article>
+                    <article class="project" data-category="web">
+                        <div class="project-image" style="background: linear-gradient(135deg, #065f46, #10b981);"></div>
+                        <div class="project-content">
+                            <span class="project-category">WEB EXPERIENCE</span>
+                            <h3>منصة رقمية شخصية</h3>
+                            <p>تصميم وتطوير واجهات عصرية ومتطورة.</p>
+                        </div>
+                    </article>
 
-
-            <article
-                class="project tilt"
-                data-category="web"
-            >
-
-                <img
-                    class="project-image"
-                    src="file_00000000202482468d4027eb8c5919f7.png"
-                    alt="مشروع الويب"
-                    loading="lazy"
-                >
-
-                <div class="project-overlay"></div>
-
-                <div class="project-content">
-
-                    <span class="project-category">
-                        WEB EXPERIENCE
-                    </span>
-
-                    <h3>
-                        منصة رقمية شخصية
-                    </h3>
-
-                    <p>
-                        تصميم وتطوير واجهات عصرية ومتطورة.
-                    </p>
-
+                    <article class="project" data-category="design">
+                        <div class="project-image" style="background: linear-gradient(135deg, #581c87, #8b5cf6);"></div>
+                        <div class="project-content">
+                            <span class="project-category">CREATIVE DESIGN</span>
+                            <h3>الهوية البصرية الرقمية</h3>
+                            <p>صناعة هوية متكاملة بلمسات فنية دقيقة.</p>
+                        </div>
+                    </article>
                 </div>
+            </div>
+        </section>
 
-                <div class="project-open">↗</div>
-
-            </article>
-
-
-            <article
-                class="project tilt"
-                data-category="design"
-            >
-
-                <img
-                    class="project-image"
-                    src="file_00000000202482468d4027eb8c5919f7.png"
-                    alt="مشروع التصميم"
-                    loading="lazy"
-                >
-
-                <div class="project-overlay"></div>
-
-                <div class="project-content">
-
-                    <span class="project-category">
-                        CREATIVE DESIGN
-                    </span>
-
-                    <h3>
-                        الهوية البصرية الرقمية
-                    </h3>
-
-                    <p>
-                        صناعة هوية متكاملة بلمسات فنية دقيقة.
-                    </p>
-
+        <!-- Journey Section -->
+        <section class="section reveal" id="journey">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-label">JOURNEY</span>
+                    <h2 class="section-title">المسيرة والخطوات</h2>
+                    <p class="section-description">محطات في رحلة البناء والتطوير.</p>
                 </div>
-
-                <div class="project-open">↗</div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     JOURNEY / TIMELINE
-========================================================= -->
-
-<section
-    class="section reveal"
-    id="journey"
->
-
-    <div class="container">
-
-        <div class="section-head">
-
-            <span class="section-label">
-                JOURNEY
-            </span>
-
-            <h2 class="section-title">
-                المسيرة والخطوات
-            </h2>
-
-            <p class="section-description">
-                محطات في رحلة البناء والتطوير.
-            </p>
-
-        </div>
-
-
-        <div class="timeline">
-
-            <div class="timeline-line-active" id="timelineLine"></div>
-
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-year">2026</div>
-                <h3 class="timeline-title">إطلاق الهوية الرقمية الشاملة</h3>
-                <p class="timeline-text">تطوير الموقع الشخصي ودمج التقنيات الحديثة وأدوات الذكاء الاصطناعي.</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2026</div>
+                        <h3 class="timeline-title">إطلاق الهوية الرقمية الشاملة</h3>
+                        <p class="timeline-text">تطوير الموقع الشخصي ودمج التقنيات الحديثة وأدوات الذكاء الاصطناعي.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2025</div>
+                        <h3 class="timeline-title">التوسع في مشاريع الويب والتصميم</h3>
+                        <p class="timeline-text">التركيز على تجربة المستخدم وصناعة محتوى رقمي متطور وعالي الجودة.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2024</div>
+                        <h3 class="timeline-title">بداية الشغف والتأسيس</h3>
+                        <p class="timeline-text">الانطلاق الحقيقي في عالم البرمجة، التقنية، واستكشاف آفاق جديدة.</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-year">2025</div>
-                <h3 class="timeline-title">التوسع في مشاريع الويب والتصميم</h3>
-                <p class="timeline-text">التركيز على تجربة المستخدم وصناعة محتوى رقمي متطور وعالي الجودة.</p>
+        <!-- Future & Vision -->
+        <section class="future reveal" id="future">
+            <div class="container">
+                <div class="section-label">THE FUTURE</div>
+                <h2 class="future-title">نحو <span>المستقبل</span></h2>
+                <div class="future-years">
+                    <span>2026</span>
+                    <span>•</span>
+                    <span>2030</span>
+                    <span>•</span>
+                    <span>BEYOND</span>
+                </div>
             </div>
+        </section>
 
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-year">2024</div>
-                <h3 class="timeline-title">بداية الشغف والتأسيس</h3>
-                <p class="timeline-text">الانطلاق الحقيقي في عالم البرمجة، التقنية، واستكشاف آفاق جديدة.</p>
+        <section class="vision reveal" id="vision">
+            <div class="container">
+                <div class="vision-text">
+                    <span>رؤيتي</span>
+                    "صناعة أثر رقمي مستدام، يجمع بين الأصالة والابتكار، ويترك بصمة واضحة في كل ما نقدمه."
+                </div>
             </div>
+        </section>
 
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     FUTURE & VISION
-========================================================= -->
-
-<section class="future reveal" id="future">
-    <div class="future-content">
-        <div class="section-label">THE FUTURE</div>
-        <h2 class="future-title">نحو <span>المستقبل</span></h2>
-        <div class="future-years">
-            <span>2026</span>
-            <span>•</span>
-            <span>2030</span>
-            <span>•</span>
-            <span>BEYOND</span>
-        </div>
-    </div>
-</section>
-
-<section class="vision reveal" id="vision">
-    <div class="container">
-        <div class="vision-text">
-            <span>رؤيتي</span>
-            "صناعة أثر رقمي مستدام، يجمع بين الأصالة والابتكار، ويترك بصمة واضحة في كل ما نقدمه."
-        </div>
-    </div>
-</section>
-
-
-<!-- =========================================================
-     CONTACT & FOOTER
-========================================================= -->
-
-<section class="section reveal" id="contact">
-    <div class="container">
-        <div class="contact-card">
-            <div class="section-label">GET IN TOUCH</div>
-            <h2>تواصل <span>معي</span></h2>
-            <p>يسعدني تواصلك، سواء لنقاش فكرة، أو تبادل خبرات، أو التعاون في مشاريع مستقبلية.</p>
-            
-            <div class="contact-links">
-                <a class="contact-link" href="mailto:contact@mbk.com">البريد الإلكتروني</a>
-                <a class="contact-link" href="#telegram">تيليجرام</a>
-                <a class="contact-link" href="#github">جيت هب</a>
+        <!-- Contact Section -->
+        <section class="section reveal" id="contact">
+            <div class="container">
+                <div class="contact-card">
+                    <div class="section-label">GET IN TOUCH</div>
+                    <h2>تواصل <span>معي</span></h2>
+                    <p>يسعدني تواصلك، سواء لنقاش فكرة، أو تبادل خبرات، أو التعاون في مشاريع مستقبلية.</p>
+                    <div class="contact-links">
+                        <a class="contact-link" href="mailto:contact@mbk.com">البريد الإلكتروني</a>
+                        <a class="contact-link" href="#telegram">تيليجرام</a>
+                        <a class="contact-link" href="#github">جيت هب</a>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <div class="signature">
+            <div class="signature-name">مبخوت بن عبدالله</div>
+            <div class="signature-sub">MBK • 2026</div>
         </div>
-    </div>
-</section>
+    </main>
 
-<div class="signature">
-    <div class="signature-name">مبخوت بن عبدالله</div>
-    <div class="signature-sub">MBK • 2026</div>
-</div>
-
-<footer>
-    <div class="footer-inner">
+    <footer>
         <div>
             <div class="footer-brand">MBK</div>
-            <p style="color:#697486; font-size:11px; margin-top:15px; line-height:1.8;">الموقع الشخصي الرسمي لمبخوت بن عبدالله. جميع الحقوق محفوظة.</p>
+            <p style="color:var(--text-muted); font-size:11px; margin-top:15px; line-height:1.8;">الموقع الشخصي الرسمي لمبخوت بن عبدالله. جميع الحقوق محفوظة.</p>
         </div>
         <div class="footer-column">
             <h4>روابط سريعة</h4>
@@ -302,12 +946,133 @@
             <a href="#contact">راسلنا</a>
             <a href="#privacy">الخصوصية</a>
         </div>
-    </div>
+    </footer>
+
     <div class="footer-bottom">
         <span>© 2026 MBK. All Rights Reserved.</span>
         <span>Made with Passion</span>
     </div>
-</footer>
 
-<button id="top" aria-label="العودة للأعلى">↑</button>
-<div id="toast">تم النسخ بنجاح</div>
+    <button id="top" aria-label="العودة للأعلى">↑</button>
+
+    <!-- JavaScript -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. شاشة التحميل
+        let percentElement = document.getElementById("introPercent");
+        let introLine = document.getElementById("introLine");
+        let introSection = document.getElementById("intro");
+        let percent = 0;
+
+        let interval = setInterval(function() {
+            percent += 5;
+            if(percentElement) percentElement.innerText = percent + "%";
+            if(introLine) introLine.style.width = percent + "%";
+
+            if (percent >= 100) {
+                clearInterval(interval);
+                setTimeout(function() {
+                    if(introSection) introSection.classList.add("hide");
+                    document.body.classList.remove("locked"); 
+                }, 300); 
+            }
+        }, 20);
+
+        // 2. القائمة الجانبية
+        const menuButton = document.getElementById("menuButton");
+        const closeMenu = document.getElementById("closeMenu");
+        const sideMenu = document.getElementById("sideMenu");
+        const overlay = document.getElementById("overlay");
+
+        function toggleMenu() {
+            sideMenu.classList.toggle("active");
+            overlay.classList.toggle("active");
+        }
+
+        if(menuButton) menuButton.addEventListener("click", toggleMenu);
+        if(closeMenu) closeMenu.addEventListener("click", toggleMenu);
+        if(overlay) overlay.addEventListener("click", toggleMenu);
+
+        document.querySelectorAll(".side-menu a").forEach(link => {
+            link.addEventListener("click", () => {
+                sideMenu.classList.remove("active");
+                overlay.classList.remove("active");
+            });
+        });
+
+        // 3. زر العودة للأعلى وشريط التقدم
+        const topButton = document.getElementById("top");
+        const scrollProgress = document.getElementById("scroll-progress");
+
+        window.addEventListener("scroll", () => {
+            let scrollTop = window.scrollY;
+            let docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrollPercent = (scrollTop / docHeight) * 100;
+
+            if(scrollProgress) {
+                scrollProgress.style.width = scrollPercent + "%";
+            }
+
+            if(scrollTop > 400) {
+                if(topButton) topButton.classList.add("show");
+            } else {
+                if(topButton) topButton.classList.remove("show");
+            }
+        });
+
+        if(topButton) {
+            topButton.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // 4. الساعة المحلية
+        const clockElement = document.getElementById("clock");
+        if(clockElement) {
+            setInterval(() => {
+                let now = new Date();
+                clockElement.innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            }, 1000);
+        }
+
+        // 5. فلترة المشاريع
+        const filters = document.querySelectorAll(".filter");
+        const projects = document.querySelectorAll(".project");
+
+        filters.forEach(filter => {
+            filter.addEventListener("click", () => {
+                filters.forEach(f => f.classList.remove("active"));
+                filter.classList.add("active");
+
+                let targetCategory = filter.getAttribute("data-filter");
+
+                projects.forEach(project => {
+                    let cat = project.getAttribute("data-category");
+                    if(targetCategory === "all" || cat === targetCategory) {
+                        project.classList.remove("hidden");
+                    } else {
+                        project.classList.add("hidden");
+                    }
+                });
+            });
+        });
+
+        // 6. تأثيرات الظهور عند التمرير
+        const reveals = document.querySelectorAll(".reveal");
+
+        function checkReveal() {
+            let triggerBottom = window.innerHeight * 0.85;
+            reveals.forEach(reveal => {
+                let top = reveal.getBoundingClientRect().top;
+                if(top < triggerBottom) {
+                    reveal.classList.add("visible");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", checkReveal);
+        checkReveal();
+    });
+    </script>
+</body>
+</html>
