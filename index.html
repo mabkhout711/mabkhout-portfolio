@@ -4403,7 +4403,7 @@ footer{
 </style>
 </head>
 
-<body>
+<body class="locked">
 
 <!-- =========================================================
      CINEMATIC INTRO
@@ -4435,7 +4435,7 @@ footer{
         </div>
 
         <div class="intro-message">
-            PERSONAL DIGITAL EXPERIENCE
+            ارحب الف
         </div>
 
     </div>
@@ -5108,18 +5108,38 @@ footer{
 
 </section>
 
+</main>
 
-<!-- =========================================================
-     PROJECT UNIVERSE
-========================================================= -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let percentElement = document.getElementById("introPercent");
+    let introLine = document.getElementById("introLine");
+    let introSection = document.getElementById("intro");
+    let percent = 0;
 
-<section
-    class="section reveal"
->
+    let interval = setInterval(function() {
+        percent += 2;
+        
+        if(percentElement) {
+            percentElement.innerText = percent + "%";
+        }
+        if(introLine) {
+            introLine.style.width = percent + "%";
+        }
 
-    <div class="container">
+        if (percent >= 100) {
+            clearInterval(interval);
+            
+            setTimeout(function() {
+                if(introSection) {
+                    introSection.classList.add("hide");
+                }
+                document.body.classList.remove("locked"); 
+            }, 400); 
+        }
+    }, 25);
+});
+</script>
 
-        <div class="section-head">
-
-            <span class="section-label">
- 
+</body>
+</html>
