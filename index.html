@@ -1,1513 +1,1103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>MABKHOUT — Digital Experience</title>
-  <meta
-    name="description"
-    content="MABKHOUT — A premium digital experience crafted with vision, motion and technology."
-  />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
-  />
-
-  <style>
-    /* =========================================================
-       RESET
-    ========================================================= */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Inter", sans-serif;
-      background: #050505;
-      color: #f5f5f5;
-      overflow-x: hidden;
-      cursor: none;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    ::selection {
-      background: #fff;
-      color: #000;
-    }
-
-
-    /* =========================================================
-       LOADER
-    ========================================================= */
-
-    .loader {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: #050505;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      animation: loaderOut 1.4s cubic-bezier(.77,0,.18,1) 1.8s forwards;
-    }
-
-    .loader-inner {
-      overflow: hidden;
-    }
-
-    .loader-logo {
-      font-size: clamp(3rem, 9vw, 9rem);
-      font-weight: 900;
-      letter-spacing: -0.08em;
-      transform: translateY(100%);
-      animation: loaderText 1s cubic-bezier(.77,0,.18,1) .2s forwards;
-    }
-
-    @keyframes loaderText {
-      to {
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes loaderOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-
-
-    /* =========================================================
-       CUSTOM CURSOR
-    ========================================================= */
-
-    .cursor {
-      position: fixed;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #fff;
-      pointer-events: none;
-      z-index: 10000;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: difference;
-      transition:
-        width .35s ease,
-        height .35s ease,
-        background .35s ease;
-    }
-
-    .cursor-ring {
-      position: fixed;
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(255,255,255,.6);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition:
-        width .4s cubic-bezier(.2,.8,.2,1),
-        height .4s cubic-bezier(.2,.8,.2,1),
-        background .4s ease,
-        border .4s ease;
-    }
-
-    body.cursor-hover .cursor {
-      width: 5px;
-      height: 5px;
-    }
-
-    body.cursor-hover .cursor-ring {
-      width: 85px;
-      height: 85px;
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.25);
-    }
-
-
-    /* =========================================================
-       NOISE
-    ========================================================= */
-
-    .noise {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1000;
-      opacity: .055;
-      background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-    }
-
-
-    /* =========================================================
-       NAVIGATION
-    ========================================================= */
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 500;
-      padding: 30px 4vw;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      mix-blend-mode: difference;
-    }
-
-    .brand {
-      font-weight: 900;
-      font-size: 1rem;
-      letter-spacing: -.06em;
-    }
-
-    .nav-right {
-      display: flex;
-      gap: 35px;
-      align-items: center;
-      font-size: .75rem;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-    }
-
-    .nav-link {
-      position: relative;
-      opacity: .8;
-      transition: opacity .3s ease;
-    }
-
-    .nav-link:hover {
-      opacity: 1;
-    }
-
-    .menu-button {
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(255,255,255,.45);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      transition: .4s ease;
-    }
-
-    .menu-button:hover {
-      background: #fff;
-      color: #000;
-      transform: rotate(45deg);
-    }
-
-
-    /* =========================================================
-       HERO
-    ========================================================= */
-
-    .hero {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      padding: 8vw 4vw 5vw;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(
-          circle at 72% 38%,
-          rgba(255,255,255,.13),
-          transparent 22%
-        ),
-        radial-gradient(
-          circle at 25% 75%,
-          rgba(100,100,100,.12),
-          transparent 30%
-        ),
-        #050505;
-    }
-
-    .orb {
-      position: absolute;
-      width: 38vw;
-      height: 38vw;
-      right: 5vw;
-      top: 15%;
-      border-radius: 50%;
-      background:
-        radial-gradient(
-          circle at 35% 30%,
-          #fff,
-          #8c8c8c 15%,
-          #242424 45%,
-          #050505 70%
-        );
-      filter: blur(1px);
-      opacity: .65;
-      animation: orbFloat 8s ease-in-out infinite alternate;
-      box-shadow:
-        0 0 100px rgba(255,255,255,.07),
-        inset -40px -40px 80px rgba(0,0,0,.8);
-    }
-
-    @keyframes orbFloat {
-      from {
-        transform: translate3d(0,0,0) scale(1);
-      }
-      to {
-        transform: translate3d(-30px,25px,0) scale(1.05);
-      }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-    }
-
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: .7rem;
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      margin-bottom: 35px;
-      opacity: .7;
-    }
-
-    .dot {
-      width: 7px;
-      height: 7px;
-      background: #fff;
-      border-radius: 50%;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      50% {
-        transform: scale(.4);
-        opacity: .4;
-      }
-    }
-
-    .hero-title {
-      font-size: clamp(4.5rem, 15vw, 17rem);
-      line-height: .76;
-      letter-spacing: -.095em;
-      font-weight: 900;
-      text-transform: uppercase;
-      overflow: hidden;
-    }
-
-    .hero-title span {
-      display: block;
-      transform: translateY(110%);
-      animation: revealText 1.2s cubic-bezier(.77,0,.18,1) 2s forwards;
-    }
-
-    .hero-title span:nth-child(2) {
-      animation-delay: 2.1s;
-    }
-
-    @keyframes revealText {
-      to {
-        transform: translateY(0);
-      }
-    }
-
-    .hero-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-top: 55px;
-      gap: 30px;
-    }
-
-    .hero-description {
-      max-width: 430px;
-      font-size: clamp(.9rem, 1.2vw, 1.1rem);
-      line-height: 1.6;
-      color: #a5a5a5;
-    }
-
-    .scroll-indicator {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      font-size: .65rem;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-    }
-
-    .scroll-line {
-      height: 65px;
-      width: 1px;
-      background: linear-gradient(
-        to bottom,
-        transparent,
-        white
-      );
-      animation: scrollLine 1.8s ease-in-out infinite;
-    }
-
-    @keyframes scrollLine {
-      50% {
-        transform: scaleY(.3);
-        transform-origin: top;
-      }
-    }
-
-
-    /* =========================================================
-       MARQUEE
-    ========================================================= */
-
-    .marquee {
-      overflow: hidden;
-      border-top: 1px solid #202020;
-      border-bottom: 1px solid #202020;
-      padding: 25px 0;
-      white-space: nowrap;
-    }
-
-    .marquee-track {
-      display: inline-flex;
-      gap: 40px;
-      animation: marquee 25s linear infinite;
-    }
-
-    .marquee span {
-      font-size: clamp(2rem, 4vw, 5rem);
-      font-weight: 800;
-      letter-spacing: -.06em;
-    }
-
-    .marquee .outline {
-      color: transparent;
-      -webkit-text-stroke: 1px #777;
-    }
-
-    @keyframes marquee {
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-
-    /* =========================================================
-       ABOUT
-    ========================================================= */
-
-    section {
-      position: relative;
-    }
-
-    .about {
-      padding: 15vw 4vw;
-      min-height: 90vh;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 8vw;
-      align-items: start;
-    }
-
-    .section-number {
-      font-size: .7rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: #777;
-    }
-
-    .about-title {
-      font-size: clamp(2.5rem, 6vw, 7rem);
-      line-height: .9;
-      letter-spacing: -.07em;
-      font-weight: 700;
-      max-width: 1000px;
-    }
-
-    .about-title em {
-      font-style: normal;
-      color: #777;
-    }
-
-    .about-text {
-      margin-top: 70px;
-      max-width: 620px;
-      color: #999;
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-
-    /* =========================================================
-       PROJECTS
-    ========================================================= */
-
-    .projects {
-      padding: 8vw 4vw 15vw;
-    }
-
-    .projects-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 80px;
-    }
-
-    .projects-title {
-      font-size: clamp(3rem, 8vw, 9rem);
-      letter-spacing: -.08em;
-      line-height: .8;
-    }
-
-    .projects-count {
-      color: #777;
-      font-size: .75rem;
-      letter-spacing: .15em;
-    }
-
-    .project {
-      min-height: 75vh;
-      margin-bottom: 7vw;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      padding: 35px;
-      background: #111;
-    }
-
-    .project-image {
-      position: absolute;
-      inset: 0;
-      transition: transform 1s cubic-bezier(.2,.8,.2,1);
-    }
-
-    .project:hover .project-image {
-      transform: scale(1.06);
-    }
-
-    .project:nth-child(2) .project-image {
-      background:
-        radial-gradient(circle at 70% 30%, #d7d7d7, transparent 12%),
-        radial-gradient(circle at 30% 70%, #444, transparent 30%),
-        linear-gradient(135deg,#171717,#777,#090909);
-    }
-
-    .project:nth-child(3) .project-image {
-      background:
-        linear-gradient(130deg, #050505, #303030 50%, #999);
-    }
-
-    .project:nth-child(4) .project-image {
-      background:
-        radial-gradient(circle at 50% 50%, #eee, #444 18%, #080808 55%);
-    }
-
-    .project-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          to top,
-          rgba(0,0,0,.8),
-          transparent 60%
-        );
-    }
-
-    .project-info {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 30px;
-    }
-
-    .project-name {
-      font-size: clamp(2.2rem, 5vw, 6rem);
-      letter-spacing: -.07em;
-      font-weight: 700;
-    }
-
-    .project-meta {
-      font-size: .7rem;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-      color: #bbb;
-    }
-
-
-    /* =========================================================
-       SERVICES
-    ========================================================= */
-
-    .services {
-      padding: 10vw 4vw;
-      border-top: 1px solid #202020;
-    }
-
-    .services-grid {
-      margin-top: 100px;
-      border-top: 1px solid #303030;
-    }
-
-    .service {
-      padding: 35px 0;
-      border-bottom: 1px solid #303030;
-      display: grid;
-      grid-template-columns: 100px 1fr 80px;
-      align-items: center;
-      gap: 30px;
-      transition: padding .5s ease;
-    }
-
-    .service:hover {
-      padding-left: 25px;
-      padding-right: 25px;
-      background: #0b0b0b;
-    }
-
-    .service-number {
-      color: #666;
-      font-size: .75rem;
-    }
-
-    .service-name {
-      font-size: clamp(1.8rem, 4vw, 4.5rem);
-      letter-spacing: -.06em;
-    }
-
-    .service-arrow {
-      font-size: 2rem;
-      transition: transform .5s ease;
-    }
-
-    .service:hover .service-arrow {
-      transform: rotate(45deg);
-    }
-
-
-    /* =========================================================
-       STATEMENT
-    ========================================================= */
-
-    .statement {
-      min-height: 90vh;
-      padding: 15vw 4vw;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .statement h2 {
-      font-size: clamp(3.5rem, 10vw, 12rem);
-      line-height: .82;
-      letter-spacing: -.09em;
-      max-width: 1400px;
-    }
-
-    .statement h2 span {
-      color: #555;
-    }
-
-
-    /* =========================================================
-       CONTACT
-    ========================================================= */
-
-    .contact {
-      min-height: 100vh;
-      padding: 12vw 4vw 5vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border-top: 1px solid #202020;
-    }
-
-    .contact-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .contact-label {
-      font-size: .7rem;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-      color: #777;
-    }
-
-    .contact-title {
-      margin-top: 100px;
-      font-size: clamp(4rem, 12vw, 14rem);
-      line-height: .78;
-      letter-spacing: -.1em;
-    }
-
-    .contact-title span {
-      color: #666;
-    }
-
-    .contact-button {
-      margin-top: 70px;
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      border: 1px solid #555;
-      display: grid;
-      place-items: center;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-size: .7rem;
-      transition:
-        background .5s ease,
-        color .5s ease,
-        transform .5s ease;
-    }
-
-    .contact-button:hover {
-      background: #fff;
-      color: #000;
-      transform: scale(1.1);
-    }
-
-
-    /* =========================================================
-       FOOTER
-    ========================================================= */
-
-    footer {
-      padding: 35px 4vw;
-      border-top: 1px solid #202020;
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
-      font-size: .7rem;
-      color: #777;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-    }
-
-    .socials {
-      display: flex;
-      gap: 25px;
-    }
-
-    .socials a {
-      transition: color .3s ease;
-    }
-
-    .socials a:hover {
-      color: #fff;
-    }
-
-
-    /* =========================================================
-       REVEAL
-    ========================================================= */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(80px);
-      transition:
-        opacity 1s cubic-bezier(.2,.8,.2,1),
-        transform 1s cubic-bezier(.2,.8,.2,1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
-
-    @media (max-width: 800px) {
-
-      body {
-        cursor: auto;
-      }
-
-      .cursor,
-      .cursor-ring {
-        display: none;
-      }
-
-      nav {
-        padding: 22px 5vw;
-      }
-
-      .nav-right {
-        gap: 15px;
-      }
-
-      .nav-link {
-        display: none;
-      }
-
-      .hero {
-        min-height: 100svh;
-        padding: 30vh 5vw 8vw;
-      }
-
-      .orb {
-        width: 70vw;
-        height: 70vw;
-        right: -15vw;
-        top: 18%;
-      }
-
-      .hero-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .scroll-indicator {
-        display: none;
-      }
-
-      .about {
-        grid-template-columns: 1fr;
-        padding: 25vw 5vw;
-      }
-
-      .about-text {
-        margin-top: 45px;
-      }
-
-      .projects {
-        padding: 15vw 5vw;
-      }
-
-      .projects-header {
-        margin-bottom: 50px;
-      }
-
-      .project {
-        min-height: 60vh;
-        padding: 25px;
-      }
-
-      .project-info {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .services {
-        padding: 20vw 5vw;
-      }
-
-      .service {
-        grid-template-columns: 45px 1fr 30px;
-        gap: 15px;
-      }
-
-      .service:hover {
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-
-      .statement {
-        padding: 25vw 5vw;
-      }
-
-      .contact {
-        padding: 25vw 5vw 8vw;
-      }
-
-      .contact-top {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .contact-title {
-        margin-top: 80px;
-      }
-
-      .contact-button {
-        width: 130px;
-        height: 130px;
-      }
-
-      footer {
-        flex-direction: column;
-        padding: 30px 5vw;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MABKHOUT — Enter The Unknown</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#020203;
+  color:#fff;
+  font-family:Inter,sans-serif;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+::selection{
+  background:#fff;
+  color:#000;
+}
+
+canvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+}
+
+.noise{
+  position:fixed;
+  inset:0;
+  z-index:20;
+  pointer-events:none;
+  opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* CURSOR */
+
+.cursor{
+  position:fixed;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:white;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:1000;
+  mix-blend-mode:difference;
+}
+
+.cursor-ring{
+  position:fixed;
+  width:42px;
+  height:42px;
+  border:1px solid rgba(255,255,255,.5);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:999;
+  transition:
+    width .4s,
+    height .4s,
+    border .4s,
+    background .4s;
+}
+
+body.hover .cursor-ring{
+  width:90px;
+  height:90px;
+  border-color:#fff;
+  background:rgba(255,255,255,.05);
+}
+
+/* NAV */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:28px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:100;
+  mix-blend-mode:difference;
+}
+
+.logo{
+  font-size:15px;
+  font-weight:900;
+  letter-spacing:-.06em;
+}
+
+.status{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:9px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.status i{
+  width:6px;
+  height:6px;
+  background:#fff;
+  border-radius:50%;
+  animation:pulse 1.6s infinite;
+}
+
+@keyframes pulse{
+  50%{
+    opacity:.25;
+    transform:scale(.5);
+  }
+}
+
+/* HERO */
+
+.hero{
+  height:100vh;
+  min-height:700px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.center{
+  position:relative;
+  text-align:center;
+  z-index:2;
+  user-select:none;
+}
+
+.micro{
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.4em;
+  color:rgba(255,255,255,.48);
+  margin-bottom:35px;
+  opacity:0;
+  animation:appear 1.4s 1.5s forwards;
+}
+
+@keyframes appear{
+  to{
+    opacity:1;
+  }
+}
+
+.title{
+  font-size:clamp(70px,16vw,250px);
+  line-height:.7;
+  letter-spacing:-.12em;
+  font-weight:900;
+  position:relative;
+  transform:scale(.85);
+  opacity:0;
+  animation:titleIn 1.8s cubic-bezier(.16,1,.3,1) .8s forwards;
+}
+
+@keyframes titleIn{
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+.title::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:180px;
+  height:180px;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.subtitle{
+  margin-top:55px;
+  font-size:10px;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  color:#777;
+  opacity:0;
+  animation:appear 1.2s 2s forwards;
+}
+
+.enter{
+  margin:50px auto 0;
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:7px;
+  text-decoration:none;
+  color:white;
+  font-size:9px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  transition:.6s cubic-bezier(.2,.8,.2,1);
+  opacity:0;
+  animation:appear 1s 2.3s forwards;
+}
+
+.enter span{
+  font-size:16px;
+}
+
+.enter:hover{
+  width:165px;
+  height:165px;
+  background:#fff;
+  color:#000;
+  border-color:#fff;
+}
+
+/* SIDE TEXT */
+
+.side{
+  position:absolute;
+  bottom:35px;
+  font-size:8px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#555;
+}
+
+.side.left{
+  left:40px;
+}
+
+.side.right{
+  right:40px;
+}
+
+/* SECTIONS */
+
+section{
+  min-height:100vh;
+  position:relative;
+  padding:160px 7vw;
+}
+
+.section-label{
+  font-size:9px;
+  color:#555;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+}
+
+/* MANIFESTO */
+
+.manifesto{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.manifesto h2{
+  max-width:1200px;
+  font-size:clamp(45px,8vw,120px);
+  line-height:.9;
+  letter-spacing:-.08em;
+  font-weight:700;
+}
+
+.manifesto h2 span{
+  color:#333;
+  transition:color .6s;
+}
+
+.manifesto h2:hover span{
+  color:#fff;
+}
+
+/* ORBIT */
+
+.orbit-section{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.orbit{
+  width:min(70vw,700px);
+  height:min(70vw,700px);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+  position:relative;
+  animation:rotate 30s linear infinite;
+}
+
+@keyframes rotate{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+.orbit:before,
+.orbit:after{
+  content:"";
+  position:absolute;
+  inset:12%;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:50%;
+}
+
+.orbit:after{
+  inset:25%;
+}
+
+.core{
+  position:absolute;
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 30%,#fff,#aaa 8%,#333 35%,#050505 65%);
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:
+    0 0 100px rgba(255,255,255,.12),
+    0 0 250px rgba(255,255,255,.04);
+}
+
+.planet{
+  position:absolute;
+  width:9px;
+  height:9px;
+  background:#fff;
+  border-radius:50%;
+  box-shadow:0 0 20px white;
+}
+
+.p1{
+  top:5%;
+  left:48%;
+}
+
+.p2{
+  bottom:20%;
+  right:3%;
+}
+
+.p3{
+  left:9%;
+  top:55%;
+}
+
+.orbit-text{
+  position:absolute;
+  text-align:center;
+  width:100%;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:3;
+}
+
+.orbit-text h3{
+  font-size:11px;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+}
+
+.orbit-text p{
+  margin-top:15px;
+  font-size:9px;
+  color:#555;
+  letter-spacing:.15em;
+}
+
+/* WORLDS */
+
+.worlds{
+  padding-bottom:220px;
+}
+
+.world-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:100px;
+}
+
+.world-header h2{
+  font-size:clamp(60px,10vw,150px);
+  line-height:.8;
+  letter-spacing:-.09em;
+}
+
+.world{
+  min-height:65vh;
+  border-top:1px solid #171717;
+  position:relative;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  transition:.7s;
+}
+
+.world:last-child{
+  border-bottom:1px solid #171717;
+}
+
+.world-number{
+  width:15%;
+  color:#333;
+  font-size:10px;
+}
+
+.world-name{
+  font-size:clamp(50px,9vw,140px);
+  letter-spacing:-.09em;
+  font-weight:800;
+  transition:.8s cubic-bezier(.2,.8,.2,1);
+}
+
+.world-desc{
+  margin-left:auto;
+  width:230px;
+  color:#555;
+  font-size:11px;
+  line-height:1.8;
+}
+
+.world:hover{
+  padding-left:3vw;
+}
+
+.world:hover .world-name{
+  transform:translateX(20px);
+  color:#fff;
+}
+
+/* FINAL */
+
+.final{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.final-small{
+  color:#555;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.3em;
+  margin-bottom:40px;
+}
+
+.final h2{
+  font-size:clamp(70px,17vw,240px);
+  line-height:.72;
+  letter-spacing:-.12em;
+  font-weight:900;
+}
+
+.final h2 span{
+  color:#333;
+}
+
+.final-button{
+  margin-top:70px;
+  color:white;
+  border:1px solid #333;
+  padding:20px 35px;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  transition:.5s;
+}
+
+.final-button:hover{
+  background:#fff;
+  color:#000;
+  border-color:#fff;
+}
+
+/* FOOTER */
+
+footer{
+  padding:35px 40px;
+  border-top:1px solid #151515;
+  display:flex;
+  justify-content:space-between;
+  color:#444;
+  font-size:8px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+/* REVEAL */
+
+.reveal{
+  opacity:0;
+  transform:translateY(70px);
+  transition:
+    opacity 1.2s cubic-bezier(.2,.8,.2,1),
+    transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  body{
+    cursor:auto;
+  }
+
+  .cursor,
+  .cursor-ring{
+    display:none;
+  }
+
+  nav{
+    padding:22px;
+  }
+
+  .side{
+    display:none;
+  }
+
+  section{
+    padding:120px 6vw;
+  }
+
+  .title{
+    font-size:21vw;
+  }
+
+  .title::after{
+    width:120px;
+    height:120px;
+  }
+
+  .enter{
+    width:105px;
+    height:105px;
+  }
+
+  .orbit{
+    width:90vw;
+    height:90vw;
+  }
+
+  .world{
+    min-height:50vh;
+    display:block;
+    padding:50px 0;
+  }
+
+  .world-number{
+    margin-bottom:25px;
+  }
+
+  .world-name{
+    margin-bottom:30px;
+  }
+
+  .world-desc{
+    width:100%;
+  }
+
+  .world:hover{
+    padding-left:0;
+  }
+
+  .world:hover .world-name{
+    transform:none;
+  }
+
+  footer{
+    padding:25px 20px;
+    flex-direction:column;
+    gap:15px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- =======================================================
-       LOADER
-  ======================================================== -->
+<canvas id="universe"></canvas>
 
-  <div class="loader">
-    <div class="loader-inner">
-      <div class="loader-logo">MABKHOUT</div>
+<div class="noise"></div>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<nav>
+  <div class="logo">MABKHOUT®</div>
+
+  <div class="status">
+    <i></i>
+    Digital Universe / 2026
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="center">
+
+    <div class="micro">
+      Welcome to another dimension
     </div>
+
+    <h1 class="title">
+      MABKHOUT
+    </h1>
+
+    <div class="subtitle">
+      Enter the unknown
+    </div>
+
+    <a href="#manifesto" class="enter magnetic">
+      <span>↓</span>
+      Enter
+    </a>
+
+  </div>
+
+  <div class="side left">
+    15° 22' 09" — 44° 12' 51"
+  </div>
+
+  <div class="side right">
+    Scroll to explore
+  </div>
+
+</section>
+
+
+<!-- MANIFESTO -->
+
+<section class="manifesto reveal" id="manifesto">
+
+  <h2>
+    THIS IS NOT A
+    <span>WEBSITE.</span>
+    <br>
+    THIS IS A
+    <span>WORLD.</span>
+  </h2>
+
+</section>
+
+
+<!-- ORBIT -->
+
+<section class="orbit-section">
+
+  <div class="orbit">
+
+    <div class="planet p1"></div>
+    <div class="planet p2"></div>
+    <div class="planet p3"></div>
+
+    <div class="core"></div>
+
+    <div class="orbit-text">
+      <h3>Enter The Universe</h3>
+      <p>Everything begins with an idea.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- WORLDS -->
+
+<section class="worlds">
+
+  <div class="world-header reveal">
+
+    <div class="section-label">
+      01 — Worlds
+    </div>
+
+    <h2>
+      EXPLORE
+    </h2>
+
   </div>
 
 
-  <!-- =======================================================
-       CURSOR
-  ======================================================== -->
+  <div class="world reveal">
 
-  <div class="cursor"></div>
-  <div class="cursor-ring"></div>
-
-  <div class="noise"></div>
-
-
-  <!-- =======================================================
-       NAVIGATION
-  ======================================================== -->
-
-  <nav>
-    <a href="#" class="brand magnetic">MABKHOUT®</a>
-
-    <div class="nav-right">
-      <a href="#about" class="nav-link magnetic">About</a>
-      <a href="#work" class="nav-link magnetic">Work</a>
-      <a href="#contact" class="nav-link magnetic">Contact</a>
-
-      <a href="#contact" class="menu-button magnetic">
-        ↗
-      </a>
-    </div>
-  </nav>
-
-
-  <!-- =======================================================
-       HERO
-  ======================================================== -->
-
-  <main>
-
-    <section class="hero">
-
-      <div class="hero-bg"></div>
-      <div class="orb"></div>
-
-      <div class="hero-content">
-
-        <div class="eyebrow">
-          <span class="dot"></span>
-          Independent Digital Experience
-        </div>
-
-        <h1 class="hero-title">
-          <span>MAB</span>
-          <span>KHOUT</span>
-        </h1>
-
-        <div class="hero-bottom">
-
-          <p class="hero-description">
-            We create digital experiences that feel less like websites
-            and more like worlds — crafted with strategy, technology,
-            motion and obsessive attention to detail.
-          </p>
-
-          <div class="scroll-indicator">
-            Scroll
-            <span class="scroll-line"></span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         MARQUEE
-    ====================================================== -->
-
-    <div class="marquee">
-
-      <div class="marquee-track">
-
-        <span>DESIGN</span>
-        <span class="outline">MOTION</span>
-        <span>TECHNOLOGY</span>
-        <span class="outline">EXPERIENCE</span>
-
-        <span>DESIGN</span>
-        <span class="outline">MOTION</span>
-        <span>TECHNOLOGY</span>
-        <span class="outline">EXPERIENCE</span>
-
-      </div>
-
+    <div class="world-number">
+      WORLD / 001
     </div>
 
-
-    <!-- =====================================================
-         ABOUT
-    ====================================================== -->
-
-    <section class="about" id="about">
-
-      <div class="section-number reveal">
-        01 — About
-      </div>
-
-      <div>
-
-        <h2 class="about-title reveal">
-          Digital should not simply
-          <em>work.</em>
-          <br>
-          It should
-          <em>feel.</em>
-        </h2>
-
-        <p class="about-text reveal">
-          MABKHOUT is a digital identity built around one idea:
-          ordinary experiences are not enough.
-          Every interaction should have intention, rhythm and emotion.
-          We combine visual design, technology and motion to create
-          experiences that people remember.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         WORK
-    ====================================================== -->
-
-    <section class="projects" id="work">
-
-      <div class="projects-header reveal">
-
-        <h2 class="projects-title">
-          Selected<br>Work
-        </h2>
-
-        <div class="projects-count">
-          03 — Projects
-        </div>
-
-      </div>
-
-
-      <article class="project reveal">
-
-        <div class="project-image"></div>
-        <div class="project-overlay"></div>
-
-        <div class="project-info">
-
-          <div>
-            <div class="project-name">
-              FUTURE
-            </div>
-
-            <div class="project-meta">
-              Digital Experience / 2026
-            </div>
-          </div>
-
-          <div class="project-meta">
-            001 ↗
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <article class="project reveal">
-
-        <div class="project-image"></div>
-        <div class="project-overlay"></div>
-
-        <div class="project-info">
-
-          <div>
-            <div class="project-name">
-              NOIR
-            </div>
-
-            <div class="project-meta">
-              Brand Identity / 2026
-            </div>
-          </div>
-
-          <div class="project-meta">
-            002 ↗
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <article class="project reveal">
-
-        <div class="project-image"></div>
-        <div class="project-overlay"></div>
-
-        <div class="project-info">
-
-          <div>
-            <div class="project-name">
-              ORIGIN
-            </div>
-
-            <div class="project-meta">
-              Creative Technology / 2026
-            </div>
-          </div>
-
-          <div class="project-meta">
-            003 ↗
-          </div>
-
-        </div>
-
-      </article>
-
-    </section>
-
-
-    <!-- =====================================================
-         SERVICES
-    ====================================================== -->
-
-    <section class="services">
-
-      <div class="section-number reveal">
-        02 — Capabilities
-      </div>
-
-      <div class="services-grid">
-
-        <div class="service reveal">
-
-          <div class="service-number">
-            01
-          </div>
-
-          <div class="service-name">
-            Creative Direction
-          </div>
-
-          <div class="service-arrow">
-            ↗
-          </div>
-
-        </div>
-
-
-        <div class="service reveal">
-
-          <div class="service-number">
-            02
-          </div>
-
-          <div class="service-name">
-            Web Design
-          </div>
-
-          <div class="service-arrow">
-            ↗
-          </div>
-
-        </div>
-
-
-        <div class="service reveal">
-
-          <div class="service-number">
-            03
-          </div>
-
-          <div class="service-name">
-            Development
-          </div>
-
-          <div class="service-arrow">
-            ↗
-          </div>
-
-        </div>
-
-
-        <div class="service reveal">
-
-          <div class="service-number">
-            04
-          </div>
-
-          <div class="service-name">
-            Motion & 3D
-          </div>
-
-          <div class="service-arrow">
-            ↗
-          </div>
-
-        </div>
-
-
-        <div class="service reveal">
-
-          <div class="service-number">
-            05
-          </div>
-
-          <div class="service-name">
-            Digital Identity
-          </div>
-
-          <div class="service-arrow">
-            ↗
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         STATEMENT
-    ====================================================== -->
-
-    <section class="statement">
-
-      <h2 class="reveal">
-        MAKE IT
-        <span>IMPOSSIBLE</span>
-        TO IGNORE.
-      </h2>
-
-    </section>
-
-
-    <!-- =====================================================
-         CONTACT
-    ====================================================== -->
-
-    <section class="contact" id="contact">
-
-      <div>
-
-        <div class="contact-top">
-
-          <div class="contact-label">
-            03 — Start a project
-          </div>
-
-          <div class="contact-label">
-            Available for selected projects
-          </div>
-
-        </div>
-
-        <h2 class="contact-title reveal">
-          LET'S<br>
-          <span>CREATE.</span>
-        </h2>
-
-        <a href="mailto:mabkhout@mabkhout.com"
-           class="contact-button magnetic">
-          Start a project
-        </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =======================================================
-       FOOTER
-  ======================================================== -->
-
-  <footer>
-
-    <div>
-      © 2026 MABKHOUT
+    <div class="world-name">
+      IDENTITY
     </div>
 
-    <div class="socials">
-      <a href="#" class="magnetic">Instagram</a>
-      <a href="#" class="magnetic">Behance</a>
-      <a href="#" class="magnetic">LinkedIn</a>
+    <div class="world-desc">
+      Where ideas become visual identities.
+      Strategy, art direction and digital presence.
     </div>
 
-    <div>
-      Made with intention.
+  </div>
+
+
+  <div class="world reveal">
+
+    <div class="world-number">
+      WORLD / 002
     </div>
 
-  </footer>
+    <div class="world-name">
+      DIGITAL
+    </div>
+
+    <div class="world-desc">
+      Interactive experiences designed to
+      make people stop, look and remember.
+    </div>
+
+  </div>
 
 
-  <!-- =======================================================
-       JAVASCRIPT
-  ======================================================== -->
+  <div class="world reveal">
 
-  <script>
+    <div class="world-number">
+      WORLD / 003
+    </div>
 
-    /* =========================================================
-       CURSOR
-    ========================================================= */
+    <div class="world-name">
+      FUTURE
+    </div>
 
-    const cursor = document.querySelector(".cursor");
-    const cursorRing = document.querySelector(".cursor-ring");
+    <div class="world-desc">
+      Technology, motion and experimental
+      interfaces pushing digital forward.
+    </div>
 
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
+  </div>
 
-    let ringX = mouseX;
-    let ringY = mouseY;
+</section>
 
-    window.addEventListener("mousemove", (e) => {
 
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+<!-- FINAL -->
 
-      cursor.style.left = mouseX + "px";
-      cursor.style.top = mouseY + "px";
+<section class="final reveal">
 
+  <div class="final-small">
+    The journey never ends
+  </div>
+
+  <h2>
+    CREATE<br>
+    <span>THE</span><br>
+    UNKNOWN
+  </h2>
+
+  <a href="mailto:mabkhout@mabkhout.com"
+     class="final-button magnetic">
+    Begin the journey →
+  </a>
+
+</section>
+
+
+<footer>
+
+  <div>
+    © 2026 MABKHOUT
+  </div>
+
+  <div>
+    Built beyond the ordinary
+  </div>
+
+  <div>
+    mabkhout.com
+  </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   UNIVERSE ENGINE
+========================================================= */
+
+const canvas = document.getElementById("universe");
+const ctx = canvas.getContext("2d");
+
+let W;
+let H;
+let stars = [];
+
+function resize(){
+
+  W = canvas.width = window.innerWidth * devicePixelRatio;
+  H = canvas.height = window.innerHeight * devicePixelRatio;
+
+  canvas.style.width = window.innerWidth + "px";
+  canvas.style.height = window.innerHeight + "px";
+
+  stars = [];
+
+  const amount =
+    Math.min(650, Math.floor(window.innerWidth / 2));
+
+  for(let i=0;i<amount;i++){
+
+    stars.push({
+      x:Math.random()*W,
+      y:Math.random()*H,
+      r:Math.random()*1.5*devicePixelRatio,
+      a:Math.random(),
+      s:Math.random()*.35+.05,
+      z:Math.random()
     });
 
-    function animateCursor() {
+  }
 
-      ringX += (mouseX - ringX) * 0.12;
-      ringY += (mouseY - ringY) * 0.12;
+}
 
-      cursorRing.style.left = ringX + "px";
-      cursorRing.style.top = ringY + "px";
+resize();
 
-      requestAnimationFrame(animateCursor);
-    }
-
-    animateCursor();
+window.addEventListener("resize",resize);
 
 
-    /* =========================================================
-       CURSOR HOVER
-    ========================================================= */
+/* MOUSE */
 
-    const interactiveElements =
-      document.querySelectorAll(
-        "a, button, .project, .service"
-      );
+let mx = W/2;
+let my = H/2;
 
-    interactiveElements.forEach((element) => {
+window.addEventListener("mousemove",e=>{
 
-      element.addEventListener("mouseenter", () => {
-        document.body.classList.add("cursor-hover");
-      });
+  mx = e.clientX * devicePixelRatio;
+  my = e.clientY * devicePixelRatio;
 
-      element.addEventListener("mouseleave", () => {
-        document.body.classList.remove("cursor-hover");
-      });
-
-    });
+});
 
 
-    /* =========================================================
-       MAGNETIC BUTTONS
-    ========================================================= */
+/* ANIMATION */
 
-    const magneticElements =
-      document.querySelectorAll(".magnetic");
+function universe(){
 
-    magneticElements.forEach((element) => {
+  ctx.clearRect(0,0,W,H);
 
-      element.addEventListener("mousemove", (e) => {
+  const centerX = W/2;
+  const centerY = H/2;
 
-        const rect = element.getBoundingClientRect();
+  for(const star of stars){
 
-        const x =
-          e.clientX -
-          rect.left -
-          rect.width / 2;
+    const dx = (mx-centerX)*.000015*star.z;
+    const dy = (my-centerY)*.000015*star.z;
 
-        const y =
-          e.clientY -
-          rect.top -
-          rect.height / 2;
+    star.x += dx;
+    star.y += dy;
 
-        element.style.transform =
-          `translate(${x * 0.18}px, ${y * 0.18}px)`;
+    if(star.x > W) star.x=0;
+    if(star.x < 0) star.x=W;
 
-      });
+    if(star.y > H) star.y=0;
+    if(star.y < 0) star.y=H;
 
-      element.addEventListener("mouseleave", () => {
+    const pulse =
+      star.a +
+      Math.sin(Date.now()*.001*star.s)*.18;
 
-        element.style.transform =
-          "translate(0,0)";
+    ctx.beginPath();
 
-      });
+    ctx.arc(
+      star.x,
+      star.y,
+      star.r,
+      0,
+      Math.PI*2
+    );
 
-    });
+    ctx.fillStyle =
+      `rgba(255,255,255,${Math.max(.05,pulse)})`;
+
+    ctx.fill();
+
+  }
+
+  requestAnimationFrame(universe);
+
+}
+
+universe();
 
 
-    /* =========================================================
-       SCROLL REVEAL
-    ========================================================= */
+/* =========================================================
+   CURSOR
+========================================================= */
 
-    const revealElements =
-      document.querySelectorAll(".reveal");
+const cursor =
+  document.querySelector(".cursor");
 
-    const revealObserver =
-      new IntersectionObserver(
-        (entries) => {
+const ring =
+  document.querySelector(".cursor-ring");
 
-          entries.forEach((entry) => {
+let cx=0;
+let cy=0;
+let rx=0;
+let ry=0;
 
-            if (entry.isIntersecting) {
+window.addEventListener("mousemove",e=>{
 
-              entry.target.classList.add("visible");
+  cx=e.clientX;
+  cy=e.clientY;
 
-              revealObserver.unobserve(entry.target);
+  cursor.style.left=cx+"px";
+  cursor.style.top=cy+"px";
 
-            }
+});
 
-          });
 
-        },
-        {
-          threshold: 0.12
+function cursorLoop(){
+
+  rx += (cx-rx)*.1;
+  ry += (cy-ry)*.1;
+
+  ring.style.left=rx+"px";
+  ring.style.top=ry+"px";
+
+  requestAnimationFrame(cursorLoop);
+
+}
+
+cursorLoop();
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+document
+.querySelectorAll("a,.world,.enter")
+.forEach(el=>{
+
+  el.addEventListener("mouseenter",()=>{
+    document.body.classList.add("hover");
+  });
+
+  el.addEventListener("mouseleave",()=>{
+    document.body.classList.remove("hover");
+  });
+
+});
+
+
+/* =========================================================
+   MAGNETIC
+========================================================= */
+
+document
+.querySelectorAll(".magnetic")
+.forEach(el=>{
+
+  el.addEventListener("mousemove",e=>{
+
+    const r=el.getBoundingClientRect();
+
+    const x=e.clientX-r.left-r.width/2;
+    const y=e.clientY-r.top-r.height/2;
+
+    el.style.transform=
+      `translate(${x*.15}px,${y*.15}px)`;
+
+  });
+
+  el.addEventListener("mouseleave",()=>{
+
+    el.style.transform="translate(0,0)";
+
+  });
+
+});
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+const observer =
+  new IntersectionObserver(
+    entries=>{
+
+      entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add("show");
+
+          observer.unobserve(entry.target);
+
         }
+
+      });
+
+    },
+    {
+      threshold:.12
+    }
+  );
+
+document
+.querySelectorAll(".reveal")
+.forEach(el=>observer.observe(el));
+
+
+/* =========================================================
+   TITLE MOUSE PARALLAX
+========================================================= */
+
+const title =
+  document.querySelector(".title");
+
+window.addEventListener("mousemove",e=>{
+
+  const x =
+    (e.clientX/window.innerWidth-.5)*12;
+
+  const y =
+    (e.clientY/window.innerHeight-.5)*12;
+
+  title.style.transform =
+    `translate(${x}px,${y}px) scale(1)`;
+
+});
+
+
+/* =========================================================
+   SMOOTH LINKS
+========================================================= */
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(a=>{
+
+  a.addEventListener("click",e=>{
+
+    const target =
+      document.querySelector(
+        a.getAttribute("href")
       );
 
-    revealElements.forEach((element) => {
+    if(!target)return;
 
-      revealObserver.observe(element);
+    e.preventDefault();
 
+    target.scrollIntoView({
+      behavior:"smooth"
     });
 
+  });
 
-    /* =========================================================
-       PARALLAX ORB
-    ========================================================= */
+});
 
-    const orb =
-      document.querySelector(".orb");
-
-    window.addEventListener("scroll", () => {
-
-      const scrollY = window.scrollY;
-
-      orb.style.transform =
-        `translate3d(0, ${scrollY * 0.12}px, 0)`;
-
-    });
-
-
-    /* =========================================================
-       PROJECT TILT
-    ========================================================= */
-
-    const projects =
-      document.querySelectorAll(".project");
-
-    projects.forEach((project) => {
-
-      project.addEventListener("mousemove", (e) => {
-
-        const rect =
-          project.getBoundingClientRect();
-
-        const x =
-          e.clientX - rect.left;
-
-        const y =
-          e.clientY - rect.top;
-
-        const rotateX =
-          ((y / rect.height) - 0.5) * -2;
-
-        const rotateY =
-          ((x / rect.width) - 0.5) * 2;
-
-        project.style.transform =
-          `perspective(1200px)
-           rotateX(${rotateX}deg)
-           rotateY(${rotateY}deg)`;
-
-      });
-
-      project.addEventListener("mouseleave", () => {
-
-        project.style.transform =
-          "perspective(1200px) rotateX(0) rotateY(0)";
-
-      });
-
-    });
-
-
-    /* =========================================================
-       SMOOTH ANCHOR
-    ========================================================= */
-
-    document.querySelectorAll('a[href^="#"]')
-      .forEach((anchor) => {
-
-        anchor.addEventListener("click", function(e) {
-
-          const target =
-            document.querySelector(this.getAttribute("href"));
-
-          if (!target) return;
-
-          e.preventDefault();
-
-          target.scrollIntoView({
-            behavior: "smooth"
-          });
-
-        });
-
-      });
-
-  </script>
+</script>
 
 </body>
 </html>
