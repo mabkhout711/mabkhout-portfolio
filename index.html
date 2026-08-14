@@ -1,1078 +1,1977 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مبخوت بن عبدالله | MBK 2026</title>
-    <style>
-        :root {
-            --bg: #0a0d14;
-            --surface: #121824;
-            --surface-hover: #1b2436;
-            --primary: #3b82f6;
-            --primary-glow: rgba(59, 130, 246, 0.3);
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border: rgba(255, 255, 255, 0.08);
-            --font-main: system-ui, -apple-system, sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            outline: none;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: var(--font-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        body.locked {
-            overflow: hidden;
-        }
-
-        /* Scroll Progress Bar */
-        #scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--primary);
-            width: 0%;
-            z-index: 1000;
-            transition: width 0.1s ease;
-        }
-
-        /* Intro Loader */
-        #intro {
-            position: fixed;
-            inset: 0;
-            background: var(--bg);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        #intro.hide {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .intro-brand {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            color: var(--text-main);
-        }
-
-        .intro-loader-bar {
-            width: 200px;
-            height: 2px;
-            background: var(--border);
-            position: relative;
-            overflow: hidden;
-            border-radius: 2px;
-        }
-
-        .intro-loader-line {
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 100%;
-            width: 0%;
-            background: var(--primary);
-            transition: width 0.1s linear;
-        }
-
-        .intro-percent {
-            margin-top: 10px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-family: monospace;
-        }
-
-        /* Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            background: rgba(10, 13, 20, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-main);
-            text-decoration: none;
-        }
-
-        .menu-btn {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.3s;
-        }
-
-        .menu-btn:hover {
-            background: var(--surface-hover);
-        }
-
-        /* Side Menu */
-        .side-menu {
-            position: fixed;
-            top: 0;
-            left: -320px;
-            width: 320px;
-            height: 100%;
-            background: var(--surface);
-            z-index: 1001;
-            box-shadow: -5px 0 25px rgba(0,0,0,0.5);
-            transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-            display: flex;
-            flex-direction: column;
-            padding: 40px;
-            border-left: 1px solid var(--border);
-        }
-
-        .side-menu.active {
-            left: 0;
-        }
-
-        .side-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .close-menu {
-            background: none;
-            border: none;
-            color: var(--text-main);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .side-menu-links {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .side-menu-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-
-        .side-menu-links a:hover {
-            color: var(--primary);
-        }
-
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(3px);
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-        }
-
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* General Container & Section Styles */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section {
-            padding: 100px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .section-head {
-            margin-bottom: 60px;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            color: var(--primary);
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .section-description {
-            color: var(--text-muted);
-            font-size: 1rem;
-            max-width: 600px;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            position: relative;
-        }
-
-        .hero-content h1 {
-            font-size. 3.5rem;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero-content h1 span {
-            color: var(--primary);
-        }
-
-        .hero-content p {
-            color: var(--text-muted);
-            font-size: 1.15rem;
-            max-width: 650px;
-            margin-bottom: 30px;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            background: var(--primary);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: opacity 0.3s, transform 0.2s;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-main);
-        }
-
-        .btn-outline:hover {
-            background: var(--surface);
-        }
-
-        /* About & Clock */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-        }
-
-        @media(max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 30px;
-        }
-
-        .clock-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .clock-time {
-            font-size: 2.5rem;
-            font-weight: 700;
-            font-family: monospace;
-            color: var(--primary);
-            margin: 10px 0;
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 24px;
-            border-radius: 12px;
-            transition: border-color 0.3s, transform 0.3s;
-        }
-
-        .skill-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-4px);
-        }
-
-        .skill-card h3 {
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-
-        .skill-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Projects */
-        .filters {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .filter {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-
-        .filter.active, .filter:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .project {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project.hidden {
-            display: none;
-        }
-
-        .project:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: var(--surface-hover);
-        }
-
-        .project-content {
-            padding: 24px;
-        }
-
-        .project-category {
-            font-size: 0.75rem;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .project-content h3 {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-        }
-
-        .project-content p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-right: 30px;
-            border-right: 2px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .timeline-item {
-            position: relative;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            right: -37px;
-            top: 5px;
-            width: 14px;
-            height: 14px;
-            background: var(--bg);
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-        }
-
-        .timeline-year {
-            font-size: 0.85rem;
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .timeline-title {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .timeline-text {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Future & Vision */
-        .future {
-            padding: 120px 0;
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .future-title {
-            font-size: 3rem;
-            font-weight: 800;
-            margin: 15px 0 30px;
-        }
-
-        .future-title span {
-            color: var(--primary);
-        }
-
-        .future-years {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            color: var(--text-muted);
-            font-family: monospace;
-            font-size: 1.1rem;
-        }
-
-        .vision {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .vision-text {
-            font-size: 1.5rem;
-            font-weight: 600;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        .vision-text span {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-        /* Contact & Footer */
-        .contact-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 50px;
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .contact-card h2 {
-            font-size: 2.2rem;
-            margin: 15px 0 20px;
-        }
-
-        .contact-card h2 span {
-            color: var(--primary);
-        }
-
-        .contact-card p {
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: border-color 0.3s;
-        }
-
-        .contact-link:hover {
-            border-color: var(--primary);
-        }
-
-        .signature {
-            padding: 60px 0;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .signature-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .signature-sub {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        footer {
-            padding: 60px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
-        }
-
-        @media(max-width: 768px) {
-            footer {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .footer-brand {
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .footer-column h4 {
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            color: var(--text-main);
-        }
-
-        .footer-column a {
-            display: block;
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .footer-column a:hover {
-            color: var(--primary);
-        }
-
-        .footer-bottom {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border);
-        }
-
-        /* Top Button */
-        #top {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 99;
-        }
-
-        #top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        #top:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        /* Reveal Animation Utility */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-</head>
-<body class="locked">
-
-    <!-- Scroll Progress Bar -->
-    <div id="scroll-progress"></div>
-
-    <!-- Intro Loader -->
-    <div id="intro">
-        <div class="intro-brand">MBK</div>
-        <div class="intro-loader-bar">
-            <div class="intro-loader-line" id="introLine"></div>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+
+<title>مبخوت بن عبدالله | MBK</title>
+
+<meta name="description" content="الموقع الشخصي الرسمي لمبخوت بن عبدالله — MBK">
+<meta name="author" content="مبخوت بن عبدالله">
+<meta name="theme-color" content="#030711">
+<meta name="color-scheme" content="dark">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   MBK ULTIMATE
+   SINGLE FILE — PREMIUM DIGITAL EXPERIENCE
+========================================================= */
+
+:root{
+
+    --bg:#02050c;
+    --bg2:#050b16;
+    --bg3:#081323;
+
+    --gold:#d4af37;
+    --gold2:#f3d875;
+    --gold3:#9c7717;
+    --gold4:#fff0a5;
+
+    --white:#ffffff;
+    --text:#e8ebf0;
+    --muted:#8c97aa;
+
+    --glass:rgba(255,255,255,.045);
+    --glass2:rgba(255,255,255,.075);
+
+    --line:rgba(212,175,55,.18);
+    --line2:rgba(212,175,55,.42);
+
+    --shadow:
+        0 30px 100px rgba(0,0,0,.55);
+
+    --ease:cubic-bezier(.22,1,.36,1);
+
+    --header:78px;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    background:var(--bg);
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(212,175,55,.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 0% 30%,
+            rgba(34,67,125,.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 100% 75%,
+            rgba(212,175,55,.06),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #02050c,
+            #06101e 48%,
+            #02050c
+        );
+
+    color:var(--white);
+
+    font-family:
+        "Cairo",
+        sans-serif;
+
+    overflow-x:hidden;
+
+    -webkit-font-smoothing:antialiased;
+
+}
+
+body.locked{
+    overflow:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+img{
+    max-width:100%;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+#intro{
+
+    position:fixed;
+    inset:0;
+
+    z-index:999999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212,175,55,.08),
+            transparent 35%
+        ),
+        #01040a;
+
+    overflow:hidden;
+
+    transition:
+        opacity .9s var(--ease),
+        visibility .9s var(--ease);
+
+}
+
+#intro.hide{
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+}
+
+.intro-grid{
+
+    position:absolute;
+    inset:-10%;
+
+    background-image:
+        linear-gradient(
+            rgba(212,175,55,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(212,175,55,.035) 1px,
+            transparent 1px
+        );
+
+    background-size:70px 70px;
+
+    transform:perspective(500px)
+        rotateX(65deg)
+        translateY(20%);
+
+    opacity:.45;
+
+}
+
+.intro-content{
+
+    position:relative;
+
+    width:min(420px,90vw);
+
+    text-align:center;
+
+}
+
+.intro-logo{
+
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(65px,15vw,120px);
+
+    font-weight:bold;
+
+    letter-spacing:8px;
+
+    color:var(--gold);
+
+    text-shadow:
+        0 0 35px rgba(212,175,55,.3);
+
+    animation:
+        introLogo 1.5s ease both;
+
+}
+
+.intro-label{
+
+    margin-top:8px;
+
+    color:#7f899a;
+
+    font-family:Inter,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:7px;
+
+}
+
+.intro-line{
+
+    position:relative;
+
+    width:100%;
+
+    height:2px;
+
+    margin:30px auto 17px;
+
+    overflow:hidden;
+
+    background:
+        rgba(255,255,255,.09);
+
+}
+
+.intro-line span{
+
+    position:absolute;
+
+    inset:0;
+
+    width:0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            var(--gold2),
+            transparent
+        );
+
+    box-shadow:
+        0 0 20px rgba(212,175,55,.7);
+
+}
+
+.intro-percent{
+
+    color:var(--gold2);
+
+    font-family:Inter,sans-serif;
+
+    font-size:14px;
+
+    letter-spacing:3px;
+
+}
+
+.intro-message{
+
+    margin-top:18px;
+
+    color:#667184;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+}
+
+@keyframes introLogo{
+
+    from{
+        opacity:0;
+        transform:scale(.8);
+        filter:blur(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+        filter:blur(0);
+    }
+
+}
+
+
+/* =========================================================
+   GLOBAL FX
+========================================================= */
+
+#particles{
+
+    position:fixed;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:-10;
+
+    pointer-events:none;
+
+}
+
+.aurora{
+
+    position:fixed;
+
+    width:550px;
+    height:550px;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.11;
+
+    pointer-events:none;
+
+    z-index:-8;
+
+}
+
+.aurora.a{
+
+    top:-280px;
+    right:-150px;
+
+    background:#d4af37;
+
+    animation:
+        auroraA 15s ease-in-out infinite alternate;
+
+}
+
+.aurora.b{
+
+    bottom:-300px;
+    left:-170px;
+
+    background:#284c91;
+
+    animation:
+        auroraB 18s ease-in-out infinite alternate;
+
+}
+
+.aurora.c{
+
+    top:35%;
+    left:35%;
+
+    width:350px;
+    height:350px;
+
+    background:#7a5b13;
+
+    opacity:.045;
+
+    animation:
+        auroraC 12s ease-in-out infinite alternate;
+
+}
+
+@keyframes auroraA{
+    to{
+        transform:
+            translate(-150px,220px)
+            scale(1.35);
+    }
+}
+
+@keyframes auroraB{
+    to{
+        transform:
+            translate(170px,-160px)
+            scale(1.25);
+    }
+}
+
+@keyframes auroraC{
+    to{
+        transform:
+            translate(100px,-100px)
+            scale(1.3);
+    }
+}
+
+.mouse-light{
+
+    position:fixed;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:-4;
+
+    transform:
+        translate(-50%,-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.09),
+            transparent 68%
+        );
+
+    opacity:0;
+
+}
+
+
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+#scroll-progress{
+
+    position:fixed;
+
+    top:0;
+    right:0;
+
+    height:2px;
+
+    width:0%;
+
+    z-index:100000;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold3),
+            var(--gold2),
+            white
+        );
+
+    box-shadow:
+        0 0 12px rgba(212,175,55,.7);
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+
+    position:fixed;
+
+    top:0;
+    right:0;
+    left:0;
+
+    height:var(--header);
+
+    z-index:50000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:
+        rgba(2,5,12,.28);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid transparent;
+
+    transition:.4s ease;
+
+}
+
+header.scrolled{
+
+    background:
+        rgba(2,5,12,.88);
+
+    border-color:var(--line);
+
+}
+
+.logo{
+
+    color:var(--gold);
+
+    font-family:Georgia,serif;
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    letter-spacing:5px;
+
+}
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#8d98aa;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+}
+
+.status-dot{
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#4ee48b;
+
+    box-shadow:
+        0 0 14px #4ee48b;
+
+}
+
+.menu-button{
+
+    width:45px;
+    height:45px;
+
+    border:
+        1px solid var(--line);
+
+    background:
+        var(--glass);
+
+    color:white;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+}
+
+.menu-button:hover{
+
+    color:var(--gold);
+
+    border-color:var(--line2);
+
+}
+
+
+/* =========================================================
+   SIDE MENU
+========================================================= */
+
+.overlay{
+
+    position:fixed;
+    inset:0;
+
+    z-index:55000;
+
+    background:
+        rgba(0,0,0,.7);
+
+    backdrop-filter:
+        blur(8px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.4s;
+
+}
+
+.overlay.active{
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+.side-menu{
+
+    position:fixed;
+
+    top:15px;
+    right:15px;
+    bottom:15px;
+
+    width:min(390px,calc(100vw - 30px));
+
+    z-index:60000;
+
+    padding:80px 30px 30px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10,24,43,.98),
+            rgba(2,7,15,.98)
+        );
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.7);
+
+    transform:
+        translateX(120%);
+
+    transition:
+        transform .6s var(--ease);
+
+}
+
+.side-menu.active{
+
+    transform:translateX(0);
+
+}
+
+.close-menu{
+
+    position:absolute;
+
+    top:20px;
+    left:20px;
+
+    width:42px;
+    height:42px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:50%;
+
+    background:transparent;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:24px;
+
+}
+
+.menu-label{
+
+    color:var(--gold);
+
+    font-family:Inter,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    margin-bottom:30px;
+
+}
+
+.side-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:18px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.05);
+
+    color:#bfc6d2;
+
+    font-size:17px;
+
+    transition:.3s;
+
+}
+
+.side-menu a span{
+
+    color:#5d6778;
+
+    font-family:Inter,sans-serif;
+
+    font-size:10px;
+
+}
+
+.side-menu a:hover,
+.side-menu a.active{
+
+    color:var(--gold2);
+
+    padding-right:10px;
+
+}
+
+.menu-footer{
+
+    position:absolute;
+
+    bottom:30px;
+
+    color:#4d5869;
+
+    font-family:Inter,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+main{
+
+    position:relative;
+
+}
+
+.container{
+
+    width:min(1320px,92%);
+
+    margin:auto;
+
+}
+
+.section{
+
+    position:relative;
+
+    padding:140px 0;
+
+}
+
+.section-head{
+
+    text-align:center;
+
+    margin-bottom:75px;
+
+}
+
+.section-label{
+
+    display:block;
+
+    color:var(--gold);
+
+    font-family:Inter,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:5px;
+
+    margin-bottom:13px;
+
+}
+
+.section-title{
+
+    font-size:
+        clamp(35px,6vw,70px);
+
+    line-height:1.25;
+
+}
+
+.section-description{
+
+    max-width:650px;
+
+    margin:18px auto 0;
+
+    color:var(--muted);
+
+    line-height:2;
+
+}
+
+.reveal{
+
+    opacity:0;
+
+    transform:
+        translateY(60px);
+
+    transition:
+        opacity 1s var(--ease),
+        transform 1s var(--ease);
+
+}
+
+.reveal.visible{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+
+    min-height:
+        100svh;
+
+    padding:
+        calc(var(--header) + 70px)
+        0
+        80px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    overflow:hidden;
+
+}
+
+.hero-grid{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+        linear-gradient(
+            rgba(212,175,55,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(212,175,55,.035) 1px,
+            transparent 1px
+        );
+
+    background-size:70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent
+        );
+
+}
+
+.hero-glow{
+
+    position:absolute;
+
+    width:min(720px,90vw);
+    height:min(720px,90vw);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.16),
+            transparent 62%
+        );
+
+    filter:blur(15px);
+
+    animation:
+        heroGlow 8s ease-in-out infinite alternate;
+
+}
+
+@keyframes heroGlow{
+    to{
+        transform:scale(1.2);
+        opacity:.65;
+    }
+}
+
+.hero-orbit{
+
+    position:absolute;
+
+    width:min(720px,92vw);
+    height:min(720px,92vw);
+
+    border:
+        1px solid rgba(212,175,55,.12);
+
+    border-radius:50%;
+
+    animation:
+        orbit 30s linear infinite;
+
+}
+
+.hero-orbit::before,
+.hero-orbit::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:var(--gold);
+
+    box-shadow:
+        0 0 30px 8px rgba(212,175,55,.35);
+
+}
+
+.hero-orbit::before{
+
+    top:10%;
+    right:9%;
+
+}
+
+.hero-orbit::after{
+
+    bottom:17%;
+    left:4%;
+
+    width:6px;
+    height:6px;
+
+}
+
+.orbit2{
+
+    width:min(550px,75vw);
+    height:min(550px,75vw);
+
+    border-style:dashed;
+
+    opacity:.5;
+
+    animation-direction:reverse;
+
+    animation-duration:23s;
+
+}
+
+@keyframes orbit{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:5;
+
+    width:min(1000px,100%);
+
+}
+
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:9px 17px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:50px;
+
+    background:
+        rgba(255,255,255,.03);
+
+    color:#aeb6c3;
+
+    font-size:11px;
+
+    animation:
+        heroIn .9s both;
+
+}
+
+.hero-badge i{
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#4ee48b;
+
+    box-shadow:
+        0 0 12px #4ee48b;
+
+}
+
+.hero-title{
+
+    margin-top:25px;
+
+    font-size:
+        clamp(45px,9vw,110px);
+
+    line-height:1.1;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            110deg,
+            white 5%,
+            #f7e9aa 35%,
+            var(--gold) 55%,
+            white 80%
+        );
+
+    background-size:220%;
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+    animation:
+        metallic 7s linear infinite,
+        heroIn .9s .1s both;
+
+}
+
+@keyframes metallic{
+    to{
+        background-position:-220%;
+    }
+}
+
+.hero-word{
+
+    display:inline-block;
+
+    margin-left:10px;
+
+    animation:
+        wordIn .8s both;
+
+}
+
+.hero-subtitle{
+
+    color:#ccd1db;
+
+    font-size:
+        clamp(16px,2.5vw,24px);
+
+    margin-top:22px;
+
+    animation:
+        heroIn .9s .25s both;
+
+}
+
+.hero-description{
+
+    max-width:700px;
+
+    margin:20px auto;
+
+    color:#8d98aa;
+
+    line-height:2;
+
+    font-size:14px;
+
+    animation:
+        heroIn .9s .35s both;
+
+}
+
+.hero-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:30px;
+
+    animation:
+        heroIn .9s .45s both;
+
+}
+
+.btn{
+
+    position:relative;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    min-width:170px;
+
+    padding:14px 25px;
+
+    border-radius:50px;
+
+    border:1px solid transparent;
+
+    cursor:pointer;
+
+    transition:
+        transform .35s var(--ease),
+        box-shadow .35s,
+        border-color .35s;
+
+}
+
+.btn-primary{
+
+    color:#080a0f;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold2),
+            var(--gold),
+            var(--gold3)
+        );
+
+    box-shadow:
+        0 15px 45px rgba(212,175,55,.18);
+
+}
+
+.btn-outline{
+
+    color:#dce1e8;
+
+    border-color:var(--line);
+
+    background:
+        rgba(255,255,255,.035);
+
+}
+
+.btn:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.btn-primary:hover{
+
+    box-shadow:
+        0 20px 65px rgba(212,175,55,.35);
+
+}
+
+.hero-photo{
+
+    position:relative;
+
+    width:min(390px,78vw);
+
+    aspect-ratio:1/1;
+
+    margin:45px auto 20px;
+
+    transform-style:preserve-3d;
+
+    animation:
+        heroIn 1s .55s both,
+        floating 7s 2s ease-in-out infinite;
+
+}
+
+.hero-photo::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-18px;
+
+    border-radius:40px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.22),
+            transparent 65%
+        );
+
+    filter:blur(25px);
+
+    z-index:-2;
+
+}
+
+.hero-photo::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-3px;
+
+    border:
+        1px solid rgba(212,175,55,.7);
+
+    border-radius:34px;
+
+    transform:rotate(-1.5deg);
+
+    z-index:4;
+
+    pointer-events:none;
+
+}
+
+.hero-photo img{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:30px;
+
+    display:block;
+
+    border:
+        7px solid rgba(255,255,255,.035);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55);
+
+    transition:
+        transform .7s var(--ease),
+        filter .7s;
+
+}
+
+.hero-photo:hover img{
+
+    transform:scale(1.025);
+
+    filter:
+        saturate(1.06)
+        brightness(1.05);
+
+}
+
+.hero-sweep{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    z-index:5;
+
+    pointer-events:none;
+
+}
+
+.hero-sweep::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-30%;
+
+    right:-100%;
+
+    width:35%;
+
+    height:160%;
+
+    transform:rotate(18deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.16),
+            transparent
+        );
+
+    animation:
+        sweep 5s infinite;
+
+}
+
+@keyframes sweep{
+
+    0%,45%{
+        right:-100%;
+    }
+
+    70%,100%{
+        right:170%;
+    }
+
+}
+
+.hero-quote{
+
+    color:var(--gold2);
+
+    font-size:21px;
+
+    font-weight:700;
+
+    animation:
+        heroIn .8s .7s both;
+
+}
+
+.hero-meta{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin-top:15px;
+
+    color:#687487;
+
+    font-family:Inter,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+}
+
+.scroll-cue{
+
+    position:absolute;
+
+    bottom:25px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:#5e697b;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+}
+
+.scroll-cue i{
+
+    display:block;
+
+    margin-top:8px;
+
+    color:var(--gold);
+
+    animation:
+        scrollBounce 1.8s infinite;
+
+}
+
+@keyframes scrollBounce{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(8px);
+    }
+
+}
+
+@keyframes heroIn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes wordIn{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(30px)
+            rotateX(70deg);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+
+}
+
+@keyframes floating{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+<section
+    class="section reveal"
+    id="about"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="section-label">
+                ABOUT ME
+            </span>
+
+            <h2 class="section-title">
+                من أنا؟
+            </h2>
+
+            <p class="section-description">
+                مساحة تعكس الهوية والرؤية والطموح.
+            </p>
+
         </div>
-        <div class="intro-percent" id="introPercent">0%</div>
+
+
+        <div class="about-layout">
+
+
+            <div
+                class="about-photo-card tilt"
+                data-cursor="VIEW"
+            >
+
+                <img
+                    src="file_00000000202482468d4027eb8c5919f7.png"
+                    alt="مبخوت بن عبدالله"
+                    loading="lazy"
+                    decoding="async"
+                >
+
+                <div class="about-photo-glow"></div>
+
+                <div class="floating-card">
+
+                    <strong>
+                        MBK
+                    </strong>
+
+                    <span>
+                        PERSONAL IDENTITY
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-copy">
+
+                <h3>
+
+                    أؤمن أن
+                    <span>
+                        التفاصيل
+                    </span>
+                    تصنع الفرق.
+
+                </h3>
+
+                <p>
+
+                    أنا مبخوت بن عبدالله.
+
+                    <br><br>
+
+                    أؤمن بأن الشخصية الحقيقية تُبنى
+                    بالطموح والتجربة والاهتمام بالتفاصيل.
+                    أسعى إلى تطوير نفسي واكتشاف أفكار
+                    جديدة وصناعة هوية تعكس رؤيتي
+                    وشخصيتي بأسلوب يجمع بين الأصالة
+                    والأناقة والطموح.
+
+                </p>
+
+                <p>
+
+                    هذا الموقع مساحتي الرقمية الخاصة؛
+                    أجمع فيه الأفكار والمشاريع والتجارب
+                    والأشياء التي أرى فيها قيمة تستحق
+                    أن تُشارك.
+
+                </p>
+
+                <div class="about-facts">
+
+                    <div class="fact">
+
+                        <strong>MBK</strong>
+
+                        <span>
+                            IDENTITY
+                        </span>
+
+                    </div>
+
+                    <div class="fact">
+
+                        <strong>2026</strong>
+
+                        <span>
+                            CURRENT CHAPTER
+                        </span>
+
+                    </div>
+
+                    <div class="fact">
+
+                        <strong id="clock">
+                            --:--
+                        </strong>
+
+                        <span>
+                            LOCAL TIME
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <!-- Header & Navigation -->
-    <header>
-        <a href="#home" class="logo">MBK</a>
-        <button class="menu-btn" id="menuButton">القائمة</button>
-    </header>
+</section>
 
-    <!-- Side Menu -->
-    <div class="overlay" id="overlay"></div>
-    <div class="side-menu" id="sideMenu">
-        <div class="side-menu-header">
-            <span class="logo">القائمة</span>
-            <button class="close-menu" id="closeMenu">✕</button>
+
+<!-- =========================================================
+     DIGITAL DNA
+========================================================= -->
+
+<section
+    class="section dna-section reveal"
+    id="dna"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="section-label">
+                DIGITAL DNA
+            </span>
+
+            <h2 class="section-title">
+                عالم MB
+            </h2>
+
+            <p class="section-description">
+                مجموعة العناصر التي تشكل هويتي الرقمية.
+            </p>
+
         </div>
-        <div class="side-menu-links">
-            <a href="#home">الرئيسية</a>
-            <a href="#about">من أنا</a>
-            <a href="#skills">المهارات</a>
-            <a href="#projects">الأعمال</a>
-            <a href="#journey">المسيرة</a>
-            <a href="#contact">تواصل معي</a>
+
+
+        <div class="dna-universe">
+
+            <div class="dna-ring"></div>
+            <div class="dna-ring two"></div>
+
+            <div class="dna-center">
+                MB
+            </div>
+
+            <div class="dna-node node1">
+                DESIGN
+            </div>
+
+            <div class="dna-node node2">
+                TECH
+            </div>
+
+            <div class="dna-node node3">
+                AI
+            </div>
+
+            <div class="dna-node node4">
+                CREATIVE
+            </div>
+
+            <div class="dna-node node5">
+                PROJECTS
+            </div>
+
+            <div class="dna-node node6">
+                VISION
+            </div>
+
         </div>
+
     </div>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="container">
-                <div class="hero-content">
-                    <span class="section-label">PORTFOLIO 2026</span>
-                    <h1>أهلاً بك، أنا <br><span>مبخوت بن عبدالله</span></h1>
-                    <p>مطور ومبتكر رقمي، أدمج بين البرمجة، التقنية الحديثة، والذكاء الاصطناعي لصناعة تجارب ويب متميزة واستثنائية.</p>
-                    <div class="hero-btns">
-                        <a href="#projects" class="btn">استعرض الأعمال</a>
-                        <a href="#contact" class="btn btn-outline">تواصل معي</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+</section>
 
-        <!-- About Section -->
-        <section class="section reveal" id="about">
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">ABOUT ME</span>
-                    <h2 class="section-title">من أنا</h2>
-                    <p class="section-description">نظرة سريعة على الخلفية المهنية والتوقيت الحالي.</p>
-                </div>
-                <div class="about-grid">
-                    <div class="card">
-                        <h3 style="margin-bottom: 15px;">شغف بلا حدود</h3>
-                        <p style="color: var(--text-muted);">أسعى دائماً لتوظيف أحدث التقنيات البرمجية لتسهيل حياة المستخدمين وبناء أنظمة رقمية مرنة، سريعة، وذات كفاءة عالية.</p>
-                    </div>
-                    <div class="card clock-card">
-                        <span style="font-size: 0.85rem; color: var(--text-muted);">التوقيت المحلي</span>
-                        <div class="clock-time" id="clock">00:00:00</div>
-                        <span style="font-size: 0.8rem; color: var(--primary);">متصل الآن</span>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Skills Section -->
-        <section class="section reveal" id="skills">
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">EXPERTISE</span>
-                    <h2 class="section-title">المهارات والقدرات</h2>
-                    <p class="section-description">التقنيات والأدوات الأساسية التي أعتمد عليها.</p>
-                </div>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <h3>تطوير الواجهات</h3>
-                        <p>HTML5, CSS3, JavaScript متقدم، وتصميم متجاوب.</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>الذكاء الاصطناعي</h3>
-                        <p>استخدام أحدث نماذج ونظم الـ AI والأتمتة الذكية.</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>التصميم الرقمي</h3>
-                        <p>بناء تجارب المستخدم UI/UX والهويات الرقمية.</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>إدارة المشاريع</h3>
-                        <p>التخطيط الاستراتيجي، حل المشكلات، والتطوير المستمر.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- =========================================================
+     SKILLS
+========================================================= -->
 
-        <!-- Projects Section -->
-        <section class="section reveal" id="projects">
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">PORTFOLIO</span>
-                    <h2 class="section-title">الأعمال والمشاريع</h2>
-                    <p class="section-description">نماذج ومشاريع تعكس الشغف والتطوير المستمر.</p>
-                </div>
-                
-                <div class="filters">
-                    <button class="filter active" data-filter="all">الكل</button>
-                    <button class="filter" data-filter="ai">الذكاء الاصطناعي</button>
-                    <button class="filter" data-filter="web">تطوير الويب</button>
-                    <button class="filter" data-filter="design">التصميم</button>
-                </div>
+<section
+    class="section reveal"
+    id="skills"
+>
 
-                <div class="projects">
-                    <article class="project" data-category="ai">
-                        <div class="project-image" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);"></div>
-                        <div class="project-content">
-                            <span class="project-category">AI & DATA</span>
-                            <h3>مساعد ذكي متقدم</h3>
-                            <p>تجربة تفاعلية مدعومة بالذكاء الاصطناعي والأتمتة.</p>
-                        </div>
-                    </article>
+    <div class="container">
 
-                    <article class="project" data-category="web">
-                        <div class="project-image" style="background: linear-gradient(135deg, #065f46, #10b981);"></div>
-                        <div class="project-content">
-                            <span class="project-category">WEB EXPERIENCE</span>
-                            <h3>منصة رقمية شخصية</h3>
-                            <p>تصميم وتطوير واجهات عصرية ومتطورة.</p>
-                        </div>
-                    </article>
+        <div class="section-head">
 
-                    <article class="project" data-category="design">
-                        <div class="project-image" style="background: linear-gradient(135deg, #581c87, #8b5cf6);"></div>
-                        <div class="project-content">
-                            <span class="project-category">CREATIVE DESIGN</span>
-                            <h3>الهوية البصرية الرقمية</h3>
-                            <p>صناعة هوية متكاملة بلمسات فنية دقيقة.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
+            <span class="section-label">
+                SKILLS
+            </span>
 
-        <!-- Journey Section -->
-        <section class="section reveal" id="journey">
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">JOURNEY</span>
-                    <h2 class="section-title">المسيرة والخطوات</h2>
-                    <p class="section-description">محطات في رحلة البناء والتطوير.</p>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-year">2026</div>
-                        <h3 class="timeline-title">إطلاق الهوية الرقمية الشاملة</h3>
-                        <p class="timeline-text">تطوير الموقع الشخصي ودمج التقنيات الحديثة وأدوات الذكاء الاصطناعي.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-year">2025</div>
-                        <h3 class="timeline-title">التوسع في مشاريع الويب والتصميم</h3>
-                        <p class="timeline-text">التركيز على تجربة المستخدم وصناعة محتوى رقمي متطور وعالي الجودة.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-year">2024</div>
-                        <h3 class="timeline-title">بداية الشغف والتأسيس</h3>
-                        <p class="timeline-text">الانطلاق الحقيقي في عالم البرمجة، التقنية، واستكشاف آفاق جديدة.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <h2 class="section-title">
+                مهاراتي
+            </h2>
 
-        <!-- Future & Vision -->
-        <section class="future reveal" id="future">
-            <div class="container">
-                <div class="section-label">THE FUTURE</div>
-                <h2 class="future-title">نحو <span>المستقبل</span></h2>
-                <div class="future-years">
-                    <span>2026</span>
-                    <span>•</span>
-                    <span>2030</span>
-                    <span>•</span>
-                    <span>BEYOND</span>
-                </div>
-            </div>
-        </section>
+            <p class="section-description">
+                مجالات أستكشفها وأطورها باستمرار.
+            </p>
 
-        <section class="vision reveal" id="vision">
-            <div class="container">
-                <div class="vision-text">
-                    <span>رؤيتي</span>
-                    "صناعة أثر رقمي مستدام، يجمع بين الأصالة والابتكار، ويترك بصمة واضحة في كل ما نقدمه."
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="section reveal" id="contact">
-            <div class="container">
-                <div class="contact-card">
-                    <div class="section-label">GET IN TOUCH</div>
-                    <h2>تواصل <span>معي</span></h2>
-                    <p>يسعدني تواصلك، سواء لنقاش فكرة، أو تبادل خبرات، أو التعاون في مشاريع مستقبلية.</p>
-                    <div class="contact-links">
-                        <a class="contact-link" href="mailto:contact@mbk.com">البريد الإلكتروني</a>
-                        <a class="contact-link" href="#telegram">تيليجرام</a>
-                        <a class="contact-link" href="#github">جيت هب</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="signature">
-            <div class="signature-name">مبخوت بن عبدالله</div>
-            <div class="signature-sub">MBK • 2026</div>
         </div>
-    </main>
 
-    <footer>
-        <div>
-            <div class="footer-brand">MBK</div>
-            <p style="color:var(--text-muted); font-size:11px; margin-top:15px; line-height:1.8;">الموقع الشخصي الرسمي لمبخوت بن عبدالله. جميع الحقوق محفوظة.</p>
-        </div>
-        <div class="footer-column">
-            <h4>روابط سريعة</h4>
-            <a href="#home">الرئيسية</a>
-            <a href="#about">من أنا</a>
-            <a href="#projects">الأعمال</a>
-        </div>
-        <div class="footer-column">
-            <h4>تواصل</h4>
-            <a href="#contact">راسلنا</a>
-            <a href="#privacy">الخصوصية</a>
-        </div>
-    </footer>
 
-    <div class="footer-bottom">
-        <span>© 2026 MBK. All Rights Reserved.</span>
-        <span>Made with Passion</span>
+        <div class="skills-grid">
+
+
+            <article
+                class="skill tilt"
+            >
+
+                <div
+                    class="skill-ring"
+                    style="--value:90%"
+                >
+                    <strong>
+                        90%
+                    </strong>
+                </div>
+
+                <h3>
+                    AI
+                </h3>
+
+                <p>
+                    Artificial Intelligence
+                </p>
+
+            </article>
+
+
+            <article
+                class="skill tilt"
+            >
+
+                <div
+                    class="skill-ring"
+                    style="--value:88%"
+                >
+                    <strong>
+                        88%
+                    </strong>
+                </div>
+
+                <h3>
+                    DESIGN
+                </h3>
+
+                <p>
+                    Creative Design
+                </p>
+
+            </article>
+
+
+            <article
+                class="skill tilt"
+            >
+
+                <div
+                    class="skill-ring"
+                    style="--value:85%"
+                >
+                    <strong>
+                        85%
+                    </strong>
+                </div>
+
+                <h3>
+                    WEB
+                </h3>
+
+                <p>
+                    Web Experience
+                </p>
+
+            </article>
+
+
+            <article
+                class="skill tilt"
+            >
+
+                <div
+                    class="skill-ring"
+                    style="--value:82%"
+                >
+                    <strong>
+                        82%
+                    </strong>
+                </div>
+
+                <h3>
+                    CREATIVE
+                </h3>
+
+                <p>
+                    Ideas & Content
+                </p>
+
+            </article>
+
+
+            <article
+                class="skill tilt"
+            >
+
+                <div
+                    class="skill-ring"
+                    style="--value:80%"
+                >
+                    <strong>
+                        80%
+                    </strong>
+                </div>
+
+                <h3>
+                    DIGITAL
+                </h3>
+
+                <p>
+                    Digital Identity
+                </p>
+
+            </article>
+
+        </div>
+
+
+        <div
+            class="stack"
+            style="margin-top:60px"
+        >
+
+            <span class="stack-item">
+                HTML
+            </span>
+
+            <span class="stack-item">
+                CSS
+            </span>
+
+            <span class="stack-item">
+                JavaScript
+            </span>
+
+            <span class="stack-item">
+                AI
+            </span>
+
+            <span class="stack-item">
+                GitHub
+            </span>
+
+            <span class="stack-item">
+                Cloud
+            </span>
+
+            <span class="stack-item">
+                Design
+            </span>
+
+        </div>
+
     </div>
 
-    <button id="top" aria-label="العودة للأعلى">↑</button>
+</section>
 
-    <!-- JavaScript -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // 1. شاشة التحميل
-        let percentElement = document.getElementById("introPercent");
-        let introLine = document.getElementById("introLine");
-        let introSection = document.getElementById("intro");
-        let percent = 0;
 
-        let interval = setInterval(function() {
-            percent += 5;
-            if(percentElement) percentElement.innerText = percent + "%";
-            if(introLine) introLine.style.width = percent + "%";
+<!-- =========================================================
+     PROJECT UNIVERSE
+========================================================= -->
 
-            if (percent >= 100) {
-                clearInterval(interval);
-                setTimeout(function() {
-                    if(introSection) introSection.classList.add("hide");
-                    document.body.classList.remove("locked"); 
-                }, 300); 
+<section class="section reveal">
+    <div class="container">
+        <div class="section-head">
+            <span class="section-label">
+                PROJECTS
+            </span>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- سكريبت التحميل للعداد وإخفاء الشاشة الافتتاحية -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const intro = document.getElementById('intro');
+        const introPercent = document.getElementById('introPercent');
+        const introLine = document.getElementById('introLine');
+        
+        let progress = 0;
+        
+        // محاكاة عملية التحميل
+        const loadingInterval = setInterval(() => {
+            // زيادة العداد برقم عشوائي بين 5 و 15
+            progress += Math.floor(Math.random() * 10) + 5; 
+            
+            if (progress > 100) {
+                progress = 100;
             }
-        }, 20);
-
-        // 2. القائمة الجانبية
-        const menuButton = document.getElementById("menuButton");
-        const closeMenu = document.getElementById("closeMenu");
-        const sideMenu = document.getElementById("sideMenu");
-        const overlay = document.getElementById("overlay");
-
-        function toggleMenu() {
-            sideMenu.classList.toggle("active");
-            overlay.classList.toggle("active");
-        }
-
-        if(menuButton) menuButton.addEventListener("click", toggleMenu);
-        if(closeMenu) closeMenu.addEventListener("click", toggleMenu);
-        if(overlay) overlay.addEventListener("click", toggleMenu);
-
-        document.querySelectorAll(".side-menu a").forEach(link => {
-            link.addEventListener("click", () => {
-                sideMenu.classList.remove("active");
-                overlay.classList.remove("active");
-            });
-        });
-
-        // 3. زر العودة للأعلى وشريط التقدم
-        const topButton = document.getElementById("top");
-        const scrollProgress = document.getElementById("scroll-progress");
-
-        window.addEventListener("scroll", () => {
-            let scrollTop = window.scrollY;
-            let docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrollPercent = (scrollTop / docHeight) * 100;
-
-            if(scrollProgress) {
-                scrollProgress.style.width = scrollPercent + "%";
+            
+            if (introPercent) {
+                introPercent.innerText = progress + '%';
             }
-
-            if(scrollTop > 400) {
-                if(topButton) topButton.classList.add("show");
-            } else {
-                if(topButton) topButton.classList.remove("show");
+            if (introLine) {
+                introLine.style.width = progress + '%';
             }
-        });
-
-        if(topButton) {
-            topButton.addEventListener("click", () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-
-        // 4. الساعة المحلية
-        const clockElement = document.getElementById("clock");
-        if(clockElement) {
-            setInterval(() => {
-                let now = new Date();
-                clockElement.innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            }, 1000);
-        }
-
-        // 5. فلترة المشاريع
-        const filters = document.querySelectorAll(".filter");
-        const projects = document.querySelectorAll(".project");
-
-        filters.forEach(filter => {
-            filter.addEventListener("click", () => {
-                filters.forEach(f => f.classList.remove("active"));
-                filter.classList.add("active");
-
-                let targetCategory = filter.getAttribute("data-filter");
-
-                projects.forEach(project => {
-                    let cat = project.getAttribute("data-category");
-                    if(targetCategory === "all" || cat === targetCategory) {
-                        project.classList.remove("hidden");
-                    } else {
-                        project.classList.add("hidden");
+            
+            // عند الوصول إلى 100%، إخفاء الشاشة الافتتاحية
+            if (progress === 100) {
+                clearInterval(loadingInterval);
+                setTimeout(() => {
+                    if (intro) {
+                        intro.classList.add('hide');
                     }
-                });
-            });
-        });
-
-        // 6. تأثيرات الظهور عند التمرير
-        const reveals = document.querySelectorAll(".reveal");
-
-        function checkReveal() {
-            let triggerBottom = window.innerHeight * 0.85;
-            reveals.forEach(reveal => {
-                let top = reveal.getBoundingClientRect().top;
-                if(top < triggerBottom) {
-                    reveal.classList.add("visible");
-                }
-            });
-        }
-
-        window.addEventListener("scroll", checkReveal);
-        checkReveal();
+                    document.body.classList.remove('locked'); // لتمكين التمرير
+                }, 600); // تأخير بسيط لمدة نصف ثانية لمشاهدة 100%
+            }
+        }, 150); // سرعة تحديث العداد كل 150 ملي ثانية
     });
-    </script>
+</script>
+
 </body>
 </html>
