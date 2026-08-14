@@ -1,265 +1,1513 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مبحوت بن عبدالله | MBK</title>
-    <!-- استدعاء خط كايرو العصري -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-base: #050505; /* أسود عميق جداً */
-            --gold-luxury: #D4AF37; /* ذهبي فاخر */
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --text-main: #ffffff;
-            --text-sec: #a1a1aa;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-            scroll-behavior: smooth;
-        }
+  <title>MABKHOUT — Digital Experience</title>
+  <meta
+    name="description"
+    content="MABKHOUT — A premium digital experience crafted with vision, motion and technology."
+  />
 
-        body {
-            background-color: var(--bg-base);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
 
-        /* إضاءات خلفية ضبابية تعطي طابعاً فخماً */
-        .glow-orb {
-            position: absolute;
-            width: 40vw;
-            height: 40vw;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%;
-            z-index: -1;
-            top: -10%;
-            right: -10%;
-            animation: float 10s infinite alternate;
-        }
-        
-        .glow-orb-2 {
-            top: 50%;
-            left: -10%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0,0,0,0) 70%);
-            animation: float 15s infinite alternate-reverse;
-        }
+  <style>
+    /* =========================================================
+       RESET
+    ========================================================= */
 
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* شريط التنقل الزجاجي */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(5, 5, 5, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
-            z-index: 1000;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .logo {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--gold-luxury);
-            text-decoration: none;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
+    body {
+      font-family: "Inter", sans-serif;
+      background: #050505;
+      color: #f5f5f5;
+      overflow-x: hidden;
+      cursor: none;
+    }
 
-        nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            margin-right: 30px;
-            font-weight: 500;
-            font-size: 1.1rem;
-            position: relative;
-            transition: color 0.3s;
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        nav a:hover {
-            color: var(--gold-luxury);
-        }
+    button {
+      font: inherit;
+    }
 
-        /* القسم الرئيسي - Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            position: relative;
-        }
+    ::selection {
+      background: #fff;
+      color: #000;
+    }
 
-        .hero-title {
-            font-size: 5rem;
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #fff, #a1a1aa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s forwards 0.3s;
-        }
 
-        .hero-subtitle {
-            font-size: 1.8rem;
-            color: var(--gold-luxury);
-            font-weight: 300;
-            margin-bottom: 40px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s forwards 0.6s;
-        }
+    /* =========================================================
+       LOADER
+    ========================================================= */
 
-        /* زر فاخر */
-        .btn-luxury {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--bg-base);
-            background: var(--gold-luxury);
-            border: 1px solid var(--gold-luxury);
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.4s ease;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-            opacity: 0;
-            animation: fadeUp 1s forwards 0.9s;
-        }
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #050505;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      animation: loaderOut 1.4s cubic-bezier(.77,0,.18,1) 1.8s forwards;
+    }
 
-        .btn-luxury:hover {
-            background: transparent;
-            color: var(--gold-luxury);
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
-        }
+    .loader-inner {
+      overflow: hidden;
+    }
 
-        /* قسم البطاقات الزجاجية (الخدمات/الأعمال) */
-        .services {
-            padding: 100px 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
+    .loader-logo {
+      font-size: clamp(3rem, 9vw, 9rem);
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      transform: translateY(100%);
+      animation: loaderText 1s cubic-bezier(.77,0,.18,1) .2s forwards;
+    }
 
-        .glass-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 40px 30px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.4s, border-color 0.4s;
-            text-align: right;
-        }
+    @keyframes loaderText {
+      to {
+        transform: translateY(0);
+      }
+    }
 
-        .glass-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold-luxury);
-        }
+    @keyframes loaderOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
 
-        .glass-card h3 {
-            font-size: 1.8rem;
-            color: var(--gold-luxury);
-            margin-bottom: 15px;
-        }
 
-        .glass-card p {
-            color: var(--text-sec);
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
+    /* =========================================================
+       CUSTOM CURSOR
+    ========================================================= */
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 50px 20px;
-            border-top: 1px solid var(--glass-border);
-            margin-top: 50px;
-        }
+    .cursor {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+      transition:
+        width .35s ease,
+        height .35s ease,
+        background .35s ease;
+    }
 
-        .contact-email {
-            font-size: 2rem;
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 700;
-            transition: color 0.3s;
-        }
+    .cursor-ring {
+      position: fixed;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255,255,255,.6);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition:
+        width .4s cubic-bezier(.2,.8,.2,1),
+        height .4s cubic-bezier(.2,.8,.2,1),
+        background .4s ease,
+        border .4s ease;
+    }
 
-        .contact-email:hover {
-            color: var(--gold-luxury);
-        }
+    body.cursor-hover .cursor {
+      width: 5px;
+      height: 5px;
+    }
 
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    body.cursor-hover .cursor-ring {
+      width: 85px;
+      height: 85px;
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.25);
+    }
 
-        /* استجابة الشاشات الصغيرة */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 3rem; }
-            .hero-subtitle { font-size: 1.3rem; }
-            nav { display: none; /* يمكن إضافة قائمة برجر لاحقاً */ }
-        }
-    </style>
+
+    /* =========================================================
+       NOISE
+    ========================================================= */
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: .055;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 500;
+      padding: 30px 4vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      mix-blend-mode: difference;
+    }
+
+    .brand {
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: -.06em;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 35px;
+      align-items: center;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .nav-link {
+      position: relative;
+      opacity: .8;
+      transition: opacity .3s ease;
+    }
+
+    .nav-link:hover {
+      opacity: 1;
+    }
+
+    .menu-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transition: .4s ease;
+    }
+
+    .menu-button:hover {
+      background: #fff;
+      color: #000;
+      transform: rotate(45deg);
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 8vw 4vw 5vw;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(
+          circle at 72% 38%,
+          rgba(255,255,255,.13),
+          transparent 22%
+        ),
+        radial-gradient(
+          circle at 25% 75%,
+          rgba(100,100,100,.12),
+          transparent 30%
+        ),
+        #050505;
+    }
+
+    .orb {
+      position: absolute;
+      width: 38vw;
+      height: 38vw;
+      right: 5vw;
+      top: 15%;
+      border-radius: 50%;
+      background:
+        radial-gradient(
+          circle at 35% 30%,
+          #fff,
+          #8c8c8c 15%,
+          #242424 45%,
+          #050505 70%
+        );
+      filter: blur(1px);
+      opacity: .65;
+      animation: orbFloat 8s ease-in-out infinite alternate;
+      box-shadow:
+        0 0 100px rgba(255,255,255,.07),
+        inset -40px -40px 80px rgba(0,0,0,.8);
+    }
+
+    @keyframes orbFloat {
+      from {
+        transform: translate3d(0,0,0) scale(1);
+      }
+      to {
+        transform: translate3d(-30px,25px,0) scale(1.05);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      margin-bottom: 35px;
+      opacity: .7;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: #fff;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      50% {
+        transform: scale(.4);
+        opacity: .4;
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(4.5rem, 15vw, 17rem);
+      line-height: .76;
+      letter-spacing: -.095em;
+      font-weight: 900;
+      text-transform: uppercase;
+      overflow: hidden;
+    }
+
+    .hero-title span {
+      display: block;
+      transform: translateY(110%);
+      animation: revealText 1.2s cubic-bezier(.77,0,.18,1) 2s forwards;
+    }
+
+    .hero-title span:nth-child(2) {
+      animation-delay: 2.1s;
+    }
+
+    @keyframes revealText {
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 55px;
+      gap: 30px;
+    }
+
+    .hero-description {
+      max-width: 430px;
+      font-size: clamp(.9rem, 1.2vw, 1.1rem);
+      line-height: 1.6;
+      color: #a5a5a5;
+    }
+
+    .scroll-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+    }
+
+    .scroll-line {
+      height: 65px;
+      width: 1px;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        white
+      );
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      50% {
+        transform: scaleY(.3);
+        transform-origin: top;
+      }
+    }
+
+
+    /* =========================================================
+       MARQUEE
+    ========================================================= */
+
+    .marquee {
+      overflow: hidden;
+      border-top: 1px solid #202020;
+      border-bottom: 1px solid #202020;
+      padding: 25px 0;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      gap: 40px;
+      animation: marquee 25s linear infinite;
+    }
+
+    .marquee span {
+      font-size: clamp(2rem, 4vw, 5rem);
+      font-weight: 800;
+      letter-spacing: -.06em;
+    }
+
+    .marquee .outline {
+      color: transparent;
+      -webkit-text-stroke: 1px #777;
+    }
+
+    @keyframes marquee {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+
+    section {
+      position: relative;
+    }
+
+    .about {
+      padding: 15vw 4vw;
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 8vw;
+      align-items: start;
+    }
+
+    .section-number {
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #777;
+    }
+
+    .about-title {
+      font-size: clamp(2.5rem, 6vw, 7rem);
+      line-height: .9;
+      letter-spacing: -.07em;
+      font-weight: 700;
+      max-width: 1000px;
+    }
+
+    .about-title em {
+      font-style: normal;
+      color: #777;
+    }
+
+    .about-text {
+      margin-top: 70px;
+      max-width: 620px;
+      color: #999;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       PROJECTS
+    ========================================================= */
+
+    .projects {
+      padding: 8vw 4vw 15vw;
+    }
+
+    .projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 80px;
+    }
+
+    .projects-title {
+      font-size: clamp(3rem, 8vw, 9rem);
+      letter-spacing: -.08em;
+      line-height: .8;
+    }
+
+    .projects-count {
+      color: #777;
+      font-size: .75rem;
+      letter-spacing: .15em;
+    }
+
+    .project {
+      min-height: 75vh;
+      margin-bottom: 7vw;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 35px;
+      background: #111;
+    }
+
+    .project-image {
+      position: absolute;
+      inset: 0;
+      transition: transform 1s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .project:hover .project-image {
+      transform: scale(1.06);
+    }
+
+    .project:nth-child(2) .project-image {
+      background:
+        radial-gradient(circle at 70% 30%, #d7d7d7, transparent 12%),
+        radial-gradient(circle at 30% 70%, #444, transparent 30%),
+        linear-gradient(135deg,#171717,#777,#090909);
+    }
+
+    .project:nth-child(3) .project-image {
+      background:
+        linear-gradient(130deg, #050505, #303030 50%, #999);
+    }
+
+    .project:nth-child(4) .project-image {
+      background:
+        radial-gradient(circle at 50% 50%, #eee, #444 18%, #080808 55%);
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.8),
+          transparent 60%
+        );
+    }
+
+    .project-info {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+    }
+
+    .project-name {
+      font-size: clamp(2.2rem, 5vw, 6rem);
+      letter-spacing: -.07em;
+      font-weight: 700;
+    }
+
+    .project-meta {
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: #bbb;
+    }
+
+
+    /* =========================================================
+       SERVICES
+    ========================================================= */
+
+    .services {
+      padding: 10vw 4vw;
+      border-top: 1px solid #202020;
+    }
+
+    .services-grid {
+      margin-top: 100px;
+      border-top: 1px solid #303030;
+    }
+
+    .service {
+      padding: 35px 0;
+      border-bottom: 1px solid #303030;
+      display: grid;
+      grid-template-columns: 100px 1fr 80px;
+      align-items: center;
+      gap: 30px;
+      transition: padding .5s ease;
+    }
+
+    .service:hover {
+      padding-left: 25px;
+      padding-right: 25px;
+      background: #0b0b0b;
+    }
+
+    .service-number {
+      color: #666;
+      font-size: .75rem;
+    }
+
+    .service-name {
+      font-size: clamp(1.8rem, 4vw, 4.5rem);
+      letter-spacing: -.06em;
+    }
+
+    .service-arrow {
+      font-size: 2rem;
+      transition: transform .5s ease;
+    }
+
+    .service:hover .service-arrow {
+      transform: rotate(45deg);
+    }
+
+
+    /* =========================================================
+       STATEMENT
+    ========================================================= */
+
+    .statement {
+      min-height: 90vh;
+      padding: 15vw 4vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .statement h2 {
+      font-size: clamp(3.5rem, 10vw, 12rem);
+      line-height: .82;
+      letter-spacing: -.09em;
+      max-width: 1400px;
+    }
+
+    .statement h2 span {
+      color: #555;
+    }
+
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+
+    .contact {
+      min-height: 100vh;
+      padding: 12vw 4vw 5vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 1px solid #202020;
+    }
+
+    .contact-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .contact-label {
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: #777;
+    }
+
+    .contact-title {
+      margin-top: 100px;
+      font-size: clamp(4rem, 12vw, 14rem);
+      line-height: .78;
+      letter-spacing: -.1em;
+    }
+
+    .contact-title span {
+      color: #666;
+    }
+
+    .contact-button {
+      margin-top: 70px;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      border: 1px solid #555;
+      display: grid;
+      place-items: center;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .7rem;
+      transition:
+        background .5s ease,
+        color .5s ease,
+        transform .5s ease;
+    }
+
+    .contact-button:hover {
+      background: #fff;
+      color: #000;
+      transform: scale(1.1);
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      padding: 35px 4vw;
+      border-top: 1px solid #202020;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      font-size: .7rem;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .socials {
+      display: flex;
+      gap: 25px;
+    }
+
+    .socials a {
+      transition: color .3s ease;
+    }
+
+    .socials a:hover {
+      color: #fff;
+    }
+
+
+    /* =========================================================
+       REVEAL
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(80px);
+      transition:
+        opacity 1s cubic-bezier(.2,.8,.2,1),
+        transform 1s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 800px) {
+
+      body {
+        cursor: auto;
+      }
+
+      .cursor,
+      .cursor-ring {
+        display: none;
+      }
+
+      nav {
+        padding: 22px 5vw;
+      }
+
+      .nav-right {
+        gap: 15px;
+      }
+
+      .nav-link {
+        display: none;
+      }
+
+      .hero {
+        min-height: 100svh;
+        padding: 30vh 5vw 8vw;
+      }
+
+      .orb {
+        width: 70vw;
+        height: 70vw;
+        right: -15vw;
+        top: 18%;
+      }
+
+      .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .scroll-indicator {
+        display: none;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        padding: 25vw 5vw;
+      }
+
+      .about-text {
+        margin-top: 45px;
+      }
+
+      .projects {
+        padding: 15vw 5vw;
+      }
+
+      .projects-header {
+        margin-bottom: 50px;
+      }
+
+      .project {
+        min-height: 60vh;
+        padding: 25px;
+      }
+
+      .project-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .services {
+        padding: 20vw 5vw;
+      }
+
+      .service {
+        grid-template-columns: 45px 1fr 30px;
+        gap: 15px;
+      }
+
+      .service:hover {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .statement {
+        padding: 25vw 5vw;
+      }
+
+      .contact {
+        padding: 25vw 5vw 8vw;
+      }
+
+      .contact-top {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .contact-title {
+        margin-top: 80px;
+      }
+
+      .contact-button {
+        width: 130px;
+        height: 130px;
+      }
+
+      footer {
+        flex-direction: column;
+        padding: 30px 5vw;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <div class="glow-orb"></div>
-    <div class="glow-orb glow-orb-2"></div>
+  <!-- =======================================================
+       LOADER
+  ======================================================== -->
 
-    <header>
-        <a href="#" class="logo">MBK</a>
-        <nav>
-            <a href="#about">الرؤية</a>
-            <a href="#portfolio">المنجزات</a>
-            <a href="#contact">تواصل معي</a>
-        </nav>
-    </header>
+  <div class="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">MABKHOUT</div>
+    </div>
+  </div>
+
+
+  <!-- =======================================================
+       CURSOR
+  ======================================================== -->
+
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <div class="noise"></div>
+
+
+  <!-- =======================================================
+       NAVIGATION
+  ======================================================== -->
+
+  <nav>
+    <a href="#" class="brand magnetic">MABKHOUT®</a>
+
+    <div class="nav-right">
+      <a href="#about" class="nav-link magnetic">About</a>
+      <a href="#work" class="nav-link magnetic">Work</a>
+      <a href="#contact" class="nav-link magnetic">Contact</a>
+
+      <a href="#contact" class="menu-button magnetic">
+        ↗
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+  <main>
 
     <section class="hero">
-        <h1 class="hero-title">مبحوت بن عبدالله</h1>
-        <h2 class="hero-subtitle">حيث تلتقي فخامة التصميم بعبقرية الكود.</h2>
-        <a href="mailto:mabkhout@mabkhout.com" class="btn-luxury">ابدأ مشروعك الاستثنائي</a>
+
+      <div class="hero-bg"></div>
+      <div class="orb"></div>
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          <span class="dot"></span>
+          Independent Digital Experience
+        </div>
+
+        <h1 class="hero-title">
+          <span>MAB</span>
+          <span>KHOUT</span>
+        </h1>
+
+        <div class="hero-bottom">
+
+          <p class="hero-description">
+            We create digital experiences that feel less like websites
+            and more like worlds — crafted with strategy, technology,
+            motion and obsessive attention to detail.
+          </p>
+
+          <div class="scroll-indicator">
+            Scroll
+            <span class="scroll-line"></span>
+          </div>
+
+        </div>
+
+      </div>
+
     </section>
 
-    <section class="services" id="about">
-        <div class="glass-card">
-            <h3>تصميم واجهات (UI/UX)</h3>
-            <p>أصمم تجارب استخدام لا تُنسى، تجمع بين الأناقة المطلقة وسهولة الاستخدام لتعكس قيمة علامتك التجارية.</p>
-        </div>
-        <div class="glass-card">
-            <h3>تطوير الويب (Development)</h3>
-            <p>أبني مواقع ويب سريعة، آمنة، وقابلة للتوسع باستخدام أحدث التقنيات لضمان أداء لا يُضاهى.</p>
-        </div>
-        <div class="glass-card">
-            <h3>هوية رقمية متكاملة</h3>
-            <p>من الفكرة إلى الإطلاق، أرافقك لبناء حضور رقمي يليق بطموحاتك ويترك بصمة في السوق.</p>
-        </div>
+
+    <!-- =====================================================
+         MARQUEE
+    ====================================================== -->
+
+    <div class="marquee">
+
+      <div class="marquee-track">
+
+        <span>DESIGN</span>
+        <span class="outline">MOTION</span>
+        <span>TECHNOLOGY</span>
+        <span class="outline">EXPERIENCE</span>
+
+        <span>DESIGN</span>
+        <span class="outline">MOTION</span>
+        <span>TECHNOLOGY</span>
+        <span class="outline">EXPERIENCE</span>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section class="about" id="about">
+
+      <div class="section-number reveal">
+        01 — About
+      </div>
+
+      <div>
+
+        <h2 class="about-title reveal">
+          Digital should not simply
+          <em>work.</em>
+          <br>
+          It should
+          <em>feel.</em>
+        </h2>
+
+        <p class="about-text reveal">
+          MABKHOUT is a digital identity built around one idea:
+          ordinary experiences are not enough.
+          Every interaction should have intention, rhythm and emotion.
+          We combine visual design, technology and motion to create
+          experiences that people remember.
+        </p>
+
+      </div>
+
     </section>
 
-    <footer id="contact">
-        <p style="color: var(--text-sec); margin-bottom: 20px;">لتحديد موعد استشارة أو مناقشة مشروعك</p>
-        <a href="mailto:mabkhout@mabkhout.com" class="contact-email">mabkhout@mabkhout.com</a>
-    </footer>
+
+    <!-- =====================================================
+         WORK
+    ====================================================== -->
+
+    <section class="projects" id="work">
+
+      <div class="projects-header reveal">
+
+        <h2 class="projects-title">
+          Selected<br>Work
+        </h2>
+
+        <div class="projects-count">
+          03 — Projects
+        </div>
+
+      </div>
+
+
+      <article class="project reveal">
+
+        <div class="project-image"></div>
+        <div class="project-overlay"></div>
+
+        <div class="project-info">
+
+          <div>
+            <div class="project-name">
+              FUTURE
+            </div>
+
+            <div class="project-meta">
+              Digital Experience / 2026
+            </div>
+          </div>
+
+          <div class="project-meta">
+            001 ↗
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="project reveal">
+
+        <div class="project-image"></div>
+        <div class="project-overlay"></div>
+
+        <div class="project-info">
+
+          <div>
+            <div class="project-name">
+              NOIR
+            </div>
+
+            <div class="project-meta">
+              Brand Identity / 2026
+            </div>
+          </div>
+
+          <div class="project-meta">
+            002 ↗
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="project reveal">
+
+        <div class="project-image"></div>
+        <div class="project-overlay"></div>
+
+        <div class="project-info">
+
+          <div>
+            <div class="project-name">
+              ORIGIN
+            </div>
+
+            <div class="project-meta">
+              Creative Technology / 2026
+            </div>
+          </div>
+
+          <div class="project-meta">
+            003 ↗
+          </div>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         SERVICES
+    ====================================================== -->
+
+    <section class="services">
+
+      <div class="section-number reveal">
+        02 — Capabilities
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service reveal">
+
+          <div class="service-number">
+            01
+          </div>
+
+          <div class="service-name">
+            Creative Direction
+          </div>
+
+          <div class="service-arrow">
+            ↗
+          </div>
+
+        </div>
+
+
+        <div class="service reveal">
+
+          <div class="service-number">
+            02
+          </div>
+
+          <div class="service-name">
+            Web Design
+          </div>
+
+          <div class="service-arrow">
+            ↗
+          </div>
+
+        </div>
+
+
+        <div class="service reveal">
+
+          <div class="service-number">
+            03
+          </div>
+
+          <div class="service-name">
+            Development
+          </div>
+
+          <div class="service-arrow">
+            ↗
+          </div>
+
+        </div>
+
+
+        <div class="service reveal">
+
+          <div class="service-number">
+            04
+          </div>
+
+          <div class="service-name">
+            Motion & 3D
+          </div>
+
+          <div class="service-arrow">
+            ↗
+          </div>
+
+        </div>
+
+
+        <div class="service reveal">
+
+          <div class="service-number">
+            05
+          </div>
+
+          <div class="service-name">
+            Digital Identity
+          </div>
+
+          <div class="service-arrow">
+            ↗
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STATEMENT
+    ====================================================== -->
+
+    <section class="statement">
+
+      <h2 class="reveal">
+        MAKE IT
+        <span>IMPOSSIBLE</span>
+        TO IGNORE.
+      </h2>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section class="contact" id="contact">
+
+      <div>
+
+        <div class="contact-top">
+
+          <div class="contact-label">
+            03 — Start a project
+          </div>
+
+          <div class="contact-label">
+            Available for selected projects
+          </div>
+
+        </div>
+
+        <h2 class="contact-title reveal">
+          LET'S<br>
+          <span>CREATE.</span>
+        </h2>
+
+        <a href="mailto:mabkhout@mabkhout.com"
+           class="contact-button magnetic">
+          Start a project
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <div>
+      © 2026 MABKHOUT
+    </div>
+
+    <div class="socials">
+      <a href="#" class="magnetic">Instagram</a>
+      <a href="#" class="magnetic">Behance</a>
+      <a href="#" class="magnetic">LinkedIn</a>
+    </div>
+
+    <div>
+      Made with intention.
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+    /* =========================================================
+       CURSOR
+    ========================================================= */
+
+    const cursor = document.querySelector(".cursor");
+    const cursorRing = document.querySelector(".cursor-ring");
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    let ringX = mouseX;
+    let ringY = mouseY;
+
+    window.addEventListener("mousemove", (e) => {
+
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      cursor.style.left = mouseX + "px";
+      cursor.style.top = mouseY + "px";
+
+    });
+
+    function animateCursor() {
+
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+
+      cursorRing.style.left = ringX + "px";
+      cursorRing.style.top = ringY + "px";
+
+      requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+
+    /* =========================================================
+       CURSOR HOVER
+    ========================================================= */
+
+    const interactiveElements =
+      document.querySelectorAll(
+        "a, button, .project, .service"
+      );
+
+    interactiveElements.forEach((element) => {
+
+      element.addEventListener("mouseenter", () => {
+        document.body.classList.add("cursor-hover");
+      });
+
+      element.addEventListener("mouseleave", () => {
+        document.body.classList.remove("cursor-hover");
+      });
+
+    });
+
+
+    /* =========================================================
+       MAGNETIC BUTTONS
+    ========================================================= */
+
+    const magneticElements =
+      document.querySelectorAll(".magnetic");
+
+    magneticElements.forEach((element) => {
+
+      element.addEventListener("mousemove", (e) => {
+
+        const rect = element.getBoundingClientRect();
+
+        const x =
+          e.clientX -
+          rect.left -
+          rect.width / 2;
+
+        const y =
+          e.clientY -
+          rect.top -
+          rect.height / 2;
+
+        element.style.transform =
+          `translate(${x * 0.18}px, ${y * 0.18}px)`;
+
+      });
+
+      element.addEventListener("mouseleave", () => {
+
+        element.style.transform =
+          "translate(0,0)";
+
+      });
+
+    });
+
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              revealObserver.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+    revealElements.forEach((element) => {
+
+      revealObserver.observe(element);
+
+    });
+
+
+    /* =========================================================
+       PARALLAX ORB
+    ========================================================= */
+
+    const orb =
+      document.querySelector(".orb");
+
+    window.addEventListener("scroll", () => {
+
+      const scrollY = window.scrollY;
+
+      orb.style.transform =
+        `translate3d(0, ${scrollY * 0.12}px, 0)`;
+
+    });
+
+
+    /* =========================================================
+       PROJECT TILT
+    ========================================================= */
+
+    const projects =
+      document.querySelectorAll(".project");
+
+    projects.forEach((project) => {
+
+      project.addEventListener("mousemove", (e) => {
+
+        const rect =
+          project.getBoundingClientRect();
+
+        const x =
+          e.clientX - rect.left;
+
+        const y =
+          e.clientY - rect.top;
+
+        const rotateX =
+          ((y / rect.height) - 0.5) * -2;
+
+        const rotateY =
+          ((x / rect.width) - 0.5) * 2;
+
+        project.style.transform =
+          `perspective(1200px)
+           rotateX(${rotateX}deg)
+           rotateY(${rotateY}deg)`;
+
+      });
+
+      project.addEventListener("mouseleave", () => {
+
+        project.style.transform =
+          "perspective(1200px) rotateX(0) rotateY(0)";
+
+      });
+
+    });
+
+
+    /* =========================================================
+       SMOOTH ANCHOR
+    ========================================================= */
+
+    document.querySelectorAll('a[href^="#"]')
+      .forEach((anchor) => {
+
+        anchor.addEventListener("click", function(e) {
+
+          const target =
+            document.querySelector(this.getAttribute("href"));
+
+          if (!target) return;
+
+          e.preventDefault();
+
+          target.scrollIntoView({
+            behavior: "smooth"
+          });
+
+        });
+
+      });
+
+  </script>
 
 </body>
 </html>
