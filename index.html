@@ -29,7 +29,20 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "مبخوت بن عبدالله",
+  "alternateName": "MBK",
+  "url": "https://mabkhut.com",
+  "sameAs": [
+    "https://www.facebook.com/share/19JG7PQiHL/"
+  ]
+}
+</script>
 
 <style>
 :root{
@@ -42,6 +55,7 @@
     --muted:#8995a3;
     --border:rgba(212,175,55,.20);
     --border-strong:rgba(212,175,55,.42);
+    --font-display:"Amiri","Cairo",serif;
 }
 
 :root[data-theme="light"]{
@@ -557,6 +571,204 @@ body.custom-cursor-active button{
         0 30px 80px rgba(0,0,0,.18);
 }
 
+[hidden]{
+    display:none!important;
+}
+
+.signature-wrap{
+    display:flex;
+    justify-content:center;
+    margin-top:22px;
+    opacity:.85;
+}
+
+.signature{
+    width:150px;
+    height:auto;
+}
+
+.dot-nav{
+    position:fixed;
+    top:50%;
+    right:22px;
+    transform:translateY(-50%);
+    z-index:900;
+
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.dot-link{
+    width:14px;
+    height:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+}
+
+.dot-link span{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:rgba(212,175,55,.28);
+    border:1px solid rgba(212,175,55,.4);
+    transition:.3s ease;
+    display:block;
+}
+
+.dot-link:hover span{
+    background:rgba(212,175,55,.6);
+}
+
+.dot-link.active span{
+    background:var(--gold-light);
+    box-shadow:0 0 10px rgba(212,175,55,.6);
+    transform:scale(1.35);
+}
+
+@media(max-width:900px){
+    .dot-nav{
+        display:none;
+    }
+}
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.project-card{
+    padding:28px 26px;
+    border:1px solid rgba(212,175,55,.15);
+    border-radius:25px;
+    background:rgba(255,255,255,.022);
+    transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;
+    transform-style:preserve-3d;
+    will-change:transform;
+}
+
+.project-card:hover{
+    border-color:rgba(212,175,55,.4);
+    box-shadow:0 22px 55px rgba(212,175,55,.08);
+}
+
+.project-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+    direction:ltr;
+}
+
+.project-year{
+    color:var(--gold-light);
+    font-size:13px;
+    font-weight:700;
+}
+
+.project-tag{
+    font-size:11px;
+    padding:4px 10px;
+    border-radius:99px;
+    border:1px solid rgba(212,175,55,.3);
+    color:var(--muted);
+}
+
+.project-card h3{
+    font-size:19px;
+    margin-bottom:9px;
+}
+
+.project-card p{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.85;
+    margin-bottom:16px;
+}
+
+.project-link{
+    color:var(--gold-light);
+    font-size:13.5px;
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:.25s ease;
+}
+
+.project-link:hover{
+    border-color:var(--gold-light);
+}
+
+.achievements{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.achievement-card{
+    padding:30px 22px;
+    text-align:center;
+    border:1px solid rgba(212,175,55,.15);
+    border-radius:25px;
+    background:rgba(255,255,255,.022);
+    transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;
+    transform-style:preserve-3d;
+    will-change:transform;
+}
+
+.achievement-card:hover{
+    border-color:rgba(212,175,55,.4);
+    box-shadow:0 22px 55px rgba(212,175,55,.08);
+}
+
+.achievement-icon{
+    width:52px;
+    height:52px;
+    margin:0 auto 14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    border:1px solid rgba(212,175,55,.35);
+    color:var(--gold-light);
+    font-size:21px;
+}
+
+.achievement-card h3{
+    font-size:16px;
+    margin-bottom:5px;
+}
+
+.achievement-card p{
+    color:var(--muted);
+    font-size:12.5px;
+}
+
+.contact-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:14px;
+    margin-top:22px;
+}
+
+.contact-buttons .qr-button{
+    margin-top:0;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+}
+
+@media(max-width:760px){
+    .projects,
+    .achievements{
+        grid-template-columns:1fr;
+        gap:14px;
+    }
+}
+
 header{
     position:fixed;
     top:0;
@@ -580,12 +792,43 @@ header{
 
 .logo{
     direction:ltr;
-    font-family:Arial,sans-serif;
-    font-size:23px;
-    font-weight:700;
-    letter-spacing:7px;
-    color:var(--gold-light);
+    display:flex;
+    align-items:center;
     text-decoration:none;
+}
+
+.logo svg{
+    width:88px;
+    height:auto;
+    display:block;
+}
+
+.lang-btn{
+    width:47px;
+    height:47px;
+    border-radius:50%;
+    border:1px solid var(--border-strong);
+    background:rgba(255,255,255,.025);
+    color:var(--gold-light);
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.5px;
+    direction:ltr;
+
+    transition:.3s ease;
+}
+
+.lang-btn:hover{
+    transform:scale(1.05);
+    border-color:var(--gold-light);
+    background:rgba(212,175,55,.08);
+    box-shadow:0 0 30px rgba(212,175,55,.12);
 }
 
 .menu-btn{
@@ -789,6 +1032,7 @@ main{
     white-space:normal;
 
     letter-spacing:-1px;
+    font-family:var(--font-display);
 
     text-shadow:0 0 18px rgba(212,175,55,.12);
 
@@ -903,6 +1147,20 @@ main{
     position:relative;
 }
 
+.section + .section::before,
+.section + section.section::before{
+    content:"";
+    position:absolute;
+    top:0;
+    right:50%;
+    transform:translateX(50%);
+    width:min(560px,80%);
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--border-strong),transparent);
+    background-size:200% 100%;
+    animation:shimmerSweep 6s linear infinite;
+}
+
 .section-header{
     text-align:center;
     margin-bottom:32px;
@@ -921,8 +1179,9 @@ main{
 
 .section-title{
     font-size:clamp(30px,5vw,46px);
-    font-weight:800;
+    font-weight:700;
     line-height:1.4;
+    font-family:var(--font-display);
 }
 
 .section-title::after{
@@ -1887,9 +2146,23 @@ footer{
 
 <header>
 
-    <a href="#home" class="logo">MBK</a>
+    <a href="#home" class="logo" aria-label="MBK">
+        <svg viewBox="0 0 120 46" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#b88918"/>
+                    <stop offset="50%" stop-color="#f1d56a"/>
+                    <stop offset="100%" stop-color="#b88918"/>
+                </linearGradient>
+            </defs>
+            <text x="0" y="33" font-family="Arial,sans-serif" font-size="30" font-weight="700" letter-spacing="7" fill="url(#logoGrad)">MBK</text>
+            <rect x="0" y="40" width="76" height="1.5" fill="url(#logoGrad)" opacity=".7"/>
+        </svg>
+    </a>
 
     <div class="header-actions">
+
+        <button class="lang-btn" id="langBtn" aria-label="Switch language" title="EN / AR" data-lang-label="EN">EN</button>
 
         <button class="sound-btn" id="soundBtn" aria-label="تفعيل/إيقاف الصوت" title="أصوات التفاعل">🔇</button>
 
@@ -1909,16 +2182,32 @@ footer{
 
     <div class="menu-label">NAVIGATION</div>
 
-    <a href="#home">الرئيسية</a>
-    <a href="#about">نبذة</a>
-    <a href="#skills">مهاراتي</a>
-    <a href="#values">بصمتي</a>
-    <a href="#gallery">مختاراتي</a>
-    <a href="#testimonials">آراء</a>
-    <a href="#journey">رحلتي</a>
-    <a href="#blog">أفكار</a>
-    <a href="#contact">تواصل</a>
+    <a href="#home" data-en="Home">الرئيسية</a>
+    <a href="#about" data-en="About">نبذة</a>
+    <a href="#skills" data-en="Skills">مهاراتي</a>
+    <a href="#values" data-en="Values">بصمتي</a>
+    <a href="#projects" data-en="Projects">مشاريعي</a>
+    <a href="#achievements" data-en="Achievements">إنجازات</a>
+    <a href="#gallery" data-en="Selected">مختاراتي</a>
+    <a href="#testimonials" data-en="Testimonials">آراء</a>
+    <a href="#journey" data-en="Journey">رحلتي</a>
+    <a href="#blog" data-en="Thoughts">أفكار</a>
+    <a href="#contact" data-en="Contact">تواصل</a>
 
+</nav>
+
+<nav class="dot-nav" id="dotNav" aria-label="Section navigation">
+    <a href="#home" class="dot-link active" data-section="home"><span></span></a>
+    <a href="#about" class="dot-link" data-section="about"><span></span></a>
+    <a href="#skills" class="dot-link" data-section="skills"><span></span></a>
+    <a href="#values" class="dot-link" data-section="values"><span></span></a>
+    <a href="#projects" class="dot-link" data-section="projects"><span></span></a>
+    <a href="#achievements" class="dot-link" data-section="achievements"><span></span></a>
+    <a href="#gallery" class="dot-link" data-section="gallery"><span></span></a>
+    <a href="#testimonials" class="dot-link" data-section="testimonials"><span></span></a>
+    <a href="#journey" class="dot-link" data-section="journey"><span></span></a>
+    <a href="#blog" class="dot-link" data-section="blog"><span></span></a>
+    <a href="#contact" class="dot-link" data-section="contact"><span></span></a>
 </nav>
 
 <main>
@@ -1932,10 +2221,10 @@ footer{
 
     <div class="status-badge">
         <span class="status-dot"></span>
-        <span>متاح حاليًا · آخر تحديث أغسطس 2026</span>
+        <span data-en="Available now · Updated August 2026">متاح حاليًا · آخر تحديث أغسطس 2026</span>
     </div>
 
-    <h1 class="hero-name" id="heroName">مبخوت بن عبدالله</h1>
+    <h1 class="hero-name" id="heroName" data-en="Mabkhut bin Abdullah">مبخوت بن عبدالله</h1>
 
     <div class="gold-line"></div>
 
@@ -1943,7 +2232,7 @@ footer{
         <img class="profile-photo" src="file_00000000202482468d4027eb8c5919f7.png" alt="مبخوت بن عبدالله">
     </div>
 
-    <p class="quote">وما توفيقي إلا بالله</p>
+    <p class="quote" data-en="Success comes only through Allah">وما توفيقي إلا بالله</p>
 
     <div class="scroll-indicator">
         <span>SCROLL</span>
@@ -1956,11 +2245,11 @@ footer{
 
     <div class="section-header">
         <span class="section-label">ABOUT</span>
-        <h2 class="section-title">نبذة</h2>
+        <h2 class="section-title" data-en="About">نبذة</h2>
     </div>
 
     <div class="about-card">
-        <p>
+        <p class="lang-ar" data-lang="ar">
             أنا مبخوت بن عبدالله.
             <br><br>
             أؤمن بأن الشخصية الحقيقية تُبنى بالطموح،
@@ -1975,6 +2264,27 @@ footer{
             <br><br>
             <strong>أطمح للأفضل، وأسعى لأن أترك أثرًا يستحق أن يُذكر.</strong>
         </p>
+        <p class="lang-en" data-lang="en" hidden>
+            I am Mabkhut bin Abdullah.
+            <br><br>
+            I believe a true character is built through ambition,
+            experience, and attention to detail. I constantly seek
+            to grow, discover new ideas, and craft an identity that
+            reflects my vision and personality — one that blends
+            authenticity, elegance, and ambition.
+            <br><br>
+            This site is my personal space; here I share a part
+            of my interests, my work, my selections, and the things
+            I find worth sharing for their value and beauty.
+            <br><br>
+            <strong>I aim for the best, and I strive to leave a mark worth remembering.</strong>
+        </p>
+        <div class="signature-wrap">
+            <svg class="signature" viewBox="0 0 220 70" xmlns="http://www.w3.org/2000/svg" aria-label="Mabkhut signature">
+                <path d="M12 46 C 22 20, 34 18, 40 40 C 44 54, 52 30, 58 24 C 64 18, 66 44, 74 40 C 84 35, 82 20, 92 22 C 104 24, 100 48, 112 46 C 126 44, 128 22, 140 24 C 152 26, 148 50, 160 48 C 172 46, 174 26, 186 28 C 196 30, 194 42, 206 38"
+                      fill="none" stroke="url(#logoGrad)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
     </div>
 
 </section>
@@ -1985,22 +2295,22 @@ footer{
 
         <div class="stat-card">
             <div class="stat-number" data-count="11">0</div>
-            <div class="stat-label">سنوات من التجربة</div>
+            <div class="stat-label" data-en="Years of Experience">سنوات من التجربة</div>
         </div>
 
         <div class="stat-card">
             <div class="stat-number" data-count="40">0</div>
-            <div class="stat-label">مشروع وفكرة</div>
+            <div class="stat-label" data-en="Projects & Ideas">مشروع وفكرة</div>
         </div>
 
         <div class="stat-card">
             <div class="stat-number" data-count="100">0</div>
-            <div class="stat-label">% التزام بالتفاصيل</div>
+            <div class="stat-label" data-en="% Attention to Detail">% التزام بالتفاصيل</div>
         </div>
 
         <div class="stat-card">
             <div class="stat-number" data-count="5">0</div>
-            <div class="stat-label">محطات رئيسية</div>
+            <div class="stat-label" data-en="Key Milestones">محطات رئيسية</div>
         </div>
 
     </div>
@@ -2011,28 +2321,28 @@ footer{
 
     <div class="section-header">
         <span class="section-label">EXPERTISE</span>
-        <h2 class="section-title">مهاراتي</h2>
+        <h2 class="section-title" data-en="Skills">مهاراتي</h2>
     </div>
 
     <div class="skills">
 
         <div class="skill-row">
-            <div class="skill-top"><span>التخطيط والرؤية</span><span>92%</span></div>
+            <div class="skill-top"><span data-en="Planning & Vision">التخطيط والرؤية</span><span>92%</span></div>
             <div class="skill-track"><div class="skill-fill" data-width="92"></div></div>
         </div>
 
         <div class="skill-row">
-            <div class="skill-top"><span>الاهتمام بالتفاصيل</span><span>95%</span></div>
+            <div class="skill-top"><span data-en="Attention to Detail">الاهتمام بالتفاصيل</span><span>95%</span></div>
             <div class="skill-track"><div class="skill-fill" data-width="95"></div></div>
         </div>
 
         <div class="skill-row">
-            <div class="skill-top"><span>الإبداع والتصميم</span><span>88%</span></div>
+            <div class="skill-top"><span data-en="Creativity & Design">الإبداع والتصميم</span><span>88%</span></div>
             <div class="skill-track"><div class="skill-fill" data-width="88"></div></div>
         </div>
 
         <div class="skill-row">
-            <div class="skill-top"><span>إدارة المشاريع</span><span>85%</span></div>
+            <div class="skill-top"><span data-en="Project Management">إدارة المشاريع</span><span>85%</span></div>
             <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
         </div>
 
@@ -2044,27 +2354,101 @@ footer{
 
     <div class="section-header">
         <span class="section-label">MY VALUES</span>
-        <h2 class="section-title">بصمتي</h2>
+        <h2 class="section-title" data-en="My Values">بصمتي</h2>
     </div>
 
     <div class="values">
 
         <div class="value-card">
             <div class="value-icon">✦</div>
-            <h3>الإبداع</h3>
-            <p>أبحث دائمًا عن الأفكار المختلفة والأسلوب الذي يحمل طابعًا خاصًا.</p>
+            <h3 data-en="Creativity">الإبداع</h3>
+            <p data-en="I always look for different ideas and a style that carries a distinctive character.">أبحث دائمًا عن الأفكار المختلفة والأسلوب الذي يحمل طابعًا خاصًا.</p>
         </div>
 
         <div class="value-card">
             <div class="value-icon">◇</div>
-            <h3>الجودة</h3>
-            <p>أهتم بالتفاصيل الصغيرة لأنها تصنع الفرق في النتيجة النهائية.</p>
+            <h3 data-en="Quality">الجودة</h3>
+            <p data-en="I care about the small details, because they make the difference in the final result.">أهتم بالتفاصيل الصغيرة لأنها تصنع الفرق في النتيجة النهائية.</p>
         </div>
 
         <div class="value-card">
             <div class="value-icon">◆</div>
-            <h3>الأصالة</h3>
-            <p>أحافظ على هويتي وأطورها بأسلوب حديث ومتوازن.</p>
+            <h3 data-en="Authenticity">الأصالة</h3>
+            <p data-en="I preserve my identity and develop it in a modern, balanced way.">أحافظ على هويتي وأطورها بأسلوب حديث ومتوازن.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section reveal" id="projects">
+
+    <div class="section-header">
+        <span class="section-label">PORTFOLIO</span>
+        <h2 class="section-title" data-en="Projects">مشاريعي</h2>
+    </div>
+
+    <div class="projects">
+
+        <div class="project-card">
+            <div class="project-top">
+                <span class="project-year">2025</span>
+                <span class="project-tag" data-en="Personal">شخصي</span>
+            </div>
+            <h3 data-en="Project Title One">اسم المشروع الأول</h3>
+            <p data-en="A short description of this project goes here — replace with real details.">وصف مختصر لهذا المشروع يوضع هنا — استبدله بتفاصيل حقيقية.</p>
+            <a class="project-link" href="#" data-en="View project ↗">عرض المشروع ↗</a>
+        </div>
+
+        <div class="project-card">
+            <div class="project-top">
+                <span class="project-year">2024</span>
+                <span class="project-tag" data-en="Professional">مهني</span>
+            </div>
+            <h3 data-en="Project Title Two">اسم المشروع الثاني</h3>
+            <p data-en="A short description of this project goes here — replace with real details.">وصف مختصر لهذا المشروع يوضع هنا — استبدله بتفاصيل حقيقية.</p>
+            <a class="project-link" href="#" data-en="View project ↗">عرض المشروع ↗</a>
+        </div>
+
+        <div class="project-card">
+            <div class="project-top">
+                <span class="project-year">2023</span>
+                <span class="project-tag" data-en="Idea">فكرة</span>
+            </div>
+            <h3 data-en="Project Title Three">اسم المشروع الثالث</h3>
+            <p data-en="A short description of this project goes here — replace with real details.">وصف مختصر لهذا المشروع يوضع هنا — استبدله بتفاصيل حقيقية.</p>
+            <a class="project-link" href="#" data-en="View project ↗">عرض المشروع ↗</a>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section reveal" id="achievements">
+
+    <div class="section-header">
+        <span class="section-label">RECOGNITION</span>
+        <h2 class="section-title" data-en="Achievements & Certificates">إنجازات وشهادات</h2>
+    </div>
+
+    <div class="achievements">
+
+        <div class="achievement-card">
+            <div class="achievement-icon">⌂</div>
+            <h3 data-en="Certificate Name">اسم الشهادة</h3>
+            <p data-en="Issuing body · Year">الجهة المانحة · السنة</p>
+        </div>
+
+        <div class="achievement-card">
+            <div class="achievement-icon">✧</div>
+            <h3 data-en="Certificate Name">اسم الشهادة</h3>
+            <p data-en="Issuing body · Year">الجهة المانحة · السنة</p>
+        </div>
+
+        <div class="achievement-card">
+            <div class="achievement-icon">◈</div>
+            <h3 data-en="Certificate Name">اسم الشهادة</h3>
+            <p data-en="Issuing body · Year">الجهة المانحة · السنة</p>
         </div>
 
     </div>
@@ -2075,49 +2459,49 @@ footer{
 
     <div class="section-header">
         <span class="section-label">SELECTED</span>
-        <h2 class="section-title">مختاراتي</h2>
+        <h2 class="section-title" data-en="Selected Works">مختاراتي</h2>
     </div>
 
     <div class="gallery">
 
         <div class="gallery-item" data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90">
             <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85" alt="جبال وطبيعة" loading="lazy">
-            <div class="gallery-info"><small>NATURE</small><h3>هدوء الجبال</h3></div>
+            <div class="gallery-info"><small>NATURE</small><h3 data-en="Mountain Calm">هدوء الجبال</h3></div>
         </div>
 
         <div class="gallery-item" data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90">
             <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85" alt="طبيعة ريفية" loading="lazy">
-            <div class="gallery-info"><small>LIFE</small><h3>تفاصيل هادئة</h3></div>
+            <div class="gallery-info"><small>LIFE</small><h3 data-en="Quiet Details">تفاصيل هادئة</h3></div>
         </div>
 
         <div class="gallery-item" data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90">
             <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=85" alt="مدينة حديثة" loading="lazy">
-            <div class="gallery-info"><small>CITY</small><h3>نبض المدينة</h3></div>
+            <div class="gallery-info"><small>CITY</small><h3 data-en="City Pulse">نبض المدينة</h3></div>
         </div>
 
         <div class="gallery-item" data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90">
             <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85" alt="شوارع المدينة" loading="lazy">
-            <div class="gallery-info"><small>STREETS</small><h3>بين الشوارع</h3></div>
+            <div class="gallery-info"><small>STREETS</small><h3 data-en="Between the Streets">بين الشوارع</h3></div>
         </div>
 
         <div class="gallery-item" data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90">
             <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=85" alt="مدينة من الأعلى" loading="lazy">
-            <div class="gallery-info"><small>URBAN</small><h3>أفق جديد</h3></div>
+            <div class="gallery-info"><small>URBAN</small><h3 data-en="New Horizon">أفق جديد</h3></div>
         </div>
 
         <div class="gallery-item" data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90">
             <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85" alt="طريق وسط الطبيعة" loading="lazy">
-            <div class="gallery-info"><small>JOURNEY</small><h3>الطريق</h3></div>
+            <div class="gallery-info"><small>JOURNEY</small><h3 data-en="The Road">الطريق</h3></div>
         </div>
 
         <div class="gallery-item" data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90">
             <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85" alt="منظر طبيعي" loading="lazy">
-            <div class="gallery-info"><small>CALM</small><h3>لحظة هدوء</h3></div>
+            <div class="gallery-info"><small>CALM</small><h3 data-en="A Calm Moment">لحظة هدوء</h3></div>
         </div>
 
         <div class="gallery-item" data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90">
             <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85" alt="العمارة والحياة" loading="lazy">
-            <div class="gallery-info"><small>ARCHITECTURE</small><h3>تفاصيل المكان</h3></div>
+            <div class="gallery-info"><small>ARCHITECTURE</small><h3 data-en="Details of Place">تفاصيل المكان</h3></div>
         </div>
 
     </div>
@@ -2128,23 +2512,23 @@ footer{
 
     <div class="section-header">
         <span class="section-label">TESTIMONIALS</span>
-        <h2 class="section-title">آراء</h2>
+        <h2 class="section-title" data-en="Testimonials">آراء</h2>
     </div>
 
     <div class="testimonials">
 
         <div class="testimonial-card">
             <div class="testimonial-mark">”</div>
-            <p class="testimonial-text">شخص يهتم بالتفاصيل بشكل نادر، وكل عمل يخرج منه يحمل بصمة واضحة من الجودة والذوق.</p>
-            <div class="testimonial-name">زميل عمل</div>
-            <div class="testimonial-role">شراكة مهنية</div>
+            <p class="testimonial-text" data-en="A rare eye for detail — everything he produces carries a clear mark of quality and taste.">شخص يهتم بالتفاصيل بشكل نادر، وكل عمل يخرج منه يحمل بصمة واضحة من الجودة والذوق.</p>
+            <div class="testimonial-name" data-en="Colleague">زميل عمل</div>
+            <div class="testimonial-role" data-en="Professional partnership">شراكة مهنية</div>
         </div>
 
         <div class="testimonial-card">
             <div class="testimonial-mark">”</div>
-            <p class="testimonial-text">طموحه وأسلوبه في التعامل مع الأفكار يجعلانه مختلفًا عمّن حوله دائمًا.</p>
-            <div class="testimonial-name">صديق مقرّب</div>
-            <div class="testimonial-role">معرفة شخصية</div>
+            <p class="testimonial-text" data-en="His ambition and his way of approaching ideas always set him apart from those around him.">طموحه وأسلوبه في التعامل مع الأفكار يجعلانه مختلفًا عمّن حوله دائمًا.</p>
+            <div class="testimonial-name" data-en="Close friend">صديق مقرّب</div>
+            <div class="testimonial-role" data-en="Personal acquaintance">معرفة شخصية</div>
         </div>
 
     </div>
@@ -2155,7 +2539,7 @@ footer{
 
     <div class="section-header">
         <span class="section-label">MY JOURNEY</span>
-        <h2 class="section-title">رحلتي</h2>
+        <h2 class="section-title" data-en="My Journey">رحلتي</h2>
     </div>
 
     <div class="timeline">
@@ -2163,36 +2547,36 @@ footer{
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-year">2015</div>
-            <div class="timeline-title">البداية</div>
-            <div class="timeline-text">بداية الرحلة، ومنها بدأت مرحلة جديدة من التجارب والتعلم.</div>
+            <div class="timeline-title" data-en="The Beginning">البداية</div>
+            <div class="timeline-text" data-en="The start of the journey, marking a new phase of experience and learning.">بداية الرحلة، ومنها بدأت مرحلة جديدة من التجارب والتعلم.</div>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-year">2018</div>
-            <div class="timeline-title">مرحلة من التجربة والتعلّم</div>
-            <div class="timeline-text">سنوات من التجربة واكتشاف الاهتمامات وتطوير المهارات والنظرة الخاصة.</div>
+            <div class="timeline-title" data-en="A Phase of Experience & Learning">مرحلة من التجربة والتعلّم</div>
+            <div class="timeline-text" data-en="Years of experience, discovering interests, and developing skills and a distinct perspective.">سنوات من التجربة واكتشاف الاهتمامات وتطوير المهارات والنظرة الخاصة.</div>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-year">2021</div>
-            <div class="timeline-title">تطور ونضج</div>
-            <div class="timeline-text">مرحلة أصبح فيها الطموح أكثر وضوحًا وأصبحت التجارب السابقة جزءًا من الهوية.</div>
+            <div class="timeline-title" data-en="Growth & Maturity">تطور ونضج</div>
+            <div class="timeline-text" data-en="A phase where ambition became clearer and past experiences became part of the identity.">مرحلة أصبح فيها الطموح أكثر وضوحًا وأصبحت التجارب السابقة جزءًا من الهوية.</div>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-year">2024</div>
-            <div class="timeline-title">مرحلة جديدة</div>
-            <div class="timeline-text">بداية مرحلة مختلفة، برؤية أوسع وطموح أكبر للمستقبل.</div>
+            <div class="timeline-title" data-en="A New Chapter">مرحلة جديدة</div>
+            <div class="timeline-text" data-en="The start of a different phase, with a wider vision and greater ambition for the future.">بداية مرحلة مختلفة، برؤية أوسع وطموح أكبر للمستقبل.</div>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-year">2026</div>
-            <div class="timeline-title">رؤية للمستقبل</div>
-            <div class="timeline-text">الاستمرار في التطور وبناء المستقبل بخطوات أكثر وضوحًا وثباتًا.</div>
+            <div class="timeline-title" data-en="A Vision for the Future">رؤية للمستقبل</div>
+            <div class="timeline-text" data-en="Continuing to grow and build the future with clearer, steadier steps.">الاستمرار في التطور وبناء المستقبل بخطوات أكثر وضوحًا وثباتًا.</div>
         </div>
 
     </div>
@@ -2203,27 +2587,27 @@ footer{
 
     <div class="section-header">
         <span class="section-label">THOUGHTS</span>
-        <h2 class="section-title">أفكار</h2>
+        <h2 class="section-title" data-en="Thoughts">أفكار</h2>
     </div>
 
     <div class="blog">
 
         <div class="blog-card">
             <span class="blog-date">2026</span>
-            <h3>عن الطموح والاستمرارية</h3>
-            <p>الطموح بلا استمرارية مجرد فكرة عابرة، والثبات هو ما يحوّل الفكرة إلى أثر حقيقي.</p>
+            <h3 data-en="On Ambition & Consistency">عن الطموح والاستمرارية</h3>
+            <p data-en="Ambition without consistency is just a passing idea — consistency is what turns an idea into a real mark.">الطموح بلا استمرارية مجرد فكرة عابرة، والثبات هو ما يحوّل الفكرة إلى أثر حقيقي.</p>
         </div>
 
         <div class="blog-card">
             <span class="blog-date">2026</span>
-            <h3>قيمة التفاصيل الصغيرة</h3>
-            <p>غالبًا ما يكون الفرق بين العمل الجيد والعمل المميز محصورًا في أدق التفاصيل.</p>
+            <h3 data-en="The Value of Small Details">قيمة التفاصيل الصغيرة</h3>
+            <p data-en="The difference between good work and exceptional work often lies in the finest details.">غالبًا ما يكون الفرق بين العمل الجيد والعمل المميز محصورًا في أدق التفاصيل.</p>
         </div>
 
         <div class="blog-card">
             <span class="blog-date">2025</span>
-            <h3>الهوية والأصالة</h3>
-            <p>الحفاظ على الهوية وسط التغيير المستمر هو ما يمنح أي تجربة معناها الحقيقي.</p>
+            <h3 data-en="Identity & Authenticity">الهوية والأصالة</h3>
+            <p data-en="Preserving identity amid constant change is what gives any experience its true meaning.">الحفاظ على الهوية وسط التغيير المستمر هو ما يمنح أي تجربة معناها الحقيقي.</p>
         </div>
 
     </div>
@@ -2234,7 +2618,7 @@ footer{
 
     <div class="section-header">
         <span class="section-label">CONTACT</span>
-        <h2 class="section-title">تواصل</h2>
+        <h2 class="section-title" data-en="Contact">تواصل</h2>
     </div>
 
     <div class="contact-card">
@@ -2251,7 +2635,10 @@ footer{
 
         </div>
 
-        <button class="qr-button" id="qrButton">مشاركة الموقع عبر QR</button>
+        <div class="contact-buttons">
+            <button class="qr-button" id="qrButton" data-en="Share via QR">مشاركة الموقع عبر QR</button>
+            <a class="qr-button cv-button" href="#" download data-en="Download CV" id="cvButton">تحميل السيرة الذاتية</a>
+        </div>
 
     </div>
 
@@ -2273,7 +2660,7 @@ footer{
 </div>
 
 <footer>
-    <div class="footer-copy">© 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة</div>
+    <div class="footer-copy" data-en="© 2026 Mabkhut bin Abdullah — All rights reserved">© 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة</div>
     <div class="footer-mbk">MBK</div>
 </footer>
 
@@ -2384,18 +2771,98 @@ window.addEventListener("load", () => {
 
 const themeBtn = document.getElementById("themeBtn");
 const rootEl = document.documentElement;
+const themeOrder = ["dark", "light", "auto"];
+const themeIcons = { dark: "☾", light: "☀", auto: "◐" };
+const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
 
-function applyThemeIcon(){
-    themeBtn.textContent = rootEl.getAttribute("data-theme") === "light" ? "☀" : "☾";
+function resolveAutoTheme(){
+    return systemDark.matches ? "dark" : "light";
 }
 
+function applyTheme(mode){
+    if(mode === "auto"){
+        rootEl.setAttribute("data-theme", resolveAutoTheme());
+    } else {
+        rootEl.setAttribute("data-theme", mode);
+    }
+    themeBtn.textContent = themeIcons[mode];
+    themeBtn.title = mode === "auto" ? "تلقائي (حسب الجهاز)" : "تبديل المظهر";
+}
+
+let currentThemeMode = "dark";
+applyTheme(currentThemeMode);
+
 themeBtn.addEventListener("click", () => {
-    const isLight = rootEl.getAttribute("data-theme") === "light";
-    rootEl.setAttribute("data-theme", isLight ? "dark" : "light");
-    applyThemeIcon();
+    const idx = themeOrder.indexOf(currentThemeMode);
+    currentThemeMode = themeOrder[(idx + 1) % themeOrder.length];
+    applyTheme(currentThemeMode);
 });
 
-applyThemeIcon();
+systemDark.addEventListener("change", () => {
+    if(currentThemeMode === "auto"){ applyTheme("auto"); }
+});
+
+/* Language toggle: swaps text between data-en attributes and the
+   original Arabic text (cached on first switch), and flips document
+   direction for readable English layout. */
+const langBtn = document.getElementById("langBtn");
+let currentLang = "ar";
+
+function setLanguage(lang){
+    const nodes = document.querySelectorAll("[data-en]");
+    nodes.forEach(node => {
+        if(!node.dataset.arCache){
+            node.dataset.arCache = node.innerHTML;
+        }
+        node.innerHTML = lang === "en" ? node.getAttribute("data-en") : node.dataset.arCache;
+    });
+
+    document.querySelectorAll('[data-lang="en"]').forEach(el => { el.hidden = lang !== "en"; });
+    document.querySelectorAll('[data-lang="ar"]').forEach(el => { el.hidden = lang === "en"; });
+
+    document.documentElement.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
+    document.documentElement.setAttribute("lang", lang);
+    langBtn.textContent = lang === "en" ? "AR" : "EN";
+    currentLang = lang;
+}
+
+langBtn.addEventListener("click", () => {
+    setLanguage(currentLang === "ar" ? "en" : "ar");
+});
+
+/* Active-section tracking for the side dot navigation */
+const dotLinks = document.querySelectorAll(".dot-link");
+const dotSections = Array.from(dotLinks).map(link => document.getElementById(link.dataset.section)).filter(Boolean);
+
+if(dotSections.length){
+    const dotObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                const id = entry.target.id;
+                dotLinks.forEach(link => {
+                    link.classList.toggle("active", link.dataset.section === id);
+                });
+            }
+        });
+    }, { threshold: .4, rootMargin: "-10% 0px -10% 0px" });
+
+    dotSections.forEach(section => dotObserver.observe(section));
+}
+
+/* Subtle 3D tilt on interactive cards */
+if(window.matchMedia("(hover: hover) and (pointer: fine)").matches && !prefersReducedMotion){
+    document.querySelectorAll(".project-card, .achievement-card, .value-card").forEach(card => {
+        card.addEventListener("mousemove", event => {
+            const rect = card.getBoundingClientRect();
+            const relX = (event.clientX - rect.left) / rect.width - 0.5;
+            const relY = (event.clientY - rect.top) / rect.height - 0.5;
+            card.style.transform = `perspective(700px) rotateX(${relY * -6}deg) rotateY(${relX * 6}deg) translateY(-4px)`;
+        });
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "";
+        });
+    });
+}
 
 const topBtn = document.getElementById("topBtn");
 
