@@ -975,6 +975,10 @@ header{
     transform:translateX(0);
 }
 
+.side-menu{
+    overflow-y:auto;
+}
+
 .close-menu{
     position:absolute;
     top:24px;
@@ -2319,7 +2323,9 @@ body.focus-mode .noise-overlay,
 body.focus-mode .orbit-word,
 body.focus-mode #heroCanvas,
 body.focus-mode .cursor-dot,
-body.focus-mode .cursor-outline{
+body.focus-mode .cursor-outline,
+body.focus-mode .aurora-layer,
+body.focus-mode .starfield-canvas{
     display:none!important;
 }
 
@@ -2588,17 +2594,437 @@ body.focus-mode .mb-ai-trigger{
 
 }
 
+/* =====================================================
+   BATCH 2 — ADDED SYSTEMS
+   (Starfield / Aurora / Nebula backgrounds, theme engine
+   expansion, accessibility panel, card spotlight+magnetic,
+   scroll % badge, toast/notification center, share sheet,
+   footer status/version, adaptive performance)
+   ===================================================== */
+
+/* Deep-space layers behind everything, above body gradient */
+.starfield-canvas{
+    position:fixed;
+    inset:0;
+    z-index:-7;
+    pointer-events:none;
+    opacity:.85;
+}
+
+.aurora-layer{
+    position:fixed;
+    inset:0;
+    z-index:-6;
+    pointer-events:none;
+    opacity:.5;
+    mix-blend-mode:screen;
+    background:
+        radial-gradient(60% 40% at 20% 0%, rgba(212,175,55,.10), transparent 60%),
+        radial-gradient(50% 35% at 80% 10%, rgba(80,130,200,.10), transparent 60%),
+        radial-gradient(45% 30% at 50% -10%, rgba(212,175,55,.06), transparent 65%);
+    animation:auroraDrift 22s ease-in-out infinite alternate;
+}
+
+@keyframes auroraDrift{
+    from{ transform:translateY(0) scale(1); }
+    to{ transform:translateY(2%) scale(1.04); }
+}
+
+:root[data-theme="light"] .aurora-layer,
+:root[data-theme="light"] .starfield-canvas{
+    opacity:.25;
+}
+
+/* Fine grid layer with mouse-reactive fade, sits above starfield */
+.grid-layer{
+    position:fixed;
+    inset:0;
+    z-index:-7;
+    pointer-events:none;
+    opacity:.12;
+    background-image:
+        linear-gradient(rgba(212,175,55,.35) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(212,175,55,.35) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:radial-gradient(420px circle at var(--x,50%) var(--y,50%),black,transparent 75%);
+    -webkit-mask-image:radial-gradient(420px circle at var(--x,50%) var(--y,50%),black,transparent 75%);
+}
+
+/* Theme engine — extra palettes beyond dark/light, cycled via data-theme */
+:root[data-theme="midnight"]{
+    --navy:#02030a;
+    --navy-dark:#000103;
+    --gold:#8fb4ff;
+    --gold-light:#c7d8ff;
+    --white:#eef2fb;
+    --text:#c7ccdb;
+    --muted:#7c839a;
+    --border:rgba(143,180,255,.2);
+    --border-strong:rgba(143,180,255,.42);
+}
+
+:root[data-theme="midnight"] body{
+    background:
+        radial-gradient(circle at 50% 0%,rgba(143,180,255,.08),transparent 27%),
+        radial-gradient(circle at 0% 50%,rgba(20,30,60,.4),transparent 35%),
+        linear-gradient(145deg,#000103 0%,#02030a 48%,#010208 100%);
+}
+
+:root[data-theme="obsidian"]{
+    --navy:#0a0a0a;
+    --navy-dark:#000000;
+    --gold:#c9a24b;
+    --gold-light:#e8c874;
+    --white:#f2f0ea;
+    --text:#cfcac0;
+    --muted:#847d70;
+    --border:rgba(201,162,75,.18);
+    --border-strong:rgba(201,162,75,.4);
+}
+
+:root[data-theme="obsidian"] body{
+    background:
+        radial-gradient(circle at 50% 0%,rgba(201,162,75,.06),transparent 27%),
+        linear-gradient(145deg,#000000 0%,#0a0a0a 48%,#050505 100%);
+}
+
+/* Accessibility panel (font size / contrast / motion / focus) */
+.a11y-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,.055);
+}
+
+.a11y-row span{
+    font-size:14px;
+    color:var(--text);
+}
+
+.a11y-stepper{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    direction:ltr;
+}
+
+.a11y-stepper button{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    border:1px solid var(--border-strong);
+    background:transparent;
+    color:var(--gold-light);
+    cursor:pointer;
+    font-size:15px;
+    line-height:1;
+}
+
+.a11y-toggle{
+    width:44px;
+    height:24px;
+    border-radius:99px;
+    border:1px solid var(--border-strong);
+    background:rgba(255,255,255,.04);
+    position:relative;
+    cursor:pointer;
+}
+
+.a11y-toggle::after{
+    content:"";
+    position:absolute;
+    top:2px;
+    left:2px;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:var(--muted);
+    transition:.25s ease;
+}
+
+.a11y-toggle.on{
+    border-color:var(--gold-light);
+    background:rgba(212,175,55,.18);
+}
+
+.a11y-toggle.on::after{
+    left:22px;
+    background:var(--gold-light);
+}
+
+html.a11y-contrast{
+    filter:contrast(1.18) saturate(1.05);
+}
+
+html.a11y-large-text body{
+    font-size:1.08em;
+}
+
+html.a11y-large-text .hero-name{
+    font-size:clamp(30px,6.2vw,54px);
+}
+
+body.a11y-no-blur .about-card,
+body.a11y-no-blur .value-card,
+body.a11y-no-blur .stat-card,
+body.a11y-no-blur .testimonial-card,
+body.a11y-no-blur .blog-card,
+body.a11y-no-blur .contact-card,
+body.a11y-no-blur header,
+body.a11y-no-blur .side-menu{
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+}
+
+/* Card spotlight glow that follows the cursor per-card */
+.value-card,
+.project-card,
+.achievement-card,
+.blog-card,
+.testimonial-card{
+    position:relative;
+    overflow:hidden;
+}
+
+.card-glow{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    opacity:0;
+    background:radial-gradient(220px circle at var(--cx,50%) var(--cy,50%), rgba(212,175,55,.14), transparent 65%);
+    transition:opacity .3s ease;
+}
+
+.value-card:hover .card-glow,
+.project-card:hover .card-glow,
+.achievement-card:hover .card-glow,
+.blog-card:hover .card-glow,
+.testimonial-card:hover .card-glow{
+    opacity:1;
+}
+
+.value-card > *:not(.card-glow),
+.project-card > *:not(.card-glow),
+.achievement-card > *:not(.card-glow),
+.blog-card > *:not(.card-glow),
+.testimonial-card > *:not(.card-glow){
+    position:relative;
+    z-index:1;
+}
+
+/* Magnetic buttons (CTA / social / qr) get a class toggled in JS */
+.magnetic{
+    transition:transform .12s ease-out;
+}
+
+/* Scroll percentage badge, docks near the top progress bar */
+.scroll-pct{
+    position:fixed;
+    top:10px;
+    left:14px;
+    z-index:1300;
+
+    padding:4px 10px;
+    border-radius:999px;
+
+    border:1px solid var(--border);
+    background:rgba(6,20,38,.6);
+    backdrop-filter:blur(6px);
+
+    color:var(--muted);
+    font-size:10px;
+    letter-spacing:1px;
+    direction:ltr;
+
+    opacity:0;
+    transition:opacity .3s ease;
+}
+
+.scroll-pct.visible{
+    opacity:1;
+}
+
+@media(max-width:760px){
+    .scroll-pct{ display:none; }
+}
+
+/* Toast / notification center, stacks above achievement toast */
+.toast-stack{
+    position:fixed;
+    top:90px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:4600;
+
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+
+    width:min(340px,90vw);
+    pointer-events:none;
+}
+
+.toast{
+    padding:11px 16px;
+    border-radius:14px;
+
+    border:1px solid var(--border-strong);
+    background:#07172a;
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+
+    color:var(--text);
+    font-size:12.5px;
+    text-align:center;
+
+    opacity:0;
+    transform:translateY(-8px);
+    transition:.35s ease;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Share sheet */
+.share-sheet{
+    position:fixed;
+    inset:0;
+    z-index:2200;
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+
+    background:rgba(0,0,0,.6);
+    backdrop-filter:blur(6px);
+
+    opacity:0;
+    visibility:hidden;
+    transition:.3s ease;
+}
+
+.share-sheet.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.share-box{
+    width:min(420px,100%);
+    padding:26px 22px 30px;
+
+    border-radius:26px 26px 0 0;
+    border:1px solid var(--border-strong);
+    border-bottom:none;
+    background:#07172a;
+
+    transform:translateY(20px);
+    transition:.3s ease;
+}
+
+.share-sheet.active .share-box{
+    transform:translateY(0);
+}
+
+.share-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:16px;
+}
+
+.share-grid button{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+
+    padding:10px 4px;
+    border-radius:14px;
+
+    border:1px solid rgba(212,175,55,.2);
+    background:rgba(255,255,255,.02);
+
+    color:var(--text);
+    font-size:11px;
+    cursor:pointer;
+}
+
+.share-grid button:hover{
+    border-color:var(--gold-light);
+    color:var(--gold-light);
+}
+
+.share-close{
+    display:block;
+    margin:18px auto 0;
+    padding:10px 26px;
+    border-radius:999px;
+    border:1px solid rgba(212,175,55,.3);
+    background:transparent;
+    color:var(--muted);
+    cursor:pointer;
+}
+
+/* Footer status / version badges */
+.footer-meta{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-top:16px;
+}
+
+.footer-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+
+    padding:5px 12px;
+    border-radius:999px;
+
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.02);
+
+    font-size:10.5px;
+    color:var(--muted);
+    direction:ltr;
+}
+
+.footer-badge .dot-ok{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#5fd68a;
+    box-shadow:0 0 6px #5fd68a;
+}
+
+.footer-clock{
+    margin-top:10px;
+    font-size:11px;
+    color:var(--muted);
+    direction:ltr;
+    letter-spacing:1px;
+}
 </style>
 </head>
 
 <body>
 
 <div class="scroll-progress" id="scrollProgress"></div>
+<div class="scroll-pct" id="scrollPct">0%</div>
 
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-outline" id="cursorOutline"></div>
 
 <div class="spotlight" id="spotlight"></div>
+<div class="grid-layer" id="gridLayer"></div>
+<div class="aurora-layer"></div>
+<canvas class="starfield-canvas" id="starfield"></canvas>
 
 <div class="noise-overlay"></div>
 <div class="vignette"></div>
@@ -2613,6 +3039,8 @@ body.focus-mode .mb-ai-trigger{
 </div>
 
 <canvas id="particles"></canvas>
+
+<div class="toast-stack" id="toastStack"></div>
 
 <header>
 
@@ -2665,6 +3093,31 @@ body.focus-mode .mb-ai-trigger{
     <a href="#contact" data-en="Contact">تواصل</a>
 
     <button class="side-menu-toggle" id="focusBtn" type="button" data-en="Focus Mode — reduce effects">وضع التركيز — تقليل المؤثرات</button>
+
+    <div class="menu-label" style="margin-top:26px;">ACCESSIBILITY</div>
+
+    <div class="a11y-row">
+        <span data-en="Text size">حجم النص</span>
+        <div class="a11y-stepper">
+            <button type="button" id="a11yTextMinus">−</button>
+            <button type="button" id="a11yTextPlus">+</button>
+        </div>
+    </div>
+
+    <div class="a11y-row">
+        <span data-en="Increase contrast">زيادة التباين</span>
+        <div class="a11y-toggle" id="a11yContrastToggle"></div>
+    </div>
+
+    <div class="a11y-row">
+        <span data-en="Reduce blur/effects">تقليل الشفافية والمؤثرات</span>
+        <div class="a11y-toggle" id="a11yBlurToggle"></div>
+    </div>
+
+    <div class="a11y-row" style="border-bottom:none;">
+        <span data-en="Theme">المظهر</span>
+        <button class="side-menu-toggle" id="themeCycleBtn" type="button" style="margin:0;width:auto;padding:8px 16px;" data-en="Cycle">تبديل</button>
+    </div>
 
 </nav>
 
@@ -2833,18 +3286,21 @@ body.focus-mode .mb-ai-trigger{
     <div class="values">
 
         <div class="value-card">
+            <div class="card-glow"></div>
             <div class="value-icon">✦</div>
             <h3 data-en="Creativity">الإبداع</h3>
             <p data-en="I always look for different ideas and a style that carries a distinctive character.">أبحث دائمًا عن الأفكار المختلفة والأسلوب الذي يحمل طابعًا خاصًا.</p>
         </div>
 
         <div class="value-card">
+            <div class="card-glow"></div>
             <div class="value-icon">◇</div>
             <h3 data-en="Quality">الجودة</h3>
             <p data-en="I care about the small details, because they make the difference in the final result.">أهتم بالتفاصيل الصغيرة لأنها تصنع الفرق في النتيجة النهائية.</p>
         </div>
 
         <div class="value-card">
+            <div class="card-glow"></div>
             <div class="value-icon">◆</div>
             <h3 data-en="Authenticity">الأصالة</h3>
             <p data-en="I preserve my identity and develop it in a modern, balanced way.">أحافظ على هويتي وأطورها بأسلوب حديث ومتوازن.</p>
@@ -2864,6 +3320,7 @@ body.focus-mode .mb-ai-trigger{
     <div class="projects">
 
         <div class="project-card">
+            <div class="card-glow"></div>
             <div class="project-top">
                 <span class="project-year">2025</span>
                 <span class="project-tag" data-en="Personal">شخصي</span>
@@ -2875,6 +3332,7 @@ body.focus-mode .mb-ai-trigger{
         </div>
 
         <div class="project-card">
+            <div class="card-glow"></div>
             <div class="project-top">
                 <span class="project-year">2024</span>
                 <span class="project-tag" data-en="Professional">مهني</span>
@@ -2886,6 +3344,7 @@ body.focus-mode .mb-ai-trigger{
         </div>
 
         <div class="project-card">
+            <div class="card-glow"></div>
             <div class="project-top">
                 <span class="project-year">2023</span>
                 <span class="project-tag" data-en="Idea">فكرة</span>
@@ -2910,18 +3369,21 @@ body.focus-mode .mb-ai-trigger{
     <div class="achievements">
 
         <div class="achievement-card">
+            <div class="card-glow"></div>
             <div class="achievement-icon">⌂</div>
             <h3 data-en="Certificate Name">اسم الشهادة</h3>
             <p data-en="Issuing body · Year">الجهة المانحة · السنة</p>
         </div>
 
         <div class="achievement-card">
+            <div class="card-glow"></div>
             <div class="achievement-icon">✧</div>
             <h3 data-en="Certificate Name">اسم الشهادة</h3>
             <p data-en="Issuing body · Year">الجهة المانحة · السنة</p>
         </div>
 
         <div class="achievement-card">
+            <div class="card-glow"></div>
             <div class="achievement-icon">◈</div>
             <h3 data-en="Certificate Name">اسم الشهادة</h3>
             <p data-en="Issuing body · Year">الجهة المانحة · السنة</p>
@@ -2994,6 +3456,7 @@ body.focus-mode .mb-ai-trigger{
     <div class="testimonials">
 
         <div class="testimonial-card">
+            <div class="card-glow"></div>
             <div class="testimonial-mark">”</div>
             <p class="testimonial-text" data-en="A rare eye for detail — everything he produces carries a clear mark of quality and taste.">شخص يهتم بالتفاصيل بشكل نادر، وكل عمل يخرج منه يحمل بصمة واضحة من الجودة والذوق.</p>
             <div class="testimonial-name" data-en="Colleague">زميل عمل</div>
@@ -3001,6 +3464,7 @@ body.focus-mode .mb-ai-trigger{
         </div>
 
         <div class="testimonial-card">
+            <div class="card-glow"></div>
             <div class="testimonial-mark">”</div>
             <p class="testimonial-text" data-en="His ambition and his way of approaching ideas always set him apart from those around him.">طموحه وأسلوبه في التعامل مع الأفكار يجعلانه مختلفًا عمّن حوله دائمًا.</p>
             <div class="testimonial-name" data-en="Close friend">صديق مقرّب</div>
@@ -3069,18 +3533,21 @@ body.focus-mode .mb-ai-trigger{
     <div class="blog">
 
         <div class="blog-card">
+            <div class="card-glow"></div>
             <span class="blog-date">2026</span>
             <h3 data-en="On Ambition & Consistency">عن الطموح والاستمرارية</h3>
             <p data-en="Ambition without consistency is just a passing idea — consistency is what turns an idea into a real mark.">الطموح بلا استمرارية مجرد فكرة عابرة، والثبات هو ما يحوّل الفكرة إلى أثر حقيقي.</p>
         </div>
 
         <div class="blog-card">
+            <div class="card-glow"></div>
             <span class="blog-date">2026</span>
             <h3 data-en="The Value of Small Details">قيمة التفاصيل الصغيرة</h3>
             <p data-en="The difference between good work and exceptional work often lies in the finest details.">غالبًا ما يكون الفرق بين العمل الجيد والعمل المميز محصورًا في أدق التفاصيل.</p>
         </div>
 
         <div class="blog-card">
+            <div class="card-glow"></div>
             <span class="blog-date">2025</span>
             <h3 data-en="Identity & Authenticity">الهوية والأصالة</h3>
             <p data-en="Preserving identity amid constant change is what gives any experience its true meaning.">الحفاظ على الهوية وسط التغيير المستمر هو ما يمنح أي تجربة معناها الحقيقي.</p>
@@ -3101,19 +3568,20 @@ body.focus-mode .mb-ai-trigger{
 
         <div class="contact-icons">
 
-            <a class="social" href="mailto:mabkhout@mabkhut.com" aria-label="البريد الإلكتروني" title="البريد الإلكتروني">
+            <a class="social magnetic" href="mailto:mabkhout@mabkhut.com" aria-label="البريد الإلكتروني" title="البريد الإلكتروني">
                 <svg viewBox="0 0 24 24"><path d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"/></svg>
             </a>
 
-            <a class="social" href="https://www.facebook.com/share/19JG7PQiHL/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+            <a class="social magnetic" href="https://www.facebook.com/share/19JG7PQiHL/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
                 <svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"/></svg>
             </a>
 
         </div>
 
         <div class="contact-buttons">
-            <button class="qr-button" id="qrButton" data-en="Share via QR">مشاركة الموقع عبر QR</button>
-            <a class="qr-button cv-button" href="#" download data-en="Download CV" id="cvButton">تحميل السيرة الذاتية</a>
+            <button class="qr-button magnetic" id="qrButton" data-en="Share via QR">مشاركة الموقع عبر QR</button>
+            <button class="qr-button magnetic" id="shareButton" type="button" data-en="Share">مشاركة الموقع</button>
+            <a class="qr-button cv-button magnetic" href="#" download data-en="Download CV" id="cvButton">تحميل السيرة الذاتية</a>
         </div>
 
     </div>
@@ -3135,9 +3603,32 @@ body.focus-mode .mb-ai-trigger{
     </div>
 </div>
 
+<div class="share-sheet" id="shareSheet">
+    <div class="share-box">
+        <h3 style="color:var(--gold-light);direction:ltr;letter-spacing:1px;">SHARE</h3>
+        <div class="share-grid">
+            <button data-share="whatsapp">WhatsApp</button>
+            <button data-share="telegram">Telegram</button>
+            <button data-share="x">X</button>
+            <button data-share="email">Email</button>
+            <button data-share="copy">نسخ الرابط</button>
+            <button data-share="native">مشاركة</button>
+        </div>
+        <button class="share-close" id="shareClose">إغلاق</button>
+    </div>
+</div>
+
 <footer>
     <div class="footer-copy" data-en="© 2026 Mabkhut bin Abdullah — All rights reserved">© 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة</div>
     <div class="footer-mbk">MBK</div>
+
+    <div class="footer-meta">
+        <span class="footer-badge"><span class="dot-ok"></span><span data-en="Site online">الموقع متصل</span></span>
+        <span class="footer-badge" id="footerVersion">v2.0</span>
+        <span class="footer-badge" id="footerBuildDate">2026</span>
+    </div>
+
+    <div class="footer-clock" id="footerClock"></div>
 </footer>
 
 <div class="journey-indicator" id="journeyIndicator">01 / 11</div>
@@ -3327,15 +3818,20 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
     setTimeout(finish, DURATION + 1500);
 })();
 
+/* ===== Theme engine — dark / light / midnight / obsidian, plus
+   an "auto" mode that follows the OS setting ===== */
 const themeBtn = document.getElementById("themeBtn");
+const themeCycleBtn = document.getElementById("themeCycleBtn");
 const rootEl = document.documentElement;
-const themeOrder = ["dark", "light", "auto"];
-const themeIcons = { dark: "☾", light: "☀", auto: "◐" };
+const themeOrder = ["dark", "light", "midnight", "obsidian", "auto"];
+const themeIcons = { dark:"☾", light:"☀", midnight:"✶", obsidian:"◆", auto:"◐" };
 const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
 
 function resolveAutoTheme(){
     return systemDark.matches ? "dark" : "light";
 }
+
+let currentThemeMode = "dark";
 
 function applyTheme(mode){
     if(mode === "auto"){
@@ -3345,16 +3841,24 @@ function applyTheme(mode){
     }
     themeBtn.textContent = themeIcons[mode];
     themeBtn.title = mode === "auto" ? "تلقائي (حسب الجهاز)" : "تبديل المظهر";
+    try{ localStorage.setItem("mbk-theme", mode); }catch(e){}
 }
 
-let currentThemeMode = "dark";
-applyTheme(currentThemeMode);
+(function initTheme(){
+    let saved = null;
+    try{ saved = localStorage.getItem("mbk-theme"); }catch(e){}
+    currentThemeMode = themeOrder.includes(saved) ? saved : "dark";
+    applyTheme(currentThemeMode);
+})();
 
-themeBtn.addEventListener("click", () => {
+function cycleTheme(){
     const idx = themeOrder.indexOf(currentThemeMode);
     currentThemeMode = themeOrder[(idx + 1) % themeOrder.length];
     applyTheme(currentThemeMode);
-});
+}
+
+themeBtn.addEventListener("click", cycleTheme);
+if(themeCycleBtn){ themeCycleBtn.addEventListener("click", cycleTheme); }
 
 systemDark.addEventListener("change", () => {
     if(currentThemeMode === "auto"){ applyTheme("auto"); }
@@ -3407,6 +3911,16 @@ if(dotSections.length){
     dotSections.forEach(section => dotObserver.observe(section));
 }
 
+/* Device / performance detection — used to scale particle counts,
+   disable heavy effects on low-end or data-saving devices */
+const perf = {
+    lowEnd: (navigator.hardwareConcurrency || 4) <= 4,
+    saveData: !!(navigator.connection && navigator.connection.saveData),
+    slowConnection: !!(navigator.connection && /2g/.test(navigator.connection.effectiveType || "")),
+    coarsePointer: window.matchMedia("(hover: none), (pointer: coarse)").matches
+};
+const lowPowerMode = perf.lowEnd || perf.saveData || perf.slowConnection;
+
 /* Subtle 3D tilt on interactive cards */
 if(window.matchMedia("(hover: hover) and (pointer: fine)").matches && !prefersReducedMotion){
     document.querySelectorAll(".project-card, .achievement-card, .value-card").forEach(card => {
@@ -3422,12 +3936,37 @@ if(window.matchMedia("(hover: hover) and (pointer: fine)").matches && !prefersRe
     });
 }
 
+/* Card spotlight glow — tracks the cursor position inside any card
+   that has a .card-glow child (values, projects, achievements,
+   testimonials, blog) */
+if(window.matchMedia("(hover: hover) and (pointer: fine)").matches){
+    document.querySelectorAll(".value-card, .project-card, .achievement-card, .blog-card, .testimonial-card").forEach(card => {
+        card.addEventListener("mousemove", event => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty("--cx", (event.clientX - rect.left) + "px");
+            card.style.setProperty("--cy", (event.clientY - rect.top) + "px");
+        });
+    });
+}
+
 const topBtn = document.getElementById("topBtn");
+const scrollProgress = document.getElementById("scrollProgress");
+const scrollPct = document.getElementById("scrollPct");
 
 window.addEventListener("scroll", () => {
     if(window.scrollY > 480){ topBtn.classList.add("visible"); }
     else{ topBtn.classList.remove("visible"); }
-});
+
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = docHeight > 0 ? scrollTop / docHeight : 0;
+    scrollProgress.style.transform = `scaleX(${ratio})`;
+
+    if(scrollPct){
+        scrollPct.textContent = Math.round(ratio * 100) + "%";
+        scrollPct.classList.toggle("visible", scrollTop > 40);
+    }
+}, { passive: true });
 
 topBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
@@ -3497,7 +4036,9 @@ if(particleCanvas && !prefersReducedMotion){
     }
 
     function createParticles(){
-        const count = Math.min(60, Math.floor((width * height) / 26000));
+        const base = lowPowerMode ? 46000 : 26000;
+        const cap = lowPowerMode ? 30 : 60;
+        const count = Math.min(cap, Math.floor((width * height) / base));
         particles = Array.from({ length: count }, () => ({
             x: Math.random() * width,
             y: Math.random() * height,
@@ -3530,6 +4071,96 @@ if(particleCanvas && !prefersReducedMotion){
 
 }
 
+/* Starfield — layered depth stars behind the whole page, paused
+   automatically when the tab is hidden to save battery/CPU */
+const starfieldCanvas = document.getElementById("starfield");
+
+if(starfieldCanvas && !prefersReducedMotion){
+
+    const sctx = starfieldCanvas.getContext("2d");
+    let sw, sh, stars, shootingStars = [];
+    let paused = false;
+
+    function sizeStarfield(){
+        sw = starfieldCanvas.width = window.innerWidth;
+        sh = starfieldCanvas.height = window.innerHeight;
+    }
+
+    function makeStars(){
+        const density = lowPowerMode ? 9000 : 4500;
+        const count = Math.min(lowPowerMode ? 60 : 140, Math.floor((sw * sh) / density));
+        stars = Array.from({ length: count }, () => ({
+            x: Math.random() * sw,
+            y: Math.random() * sh,
+            r: Math.random() * 1.2 + .25,
+            base: Math.random() * .5 + .2,
+            twinkleSpeed: Math.random() * .02 + .006,
+            phase: Math.random() * Math.PI * 2
+        }));
+    }
+
+    function maybeSpawnShootingStar(){
+        if(lowPowerMode) return;
+        if(Math.random() < .0025 && shootingStars.length < 2){
+            shootingStars.push({
+                x: Math.random() * sw * .6,
+                y: Math.random() * sh * .3,
+                len: 90 + Math.random() * 60,
+                speed: 9 + Math.random() * 5,
+                life: 1
+            });
+        }
+    }
+
+    let sTime = 0;
+
+    function drawStarfield(){
+        if(paused){ return; }
+        sTime += 1;
+        sctx.clearRect(0, 0, sw, sh);
+
+        stars.forEach(s => {
+            const tw = s.base + Math.sin(sTime * s.twinkleSpeed + s.phase) * .3;
+            sctx.beginPath();
+            sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+            sctx.fillStyle = `rgba(255,255,255,${Math.max(0, tw)})`;
+            sctx.fill();
+        });
+
+        maybeSpawnShootingStar();
+
+        shootingStars.forEach(star => {
+            sctx.beginPath();
+            sctx.strokeStyle = `rgba(212,175,55,${star.life})`;
+            sctx.lineWidth = 1.4;
+            sctx.moveTo(star.x, star.y);
+            sctx.lineTo(star.x - star.len, star.y - star.len * .5);
+            sctx.stroke();
+            star.x += star.speed;
+            star.y += star.speed * .5;
+            star.life -= .012;
+        });
+        shootingStars = shootingStars.filter(s => s.life > 0);
+
+        requestAnimationFrame(drawStarfield);
+    }
+
+    document.addEventListener("visibilitychange", () => {
+        paused = document.hidden;
+        if(!paused){ requestAnimationFrame(drawStarfield); }
+    });
+
+    sizeStarfield();
+    makeStars();
+    drawStarfield();
+
+    window.addEventListener("resize", () => { sizeStarfield(); makeStars(); });
+}
+
+/* Grid layer follows cursor via the same --x/--y custom properties
+   used by the spotlight, so both react together */
+const gridLayer = document.getElementById("gridLayer");
+
 if("serviceWorker" in navigator){
     window.addEventListener("load", () => {
         navigator.serviceWorker.register("sw.js").catch(() => {});
@@ -3538,21 +4169,16 @@ if("serviceWorker" in navigator){
 
 const hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-const scrollProgress = document.getElementById("scrollProgress");
-
-window.addEventListener("scroll", () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const ratio = docHeight > 0 ? scrollTop / docHeight : 0;
-    scrollProgress.style.transform = `scaleX(${ratio})`;
-}, { passive: true });
-
 const spotlight = document.getElementById("spotlight");
 
 if(hasFinePointer && !prefersReducedMotion){
     window.addEventListener("mousemove", event => {
         spotlight.style.setProperty("--x", event.clientX + "px");
         spotlight.style.setProperty("--y", event.clientY + "px");
+        if(gridLayer){
+            gridLayer.style.setProperty("--x", event.clientX + "px");
+            gridLayer.style.setProperty("--y", event.clientY + "px");
+        }
     });
 }
 
@@ -3568,353 +4194,4 @@ if(hasFinePointer){
     let targetX = outlineX;
     let targetY = outlineY;
 
-    window.addEventListener("mousemove", event => {
-        targetX = event.clientX;
-        targetY = event.clientY;
-        cursorDot.style.left = targetX + "px";
-        cursorDot.style.top = targetY + "px";
-    });
-
-    function animateOutline(){
-        outlineX += (targetX - outlineX) * .18;
-        outlineY += (targetY - outlineY) * .18;
-        cursorOutline.style.left = outlineX + "px";
-        cursorOutline.style.top = outlineY + "px";
-        requestAnimationFrame(animateOutline);
-    }
-
-    animateOutline();
-
-    document.querySelectorAll("a, button, .gallery-item, .value-card").forEach(el => {
-        el.addEventListener("mouseenter", () => { cursorOutline.classList.add("hover"); });
-        el.addEventListener("mouseleave", () => { cursorOutline.classList.remove("hover"); });
-    });
-
-}
-
-if(hasFinePointer && !prefersReducedMotion){
-    document.querySelectorAll(".menu-btn, .theme-btn, .sound-btn, .top-btn, .social, .qr-button").forEach(el => {
-        el.addEventListener("mousemove", event => {
-            const rect = el.getBoundingClientRect();
-            const relX = event.clientX - rect.left - rect.width / 2;
-            const relY = event.clientY - rect.top - rect.height / 2;
-            el.style.transform = `translate(${relX * .28}px, ${relY * .28}px)`;
-        });
-        el.addEventListener("mouseleave", () => { el.style.transform = ""; });
-    });
-}
-
-const pageTransition = document.getElementById("pageTransition");
-
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener("click", event => {
-        const targetId = link.getAttribute("href");
-        const targetEl = document.querySelector(targetId);
-        if(!targetEl) return;
-        event.preventDefault();
-
-        if(prefersReducedMotion){
-            targetEl.scrollIntoView({ behavior: "auto" });
-            return;
-        }
-
-        pageTransition.classList.remove("active");
-        void pageTransition.offsetWidth;
-        pageTransition.classList.add("active");
-
-        setTimeout(() => {
-            targetEl.scrollIntoView({ behavior: "auto", block: "start" });
-        }, 350);
-    });
-});
-
-/* Word-by-word reveal for section titles (and the hero name is
-   revealed as a whole via CSS animation) — Arabic text is never
-   split into individual character spans, which was breaking
-   letter joining/shaping in the previous version. */
-function revealByWord(el){
-    const words = el.textContent.trim().split(/\s+/);
-    el.textContent = "";
-
-    words.forEach((word, i) => {
-        const span = document.createElement("span");
-        span.className = "reveal-word";
-        span.textContent = word;
-        span.style.transitionDelay = (i * 90) + "ms";
-        el.appendChild(span);
-        if(i < words.length - 1){ el.appendChild(document.createTextNode(" ")); }
-    });
-
-    requestAnimationFrame(() => {
-        el.querySelectorAll(".reveal-word").forEach(w => w.classList.add("visible"));
-    });
-}
-
-document.querySelectorAll(".section-title").forEach(title => {
-    const titleObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                revealByWord(entry.target);
-                titleObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: .5 });
-    titleObserver.observe(title);
-});
-
-const soundBtn = document.getElementById("soundBtn");
-let soundEnabled = false;
-
-const clickSound = new Audio(
-    "data:audio/wav;base64,UklGRlwAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YTgAAAAAAM3NDczNzc7Nzs7Nzc/Ozc7Ozs7Pz8/Oz8/PztDPz8/Pz9DP0M/Q0NDQz9DQ0dHR0NHR0dHR0Q=="
-);
-
-soundBtn.addEventListener("click", () => {
-    soundEnabled = !soundEnabled;
-    soundBtn.textContent = soundEnabled ? "🔊" : "🔇";
-});
-
-document.querySelectorAll("a, button").forEach(el => {
-    el.addEventListener("click", () => {
-        if(soundEnabled){
-            clickSound.currentTime = 0;
-            clickSound.play().catch(() => {});
-        }
-    });
-});
-
-const heroCanvas = document.getElementById("heroCanvas");
-
-if(heroCanvas && !prefersReducedMotion){
-
-    const hctx = heroCanvas.getContext("2d");
-    const heroSection = document.getElementById("home");
-    let hw, hh, lines;
-
-    function sizeHeroCanvas(){
-        hw = heroCanvas.width = heroSection.clientWidth;
-        hh = heroCanvas.height = heroSection.clientHeight;
-    }
-
-    function makeLines(){
-        const count = Math.min(7, Math.max(4, Math.floor(hw / 260)));
-        lines = Array.from({ length: count }, (_, i) => ({
-            offset: (i / count) * hh,
-            speed: .15 + Math.random() * .12,
-            amp: 26 + Math.random() * 22,
-            phase: Math.random() * Math.PI * 2
-        }));
-    }
-
-    let t = 0;
-
-    function drawHero(){
-        t += .004;
-        hctx.clearRect(0, 0, hw, hh);
-        lines.forEach(line => {
-            hctx.beginPath();
-            for(let x = 0; x <= hw; x += 14){
-                const y = line.offset + Math.sin(x * .006 + t * 6 * line.speed + line.phase) * line.amp;
-                if(x === 0){ hctx.moveTo(x, y); } else { hctx.lineTo(x, y); }
-            }
-            hctx.strokeStyle = "rgba(212,175,55,.16)";
-            hctx.lineWidth = 1;
-            hctx.stroke();
-        });
-        requestAnimationFrame(drawHero);
-    }
-
-    sizeHeroCanvas();
-    makeLines();
-    drawHero();
-
-    window.addEventListener("resize", () => { sizeHeroCanvas(); makeLines(); });
-
-}
-
-/* ===== 04 — MB Universe: orbiting field words ===== */
-const mbUniverse = document.getElementById("mbUniverse");
-
-if(mbUniverse && !prefersReducedMotion){
-    const words = ["AI","DESIGN","TECH","WEB","CREATIVE","PROJECTS","VISION"];
-    words.forEach((word, i) => {
-        const el = document.createElement("span");
-        el.className = "orbit-word";
-        el.textContent = word;
-        const radius = 46 + (i % 2) * 6; // percent-ish via px fallback, tuned per frame size
-        el.style.setProperty("--r", (150 + (i % 3) * 30) + "px");
-        el.style.animationDuration = (26 + i * 4) + "s";
-        el.style.animationDelay = (-i * 3) + "s";
-        if(i % 2){ el.style.animationDirection = "reverse"; }
-        mbUniverse.appendChild(el);
-    });
-}
-
-/* ===== 56 — Focus mode ===== */
-const focusBtn = document.getElementById("focusBtn");
-
-if(focusBtn){
-    focusBtn.addEventListener("click", () => {
-        document.body.classList.toggle("focus-mode");
-        const on = document.body.classList.contains("focus-mode");
-        focusBtn.classList.toggle("active", on);
-    });
-}
-
-/* ===== 58 — Command palette (Ctrl/Cmd+K, plus mobile trigger) ===== */
-const cmdkTrigger = document.getElementById("cmdkTrigger");
-const cmdkOverlay = document.getElementById("cmdkOverlay");
-const cmdkInput = document.getElementById("cmdkInput");
-const cmdkList = document.getElementById("cmdkList");
-
-const cmdkItems = [
-    { label: "الرئيسية", en: "Home", target: "#home" },
-    { label: "نبذة", en: "About", target: "#about" },
-    { label: "مهاراتي", en: "Skills", target: "#skills" },
-    { label: "بصمتي", en: "Values", target: "#values" },
-    { label: "مشاريعي", en: "Projects", target: "#projects" },
-    { label: "إنجازات", en: "Achievements", target: "#achievements" },
-    { label: "مختاراتي", en: "Selected Works", target: "#gallery" },
-    { label: "آراء", en: "Testimonials", target: "#testimonials" },
-    { label: "رحلتي", en: "Journey", target: "#journey" },
-    { label: "أفكار", en: "Thoughts", target: "#blog" },
-    { label: "تواصل", en: "Contact", target: "#contact" },
-    { label: "وضع التركيز", en: "Toggle Focus Mode", action: () => focusBtn && focusBtn.click() }
-];
-
-function renderCmdkList(filter){
-    cmdkList.innerHTML = "";
-    const q = (filter || "").trim().toLowerCase();
-    const filtered = cmdkItems.filter(item =>
-        !q || item.label.includes(q) || item.en.toLowerCase().includes(q)
-    );
-    filtered.forEach(item => {
-        const row = document.createElement("div");
-        row.className = "cmdk-item";
-        row.innerHTML = `<span>${item.label}</span><small>${item.en}</small>`;
-        row.addEventListener("click", () => {
-            closeCmdk();
-            if(item.action){ item.action(); }
-            else{
-                const el = document.querySelector(item.target);
-                if(el) el.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" });
-            }
-        });
-        cmdkList.appendChild(row);
-    });
-}
-
-function openCmdk(){
-    cmdkOverlay.classList.add("active");
-    renderCmdkList("");
-    cmdkInput.value = "";
-    setTimeout(() => cmdkInput.focus(), 60);
-}
-
-function closeCmdk(){
-    cmdkOverlay.classList.remove("active");
-}
-
-if(cmdkTrigger){ cmdkTrigger.addEventListener("click", openCmdk); }
-if(cmdkInput){ cmdkInput.addEventListener("input", () => renderCmdkList(cmdkInput.value)); }
-if(cmdkOverlay){
-    cmdkOverlay.addEventListener("click", event => {
-        if(event.target === cmdkOverlay){ closeCmdk(); }
-    });
-}
-
-document.addEventListener("keydown", event => {
-    if((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k"){
-        event.preventDefault();
-        openCmdk();
-    }
-    if(event.key === "Escape"){ closeCmdk(); }
-});
-
-/* ===== 64 — Visitor journey indicator ===== */
-const journeyIndicator = document.getElementById("journeyIndicator");
-const journeySections = ["home","about","stats","skills","values","projects","achievements","gallery","testimonials","journey","blog","contact"]
-    .map(id => document.getElementById(id))
-    .filter(Boolean);
-
-if(journeyIndicator && journeySections.length){
-    const journeyObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                const idx = journeySections.indexOf(entry.target) + 1;
-                journeyIndicator.innerHTML = String(idx).padStart(2, "0") + " / " + String(journeySections.length).padStart(2, "0");
-            }
-        });
-    }, { threshold: .5 });
-    journeySections.forEach(s => journeyObserver.observe(s));
-}
-
-/* ===== 69 — MB AI widget (UI only, no live backend connected) ===== */
-const mbAiTrigger = document.getElementById("mbAiTrigger");
-const mbAiPanel = document.getElementById("mbAiPanel");
-const mbAiBody = document.getElementById("mbAiBody");
-const mbAiInput = document.getElementById("mbAiInput");
-const mbAiSend = document.getElementById("mbAiSend");
-
-if(mbAiTrigger){
-    mbAiTrigger.addEventListener("click", () => {
-        mbAiPanel.classList.toggle("active");
-    });
-}
-
-function mbAiAddMessage(text, who){
-    const msg = document.createElement("div");
-    msg.className = "mb-ai-msg " + who;
-    msg.textContent = text;
-    mbAiBody.appendChild(msg);
-    mbAiBody.scrollTop = mbAiBody.scrollHeight;
-}
-
-function mbAiRespond(){
-    const value = mbAiInput.value.trim();
-    if(!value) return;
-    mbAiAddMessage(value, "user");
-    mbAiInput.value = "";
-    setTimeout(() => {
-        mbAiAddMessage("هذه واجهة تجريبية فقط ولا تتصل بنموذج ذكاء اصطناعي حقيقي بعد. سيتم ربطها لاحقًا عبر API.", "bot");
-    }, 400);
-}
-
-if(mbAiSend){ mbAiSend.addEventListener("click", mbAiRespond); }
-if(mbAiInput){
-    mbAiInput.addEventListener("keydown", event => {
-        if(event.key === "Enter"){ mbAiRespond(); }
-    });
-}
-
-/* ===== 61/62/63 — Easter egg: typing 711 unlocks a hidden animation ===== */
-const achievementToast = document.getElementById("achievementToast");
-let keyBuffer = "";
-
-document.addEventListener("keydown", event => {
-    if(!/^[0-9]$/.test(event.key)) return;
-    keyBuffer = (keyBuffer + event.key).slice(-3);
-    if(keyBuffer === "711" && achievementToast){
-        achievementToast.classList.add("active");
-        setTimeout(() => { achievementToast.classList.remove("active"); }, 3200);
-        keyBuffer = "";
-    }
-});
-
-/* ===== 31 — Magnetic navigation for nav links ===== */
-if(hasFinePointer && !prefersReducedMotion){
-    document.querySelectorAll(".dot-link, .cmdk-trigger, .mb-ai-trigger").forEach(el => {
-        el.addEventListener("mousemove", event => {
-            const rect = el.getBoundingClientRect();
-            const relX = event.clientX - rect.left - rect.width / 2;
-            const relY = event.clientY - rect.top - rect.height / 2;
-            el.style.transform = `translate(${relX * .22}px, ${relY * .22}px)`;
-        });
-        el.addEventListener("mouseleave", () => { el.style.transform = ""; });
-    });
-}
-
-</script>
-
-</body>
-</html>
+    window.a
