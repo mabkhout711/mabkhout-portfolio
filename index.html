@@ -485,14 +485,8 @@ body.custom-cursor-active button{
 
 
 /* =========================
-   SHIMMER SWEEP
+   SHIMMER SWEEP (hero name only)
 ========================= */
-
-.hero-name,
-.section-title{
-    background-size:250% auto;
-    animation:shimmerSweep 7s linear infinite;
-}
 
 @keyframes shimmerSweep{
 
@@ -907,6 +901,13 @@ main{
 
     letter-spacing:-1px;
 
+    text-shadow:0 0 18px rgba(212,175,55,.12);
+
+    animation:heroIn .9s ease both, shimmerSweep 7s linear 1s infinite;
+}
+
+.hero-name,
+.hero-name .letter{
     background:
         linear-gradient(
             135deg,
@@ -917,13 +918,15 @@ main{
             #b88918 100%
         );
 
+    background-size:250% auto;
+
     -webkit-background-clip:text;
     background-clip:text;
     -webkit-text-fill-color:transparent;
+}
 
-    text-shadow:0 0 18px rgba(212,175,55,.12);
-
-    animation:heroIn .9s ease both;
+.hero-name .letter{
+    animation:shimmerSweep 7s linear 1s infinite;
 }
 
 .gold-line{
