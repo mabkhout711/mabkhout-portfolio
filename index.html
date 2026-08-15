@@ -1020,6 +1020,31 @@ header{
     padding-right:10px;
 }
 
+.side-menu-toggle{
+    display:block;
+    width:100%;
+
+    margin-top:6px;
+    padding:14px 16px;
+
+    border-radius:14px;
+    border:1px solid rgba(212,175,55,.28);
+    background:rgba(212,175,55,.06);
+
+    text-align:right;
+    font-family:inherit;
+    font-size:14px;
+    color:var(--gold-light);
+
+    cursor:pointer;
+    transition:.3s ease;
+}
+
+.side-menu-toggle.active{
+    background:rgba(212,175,55,.18);
+    border-color:var(--gold-light);
+}
+
 main{
     width:min(1120px,92%);
     margin:auto;
@@ -2613,8 +2638,6 @@ body.focus-mode .mb-ai-trigger{
 
         <button class="theme-btn" id="themeBtn" aria-label="تبديل الوضع الليلي/النهاري" title="تبديل المظهر">☾</button>
 
-        <button class="theme-btn" id="focusBtn" aria-label="وضع التركيز" title="FOCUS — تقليل المؤثرات">◎</button>
-
         <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة">☰</button>
 
     </div>
@@ -2640,6 +2663,8 @@ body.focus-mode .mb-ai-trigger{
     <a href="#journey" data-en="Journey">رحلتي</a>
     <a href="#blog" data-en="Thoughts">أفكار</a>
     <a href="#contact" data-en="Contact">تواصل</a>
+
+    <button class="side-menu-toggle" id="focusBtn" type="button" data-en="Focus Mode — reduce effects">وضع التركيز — تقليل المؤثرات</button>
 
 </nav>
 
@@ -3732,8 +3757,7 @@ if(focusBtn){
     focusBtn.addEventListener("click", () => {
         document.body.classList.toggle("focus-mode");
         const on = document.body.classList.contains("focus-mode");
-        focusBtn.style.color = on ? "var(--gold-light)" : "";
-        focusBtn.title = on ? "إيقاف وضع التركيز" : "FOCUS — تقليل المؤثرات";
+        focusBtn.classList.toggle("active", on);
     });
 }
 
