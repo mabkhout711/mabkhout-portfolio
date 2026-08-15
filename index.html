@@ -8,7 +8,6 @@
 <meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله — نبذة، مهارات، أعمال مختارة، ورحلة شخصية.">
 <meta name="theme-color" content="#061426">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="مبخوت بن عبدالله | MBK">
 <meta property="og:description" content="الموقع الشخصي لمبخوت بن عبدالله — نبذة، مهارات، أعمال مختارة، ورحلة شخصية.">
@@ -16,7 +15,6 @@
 <meta property="og:url" content="https://mabkhut.com">
 <meta property="og:locale" content="ar_AR">
 
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="مبخوت بن عبدالله | MBK">
 <meta name="twitter:description" content="الموقع الشخصي لمبخوت بن عبدالله">
@@ -24,11 +22,9 @@
 
 <link rel="canonical" href="https://mabkhut.com">
 
-<!-- Favicon (gold monogram on navy, inline SVG) -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23061426'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='24' font-weight='700' fill='%23d4af37' text-anchor='middle' letter-spacing='2'%3EMBK%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23061426'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='24' font-weight='700' fill='%23d4af37' text-anchor='middle' letter-spacing='2'%3EMBK%3C/text%3E%3C/svg%3E">
 
-<!-- PWA manifest -->
 <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%D9%85%D8%A8%D8%AE%D9%88%D8%AA%20%D8%A8%D9%86%20%D8%B9%D8%A8%D8%AF%D8%A7%D9%84%D9%84%D9%87%22%2C%22short_name%22%3A%22MBK%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23061426%22%2C%22theme_color%22%3A%22%23061426%22%7D">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +32,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
     --navy:#061426;
     --navy-dark:#020914;
@@ -144,11 +139,6 @@ button{
     font-family:inherit;
 }
 
-
-/* =========================
-   LOADER
-========================= */
-
 .loader{
     position:fixed;
     inset:0;
@@ -210,22 +200,12 @@ button{
     100%{transform:translateX(280%);}
 }
 
-
-/* =========================
-   PARTICLES
-========================= */
-
 #particles{
     position:fixed;
     inset:0;
     z-index:-8;
     pointer-events:none;
 }
-
-
-/* =========================
-   BACK TO TOP
-========================= */
 
 .top-btn{
     position:fixed;
@@ -267,11 +247,6 @@ button{
     box-shadow:0 0 30px rgba(212,175,55,.15);
 }
 
-
-/* =========================
-   CUSTOM SCROLLBAR
-========================= */
-
 ::-webkit-scrollbar{
     width:9px;
 }
@@ -290,11 +265,6 @@ button{
     scrollbar-color:var(--gold) var(--navy-dark);
 }
 
-
-/* =========================
-   SCROLL PROGRESS BAR
-========================= */
-
 .scroll-progress{
     position:fixed;
     top:0;
@@ -312,11 +282,6 @@ button{
     box-shadow:0 0 12px rgba(212,175,55,.5);
 }
 
-
-/* =========================
-   NOISE / GRAIN OVERLAY
-========================= */
-
 .noise-overlay{
     position:fixed;
     inset:0;
@@ -328,11 +293,6 @@ button{
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-
-/* =========================
-   VIGNETTE
-========================= */
-
 .vignette{
     position:fixed;
     inset:0;
@@ -341,11 +301,6 @@ button{
 
     box-shadow:inset 0 0 160px rgba(0,0,0,.55);
 }
-
-
-/* =========================
-   SPOTLIGHT (follows cursor)
-========================= */
 
 .spotlight{
     position:fixed;
@@ -361,11 +316,6 @@ button{
 
     transition:background .12s ease;
 }
-
-
-/* =========================
-   CUSTOM CURSOR
-========================= */
 
 .cursor-dot,
 .cursor-outline{
@@ -421,11 +371,6 @@ body.custom-cursor-active button{
 
 }
 
-
-/* =========================
-   PAGE TRANSITION
-========================= */
-
 .page-transition{
     position:fixed;
     inset:0;
@@ -466,27 +411,20 @@ body.custom-cursor-active button{
 
 }
 
-
-/* =========================
-   TEXT REVEAL (letters)
-========================= */
-
-.letter{
+/* Word-based reveal — never split Arabic text into single
+   letters, that breaks the joined letter shapes (font
+   rendering bug in the original letter-splitting version) */
+.reveal-word{
     display:inline-block;
     opacity:0;
-    transform:translateY(.5em);
-    transition:opacity .6s ease,transform .6s ease;
+    transform:translateY(.4em);
+    transition:opacity .55s ease,transform .55s ease;
 }
 
-.letter.visible{
+.reveal-word.visible{
     opacity:1;
     transform:translateY(0);
 }
-
-
-/* =========================
-   SHIMMER SWEEP (hero name only)
-========================= */
 
 @keyframes shimmerSweep{
 
@@ -494,11 +432,6 @@ body.custom-cursor-active button{
     100%{background-position:-250% 50%;}
 
 }
-
-
-/* =========================
-   BADGE
-========================= */
 
 .status-badge{
     display:inline-flex;
@@ -534,11 +467,6 @@ body.custom-cursor-active button{
 
 }
 
-
-/* =========================
-   SCROLL INDICATOR
-========================= */
-
 .scroll-indicator{
     position:absolute;
     bottom:12px;
@@ -571,11 +499,6 @@ body.custom-cursor-active button{
 
 }
 
-
-/* =========================
-   HERO CANVAS
-========================= */
-
 #heroCanvas{
     position:absolute;
     inset:0;
@@ -587,11 +510,6 @@ body.custom-cursor-active button{
     position:relative;
     z-index:1;
 }
-
-
-/* =========================
-   SOUND TOGGLE
-========================= */
 
 .sound-btn{
     width:47px;
@@ -616,11 +534,6 @@ body.custom-cursor-active button{
     background:rgba(212,175,55,.08);
 }
 
-
-/* =========================
-   STRONGER GLASS CARDS
-========================= */
-
 .about-card,
 .value-card,
 .stat-card,
@@ -643,11 +556,6 @@ body.custom-cursor-active button{
         inset 0 1px 0 rgba(255,255,255,.05),
         0 30px 80px rgba(0,0,0,.18);
 }
-
-
-/* =========================
-   HEADER
-========================= */
 
 header{
     position:fixed;
@@ -733,11 +641,6 @@ header{
     background:rgba(212,175,55,.08);
     box-shadow:0 0 30px rgba(212,175,55,.12);
 }
-
-
-/* =========================
-   SIDE MENU
-========================= */
 
 .overlay{
     position:fixed;
@@ -828,20 +731,10 @@ header{
     padding-right:10px;
 }
 
-
-/* =========================
-   MAIN
-========================= */
-
 main{
     width:min(1120px,92%);
     margin:auto;
 }
-
-
-/* =========================
-   HERO
-========================= */
 
 .hero{
     min-height:100vh;
@@ -880,11 +773,6 @@ main{
     border-left:1px solid;
 }
 
-
-/* =========================
-   NAME
-========================= */
-
 .hero-name{
     width:100%;
     max-width:850px;
@@ -903,11 +791,6 @@ main{
 
     text-shadow:0 0 18px rgba(212,175,55,.12);
 
-    animation:heroIn .9s ease both, shimmerSweep 7s linear 1s infinite;
-}
-
-.hero-name,
-.hero-name .letter{
     background:
         linear-gradient(
             135deg,
@@ -923,10 +806,9 @@ main{
     -webkit-background-clip:text;
     background-clip:text;
     -webkit-text-fill-color:transparent;
-}
 
-.hero-name .letter{
-    animation:shimmerSweep 7s linear 1s infinite;
+    opacity:0;
+    animation:heroIn .9s ease forwards, shimmerSweep 7s linear 1s infinite;
 }
 
 .gold-line{
@@ -947,11 +829,6 @@ main{
 
     box-shadow:0 0 16px rgba(212,175,55,.28);
 }
-
-
-/* =========================
-   PROFILE IMAGE
-========================= */
 
 .photo-frame{
     width:min(470px,88vw);
@@ -1020,11 +897,6 @@ main{
     font-weight:500;
 }
 
-
-/* =========================
-   SECTIONS
-========================= */
-
 .section{
     padding:65px 0;
     position:relative;
@@ -1071,11 +943,6 @@ main{
         );
 }
 
-
-/* =========================
-   ABOUT
-========================= */
-
 .about-card{
     max-width:900px;
     margin:auto;
@@ -1107,11 +974,6 @@ main{
     color:var(--gold-light);
     font-weight:700;
 }
-
-
-/* =========================
-   VALUES
-========================= */
 
 .values{
     display:grid;
@@ -1174,11 +1036,6 @@ main{
     line-height:1.85;
 }
 
-
-/* =========================
-   STATS
-========================= */
-
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -1209,11 +1066,6 @@ main{
     font-size:13px;
     letter-spacing:.5px;
 }
-
-
-/* =========================
-   SKILLS
-========================= */
 
 .skills{
     max-width:750px;
@@ -1257,11 +1109,6 @@ main{
     transition:width 1.4s cubic-bezier(.16,.84,.44,1);
 }
 
-
-/* =========================
-   TESTIMONIALS
-========================= */
-
 .testimonials{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -1301,11 +1148,6 @@ main{
     font-size:12px;
 }
 
-
-/* =========================
-   BLOG
-========================= */
-
 .blog{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -1344,11 +1186,6 @@ main{
     font-size:13.5px;
     line-height:1.85;
 }
-
-
-/* =========================
-   GALLERY
-========================= */
 
 .gallery{
     display:grid;
@@ -1468,11 +1305,6 @@ main{
     font-weight:600;
 }
 
-
-/* =========================
-   LIGHTBOX
-========================= */
-
 .lightbox{
     position:fixed;
     inset:0;
@@ -1534,11 +1366,6 @@ main{
 
     cursor:pointer;
 }
-
-
-/* =========================
-   JOURNEY
-========================= */
 
 .timeline{
     max-width:850px;
@@ -1630,11 +1457,6 @@ main{
     line-height:1.85;
 }
 
-
-/* =========================
-   CONTACT
-========================= */
-
 .contact-card{
     max-width:700px;
     margin:auto;
@@ -1717,11 +1539,6 @@ main{
     transform:translateY(-3px);
 }
 
-
-/* =========================
-   QR MODAL
-========================= */
-
 .qr-modal{
     position:fixed;
     inset:0;
@@ -1802,11 +1619,6 @@ main{
     cursor:pointer;
 }
 
-
-/* =========================
-   FOOTER
-========================= */
-
 footer{
     padding:38px 20px;
 
@@ -1836,11 +1648,6 @@ footer{
     font-weight:700;
 }
 
-
-/* =========================
-   REVEAL
-========================= */
-
 .reveal{
     opacity:0;
     transform:translateY(25px);
@@ -1855,11 +1662,6 @@ footer{
     transform:translateY(0);
 }
 
-
-/* =========================
-   ANIMATION
-========================= */
-
 @keyframes heroIn{
 
     from{
@@ -1873,11 +1675,6 @@ footer{
     }
 
 }
-
-
-/* =========================
-   MOBILE
-========================= */
 
 @media(max-width:760px){
 
@@ -2021,11 +1818,6 @@ footer{
 
 }
 
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
 @media(max-width:420px){
 
     .hero-name{
@@ -2048,11 +1840,6 @@ footer{
 
 }
 
-
-/* =========================
-   REDUCED MOTION
-========================= */
-
 @media(prefers-reduced-motion:reduce){
 
     *,
@@ -2068,6 +1855,10 @@ footer{
         opacity:1!important;
     }
 
+    .hero-name{
+        opacity:1!important;
+    }
+
     #particles{
         display:none;
     }
@@ -2079,163 +1870,64 @@ footer{
 
 <body>
 
-
-<!-- SCROLL PROGRESS -->
-
 <div class="scroll-progress" id="scrollProgress"></div>
-
-
-<!-- CUSTOM CURSOR -->
 
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-outline" id="cursorOutline"></div>
 
-
-<!-- SPOTLIGHT -->
-
 <div class="spotlight" id="spotlight"></div>
-
-
-<!-- NOISE + VIGNETTE -->
 
 <div class="noise-overlay"></div>
 <div class="vignette"></div>
 
-
-<!-- PAGE TRANSITION -->
-
 <div class="page-transition" id="pageTransition"></div>
 
-
-<!-- LOADER -->
-
 <div class="loader" id="loader">
-
     <div class="loader-mark">MBK</div>
-
     <div class="loader-bar"></div>
-
 </div>
-
-
-<!-- PARTICLES -->
 
 <canvas id="particles"></canvas>
 
-
-<!-- HEADER -->
-
 <header>
 
-    <a href="#home" class="logo">
-        MBK
-    </a>
+    <a href="#home" class="logo">MBK</a>
 
     <div class="header-actions">
 
-        <button
-            class="sound-btn"
-            id="soundBtn"
-            aria-label="تفعيل/إيقاف الصوت"
-            title="أصوات التفاعل"
-        >
-            🔇
-        </button>
+        <button class="sound-btn" id="soundBtn" aria-label="تفعيل/إيقاف الصوت" title="أصوات التفاعل">🔇</button>
 
-        <button
-            class="theme-btn"
-            id="themeBtn"
-            aria-label="تبديل الوضع الليلي/النهاري"
-            title="تبديل المظهر"
-        >
-            ☾
-        </button>
+        <button class="theme-btn" id="themeBtn" aria-label="تبديل الوضع الليلي/النهاري" title="تبديل المظهر">☾</button>
 
-        <button
-            class="menu-btn"
-            id="menuBtn"
-            aria-label="فتح القائمة"
-        >
-            ☰
-        </button>
+        <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة">☰</button>
 
     </div>
 
 </header>
 
+<div class="overlay" id="overlay"></div>
 
-<!-- SIDE MENU -->
+<nav class="side-menu" id="sideMenu">
 
-<div
-    class="overlay"
-    id="overlay"
-></div>
+    <button class="close-menu" id="closeMenu" aria-label="إغلاق">×</button>
 
-<nav
-    class="side-menu"
-    id="sideMenu"
->
+    <div class="menu-label">NAVIGATION</div>
 
-    <button
-        class="close-menu"
-        id="closeMenu"
-        aria-label="إغلاق"
-    >
-        ×
-    </button>
-
-    <div class="menu-label">
-        NAVIGATION
-    </div>
-
-    <a href="#home">
-        الرئيسية
-    </a>
-
-    <a href="#about">
-        نبذة
-    </a>
-
-    <a href="#skills">
-        مهاراتي
-    </a>
-
-    <a href="#values">
-        بصمتي
-    </a>
-
-    <a href="#gallery">
-        مختاراتي
-    </a>
-
-    <a href="#testimonials">
-        آراء
-    </a>
-
-    <a href="#journey">
-        رحلتي
-    </a>
-
-    <a href="#blog">
-        أفكار
-    </a>
-
-    <a href="#contact">
-        تواصل
-    </a>
+    <a href="#home">الرئيسية</a>
+    <a href="#about">نبذة</a>
+    <a href="#skills">مهاراتي</a>
+    <a href="#values">بصمتي</a>
+    <a href="#gallery">مختاراتي</a>
+    <a href="#testimonials">آراء</a>
+    <a href="#journey">رحلتي</a>
+    <a href="#blog">أفكار</a>
+    <a href="#contact">تواصل</a>
 
 </nav>
 
-
 <main>
 
-
-<!-- HERO -->
-
-<section
-    class="hero"
-    id="home"
->
+<section class="hero" id="home">
 
     <canvas id="heroCanvas"></canvas>
 
@@ -2247,25 +1939,15 @@ footer{
         <span>متاح حاليًا · آخر تحديث أغسطس 2026</span>
     </div>
 
-    <h1 class="hero-name" id="heroName">
-        مبخوت بن عبدالله
-    </h1>
+    <h1 class="hero-name" id="heroName">مبخوت بن عبدالله</h1>
 
     <div class="gold-line"></div>
 
     <div class="photo-frame" id="photoFrame">
-
-        <img
-            class="profile-photo"
-            src="file_00000000202482468d4027eb8c5919f7.png"
-            alt="مبخوت بن عبدالله"
-        >
-
+        <img class="profile-photo" src="file_00000000202482468d4027eb8c5919f7.png" alt="مبخوت بن عبدالله">
     </div>
 
-    <p class="quote">
-        وما توفيقي إلا بالله
-    </p>
+    <p class="quote">وما توفيقي إلا بالله</p>
 
     <div class="scroll-indicator">
         <span>SCROLL</span>
@@ -2274,65 +1956,34 @@ footer{
 
 </section>
 
-
-<!-- ABOUT -->
-
-<section
-    class="section reveal"
-    id="about"
->
+<section class="section reveal" id="about">
 
     <div class="section-header">
-
-        <span class="section-label">
-            ABOUT
-        </span>
-
-        <h2 class="section-title">
-            نبذة
-        </h2>
-
+        <span class="section-label">ABOUT</span>
+        <h2 class="section-title">نبذة</h2>
     </div>
 
     <div class="about-card">
-
         <p>
-
             أنا مبخوت بن عبدالله.
-
             <br><br>
-
             أؤمن بأن الشخصية الحقيقية تُبنى بالطموح،
             والتجربة، والاهتمام بالتفاصيل. أسعى دائمًا
             إلى تطوير نفسي، واكتشاف أفكار جديدة،
             وصناعة هوية تعكس رؤيتي وشخصيتي بأسلوب
             يجمع بين الأصالة، الأناقة، والطموح.
-
             <br><br>
-
             هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا
             من اهتماماتي، أعمالي، اختياراتي، والأشياء
             التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
-
             <br><br>
-
-            <strong>
-                أطمح للأفضل، وأسعى لأن أترك أثرًا يستحق أن يُذكر.
-            </strong>
-
+            <strong>أطمح للأفضل، وأسعى لأن أترك أثرًا يستحق أن يُذكر.</strong>
         </p>
-
     </div>
 
 </section>
 
-
-<!-- STATS -->
-
-<section
-    class="section reveal"
-    id="stats"
->
+<section class="section reveal" id="stats">
 
     <div class="stats">
 
@@ -2360,24 +2011,11 @@ footer{
 
 </section>
 
-
-<!-- SKILLS -->
-
-<section
-    class="section reveal"
-    id="skills"
->
+<section class="section reveal" id="skills">
 
     <div class="section-header">
-
-        <span class="section-label">
-            EXPERTISE
-        </span>
-
-        <h2 class="section-title">
-            مهاراتي
-        </h2>
-
+        <span class="section-label">EXPERTISE</span>
+        <h2 class="section-title">مهاراتي</h2>
     </div>
 
     <div class="skills">
@@ -2406,342 +2044,109 @@ footer{
 
 </section>
 
-
-<!-- VALUES -->
-
-<section
-    class="section reveal"
-    id="values"
->
+<section class="section reveal" id="values">
 
     <div class="section-header">
-
-        <span class="section-label">
-            MY VALUES
-        </span>
-
-        <h2 class="section-title">
-            بصمتي
-        </h2>
-
+        <span class="section-label">MY VALUES</span>
+        <h2 class="section-title">بصمتي</h2>
     </div>
 
     <div class="values">
 
         <div class="value-card">
-
-            <div class="value-icon">
-                ✦
-            </div>
-
-            <h3>
-                الإبداع
-            </h3>
-
-            <p>
-                أبحث دائمًا عن الأفكار المختلفة
-                والأسلوب الذي يحمل طابعًا خاصًا.
-            </p>
-
+            <div class="value-icon">✦</div>
+            <h3>الإبداع</h3>
+            <p>أبحث دائمًا عن الأفكار المختلفة والأسلوب الذي يحمل طابعًا خاصًا.</p>
         </div>
 
-
         <div class="value-card">
-
-            <div class="value-icon">
-                ◇
-            </div>
-
-            <h3>
-                الجودة
-            </h3>
-
-            <p>
-                أهتم بالتفاصيل الصغيرة لأنها
-                تصنع الفرق في النتيجة النهائية.
-            </p>
-
+            <div class="value-icon">◇</div>
+            <h3>الجودة</h3>
+            <p>أهتم بالتفاصيل الصغيرة لأنها تصنع الفرق في النتيجة النهائية.</p>
         </div>
 
-
         <div class="value-card">
-
-            <div class="value-icon">
-                ◆
-            </div>
-
-            <h3>
-                الأصالة
-            </h3>
-
-            <p>
-                أحافظ على هويتي وأطورها
-                بأسلوب حديث ومتوازن.
-            </p>
-
+            <div class="value-icon">◆</div>
+            <h3>الأصالة</h3>
+            <p>أحافظ على هويتي وأطورها بأسلوب حديث ومتوازن.</p>
         </div>
 
     </div>
 
 </section>
 
-
-<!-- GALLERY -->
-
-<section
-    class="section reveal"
-    id="gallery"
->
+<section class="section reveal" id="gallery">
 
     <div class="section-header">
-
-        <span class="section-label">
-            SELECTED
-        </span>
-
-        <h2 class="section-title">
-            مختاراتي
-        </h2>
-
+        <span class="section-label">SELECTED</span>
+        <h2 class="section-title">مختاراتي</h2>
     </div>
 
     <div class="gallery">
 
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
-                alt="جبال وطبيعة"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <small>NATURE</small>
-
-                <h3>
-                    هدوء الجبال
-                </h3>
-
-            </div>
-
+        <div class="gallery-item" data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85" alt="جبال وطبيعة" loading="lazy">
+            <div class="gallery-info"><small>NATURE</small><h3>هدوء الجبال</h3></div>
         </div>
 
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"
-                alt="طبيعة ريفية"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <small>LIFE</small>
-
-                <h3>
-                    تفاصيل هادئة
-                </h3>
-
-            </div>
-
+        <div class="gallery-item" data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85" alt="طبيعة ريفية" loading="lazy">
+            <div class="gallery-info"><small>LIFE</small><h3>تفاصيل هادئة</h3></div>
         </div>
 
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=85"
-                alt="مدينة حديثة"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <small>CITY</small>
-
-                <h3>
-                    نبض المدينة
-                </h3>
-
-            </div>
-
+        <div class="gallery-item" data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90">
+            <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=85" alt="مدينة حديثة" loading="lazy">
+            <div class="gallery-info"><small>CITY</small><h3>نبض المدينة</h3></div>
         </div>
 
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85"
-                alt="شوارع المدينة"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <small>STREETS</small>
-
-                <h3>
-                    بين الشوارع
-                </h3>
-
-            </div>
-
+        <div class="gallery-item" data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90">
+            <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85" alt="شوارع المدينة" loading="lazy">
+            <div class="gallery-info"><small>STREETS</small><h3>بين الشوارع</h3></div>
         </div>
 
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=85"
-                alt="مدينة من الأعلى"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <small>URBAN</small>
-
-                <h3>
-                    أفق جديد
-                </h3>
-
-            </div>
-
+        <div class="gallery-item" data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90">
+            <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=85" alt="مدينة من الأعلى" loading="lazy">
+            <div class="gallery-info"><small>URBAN</small><h3>أفق جديد</h3></div>
         </div>
 
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
-                alt="طريق وسط الطبيعة"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <small>JOURNEY</small>
-
-                <h3>
-                    الطريق
-                </h3>
-
-            </div>
-
+        <div class="gallery-item" data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90">
+            <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85" alt="طريق وسط الطبيعة" loading="lazy">
+            <div class="gallery-info"><small>JOURNEY</small><h3>الطريق</h3></div>
         </div>
 
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
-                alt="منظر طبيعي"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <small>CALM</small>
-
-                <h3>
-                    لحظة هدوء
-                </h3>
-
-            </div>
-
+        <div class="gallery-item" data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90">
+            <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85" alt="منظر طبيعي" loading="lazy">
+            <div class="gallery-info"><small>CALM</small><h3>لحظة هدوء</h3></div>
         </div>
 
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85"
-                alt="العمارة والحياة"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <small>ARCHITECTURE</small>
-
-                <h3>
-                    تفاصيل المكان
-                </h3>
-
-            </div>
-
+        <div class="gallery-item" data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90">
+            <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85" alt="العمارة والحياة" loading="lazy">
+            <div class="gallery-info"><small>ARCHITECTURE</small><h3>تفاصيل المكان</h3></div>
         </div>
-
 
     </div>
 
 </section>
 
-
-<!-- TESTIMONIALS -->
-
-<section
-    class="section reveal"
-    id="testimonials"
->
+<section class="section reveal" id="testimonials">
 
     <div class="section-header">
-
-        <span class="section-label">
-            TESTIMONIALS
-        </span>
-
-        <h2 class="section-title">
-            آراء
-        </h2>
-
+        <span class="section-label">TESTIMONIALS</span>
+        <h2 class="section-title">آراء</h2>
     </div>
 
     <div class="testimonials">
 
         <div class="testimonial-card">
             <div class="testimonial-mark">”</div>
-            <p class="testimonial-text">
-                شخص يهتم بالتفاصيل بشكل نادر، وكل عمل
-                يخرج منه يحمل بصمة واضحة من الجودة والذوق.
-            </p>
+            <p class="testimonial-text">شخص يهتم بالتفاصيل بشكل نادر، وكل عمل يخرج منه يحمل بصمة واضحة من الجودة والذوق.</p>
             <div class="testimonial-name">زميل عمل</div>
             <div class="testimonial-role">شراكة مهنية</div>
         </div>
 
         <div class="testimonial-card">
             <div class="testimonial-mark">”</div>
-            <p class="testimonial-text">
-                طموحه وأسلوبه في التعامل مع الأفكار
-                يجعلانه مختلفًا عمّن حوله دائمًا.
-            </p>
+            <p class="testimonial-text">طموحه وأسلوبه في التعامل مع الأفكار يجعلانه مختلفًا عمّن حوله دائمًا.</p>
             <div class="testimonial-name">صديق مقرّب</div>
             <div class="testimonial-role">معرفة شخصية</div>
         </div>
@@ -2750,152 +2155,59 @@ footer{
 
 </section>
 
-
-<!-- JOURNEY -->
-
-<section
-    class="section reveal"
-    id="journey"
->
+<section class="section reveal" id="journey">
 
     <div class="section-header">
-
-        <span class="section-label">
-            MY JOURNEY
-        </span>
-
-        <h2 class="section-title">
-            رحلتي
-        </h2>
-
+        <span class="section-label">MY JOURNEY</span>
+        <h2 class="section-title">رحلتي</h2>
     </div>
-
 
     <div class="timeline">
 
-
         <div class="timeline-item">
-
             <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2015
-            </div>
-
-            <div class="timeline-title">
-                البداية
-            </div>
-
-            <div class="timeline-text">
-                بداية الرحلة، ومنها بدأت مرحلة
-                جديدة من التجارب والتعلم.
-            </div>
-
+            <div class="timeline-year">2015</div>
+            <div class="timeline-title">البداية</div>
+            <div class="timeline-text">بداية الرحلة، ومنها بدأت مرحلة جديدة من التجارب والتعلم.</div>
         </div>
 
-
         <div class="timeline-item">
-
             <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2018
-            </div>
-
-            <div class="timeline-title">
-                مرحلة من التجربة والتعلّم
-            </div>
-
-            <div class="timeline-text">
-                سنوات من التجربة واكتشاف الاهتمامات
-                وتطوير المهارات والنظرة الخاصة.
-            </div>
-
+            <div class="timeline-year">2018</div>
+            <div class="timeline-title">مرحلة من التجربة والتعلّم</div>
+            <div class="timeline-text">سنوات من التجربة واكتشاف الاهتمامات وتطوير المهارات والنظرة الخاصة.</div>
         </div>
 
-
         <div class="timeline-item">
-
             <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2021
-            </div>
-
-            <div class="timeline-title">
-                تطور ونضج
-            </div>
-
-            <div class="timeline-text">
-                مرحلة أصبح فيها الطموح أكثر وضوحًا
-                وأصبحت التجارب السابقة جزءًا من الهوية.
-            </div>
-
+            <div class="timeline-year">2021</div>
+            <div class="timeline-title">تطور ونضج</div>
+            <div class="timeline-text">مرحلة أصبح فيها الطموح أكثر وضوحًا وأصبحت التجارب السابقة جزءًا من الهوية.</div>
         </div>
 
-
         <div class="timeline-item">
-
             <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2024
-            </div>
-
-            <div class="timeline-title">
-                مرحلة جديدة
-            </div>
-
-            <div class="timeline-text">
-                بداية مرحلة مختلفة، برؤية أوسع
-                وطموح أكبر للمستقبل.
-            </div>
-
+            <div class="timeline-year">2024</div>
+            <div class="timeline-title">مرحلة جديدة</div>
+            <div class="timeline-text">بداية مرحلة مختلفة، برؤية أوسع وطموح أكبر للمستقبل.</div>
         </div>
 
-
         <div class="timeline-item">
-
             <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2026
-            </div>
-
-            <div class="timeline-title">
-                رؤية للمستقبل
-            </div>
-
-            <div class="timeline-text">
-                الاستمرار في التطور وبناء المستقبل
-                بخطوات أكثر وضوحًا وثباتًا.
-            </div>
-
+            <div class="timeline-year">2026</div>
+            <div class="timeline-title">رؤية للمستقبل</div>
+            <div class="timeline-text">الاستمرار في التطور وبناء المستقبل بخطوات أكثر وضوحًا وثباتًا.</div>
         </div>
-
 
     </div>
 
 </section>
 
-
-<!-- BLOG -->
-
-<section
-    class="section reveal"
-    id="blog"
->
+<section class="section reveal" id="blog">
 
     <div class="section-header">
-
-        <span class="section-label">
-            THOUGHTS
-        </span>
-
-        <h2 class="section-title">
-            أفكار
-        </h2>
-
+        <span class="section-label">THOUGHTS</span>
+        <h2 class="section-title">أفكار</h2>
     </div>
 
     <div class="blog">
@@ -2903,635 +2215,252 @@ footer{
         <div class="blog-card">
             <span class="blog-date">2026</span>
             <h3>عن الطموح والاستمرارية</h3>
-            <p>
-                الطموح بلا استمرارية مجرد فكرة عابرة،
-                والثبات هو ما يحوّل الفكرة إلى أثر حقيقي.
-            </p>
+            <p>الطموح بلا استمرارية مجرد فكرة عابرة، والثبات هو ما يحوّل الفكرة إلى أثر حقيقي.</p>
         </div>
 
         <div class="blog-card">
             <span class="blog-date">2026</span>
             <h3>قيمة التفاصيل الصغيرة</h3>
-            <p>
-                غالبًا ما يكون الفرق بين العمل الجيد
-                والعمل المميز محصورًا في أدق التفاصيل.
-            </p>
+            <p>غالبًا ما يكون الفرق بين العمل الجيد والعمل المميز محصورًا في أدق التفاصيل.</p>
         </div>
 
         <div class="blog-card">
             <span class="blog-date">2025</span>
             <h3>الهوية والأصالة</h3>
-            <p>
-                الحفاظ على الهوية وسط التغيير المستمر
-                هو ما يمنح أي تجربة معناها الحقيقي.
-            </p>
+            <p>الحفاظ على الهوية وسط التغيير المستمر هو ما يمنح أي تجربة معناها الحقيقي.</p>
         </div>
 
     </div>
 
 </section>
 
-
-<!-- CONTACT -->
-
-<section
-    class="section reveal"
-    id="contact"
->
+<section class="section reveal" id="contact">
 
     <div class="section-header">
-
-        <span class="section-label">
-            CONTACT
-        </span>
-
-        <h2 class="section-title">
-            تواصل
-        </h2>
-
+        <span class="section-label">CONTACT</span>
+        <h2 class="section-title">تواصل</h2>
     </div>
-
 
     <div class="contact-card">
 
         <div class="contact-icons">
 
-
-            <a
-                class="social"
-                href="mailto:mabkhout@mabkhut.com"
-                aria-label="البريد الإلكتروني"
-                title="البريد الإلكتروني"
-            >
-
-                <svg viewBox="0 0 24 24">
-
-                    <path
-                        d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
-                    />
-
-                </svg>
-
+            <a class="social" href="mailto:mabkhout@mabkhut.com" aria-label="البريد الإلكتروني" title="البريد الإلكتروني">
+                <svg viewBox="0 0 24 24"><path d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"/></svg>
             </a>
 
-
-            <a
-                class="social"
-                href="https://www.facebook.com/share/19JG7PQiHL/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                title="Facebook"
-            >
-
-                <svg viewBox="0 0 24 24">
-
-                    <path
-                        d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
-                    />
-
-                </svg>
-
+            <a class="social" href="https://www.facebook.com/share/19JG7PQiHL/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"/></svg>
             </a>
-
 
         </div>
 
-
-        <button
-            class="qr-button"
-            id="qrButton"
-        >
-            مشاركة الموقع عبر QR
-        </button>
+        <button class="qr-button" id="qrButton">مشاركة الموقع عبر QR</button>
 
     </div>
 
 </section>
 
-
 </main>
 
-
-<!-- LIGHTBOX -->
-
-<div
-    class="lightbox"
-    id="lightbox"
->
-
-    <button
-        class="lightbox-close"
-        id="lightboxClose"
-        aria-label="إغلاق"
-    >
-        ×
-    </button>
-
-    <img
-        id="lightboxImage"
-        src=""
-        alt=""
-    >
-
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="إغلاق">×</button>
+    <img id="lightboxImage" src="" alt="">
 </div>
 
-
-<!-- QR -->
-
-<div
-    class="qr-modal"
-    id="qrModal"
->
-
+<div class="qr-modal" id="qrModal">
     <div class="qr-box">
-
-        <h3>
-            mabkhut.com
-        </h3>
-
-        <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com"
-            alt="QR Code"
-        >
-
-        <button
-            class="qr-close"
-            id="qrClose"
-        >
-            إغلاق
-        </button>
-
+        <h3>mabkhut.com</h3>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com" alt="QR Code">
+        <button class="qr-close" id="qrClose">إغلاق</button>
     </div>
-
 </div>
-
-
-<!-- FOOTER -->
 
 <footer>
-
-    <div class="footer-copy">
-        © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
-    </div>
-
-    <div class="footer-mbk">
-        MBK
-    </div>
-
+    <div class="footer-copy">© 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة</div>
+    <div class="footer-mbk">MBK</div>
 </footer>
 
-
-<button
-    class="top-btn"
-    id="topBtn"
-    aria-label="العودة للأعلى"
-    title="العودة للأعلى"
->
-    ↑
-</button>
-
+<button class="top-btn" id="topBtn" aria-label="العودة للأعلى" title="العودة للأعلى">↑</button>
 
 <script>
 
-/* MENU */
-
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const closeMenu =
-    document.getElementById("closeMenu");
-
-const sideMenu =
-    document.getElementById("sideMenu");
-
-const overlay =
-    document.getElementById("overlay");
-
+const menuBtn = document.getElementById("menuBtn");
+const closeMenu = document.getElementById("closeMenu");
+const sideMenu = document.getElementById("sideMenu");
+const overlay = document.getElementById("overlay");
 
 function openMenu(){
-
     sideMenu.classList.add("active");
-
     overlay.classList.add("active");
-
     document.body.style.overflow="hidden";
-
 }
-
 
 function closeSideMenu(){
-
     sideMenu.classList.remove("active");
-
     overlay.classList.remove("active");
-
     document.body.style.overflow="";
-
 }
 
+menuBtn.addEventListener("click", openMenu);
+closeMenu.addEventListener("click", closeSideMenu);
+overlay.addEventListener("click", closeSideMenu);
 
-menuBtn.addEventListener(
-    "click",
-    openMenu
-);
-
-closeMenu.addEventListener(
-    "click",
-    closeSideMenu
-);
-
-overlay.addEventListener(
-    "click",
-    closeSideMenu
-);
-
-
-document
-    .querySelectorAll(".side-menu a")
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            closeSideMenu
-        );
-
-    });
-
-
-/* SCROLL REVEAL */
-
-const revealElements =
-    document.querySelectorAll(".reveal");
-
-
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(entry => {
-
-                if(entry.isIntersecting){
-
-                    entry.target.classList.add(
-                        "visible"
-                    );
-
-                    revealObserver.unobserve(
-                        entry.target
-                    );
-
-                }
-
-            });
-
-        },
-        {
-            threshold:.12
-        }
-    );
-
-
-revealElements.forEach(element => {
-
-    revealObserver.observe(element);
-
+document.querySelectorAll(".side-menu a").forEach(link => {
+    link.addEventListener("click", closeSideMenu);
 });
 
+const revealElements = document.querySelectorAll(".reveal");
 
-/* GALLERY LIGHTBOX */
+const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold:.12 });
 
-const galleryItems =
-    document.querySelectorAll(".gallery-item");
+revealElements.forEach(element => { revealObserver.observe(element); });
 
-const lightbox =
-    document.getElementById("lightbox");
-
-const lightboxImage =
-    document.getElementById("lightboxImage");
-
-const lightboxClose =
-    document.getElementById("lightboxClose");
-
+const galleryItems = document.querySelectorAll(".gallery-item");
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.getElementById("lightboxClose");
 
 galleryItems.forEach(item => {
-
-    item.addEventListener(
-        "click",
-        () => {
-
-            const image =
-                item.dataset.full;
-
-            lightboxImage.src =
-                image;
-
-            lightbox.classList.add(
-                "active"
-            );
-
-            document.body.style.overflow =
-                "hidden";
-
-        }
-    );
-
+    item.addEventListener("click", () => {
+        const image = item.dataset.full;
+        lightboxImage.src = image;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
 });
-
 
 function closeLightbox(){
-
-    lightbox.classList.remove(
-        "active"
-    );
-
+    lightbox.classList.remove("active");
     lightboxImage.src="";
-
     document.body.style.overflow="";
-
 }
 
+lightboxClose.addEventListener("click", closeLightbox);
 
-lightboxClose.addEventListener(
-    "click",
-    closeLightbox
-);
-
-
-lightbox.addEventListener(
-    "click",
-    event => {
-
-        if(
-            event.target === lightbox
-        ){
-
-            closeLightbox();
-
-        }
-
-    }
-);
-
-
-/* QR */
-
-const qrButton =
-    document.getElementById("qrButton");
-
-const qrModal =
-    document.getElementById("qrModal");
-
-const qrClose =
-    document.getElementById("qrClose");
-
-
-qrButton.addEventListener(
-    "click",
-    () => {
-
-        qrModal.classList.add(
-            "active"
-        );
-
-        document.body.style.overflow =
-            "hidden";
-
-    }
-);
-
-
-qrClose.addEventListener(
-    "click",
-    () => {
-
-        qrModal.classList.remove(
-            "active"
-        );
-
-        document.body.style.overflow =
-            "";
-
-    }
-);
-
-
-qrModal.addEventListener(
-    "click",
-    event => {
-
-        if(
-            event.target === qrModal
-        ){
-
-            qrModal.classList.remove(
-                "active"
-            );
-
-            document.body.style.overflow =
-                "";
-
-        }
-
-    }
-);
-
-
-/* ESC */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if(event.key === "Escape"){
-
-            closeSideMenu();
-
-            closeLightbox();
-
-            qrModal.classList.remove(
-                "active"
-            );
-
-            document.body.style.overflow =
-                "";
-
-        }
-
-    }
-);
-
-
-/* REDUCED MOTION CHECK */
-
-const prefersReducedMotion =
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-
-/* LOADER */
-
-window.addEventListener("load", () => {
-
-    const loader = document.getElementById("loader");
-
-    setTimeout(() => {
-
-        loader.classList.add("hidden");
-
-    }, 450);
-
+lightbox.addEventListener("click", event => {
+    if(event.target === lightbox){ closeLightbox(); }
 });
 
+const qrButton = document.getElementById("qrButton");
+const qrModal = document.getElementById("qrModal");
+const qrClose = document.getElementById("qrClose");
 
-/* THEME TOGGLE (light / dark) */
+qrButton.addEventListener("click", () => {
+    qrModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+});
+
+qrClose.addEventListener("click", () => {
+    qrModal.classList.remove("active");
+    document.body.style.overflow = "";
+});
+
+qrModal.addEventListener("click", event => {
+    if(event.target === qrModal){
+        qrModal.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+});
+
+document.addEventListener("keydown", event => {
+    if(event.key === "Escape"){
+        closeSideMenu();
+        closeLightbox();
+        qrModal.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+});
+
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    setTimeout(() => { loader.classList.add("hidden"); }, 450);
+});
 
 const themeBtn = document.getElementById("themeBtn");
 const rootEl = document.documentElement;
 
 function applyThemeIcon(){
-
-    themeBtn.textContent =
-        rootEl.getAttribute("data-theme") === "light" ? "☀" : "☾";
-
+    themeBtn.textContent = rootEl.getAttribute("data-theme") === "light" ? "☀" : "☾";
 }
 
 themeBtn.addEventListener("click", () => {
-
     const isLight = rootEl.getAttribute("data-theme") === "light";
-
     rootEl.setAttribute("data-theme", isLight ? "dark" : "light");
-
     applyThemeIcon();
-
 });
 
 applyThemeIcon();
 
-
-/* BACK TO TOP */
-
 const topBtn = document.getElementById("topBtn");
 
 window.addEventListener("scroll", () => {
-
-    if(window.scrollY > 480){
-
-        topBtn.classList.add("visible");
-
-    }else{
-
-        topBtn.classList.remove("visible");
-
-    }
-
+    if(window.scrollY > 480){ topBtn.classList.add("visible"); }
+    else{ topBtn.classList.remove("visible"); }
 });
 
 topBtn.addEventListener("click", () => {
-
-    window.scrollTo({
-        top: 0,
-        behavior: prefersReducedMotion ? "auto" : "smooth"
-    });
-
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
 });
-
-
-/* PARALLAX ON PROFILE PHOTO */
 
 const photoFrame = document.getElementById("photoFrame");
 
 if(photoFrame && !prefersReducedMotion){
-
     window.addEventListener("scroll", () => {
-
         const offset = window.scrollY * 0.06;
-
         photoFrame.style.transform = `translateY(${offset}px)`;
-
     }, { passive: true });
-
 }
-
-
-/* ANIMATED STAT COUNTERS */
 
 const statNumbers = document.querySelectorAll(".stat-number");
 
 const statObserver = new IntersectionObserver(entries => {
-
     entries.forEach(entry => {
-
         if(entry.isIntersecting){
-
             const el = entry.target;
             const target = parseInt(el.dataset.count, 10);
             const duration = 1400;
             const start = performance.now();
 
             function tick(now){
-
                 const progress = Math.min((now - start) / duration, 1);
                 const value = Math.floor(progress * target);
-
                 el.textContent = value;
-
-                if(progress < 1){
-
-                    requestAnimationFrame(tick);
-
-                }else{
-
-                    el.textContent = target;
-
-                }
-
+                if(progress < 1){ requestAnimationFrame(tick); }
+                else{ el.textContent = target; }
             }
 
-            if(prefersReducedMotion){
-
-                el.textContent = target;
-
-            }else{
-
-                requestAnimationFrame(tick);
-
-            }
+            if(prefersReducedMotion){ el.textContent = target; }
+            else{ requestAnimationFrame(tick); }
 
             statObserver.unobserve(el);
-
         }
-
     });
-
 }, { threshold: .4 });
 
 statNumbers.forEach(el => statObserver.observe(el));
 
-
-/* SKILL BARS */
-
 const skillFills = document.querySelectorAll(".skill-fill");
 
 const skillObserver = new IntersectionObserver(entries => {
-
     entries.forEach(entry => {
-
         if(entry.isIntersecting){
-
             entry.target.style.width = entry.target.dataset.width + "%";
-
             skillObserver.unobserve(entry.target);
-
         }
-
     });
-
 }, { threshold: .4 });
 
 skillFills.forEach(el => skillObserver.observe(el));
-
-
-/* GOLD PARTICLES BACKGROUND */
 
 const particleCanvas = document.getElementById("particles");
 
@@ -3542,131 +2471,69 @@ if(particleCanvas && !prefersReducedMotion){
     let width, height;
 
     function resizeCanvas(){
-
         width = particleCanvas.width = window.innerWidth;
         height = particleCanvas.height = window.innerHeight;
-
     }
 
     function createParticles(){
-
         const count = Math.min(60, Math.floor((width * height) / 26000));
-
         particles = Array.from({ length: count }, () => ({
-
             x: Math.random() * width,
             y: Math.random() * height,
             r: Math.random() * 1.6 + .4,
             speedY: Math.random() * .25 + .05,
             drift: (Math.random() - .5) * .15,
             alpha: Math.random() * .5 + .15
-
         }));
-
     }
 
     function drawParticles(){
-
         ctx.clearRect(0, 0, width, height);
-
         particles.forEach(p => {
-
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(212,175,55,${p.alpha})`;
             ctx.fill();
-
             p.y -= p.speedY;
             p.x += p.drift;
-
-            if(p.y < -10){
-
-                p.y = height + 10;
-                p.x = Math.random() * width;
-
-            }
-
+            if(p.y < -10){ p.y = height + 10; p.x = Math.random() * width; }
         });
-
         requestAnimationFrame(drawParticles);
-
     }
 
     resizeCanvas();
     createParticles();
     drawParticles();
 
-    window.addEventListener("resize", () => {
-
-        resizeCanvas();
-        createParticles();
-
-    });
+    window.addEventListener("resize", () => { resizeCanvas(); createParticles(); });
 
 }
-
-
-/* PWA SERVICE WORKER (registers only if a sw.js is deployed alongside this page) */
 
 if("serviceWorker" in navigator){
-
     window.addEventListener("load", () => {
-
-        navigator.serviceWorker
-            .register("sw.js")
-            .catch(() => {});
-
+        navigator.serviceWorker.register("sw.js").catch(() => {});
     });
-
 }
 
-
-/* =========================
-   POINTER CAPABILITY CHECK
-========================= */
-
-const hasFinePointer =
-    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-
-/* =========================
-   SCROLL PROGRESS BAR
-========================= */
+const hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
 const scrollProgress = document.getElementById("scrollProgress");
 
 window.addEventListener("scroll", () => {
-
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const ratio = docHeight > 0 ? scrollTop / docHeight : 0;
-
     scrollProgress.style.transform = `scaleX(${ratio})`;
-
 }, { passive: true });
-
-
-/* =========================
-   SPOTLIGHT FOLLOWS CURSOR
-========================= */
 
 const spotlight = document.getElementById("spotlight");
 
 if(hasFinePointer && !prefersReducedMotion){
-
     window.addEventListener("mousemove", event => {
-
         spotlight.style.setProperty("--x", event.clientX + "px");
         spotlight.style.setProperty("--y", event.clientY + "px");
-
     });
-
 }
-
-
-/* =========================
-   CUSTOM CURSOR
-========================= */
 
 const cursorDot = document.getElementById("cursorDot");
 const cursorOutline = document.getElementById("cursorOutline");
@@ -3681,99 +2548,53 @@ if(hasFinePointer){
     let targetY = outlineY;
 
     window.addEventListener("mousemove", event => {
-
         targetX = event.clientX;
         targetY = event.clientY;
-
         cursorDot.style.left = targetX + "px";
         cursorDot.style.top = targetY + "px";
-
     });
 
     function animateOutline(){
-
         outlineX += (targetX - outlineX) * .18;
         outlineY += (targetY - outlineY) * .18;
-
         cursorOutline.style.left = outlineX + "px";
         cursorOutline.style.top = outlineY + "px";
-
         requestAnimationFrame(animateOutline);
-
     }
 
     animateOutline();
 
-    document
-        .querySelectorAll("a, button, .gallery-item, .value-card")
-        .forEach(el => {
-
-            el.addEventListener("mouseenter", () => {
-                cursorOutline.classList.add("hover");
-            });
-
-            el.addEventListener("mouseleave", () => {
-                cursorOutline.classList.remove("hover");
-            });
-
-        });
+    document.querySelectorAll("a, button, .gallery-item, .value-card").forEach(el => {
+        el.addEventListener("mouseenter", () => { cursorOutline.classList.add("hover"); });
+        el.addEventListener("mouseleave", () => { cursorOutline.classList.remove("hover"); });
+    });
 
 }
-
-
-/* =========================
-   MAGNETIC BUTTONS
-========================= */
 
 if(hasFinePointer && !prefersReducedMotion){
-
-    document
-        .querySelectorAll(".menu-btn, .theme-btn, .sound-btn, .top-btn, .social, .qr-button")
-        .forEach(el => {
-
-            el.addEventListener("mousemove", event => {
-
-                const rect = el.getBoundingClientRect();
-                const relX = event.clientX - rect.left - rect.width / 2;
-                const relY = event.clientY - rect.top - rect.height / 2;
-
-                el.style.transform = `translate(${relX * .28}px, ${relY * .28}px)`;
-
-            });
-
-            el.addEventListener("mouseleave", () => {
-
-                el.style.transform = "";
-
-            });
-
+    document.querySelectorAll(".menu-btn, .theme-btn, .sound-btn, .top-btn, .social, .qr-button").forEach(el => {
+        el.addEventListener("mousemove", event => {
+            const rect = el.getBoundingClientRect();
+            const relX = event.clientX - rect.left - rect.width / 2;
+            const relY = event.clientY - rect.top - rect.height / 2;
+            el.style.transform = `translate(${relX * .28}px, ${relY * .28}px)`;
         });
-
+        el.addEventListener("mouseleave", () => { el.style.transform = ""; });
+    });
 }
-
-
-/* =========================
-   PAGE TRANSITION ON NAV
-========================= */
 
 const pageTransition = document.getElementById("pageTransition");
 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
-
     link.addEventListener("click", event => {
-
         const targetId = link.getAttribute("href");
         const targetEl = document.querySelector(targetId);
-
         if(!targetEl) return;
-
         event.preventDefault();
 
         if(prefersReducedMotion){
-
             targetEl.scrollIntoView({ behavior: "auto" });
             return;
-
         }
 
         pageTransition.classList.remove("active");
@@ -3781,92 +2602,44 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         pageTransition.classList.add("active");
 
         setTimeout(() => {
-
             targetEl.scrollIntoView({ behavior: "auto", block: "start" });
-
         }, 350);
-
     });
-
 });
 
-
-/* =========================
-   LETTER-BY-LETTER TEXT REVEAL
-========================= */
-
-function splitIntoLetters(el){
-
-    const text = el.textContent.trim();
-
+/* Word-by-word reveal for section titles (and the hero name is
+   revealed as a whole via CSS animation) — Arabic text is never
+   split into individual character spans, which was breaking
+   letter joining/shaping in the previous version. */
+function revealByWord(el){
+    const words = el.textContent.trim().split(/\s+/);
     el.textContent = "";
 
-    [...text].forEach((char, i) => {
-
+    words.forEach((word, i) => {
         const span = document.createElement("span");
-
-        span.className = "letter";
-        span.textContent = char === " " ? "\u00A0" : char;
-        span.style.transitionDelay = (i * 28) + "ms";
-
+        span.className = "reveal-word";
+        span.textContent = word;
+        span.style.transitionDelay = (i * 90) + "ms";
         el.appendChild(span);
-
+        if(i < words.length - 1){ el.appendChild(document.createTextNode(" ")); }
     });
-
-}
-
-const heroNameEl = document.getElementById("heroName");
-
-if(heroNameEl){
-
-    splitIntoLetters(heroNameEl);
 
     requestAnimationFrame(() => {
-
-        setTimeout(() => {
-
-            heroNameEl.querySelectorAll(".letter")
-                .forEach(l => l.classList.add("visible"));
-
-        }, 250);
-
+        el.querySelectorAll(".reveal-word").forEach(w => w.classList.add("visible"));
     });
-
 }
 
 document.querySelectorAll(".section-title").forEach(title => {
-
-    splitIntoLetters(title);
-
-});
-
-const titleObserver = new IntersectionObserver(entries => {
-
-    entries.forEach(entry => {
-
-        if(entry.isIntersecting){
-
-            entry.target.querySelectorAll(".letter")
-                .forEach(l => l.classList.add("visible"));
-
-            titleObserver.unobserve(entry.target);
-
-        }
-
-    });
-
-}, { threshold: .5 });
-
-document.querySelectorAll(".section-title").forEach(title => {
-
+    const titleObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                revealByWord(entry.target);
+                titleObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: .5 });
     titleObserver.observe(title);
-
 });
-
-
-/* =========================
-   SOUND TOGGLE
-========================= */
 
 const soundBtn = document.getElementById("soundBtn");
 let soundEnabled = false;
@@ -3876,31 +2649,18 @@ const clickSound = new Audio(
 );
 
 soundBtn.addEventListener("click", () => {
-
     soundEnabled = !soundEnabled;
     soundBtn.textContent = soundEnabled ? "🔊" : "🔇";
-
 });
 
 document.querySelectorAll("a, button").forEach(el => {
-
     el.addEventListener("click", () => {
-
         if(soundEnabled){
-
             clickSound.currentTime = 0;
             clickSound.play().catch(() => {});
-
         }
-
     });
-
 });
-
-
-/* =========================
-   HERO CANVAS — GEOMETRIC GOLD LINES
-========================= */
 
 const heroCanvas = document.getElementById("heroCanvas");
 
@@ -3911,71 +2671,43 @@ if(heroCanvas && !prefersReducedMotion){
     let hw, hh, lines;
 
     function sizeHeroCanvas(){
-
         hw = heroCanvas.width = heroSection.clientWidth;
         hh = heroCanvas.height = heroSection.clientHeight;
-
     }
 
     function makeLines(){
-
         const count = Math.min(7, Math.max(4, Math.floor(hw / 260)));
-
         lines = Array.from({ length: count }, (_, i) => ({
-
             offset: (i / count) * hh,
             speed: .15 + Math.random() * .12,
             amp: 26 + Math.random() * 22,
             phase: Math.random() * Math.PI * 2
-
         }));
-
     }
 
     let t = 0;
 
     function drawHero(){
-
         t += .004;
-
         hctx.clearRect(0, 0, hw, hh);
-
         lines.forEach(line => {
-
             hctx.beginPath();
-
             for(let x = 0; x <= hw; x += 14){
-
                 const y = line.offset + Math.sin(x * .006 + t * 6 * line.speed + line.phase) * line.amp;
-
-                if(x === 0){
-                    hctx.moveTo(x, y);
-                }else{
-                    hctx.lineTo(x, y);
-                }
-
+                if(x === 0){ hctx.moveTo(x, y); } else { hctx.lineTo(x, y); }
             }
-
             hctx.strokeStyle = "rgba(212,175,55,.16)";
             hctx.lineWidth = 1;
             hctx.stroke();
-
         });
-
         requestAnimationFrame(drawHero);
-
     }
 
     sizeHeroCanvas();
     makeLines();
     drawHero();
 
-    window.addEventListener("resize", () => {
-
-        sizeHeroCanvas();
-        makeLines();
-
-    });
+    window.addEventListener("resize", () => { sizeHeroCanvas(); makeLines(); });
 
 }
 
