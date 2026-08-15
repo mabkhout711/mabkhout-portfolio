@@ -23,6 +23,7 @@
 <link rel="canonical" href="https://mabkhut.com">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23061426'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='24' font-weight='700' fill='%23d4af37' text-anchor='middle' letter-spacing='2'%3EMBK%3C/text%3E%3C/svg%3E">
+
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23061426'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='24' font-weight='700' fill='%23d4af37' text-anchor='middle' letter-spacing='2'%3EMBK%3C/text%3E%3C/svg%3E">
 
 <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%D9%85%D8%A8%D8%AE%D9%88%D8%AA%20%D8%A8%D9%86%20%D8%B9%D8%A8%D8%AF%D8%A7%D9%84%D9%84%D9%87%22%2C%22short_name%22%3A%22MBK%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23061426%22%2C%22theme_color%22%3A%22%23061426%22%7D">
@@ -31,6 +32,402 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 
+<!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "مبخوت بن عبدالله",
+  "alternateName": "MBK",
+  "url": "https://mabkhut.com",
+  "email": "mailto:mabkhout@mabkhut.com"
+}
+</script>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Cairo", "Noto Kufi Arabic", Arial, sans-serif;
+  background: #061426;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* =========================
+   شاشة التحميل
+========================= */
+
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at center, rgba(212,175,55,.07), transparent 35%),
+    #061426;
+  transition:
+    opacity .6s ease,
+    visibility .6s ease;
+}
+
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-inner {
+  width: min(420px, 82vw);
+  text-align: center;
+}
+
+.loader-logo {
+  font-family: Arial, sans-serif;
+  font-size: clamp(48px, 14vw, 76px);
+  font-weight: 800;
+  letter-spacing: .28em;
+  color: #d4af37;
+  text-indent: .28em;
+  margin-bottom: 32px;
+  animation: logoPulse 1.8s ease-in-out infinite;
+}
+
+.loader-percent {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  color: rgba(255,255,255,.65);
+  direction: ltr;
+  margin-bottom: 18px;
+}
+
+.loader-bar {
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.10);
+  overflow: hidden;
+}
+
+.loader-progress {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #b88a20,
+    #d4af37,
+    #f5d76e
+  );
+  border-radius: inherit;
+  transition: width .18s ease;
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    opacity: .72;
+    transform: scale(.98);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================
+   الصفحة
+========================= */
+
+#app {
+  min-height: 100vh;
+  opacity: 0;
+  transition: opacity .7s ease;
+}
+
+#app.ready {
+  opacity: 1;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(212,175,55,.10),
+      transparent 32%
+    ),
+    #061426;
+}
+
+.hero-content {
+  max-width: 900px;
+}
+
+.logo {
+  font-family: Arial, sans-serif;
+  color: #d4af37;
+  font-size: clamp(50px, 12vw, 110px);
+  font-weight: 800;
+  letter-spacing: .2em;
+  margin: 0 0 25px;
+  text-indent: .2em;
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-size: clamp(28px, 6vw, 64px);
+  font-weight: 800;
+}
+
+.hero p {
+  margin: 0 auto;
+  max-width: 650px;
+  color: rgba(255,255,255,.68);
+  line-height: 2;
+  font-size: 17px;
+}
+
+.gold {
+  color: #d4af37;
+}
+
+footer {
+  padding: 30px 20px;
+  text-align: center;
+  color: rgba(255,255,255,.45);
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     LOADER
+========================= -->
+
+<div id="loader" aria-label="جاري تحميل الموقع">
+  <div class="loader-inner">
+
+    <div class="loader-logo">MBK</div>
+
+    <div
+      id="loaderPercent"
+      class="loader-percent"
+      aria-live="polite"
+    >0%</div>
+
+    <div class="loader-bar">
+      <div
+        id="loaderProgress"
+        class="loader-progress"
+      ></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================
+     APP
+========================= -->
+
+<div id="app">
+
+  <main class="hero">
+
+    <div class="hero-content">
+
+      <div class="logo">MBK</div>
+
+      <h1>
+        مبخوت <span class="gold">بن عبدالله</span>
+      </h1>
+
+      <p>
+        الموقع الشخصي لمبخوت بن عبدالله —
+        نبذة، مهارات، أعمال مختارة، ورحلة شخصية.
+      </p>
+
+    </div>
+
+  </main>
+
+  <footer>
+    © <span id="year"></span> مبخوت بن عبدالله — MBK
+  </footer>
+
+</div>
+
+<script>
+(function () {
+
+  "use strict";
+
+  const loader = document.getElementById("loader");
+  const progress = document.getElementById("loaderProgress");
+  const percent = document.getElementById("loaderPercent");
+  const app = document.getElementById("app");
+  const year = document.getElementById("year");
+
+  let current = 0;
+  let finished = false;
+
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+
+  function setProgress(value) {
+    value = Math.max(0, Math.min(100, value));
+
+    current = value;
+
+    if (progress) {
+      progress.style.width = value + "%";
+    }
+
+    if (percent) {
+      percent.textContent = Math.round(value) + "%";
+    }
+  }
+
+  function finishLoader() {
+
+    if (finished) return;
+
+    finished = true;
+
+    setProgress(100);
+
+    setTimeout(function () {
+
+      if (app) {
+        app.classList.add("ready");
+      }
+
+      if (loader) {
+        loader.classList.add("hidden");
+      }
+
+      setTimeout(function () {
+
+        if (loader && loader.parentNode) {
+          loader.remove();
+        }
+
+      }, 700);
+
+    }, 250);
+  }
+
+  /*
+   * الإصلاح الأساسي:
+   * لا نعتمد على تحميل صورة أو خط أو ملف خارجي
+   * حتى لا يبقى الموقع عند 0%.
+   */
+
+  let startTime = Date.now();
+
+  function loadingAnimation() {
+
+    if (finished) return;
+
+    const elapsed = Date.now() - startTime;
+
+    /*
+     * رفع النسبة تدريجيًا حتى 90%.
+     * ثم ننتظر تحميل الصفحة بالكامل.
+     */
+
+    let value;
+
+    if (elapsed < 500) {
+      value = 20;
+    } else if (elapsed < 1000) {
+      value = 40;
+    } else if (elapsed < 1500) {
+      value = 60;
+    } else if (elapsed < 2200) {
+      value = 75;
+    } else {
+      value = 90;
+    }
+
+    if (value > current) {
+      setProgress(value);
+    }
+
+    if (current < 90) {
+      requestAnimationFrame(loadingAnimation);
+    }
+  }
+
+  requestAnimationFrame(loadingAnimation);
+
+  /*
+   * عند اكتمال DOM
+   */
+
+  if (document.readyState === "loading") {
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+        setProgress(95);
+      },
+      { once: true }
+    );
+
+  } else {
+
+    setProgress(95);
+
+  }
+
+  /*
+   * عند اكتمال كل موارد الصفحة
+   */
+
+  window.addEventListener(
+    "load",
+    function () {
+      finishLoader();
+    },
+    { once: true }
+  );
+
+  /*
+   * حماية إضافية:
+   * حتى لو فشل خط خارجي أو صورة أو أي مورد،
+   * لا تبقى شاشة الموقع عالقة عند 0%.
+   */
+
+  setTimeout(function () {
+
+    if (!finished) {
+      finishLoader();
+    }
+
+  }, 4500);
+
+})();
+</script>
+
+</body>
+</html>
