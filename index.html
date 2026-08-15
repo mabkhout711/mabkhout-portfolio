@@ -187,6 +187,25 @@ button{
     animation:loaderFade 1.4s ease forwards;
 }
 
+.loader-line{
+    width:0%;
+    max-width:220px;
+    height:1px;
+
+    background:linear-gradient(90deg,transparent,var(--gold-light),transparent);
+    box-shadow:0 0 12px rgba(212,175,55,.5);
+
+    transition:width .1s linear;
+}
+
+.loader-count{
+    direction:ltr;
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:3px;
+    color:var(--muted);
+}
+
 .loader-bar{
     width:140px;
     height:2px;
@@ -212,6 +231,33 @@ button{
 @keyframes loaderSlide{
     0%{transform:translateX(-140%);}
     100%{transform:translateX(280%);}
+}
+
+.loader-skip{
+    position:absolute;
+    bottom:32px;
+
+    padding:8px 18px;
+    border-radius:999px;
+    border:1px solid rgba(212,175,55,.3);
+    background:transparent;
+    color:var(--muted);
+    font-size:11px;
+    letter-spacing:2px;
+    direction:ltr;
+    cursor:pointer;
+
+    opacity:0;
+    transition:opacity .4s ease,border-color .3s ease,color .3s ease;
+}
+
+.loader-skip.visible{
+    opacity:1;
+}
+
+.loader-skip:hover{
+    border-color:var(--gold-light);
+    color:var(--gold-light);
 }
 
 #particles{
@@ -2095,6 +2141,403 @@ footer{
 
 }
 
+/* ===== MB Universe — orbiting words around the hero photo ===== */
+.mb-universe{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+}
+
+.orbit-word{
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    font-size:11px;
+    letter-spacing:3px;
+    color:var(--gold-light);
+    opacity:.55;
+
+    direction:ltr;
+    white-space:nowrap;
+
+    transform-origin:0 0;
+    animation:orbitSpin linear infinite;
+}
+
+@keyframes orbitSpin{
+    from{ transform:rotate(0deg) translateX(var(--r)) rotate(0deg); }
+    to{ transform:rotate(360deg) translateX(var(--r)) rotate(-360deg); }
+}
+
+@media(max-width:760px){
+    .orbit-word{ display:none; }
+}
+
+/* ===== Command palette ===== */
+.cmdk-trigger{
+    position:fixed;
+    bottom:26px;
+    right:26px;
+    z-index:900;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px 16px;
+    border-radius:999px;
+
+    border:1px solid var(--border-strong);
+    background:rgba(6,20,38,.72);
+    backdrop-filter:blur(10px);
+
+    color:var(--gold-light);
+    font-size:12px;
+    letter-spacing:1px;
+    direction:ltr;
+    cursor:pointer;
+}
+
+@media(max-width:760px){
+    .cmdk-trigger{
+        bottom:18px;
+        right:18px;
+        padding:10px 14px;
+    }
+}
+
+.cmdk-overlay{
+    position:fixed;
+    inset:0;
+    z-index:3000;
+
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:14vh 20px 20px;
+
+    background:rgba(0,0,0,.6);
+    backdrop-filter:blur(6px);
+
+    opacity:0;
+    visibility:hidden;
+    transition:.25s ease;
+}
+
+.cmdk-overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.cmdk-box{
+    width:min(480px,100%);
+
+    border-radius:22px;
+    border:1px solid var(--border-strong);
+    background:#07172a;
+    box-shadow:0 40px 100px rgba(0,0,0,.55);
+
+    overflow:hidden;
+}
+
+.cmdk-input{
+    width:100%;
+    padding:18px 22px;
+
+    border:none;
+    border-bottom:1px solid rgba(212,175,55,.18);
+    background:transparent;
+
+    color:var(--white);
+    font-size:16px;
+    font-family:inherit;
+    outline:none;
+}
+
+.cmdk-list{
+    max-height:50vh;
+    overflow-y:auto;
+    padding:8px;
+}
+
+.cmdk-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:12px 14px;
+    border-radius:12px;
+
+    color:var(--text);
+    font-size:14.5px;
+    cursor:pointer;
+}
+
+.cmdk-item:hover,
+.cmdk-item.active{
+    background:rgba(212,175,55,.1);
+    color:var(--gold-light);
+}
+
+.cmdk-item small{
+    color:var(--muted);
+    font-size:11px;
+    direction:ltr;
+}
+
+/* ===== Focus mode ===== */
+body.focus-mode #particles,
+body.focus-mode .spotlight,
+body.focus-mode .noise-overlay,
+body.focus-mode .orbit-word,
+body.focus-mode #heroCanvas,
+body.focus-mode .cursor-dot,
+body.focus-mode .cursor-outline{
+    display:none!important;
+}
+
+body.focus-mode .dot-nav,
+body.focus-mode .cmdk-trigger,
+body.focus-mode .mb-ai-trigger{
+    opacity:.35;
+}
+
+/* ===== MB AI widget ===== */
+.mb-ai-trigger{
+    position:fixed;
+    bottom:88px;
+    right:26px;
+    z-index:900;
+
+    width:52px;
+    height:52px;
+    border-radius:50%;
+
+    border:1px solid var(--border-strong);
+    background:rgba(6,20,38,.8);
+    backdrop-filter:blur(10px);
+
+    color:var(--gold-light);
+    font-size:13px;
+    font-weight:700;
+    direction:ltr;
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+@media(max-width:760px){
+    .mb-ai-trigger{
+        bottom:76px;
+        right:18px;
+        width:48px;
+        height:48px;
+    }
+}
+
+.mb-ai-panel{
+    position:fixed;
+    bottom:150px;
+    right:26px;
+    z-index:950;
+
+    width:min(320px,86vw);
+    max-height:420px;
+
+    display:flex;
+    flex-direction:column;
+
+    border-radius:22px;
+    border:1px solid var(--border-strong);
+    background:#07172a;
+    box-shadow:0 40px 100px rgba(0,0,0,.55);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(12px);
+    transition:.3s ease;
+}
+
+.mb-ai-panel.active{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.mb-ai-head{
+    padding:16px 18px;
+    border-bottom:1px solid rgba(212,175,55,.15);
+    direction:ltr;
+}
+
+.mb-ai-head strong{
+    color:var(--gold-light);
+    letter-spacing:2px;
+    font-size:13px;
+}
+
+.mb-ai-head span{
+    display:block;
+    color:var(--muted);
+    font-size:11px;
+    margin-top:3px;
+}
+
+.mb-ai-body{
+    flex:1;
+    overflow-y:auto;
+    padding:14px 16px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.mb-ai-msg{
+    max-width:88%;
+    padding:9px 13px;
+    border-radius:14px;
+    font-size:13.5px;
+    line-height:1.7;
+}
+
+.mb-ai-msg.bot{
+    align-self:flex-start;
+    background:rgba(212,175,55,.09);
+    color:var(--text);
+    border:1px solid rgba(212,175,55,.15);
+}
+
+.mb-ai-msg.user{
+    align-self:flex-end;
+    background:rgba(212,175,55,.85);
+    color:#1a1304;
+}
+
+.mb-ai-foot{
+    display:flex;
+    gap:8px;
+    padding:12px;
+    border-top:1px solid rgba(212,175,55,.15);
+}
+
+.mb-ai-foot input{
+    flex:1;
+    padding:9px 12px;
+    border-radius:10px;
+    border:1px solid rgba(212,175,55,.2);
+    background:rgba(255,255,255,.02);
+    color:var(--white);
+    font-family:inherit;
+    font-size:13px;
+    outline:none;
+}
+
+.mb-ai-foot button{
+    padding:9px 14px;
+    border-radius:10px;
+    border:1px solid rgba(212,175,55,.35);
+    background:transparent;
+    color:var(--gold-light);
+    cursor:pointer;
+    font-size:13px;
+}
+
+/* ===== Visitor journey indicator ===== */
+.journey-indicator{
+    position:fixed;
+    top:86px;
+    right:22px;
+    z-index:850;
+
+    padding:6px 12px;
+    border-radius:999px;
+
+    border:1px solid var(--border);
+    background:rgba(6,20,38,.55);
+    backdrop-filter:blur(8px);
+
+    color:var(--muted);
+    font-size:10px;
+    letter-spacing:2px;
+    direction:ltr;
+}
+
+.journey-indicator strong{
+    color:var(--gold-light);
+}
+
+@media(max-width:900px){
+    .journey-indicator{ display:none; }
+}
+
+/* ===== Project quick preview overlay ===== */
+.project-card{
+    position:relative;
+}
+
+.project-preview{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:25px;
+    background:rgba(6,16,30,.88);
+    backdrop-filter:blur(4px);
+
+    color:var(--gold-light);
+    font-size:12px;
+    letter-spacing:3px;
+    direction:ltr;
+
+    opacity:0;
+    visibility:hidden;
+    transition:.3s ease;
+}
+
+.project-card:hover .project-preview{
+    opacity:1;
+    visibility:visible;
+}
+
+/* ===== Achievement toast (easter egg) ===== */
+.achievement-toast{
+    position:fixed;
+    bottom:26px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    z-index:4500;
+
+    padding:14px 26px;
+    border-radius:16px;
+
+    border:1px solid var(--border-strong);
+    background:#07172a;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+
+    color:var(--gold-light);
+    font-size:13px;
+    letter-spacing:2px;
+    direction:ltr;
+    text-align:center;
+
+    opacity:0;
+    visibility:hidden;
+    transition:.4s ease;
+}
+
+.achievement-toast.active{
+    opacity:1;
+    visibility:visible;
+    transform:translateX(-50%) translateY(0);
+}
+
 @media(prefers-reduced-motion:reduce){
 
     *,
@@ -2139,7 +2582,9 @@ footer{
 
 <div class="loader" id="loader">
     <div class="loader-mark">MBK</div>
-    <div class="loader-bar"></div>
+    <div class="loader-line" id="loaderLine"></div>
+    <div class="loader-count" id="loaderCount">0%</div>
+    <button class="loader-skip" id="loaderSkip" type="button">SKIP</button>
 </div>
 
 <canvas id="particles"></canvas>
@@ -2167,6 +2612,8 @@ footer{
         <button class="sound-btn" id="soundBtn" aria-label="تفعيل/إيقاف الصوت" title="أصوات التفاعل">🔇</button>
 
         <button class="theme-btn" id="themeBtn" aria-label="تبديل الوضع الليلي/النهاري" title="تبديل المظهر">☾</button>
+
+        <button class="theme-btn" id="focusBtn" aria-label="وضع التركيز" title="FOCUS — تقليل المؤثرات">◎</button>
 
         <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة">☰</button>
 
@@ -2230,6 +2677,7 @@ footer{
 
     <div class="photo-frame" id="photoFrame">
         <img class="profile-photo" src="file_00000000202482468d4027eb8c5919f7.png" alt="مبخوت بن عبدالله">
+        <div class="mb-universe" id="mbUniverse" aria-hidden="true"></div>
     </div>
 
     <p class="quote" data-en="Success comes only through Allah">وما توفيقي إلا بالله</p>
@@ -2398,6 +2846,7 @@ footer{
             <h3 data-en="Project Title One">اسم المشروع الأول</h3>
             <p data-en="A short description of this project goes here — replace with real details.">وصف مختصر لهذا المشروع يوضع هنا — استبدله بتفاصيل حقيقية.</p>
             <a class="project-link" href="#" data-en="View project ↗">عرض المشروع ↗</a>
+            <div class="project-preview">VIEW ↗</div>
         </div>
 
         <div class="project-card">
@@ -2408,6 +2857,7 @@ footer{
             <h3 data-en="Project Title Two">اسم المشروع الثاني</h3>
             <p data-en="A short description of this project goes here — replace with real details.">وصف مختصر لهذا المشروع يوضع هنا — استبدله بتفاصيل حقيقية.</p>
             <a class="project-link" href="#" data-en="View project ↗">عرض المشروع ↗</a>
+            <div class="project-preview">VIEW ↗</div>
         </div>
 
         <div class="project-card">
@@ -2418,6 +2868,7 @@ footer{
             <h3 data-en="Project Title Three">اسم المشروع الثالث</h3>
             <p data-en="A short description of this project goes here — replace with real details.">وصف مختصر لهذا المشروع يوضع هنا — استبدله بتفاصيل حقيقية.</p>
             <a class="project-link" href="#" data-en="View project ↗">عرض المشروع ↗</a>
+            <div class="project-preview">VIEW ↗</div>
         </div>
 
     </div>
@@ -2664,6 +3115,37 @@ footer{
     <div class="footer-mbk">MBK</div>
 </footer>
 
+<div class="journey-indicator" id="journeyIndicator">01 / 11</div>
+
+<button class="cmdk-trigger" id="cmdkTrigger" type="button">
+    <span>⌘K</span>
+</button>
+
+<div class="cmdk-overlay" id="cmdkOverlay">
+    <div class="cmdk-box">
+        <input class="cmdk-input" id="cmdkInput" type="text" placeholder="ابحث عن قسم… (Home, Projects, Vision…)" autocomplete="off">
+        <div class="cmdk-list" id="cmdkList"></div>
+    </div>
+</div>
+
+<button class="mb-ai-trigger" id="mbAiTrigger" type="button" aria-label="MB AI">AI</button>
+
+<div class="mb-ai-panel" id="mbAiPanel">
+    <div class="mb-ai-head">
+        <strong>MB AI</strong>
+        <span>مساعد تجريبي — واجهة جاهزة للربط لاحقًا</span>
+    </div>
+    <div class="mb-ai-body" id="mbAiBody">
+        <div class="mb-ai-msg bot">مرحبًا! أنا MB AI. حاليًا أعرض واجهة تجريبية فقط دون اتصال حقيقي بأي نموذج — اسأل لتجربة الشكل العام.</div>
+    </div>
+    <div class="mb-ai-foot">
+        <input type="text" id="mbAiInput" placeholder="اكتب رسالة…" autocomplete="off">
+        <button id="mbAiSend" type="button">إرسال</button>
+    </div>
+</div>
+
+<div class="achievement-toast" id="achievementToast">ACHIEVEMENT UNLOCKED — MABKHOUT 711</div>
+
 <button class="top-btn" id="topBtn" aria-label="العودة للأعلى" title="العودة للأعلى">↑</button>
 
 <script>
@@ -2764,10 +3246,61 @@ document.addEventListener("keydown", event => {
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-window.addEventListener("load", () => {
+/* Cinematic Intro — driven entirely by a timer, never by window.load
+   or image/font readiness, so it can never hang at 0%. A hard
+   fallback guarantees the intro clears even if something throws. */
+(function cinematicIntro(){
     const loader = document.getElementById("loader");
-    setTimeout(() => { loader.classList.add("hidden"); }, 450);
-});
+    const line = document.getElementById("loaderLine");
+    const count = document.getElementById("loaderCount");
+    const skipBtn = document.getElementById("loaderSkip");
+
+    if(!loader) return;
+
+    const DURATION = prefersReducedMotion ? 900 : 5000;
+    let finished = false;
+
+    function finish(){
+        if(finished) return;
+        finished = true;
+        loader.classList.add("hidden");
+        document.body.style.overflow = "";
+        setTimeout(() => { loader.remove(); }, 700);
+    }
+
+    if(prefersReducedMotion){
+        finish();
+        return;
+    }
+
+    document.body.style.overflow = "hidden";
+
+    const start = performance.now();
+
+    function tick(now){
+        const progress = Math.min((now - start) / DURATION, 1);
+        const pct = Math.floor(progress * 100);
+        if(line) line.style.width = (progress * 220) + "px";
+        if(count) count.textContent = pct + "%";
+        if(progress < 1 && !finished){
+            requestAnimationFrame(tick);
+        } else {
+            if(count) count.textContent = "100%";
+            finish();
+        }
+    }
+
+    requestAnimationFrame(tick);
+
+    if(skipBtn){
+        setTimeout(() => { skipBtn.classList.add("visible"); }, 900);
+        skipBtn.addEventListener("click", finish);
+    }
+
+    /* Absolute safety net: the intro can never occupy the screen
+       longer than DURATION + 1.5s, no matter what happens above. */
+    setTimeout(finish, DURATION + 1500);
+})();
 
 const themeBtn = document.getElementById("themeBtn");
 const rootEl = document.documentElement;
@@ -3172,6 +3705,189 @@ if(heroCanvas && !prefersReducedMotion){
 
     window.addEventListener("resize", () => { sizeHeroCanvas(); makeLines(); });
 
+}
+
+/* ===== 04 — MB Universe: orbiting field words ===== */
+const mbUniverse = document.getElementById("mbUniverse");
+
+if(mbUniverse && !prefersReducedMotion){
+    const words = ["AI","DESIGN","TECH","WEB","CREATIVE","PROJECTS","VISION"];
+    words.forEach((word, i) => {
+        const el = document.createElement("span");
+        el.className = "orbit-word";
+        el.textContent = word;
+        const radius = 46 + (i % 2) * 6; // percent-ish via px fallback, tuned per frame size
+        el.style.setProperty("--r", (150 + (i % 3) * 30) + "px");
+        el.style.animationDuration = (26 + i * 4) + "s";
+        el.style.animationDelay = (-i * 3) + "s";
+        if(i % 2){ el.style.animationDirection = "reverse"; }
+        mbUniverse.appendChild(el);
+    });
+}
+
+/* ===== 56 — Focus mode ===== */
+const focusBtn = document.getElementById("focusBtn");
+
+if(focusBtn){
+    focusBtn.addEventListener("click", () => {
+        document.body.classList.toggle("focus-mode");
+        const on = document.body.classList.contains("focus-mode");
+        focusBtn.style.color = on ? "var(--gold-light)" : "";
+        focusBtn.title = on ? "إيقاف وضع التركيز" : "FOCUS — تقليل المؤثرات";
+    });
+}
+
+/* ===== 58 — Command palette (Ctrl/Cmd+K, plus mobile trigger) ===== */
+const cmdkTrigger = document.getElementById("cmdkTrigger");
+const cmdkOverlay = document.getElementById("cmdkOverlay");
+const cmdkInput = document.getElementById("cmdkInput");
+const cmdkList = document.getElementById("cmdkList");
+
+const cmdkItems = [
+    { label: "الرئيسية", en: "Home", target: "#home" },
+    { label: "نبذة", en: "About", target: "#about" },
+    { label: "مهاراتي", en: "Skills", target: "#skills" },
+    { label: "بصمتي", en: "Values", target: "#values" },
+    { label: "مشاريعي", en: "Projects", target: "#projects" },
+    { label: "إنجازات", en: "Achievements", target: "#achievements" },
+    { label: "مختاراتي", en: "Selected Works", target: "#gallery" },
+    { label: "آراء", en: "Testimonials", target: "#testimonials" },
+    { label: "رحلتي", en: "Journey", target: "#journey" },
+    { label: "أفكار", en: "Thoughts", target: "#blog" },
+    { label: "تواصل", en: "Contact", target: "#contact" },
+    { label: "وضع التركيز", en: "Toggle Focus Mode", action: () => focusBtn && focusBtn.click() }
+];
+
+function renderCmdkList(filter){
+    cmdkList.innerHTML = "";
+    const q = (filter || "").trim().toLowerCase();
+    const filtered = cmdkItems.filter(item =>
+        !q || item.label.includes(q) || item.en.toLowerCase().includes(q)
+    );
+    filtered.forEach(item => {
+        const row = document.createElement("div");
+        row.className = "cmdk-item";
+        row.innerHTML = `<span>${item.label}</span><small>${item.en}</small>`;
+        row.addEventListener("click", () => {
+            closeCmdk();
+            if(item.action){ item.action(); }
+            else{
+                const el = document.querySelector(item.target);
+                if(el) el.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" });
+            }
+        });
+        cmdkList.appendChild(row);
+    });
+}
+
+function openCmdk(){
+    cmdkOverlay.classList.add("active");
+    renderCmdkList("");
+    cmdkInput.value = "";
+    setTimeout(() => cmdkInput.focus(), 60);
+}
+
+function closeCmdk(){
+    cmdkOverlay.classList.remove("active");
+}
+
+if(cmdkTrigger){ cmdkTrigger.addEventListener("click", openCmdk); }
+if(cmdkInput){ cmdkInput.addEventListener("input", () => renderCmdkList(cmdkInput.value)); }
+if(cmdkOverlay){
+    cmdkOverlay.addEventListener("click", event => {
+        if(event.target === cmdkOverlay){ closeCmdk(); }
+    });
+}
+
+document.addEventListener("keydown", event => {
+    if((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k"){
+        event.preventDefault();
+        openCmdk();
+    }
+    if(event.key === "Escape"){ closeCmdk(); }
+});
+
+/* ===== 64 — Visitor journey indicator ===== */
+const journeyIndicator = document.getElementById("journeyIndicator");
+const journeySections = ["home","about","stats","skills","values","projects","achievements","gallery","testimonials","journey","blog","contact"]
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+if(journeyIndicator && journeySections.length){
+    const journeyObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                const idx = journeySections.indexOf(entry.target) + 1;
+                journeyIndicator.innerHTML = String(idx).padStart(2, "0") + " / " + String(journeySections.length).padStart(2, "0");
+            }
+        });
+    }, { threshold: .5 });
+    journeySections.forEach(s => journeyObserver.observe(s));
+}
+
+/* ===== 69 — MB AI widget (UI only, no live backend connected) ===== */
+const mbAiTrigger = document.getElementById("mbAiTrigger");
+const mbAiPanel = document.getElementById("mbAiPanel");
+const mbAiBody = document.getElementById("mbAiBody");
+const mbAiInput = document.getElementById("mbAiInput");
+const mbAiSend = document.getElementById("mbAiSend");
+
+if(mbAiTrigger){
+    mbAiTrigger.addEventListener("click", () => {
+        mbAiPanel.classList.toggle("active");
+    });
+}
+
+function mbAiAddMessage(text, who){
+    const msg = document.createElement("div");
+    msg.className = "mb-ai-msg " + who;
+    msg.textContent = text;
+    mbAiBody.appendChild(msg);
+    mbAiBody.scrollTop = mbAiBody.scrollHeight;
+}
+
+function mbAiRespond(){
+    const value = mbAiInput.value.trim();
+    if(!value) return;
+    mbAiAddMessage(value, "user");
+    mbAiInput.value = "";
+    setTimeout(() => {
+        mbAiAddMessage("هذه واجهة تجريبية فقط ولا تتصل بنموذج ذكاء اصطناعي حقيقي بعد. سيتم ربطها لاحقًا عبر API.", "bot");
+    }, 400);
+}
+
+if(mbAiSend){ mbAiSend.addEventListener("click", mbAiRespond); }
+if(mbAiInput){
+    mbAiInput.addEventListener("keydown", event => {
+        if(event.key === "Enter"){ mbAiRespond(); }
+    });
+}
+
+/* ===== 61/62/63 — Easter egg: typing 711 unlocks a hidden animation ===== */
+const achievementToast = document.getElementById("achievementToast");
+let keyBuffer = "";
+
+document.addEventListener("keydown", event => {
+    if(!/^[0-9]$/.test(event.key)) return;
+    keyBuffer = (keyBuffer + event.key).slice(-3);
+    if(keyBuffer === "711" && achievementToast){
+        achievementToast.classList.add("active");
+        setTimeout(() => { achievementToast.classList.remove("active"); }, 3200);
+        keyBuffer = "";
+    }
+});
+
+/* ===== 31 — Magnetic navigation for nav links ===== */
+if(hasFinePointer && !prefersReducedMotion){
+    document.querySelectorAll(".dot-link, .cmdk-trigger, .mb-ai-trigger").forEach(el => {
+        el.addEventListener("mousemove", event => {
+            const rect = el.getBoundingClientRect();
+            const relX = event.clientX - rect.left - rect.width / 2;
+            const relY = event.clientY - rect.top - rect.height / 2;
+            el.style.transform = `translate(${relX * .22}px, ${relY * .22}px)`;
+        });
+        el.addEventListener("mouseleave", () => { el.style.transform = ""; });
+    });
 }
 
 </script>
