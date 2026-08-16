@@ -153,113 +153,6 @@ button{
     font-family:inherit;
 }
 
-.loader{
-    position:fixed;
-    inset:0;
-    z-index:5000;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:18px;
-
-    background:var(--navy-dark);
-
-    transition:opacity .6s ease,visibility .6s ease;
-}
-
-.loader.hidden{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-}
-
-.loader-mark{
-    direction:ltr;
-    font-family:Arial,sans-serif;
-    font-size:34px;
-    font-weight:700;
-    letter-spacing:9px;
-    color:var(--gold-light);
-
-    opacity:0;
-    animation:loaderFade 1.4s ease forwards;
-}
-
-.loader-line{
-    width:0%;
-    max-width:220px;
-    height:1px;
-
-    background:linear-gradient(90deg,transparent,var(--gold-light),transparent);
-    box-shadow:0 0 12px rgba(212,175,55,.5);
-
-    transition:width .1s linear;
-}
-
-.loader-count{
-    direction:ltr;
-    font-family:Arial,sans-serif;
-    font-size:12px;
-    letter-spacing:3px;
-    color:var(--muted);
-}
-
-.loader-bar{
-    width:140px;
-    height:2px;
-    border-radius:2px;
-    overflow:hidden;
-    background:rgba(212,175,55,.15);
-}
-
-.loader-bar::after{
-    content:"";
-    display:block;
-    height:100%;
-    width:40%;
-    background:linear-gradient(90deg,transparent,var(--gold-light),transparent);
-    animation:loaderSlide 1.1s ease-in-out infinite;
-}
-
-@keyframes loaderFade{
-    from{opacity:0;transform:translateY(8px);}
-    to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes loaderSlide{
-    0%{transform:translateX(-140%);}
-    100%{transform:translateX(280%);}
-}
-
-.loader-skip{
-    position:absolute;
-    bottom:32px;
-
-    padding:8px 18px;
-    border-radius:999px;
-    border:1px solid rgba(212,175,55,.3);
-    background:transparent;
-    color:var(--muted);
-    font-size:11px;
-    letter-spacing:2px;
-    direction:ltr;
-    cursor:pointer;
-
-    opacity:0;
-    transition:opacity .4s ease,border-color .3s ease,color .3s ease;
-}
-
-.loader-skip.visible{
-    opacity:1;
-}
-
-.loader-skip:hover{
-    border-color:var(--gold-light);
-    color:var(--gold-light);
-}
-
 #particles{
     position:fixed;
     inset:0;
@@ -1127,8 +1020,8 @@ main{
     background-clip:text;
     -webkit-text-fill-color:transparent;
 
-    opacity:0;
-    animation:heroIn .9s ease forwards, shimmerSweep 7s linear 1s infinite;
+    opacity:1;
+    animation:shimmerSweep 7s linear infinite;
 }
 
 .gold-line{
@@ -1997,20 +1890,6 @@ footer{
     transform:translateY(0);
 }
 
-@keyframes heroIn{
-
-    from{
-        opacity:0;
-        transform:translateY(25px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
 @media(max-width:760px){
 
     header{
@@ -2580,10 +2459,6 @@ body.focus-mode .mb-ai-trigger{
         scroll-behavior:auto!important;
     }
 
-    .loader-mark{
-        opacity:1!important;
-    }
-
     .hero-name{
         opacity:1!important;
     }
@@ -2594,15 +2469,6 @@ body.focus-mode .mb-ai-trigger{
 
 }
 
-/* =====================================================
-   BATCH 2 — ADDED SYSTEMS
-   (Starfield / Aurora / Nebula backgrounds, theme engine
-   expansion, accessibility panel, card spotlight+magnetic,
-   scroll % badge, toast/notification center, share sheet,
-   footer status/version, adaptive performance)
-   ===================================================== */
-
-/* Deep-space layers behind everything, above body gradient */
 .starfield-canvas{
     position:fixed;
     inset:0;
@@ -2635,7 +2501,6 @@ body.focus-mode .mb-ai-trigger{
     opacity:.25;
 }
 
-/* Fine grid layer with mouse-reactive fade, sits above starfield */
 .grid-layer{
     position:fixed;
     inset:0;
@@ -2650,7 +2515,6 @@ body.focus-mode .mb-ai-trigger{
     -webkit-mask-image:radial-gradient(420px circle at var(--x,50%) var(--y,50%),black,transparent 75%);
 }
 
-/* Theme engine — extra palettes beyond dark/light, cycled via data-theme */
 :root[data-theme="midnight"]{
     --navy:#02030a;
     --navy-dark:#000103;
@@ -2688,7 +2552,6 @@ body.focus-mode .mb-ai-trigger{
         linear-gradient(145deg,#000000 0%,#0a0a0a 48%,#050505 100%);
 }
 
-/* Accessibility panel (font size / contrast / motion / focus) */
 .a11y-row{
     display:flex;
     align-items:center;
@@ -2778,7 +2641,6 @@ body.a11y-no-blur .side-menu{
     -webkit-backdrop-filter:none!important;
 }
 
-/* Card spotlight glow that follows the cursor per-card */
 .value-card,
 .project-card,
 .achievement-card,
@@ -2815,12 +2677,10 @@ body.a11y-no-blur .side-menu{
     z-index:1;
 }
 
-/* Magnetic buttons (CTA / social / qr) get a class toggled in JS */
 .magnetic{
     transition:transform .12s ease-out;
 }
 
-/* Scroll percentage badge, docks near the top progress bar */
 .scroll-pct{
     position:fixed;
     top:10px;
@@ -2851,7 +2711,6 @@ body.a11y-no-blur .side-menu{
     .scroll-pct{ display:none; }
 }
 
-/* Toast / notification center, stacks above achievement toast */
 .toast-stack{
     position:fixed;
     top:90px;
@@ -2889,7 +2748,6 @@ body.a11y-no-blur .side-menu{
     transform:translateY(0);
 }
 
-/* Share sheet */
 .share-sheet{
     position:fixed;
     inset:0;
@@ -2969,7 +2827,6 @@ body.a11y-no-blur .side-menu{
     cursor:pointer;
 }
 
-/* Footer status / version badges */
 .footer-meta{
     display:flex;
     flex-wrap:wrap;
@@ -3030,13 +2887,6 @@ body.a11y-no-blur .side-menu{
 <div class="vignette"></div>
 
 <div class="page-transition" id="pageTransition"></div>
-
-<div class="loader" id="loader">
-    <div class="loader-mark">MBK</div>
-    <div class="loader-line" id="loaderLine"></div>
-    <div class="loader-count" id="loaderCount">0%</div>
-    <button class="loader-skip" id="loaderSkip" type="button">SKIP</button>
-</div>
 
 <canvas id="particles"></canvas>
 
@@ -3763,79 +3613,94 @@ if(qrModal){
     });
 }
 
+const shareSheet = document.getElementById("shareSheet");
+const shareButton = document.getElementById("shareButton");
+const shareClose = document.getElementById("shareClose");
+const shareGridButtons = document.querySelectorAll(".share-grid button");
+
+function openShareSheet(){
+    if(shareSheet){
+        shareSheet.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function closeShareSheet(){
+    if(shareSheet){
+        shareSheet.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+}
+
+if(shareButton) shareButton.addEventListener("click", openShareSheet);
+if(shareClose) shareClose.addEventListener("click", closeShareSheet);
+if(shareSheet){
+    shareSheet.addEventListener("click", event => {
+        if(event.target === shareSheet){ closeShareSheet(); }
+    });
+}
+
+function showToast(message){
+    const stack = document.getElementById("toastStack");
+    if(!stack) return;
+    const el = document.createElement("div");
+    el.className = "toast";
+    el.textContent = message;
+    stack.appendChild(el);
+    requestAnimationFrame(() => { el.classList.add("show"); });
+    setTimeout(() => {
+        el.classList.remove("show");
+        setTimeout(() => { el.remove(); }, 400);
+    }, 2600);
+}
+
+shareGridButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const type = btn.dataset.share;
+        const url = "https://mabkhut.com";
+        const text = encodeURIComponent("مبخوت بن عبدالله | MBK");
+
+        if(type === "whatsapp"){
+            window.open(`https://wa.me/?text=${text}%20${encodeURIComponent(url)}`, "_blank", "noopener");
+        } else if(type === "telegram"){
+            window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${text}`, "_blank", "noopener");
+        } else if(type === "x"){
+            window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${text}`, "_blank", "noopener");
+        } else if(type === "email"){
+            window.location.href = `mailto:?subject=${text}&body=${encodeURIComponent(url)}`;
+        } else if(type === "copy"){
+            if(navigator.clipboard){
+                navigator.clipboard.writeText(url).then(() => showToast("تم نسخ الرابط"));
+            }
+        } else if(type === "native"){
+            if(navigator.share){
+                navigator.share({ title:"مبخوت بن عبدالله | MBK", url }).catch(() => {});
+            } else {
+                showToast("المشاركة غير مدعومة في هذا المتصفح");
+            }
+        }
+        closeShareSheet();
+    });
+});
+
 document.addEventListener("keydown", event => {
     if(event.key === "Escape"){
         closeSideMenu();
         closeLightbox();
         if(qrModal) qrModal.classList.remove("active");
-        const shareSheetEl = document.getElementById("shareSheet");
-        if(shareSheetEl) shareSheetEl.classList.remove("active");
+        closeShareSheet();
         const cmdkOverlayEl = document.getElementById("cmdkOverlay");
         if(cmdkOverlayEl) cmdkOverlayEl.classList.remove("active");
+        const mbAiPanelEl = document.getElementById("mbAiPanel");
+        if(mbAiPanelEl) mbAiPanelEl.classList.remove("active");
         document.body.style.overflow = "";
     }
 });
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* Cinematic Intro — driven entirely by a timer, never by window.load
-   or image/font readiness, so it can never hang at 0%. A hard
-   fallback guarantees the intro clears even if something throws. */
-(function cinematicIntro(){
-    const loaderEl = document.getElementById("loader");
-    const line = document.getElementById("loaderLine");
-    const count = document.getElementById("loaderCount");
-    const skipBtn = document.getElementById("loaderSkip");
-
-    if(!loaderEl) return;
-
-    const DURATION = prefersReducedMotion ? 900 : 2600;
-    let finished = false;
-
-    function finish(){
-        if(finished) return;
-        finished = true;
-        loaderEl.classList.add("hidden");
-        document.body.style.overflow = "";
-        setTimeout(() => { if(loaderEl.parentNode) loaderEl.remove(); }, 700);
-    }
-
-    if(prefersReducedMotion){
-        finish();
-        return;
-    }
-
-    document.body.style.overflow = "hidden";
-
-    const start = performance.now();
-
-    function tick(now){
-        const progress = Math.min((now - start) / DURATION, 1);
-        const pct = Math.floor(progress * 100);
-        if(line) line.style.width = (progress * 220) + "px";
-        if(count) count.textContent = pct + "%";
-        if(progress < 1 && !finished){
-            requestAnimationFrame(tick);
-        } else {
-            if(count) count.textContent = "100%";
-            finish();
-        }
-    }
-
-    requestAnimationFrame(tick);
-
-    if(skipBtn){
-        setTimeout(() => { skipBtn.classList.add("visible"); }, 700);
-        skipBtn.addEventListener("click", finish);
-    }
-
-    /* Absolute safety net: the intro can never occupy the screen
-       longer than DURATION + 1.5s, no matter what happens above. */
-    setTimeout(finish, DURATION + 1500);
-})();
-
-/* ===== Theme engine — dark / light / midnight / obsidian, plus
-   an "auto" mode that follows the OS setting ===== */
+/* Theme engine — dark / light / midnight / obsidian, plus
+   an "auto" mode that follows the OS setting */
 const themeBtn = document.getElementById("themeBtn");
 const themeCycleBtn = document.getElementById("themeCycleBtn");
 const rootEl = document.documentElement;
@@ -3882,9 +3747,7 @@ systemDark.addEventListener("change", () => {
     if(currentThemeMode === "auto"){ applyTheme("auto"); }
 });
 
-/* Language toggle: swaps text between data-en attributes and the
-   original Arabic text (cached on first switch), and flips document
-   direction for readable English layout. */
+/* Language toggle */
 const langBtn = document.getElementById("langBtn");
 let currentLang = "ar";
 
@@ -3942,8 +3805,7 @@ if(dotSections.length){
     dotSections.forEach(section => dotObserver.observe(section));
 }
 
-/* Device / performance detection — used to scale particle counts,
-   disable heavy effects on low-end or data-saving devices */
+/* Device / performance detection */
 const perf = {
     lowEnd: (navigator.hardwareConcurrency || 4) <= 4,
     saveData: !!(navigator.connection && navigator.connection.saveData),
@@ -3967,9 +3829,7 @@ if(window.matchMedia("(hover: hover) and (pointer: fine)").matches && !prefersRe
     });
 }
 
-/* Card spotlight glow — tracks the cursor position inside any card
-   that has a .card-glow child (values, projects, achievements,
-   testimonials, blog) */
+/* Card spotlight glow */
 if(window.matchMedia("(hover: hover) and (pointer: fine)").matches){
     document.querySelectorAll(".value-card, .project-card, .achievement-card, .blog-card, .testimonial-card").forEach(card => {
         card.addEventListener("mousemove", event => {
@@ -3980,7 +3840,7 @@ if(window.matchMedia("(hover: hover) and (pointer: fine)").matches){
     });
 }
 
-/* Magnetic buttons — nudge toward the cursor slightly on hover */
+/* Magnetic buttons */
 if(window.matchMedia("(hover: hover) and (pointer: fine)").matches && !prefersReducedMotion){
     document.querySelectorAll(".magnetic").forEach(btn => {
         btn.addEventListener("mousemove", event => {
@@ -4119,8 +3979,7 @@ if(particleCanvas && !prefersReducedMotion){
 
 }
 
-/* Starfield — layered depth stars behind the whole page, paused
-   automatically when the tab is hidden to save battery/CPU */
+/* Starfield */
 const starfieldCanvas = document.getElementById("starfield");
 
 if(starfieldCanvas && !prefersReducedMotion){
@@ -4179,4 +4038,92 @@ if(starfieldCanvas && !prefersReducedMotion){
 
         shootingStars.forEach(star => {
             sctx.beginPath();
-            sctx.strokeStyle = `rgba(212,175,55,${star.life})
+            sctx.strokeStyle = `rgba(212,175,55,${star.life})`;
+            sctx.lineWidth = 1.4;
+            sctx.moveTo(star.x, star.y);
+            sctx.lineTo(star.x - star.len, star.y - star.len * .35);
+            sctx.stroke();
+            star.x += star.speed;
+            star.y += star.speed * .35;
+            star.life -= .012;
+        });
+
+        shootingStars = shootingStars.filter(star => star.life > 0 && star.x < sw + 100 && star.y < sh + 100);
+
+        requestAnimationFrame(drawStarfield);
+    }
+
+    sizeStarfield();
+    makeStars();
+    drawStarfield();
+
+    window.addEventListener("resize", () => { sizeStarfield(); makeStars(); });
+
+    document.addEventListener("visibilitychange", () => {
+        paused = document.hidden;
+        if(!paused){ requestAnimationFrame(drawStarfield); }
+    });
+
+}
+
+/* Custom cursor (desktop only) */
+const cursorDot = document.getElementById("cursorDot");
+const cursorOutline = document.getElementById("cursorOutline");
+
+if(cursorDot && cursorOutline && window.matchMedia("(hover: hover) and (pointer: fine)").matches){
+    document.body.classList.add("custom-cursor-active");
+
+    let outlineX = window.innerWidth / 2, outlineY = window.innerHeight / 2;
+    let targetX = outlineX, targetY = outlineY;
+
+    document.addEventListener("mousemove", event => {
+        targetX = event.clientX;
+        targetY = event.clientY;
+        cursorDot.style.left = targetX + "px";
+        cursorDot.style.top = targetY + "px";
+    });
+
+    function animateOutline(){
+        outlineX += (targetX - outlineX) * .18;
+        outlineY += (targetY - outlineY) * .18;
+        cursorOutline.style.left = outlineX + "px";
+        cursorOutline.style.top = outlineY + "px";
+        requestAnimationFrame(animateOutline);
+    }
+    animateOutline();
+
+    document.querySelectorAll("a, button, .gallery-item, .project-card, .value-card, .achievement-card").forEach(el => {
+        el.addEventListener("mouseenter", () => cursorOutline.classList.add("hover"));
+        el.addEventListener("mouseleave", () => cursorOutline.classList.remove("hover"));
+    });
+}
+
+/* Spotlight + reactive grid layer */
+const spotlightEl = document.getElementById("spotlight");
+const gridLayerEl = document.getElementById("gridLayer");
+
+if((spotlightEl || gridLayerEl) && window.matchMedia("(hover: hover) and (pointer: fine)").matches){
+    document.addEventListener("mousemove", event => {
+        const xPct = (event.clientX / window.innerWidth) * 100 + "%";
+        const yPct = (event.clientY / window.innerHeight) * 100 + "%";
+        if(spotlightEl){
+            spotlightEl.style.setProperty("--x", xPct);
+            spotlightEl.style.setProperty("--y", yPct);
+        }
+        if(gridLayerEl){
+            gridLayerEl.style.setProperty("--x", xPct);
+            gridLayerEl.style.setProperty("--y", yPct);
+        }
+    });
+}
+
+/* MB Universe — orbiting words around the hero photo */
+const mbUniverse = document.getElementById("mbUniverse");
+if(mbUniverse){
+    const words = ["AMBITION","DETAIL","VISION","AUTHENTIC","GROWTH","MBK"];
+    words.forEach((word, i) => {
+        const el = document.createElement("span");
+        el.className = "orbit-word";
+        el.textContent = word;
+        const radius = 165 + (i % 3) * 35;
+     
