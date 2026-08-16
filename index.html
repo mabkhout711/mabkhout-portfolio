@@ -3665,9 +3665,13 @@ body.a11y-no-blur .side-menu{
 <button class="top-btn" id="topBtn" aria-label="العودة للأعلى" title="العودة للأعلى">↑</button>
 
 <script>
+(function(){
+"use strict";
+
+try{
 
 const menuBtn = document.getElementById("menuBtn");
-const closeMenu = document.getElementById("closeMenu");
+const closeMenuBtn = document.getElementById("closeMenu");
 const sideMenu = document.getElementById("sideMenu");
 const overlay = document.getElementById("overlay");
 
@@ -3683,9 +3687,9 @@ function closeSideMenu(){
     document.body.style.overflow="";
 }
 
-menuBtn.addEventListener("click", openMenu);
-closeMenu.addEventListener("click", closeSideMenu);
-overlay.addEventListener("click", closeSideMenu);
+if(menuBtn) menuBtn.addEventListener("click", openMenu);
+if(closeMenuBtn) closeMenuBtn.addEventListener("click", closeSideMenu);
+if(overlay) overlay.addEventListener("click", closeSideMenu);
 
 document.querySelectorAll(".side-menu a").forEach(link => {
     link.addEventListener("click", closeSideMenu);
@@ -3724,38 +3728,50 @@ function closeLightbox(){
     document.body.style.overflow="";
 }
 
-lightboxClose.addEventListener("click", closeLightbox);
+if(lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
 
-lightbox.addEventListener("click", event => {
-    if(event.target === lightbox){ closeLightbox(); }
-});
+if(lightbox){
+    lightbox.addEventListener("click", event => {
+        if(event.target === lightbox){ closeLightbox(); }
+    });
+}
 
 const qrButton = document.getElementById("qrButton");
 const qrModal = document.getElementById("qrModal");
 const qrClose = document.getElementById("qrClose");
 
-qrButton.addEventListener("click", () => {
-    qrModal.classList.add("active");
-    document.body.style.overflow = "hidden";
-});
+if(qrButton){
+    qrButton.addEventListener("click", () => {
+        qrModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+}
 
-qrClose.addEventListener("click", () => {
-    qrModal.classList.remove("active");
-    document.body.style.overflow = "";
-});
-
-qrModal.addEventListener("click", event => {
-    if(event.target === qrModal){
+if(qrClose){
+    qrClose.addEventListener("click", () => {
         qrModal.classList.remove("active");
         document.body.style.overflow = "";
-    }
-});
+    });
+}
+
+if(qrModal){
+    qrModal.addEventListener("click", event => {
+        if(event.target === qrModal){
+            qrModal.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+    });
+}
 
 document.addEventListener("keydown", event => {
     if(event.key === "Escape"){
         closeSideMenu();
         closeLightbox();
-        qrModal.classList.remove("active");
+        if(qrModal) qrModal.classList.remove("active");
+        const shareSheetEl = document.getElementById("shareSheet");
+        if(shareSheetEl) shareSheetEl.classList.remove("active");
+        const cmdkOverlayEl = document.getElementById("cmdkOverlay");
+        if(cmdkOverlayEl) cmdkOverlayEl.classList.remove("active");
         document.body.style.overflow = "";
     }
 });
@@ -3766,22 +3782,22 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
    or image/font readiness, so it can never hang at 0%. A hard
    fallback guarantees the intro clears even if something throws. */
 (function cinematicIntro(){
-    const loader = document.getElementById("loader");
+    const loaderEl = document.getElementById("loader");
     const line = document.getElementById("loaderLine");
     const count = document.getElementById("loaderCount");
     const skipBtn = document.getElementById("loaderSkip");
 
-    if(!loader) return;
+    if(!loaderEl) return;
 
-    const DURATION = prefersReducedMotion ? 900 : 5000;
+    const DURATION = prefersReducedMotion ? 900 : 2600;
     let finished = false;
 
     function finish(){
         if(finished) return;
         finished = true;
-        loader.classList.add("hidden");
+        loaderEl.classList.add("hidden");
         document.body.style.overflow = "";
-        setTimeout(() => { loader.remove(); }, 700);
+        setTimeout(() => { if(loaderEl.parentNode) loaderEl.remove(); }, 700);
     }
 
     if(prefersReducedMotion){
@@ -3809,7 +3825,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
     requestAnimationFrame(tick);
 
     if(skipBtn){
-        setTimeout(() => { skipBtn.classList.add("visible"); }, 900);
+        setTimeout(() => { skipBtn.classList.add("visible"); }, 700);
         skipBtn.addEventListener("click", finish);
     }
 
@@ -3839,8 +3855,10 @@ function applyTheme(mode){
     } else {
         rootEl.setAttribute("data-theme", mode);
     }
-    themeBtn.textContent = themeIcons[mode];
-    themeBtn.title = mode === "auto" ? "تلقائي (حسب الجهاز)" : "تبديل المظهر";
+    if(themeBtn){
+        themeBtn.textContent = themeIcons[mode];
+        themeBtn.title = mode === "auto" ? "تلقائي (حسب الجهاز)" : "تبديل المظهر";
+    }
     try{ localStorage.setItem("mbk-theme", mode); }catch(e){}
 }
 
@@ -3857,7 +3875,7 @@ function cycleTheme(){
     applyTheme(currentThemeMode);
 }
 
-themeBtn.addEventListener("click", cycleTheme);
+if(themeBtn) themeBtn.addEventListener("click", cycleTheme);
 if(themeCycleBtn){ themeCycleBtn.addEventListener("click", cycleTheme); }
 
 systemDark.addEventListener("change", () => {
@@ -3884,17 +3902,24 @@ function setLanguage(lang){
 
     document.documentElement.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
     document.documentElement.setAttribute("lang", lang);
-    langBtn.textContent = lang === "en" ? "AR" : "EN";
+    if(langBtn) langBtn.textContent = lang === "en" ? "AR" : "EN";
     currentLang = lang;
 }
 
-langBtn.addEventListener("click", () => {
-    setLanguage(currentLang === "ar" ? "en" : "ar");
-});
+if(langBtn){
+    langBtn.addEventListener("click", () => {
+        setLanguage(currentLang === "ar" ? "en" : "ar");
+    });
+}
 
-/* Active-section tracking for the side dot navigation */
+/* Active-section tracking for the side dot navigation, and the
+   visitor journey indicator ("03 / 11") in the header area */
 const dotLinks = document.querySelectorAll(".dot-link");
+const sectionIds = ["home","about","skills","values","projects","achievements","gallery","testimonials","journey","blog","contact"];
 const dotSections = Array.from(dotLinks).map(link => document.getElementById(link.dataset.section)).filter(Boolean);
+const journeyIndicator = document.getElementById("journeyIndicator");
+
+function pad2(n){ return n < 10 ? "0" + n : "" + n; }
 
 if(dotSections.length){
     const dotObserver = new IntersectionObserver(entries => {
@@ -3904,6 +3929,12 @@ if(dotSections.length){
                 dotLinks.forEach(link => {
                     link.classList.toggle("active", link.dataset.section === id);
                 });
+                if(journeyIndicator){
+                    const idx = sectionIds.indexOf(id);
+                    if(idx > -1){
+                        journeyIndicator.textContent = pad2(idx + 1) + " / " + pad2(sectionIds.length);
+                    }
+                }
             }
         });
     }, { threshold: .4, rootMargin: "-10% 0px -10% 0px" });
@@ -3949,18 +3980,33 @@ if(window.matchMedia("(hover: hover) and (pointer: fine)").matches){
     });
 }
 
+/* Magnetic buttons — nudge toward the cursor slightly on hover */
+if(window.matchMedia("(hover: hover) and (pointer: fine)").matches && !prefersReducedMotion){
+    document.querySelectorAll(".magnetic").forEach(btn => {
+        btn.addEventListener("mousemove", event => {
+            const rect = btn.getBoundingClientRect();
+            const relX = (event.clientX - rect.left) / rect.width - 0.5;
+            const relY = (event.clientY - rect.top) / rect.height - 0.5;
+            btn.style.transform = `translate(${relX * 8}px, ${relY * 8}px)`;
+        });
+        btn.addEventListener("mouseleave", () => { btn.style.transform = ""; });
+    });
+}
+
 const topBtn = document.getElementById("topBtn");
 const scrollProgress = document.getElementById("scrollProgress");
 const scrollPct = document.getElementById("scrollPct");
 
 window.addEventListener("scroll", () => {
-    if(window.scrollY > 480){ topBtn.classList.add("visible"); }
-    else{ topBtn.classList.remove("visible"); }
+    if(topBtn){
+        if(window.scrollY > 480){ topBtn.classList.add("visible"); }
+        else{ topBtn.classList.remove("visible"); }
+    }
 
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const ratio = docHeight > 0 ? scrollTop / docHeight : 0;
-    scrollProgress.style.transform = `scaleX(${ratio})`;
+    if(scrollProgress) scrollProgress.style.transform = `scaleX(${ratio})`;
 
     if(scrollPct){
         scrollPct.textContent = Math.round(ratio * 100) + "%";
@@ -3968,9 +4014,11 @@ window.addEventListener("scroll", () => {
     }
 }, { passive: true });
 
-topBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
-});
+if(topBtn){
+    topBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
+    });
+}
 
 const photoFrame = document.getElementById("photoFrame");
 
@@ -4131,67 +4179,4 @@ if(starfieldCanvas && !prefersReducedMotion){
 
         shootingStars.forEach(star => {
             sctx.beginPath();
-            sctx.strokeStyle = `rgba(212,175,55,${star.life})`;
-            sctx.lineWidth = 1.4;
-            sctx.moveTo(star.x, star.y);
-            sctx.lineTo(star.x - star.len, star.y - star.len * .5);
-            sctx.stroke();
-            star.x += star.speed;
-            star.y += star.speed * .5;
-            star.life -= .012;
-        });
-        shootingStars = shootingStars.filter(s => s.life > 0);
-
-        requestAnimationFrame(drawStarfield);
-    }
-
-    document.addEventListener("visibilitychange", () => {
-        paused = document.hidden;
-        if(!paused){ requestAnimationFrame(drawStarfield); }
-    });
-
-    sizeStarfield();
-    makeStars();
-    drawStarfield();
-
-    window.addEventListener("resize", () => { sizeStarfield(); makeStars(); });
-}
-
-/* Grid layer follows cursor via the same --x/--y custom properties
-   used by the spotlight, so both react together */
-const gridLayer = document.getElementById("gridLayer");
-
-if("serviceWorker" in navigator){
-    window.addEventListener("load", () => {
-        navigator.serviceWorker.register("sw.js").catch(() => {});
-    });
-}
-
-const hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-const spotlight = document.getElementById("spotlight");
-
-if(hasFinePointer && !prefersReducedMotion){
-    window.addEventListener("mousemove", event => {
-        spotlight.style.setProperty("--x", event.clientX + "px");
-        spotlight.style.setProperty("--y", event.clientY + "px");
-        if(gridLayer){
-            gridLayer.style.setProperty("--x", event.clientX + "px");
-            gridLayer.style.setProperty("--y", event.clientY + "px");
-        }
-    });
-}
-
-const cursorDot = document.getElementById("cursorDot");
-const cursorOutline = document.getElementById("cursorOutline");
-
-if(hasFinePointer){
-
-    document.body.classList.add("custom-cursor-active");
-
-    let outlineX = window.innerWidth / 2;
-    let outlineY = window.innerHeight / 2;
-    let targetX = outlineX;
-    let targetY = outlineY;
-
-    window.a
+            sctx.strokeStyle = `rgba(212,175,55,${star.life})
