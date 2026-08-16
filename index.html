@@ -5,25 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>مبخوت بن عبدالله | MBK</title>
+
 <meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله">
 <meta name="theme-color" content="#061426">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+rel="stylesheet"
+>
 
 <style>
 
 :root{
-    --navy:#061426;
-    --navy-dark:#020914;
+    --navy:#020914;
+    --navy2:#061426;
+
     --gold:#d4af37;
-    --gold-light:#f1d56a;
+    --gold2:#f4dc7b;
+
     --white:#f8f7f2;
-    --text:#d8dce2;
-    --muted:#8995a3;
-    --border:rgba(212,175,55,.20);
-    --border-strong:rgba(212,175,55,.42);
+    --text:#d9dde3;
+    --muted:#8e99a7;
+
+    --line:rgba(212,175,55,.20);
+    --glass:rgba(255,255,255,.045);
 }
 
 *{
@@ -39,52 +47,53 @@ html{
 body{
     min-height:100vh;
     overflow-x:hidden;
-    font-family:"Cairo","Noto Kufi Arabic",sans-serif;
-    color:var(--white);
 
     background:
-        radial-gradient(circle at 50% 0%,rgba(212,175,55,.08),transparent 27%),
-        radial-gradient(circle at 0% 50%,rgba(16,50,82,.32),transparent 35%),
-        linear-gradient(145deg,#020914 0%,#061426 48%,#030b16 100%);
+        linear-gradient(
+            145deg,
+            #020914,
+            #061426 50%,
+            #020914
+        );
+
+    color:var(--white);
+
+    font-family:"Cairo",sans-serif;
 }
 
 body::before{
     content:"";
+
     position:fixed;
     inset:0;
+
+    z-index:-5;
+
     pointer-events:none;
-    z-index:-10;
-    opacity:.055;
+
+    opacity:.045;
 
     background-image:
-        linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+        linear-gradient(
+            rgba(255,255,255,.08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.08) 1px,
+            transparent 1px
+        );
 
-    background-size:75px 75px;
-}
-
-body::after{
-    content:"";
-    position:fixed;
-    width:450px;
-    height:450px;
-    top:12%;
-    left:50%;
-    transform:translateX(-50%);
-    border-radius:50%;
-    background:rgba(212,175,55,.035);
-    filter:blur(120px);
-    pointer-events:none;
-    z-index:-9;
+    background-size:80px 80px;
 }
 
 a{
     color:inherit;
-    -webkit-tap-highlight-color:transparent;
+    text-decoration:none;
 }
 
 button{
-    font-family:inherit;
+    font:inherit;
 }
 
 
@@ -94,11 +103,12 @@ button{
 
 header{
     position:fixed;
-    top:0;
-    right:0;
-    left:0;
+
+    inset:0 0 auto;
+
     height:76px;
-    padding:0 6%;
+
+    padding:0 5%;
 
     display:flex;
     align-items:center;
@@ -106,45 +116,61 @@ header{
 
     z-index:1000;
 
-    background:rgba(2,9,20,.76);
-    border-bottom:1px solid rgba(212,175,55,.12);
+    background:rgba(2,9,20,.62);
 
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+    border-bottom:
+        1px solid
+        rgba(212,175,55,.12);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
 }
 
 .logo{
     direction:ltr;
-    font-family:Arial,sans-serif;
-    font-size:23px;
-    font-weight:700;
+
+    font:
+        700 23px Arial,sans-serif;
+
     letter-spacing:7px;
-    color:var(--gold-light);
-    text-decoration:none;
+
+    color:var(--gold2);
+}
+
+.menu-btn,
+.close-menu,
+.lightbox-close,
+.qr-close{
+
+    border:
+        1px solid
+        rgba(212,175,55,.42);
+
+    background:
+        rgba(255,255,255,.025);
+
+    color:var(--gold2);
+
+    cursor:pointer;
 }
 
 .menu-btn{
     width:47px;
     height:47px;
-    border-radius:50%;
-    border:1px solid var(--border-strong);
-    background:rgba(255,255,255,.025);
-    color:var(--gold-light);
-    cursor:pointer;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    border-radius:50%;
 
     font-size:21px;
+
     transition:.3s ease;
 }
 
 .menu-btn:hover{
-    transform:scale(1.05);
-    border-color:var(--gold-light);
-    background:rgba(212,175,55,.08);
-    box-shadow:0 0 30px rgba(212,175,55,.12);
+    box-shadow:
+        0 0 30px
+        rgba(212,175,55,.14);
+
+    transform:scale(1.04);
 }
 
 
@@ -154,14 +180,20 @@ header{
 
 .overlay{
     position:fixed;
+
     inset:0;
-    background:rgba(0,0,0,.58);
-    backdrop-filter:blur(5px);
+
     z-index:1100;
+
+    background:
+        rgba(0,0,0,.66);
+
+    backdrop-filter:blur(7px);
 
     opacity:0;
     visibility:hidden;
-    transition:.35s ease;
+
+    transition:.35s;
 }
 
 .overlay.active{
@@ -171,25 +203,38 @@ header{
 
 .side-menu{
     position:fixed;
+
     top:0;
     right:0;
-    width:min(370px,88vw);
-    height:100vh;
 
-    padding:105px 35px 35px;
+    width:min(370px,90vw);
+    height:100vh;
 
     z-index:1200;
 
-    background:
-        linear-gradient(150deg,rgba(8,26,47,.99),rgba(2,9,20,.99));
+    padding:105px 35px 35px;
 
-    border-left:1px solid var(--border);
+    background:
+        linear-gradient(
+            150deg,
+            #081a2f,
+            #020914
+        );
+
+    border-left:
+        1px solid
+        var(--line);
 
     transform:translateX(105%);
 
-    transition:transform .45s cubic-bezier(.77,0,.18,1);
+    transition:
+        transform
+        .45s
+        cubic-bezier(.77,0,.18,1);
 
-    box-shadow:-30px 0 90px rgba(0,0,0,.45);
+    box-shadow:
+        -30px 0 90px
+        rgba(0,0,0,.5);
 }
 
 .side-menu.active{
@@ -198,6 +243,7 @@ header{
 
 .close-menu{
     position:absolute;
+
     top:24px;
     left:24px;
 
@@ -205,39 +251,41 @@ header{
     height:42px;
 
     border-radius:50%;
-    border:1px solid var(--border-strong);
-    background:transparent;
 
-    color:var(--gold-light);
-    cursor:pointer;
     font-size:22px;
 }
 
 .menu-label{
     color:var(--gold);
-    font-size:11px;
+
+    font:
+        500 11px
+        "Inter",sans-serif;
+
     letter-spacing:4px;
+
     margin-bottom:28px;
 
     direction:ltr;
-    text-align:right;
 }
 
 .side-menu a{
     display:block;
+
     padding:17px 0;
 
-    border-bottom:1px solid rgba(255,255,255,.055);
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.055);
 
-    text-decoration:none;
     font-size:17px;
-    color:var(--white);
 
-    transition:.3s ease;
+    transition:.3s;
 }
 
 .side-menu a:hover{
-    color:var(--gold-light);
+    color:var(--gold2);
+
     padding-right:10px;
 }
 
@@ -247,7 +295,8 @@ header{
 ========================= */
 
 main{
-    width:min(1120px,92%);
+    width:min(1180px,92%);
+
     margin:auto;
 }
 
@@ -257,87 +306,124 @@ main{
 ========================= */
 
 .hero{
-    min-height:100vh;
+    min-height:100svh;
 
-    padding:115px 0 55px;
+    position:relative;
+
+    isolation:isolate;
 
     display:flex;
-    flex-direction:column;
+
     align-items:center;
     justify-content:center;
 
     text-align:center;
 
-    position:relative;
+    overflow:hidden;
+
+    border-radius:
+        0 0 42px 42px;
 }
 
-.hero-corner{
+.hero-media{
     position:absolute;
-    width:72px;
-    height:72px;
-    border-color:rgba(212,175,55,.68);
-    pointer-events:none;
+
+    inset:0;
+
+    z-index:-3;
+
+    background:
+        url("./Hero.png")
+        center/cover
+        no-repeat;
+
+    transform:scale(1.015);
 }
 
-.hero-corner.top{
-    top:108px;
-    right:0;
-    border-top:1px solid;
-    border-right:1px solid;
+.hero-media::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(2,9,20,.35),
+            rgba(2,9,20,.54) 42%,
+            rgba(2,9,20,.96) 100%
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(2,9,20,.42),
+            transparent 50%,
+            rgba(2,9,20,.35)
+        );
 }
 
-.hero-corner.bottom{
-    bottom:35px;
-    left:0;
-    border-bottom:1px solid;
-    border-left:1px solid;
+.hero-content{
+    width:min(900px,92%);
+
+    padding:
+        110px
+        0
+        70px;
 }
 
+.eyebrow{
+    font:
+        600 11px
+        "Inter",sans-serif;
 
-/* =========================
-   NAME
-========================= */
+    letter-spacing:5px;
+
+    color:var(--gold2);
+
+    direction:ltr;
+
+    margin-bottom:18px;
+}
 
 .hero-name{
-    width:100%;
-    max-width:850px;
+    font-size:
+        clamp(
+            42px,
+            7vw,
+            78px
+        );
 
-    padding:0 20px;
-    margin:0 auto 14px;
+    line-height:1.35;
 
-    font-size:clamp(34px,5.5vw,58px);
     font-weight:800;
-    line-height:1.5;
-
-    text-align:center;
-    white-space:normal;
-
-    letter-spacing:-1px;
 
     background:
         linear-gradient(
             135deg,
-            #b88918 0%,
-            #f7df78 25%,
-            #d4af37 50%,
-            #fff0a3 75%,
-            #b88918 100%
+            #b88918,
+            #f8e486,
+            #d4af37,
+            #fff1a4,
+            #b88918
         );
 
     -webkit-background-clip:text;
     background-clip:text;
+
     -webkit-text-fill-color:transparent;
 
-    text-shadow:0 0 18px rgba(212,175,55,.12);
-
-    animation:heroIn .9s ease both;
+    text-shadow:
+        0 0 30px
+        rgba(212,175,55,.14);
 }
 
-.gold-line{
-    width:100px;
+.hero-line{
+    width:110px;
     height:2px;
 
-    margin:0 auto 25px;
+    margin:24px auto;
 
     background:
         linear-gradient(
@@ -349,79 +435,59 @@ main{
             transparent
         );
 
-    box-shadow:0 0 16px rgba(212,175,55,.28);
+    box-shadow:
+        0 0 20px
+        rgba(212,175,55,.25);
 }
 
+.hero-quote{
+    font-size:
+        clamp(
+            20px,
+            3vw,
+            29px
+        );
 
-/* =========================
-   PROFILE IMAGE
-========================= */
+    color:#fff;
 
-.photo-frame{
-    width:min(470px,88vw);
-    aspect-ratio:1/1;
-
-    padding:10px;
-
-    position:relative;
-    margin-bottom:22px;
-}
-
-.photo-frame::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    border:1px solid rgba(212,175,55,.82);
-    border-radius:31px;
-
-    transform:rotate(-1deg);
-}
-
-.photo-frame::after{
-    content:"";
-    position:absolute;
-    inset:7px;
-
-    border:1px solid rgba(212,175,55,.22);
-    border-radius:27px;
-
-    transform:rotate(1deg);
-}
-
-.profile-photo{
-    position:relative;
-    z-index:2;
-
-    width:100%;
-    height:100%;
-
-    display:block;
-
-    object-fit:contain;
-    object-position:center;
-
-    border-radius:24px;
-    border:5px solid #07172a;
-
-    background:#07172a;
-
-    box-shadow:0 30px 80px rgba(0,0,0,.50);
-
-    transition:
-        transform .6s ease,
-        box-shadow .6s ease;
-}
-
-.photo-frame:hover .profile-photo{
-    transform:scale(1.012);
-    box-shadow:0 35px 95px rgba(0,0,0,.58);
-}
-
-.quote{
-    color:var(--white);
-    font-size:clamp(20px,4vw,28px);
     font-weight:500;
+}
+
+.hero-mbk{
+    margin-top:28px;
+
+    direction:ltr;
+
+    font:
+        700 12px
+        "Inter",sans-serif;
+
+    letter-spacing:7px;
+
+    color:
+        rgba(244,220,123,.9);
+}
+
+.scroll-mark{
+    position:absolute;
+
+    bottom:26px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    font:
+        500 9px
+        "Inter",sans-serif;
+
+    letter-spacing:4px;
+
+    color:
+        rgba(255,255,255,.6);
+
+    direction:ltr;
 }
 
 
@@ -430,30 +496,42 @@ main{
 ========================= */
 
 .section{
-    padding:65px 0;
+    padding:90px 0;
+
     position:relative;
 }
 
 .section-header{
     text-align:center;
-    margin-bottom:32px;
+
+    margin-bottom:38px;
 }
 
 .section-label{
     display:block;
+
     color:var(--gold);
-    font-size:11px;
+
+    font:
+        600 11px
+        "Inter",sans-serif;
+
     letter-spacing:4px;
 
     direction:ltr;
 
-    margin-bottom:7px;
+    margin-bottom:8px;
 }
 
 .section-title{
-    font-size:clamp(30px,5vw,46px);
+    font-size:
+        clamp(
+            31px,
+            5vw,
+            48px
+        );
+
     font-weight:800;
-    line-height:1.4;
 }
 
 .section-title::after{
@@ -461,10 +539,11 @@ main{
 
     display:block;
 
-    width:68px;
+    width:70px;
     height:2px;
 
-    margin:11px auto 0;
+    margin:
+        12px auto 0;
 
     background:
         linear-gradient(
@@ -477,39 +556,111 @@ main{
 
 
 /* =========================
-   ABOUT
+   IMAGE CARDS
 ========================= */
 
-.about-card{
-    max-width:900px;
-    margin:auto;
+.image-card{
+    position:relative;
 
-    padding:35px 40px;
+    overflow:hidden;
 
-    border:1px solid var(--border);
-    border-radius:30px;
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:32px;
+
+    background:#07172a;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.25);
+}
+
+.image-card img{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:
+        transform
+        .8s
+        cubic-bezier(.2,.7,.2,1);
+}
+
+.image-card:hover img{
+    transform:scale(1.035);
+}
+
+.image-card::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
 
     background:
         linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.012)
+            180deg,
+            transparent 48%,
+            rgba(2,9,20,.62)
         );
-
-    box-shadow:0 30px 80px rgba(0,0,0,.18);
-
-    text-align:center;
 }
 
-.about-card p{
-    color:var(--text);
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-layout{
+    display:grid;
+
+    grid-template-columns:
+        1.05fr
+        .95fr;
+
+    gap:22px;
+
+    align-items:stretch;
+}
+
+.about-image{
+    min-height:520px;
+}
+
+.about-copy{
+    padding:42px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:32px;
+
+    background:var(--glass);
+
+    display:flex;
+
+    align-items:center;
+
+    text-align:right;
+}
+
+.about-copy p{
     font-size:18px;
-    line-height:2.05;
+
+    line-height:2.1;
+
+    color:var(--text);
 }
 
-.about-card strong{
-    color:var(--gold-light);
-    font-weight:700;
+.about-copy strong{
+    color:var(--gold2);
 }
 
 
@@ -519,63 +670,83 @@ main{
 
 .values{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:18px;
 }
 
 .value-card{
-    padding:30px 25px;
+    overflow:hidden;
 
-    text-align:center;
+    border:
+        1px solid
+        var(--line);
 
-    border:1px solid rgba(212,175,55,.15);
-    border-radius:25px;
+    border-radius:28px;
 
-    background:rgba(255,255,255,.022);
+    background:var(--glass);
 
-    transition:
-        transform .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease;
+    min-height:350px;
+
+    position:relative;
 }
 
-.value-card:hover{
-    transform:translateY(-8px);
+.value-card img{
+    width:100%;
+    height:100%;
 
-    border-color:rgba(212,175,55,.42);
+    min-height:350px;
 
-    box-shadow:
-        0 22px 55px rgba(212,175,55,.07);
+    object-fit:cover;
+
+    display:block;
+
+    opacity:.78;
+
+    transition:.7s;
 }
 
-.value-icon{
-    width:55px;
-    height:55px;
+.value-card:hover img{
+    transform:scale(1.05);
 
-    margin:0 auto 14px;
+    opacity:.95;
+}
+
+.value-overlay{
+    position:absolute;
+
+    inset:0;
+
+    padding:28px;
 
     display:flex;
-    align-items:center;
-    justify-content:center;
 
-    border-radius:50%;
+    flex-direction:column;
 
-    border:1px solid rgba(212,175,55,.35);
+    justify-content:flex-end;
 
-    color:var(--gold-light);
-
-    font-size:22px;
+    background:
+        linear-gradient(
+            180deg,
+            transparent 28%,
+            rgba(2,9,20,.9)
+        );
 }
 
-.value-card h3{
-    font-size:20px;
+.value-overlay h3{
+    font-size:22px;
+
     margin-bottom:7px;
 }
 
-.value-card p{
-    color:var(--muted);
+.value-overlay p{
     font-size:14px;
+
     line-height:1.85;
+
+    color:#c6ccd4;
 }
 
 
@@ -585,17 +756,23 @@ main{
 
 .gallery{
     display:grid;
-    grid-template-columns:repeat(12,1fr);
-    gap:15px;
+
+    grid-template-columns:
+        repeat(12,1fr);
+
+    gap:16px;
 }
 
 .gallery-item{
     position:relative;
+
     overflow:hidden;
 
-    border-radius:25px;
+    border-radius:28px;
 
-    border:1px solid rgba(212,175,55,.17);
+    border:
+        1px solid
+        var(--line);
 
     background:#07172a;
 
@@ -604,41 +781,25 @@ main{
 
 .gallery-item:nth-child(1){
     grid-column:span 7;
+
     aspect-ratio:16/10;
 }
 
 .gallery-item:nth-child(2){
     grid-column:span 5;
-    aspect-ratio:1/1;
+
+    aspect-ratio:1;
 }
 
 .gallery-item:nth-child(3){
     grid-column:span 5;
-    aspect-ratio:1/1;
+
+    aspect-ratio:1;
 }
 
 .gallery-item:nth-child(4){
     grid-column:span 7;
-    aspect-ratio:16/10;
-}
 
-.gallery-item:nth-child(5){
-    grid-column:span 7;
-    aspect-ratio:16/10;
-}
-
-.gallery-item:nth-child(6){
-    grid-column:span 5;
-    aspect-ratio:1/1;
-}
-
-.gallery-item:nth-child(7){
-    grid-column:span 5;
-    aspect-ratio:1/1;
-}
-
-.gallery-item:nth-child(8){
-    grid-column:span 7;
     aspect-ratio:16/10;
 }
 
@@ -646,31 +807,32 @@ main{
     width:100%;
     height:100%;
 
-    display:block;
-
     object-fit:cover;
 
-    transition:transform .7s ease;
+    display:block;
+
+    transition:.8s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.06);
 }
 
 .gallery-item::after{
     content:"";
 
     position:absolute;
+
     inset:0;
 
     background:
         linear-gradient(
             to top,
-            rgba(0,0,0,.78),
-            transparent 52%
+            rgba(0,0,0,.82),
+            transparent 58%
         );
 
     pointer-events:none;
-}
-
-.gallery-item:hover img{
-    transform:scale(1.07);
 }
 
 .gallery-info{
@@ -686,96 +848,90 @@ main{
 .gallery-info small{
     display:block;
 
-    color:var(--gold-light);
+    color:var(--gold2);
 
-    font-size:11px;
+    font:
+        600 10px
+        "Inter",sans-serif;
+
     letter-spacing:2px;
 
     direction:ltr;
 
-    margin-bottom:3px;
+    margin-bottom:4px;
 }
 
 .gallery-info h3{
-    font-size:18px;
-    font-weight:600;
+    font-size:19px;
 }
 
 
 /* =========================
-   LIGHTBOX
+   VISION / FUTURE
 ========================= */
 
-.lightbox{
-    position:fixed;
-    inset:0;
+.feature-layout{
+    display:grid;
 
-    z-index:2000;
+    grid-template-columns:
+        1.25fr
+        .75fr;
 
-    padding:25px;
+    gap:20px;
+}
+
+.feature-image{
+    min-height:520px;
+}
+
+.feature-copy{
+    padding:38px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:32px;
+
+    background:var(--glass);
 
     display:flex;
-    align-items:center;
+
+    flex-direction:column;
+
     justify-content:center;
-
-    background:rgba(0,0,0,.88);
-
-    backdrop-filter:blur(10px);
-
-    opacity:0;
-    visibility:hidden;
-
-    transition:.3s ease;
 }
 
-.lightbox.active{
-    opacity:1;
-    visibility:visible;
+.feature-copy .section-label{
+    text-align:right;
 }
 
-.lightbox img{
-    max-width:92vw;
-    max-height:86vh;
+.feature-copy h3{
+    font-size:32px;
 
-    object-fit:contain;
-
-    border-radius:15px;
-
-    border:1px solid rgba(212,175,55,.28);
-
-    box-shadow:0 30px 100px rgba(0,0,0,.65);
+    margin:
+        10px 0
+        14px;
 }
 
-.lightbox-close{
-    position:absolute;
+.feature-copy p{
+    color:var(--muted);
 
-    top:22px;
-    left:25px;
+    line-height:2;
 
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(212,175,55,.4);
-
-    background:rgba(0,0,0,.25);
-
-    color:var(--gold-light);
-
-    font-size:23px;
-
-    cursor:pointer;
+    font-size:16px;
 }
 
 
 /* =========================
-   JOURNEY
+   TIMELINE
 ========================= */
 
 .timeline{
-    max-width:850px;
+    max-width:900px;
+
     margin:auto;
+
     position:relative;
 }
 
@@ -804,16 +960,18 @@ main{
 
     width:50%;
 
-    padding:0 36px 45px;
-}
-
-.timeline-item:nth-child(odd){
-    text-align:left;
+    padding:
+        0 36px 50px;
 }
 
 .timeline-item:nth-child(even){
     margin-right:50%;
+
     text-align:right;
+}
+
+.timeline-item:nth-child(odd){
+    text-align:left;
 }
 
 .timeline-dot{
@@ -821,29 +979,33 @@ main{
 
     top:4px;
 
-    width:13px;
-    height:13px;
+    width:12px;
+    height:12px;
 
     border-radius:50%;
 
-    background:var(--gold-light);
+    background:var(--gold2);
 
     box-shadow:
-        0 0 18px rgba(212,175,55,.58);
+        0 0 18px
+        rgba(212,175,55,.6);
 }
 
-.timeline-item:nth-child(odd) .timeline-dot{
+.timeline-item:nth-child(odd)
+.timeline-dot{
     right:-6px;
 }
 
-.timeline-item:nth-child(even) .timeline-dot{
+.timeline-item:nth-child(even)
+.timeline-dot{
     left:-6px;
 }
 
 .timeline-year{
-    color:var(--gold-light);
+    color:var(--gold2);
 
     font-size:28px;
+
     font-weight:800;
 
     line-height:1;
@@ -853,13 +1015,17 @@ main{
 
 .timeline-title{
     font-size:18px;
+
     font-weight:600;
+
     margin-bottom:6px;
 }
 
 .timeline-text{
     color:var(--muted);
+
     font-size:14px;
+
     line-height:1.85;
 }
 
@@ -869,23 +1035,88 @@ main{
 ========================= */
 
 .contact-card{
-    max-width:700px;
-    margin:auto;
+    position:relative;
 
-    padding:35px;
+    overflow:hidden;
+
+    min-height:460px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
 
     text-align:center;
 
-    border:1px solid var(--border);
-    border-radius:30px;
+    border:
+        1px solid
+        var(--line);
 
-    background:rgba(255,255,255,.022);
+    border-radius:34px;
+
+    background:#07172a;
+}
+
+.contact-card img{
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:.48;
+}
+
+.contact-card::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2,9,20,.48),
+            rgba(2,9,20,.92)
+        );
+}
+
+.contact-content{
+    position:relative;
+
+    z-index:2;
+
+    width:min(700px,90%);
+
+    padding:40px;
+}
+
+.contact-content h3{
+    font-size:34px;
+
+    margin-bottom:12px;
+}
+
+.contact-content p{
+    color:var(--muted);
+
+    line-height:2;
+
+    margin-bottom:28px;
 }
 
 .contact-icons{
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     gap:16px;
 }
 
@@ -894,36 +1125,43 @@ main{
     height:60px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
     border-radius:50%;
 
-    border:1px solid rgba(212,175,55,.42);
+    border:
+        1px solid
+        rgba(212,175,55,.42);
 
-    background:rgba(255,255,255,.02);
+    background:
+        rgba(255,255,255,.02);
 
-    color:var(--gold-light);
-
-    text-decoration:none;
+    color:var(--gold2);
 
     transition:.3s ease;
 }
 
 .social:hover{
-    transform:translateY(-5px) scale(1.04);
+    transform:
+        translateY(-5px)
+        scale(1.04);
 
-    background:rgba(212,175,55,.08);
+    background:
+        rgba(212,175,55,.08);
 
-    border-color:var(--gold-light);
+    border-color:var(--gold2);
 
     box-shadow:
-        0 15px 40px rgba(212,175,55,.13);
+        0 15px 40px
+        rgba(212,175,55,.13);
 }
 
 .social svg{
     width:26px;
     height:26px;
+
     fill:currentColor;
 }
 
@@ -934,20 +1172,91 @@ main{
 
     border-radius:999px;
 
-    border:1px solid rgba(212,175,55,.38);
+    border:
+        1px solid
+        rgba(212,175,55,.38);
 
     background:transparent;
 
-    color:var(--gold-light);
+    color:var(--gold2);
 
     cursor:pointer;
 
-    transition:.3s ease;
+    transition:.3s;
 }
 
 .qr-button:hover{
-    background:rgba(212,175,55,.08);
+    background:
+        rgba(212,175,55,.08);
+
     transform:translateY(-3px);
+}
+
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox{
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    padding:25px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(0,0,0,.88);
+
+    backdrop-filter:blur(10px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
+}
+
+.lightbox.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.lightbox img{
+    max-width:92vw;
+
+    max-height:86vh;
+
+    object-fit:contain;
+
+    border-radius:15px;
+
+    border:
+        1px solid
+        rgba(212,175,55,.28);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.65);
+}
+
+.lightbox-close{
+    position:absolute;
+
+    top:22px;
+    left:25px;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    font-size:23px;
 }
 
 
@@ -957,24 +1266,27 @@ main{
 
 .qr-modal{
     position:fixed;
+
     inset:0;
 
     z-index:2100;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
     padding:20px;
 
-    background:rgba(0,0,0,.78);
+    background:
+        rgba(0,0,0,.78);
 
     backdrop-filter:blur(8px);
 
     opacity:0;
     visibility:hidden;
 
-    transition:.3s ease;
+    transition:.3s;
 }
 
 .qr-modal.active{
@@ -989,17 +1301,21 @@ main{
 
     text-align:center;
 
-    border:1px solid rgba(212,175,55,.35);
+    border:
+        1px solid
+        rgba(212,175,55,.35);
 
     border-radius:30px;
 
     background:#07172a;
 
-    box-shadow:0 30px 100px rgba(0,0,0,.55);
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.55);
 }
 
 .qr-box h3{
-    color:var(--gold-light);
+    color:var(--gold2);
 
     direction:ltr;
 
@@ -1025,14 +1341,6 @@ main{
     padding:10px 25px;
 
     border-radius:999px;
-
-    border:1px solid rgba(212,175,55,.35);
-
-    background:transparent;
-
-    color:white;
-
-    cursor:pointer;
 }
 
 
@@ -1045,13 +1353,17 @@ footer{
 
     text-align:center;
 
-    border-top:1px solid rgba(212,175,55,.12);
+    border-top:
+        1px solid
+        rgba(212,175,55,.12);
 
-    background:rgba(2,8,17,.72);
+    background:
+        rgba(2,8,17,.72);
 }
 
 .footer-copy{
     color:#858f9b;
+
     font-size:12px;
 }
 
@@ -1076,6 +1388,7 @@ footer{
 
 .reveal{
     opacity:0;
+
     transform:translateY(25px);
 
     transition:
@@ -1085,26 +1398,8 @@ footer{
 
 .reveal.visible{
     opacity:1;
+
     transform:translateY(0);
-}
-
-
-/* =========================
-   ANIMATION
-========================= */
-
-@keyframes heroIn{
-
-    from{
-        opacity:0;
-        transform:translateY(25px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
 }
 
 
@@ -1116,11 +1411,14 @@ footer{
 
     header{
         height:70px;
-        padding:0 20px;
+
+        padding:
+            0 20px;
     }
 
     .logo{
         font-size:21px;
+
         letter-spacing:6px;
     }
 
@@ -1129,52 +1427,71 @@ footer{
     }
 
     .hero{
-        padding:100px 0 45px;
+        min-height:100svh;
+
+        border-radius:
+            0 0 28px 28px;
+    }
+
+    .hero-content{
+        width:92%;
+
+        padding:
+            100px 0 70px;
     }
 
     .hero-name{
-        max-width:100%;
-        padding:0 12px;
-
-        font-size:clamp(32px,9vw,47px);
-
-        line-height:1.55;
-        letter-spacing:-.5px;
+        font-size:
+            clamp(
+                35px,
+                10vw,
+                52px
+            );
     }
 
-    .photo-frame{
-        width:min(390px,88vw);
-        margin-bottom:18px;
+    .hero-quote{
+        font-size:20px;
     }
 
     .section{
-        padding:52px 0;
+        padding:65px 0;
     }
 
-    .section-header{
-        margin-bottom:27px;
+    .about-layout{
+        grid-template-columns:1fr;
     }
 
-    .about-card{
+    .about-image{
+        min-height:340px;
+    }
+
+    .about-copy{
         padding:28px 22px;
     }
 
-    .about-card p{
+    .about-copy p{
         font-size:16px;
+
         line-height:2;
     }
 
     .values{
         grid-template-columns:1fr;
+
         gap:14px;
     }
 
     .value-card{
-        padding:27px 22px;
+        min-height:330px;
+    }
+
+    .value-card img{
+        min-height:330px;
     }
 
     .gallery{
         grid-template-columns:1fr;
+
         gap:13px;
     }
 
@@ -1182,14 +1499,27 @@ footer{
     .gallery-item:nth-child(1),
     .gallery-item:nth-child(2),
     .gallery-item:nth-child(3),
-    .gallery-item:nth-child(4),
-    .gallery-item:nth-child(5),
-    .gallery-item:nth-child(6),
-    .gallery-item:nth-child(7),
-    .gallery-item:nth-child(8){
+    .gallery-item:nth-child(4){
 
         grid-column:span 1;
+
         aspect-ratio:16/10;
+    }
+
+    .feature-layout{
+        grid-template-columns:1fr;
+    }
+
+    .feature-image{
+        min-height:360px;
+    }
+
+    .feature-copy{
+        padding:28px 22px;
+    }
+
+    .feature-copy h3{
+        font-size:27px;
     }
 
     .timeline::before{
@@ -1204,15 +1534,20 @@ footer{
 
         margin:0;
 
-        padding:0 42px 38px 0;
+        padding:
+            0 42px 38px 0;
 
         text-align:right;
     }
 
-    .timeline-item:nth-child(odd) .timeline-dot,
-    .timeline-item:nth-child(even) .timeline-dot{
+    .timeline-item:nth-child(odd)
+    .timeline-dot,
+
+    .timeline-item:nth-child(even)
+    .timeline-dot{
 
         right:7px;
+
         left:auto;
     }
 
@@ -1221,18 +1556,21 @@ footer{
     }
 
     .contact-card{
-        padding:30px 20px;
+        min-height:400px;
     }
 
-    .hero-corner{
-        width:45px;
-        height:45px;
+    .contact-content{
+        padding:28px 18px;
     }
 
-    .hero-corner.top{
-        top:90px;
+    .contact-content h3{
+        font-size:28px;
     }
 
+    .social{
+        width:56px;
+        height:56px;
+    }
 }
 
 
@@ -1243,23 +1581,20 @@ footer{
 @media(max-width:420px){
 
     .hero-name{
-        font-size:34px;
-        padding:0 8px;
+        font-size:35px;
     }
 
-    .photo-frame{
-        width:92vw;
+    .hero-quote{
+        font-size:18px;
     }
 
-    .social{
-        width:56px;
-        height:56px;
+    .section-title{
+        font-size:31px;
     }
 
     .gallery-info h3{
         font-size:16px;
     }
-
 }
 
 
@@ -1274,7 +1609,9 @@ footer{
     *::after{
 
         animation:none!important;
+
         transition:none!important;
+
         scroll-behavior:auto!important;
     }
 
@@ -1286,11 +1623,16 @@ footer{
 <body>
 
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
-    <a href="#home" class="logo">
+    <a
+        href="#home"
+        class="logo"
+    >
         MBK
     </a>
 
@@ -1305,7 +1647,9 @@ footer{
 </header>
 
 
-<!-- SIDE MENU -->
+<!-- =========================
+     SIDE MENU
+========================= -->
 
 <div
     class="overlay"
@@ -1349,6 +1693,14 @@ footer{
         رحلتي
     </a>
 
+    <a href="#vision">
+        رؤيتي
+    </a>
+
+    <a href="#future">
+        المستقبل
+    </a>
+
     <a href="#contact">
         تواصل
     </a>
@@ -1359,40 +1711,49 @@ footer{
 <main>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section
     class="hero"
     id="home"
 >
 
-    <div class="hero-corner top"></div>
-    <div class="hero-corner bottom"></div>
+    <div class="hero-media"></div>
 
-    <h1 class="hero-name">
-        مبخوت بن عبدالله
-    </h1>
+    <div class="hero-content">
 
-    <div class="gold-line"></div>
+        <div class="eyebrow">
+            PERSONAL PORTFOLIO
+        </div>
 
-    <div class="photo-frame">
+        <h1 class="hero-name">
+            مبخوت بن عبدالله
+        </h1>
 
-        <img
-            class="profile-photo"
-            src="file_00000000202482468d4027eb8c5919f7.png"
-            alt="مبخوت بن عبدالله"
-        >
+        <div class="hero-line"></div>
+
+        <p class="hero-quote">
+            وما توفيقي إلا بالله
+        </p>
+
+        <div class="hero-mbk">
+            MBK
+        </div>
 
     </div>
 
-    <p class="quote">
-        وما توفيقي إلا بالله
-    </p>
+    <div class="scroll-mark">
+        SCROLL TO EXPLORE
+    </div>
 
 </section>
 
 
-<!-- ABOUT -->
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section
     class="section reveal"
@@ -1411,40 +1772,59 @@ footer{
 
     </div>
 
-    <div class="about-card">
 
-        <p>
+    <div class="about-layout">
 
-            أنا مبخوت بن عبدالله.
+        <div class="image-card about-image">
 
-            <br><br>
+            <img
+                src="./ABOUT.png"
+                alt="نبذة عن مبخوت بن عبدالله"
+                loading="lazy"
+            >
 
-            أؤمن بأن الشخصية الحقيقية تُبنى بالطموح،
-            والتجربة، والاهتمام بالتفاصيل. أسعى دائمًا
-            إلى تطوير نفسي، واكتشاف أفكار جديدة،
-            وصناعة هوية تعكس رؤيتي وشخصيتي بأسلوب
-            يجمع بين الأصالة، الأناقة، والطموح.
+        </div>
 
-            <br><br>
 
-            هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا
-            من اهتماماتي، أعمالي، اختياراتي، والأشياء
-            التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
+        <div class="about-copy">
 
-            <br><br>
+            <p>
 
-            <strong>
-                أطمح للأفضل، وأسعى لأن أترك أثرًا يستحق أن يُذكر.
-            </strong>
+                أنا مبخوت بن عبدالله.
 
-        </p>
+                <br><br>
+
+                أؤمن بأن الشخصية الحقيقية تُبنى بالطموح،
+                والتجربة، والاهتمام بالتفاصيل. أسعى دائمًا
+                إلى تطوير نفسي، واكتشاف أفكار جديدة،
+                وصناعة هوية تعكس رؤيتي وشخصيتي بأسلوب
+                يجمع بين الأصالة، الأناقة، والطموح.
+
+                <br><br>
+
+                هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا
+                من اهتماماتي، أعمالي، اختياراتي، والأشياء
+                التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
+
+                <br><br>
+
+                <strong>
+                    أطمح للأفضل، وأسعى لأن أترك أثرًا
+                    يستحق أن يُذكر.
+                </strong>
+
+            </p>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- VALUES -->
+<!-- =========================
+     VALUES
+========================= -->
 
 <section
     class="section reveal"
@@ -1463,67 +1843,90 @@ footer{
 
     </div>
 
+
     <div class="values">
 
+
         <div class="value-card">
 
-            <div class="value-icon">
-                ✦
+            <img
+                src="./MY_VALUES.png"
+                alt="بصمة مبخوت بن عبدالله"
+                loading="lazy"
+            >
+
+            <div class="value-overlay">
+
+                <h3>
+                    الإبداع
+                </h3>
+
+                <p>
+                    أبحث دائمًا عن الأفكار المختلفة
+                    والأسلوب الذي يحمل طابعًا خاصًا.
+                </p>
+
             </div>
-
-            <h3>
-                الإبداع
-            </h3>
-
-            <p>
-                أبحث دائمًا عن الأفكار المختلفة
-                والأسلوب الذي يحمل طابعًا خاصًا.
-            </p>
 
         </div>
 
 
         <div class="value-card">
 
-            <div class="value-icon">
-                ◇
+            <img
+                src="./MY_VALUES.png"
+                alt="الجودة"
+                loading="lazy"
+            >
+
+            <div class="value-overlay">
+
+                <h3>
+                    الجودة
+                </h3>
+
+                <p>
+                    أهتم بالتفاصيل الصغيرة لأنها
+                    تصنع الفرق في النتيجة النهائية.
+                </p>
+
             </div>
-
-            <h3>
-                الجودة
-            </h3>
-
-            <p>
-                أهتم بالتفاصيل الصغيرة لأنها
-                تصنع الفرق في النتيجة النهائية.
-            </p>
 
         </div>
 
 
         <div class="value-card">
 
-            <div class="value-icon">
-                ◆
+            <img
+                src="./MY_VALUES.png"
+                alt="الأصالة"
+                loading="lazy"
+            >
+
+            <div class="value-overlay">
+
+                <h3>
+                    الأصالة
+                </h3>
+
+                <p>
+                    أحافظ على هويتي وأطورها
+                    بأسلوب حديث ومتوازن.
+                </p>
+
             </div>
 
-            <h3>
-                الأصالة
-            </h3>
-
-            <p>
-                أحافظ على هويتي وأطورها
-                بأسلوب حديث ومتوازن.
-            </p>
-
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- GALLERY -->
+<!-- =========================
+     SELECTED WORKS
+========================= -->
 
 <section
     class="section reveal"
@@ -1533,7 +1936,7 @@ footer{
     <div class="section-header">
 
         <span class="section-label">
-            SELECTED
+            SELECTED WORKS
         </span>
 
         <h2 class="section-title">
@@ -1542,26 +1945,29 @@ footer{
 
     </div>
 
+
     <div class="gallery">
 
 
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
+            data-full="./SELECTED%20WORK%C2%BB.png"
         >
 
             <img
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
-                alt="جبال وطبيعة"
+                src="./SELECTED%20WORK%C2%BB.png"
+                alt="مختاراتي"
                 loading="lazy"
             >
 
             <div class="gallery-info">
 
-                <small>NATURE</small>
+                <small>
+                    SELECTED
+                </small>
 
                 <h3>
-                    هدوء الجبال
+                    مختارات بصرية
                 </h3>
 
             </div>
@@ -1571,21 +1977,23 @@ footer{
 
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
+            data-full="./SELECTED%20WORK%C2%BB.png"
         >
 
             <img
-                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"
-                alt="طبيعة ريفية"
+                src="./SELECTED%20WORK%C2%BB.png"
+                alt="تفاصيل مختارة"
                 loading="lazy"
             >
 
             <div class="gallery-info">
 
-                <small>LIFE</small>
+                <small>
+                    DETAILS
+                </small>
 
                 <h3>
-                    تفاصيل هادئة
+                    تفاصيل تصنع الفرق
                 </h3>
 
             </div>
@@ -1595,21 +2003,23 @@ footer{
 
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
+            data-full="./SELECTED%20WORK%C2%BB.png"
         >
 
             <img
-                src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=85"
-                alt="مدينة حديثة"
+                src="./SELECTED%20WORK%C2%BB.png"
+                alt="هوية بصرية"
                 loading="lazy"
             >
 
             <div class="gallery-info">
 
-                <small>CITY</small>
+                <small>
+                    IDENTITY
+                </small>
 
                 <h3>
-                    نبض المدينة
+                    هوية ورؤية
                 </h3>
 
             </div>
@@ -1619,117 +2029,23 @@ footer{
 
         <div
             class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
+            data-full="./SELECTED%20WORK%C2%BB.png"
         >
 
             <img
-                src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85"
-                alt="شوارع المدينة"
+                src="./SELECTED%20WORK%C2%BB.png"
+                alt="عمل مختار"
                 loading="lazy"
             >
 
             <div class="gallery-info">
 
-                <small>STREETS</small>
+                <small>
+                    WORK
+                </small>
 
                 <h3>
-                    بين الشوارع
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=85"
-                alt="مدينة من الأعلى"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <small>URBAN</small>
-
-                <h3>
-                    أفق جديد
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
-                alt="طريق وسط الطبيعة"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <small>JOURNEY</small>
-
-                <h3>
-                    الطريق
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
-                alt="منظر طبيعي"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <small>CALM</small>
-
-                <h3>
-                    لحظة هدوء
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="gallery-item"
-            data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
-        >
-
-            <img
-                src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85"
-                alt="العمارة والحياة"
-                loading="lazy"
-            >
-
-            <div class="gallery-info">
-
-                <small>ARCHITECTURE</small>
-
-                <h3>
-                    تفاصيل المكان
+                    أعمال مختارة
                 </h3>
 
             </div>
@@ -1742,7 +2058,9 @@ footer{
 </section>
 
 
-<!-- JOURNEY -->
+<!-- =========================
+     JOURNEY
+========================= -->
 
 <section
     class="section reveal"
@@ -1762,7 +2080,21 @@ footer{
     </div>
 
 
-    <div class="timeline">
+    <div class="image-card">
+
+        <img
+            src="./MY_JOURNEY.png"
+            alt="رحلة مبخوت بن عبدالله"
+            loading="lazy"
+        >
+
+    </div>
+
+
+    <div
+        class="timeline"
+        style="margin-top:70px;"
+    >
 
 
         <div class="timeline-item">
@@ -1870,7 +2202,131 @@ footer{
 </section>
 
 
-<!-- CONTACT -->
+<!-- =========================
+     VISION
+========================= -->
+
+<section
+    class="section reveal"
+    id="vision"
+>
+
+    <div class="section-header">
+
+        <span class="section-label">
+            VISION
+        </span>
+
+        <h2 class="section-title">
+            رؤيتي
+        </h2>
+
+    </div>
+
+
+    <div class="feature-layout">
+
+
+        <div class="image-card feature-image">
+
+            <img
+                src="./VISION.png"
+                alt="رؤية مبخوت بن عبدالله"
+                loading="lazy"
+            >
+
+        </div>
+
+
+        <div class="feature-copy">
+
+            <span class="section-label">
+                MY VISION
+            </span>
+
+            <h3>
+                رؤية تتجاوز الحاضر
+            </h3>
+
+            <p>
+                أؤمن أن المستقبل يُبنى من خلال
+                الرؤية الواضحة، والتطوير المستمر،
+                والقدرة على تحويل الأفكار إلى
+                خطوات حقيقية ذات قيمة.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FUTURE
+========================= -->
+
+<section
+    class="section reveal"
+    id="future"
+>
+
+    <div class="section-header">
+
+        <span class="section-label">
+            FUTURE
+        </span>
+
+        <h2 class="section-title">
+            المستقبل
+        </h2>
+
+    </div>
+
+
+    <div class="feature-layout">
+
+
+        <div class="feature-copy">
+
+            <span class="section-label">
+                THE FUTURE
+            </span>
+
+            <h3>
+                القادم أكبر
+            </h3>
+
+            <p>
+                كل مرحلة هي بداية لمرحلة أخرى.
+                الطموح مستمر، والتجربة تتطور،
+                والخطوة القادمة دائمًا تحمل
+                مساحة جديدة للنمو والإنجاز.
+            </p>
+
+        </div>
+
+
+        <div class="image-card feature-image">
+
+            <img
+                src="./FUTURE.png"
+                alt="المستقبل"
+                loading="lazy"
+            >
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
 
 <section
     class="section reveal"
@@ -1892,56 +2348,78 @@ footer{
 
     <div class="contact-card">
 
-        <div class="contact-icons">
+
+        <img
+            src="./CONTACT.png"
+            alt="تواصل"
+            loading="lazy"
+        >
 
 
-            <a
-                class="social"
-                href="mailto:mabkhout@mabkhut.com"
-                aria-label="البريد الإلكتروني"
-                title="البريد الإلكتروني"
+        <div class="contact-content">
+
+            <h3>
+                لنبقَ على تواصل
+            </h3>
+
+            <p>
+                للتواصل والاستفسار أو مشاركة فكرة،
+                يمكنك التواصل معي عبر الوسائل التالية.
+            </p>
+
+
+            <div class="contact-icons">
+
+
+                <a
+                    class="social"
+                    href="mailto:mabkhout@mabkhut.com"
+                    aria-label="البريد الإلكتروني"
+                    title="البريد الإلكتروني"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
+                        />
+
+                    </svg>
+
+                </a>
+
+
+                <a
+                    class="social"
+                    href="https://www.facebook.com/share/19JG7PQiHL/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    title="Facebook"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
+                        />
+
+                    </svg>
+
+                </a>
+
+
+            </div>
+
+
+            <button
+                class="qr-button"
+                id="qrButton"
             >
-
-                <svg viewBox="0 0 24 24">
-
-                    <path
-                        d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
-                    />
-
-                </svg>
-
-            </a>
-
-
-            <a
-                class="social"
-                href="https://www.facebook.com/share/19JG7PQiHL/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                title="Facebook"
-            >
-
-                <svg viewBox="0 0 24 24">
-
-                    <path
-                        d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
-                    />
-
-                </svg>
-
-            </a>
-
+                مشاركة الموقع عبر QR
+            </button>
 
         </div>
-
-
-        <button
-            class="qr-button"
-            id="qrButton"
-        >
-            مشاركة الموقع عبر QR
-        </button>
 
     </div>
 
@@ -1951,7 +2429,9 @@ footer{
 </main>
 
 
-<!-- LIGHTBOX -->
+<!-- =========================
+     LIGHTBOX
+========================= -->
 
 <div
     class="lightbox"
@@ -1975,7 +2455,9 @@ footer{
 </div>
 
 
-<!-- QR -->
+<!-- =========================
+     QR
+========================= -->
 
 <div
     class="qr-modal"
@@ -2005,7 +2487,9 @@ footer{
 </div>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -2022,7 +2506,9 @@ footer{
 
 <script>
 
-/* MENU */
+/* =========================
+   MENU
+========================= */
 
 const menuBtn =
     document.getElementById("menuBtn");
@@ -2043,8 +2529,8 @@ function openMenu(){
 
     overlay.classList.add("active");
 
-    document.body.style.overflow="hidden";
-
+    document.body.style.overflow =
+        "hidden";
 }
 
 
@@ -2054,8 +2540,8 @@ function closeSideMenu(){
 
     overlay.classList.remove("active");
 
-    document.body.style.overflow="";
-
+    document.body.style.overflow =
+        "";
 }
 
 
@@ -2087,7 +2573,9 @@ document
     });
 
 
-/* SCROLL REVEAL */
+/* =========================
+   SCROLL REVEAL
+========================= */
 
 const revealElements =
     document.querySelectorAll(".reveal");
@@ -2120,26 +2608,40 @@ const revealObserver =
     );
 
 
-revealElements.forEach(element => {
+revealElements.forEach(
+    element => {
 
-    revealObserver.observe(element);
+        revealObserver.observe(
+            element
+        );
 
-});
+    }
+);
 
 
-/* GALLERY LIGHTBOX */
+/* =========================
+   GALLERY LIGHTBOX
+========================= */
 
 const galleryItems =
-    document.querySelectorAll(".gallery-item");
+    document.querySelectorAll(
+        ".gallery-item"
+    );
 
 const lightbox =
-    document.getElementById("lightbox");
+    document.getElementById(
+        "lightbox"
+    );
 
 const lightboxImage =
-    document.getElementById("lightboxImage");
+    document.getElementById(
+        "lightboxImage"
+    );
 
 const lightboxClose =
-    document.getElementById("lightboxClose");
+    document.getElementById(
+        "lightboxClose"
+    );
 
 
 galleryItems.forEach(item => {
@@ -2173,10 +2675,10 @@ function closeLightbox(){
         "active"
     );
 
-    lightboxImage.src="";
+    lightboxImage.src = "";
 
-    document.body.style.overflow="";
-
+    document.body.style.overflow =
+        "";
 }
 
 
@@ -2191,7 +2693,8 @@ lightbox.addEventListener(
     event => {
 
         if(
-            event.target === lightbox
+            event.target ===
+            lightbox
         ){
 
             closeLightbox();
@@ -2202,16 +2705,24 @@ lightbox.addEventListener(
 );
 
 
-/* QR */
+/* =========================
+   QR
+========================= */
 
 const qrButton =
-    document.getElementById("qrButton");
+    document.getElementById(
+        "qrButton"
+    );
 
 const qrModal =
-    document.getElementById("qrModal");
+    document.getElementById(
+        "qrModal"
+    );
 
 const qrClose =
-    document.getElementById("qrClose");
+    document.getElementById(
+        "qrClose"
+    );
 
 
 qrButton.addEventListener(
@@ -2249,7 +2760,8 @@ qrModal.addEventListener(
     event => {
 
         if(
-            event.target === qrModal
+            event.target ===
+            qrModal
         ){
 
             qrModal.classList.remove(
@@ -2265,13 +2777,18 @@ qrModal.addEventListener(
 );
 
 
-/* ESC */
+/* =========================
+   ESCAPE
+========================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
-        if(event.key === "Escape"){
+        if(
+            event.key ===
+            "Escape"
+        ){
 
             closeSideMenu();
 
