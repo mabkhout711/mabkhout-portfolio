@@ -1,67 +1,30 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>مبخوت بن عبدالله | MBK</title>
-
-<meta
-    name="description"
-    content="الموقع الشخصي لمبخوت بن عبدالله"
->
-
-<meta
-    name="theme-color"
-    content="#020914"
->
+<meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله">
+<meta name="theme-color" content="#061426">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
->
-
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================================================
-   ROOT
-========================================================= */
-
 :root{
-
     --navy:#061426;
     --navy-dark:#020914;
-    --navy-soft:#0a1c31;
-
     --gold:#d4af37;
     --gold-light:#f1d56a;
-    --gold-bright:#ffe99a;
-
     --white:#f8f7f2;
-    --text:#e1e4e8;
-    --muted:#9ba5b1;
-
+    --text:#d8dce2;
+    --muted:#8995a3;
     --border:rgba(212,175,55,.20);
-    --border-strong:rgba(212,175,55,.45);
-
-    --glass:rgba(3,12,25,.64);
-
-    --header-height:76px;
-
-    --shadow:
-        0 35px 100px rgba(0,0,0,.45);
-
+    --border-strong:rgba(212,175,55,.42);
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     margin:0;
@@ -71,97 +34,53 @@
 
 html{
     scroll-behavior:smooth;
-    background:#020914;
 }
 
 body{
-
     min-height:100vh;
-
     overflow-x:hidden;
-
-    font-family:
-        "Cairo",
-        "Noto Kufi Arabic",
-        sans-serif;
-
+    font-family:"Cairo","Noto Kufi Arabic",sans-serif;
     color:var(--white);
 
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(212,175,55,.08),
-            transparent 30%
-        ),
-        linear-gradient(
-            145deg,
-            #020914 0%,
-            #061426 48%,
-            #020914 100%
-        );
+        radial-gradient(circle at 50% 0%,rgba(212,175,55,.08),transparent 27%),
+        radial-gradient(circle at 0% 50%,rgba(16,50,82,.32),transparent 35%),
+        linear-gradient(145deg,#020914 0%,#061426 48%,#030b16 100%);
 }
 
 body::before{
-
     content:"";
-
     position:fixed;
-
     inset:0;
-
     pointer-events:none;
-
     z-index:-10;
-
-    opacity:.035;
+    opacity:.055;
 
     background-image:
-        linear-gradient(
-            rgba(255,255,255,.06) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.06) 1px,
-            transparent 1px
-        );
+        linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
 
-    background-size:80px 80px;
-
+    background-size:75px 75px;
 }
 
 body::after{
-
     content:"";
-
     position:fixed;
-
-    width:500px;
-    height:500px;
-
+    width:450px;
+    height:450px;
+    top:12%;
     left:50%;
-    top:20%;
-
     transform:translateX(-50%);
-
     border-radius:50%;
-
-    background:
-        rgba(212,175,55,.035);
-
-    filter:blur(130px);
-
+    background:rgba(212,175,55,.035);
+    filter:blur(120px);
     pointer-events:none;
-
     z-index:-9;
 }
 
-
-a,
-button{
-
+a{
+    color:inherit;
     -webkit-tap-highlight-color:transparent;
-
 }
 
 button{
@@ -169,744 +88,258 @@ button{
 }
 
 
-/* =========================================================
+/* =========================
    HEADER
-========================================================= */
+========================= */
 
 header{
-
     position:fixed;
-
     top:0;
     right:0;
     left:0;
-
-    height:var(--header-height);
-
+    height:76px;
     padding:0 6%;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     z-index:1000;
 
-    background:
-        linear-gradient(
-            180deg,
-            rgba(2,9,20,.90),
-            rgba(2,9,20,.68)
-        );
+    background:rgba(2,9,20,.76);
+    border-bottom:1px solid rgba(212,175,55,.12);
 
-    border-bottom:
-        1px solid
-        rgba(212,175,55,.12);
-
-    backdrop-filter:blur(22px);
-
-    -webkit-backdrop-filter:blur(22px);
-
-    transition:
-        background .35s ease,
-        border-color .35s ease;
-
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 }
 
 .logo{
-
     direction:ltr;
-
-    text-decoration:none;
-
     font-family:Arial,sans-serif;
-
-    font-size:24px;
-
+    font-size:23px;
     font-weight:700;
-
     letter-spacing:7px;
-
     color:var(--gold-light);
-
-    text-shadow:
-        0 0 25px
-        rgba(212,175,55,.12);
-
+    text-decoration:none;
 }
 
 .menu-btn{
-
-    width:48px;
-    height:48px;
+    width:47px;
+    height:47px;
+    border-radius:50%;
+    border:1px solid var(--border-strong);
+    background:rgba(255,255,255,.025);
+    color:var(--gold-light);
+    cursor:pointer;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
-    border-radius:50%;
-
-    border:
-        1px solid
-        var(--border-strong);
-
-    background:
-        rgba(255,255,255,.025);
-
-    color:var(--gold-light);
-
-    cursor:pointer;
-
-    font-size:22px;
-
-    transition:.35s ease;
-
+    font-size:21px;
+    transition:.3s ease;
 }
 
 .menu-btn:hover{
-
     transform:scale(1.05);
-
-    border-color:
-        var(--gold-light);
-
-    background:
-        rgba(212,175,55,.08);
-
-    box-shadow:
-        0 0 35px
-        rgba(212,175,55,.13);
-
+    border-color:var(--gold-light);
+    background:rgba(212,175,55,.08);
+    box-shadow:0 0 30px rgba(212,175,55,.12);
 }
 
 
-/* =========================================================
+/* =========================
    SIDE MENU
-========================================================= */
+========================= */
 
 .overlay{
-
     position:fixed;
-
     inset:0;
-
+    background:rgba(0,0,0,.58);
+    backdrop-filter:blur(5px);
     z-index:1100;
 
-    background:
-        rgba(0,0,0,.68);
-
-    backdrop-filter:blur(7px);
-
-    -webkit-backdrop-filter:blur(7px);
-
     opacity:0;
-
     visibility:hidden;
-
     transition:.35s ease;
-
 }
 
 .overlay.active{
-
     opacity:1;
-
     visibility:visible;
-
 }
 
 .side-menu{
-
     position:fixed;
-
     top:0;
     right:0;
-
-    width:min(380px,88vw);
-
+    width:min(370px,88vw);
     height:100vh;
+
+    padding:105px 35px 35px;
 
     z-index:1200;
 
-    padding:
-        105px
-        35px
-        35px;
-
     background:
+        linear-gradient(150deg,rgba(8,26,47,.99),rgba(2,9,20,.99));
 
-        linear-gradient(
-            145deg,
-            rgba(9,29,51,.99),
-            rgba(2,9,20,.99)
-        );
-
-    border-left:
-        1px solid
-        var(--border);
-
-    box-shadow:
-        -30px 0 100px
-        rgba(0,0,0,.55);
+    border-left:1px solid var(--border);
 
     transform:translateX(105%);
 
-    transition:
-        transform .5s
-        cubic-bezier(.77,0,.18,1);
+    transition:transform .45s cubic-bezier(.77,0,.18,1);
 
+    box-shadow:-30px 0 90px rgba(0,0,0,.45);
 }
 
 .side-menu.active{
-
     transform:translateX(0);
-
 }
 
 .close-menu{
-
     position:absolute;
+    top:24px;
+    left:24px;
 
-    top:23px;
-    left:23px;
-
-    width:44px;
-    height:44px;
+    width:42px;
+    height:42px;
 
     border-radius:50%;
-
-    border:
-        1px solid
-        var(--border-strong);
-
+    border:1px solid var(--border-strong);
     background:transparent;
 
     color:var(--gold-light);
-
-    font-size:24px;
-
     cursor:pointer;
-
+    font-size:22px;
 }
 
 .menu-label{
-
     color:var(--gold);
-
     font-size:11px;
-
     letter-spacing:4px;
+    margin-bottom:28px;
 
     direction:ltr;
-
     text-align:right;
-
-    margin-bottom:25px;
-
 }
 
 .side-menu a{
+    display:block;
+    padding:17px 0;
 
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:16px 0;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.055);
-
-    color:var(--white);
+    border-bottom:1px solid rgba(255,255,255,.055);
 
     text-decoration:none;
-
     font-size:17px;
+    color:var(--white);
 
     transition:.3s ease;
-
-}
-
-.side-menu a::before{
-
-    content:"";
-
-    width:5px;
-    height:5px;
-
-    border-radius:50%;
-
-    background:var(--gold);
-
-    opacity:0;
-
-    transform:translateX(10px);
-
-    transition:.3s ease;
-
 }
 
 .side-menu a:hover{
-
     color:var(--gold-light);
-
-    padding-right:9px;
-
-}
-
-.side-menu a:hover::before{
-
-    opacity:1;
-
-    transform:translateX(0);
-
+    padding-right:10px;
 }
 
 
-/* =========================================================
+/* =========================
    MAIN
-========================================================= */
+========================= */
 
 main{
-
-    width:100%;
-
-    overflow:hidden;
-
-}
-
-
-/* =========================================================
-   GLOBAL SECTION
-========================================================= */
-
-.section{
-
-    position:relative;
-
-    width:100%;
-
-    min-height:650px;
-
-    padding:
-        105px
-        6%
-        95px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    isolation:isolate;
-
-    overflow:hidden;
-
-}
-
-
-/*
-   IMPORTANT:
-   Every section below receives its own image
-   as a real background.
-*/
-
-.section-bg{
-
-    position:absolute;
-
-    inset:0;
-
-    z-index:-3;
-
-    background-size:cover;
-
-    background-position:center;
-
-    background-repeat:no-repeat;
-
-    transform:scale(1.015);
-
-    transition:
-        transform 1.2s ease;
-
-}
-
-.section:hover .section-bg{
-
-    transform:scale(1.035);
-
-}
-
-
-/* Main dark overlay */
-
-.section::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    z-index:-2;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            rgba(2,9,20,.78) 0%,
-            rgba(2,9,20,.48) 40%,
-            rgba(2,9,20,.72) 100%
-        );
-
-}
-
-
-/* Gold cinematic glow */
-
-.section::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:650px;
-    height:650px;
-
-    left:50%;
-    top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(212,175,55,.075),
-            transparent 68%
-        );
-
-    z-index:-1;
-
-    pointer-events:none;
-
-}
-
-
-/* =========================================================
-   SECTION INNER
-========================================================= */
-
-.section-inner{
-
-    width:min(1120px,100%);
-
+    width:min(1120px,92%);
     margin:auto;
-
-    position:relative;
-
 }
 
 
-/* =========================================================
-   SECTION HEADER
-========================================================= */
-
-.section-header{
-
-    text-align:center;
-
-    margin-bottom:42px;
-
-}
-
-.section-label{
-
-    display:block;
-
-    color:var(--gold-light);
-
-    font-size:11px;
-
-    letter-spacing:5px;
-
-    direction:ltr;
-
-    margin-bottom:8px;
-
-    text-shadow:
-        0 2px 12px rgba(0,0,0,.8);
-
-}
-
-.section-title{
-
-    font-size:
-        clamp(
-            34px,
-            5vw,
-            52px
-        );
-
-    font-weight:800;
-
-    line-height:1.35;
-
-    color:var(--white);
-
-    text-shadow:
-        0 4px 25px
-        rgba(0,0,0,.65);
-
-}
-
-.section-title::after{
-
-    content:"";
-
-    display:block;
-
-    width:75px;
-
-    height:2px;
-
-    margin:
-        13px
-        auto
-        0;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold-light),
-            transparent
-        );
-
-    box-shadow:
-        0 0 18px
-        rgba(212,175,55,.4);
-
-}
-
-
-/* =========================================================
-   HERO / HOME
-========================================================= */
+/* =========================
+   HERO
+========================= */
 
 .hero{
+    min-height:100vh;
 
-    min-height:100svh;
-
-    padding:
-        calc(var(--header-height) + 50px)
-        6%
-        70px;
+    padding:115px 0 55px;
 
     display:flex;
-
+    flex-direction:column;
     align-items:center;
-
     justify-content:center;
 
     text-align:center;
 
     position:relative;
-
-    isolation:isolate;
-
-    overflow:hidden;
-
 }
-
-
-/* Hero background */
-
-.hero-bg{
-
-    position:absolute;
-
-    inset:0;
-
-    z-index:-3;
-
-    background-image:
-        url("Hero_.png");
-
-    background-size:cover;
-
-    background-position:center;
-
-    background-repeat:no-repeat;
-
-    transform:scale(1.02);
-
-}
-
-
-/* Hero overlay */
-
-.hero::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    z-index:-2;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            rgba(2,9,20,.64),
-            rgba(2,9,20,.30) 42%,
-            rgba(2,9,20,.78)
-        );
-
-}
-
-
-/* Hero gold atmosphere */
-
-.hero::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    z-index:-1;
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            rgba(212,175,55,.10),
-            transparent 43%
-        );
-
-    pointer-events:none;
-
-}
-
-.hero-content{
-
-    width:min(900px,100%);
-
-    margin:auto;
-
-    position:relative;
-
-}
-
-
-/* Decorative corners */
 
 .hero-corner{
-
     position:absolute;
-
-    width:80px;
-    height:80px;
-
-    border-color:
-        rgba(212,175,55,.72);
-
+    width:72px;
+    height:72px;
+    border-color:rgba(212,175,55,.68);
     pointer-events:none;
-
 }
 
 .hero-corner.top{
-
-    top:
-        calc(var(--header-height) + 20px);
-
-    right:5%;
-
+    top:108px;
+    right:0;
     border-top:1px solid;
     border-right:1px solid;
-
 }
 
 .hero-corner.bottom{
-
-    bottom:30px;
-
-    left:5%;
-
+    bottom:35px;
+    left:0;
     border-bottom:1px solid;
     border-left:1px solid;
-
 }
 
 
-/* Hero title */
+/* =========================
+   NAME
+========================= */
 
 .hero-name{
+    width:100%;
+    max-width:850px;
 
-    margin-bottom:16px;
+    padding:0 20px;
+    margin:0 auto 14px;
 
-    font-size:
-        clamp(
-            40px,
-            7vw,
-            70px
-        );
-
+    font-size:clamp(34px,5.5vw,58px);
     font-weight:800;
+    line-height:1.5;
 
-    line-height:1.45;
+    text-align:center;
+    white-space:normal;
+
+    letter-spacing:-1px;
 
     background:
-
         linear-gradient(
             135deg,
-            #b88918,
+            #b88918 0%,
             #f7df78 25%,
             #d4af37 50%,
             #fff0a3 75%,
-            #b88918
+            #b88918 100%
         );
 
     -webkit-background-clip:text;
     background-clip:text;
-
     -webkit-text-fill-color:transparent;
 
-    text-shadow:
-        0 0 30px
-        rgba(212,175,55,.15);
+    text-shadow:0 0 18px rgba(212,175,55,.12);
 
-    animation:
-        heroIn 1s ease both;
-
+    animation:heroIn .9s ease both;
 }
 
-.hero-line{
-
-    width:115px;
-
+.gold-line{
+    width:100px;
     height:2px;
 
-    margin:
-        0
-        auto
-        28px;
+    margin:0 auto 25px;
 
     background:
-
         linear-gradient(
             90deg,
             transparent,
@@ -916,389 +349,437 @@ main{
             transparent
         );
 
-    box-shadow:
-        0 0 20px
-        rgba(212,175,55,.4);
-
+    box-shadow:0 0 16px rgba(212,175,55,.28);
 }
 
 
-/* Hero image card removed:
-   The Hero_.png is now the actual section background. */
+/* =========================
+   PROFILE IMAGE
+========================= */
 
-.hero-subtitle{
+.photo-frame{
+    width:min(470px,88vw);
+    aspect-ratio:1/1;
 
+    padding:10px;
+
+    position:relative;
+    margin-bottom:22px;
+}
+
+.photo-frame::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    border:1px solid rgba(212,175,55,.82);
+    border-radius:31px;
+
+    transform:rotate(-1deg);
+}
+
+.photo-frame::after{
+    content:"";
+    position:absolute;
+    inset:7px;
+
+    border:1px solid rgba(212,175,55,.22);
+    border-radius:27px;
+
+    transform:rotate(1deg);
+}
+
+.profile-photo{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:contain;
+    object-position:center;
+
+    border-radius:24px;
+    border:5px solid #07172a;
+
+    background:#07172a;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.50);
+
+    transition:
+        transform .6s ease,
+        box-shadow .6s ease;
+}
+
+.photo-frame:hover .profile-photo{
+    transform:scale(1.012);
+    box-shadow:0 35px 95px rgba(0,0,0,.58);
+}
+
+.quote{
     color:var(--white);
-
-    font-size:
-        clamp(
-            20px,
-            4vw,
-            28px
-        );
-
+    font-size:clamp(20px,4vw,28px);
     font-weight:500;
-
-    text-shadow:
-        0 3px 20px
-        rgba(0,0,0,.85);
-
 }
 
 
-/* =========================================================
-   CONTENT GLASS
-========================================================= */
+/* =========================
+   SECTIONS
+========================= */
 
-.glass{
+.section{
+    padding:65px 0;
+    position:relative;
+}
 
-    border:
-        1px solid
-        rgba(212,175,55,.24);
+.section-header{
+    text-align:center;
+    margin-bottom:32px;
+}
+
+.section-label{
+    display:block;
+    color:var(--gold);
+    font-size:11px;
+    letter-spacing:4px;
+
+    direction:ltr;
+
+    margin-bottom:7px;
+}
+
+.section-title{
+    font-size:clamp(30px,5vw,46px);
+    font-weight:800;
+    line-height:1.4;
+}
+
+.section-title::after{
+    content:"";
+
+    display:block;
+
+    width:68px;
+    height:2px;
+
+    margin:11px auto 0;
 
     background:
-
         linear-gradient(
-            145deg,
-            rgba(2,10,21,.72),
-            rgba(5,20,37,.48)
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
         );
-
-    box-shadow:
-        0 30px 90px
-        rgba(0,0,0,.35);
-
-    backdrop-filter:
-        blur(7px);
-
-    -webkit-backdrop-filter:
-        blur(7px);
-
 }
 
 
-/* =========================================================
+/* =========================
    ABOUT
-========================================================= */
-
-.about-section{
-
-    background:#030b16;
-
-}
-
-.about-section .section-bg{
-
-    background-image:
-        url("ABOUT.png");
-
-    background-position:center;
-
-}
-
+========================= */
 
 .about-card{
-
     max-width:900px;
-
     margin:auto;
 
-    padding:
-        42px
-        45px;
+    padding:35px 40px;
 
+    border:1px solid var(--border);
     border-radius:30px;
 
-    text-align:center;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.012)
+        );
 
+    box-shadow:0 30px 80px rgba(0,0,0,.18);
+
+    text-align:center;
 }
 
 .about-card p{
-
     color:var(--text);
-
     font-size:18px;
-
-    line-height:2.15;
-
-    text-shadow:
-        0 2px 15px
-        rgba(0,0,0,.8);
-
+    line-height:2.05;
 }
 
 .about-card strong{
-
-    display:inline-block;
-
-    margin-top:4px;
-
     color:var(--gold-light);
-
     font-weight:700;
-
 }
 
 
-/* =========================================================
+/* =========================
    VALUES
-========================================================= */
-
-.values-section{
-
-    background:#030b16;
-
-}
-
-.values-section .section-bg{
-
-    background-image:
-        url("MY_VALUES.png");
-
-    background-position:center;
-
-}
-
+========================= */
 
 .values{
-
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:20px;
-
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
-
 .value-card{
-
-    padding:
-        34px
-        25px;
+    padding:30px 25px;
 
     text-align:center;
 
+    border:1px solid rgba(212,175,55,.15);
     border-radius:25px;
 
-    border:
-        1px solid
-        rgba(212,175,55,.24);
-
-    background:
-        rgba(2,10,21,.68);
-
-    backdrop-filter:blur(8px);
-
-    -webkit-backdrop-filter:blur(8px);
+    background:rgba(255,255,255,.022);
 
     transition:
         transform .35s ease,
         border-color .35s ease,
         box-shadow .35s ease;
-
 }
 
 .value-card:hover{
+    transform:translateY(-8px);
 
-    transform:
-        translateY(-8px);
-
-    border-color:
-        rgba(212,175,55,.55);
+    border-color:rgba(212,175,55,.42);
 
     box-shadow:
-        0 25px 65px
-        rgba(0,0,0,.4),
-        0 0 35px
-        rgba(212,175,55,.06);
-
+        0 22px 55px rgba(212,175,55,.07);
 }
 
 .value-icon{
+    width:55px;
+    height:55px;
 
-    width:58px;
-    height:58px;
-
-    margin:
-        0
-        auto
-        16px;
+    margin:0 auto 14px;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
     border-radius:50%;
 
-    border:
-        1px solid
-        rgba(212,175,55,.45);
+    border:1px solid rgba(212,175,55,.35);
+
+    color:var(--gold-light);
+
+    font-size:22px;
+}
+
+.value-card h3{
+    font-size:20px;
+    margin-bottom:7px;
+}
+
+.value-card p{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.85;
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:15px;
+}
+
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+
+    border-radius:25px;
+
+    border:1px solid rgba(212,175,55,.17);
+
+    background:#07172a;
+
+    cursor:pointer;
+}
+
+.gallery-item:nth-child(1){
+    grid-column:span 7;
+    aspect-ratio:16/10;
+}
+
+.gallery-item:nth-child(2){
+    grid-column:span 5;
+    aspect-ratio:1/1;
+}
+
+.gallery-item:nth-child(3){
+    grid-column:span 5;
+    aspect-ratio:1/1;
+}
+
+.gallery-item:nth-child(4){
+    grid-column:span 7;
+    aspect-ratio:16/10;
+}
+
+.gallery-item:nth-child(5){
+    grid-column:span 7;
+    aspect-ratio:16/10;
+}
+
+.gallery-item:nth-child(6){
+    grid-column:span 5;
+    aspect-ratio:1/1;
+}
+
+.gallery-item:nth-child(7){
+    grid-column:span 5;
+    aspect-ratio:1/1;
+}
+
+.gallery-item:nth-child(8){
+    grid-column:span 7;
+    aspect-ratio:16/10;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:transform .7s ease;
+}
+
+.gallery-item::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.78),
+            transparent 52%
+        );
+
+    pointer-events:none;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.07);
+}
+
+.gallery-info{
+    position:absolute;
+
+    right:22px;
+    left:22px;
+    bottom:18px;
+
+    z-index:2;
+}
+
+.gallery-info small{
+    display:block;
+
+    color:var(--gold-light);
+
+    font-size:11px;
+    letter-spacing:2px;
+
+    direction:ltr;
+
+    margin-bottom:3px;
+}
+
+.gallery-info h3{
+    font-size:18px;
+    font-weight:600;
+}
+
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox{
+    position:fixed;
+    inset:0;
+
+    z-index:2000;
+
+    padding:25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(0,0,0,.88);
+
+    backdrop-filter:blur(10px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s ease;
+}
+
+.lightbox.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.lightbox img{
+    max-width:92vw;
+    max-height:86vh;
+
+    object-fit:contain;
+
+    border-radius:15px;
+
+    border:1px solid rgba(212,175,55,.28);
+
+    box-shadow:0 30px 100px rgba(0,0,0,.65);
+}
+
+.lightbox-close{
+    position:absolute;
+
+    top:22px;
+    left:25px;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(212,175,55,.4);
+
+    background:rgba(0,0,0,.25);
 
     color:var(--gold-light);
 
     font-size:23px;
 
-    background:
-        rgba(212,175,55,.035);
-
-}
-
-.value-card h3{
-
-    margin-bottom:8px;
-
-    font-size:20px;
-
-}
-
-.value-card p{
-
-    color:var(--text);
-
-    font-size:14px;
-
-    line-height:1.9;
-
+    cursor:pointer;
 }
 
 
-/* =========================================================
-   SELECTED WORK
-========================================================= */
-
-.selected-section{
-
-    background:#030b16;
-
-}
-
-.selected-section .section-bg{
-
-    background-image:
-        url("SELECTED WORK».png");
-
-    background-position:center;
-
-}
-
-
-.selected-content{
-
-    max-width:1000px;
-
-    margin:auto;
-
-}
-
-.selected-card{
-
-    min-height:390px;
-
-    padding:45px;
-
-    border-radius:32px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:flex-end;
-
-    text-align:right;
-
-    border:
-        1px solid
-        rgba(212,175,55,.28);
-
-    background:
-
-        linear-gradient(
-            180deg,
-            transparent 25%,
-            rgba(2,9,20,.78) 100%
-        );
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.4);
-
-}
-
-.selected-card small{
-
-    color:var(--gold-light);
-
-    direction:ltr;
-
-    letter-spacing:4px;
-
-    font-size:11px;
-
-}
-
-.selected-card h3{
-
-    margin-top:8px;
-
-    font-size:
-        clamp(
-            25px,
-            4vw,
-            38px
-        );
-
-}
-
-.selected-card p{
-
-    max-width:600px;
-
-    margin-top:10px;
-
-    color:var(--text);
-
-    line-height:1.9;
-
-    font-size:15px;
-
-}
-
-
-/* =========================================================
+/* =========================
    JOURNEY
-========================================================= */
-
-.journey-section{
-
-    background:#030b16;
-
-}
-
-.journey-section .section-bg{
-
-    background-image:
-        url("MY_JOURNEY.png");
-
-    background-position:center;
-
-}
-
+========================= */
 
 .timeline{
-
-    width:min(900px,100%);
-
+    max-width:850px;
     margin:auto;
-
     position:relative;
-
 }
 
 .timeline::before{
-
     content:"";
 
     position:absolute;
@@ -1311,640 +792,271 @@ main{
     width:1px;
 
     background:
-
         linear-gradient(
             transparent,
-            rgba(212,175,55,.75),
+            var(--gold),
             transparent
         );
-
 }
 
 .timeline-item{
-
     position:relative;
 
     width:50%;
 
-    padding:
-        0
-        38px
-        48px;
-
-}
-
-.timeline-item:nth-child(even){
-
-    margin-right:50%;
-
-    text-align:right;
-
+    padding:0 36px 45px;
 }
 
 .timeline-item:nth-child(odd){
-
     text-align:left;
+}
 
+.timeline-item:nth-child(even){
+    margin-right:50%;
+    text-align:right;
 }
 
 .timeline-dot{
-
     position:absolute;
 
     top:4px;
 
-    width:14px;
-    height:14px;
+    width:13px;
+    height:13px;
 
     border-radius:50%;
 
-    background:
-        var(--gold-light);
+    background:var(--gold-light);
 
     box-shadow:
-        0 0 0 5px
-            rgba(212,175,55,.08),
-        0 0 25px
-            rgba(212,175,55,.6);
-
+        0 0 18px rgba(212,175,55,.58);
 }
 
-.timeline-item:nth-child(odd)
-.timeline-dot{
-
-    right:-7px;
-
+.timeline-item:nth-child(odd) .timeline-dot{
+    right:-6px;
 }
 
-.timeline-item:nth-child(even)
-.timeline-dot{
-
-    left:-7px;
-
+.timeline-item:nth-child(even) .timeline-dot{
+    left:-6px;
 }
 
 .timeline-year{
-
     color:var(--gold-light);
 
-    font-size:29px;
-
+    font-size:28px;
     font-weight:800;
 
     line-height:1;
 
-    margin-bottom:9px;
-
+    margin-bottom:8px;
 }
 
 .timeline-title{
-
     font-size:18px;
-
-    font-weight:700;
-
-    margin-bottom:7px;
-
+    font-weight:600;
+    margin-bottom:6px;
 }
 
 .timeline-text{
-
-    color:var(--text);
-
+    color:var(--muted);
     font-size:14px;
-
-    line-height:1.9;
-
+    line-height:1.85;
 }
 
 
-/* =========================================================
-   VISION
-========================================================= */
-
-.vision-section{
-
-    background:#030b16;
-
-}
-
-.vision-section .section-bg{
-
-    background-image:
-        url("VISION.png");
-
-    background-position:center;
-
-}
-
-
-.vision-card{
-
-    max-width:850px;
-
-    margin:auto;
-
-    padding:
-        45px;
-
-    border-radius:32px;
-
-    text-align:center;
-
-}
-
-.vision-card h3{
-
-    color:var(--gold-light);
-
-    font-size:25px;
-
-    margin-bottom:15px;
-
-}
-
-.vision-card p{
-
-    color:var(--text);
-
-    font-size:17px;
-
-    line-height:2.1;
-
-}
-
-
-/* =========================================================
-   FUTURE
-========================================================= */
-
-.future-section{
-
-    background:#030b16;
-
-}
-
-.future-section .section-bg{
-
-    background-image:
-        url("FUTURE.png");
-
-    background-position:center;
-
-}
-
-
-.future-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:20px;
-
-}
-
-
-.future-card{
-
-    padding:
-        32px
-        25px;
-
-    border-radius:26px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.23);
-
-    background:
-        rgba(2,10,21,.67);
-
-    backdrop-filter:blur(7px);
-
-    -webkit-backdrop-filter:blur(7px);
-
-}
-
-.future-card span{
-
-    color:var(--gold-light);
-
-    font-size:25px;
-
-}
-
-.future-card h3{
-
-    margin:
-        13px
-        0
-        8px;
-
-    font-size:19px;
-
-}
-
-.future-card p{
-
-    color:var(--text);
-
-    font-size:14px;
-
-    line-height:1.9;
-
-}
-
-
-/* =========================================================
+/* =========================
    CONTACT
-========================================================= */
-
-.contact-section{
-
-    background:#030b16;
-
-}
-
-.contact-section .section-bg{
-
-    background-image:
-        url("CONTACT.png");
-
-    background-position:center;
-
-}
-
+========================= */
 
 .contact-card{
-
-    width:min(700px,100%);
-
+    max-width:700px;
     margin:auto;
 
-    padding:
-        42px
-        30px;
+    padding:35px;
 
     text-align:center;
 
-    border-radius:32px;
+    border:1px solid var(--border);
+    border-radius:30px;
 
-}
-
-.contact-card p{
-
-    color:var(--text);
-
-    margin-bottom:25px;
-
-    font-size:15px;
-
+    background:rgba(255,255,255,.022);
 }
 
 .contact-icons{
-
     display:flex;
-
-    align-items:center;
-
     justify-content:center;
-
-    gap:18px;
-
+    align-items:center;
+    gap:16px;
 }
 
 .social{
-
-    width:64px;
-    height:64px;
+    width:60px;
+    height:60px;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
     border-radius:50%;
 
-    border:
-        1px solid
-        rgba(212,175,55,.45);
+    border:1px solid rgba(212,175,55,.42);
 
-    background:
-        rgba(2,10,21,.55);
+    background:rgba(255,255,255,.02);
 
     color:var(--gold-light);
 
     text-decoration:none;
 
-    transition:.35s ease;
-
+    transition:.3s ease;
 }
 
 .social:hover{
+    transform:translateY(-5px) scale(1.04);
 
-    transform:
-        translateY(-6px)
-        scale(1.04);
+    background:rgba(212,175,55,.08);
 
-    background:
-        rgba(212,175,55,.09);
-
-    border-color:
-        var(--gold-light);
+    border-color:var(--gold-light);
 
     box-shadow:
-        0 18px 45px
-        rgba(212,175,55,.13);
-
+        0 15px 40px rgba(212,175,55,.13);
 }
 
 .social svg{
-
-    width:27px;
-    height:27px;
-
+    width:26px;
+    height:26px;
     fill:currentColor;
-
 }
 
 .qr-button{
+    margin-top:22px;
 
-    margin-top:24px;
-
-    padding:
-        13px
-        28px;
+    padding:11px 24px;
 
     border-radius:999px;
 
-    border:
-        1px solid
-        rgba(212,175,55,.42);
+    border:1px solid rgba(212,175,55,.38);
 
-    background:
-        rgba(2,10,21,.45);
+    background:transparent;
 
     color:var(--gold-light);
 
     cursor:pointer;
 
     transition:.3s ease;
-
 }
 
 .qr-button:hover{
-
-    transform:
-        translateY(-3px);
-
-    background:
-        rgba(212,175,55,.09);
-
-    border-color:
-        var(--gold-light);
-
+    background:rgba(212,175,55,.08);
+    transform:translateY(-3px);
 }
 
 
-/* =========================================================
-   LIGHTBOX
-========================================================= */
-
-.lightbox{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:2000;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:25px;
-
-    background:
-        rgba(0,0,0,.90);
-
-    backdrop-filter:blur(12px);
-
-    -webkit-backdrop-filter:blur(12px);
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.3s ease;
-
-}
-
-.lightbox.active{
-
-    opacity:1;
-
-    visibility:visible;
-
-}
-
-.lightbox img{
-
-    max-width:92vw;
-
-    max-height:88vh;
-
-    object-fit:contain;
-
-    border-radius:18px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.35);
-
-    box-shadow:
-        0 35px 110px
-        rgba(0,0,0,.7);
-
-}
-
-.lightbox-close{
-
-    position:absolute;
-
-    top:22px;
-    left:25px;
-
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(212,175,55,.42);
-
-    background:
-        rgba(0,0,0,.30);
-
-    color:var(--gold-light);
-
-    font-size:23px;
-
-    cursor:pointer;
-
-}
-
-
-/* =========================================================
+/* =========================
    QR MODAL
-========================================================= */
+========================= */
 
 .qr-modal{
-
     position:fixed;
-
     inset:0;
 
     z-index:2100;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
     padding:20px;
 
-    background:
-        rgba(0,0,0,.82);
+    background:rgba(0,0,0,.78);
 
-    backdrop-filter:blur(9px);
-
-    -webkit-backdrop-filter:blur(9px);
+    backdrop-filter:blur(8px);
 
     opacity:0;
-
     visibility:hidden;
 
     transition:.3s ease;
-
 }
 
 .qr-modal.active{
-
     opacity:1;
-
     visibility:visible;
-
 }
 
 .qr-box{
-
     width:min(360px,92vw);
 
     padding:30px;
 
     text-align:center;
 
-    border:
-        1px solid
-        rgba(212,175,55,.38);
+    border:1px solid rgba(212,175,55,.35);
 
     border-radius:30px;
 
-    background:
-        #07172a;
+    background:#07172a;
 
-    box-shadow:
-        0 35px 100px
-        rgba(0,0,0,.6);
-
+    box-shadow:0 30px 100px rgba(0,0,0,.55);
 }
 
 .qr-box h3{
+    color:var(--gold-light);
 
     direction:ltr;
 
-    color:var(--gold-light);
-
     letter-spacing:2px;
-
 }
 
 .qr-box img{
-
     width:220px;
     height:220px;
 
     display:block;
 
-    margin:
-        18px
-        auto;
+    margin:18px auto;
 
     padding:9px;
 
     background:white;
 
     border-radius:14px;
-
 }
 
 .qr-close{
-
-    padding:
-        10px
-        26px;
+    padding:10px 25px;
 
     border-radius:999px;
 
-    border:
-        1px solid
-        rgba(212,175,55,.35);
+    border:1px solid rgba(212,175,55,.35);
 
     background:transparent;
 
     color:white;
 
     cursor:pointer;
-
 }
 
 
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 footer{
-
-    padding:
-        42px
-        20px;
+    padding:38px 20px;
 
     text-align:center;
 
-    border-top:
-        1px solid
-        rgba(212,175,55,.13);
+    border-top:1px solid rgba(212,175,55,.12);
 
-    background:
-        #020811;
-
+    background:rgba(2,8,17,.72);
 }
 
 .footer-copy{
-
-    color:#89939f;
-
+    color:#858f9b;
     font-size:12px;
-
 }
 
 .footer-mbk{
-
-    margin-top:10px;
+    margin-top:9px;
 
     direction:ltr;
 
@@ -1952,257 +1064,136 @@ footer{
 
     color:var(--gold);
 
+    letter-spacing:6px;
+
     font-weight:700;
-
-    letter-spacing:7px;
-
 }
 
 
-/* =========================================================
+/* =========================
    REVEAL
-========================================================= */
+========================= */
 
 .reveal{
-
     opacity:0;
-
-    transform:
-        translateY(30px);
+    transform:translateY(25px);
 
     transition:
-        opacity .85s ease,
-        transform .85s ease;
-
+        opacity .8s ease,
+        transform .8s ease;
 }
 
 .reveal.visible{
-
     opacity:1;
-
-    transform:
-        translateY(0);
-
+    transform:translateY(0);
 }
 
 
-/* =========================================================
+/* =========================
    ANIMATION
-========================================================= */
+========================= */
 
 @keyframes heroIn{
 
     from{
-
         opacity:0;
-
-        transform:
-            translateY(28px);
-
+        transform:translateY(25px);
     }
 
     to{
-
         opacity:1;
-
-        transform:
-            translateY(0);
-
+        transform:translateY(0);
     }
 
 }
 
 
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 @media(max-width:760px){
 
-    :root{
-
-        --header-height:70px;
-
-    }
-
     header{
-
         height:70px;
-
-        padding:
-            0
-            20px;
-
+        padding:0 20px;
     }
 
     .logo{
-
         font-size:21px;
-
         letter-spacing:6px;
-
     }
 
-    .menu-btn{
-
-        width:46px;
-        height:46px;
-
-    }
-
-    .section{
-
-        min-height:620px;
-
-        padding:
-            95px
-            20px
-            75px;
-
-    }
-
-    .section-bg{
-
-        background-position:center center;
-
-    }
-
-    .section::before{
-
-        background:
-
-            linear-gradient(
-                180deg,
-                rgba(2,9,20,.72),
-                rgba(2,9,20,.45) 38%,
-                rgba(2,9,20,.82)
-            );
-
+    main{
+        width:min(92%,520px);
     }
 
     .hero{
-
-        min-height:100svh;
-
-        padding:
-            95px
-            20px
-            55px;
-
-    }
-
-    .hero-bg{
-
-        background-position:
-            center center;
-
+        padding:100px 0 45px;
     }
 
     .hero-name{
+        max-width:100%;
+        padding:0 12px;
 
-        font-size:
-            clamp(
-                34px,
-                9vw,
-                48px
-            );
+        font-size:clamp(32px,9vw,47px);
 
         line-height:1.55;
-
+        letter-spacing:-.5px;
     }
 
-    .hero-corner{
-
-        width:45px;
-        height:45px;
-
+    .photo-frame{
+        width:min(390px,88vw);
+        margin-bottom:18px;
     }
 
-    .hero-corner.top{
-
-        top:88px;
-
-        right:20px;
-
-    }
-
-    .hero-corner.bottom{
-
-        bottom:25px;
-
-        left:20px;
-
+    .section{
+        padding:52px 0;
     }
 
     .section-header{
-
-        margin-bottom:30px;
-
-    }
-
-    .section-title{
-
-        font-size:
-            clamp(
-                31px,
-                8vw,
-                42px
-            );
-
+        margin-bottom:27px;
     }
 
     .about-card{
-
-        padding:
-            30px
-            21px;
-
+        padding:28px 22px;
     }
 
     .about-card p{
-
-        font-size:15.5px;
-
+        font-size:16px;
         line-height:2;
-
     }
 
     .values{
-
         grid-template-columns:1fr;
-
         gap:14px;
-
     }
 
     .value-card{
-
-        padding:
-            28px
-            20px;
-
+        padding:27px 22px;
     }
 
-    .selected-card{
-
-        min-height:400px;
-
-        padding:
-            30px
-            22px;
-
+    .gallery{
+        grid-template-columns:1fr;
+        gap:13px;
     }
 
-    .selected-card h3{
+    .gallery-item,
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3),
+    .gallery-item:nth-child(4),
+    .gallery-item:nth-child(5),
+    .gallery-item:nth-child(6),
+    .gallery-item:nth-child(7),
+    .gallery-item:nth-child(8){
 
-        font-size:27px;
-
+        grid-column:span 1;
+        aspect-ratio:16/10;
     }
 
     .timeline::before{
-
         right:13px;
-
     }
 
     .timeline-item,
@@ -2213,117 +1204,68 @@ footer{
 
         margin:0;
 
-        padding:
-            0
-            42px
-            38px
-            0;
+        padding:0 42px 38px 0;
 
         text-align:right;
-
     }
 
-    .timeline-item:nth-child(odd)
-    .timeline-dot,
-    .timeline-item:nth-child(even)
-    .timeline-dot{
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot{
 
         right:7px;
-
         left:auto;
-
     }
 
     .timeline-year{
-
         font-size:25px;
-
-    }
-
-    .vision-card{
-
-        padding:
-            32px
-            22px;
-
-    }
-
-    .vision-card p{
-
-        font-size:15px;
-
-        line-height:2;
-
-    }
-
-    .future-grid{
-
-        grid-template-columns:1fr;
-
-        gap:14px;
-
-    }
-
-    .future-card{
-
-        padding:
-            27px
-            21px;
-
     }
 
     .contact-card{
+        padding:30px 20px;
+    }
 
-        padding:
-            32px
-            20px;
+    .hero-corner{
+        width:45px;
+        height:45px;
+    }
 
+    .hero-corner.top{
+        top:90px;
     }
 
 }
 
 
-/* =========================================================
+/* =========================
    SMALL MOBILE
-========================================================= */
+========================= */
 
 @media(max-width:420px){
 
     .hero-name{
-
         font-size:34px;
-
+        padding:0 8px;
     }
 
-    .section{
-
-        padding-left:15px;
-        padding-right:15px;
-
+    .photo-frame{
+        width:92vw;
     }
 
     .social{
-
-        width:57px;
-        height:57px;
-
+        width:56px;
+        height:56px;
     }
 
-    .side-menu{
-
-        width:90vw;
-
-        padding-left:28px;
-        padding-right:28px;
-
+    .gallery-info h3{
+        font-size:16px;
     }
 
 }
 
 
-/* =========================================================
+/* =========================
    REDUCED MOTION
-========================================================= */
+========================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -2332,36 +1274,25 @@ footer{
     *::after{
 
         animation:none!important;
-
         transition:none!important;
-
         scroll-behavior:auto!important;
-
     }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
 
-<!-- =======================================================
-     HEADER
-======================================================= -->
+<!-- HEADER -->
 
 <header>
 
-    <a
-        href="#home"
-        class="logo"
-    >
+    <a href="#home" class="logo">
         MBK
     </a>
-
 
     <button
         class="menu-btn"
@@ -2374,16 +1305,12 @@ footer{
 </header>
 
 
-
-<!-- =======================================================
-     SIDE MENU
-======================================================= -->
+<!-- SIDE MENU -->
 
 <div
     class="overlay"
     id="overlay"
 ></div>
-
 
 <nav
     class="side-menu"
@@ -2393,16 +1320,14 @@ footer{
     <button
         class="close-menu"
         id="closeMenu"
-        aria-label="إغلاق القائمة"
+        aria-label="إغلاق"
     >
         ×
     </button>
 
-
     <div class="menu-label">
         NAVIGATION
     </div>
-
 
     <a href="#home">
         الرئيسية
@@ -2424,14 +1349,6 @@ footer{
         رحلتي
     </a>
 
-    <a href="#vision">
-        رؤيتي
-    </a>
-
-    <a href="#future">
-        المستقبل
-    </a>
-
     <a href="#contact">
         تواصل
     </a>
@@ -2439,211 +1356,165 @@ footer{
 </nav>
 
 
-
 <main>
 
 
-<!-- =======================================================
-     HOME
-     Hero_.png
-======================================================= -->
+<!-- HERO -->
 
 <section
     class="hero"
     id="home"
 >
 
-
-    <div class="hero-bg"></div>
-
-
     <div class="hero-corner top"></div>
-
     <div class="hero-corner bottom"></div>
 
+    <h1 class="hero-name">
+        مبخوت بن عبدالله
+    </h1>
 
-    <div class="hero-content">
+    <div class="gold-line"></div>
 
+    <div class="photo-frame">
 
-        <h1 class="hero-name">
-            مبخوت بن عبدالله
-        </h1>
-
-
-        <div class="hero-line"></div>
-
-
-        <p class="hero-subtitle">
-            وما توفيقي إلا بالله
-        </p>
-
+        <img
+            class="profile-photo"
+            src="file_00000000202482468d4027eb8c5919f7.png"
+            alt="مبخوت بن عبدالله"
+        >
 
     </div>
+
+    <p class="quote">
+        وما توفيقي إلا بالله
+    </p>
 
 </section>
 
 
-
-<!-- =======================================================
-     ABOUT
-     ABOUT.png
-======================================================= -->
+<!-- ABOUT -->
 
 <section
-    class="section
-           about-section
-           reveal"
+    class="section reveal"
     id="about"
 >
 
+    <div class="section-header">
 
-    <div class="section-bg"></div>
+        <span class="section-label">
+            ABOUT
+        </span>
 
+        <h2 class="section-title">
+            نبذة
+        </h2>
 
-    <div class="section-inner">
+    </div>
 
+    <div class="about-card">
 
-        <div class="section-header">
+        <p>
 
-            <span class="section-label">
-                ABOUT
-            </span>
+            أنا مبخوت بن عبدالله.
 
-            <h2 class="section-title">
-                نبذة
-            </h2>
+            <br><br>
 
-        </div>
+            أؤمن بأن الشخصية الحقيقية تُبنى بالطموح،
+            والتجربة، والاهتمام بالتفاصيل. أسعى دائمًا
+            إلى تطوير نفسي، واكتشاف أفكار جديدة،
+            وصناعة هوية تعكس رؤيتي وشخصيتي بأسلوب
+            يجمع بين الأصالة، الأناقة، والطموح.
 
+            <br><br>
 
-        <div class="about-card glass">
+            هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا
+            من اهتماماتي، أعمالي، اختياراتي، والأشياء
+            التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
 
+            <br><br>
 
-            <p>
+            <strong>
+                أطمح للأفضل، وأسعى لأن أترك أثرًا يستحق أن يُذكر.
+            </strong>
 
-                أنا مبخوت بن عبدالله.
-
-                <br><br>
-
-                أؤمن بأن الشخصية الحقيقية تُبنى بالطموح،
-                والتجربة، والاهتمام بالتفاصيل.
-
-                أسعى دائمًا إلى تطوير نفسي، واكتشاف أفكار
-                جديدة، وصناعة هوية تعكس رؤيتي وشخصيتي
-                بأسلوب يجمع بين الأصالة، الأناقة، والطموح.
-
-                <br><br>
-
-                هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا
-                من اهتماماتي، أعمالي، اختياراتي، والأشياء
-                التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
-
-                <br><br>
-
-                <strong>
-                    أطمح للأفضل، وأسعى لأن أترك أثرًا
-                    يستحق أن يُذكر.
-                </strong>
-
-            </p>
-
-
-        </div>
+        </p>
 
     </div>
 
 </section>
 
 
-
-<!-- =======================================================
-     VALUES
-     MY_VALUES.png
-======================================================= -->
+<!-- VALUES -->
 
 <section
-    class="section
-           values-section
-           reveal"
+    class="section reveal"
     id="values"
 >
 
+    <div class="section-header">
 
-    <div class="section-bg"></div>
+        <span class="section-label">
+            MY VALUES
+        </span>
 
+        <h2 class="section-title">
+            بصمتي
+        </h2>
 
-    <div class="section-inner">
+    </div>
 
+    <div class="values">
 
-        <div class="section-header">
+        <div class="value-card">
 
-            <span class="section-label">
-                MY VALUES
-            </span>
+            <div class="value-icon">
+                ✦
+            </div>
 
-            <h2 class="section-title">
-                بصمتي
-            </h2>
+            <h3>
+                الإبداع
+            </h3>
+
+            <p>
+                أبحث دائمًا عن الأفكار المختلفة
+                والأسلوب الذي يحمل طابعًا خاصًا.
+            </p>
 
         </div>
 
 
-        <div class="values">
+        <div class="value-card">
 
-
-            <div class="value-card">
-
-                <div class="value-icon">
-                    ✦
-                </div>
-
-                <h3>
-                    الإبداع
-                </h3>
-
-                <p>
-                    أبحث دائمًا عن الأفكار المختلفة
-                    والأسلوب الذي يحمل طابعًا خاصًا.
-                </p>
-
+            <div class="value-icon">
+                ◇
             </div>
 
+            <h3>
+                الجودة
+            </h3>
 
-            <div class="value-card">
+            <p>
+                أهتم بالتفاصيل الصغيرة لأنها
+                تصنع الفرق في النتيجة النهائية.
+            </p>
 
-                <div class="value-icon">
-                    ◇
-                </div>
+        </div>
 
-                <h3>
-                    الجودة
-                </h3>
 
-                <p>
-                    أهتم بالتفاصيل الصغيرة لأنها
-                    تصنع الفرق في النتيجة النهائية.
-                </p>
+        <div class="value-card">
 
+            <div class="value-icon">
+                ◆
             </div>
 
+            <h3>
+                الأصالة
+            </h3>
 
-            <div class="value-card">
-
-                <div class="value-icon">
-                    ◆
-                </div>
-
-                <h3>
-                    الأصالة
-                </h3>
-
-                <p>
-                    أحافظ على هويتي وأطورها
-                    بأسلوب حديث ومتوازن.
-                </p>
-
-            </div>
-
+            <p>
+                أحافظ على هويتي وأطورها
+                بأسلوب حديث ومتوازن.
+            </p>
 
         </div>
 
@@ -2652,466 +1523,425 @@ footer{
 </section>
 
 
-
-<!-- =======================================================
-     SELECTED WORK
-     SELECTED WORK».png
-======================================================= -->
+<!-- GALLERY -->
 
 <section
-    class="section
-           selected-section
-           reveal"
+    class="section reveal"
     id="gallery"
 >
 
+    <div class="section-header">
 
-    <div class="section-bg"></div>
+        <span class="section-label">
+            SELECTED
+        </span>
 
+        <h2 class="section-title">
+            مختاراتي
+        </h2>
 
-    <div class="section-inner">
+    </div>
 
-
-        <div class="section-header">
-
-            <span class="section-label">
-                SELECTED
-            </span>
-
-            <h2 class="section-title">
-                مختاراتي
-            </h2>
-
-        </div>
+    <div class="gallery">
 
 
-        <div class="selected-content">
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
+        >
 
+            <img
+                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
+                alt="جبال وطبيعة"
+                loading="lazy"
+            >
 
-            <div class="selected-card">
+            <div class="gallery-info">
 
-
-                <small>
-                    SELECTED WORK
-                </small>
-
+                <small>NATURE</small>
 
                 <h3>
-                    مختارات تعكس ذوقي ورؤيتي
+                    هدوء الجبال
                 </h3>
-
-
-                <p>
-                    مجموعة من التفاصيل والمشاهد والأفكار
-                    التي اخترتها لأنها تعبّر عن الجانب
-                    الجمالي والفكري الذي أبحث عنه.
-                </p>
-
 
             </div>
 
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"
+                alt="طبيعة ريفية"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>LIFE</small>
+
+                <h3>
+                    تفاصيل هادئة
+                </h3>
+
+            </div>
 
         </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=85"
+                alt="مدينة حديثة"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>CITY</small>
+
+                <h3>
+                    نبض المدينة
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85"
+                alt="شوارع المدينة"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>STREETS</small>
+
+                <h3>
+                    بين الشوارع
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=85"
+                alt="مدينة من الأعلى"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>URBAN</small>
+
+                <h3>
+                    أفق جديد
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
+                alt="طريق وسط الطبيعة"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>JOURNEY</small>
+
+                <h3>
+                    الطريق
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
+                alt="منظر طبيعي"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>CALM</small>
+
+                <h3>
+                    لحظة هدوء
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85"
+                alt="العمارة والحياة"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>ARCHITECTURE</small>
+
+                <h3>
+                    تفاصيل المكان
+                </h3>
+
+            </div>
+
+        </div>
+
 
     </div>
 
 </section>
 
 
-
-<!-- =======================================================
-     JOURNEY
-     MY_JOURNEY.png
-======================================================= -->
+<!-- JOURNEY -->
 
 <section
-    class="section
-           journey-section
-           reveal"
+    class="section reveal"
     id="journey"
 >
 
+    <div class="section-header">
 
-    <div class="section-bg"></div>
+        <span class="section-label">
+            MY JOURNEY
+        </span>
+
+        <h2 class="section-title">
+            رحلتي
+        </h2>
+
+    </div>
 
 
-    <div class="section-inner">
+    <div class="timeline">
 
 
-        <div class="section-header">
+        <div class="timeline-item">
 
-            <span class="section-label">
-                MY JOURNEY
-            </span>
+            <div class="timeline-dot"></div>
 
-            <h2 class="section-title">
-                رحلتي
-            </h2>
+            <div class="timeline-year">
+                2015
+            </div>
+
+            <div class="timeline-title">
+                البداية
+            </div>
+
+            <div class="timeline-text">
+                بداية الرحلة، ومنها بدأت مرحلة
+                جديدة من التجارب والتعلم.
+            </div>
 
         </div>
 
 
-        <div class="timeline">
+        <div class="timeline-item">
 
+            <div class="timeline-dot"></div>
 
-            <div class="timeline-item">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-year">
-                    2015
-                </div>
-
-                <div class="timeline-title">
-                    البداية
-                </div>
-
-                <div class="timeline-text">
-                    بداية الرحلة، ومنها بدأت مرحلة
-                    جديدة من التجارب والتعلم.
-                </div>
-
+            <div class="timeline-year">
+                2018
             </div>
 
-
-            <div class="timeline-item">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-year">
-                    2018
-                </div>
-
-                <div class="timeline-title">
-                    مرحلة من التجربة والتعلّم
-                </div>
-
-                <div class="timeline-text">
-                    سنوات من التجربة واكتشاف الاهتمامات
-                    وتطوير المهارات والنظرة الخاصة.
-                </div>
-
+            <div class="timeline-title">
+                مرحلة من التجربة والتعلّم
             </div>
 
-
-            <div class="timeline-item">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-year">
-                    2021
-                </div>
-
-                <div class="timeline-title">
-                    تطور ونضج
-                </div>
-
-                <div class="timeline-text">
-                    مرحلة أصبح فيها الطموح أكثر وضوحًا
-                    وأصبحت التجارب السابقة جزءًا من الهوية.
-                </div>
-
+            <div class="timeline-text">
+                سنوات من التجربة واكتشاف الاهتمامات
+                وتطوير المهارات والنظرة الخاصة.
             </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-year">
-                    2024
-                </div>
-
-                <div class="timeline-title">
-                    مرحلة جديدة
-                </div>
-
-                <div class="timeline-text">
-                    بداية مرحلة مختلفة، برؤية أوسع
-                    وطموح أكبر للمستقبل.
-                </div>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-year">
-                    2026
-                </div>
-
-                <div class="timeline-title">
-                    رؤية للمستقبل
-                </div>
-
-                <div class="timeline-text">
-                    الاستمرار في التطور وبناء المستقبل
-                    بخطوات أكثر وضوحًا وثباتًا.
-                </div>
-
-            </div>
-
 
         </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2021
+            </div>
+
+            <div class="timeline-title">
+                تطور ونضج
+            </div>
+
+            <div class="timeline-text">
+                مرحلة أصبح فيها الطموح أكثر وضوحًا
+                وأصبحت التجارب السابقة جزءًا من الهوية.
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2024
+            </div>
+
+            <div class="timeline-title">
+                مرحلة جديدة
+            </div>
+
+            <div class="timeline-text">
+                بداية مرحلة مختلفة، برؤية أوسع
+                وطموح أكبر للمستقبل.
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2026
+            </div>
+
+            <div class="timeline-title">
+                رؤية للمستقبل
+            </div>
+
+            <div class="timeline-text">
+                الاستمرار في التطور وبناء المستقبل
+                بخطوات أكثر وضوحًا وثباتًا.
+            </div>
+
+        </div>
+
 
     </div>
 
 </section>
 
 
-
-<!-- =======================================================
-     VISION
-     VISION.png
-======================================================= -->
+<!-- CONTACT -->
 
 <section
-    class="section
-           vision-section
-           reveal"
-    id="vision"
->
-
-
-    <div class="section-bg"></div>
-
-
-    <div class="section-inner">
-
-
-        <div class="section-header">
-
-            <span class="section-label">
-                VISION
-            </span>
-
-            <h2 class="section-title">
-                رؤيتي
-            </h2>
-
-        </div>
-
-
-        <div class="vision-card glass">
-
-
-            <h3>
-                نحو مستقبل أكثر وضوحًا
-            </h3>
-
-
-            <p>
-                رؤيتي أن أستمر في بناء نفسي، وتطوير أفكاري،
-                وتحويل الطموح إلى خطوات حقيقية.
-                أؤمن أن المستقبل لا يُنتظر، بل يُبنى
-                بالصبر والتجربة والاستمرار.
-            </p>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     FUTURE
-     FUTURE.png
-======================================================= -->
-
-<section
-    class="section
-           future-section
-           reveal"
-    id="future"
->
-
-
-    <div class="section-bg"></div>
-
-
-    <div class="section-inner">
-
-
-        <div class="section-header">
-
-            <span class="section-label">
-                FUTURE
-            </span>
-
-            <h2 class="section-title">
-                المستقبل
-            </h2>
-
-        </div>
-
-
-        <div class="future-grid">
-
-
-            <div class="future-card">
-
-                <span>
-                    ✦
-                </span>
-
-                <h3>
-                    التطور
-                </h3>
-
-                <p>
-                    الاستمرار في التعلم وتطوير المهارات
-                    والنظرة إلى الأشياء من زوايا جديدة.
-                </p>
-
-            </div>
-
-
-            <div class="future-card">
-
-                <span>
-                    ◇
-                </span>
-
-                <h3>
-                    الطموح
-                </h3>
-
-                <p>
-                    تحويل الأفكار والطموحات إلى مشاريع
-                    وتجارب حقيقية تستحق البناء عليها.
-                </p>
-
-            </div>
-
-
-            <div class="future-card">
-
-                <span>
-                    ◆
-                </span>
-
-                <h3>
-                    الأثر
-                </h3>
-
-                <p>
-                    صناعة أثر حقيقي يحمل قيمة ويترك
-                    انطباعًا يستمر بعد انتهاء اللحظة.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     CONTACT
-     CONTACT.png
-======================================================= -->
-
-<section
-    class="section
-           contact-section
-           reveal"
+    class="section reveal"
     id="contact"
 >
 
+    <div class="section-header">
 
-    <div class="section-bg"></div>
+        <span class="section-label">
+            CONTACT
+        </span>
 
+        <h2 class="section-title">
+            تواصل
+        </h2>
 
-    <div class="section-inner">
-
-
-        <div class="section-header">
-
-            <span class="section-label">
-                CONTACT
-            </span>
-
-            <h2 class="section-title">
-                تواصل
-            </h2>
-
-        </div>
+    </div>
 
 
-        <div class="contact-card glass">
+    <div class="contact-card">
+
+        <div class="contact-icons">
 
 
-            <p>
-                يسعدني التواصل والتفاعل عبر القنوات التالية.
-            </p>
-
-
-            <div class="contact-icons">
-
-
-                <!-- EMAIL -->
-
-                <a
-                    class="social"
-                    href="mailto:mabkhout@mabkhut.com"
-                    aria-label="البريد الإلكتروني"
-                    title="البريد الإلكتروني"
-                >
-
-                    <svg viewBox="0 0 24 24">
-
-                        <path
-                            d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
-                        />
-
-                    </svg>
-
-                </a>
-
-
-                <!-- FACEBOOK -->
-
-                <a
-                    class="social"
-                    href="https://www.facebook.com/share/19JG7PQiHL/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Facebook"
-                    title="Facebook"
-                >
-
-                    <svg viewBox="0 0 24 24">
-
-                        <path
-                            d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
-                        />
-
-                    </svg>
-
-                </a>
-
-
-            </div>
-
-
-            <button
-                class="qr-button"
-                id="qrButton"
+            <a
+                class="social"
+                href="mailto:mabkhout@mabkhut.com"
+                aria-label="البريد الإلكتروني"
+                title="البريد الإلكتروني"
             >
-                مشاركة الموقع عبر QR
-            </button>
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
+                    />
+
+                </svg>
+
+            </a>
+
+
+            <a
+                class="social"
+                href="https://www.facebook.com/share/19JG7PQiHL/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                title="Facebook"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
+                    />
+
+                </svg>
+
+            </a>
 
 
         </div>
+
+
+        <button
+            class="qr-button"
+            id="qrButton"
+        >
+            مشاركة الموقع عبر QR
+        </button>
 
     </div>
 
@@ -3121,30 +1951,47 @@ footer{
 </main>
 
 
+<!-- LIGHTBOX -->
 
-<!-- =======================================================
-     QR MODAL
-======================================================= -->
+<div
+    class="lightbox"
+    id="lightbox"
+>
+
+    <button
+        class="lightbox-close"
+        id="lightboxClose"
+        aria-label="إغلاق"
+    >
+        ×
+    </button>
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt=""
+    >
+
+</div>
+
+
+<!-- QR -->
 
 <div
     class="qr-modal"
     id="qrModal"
 >
 
-
     <div class="qr-box">
-
 
         <h3>
             mabkhut.com
         </h3>
 
-
         <img
             src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com"
             alt="QR Code"
         >
-
 
         <button
             class="qr-close"
@@ -3153,26 +2000,18 @@ footer{
             إغلاق
         </button>
 
-
     </div>
 
 </div>
 
 
-
-<!-- =======================================================
-     FOOTER
-======================================================= -->
+<!-- FOOTER -->
 
 <footer>
 
     <div class="footer-copy">
-
-        © 2026 مبخوت بن عبدالله —
-        جميع الحقوق محفوظة
-
+        © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
     </div>
-
 
     <div class="footer-mbk">
         MBK
@@ -3181,17 +2020,9 @@ footer{
 </footer>
 
 
-
-<!-- =======================================================
-     JAVASCRIPT
-======================================================= -->
-
 <script>
 
-
-/* =========================================================
-   MENU
-========================================================= */
+/* MENU */
 
 const menuBtn =
     document.getElementById("menuBtn");
@@ -3212,8 +2043,7 @@ function openMenu(){
 
     overlay.classList.add("active");
 
-    document.body.style.overflow =
-        "hidden";
+    document.body.style.overflow="hidden";
 
 }
 
@@ -3224,8 +2054,7 @@ function closeSideMenu(){
 
     overlay.classList.remove("active");
 
-    document.body.style.overflow =
-        "";
+    document.body.style.overflow="";
 
 }
 
@@ -3235,12 +2064,10 @@ menuBtn.addEventListener(
     openMenu
 );
 
-
 closeMenu.addEventListener(
     "click",
     closeSideMenu
 );
-
 
 overlay.addEventListener(
     "click",
@@ -3260,10 +2087,7 @@ document
     });
 
 
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
+/* SCROLL REVEAL */
 
 const revealElements =
     document.querySelectorAll(".reveal");
@@ -3275,9 +2099,7 @@ const revealObserver =
 
             entries.forEach(entry => {
 
-                if(
-                    entry.isIntersecting
-                ){
+                if(entry.isIntersecting){
 
                     entry.target.classList.add(
                         "visible"
@@ -3293,7 +2115,7 @@ const revealObserver =
 
         },
         {
-            threshold:.10
+            threshold:.12
         }
     );
 
@@ -3305,10 +2127,82 @@ revealElements.forEach(element => {
 });
 
 
+/* GALLERY LIGHTBOX */
 
-/* =========================================================
-   QR
-========================================================= */
+const galleryItems =
+    document.querySelectorAll(".gallery-item");
+
+const lightbox =
+    document.getElementById("lightbox");
+
+const lightboxImage =
+    document.getElementById("lightboxImage");
+
+const lightboxClose =
+    document.getElementById("lightboxClose");
+
+
+galleryItems.forEach(item => {
+
+    item.addEventListener(
+        "click",
+        () => {
+
+            const image =
+                item.dataset.full;
+
+            lightboxImage.src =
+                image;
+
+            lightbox.classList.add(
+                "active"
+            );
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
+    );
+
+});
+
+
+function closeLightbox(){
+
+    lightbox.classList.remove(
+        "active"
+    );
+
+    lightboxImage.src="";
+
+    document.body.style.overflow="";
+
+}
+
+
+lightboxClose.addEventListener(
+    "click",
+    closeLightbox
+);
+
+
+lightbox.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target === lightbox
+        ){
+
+            closeLightbox();
+
+        }
+
+    }
+);
+
+
+/* QR */
 
 const qrButton =
     document.getElementById("qrButton");
@@ -3320,39 +2214,33 @@ const qrClose =
     document.getElementById("qrClose");
 
 
-function openQR(){
-
-    qrModal.classList.add(
-        "active"
-    );
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-function closeQR(){
-
-    qrModal.classList.remove(
-        "active"
-    );
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
 qrButton.addEventListener(
     "click",
-    openQR
+    () => {
+
+        qrModal.classList.add(
+            "active"
+        );
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
 );
 
 
 qrClose.addEventListener(
     "click",
-    closeQR
+    () => {
+
+        qrModal.classList.remove(
+            "active"
+        );
+
+        document.body.style.overflow =
+            "";
+
+    }
 );
 
 
@@ -3364,7 +2252,12 @@ qrModal.addEventListener(
             event.target === qrModal
         ){
 
-            closeQR();
+            qrModal.classList.remove(
+                "active"
+            );
+
+            document.body.style.overflow =
+                "";
 
         }
 
@@ -3372,71 +2265,31 @@ qrModal.addEventListener(
 );
 
 
-
-/* =========================================================
-   ESCAPE KEY
-========================================================= */
+/* ESC */
 
 document.addEventListener(
     "keydown",
     event => {
 
-        if(
-            event.key === "Escape"
-        ){
+        if(event.key === "Escape"){
 
             closeSideMenu();
 
-            closeQR();
+            closeLightbox();
+
+            qrModal.classList.remove(
+                "active"
+            );
+
+            document.body.style.overflow =
+                "";
 
         }
 
     }
 );
-
-
-
-/* =========================================================
-   HEADER SCROLL EFFECT
-========================================================= */
-
-const header =
-    document.querySelector("header");
-
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        if(
-            window.scrollY > 30
-        ){
-
-            header.style.background =
-                "rgba(2,9,20,.92)";
-
-            header.style.borderBottomColor =
-                "rgba(212,175,55,.20)";
-
-        }else{
-
-            header.style.background =
-                "linear-gradient(180deg,rgba(2,9,20,.90),rgba(2,9,20,.68))";
-
-            header.style.borderBottomColor =
-                "rgba(212,175,55,.12)";
-
-        }
-
-    },
-    {
-        passive:true
-    }
-);
-
 
 </script>
 
-
 </body>
-    </html>
+                </html>
