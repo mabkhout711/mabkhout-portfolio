@@ -1,53 +1,134 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>مبخوت بن عبدالله | MBK</title>
 
-<meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله — MBK">
-<meta name="author" content="مبخوت بن عبدالله">
-<meta name="theme-color" content="#061426">
-<meta name="color-scheme" content="dark">
+<meta
+    name="description"
+    content="الموقع الشخصي لمبخوت بن عبدالله — MBK"
+>
+
+<meta
+    name="theme-color"
+    content="#061426"
+>
+
+<meta
+    name="robots"
+    content="index, follow"
+>
+
+<meta
+    property="og:type"
+    content="website"
+>
+
+<meta
+    property="og:title"
+    content="مبخوت بن عبدالله | MBK"
+>
+
+<meta
+    property="og:description"
+    content="الموقع الشخصي لمبخوت بن عبدالله"
+>
+
+<meta
+    property="og:url"
+    content="https://mabkhut.com/"
+>
+
+<meta
+    property="og:site_name"
+    content="MBK"
+>
+
+<meta
+    name="twitter:card"
+    content="summary_large_image"
+>
+
+<meta
+    name="twitter:title"
+    content="مبخوت بن عبدالله | MBK"
+>
+
+<meta
+    name="twitter:description"
+    content="الموقع الشخصي لمبخوت بن عبدالله"
+>
+
+<!--
+CSP:
+- لا يوجد unsafe-inline داخل script-src.
+- الصور الخارجية محصورة في المصادر المستخدمة فعليًا.
+- الخطوط محصورة في Google Fonts.
+- منع تضمين الموقع داخل iframe.
+-->
+<meta
+    http-equiv="Content-Security-Policy"
+    content="
+    default-src 'self';
+    base-uri 'self';
+    form-action 'self';
+    object-src 'none';
+    frame-ancestors 'none';
+    script-src 'self' 'sha256-REPLACE_WITH_GENERATED_HASH';
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' data: https://images.unsplash.com https://api.qrserver.com;
+    connect-src 'self';
+    frame-src 'none';
+    media-src 'self';
+    worker-src 'self';
+    upgrade-insecure-requests;
+    "
+>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-  href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap"
-  rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
 >
 
 <style>
 
 /* =========================================================
-   MBK V2
-   MABKHOUT BIN ABDULLAH
+   MBK — V2
+   Luxury Personal Website
 ========================================================= */
 
 :root{
+
     --navy:#061426;
+    --navy-2:#081a2f;
     --navy-dark:#020914;
-    --navy-soft:#0a1c31;
 
     --gold:#d4af37;
     --gold-light:#f1d56a;
-    --gold-dark:#a77e13;
+    --gold-soft:rgba(212,175,55,.18);
 
     --white:#f8f7f2;
     --text:#d8dce2;
     --muted:#8995a3;
 
-    --border:rgba(212,175,55,.18);
+    --border:rgba(212,175,55,.20);
     --border-strong:rgba(212,175,55,.42);
 
-    --glass:rgba(255,255,255,.035);
-
-    --shadow:0 30px 90px rgba(0,0,0,.38);
+    --shadow:
+        0 30px 90px rgba(0,0,0,.35);
 
     --radius:28px;
+
+    --container:1120px;
 }
+
 
 /* =========================================================
    RESET
@@ -65,7 +146,9 @@ html{
 }
 
 body{
+
     min-height:100vh;
+
     overflow-x:hidden;
 
     font-family:
@@ -76,16 +159,25 @@ body{
     color:var(--white);
 
     background:
+
         radial-gradient(
-            circle at 50% 0%,
-            rgba(212,175,55,.09),
-            transparent 28%
+            circle at 50% -10%,
+            rgba(212,175,55,.11),
+            transparent 32%
         ),
+
         radial-gradient(
-            circle at 0% 50%,
-            rgba(17,53,88,.30),
-            transparent 35%
+            circle at 0% 35%,
+            rgba(18,52,86,.34),
+            transparent 38%
         ),
+
+        radial-gradient(
+            circle at 100% 70%,
+            rgba(212,175,55,.045),
+            transparent 30%
+        ),
+
         linear-gradient(
             145deg,
             #020914 0%,
@@ -94,39 +186,50 @@ body{
         );
 }
 
+
+/* subtle grid */
+
 body::before{
+
     content:"";
 
     position:fixed;
-    inset:0;
 
-    pointer-events:none;
+    inset:0;
 
     z-index:-10;
 
-    opacity:.035;
+    pointer-events:none;
+
+    opacity:.045;
 
     background-image:
+
         linear-gradient(
-            rgba(255,255,255,.08) 1px,
+            rgba(255,255,255,.06) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
-            rgba(255,255,255,.08) 1px,
+            rgba(255,255,255,.06) 1px,
             transparent 1px
         );
 
     background-size:75px 75px;
 }
 
+
+/* ambient glow */
+
 body::after{
+
     content:"";
 
     position:fixed;
 
-    width:500px;
-    height:500px;
+    width:520px;
+    height:520px;
 
     top:10%;
     left:50%;
@@ -145,6 +248,7 @@ body::after{
     z-index:-9;
 }
 
+
 a{
     color:inherit;
     -webkit-tap-highlight-color:transparent;
@@ -158,11 +262,75 @@ img{
     max-width:100%;
 }
 
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.skip-link{
+
+    position:fixed;
+
+    top:10px;
+    right:10px;
+
+    z-index:5000;
+
+    padding:10px 16px;
+
+    border-radius:10px;
+
+    background:var(--gold);
+
+    color:#111;
+
+    text-decoration:none;
+
+    transform:translateY(-150%);
+
+    transition:.25s ease;
+}
+
+.skip-link:focus{
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+.scroll-progress{
+
+    position:fixed;
+
+    top:0;
+    right:0;
+
+    height:2px;
+
+    width:0%;
+
+    z-index:4000;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            var(--gold-light)
+        );
+
+    box-shadow:
+        0 0 12px rgba(212,175,55,.65);
+}
+
+
 /* =========================================================
    HEADER
 ========================================================= */
 
 header{
+
     position:fixed;
 
     top:0;
@@ -173,31 +341,60 @@ header{
 
     padding:
         0
-        max(22px,6%);
+        max(20px, 6%);
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     z-index:1000;
 
     background:
-        rgba(2,9,20,.76);
+        rgba(2,9,20,.70);
 
     border-bottom:
         1px solid
         rgba(212,175,55,.12);
 
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
 }
 
+header.scrolled{
+
+    background:
+        rgba(2,9,20,.92);
+
+    border-bottom-color:
+        rgba(212,175,55,.20);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.18);
+}
+
+
+/* logo */
+
 .logo{
+
     direction:ltr;
 
-    font-family:Arial,sans-serif;
+    font-family:
+        Arial,
+        sans-serif;
 
     font-size:23px;
+
     font-weight:700;
 
     letter-spacing:7px;
@@ -206,20 +403,33 @@ header{
 
     text-decoration:none;
 
-    transition:.3s ease;
+    position:relative;
 }
 
-.logo:hover{
-    color:#fff0a3;
+.logo::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:0;
+    bottom:-7px;
+
+    width:24px;
+    height:1px;
+
+    background:var(--gold);
+
+    opacity:.65;
 }
+
+
+/* menu button */
 
 .menu-btn{
+
     width:47px;
     height:47px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
 
     border-radius:50%;
 
@@ -234,12 +444,22 @@ header{
 
     cursor:pointer;
 
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
     font-size:21px;
 
-    transition:.3s ease;
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
 }
 
 .menu-btn:hover{
+
     transform:scale(1.05);
 
     border-color:
@@ -253,48 +473,66 @@ header{
         rgba(212,175,55,.12);
 }
 
+
 /* =========================================================
    SIDE MENU
 ========================================================= */
 
 .overlay{
-    position:fixed;
-    inset:0;
 
-    z-index:1100;
+    position:fixed;
+
+    inset:0;
 
     background:
         rgba(0,0,0,.62);
 
-    backdrop-filter:blur(7px);
-    -webkit-backdrop-filter:blur(7px);
+    backdrop-filter:
+        blur(6px);
+
+    z-index:1100;
 
     opacity:0;
+
     visibility:hidden;
 
     transition:.35s ease;
 }
 
 .overlay.active{
+
     opacity:1;
+
     visibility:visible;
 }
 
+
 .side-menu{
+
     position:fixed;
 
     top:0;
     right:0;
 
-    width:min(380px,88vw);
-    height:100dvh;
+    width:min(390px,88vw);
+
+    height:100vh;
 
     padding:
-        105px 35px 35px;
+        105px
+        35px
+        35px;
 
     z-index:1200;
 
     background:
+
+        radial-gradient(
+            circle at 80% 0%,
+            rgba(212,175,55,.08),
+            transparent 30%
+        ),
+
         linear-gradient(
             150deg,
             rgba(8,26,47,.99),
@@ -309,31 +547,28 @@ header{
         translateX(105%);
 
     transition:
-        transform
-        .45s
+        transform .45s
         cubic-bezier(.77,0,.18,1);
 
     box-shadow:
         -30px 0 90px
-        rgba(0,0,0,.48);
+        rgba(0,0,0,.45);
 }
 
 .side-menu.active{
     transform:translateX(0);
 }
 
+
 .close-menu{
+
     position:absolute;
 
-    top:23px;
-    left:23px;
+    top:24px;
+    left:24px;
 
-    width:43px;
-    height:43px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    width:42px;
+    height:42px;
 
     border-radius:50%;
 
@@ -347,34 +582,33 @@ header{
 
     cursor:pointer;
 
-    font-size:23px;
-
-    transition:.3s ease;
+    font-size:22px;
 }
 
-.close-menu:hover{
-    transform:rotate(90deg);
-
-    background:
-        rgba(212,175,55,.08);
-}
 
 .menu-label{
+
     color:var(--gold);
 
     font-size:11px;
 
     letter-spacing:4px;
 
-    margin-bottom:25px;
+    margin-bottom:28px;
 
     direction:ltr;
 
     text-align:right;
 }
 
+
 .side-menu a{
-    display:block;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
 
     padding:17px 0;
 
@@ -391,44 +625,133 @@ header{
     transition:.3s ease;
 }
 
+.side-menu a::after{
+
+    content:"↗";
+
+    direction:ltr;
+
+    color:
+        rgba(241,213,106,.5);
+
+    font-size:13px;
+
+    transform:
+        translateX(0);
+
+    transition:.3s ease;
+}
+
 .side-menu a:hover{
-    color:var(--gold-light);
+
+    color:
+        var(--gold-light);
+
     padding-right:10px;
 }
+
+.side-menu a:hover::after{
+
+    transform:
+        translateX(-5px);
+
+    color:
+        var(--gold-light);
+}
+
 
 /* =========================================================
    MAIN
 ========================================================= */
 
 main{
-    width:min(1120px,92%);
+
+    width:
+        min(
+            var(--container),
+            92%
+        );
 
     margin:auto;
 }
+
 
 /* =========================================================
    HERO
 ========================================================= */
 
 .hero{
+
     min-height:100vh;
 
     padding:
         115px
         0
-        55px;
+        65px;
 
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
 
     position:relative;
+
+    isolation:isolate;
 }
 
+
+/* decorative frame */
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:min(720px,90vw);
+
+    height:min(720px,90vw);
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(212,175,55,.045);
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    border-radius:50%;
+
+    background:
+        rgba(212,175,55,.035);
+
+    filter:blur(90px);
+
+    z-index:-2;
+
+    pointer-events:none;
+}
+
+
 .hero-corner{
+
     position:absolute;
 
     width:72px;
@@ -441,7 +764,8 @@ main{
 }
 
 .hero-corner.top{
-    top:105px;
+
+    top:108px;
     right:0;
 
     border-top:1px solid;
@@ -449,6 +773,7 @@ main{
 }
 
 .hero-corner.bottom{
+
     bottom:35px;
     left:0;
 
@@ -456,58 +781,59 @@ main{
     border-left:1px solid;
 }
 
-.hero-kicker{
-    margin-bottom:8px;
+
+/* eyebrow */
+
+.hero-eyebrow{
 
     direction:ltr;
 
-    font-family:Arial,sans-serif;
+    color:
+        rgba(241,213,106,.78);
 
-    color:var(--gold);
-
-    font-size:11px;
+    font-size:10px;
 
     letter-spacing:5px;
 
-    opacity:.9;
+    margin-bottom:13px;
 
     animation:
-        heroIn
-        .8s
-        ease
-        both;
+        heroIn .8s ease both;
 }
 
+
+/* name */
+
 .hero-name{
+
     width:100%;
 
-    max-width:900px;
+    max-width:850px;
 
-    padding:
-        0
-        15px;
+    padding:0 20px;
 
     margin:
-        0
-        auto
-        14px;
+        0 auto 14px;
 
     font-size:
         clamp(
-            36px,
-            6vw,
-            62px
+            34px,
+            5.5vw,
+            58px
         );
 
     font-weight:800;
 
-    line-height:1.45;
+    line-height:1.5;
 
     text-align:center;
+
+    white-space:normal;
 
     letter-spacing:-1px;
 
     background:
+
         linear-gradient(
             135deg,
             #b88918 0%,
@@ -527,23 +853,20 @@ main{
         rgba(212,175,55,.12);
 
     animation:
-        heroIn
-        .9s
-        .08s
-        ease
-        both;
+        heroIn .9s .08s ease both;
 }
 
+
 .gold-line{
-    width:105px;
+
+    width:100px;
     height:2px;
 
     margin:
-        0
-        auto
-        25px;
+        0 auto 25px;
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
@@ -556,10 +879,23 @@ main{
     box-shadow:
         0 0 16px
         rgba(212,175,55,.28);
+
+    animation:
+        heroIn .9s .16s ease both;
 }
 
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
 .photo-frame{
-    width:min(470px,88vw);
+
+    width:
+        min(
+            470px,
+            88vw
+        );
 
     aspect-ratio:1/1;
 
@@ -570,17 +906,16 @@ main{
     margin-bottom:22px;
 
     animation:
-        heroIn
-        1s
-        .18s
-        ease
-        both;
+        heroIn .95s .20s ease both;
 }
 
+
 .photo-frame::before{
+
     content:"";
 
     position:absolute;
+
     inset:0;
 
     border:
@@ -590,12 +925,18 @@ main{
     border-radius:31px;
 
     transform:rotate(-1deg);
+
+    box-shadow:
+        0 0 45px
+        rgba(212,175,55,.05);
 }
 
 .photo-frame::after{
+
     content:"";
 
     position:absolute;
+
     inset:7px;
 
     border:
@@ -607,7 +948,9 @@ main{
     transform:rotate(1deg);
 }
 
+
 .profile-photo{
+
     position:relative;
 
     z-index:2;
@@ -618,6 +961,7 @@ main{
     display:block;
 
     object-fit:contain;
+
     object-position:center;
 
     border-radius:24px;
@@ -638,6 +982,7 @@ main{
 }
 
 .photo-frame:hover .profile-photo{
+
     transform:scale(1.012);
 
     box-shadow:
@@ -645,7 +990,9 @@ main{
         rgba(0,0,0,.58);
 }
 
+
 .quote{
+
     color:var(--white);
 
     font-size:
@@ -658,98 +1005,70 @@ main{
     font-weight:500;
 
     animation:
-        heroIn
-        1s
-        .28s
-        ease
-        both;
+        heroIn .9s .30s ease both;
 }
 
-.hero-actions{
-    display:flex;
 
-    align-items:center;
-    justify-content:center;
+.hero-subtitle{
 
-    gap:12px;
+    margin-top:8px;
 
-    margin-top:23px;
+    color:var(--muted);
+
+    font-size:13px;
+
+    letter-spacing:.5px;
 }
 
-.btn{
-    min-width:145px;
-
-    padding:
-        12px
-        22px;
-
-    border-radius:999px;
-
-    text-decoration:none;
-
-    font-size:14px;
-
-    transition:.3s ease;
-}
-
-.btn-primary{
-    color:#07111d;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f1d56a,
-            #d4af37
-        );
-
-    box-shadow:
-        0 10px 35px
-        rgba(212,175,55,.13);
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-        0 16px 40px
-        rgba(212,175,55,.22);
-}
-
-.btn-secondary{
-    color:var(--gold-light);
-
-    border:
-        1px solid
-        var(--border-strong);
-
-    background:
-        rgba(255,255,255,.02);
-}
-
-.btn-secondary:hover{
-    transform:translateY(-3px);
-
-    background:
-        rgba(212,175,55,.07);
-}
 
 /* =========================================================
-   SECTIONS
+   SECTION
 ========================================================= */
 
 .section{
-    padding:72px 0;
+
+    padding:80px 0;
 
     position:relative;
 }
 
-.section-header{
-    text-align:center;
 
-    margin-bottom:34px;
+/* section divider */
+
+.section + .section::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    right:15%;
+
+    left:15%;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(212,175,55,.16),
+            transparent
+        );
 }
 
+
+.section-header{
+
+    text-align:center;
+
+    margin-bottom:36px;
+}
+
+
 .section-label{
+
     display:block;
 
     color:var(--gold);
@@ -763,7 +1082,9 @@ main{
     margin-bottom:7px;
 }
 
+
 .section-title{
+
     font-size:
         clamp(
             30px,
@@ -776,20 +1097,22 @@ main{
     line-height:1.4;
 }
 
+
 .section-title::after{
+
     content:"";
 
     display:block;
 
     width:68px;
+
     height:2px;
 
     margin:
-        11px
-        auto
-        0;
+        11px auto 0;
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
@@ -798,18 +1121,33 @@ main{
         );
 }
 
+
 /* =========================================================
    ABOUT
 ========================================================= */
 
+.about-section{
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(212,175,55,.035),
+            transparent 45%
+        );
+}
+
+
 .about-card{
-    max-width:900px;
+
+    max-width:920px;
 
     margin:auto;
 
     padding:
-        38px
-        42px;
+        40px
+        45px;
+
+    position:relative;
 
     border:
         1px solid
@@ -819,6 +1157,7 @@ main{
         var(--radius);
 
     background:
+
         linear-gradient(
             145deg,
             rgba(255,255,255,.045),
@@ -829,27 +1168,58 @@ main{
         var(--shadow);
 
     text-align:center;
+
+    overflow:hidden;
 }
 
+
+.about-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    top:-100px;
+    right:-80px;
+
+    border-radius:50%;
+
+    background:
+        rgba(212,175,55,.07);
+
+    filter:blur(35px);
+}
+
+
 .about-card p{
+
+    position:relative;
+
     color:var(--text);
 
     font-size:18px;
 
-    line-height:2.1;
+    line-height:2.15;
 }
 
+
 .about-card strong{
+
     color:var(--gold-light);
 
     font-weight:700;
 }
+
 
 /* =========================================================
    VALUES
 ========================================================= */
 
 .values{
+
     display:grid;
 
     grid-template-columns:
@@ -858,10 +1228,21 @@ main{
     gap:18px;
 }
 
+
 .value-card{
+
+    min-height:260px;
+
     padding:
-        31px
-        25px;
+        34px 25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
 
     text-align:center;
 
@@ -872,7 +1253,11 @@ main{
     border-radius:25px;
 
     background:
-        rgba(255,255,255,.022);
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.012)
+        );
 
     transition:
         transform .35s ease,
@@ -880,8 +1265,11 @@ main{
         box-shadow .35s ease;
 }
 
+
 .value-card:hover{
-    transform:translateY(-8px);
+
+    transform:
+        translateY(-8px);
 
     border-color:
         rgba(212,175,55,.42);
@@ -891,16 +1279,17 @@ main{
         rgba(212,175,55,.07);
 }
 
+
 .value-icon{
-    width:55px;
-    height:55px;
+
+    width:62px;
+    height:62px;
 
     margin:
-        0
-        auto
-        14px;
+        0 auto 17px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -910,30 +1299,48 @@ main{
         1px solid
         rgba(212,175,55,.35);
 
-    color:var(--gold-light);
+    color:
+        var(--gold-light);
 
-    font-size:22px;
+    font-size:23px;
+
+    background:
+        rgba(212,175,55,.025);
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(212,175,55,.025);
 }
+
 
 .value-card h3{
+
     font-size:20px;
 
-    margin-bottom:7px;
+    margin-bottom:9px;
 }
 
+
 .value-card p{
+
     color:var(--muted);
 
     font-size:14px;
 
     line-height:1.85;
+
+    max-width:280px;
 }
+
 
 /* =========================================================
    GALLERY
+   IMPORTANT:
+   صور مختاراتي محفوظة كما هي
 ========================================================= */
 
 .gallery{
+
     display:grid;
 
     grid-template-columns:
@@ -942,7 +1349,9 @@ main{
     gap:15px;
 }
 
+
 .gallery-item{
+
     position:relative;
 
     overflow:hidden;
@@ -957,28 +1366,60 @@ main{
 
     cursor:pointer;
 
-    isolation:isolate;
+    box-shadow:
+        0 18px 45px
+        rgba(0,0,0,.16);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
 }
 
-.gallery-item:nth-child(1),
-.gallery-item:nth-child(4),
-.gallery-item:nth-child(5),
-.gallery-item:nth-child(8){
-    grid-column:span 7;
 
+.gallery-item:nth-child(1){
+    grid-column:span 7;
     aspect-ratio:16/10;
 }
 
-.gallery-item:nth-child(2),
-.gallery-item:nth-child(3),
-.gallery-item:nth-child(6),
-.gallery-item:nth-child(7){
+.gallery-item:nth-child(2){
     grid-column:span 5;
-
     aspect-ratio:1/1;
 }
 
+.gallery-item:nth-child(3){
+    grid-column:span 5;
+    aspect-ratio:1/1;
+}
+
+.gallery-item:nth-child(4){
+    grid-column:span 7;
+    aspect-ratio:16/10;
+}
+
+.gallery-item:nth-child(5){
+    grid-column:span 7;
+    aspect-ratio:16/10;
+}
+
+.gallery-item:nth-child(6){
+    grid-column:span 5;
+    aspect-ratio:1/1;
+}
+
+.gallery-item:nth-child(7){
+    grid-column:span 5;
+    aspect-ratio:1/1;
+}
+
+.gallery-item:nth-child(8){
+    grid-column:span 7;
+    aspect-ratio:16/10;
+}
+
+
 .gallery-item img{
+
     width:100%;
     height:100%;
 
@@ -990,30 +1431,50 @@ main{
         transform .7s ease;
 }
 
+
 .gallery-item::after{
+
     content:"";
 
     position:absolute;
 
     inset:0;
 
-    z-index:1;
-
     background:
+
         linear-gradient(
             to top,
-            rgba(0,0,0,.80),
-            transparent 55%
+            rgba(0,0,0,.82),
+            rgba(0,0,0,.08) 58%,
+            transparent
         );
 
     pointer-events:none;
 }
 
+
+.gallery-item:hover{
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(212,175,55,.35);
+
+    box-shadow:
+        0 25px 65px
+        rgba(0,0,0,.28);
+}
+
+
 .gallery-item:hover img{
+
     transform:scale(1.07);
 }
 
+
 .gallery-info{
+
     position:absolute;
 
     right:22px;
@@ -1023,10 +1484,13 @@ main{
     z-index:2;
 }
 
+
 .gallery-info small{
+
     display:block;
 
-    color:var(--gold-light);
+    color:
+        var(--gold-light);
 
     font-size:11px;
 
@@ -1037,17 +1501,21 @@ main{
     margin-bottom:3px;
 }
 
+
 .gallery-info h3{
+
     font-size:18px;
 
     font-weight:600;
 }
+
 
 /* =========================================================
    LIGHTBOX
 ========================================================= */
 
 .lightbox{
+
     position:fixed;
 
     inset:0;
@@ -1057,29 +1525,37 @@ main{
     padding:25px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
     background:
         rgba(0,0,0,.90);
 
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:
+        blur(12px);
 
     opacity:0;
+
     visibility:hidden;
 
     transition:.3s ease;
 }
 
+
 .lightbox.active{
+
     opacity:1;
+
     visibility:visible;
 }
 
+
 .lightbox img{
+
     max-width:92vw;
-    max-height:86vh;
+
+    max-height:82vh;
 
     object-fit:contain;
 
@@ -1094,7 +1570,9 @@ main{
         rgba(0,0,0,.65);
 }
 
+
 .lightbox-close{
+
     position:absolute;
 
     top:22px;
@@ -1103,10 +1581,6 @@ main{
     width:45px;
     height:45px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
     border-radius:50%;
 
     border:
@@ -1114,28 +1588,87 @@ main{
         rgba(212,175,55,.4);
 
     background:
-        rgba(0,0,0,.25);
+        rgba(0,0,0,.30);
 
-    color:var(--gold-light);
+    color:
+        var(--gold-light);
 
     font-size:23px;
 
     cursor:pointer;
 }
 
+
+.lightbox-nav{
+
+    position:absolute;
+
+    bottom:25px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+
+.lightbox-nav button{
+
+    width:44px;
+    height:44px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(212,175,55,.35);
+
+    background:
+        rgba(0,0,0,.35);
+
+    color:
+        var(--gold-light);
+
+    cursor:pointer;
+
+    font-size:18px;
+}
+
+
+.lightbox-counter{
+
+    min-width:65px;
+
+    text-align:center;
+
+    color:
+        rgba(255,255,255,.75);
+
+    font-size:12px;
+}
+
+
 /* =========================================================
    JOURNEY
 ========================================================= */
 
 .timeline{
-    max-width:850px;
+
+    max-width:900px;
 
     margin:auto;
 
     position:relative;
 }
 
+
 .timeline::before{
+
     content:"";
 
     position:absolute;
@@ -1148,6 +1681,7 @@ main{
     width:1px;
 
     background:
+
         linear-gradient(
             transparent,
             var(--gold),
@@ -1155,28 +1689,34 @@ main{
         );
 }
 
+
 .timeline-item{
+
     position:relative;
 
     width:50%;
 
     padding:
-        0
-        36px
-        45px;
+        0 36px 48px;
 }
 
+
 .timeline-item:nth-child(odd){
+
     text-align:left;
 }
 
+
 .timeline-item:nth-child(even){
+
     margin-right:50%;
 
     text-align:right;
 }
 
+
 .timeline-dot{
+
     position:absolute;
 
     top:4px;
@@ -1194,16 +1734,25 @@ main{
         rgba(212,175,55,.58);
 }
 
-.timeline-item:nth-child(odd) .timeline-dot{
+
+.timeline-item:nth-child(odd)
+.timeline-dot{
+
     right:-6px;
 }
 
-.timeline-item:nth-child(even) .timeline-dot{
+
+.timeline-item:nth-child(even)
+.timeline-dot{
+
     left:-6px;
 }
 
+
 .timeline-year{
-    color:var(--gold-light);
+
+    color:
+        var(--gold-light);
 
     font-size:28px;
 
@@ -1214,7 +1763,9 @@ main{
     margin-bottom:8px;
 }
 
+
 .timeline-title{
+
     font-size:18px;
 
     font-weight:600;
@@ -1222,7 +1773,9 @@ main{
     margin-bottom:6px;
 }
 
+
 .timeline-text{
+
     color:var(--muted);
 
     font-size:14px;
@@ -1230,18 +1783,36 @@ main{
     line-height:1.85;
 }
 
+
 /* =========================================================
    CONTACT
 ========================================================= */
 
+.contact-section{
+
+    background:
+
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(212,175,55,.045),
+            transparent 45%
+        );
+}
+
+
 .contact-card{
-    max-width:700px;
+
+    max-width:760px;
 
     margin:auto;
 
-    padding:38px;
+    padding:42px 35px;
 
     text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
 
     border:
         1px solid
@@ -1251,34 +1822,76 @@ main{
         var(--radius);
 
     background:
-        rgba(255,255,255,.022);
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
+        );
 
     box-shadow:
         var(--shadow);
 }
 
-.contact-description{
+
+.contact-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    top:-160px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:
+        rgba(212,175,55,.075);
+
+    filter:blur(55px);
+
+    pointer-events:none;
+}
+
+
+.contact-heading{
+
+    position:relative;
+
     color:var(--muted);
 
     font-size:14px;
 
-    margin-bottom:22px;
+    margin-bottom:25px;
 }
 
+
 .contact-icons{
+
+    position:relative;
+
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
     gap:16px;
 }
 
+
 .social{
-    width:60px;
-    height:60px;
+
+    width:62px;
+    height:62px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -1291,14 +1904,17 @@ main{
     background:
         rgba(255,255,255,.02);
 
-    color:var(--gold-light);
+    color:
+        var(--gold-light);
 
     text-decoration:none;
 
     transition:.3s ease;
 }
 
+
 .social:hover{
+
     transform:
         translateY(-5px)
         scale(1.04);
@@ -1314,19 +1930,22 @@ main{
         rgba(212,175,55,.13);
 }
 
+
 .social svg{
+
     width:26px;
     height:26px;
 
     fill:currentColor;
 }
 
+
 .qr-button{
-    margin-top:22px;
+
+    margin-top:24px;
 
     padding:
-        11px
-        24px;
+        12px 25px;
 
     border-radius:999px;
 
@@ -1336,25 +1955,31 @@ main{
 
     background:transparent;
 
-    color:var(--gold-light);
+    color:
+        var(--gold-light);
 
     cursor:pointer;
 
     transition:.3s ease;
 }
 
+
 .qr-button:hover{
+
     background:
         rgba(212,175,55,.08);
 
-    transform:translateY(-3px);
+    transform:
+        translateY(-3px);
 }
 
+
 /* =========================================================
-   QR
+   QR MODAL
 ========================================================= */
 
 .qr-modal{
+
     position:fixed;
 
     inset:0;
@@ -1362,7 +1987,9 @@ main{
     z-index:2100;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     padding:20px;
@@ -1370,22 +1997,32 @@ main{
     background:
         rgba(0,0,0,.82);
 
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:
+        blur(9px);
 
     opacity:0;
+
     visibility:hidden;
 
     transition:.3s ease;
 }
 
+
 .qr-modal.active{
+
     opacity:1;
+
     visibility:visible;
 }
 
+
 .qr-box{
-    width:min(360px,92vw);
+
+    width:
+        min(
+            360px,
+            92vw
+        );
 
     padding:30px;
 
@@ -1397,30 +2034,44 @@ main{
 
     border-radius:30px;
 
-    background:#07172a;
+    background:
+        #07172a;
 
     box-shadow:
         0 30px 100px
         rgba(0,0,0,.55);
 }
 
+
 .qr-box h3{
-    color:var(--gold-light);
+
+    color:
+        var(--gold-light);
 
     direction:ltr;
 
     letter-spacing:2px;
 }
 
+
+.qr-box p{
+
+    margin-top:6px;
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+
 .qr-box img{
+
     width:220px;
     height:220px;
 
     display:block;
 
-    margin:
-        18px
-        auto;
+    margin:18px auto;
 
     padding:9px;
 
@@ -1429,10 +2080,11 @@ main{
     border-radius:14px;
 }
 
+
 .qr-close{
+
     padding:
-        10px
-        25px;
+        10px 25px;
 
     border-radius:999px;
 
@@ -1447,14 +2099,69 @@ main{
     cursor:pointer;
 }
 
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.back-top{
+
+    position:fixed;
+
+    left:20px;
+    bottom:20px;
+
+    width:46px;
+    height:46px;
+
+    z-index:800;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(212,175,55,.35);
+
+    background:
+        rgba(2,9,20,.78);
+
+    color:
+        var(--gold-light);
+
+    cursor:pointer;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:
+        translateY(12px);
+
+    transition:.3s ease;
+
+    backdrop-filter:blur(10px);
+}
+
+
+.back-top.visible{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+        translateY(0);
+}
+
+
 /* =========================================================
    FOOTER
 ========================================================= */
 
 footer{
+
     padding:
-        40px
-        20px;
+        45px 20px;
 
     text-align:center;
 
@@ -1463,34 +2170,43 @@ footer{
         rgba(212,175,55,.12);
 
     background:
-        rgba(2,8,17,.72);
+        rgba(2,8,17,.78);
 }
 
+
 .footer-copy{
+
     color:#858f9b;
 
     font-size:12px;
 }
 
+
 .footer-mbk{
-    margin-top:9px;
+
+    margin-top:10px;
 
     direction:ltr;
 
-    font-family:Arial,sans-serif;
+    font-family:
+        Arial,
+        sans-serif;
 
-    color:var(--gold);
+    color:
+        var(--gold);
 
     letter-spacing:6px;
 
     font-weight:700;
 }
 
+
 /* =========================================================
    REVEAL
 ========================================================= */
 
 .reveal{
+
     opacity:0;
 
     transform:
@@ -1501,20 +2217,24 @@ footer{
         transform .8s ease;
 }
 
+
 .reveal.visible{
+
     opacity:1;
 
     transform:
         translateY(0);
 }
 
+
 /* =========================================================
-   ANIMATION
+   HERO ANIMATION
 ========================================================= */
 
 @keyframes heroIn{
 
     from{
+
         opacity:0;
 
         transform:
@@ -1522,13 +2242,14 @@ footer{
     }
 
     to{
+
         opacity:1;
 
         transform:
             translateY(0);
     }
-
 }
+
 
 /* =========================================================
    MOBILE
@@ -1537,20 +2258,24 @@ footer{
 @media(max-width:760px){
 
     header{
+
         height:70px;
 
         padding:
-            0
-            20px;
+            0 20px;
     }
 
+
     .logo{
+
         font-size:21px;
 
         letter-spacing:6px;
     }
 
+
     main{
+
         width:
             min(
                 92%,
@@ -1558,25 +2283,22 @@ footer{
             );
     }
 
+
     .hero{
+
         padding:
             100px
             0
             45px;
     }
 
-    .hero-kicker{
-        font-size:9px;
-
-        letter-spacing:4px;
-    }
 
     .hero-name{
+
         max-width:100%;
 
         padding:
-            0
-            8px;
+            0 12px;
 
         font-size:
             clamp(
@@ -1590,17 +2312,9 @@ footer{
         letter-spacing:-.5px;
     }
 
-    .hero-actions{
-        flex-direction:column;
-
-        width:100%;
-    }
-
-    .btn{
-        width:min(280px,100%);
-    }
 
     .photo-frame{
+
         width:
             min(
                 390px,
@@ -1610,43 +2324,65 @@ footer{
         margin-bottom:18px;
     }
 
+
     .section{
-        padding:52px 0;
+
+        padding:
+            58px 0;
     }
 
+
     .section-header{
+
         margin-bottom:27px;
     }
 
+
     .about-card{
+
         padding:
-            28px
-            22px;
+            28px 22px;
     }
 
+
     .about-card p{
+
         font-size:16px;
 
         line-height:2;
     }
 
+
     .values{
+
         grid-template-columns:1fr;
 
         gap:14px;
     }
 
+
     .value-card{
+
+        min-height:230px;
+
         padding:
-            27px
-            22px;
+            27px 22px;
     }
 
+
+    /*
+       IMPORTANT:
+       ترتيب صور مختاراتي محفوظ.
+       على الهاتف تتحول إلى عمود واحد فقط.
+    */
+
     .gallery{
+
         grid-template-columns:1fr;
 
         gap:13px;
     }
+
 
     .gallery-item,
     .gallery-item:nth-child(1),
@@ -1663,9 +2399,20 @@ footer{
         aspect-ratio:16/10;
     }
 
+
+    .gallery-info{
+
+        right:18px;
+        left:18px;
+        bottom:15px;
+    }
+
+
     .timeline::before{
+
         right:13px;
     }
+
 
     .timeline-item,
     .timeline-item:nth-child(odd),
@@ -1676,42 +2423,60 @@ footer{
         margin:0;
 
         padding:
-            0
-            42px
+            0 42px
             38px
             0;
 
         text-align:right;
     }
 
-    .timeline-item:nth-child(odd) .timeline-dot,
-    .timeline-item:nth-child(even) .timeline-dot{
+
+    .timeline-item:nth-child(odd)
+    .timeline-dot,
+
+    .timeline-item:nth-child(even)
+    .timeline-dot{
 
         right:7px;
 
         left:auto;
     }
 
+
     .timeline-year{
+
         font-size:25px;
     }
 
+
     .contact-card{
+
         padding:
-            30px
-            20px;
+            30px 20px;
     }
 
+
     .hero-corner{
+
         width:45px;
         height:45px;
     }
 
+
     .hero-corner.top{
+
         top:90px;
     }
 
+
+    .back-top{
+
+        left:15px;
+        bottom:15px;
+    }
+
 }
+
 
 /* =========================================================
    SMALL MOBILE
@@ -1720,27 +2485,40 @@ footer{
 @media(max-width:420px){
 
     .hero-name{
+
         font-size:34px;
 
         padding:
-            0
-            8px;
+            0 8px;
     }
 
+
     .photo-frame{
+
         width:92vw;
     }
 
+
     .social{
+
         width:56px;
         height:56px;
     }
 
+
     .gallery-info h3{
+
         font-size:16px;
     }
 
+
+    .section-title{
+
+        font-size:30px;
+    }
+
 }
+
 
 /* =========================================================
    REDUCED MOTION
@@ -1762,20 +2540,34 @@ footer{
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- =======================================================
-     HEADER
-======================================================= -->
+<a
+    href="#home"
+    class="skip-link"
+>
+    تخطي إلى المحتوى
+</a>
 
-<header>
+<div
+    class="scroll-progress"
+    id="scrollProgress"
+></div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header id="siteHeader">
 
     <a
         href="#home"
         class="logo"
-        aria-label="MBK الرئيسية"
+        aria-label="MBK - الرئيسية"
     >
         MBK
     </a>
@@ -1785,7 +2577,6 @@ footer{
         id="menuBtn"
         type="button"
         aria-label="فتح القائمة"
-        aria-controls="sideMenu"
         aria-expanded="false"
     >
         ☰
@@ -1793,15 +2584,17 @@ footer{
 
 </header>
 
-<!-- =======================================================
-     MENU
-======================================================= -->
+
+<!-- =====================================================
+     SIDE MENU
+===================================================== -->
 
 <div
     class="overlay"
     id="overlay"
     aria-hidden="true"
 ></div>
+
 
 <nav
     class="side-menu"
@@ -1848,15 +2641,17 @@ footer{
 
 </nav>
 
-<!-- =======================================================
+
+<!-- =====================================================
      MAIN
-======================================================= -->
+===================================================== -->
 
-<main>
+<main id="main-content">
 
-<!-- =======================================================
+
+<!-- =====================================================
      HERO
-======================================================= -->
+===================================================== -->
 
 <section
     class="hero"
@@ -1867,9 +2662,9 @@ footer{
 
     <div class="hero-corner bottom"></div>
 
-    <div class="hero-kicker">
-        MBK — MABKHOUT BIN ABDULLAH
-    </div>
+    <span class="hero-eyebrow">
+        MBK · PERSONAL SPACE
+    </span>
 
     <h1 class="hero-name">
         مبخوت بن عبدالله
@@ -1885,7 +2680,6 @@ footer{
             alt="مبخوت بن عبدالله"
             width="470"
             height="470"
-            decoding="async"
             fetchpriority="high"
         >
 
@@ -1895,32 +2689,19 @@ footer{
         وما توفيقي إلا بالله
     </p>
 
-    <div class="hero-actions">
-
-        <a
-            class="btn btn-primary"
-            href="#about"
-        >
-            اكتشف الموقع
-        </a>
-
-        <a
-            class="btn btn-secondary"
-            href="#contact"
-        >
-            تواصل معي
-        </a>
-
-    </div>
+    <p class="hero-subtitle">
+        طموح، أصالة، وأثر يستحق أن يُذكر
+    </p>
 
 </section>
 
-<!-- =======================================================
+
+<!-- =====================================================
      ABOUT
-======================================================= -->
+===================================================== -->
 
 <section
-    class="section reveal"
+    class="section about-section reveal"
     id="about"
 >
 
@@ -1935,6 +2716,7 @@ footer{
         </h2>
 
     </div>
+
 
     <div class="about-card">
 
@@ -1968,9 +2750,10 @@ footer{
 
 </section>
 
-<!-- =======================================================
+
+<!-- =====================================================
      VALUES
-======================================================= -->
+===================================================== -->
 
 <section
     class="section reveal"
@@ -1989,7 +2772,9 @@ footer{
 
     </div>
 
+
     <div class="values">
+
 
         <div class="value-card">
 
@@ -2008,6 +2793,7 @@ footer{
 
         </div>
 
+
         <div class="value-card">
 
             <div class="value-icon">
@@ -2024,6 +2810,7 @@ footer{
             </p>
 
         </div>
+
 
         <div class="value-card">
 
@@ -2042,13 +2829,16 @@ footer{
 
         </div>
 
+
     </div>
 
 </section>
 
-<!-- =======================================================
+
+<!-- =====================================================
      GALLERY
-======================================================= -->
+     الصور الثمانية محفوظة كما هي
+===================================================== -->
 
 <section
     class="section reveal"
@@ -2067,167 +2857,266 @@ footer{
 
     </div>
 
+
     <div class="gallery">
+
+
+        <!-- 01 -->
 
         <div
             class="gallery-item"
             data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
+            tabindex="0"
+            role="button"
+            aria-label="فتح صورة هدوء الجبال"
         >
 
             <img
                 src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
                 alt="جبال وطبيعة"
                 loading="lazy"
-                decoding="async"
             >
 
             <div class="gallery-info">
-                <small>NATURE</small>
-                <h3>هدوء الجبال</h3>
+
+                <small>
+                    NATURE
+                </small>
+
+                <h3>
+                    هدوء الجبال
+                </h3>
+
             </div>
 
         </div>
 
+
+        <!-- 02 -->
+
         <div
             class="gallery-item"
             data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
+            tabindex="0"
+            role="button"
+            aria-label="فتح صورة تفاصيل هادئة"
         >
 
             <img
                 src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"
                 alt="طبيعة ريفية"
                 loading="lazy"
-                decoding="async"
             >
 
             <div class="gallery-info">
-                <small>LIFE</small>
-                <h3>تفاصيل هادئة</h3>
+
+                <small>
+                    LIFE
+                </small>
+
+                <h3>
+                    تفاصيل هادئة
+                </h3>
+
             </div>
 
         </div>
 
+
+        <!-- 03 -->
+
         <div
             class="gallery-item"
             data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
+            tabindex="0"
+            role="button"
+            aria-label="فتح صورة نبض المدينة"
         >
 
             <img
                 src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=85"
                 alt="مدينة حديثة"
                 loading="lazy"
-                decoding="async"
             >
 
             <div class="gallery-info">
-                <small>CITY</small>
-                <h3>نبض المدينة</h3>
+
+                <small>
+                    CITY
+                </small>
+
+                <h3>
+                    نبض المدينة
+                </h3>
+
             </div>
 
         </div>
 
+
+        <!-- 04 -->
+
         <div
             class="gallery-item"
             data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
+            tabindex="0"
+            role="button"
+            aria-label="فتح صورة بين الشوارع"
         >
 
             <img
                 src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85"
                 alt="شوارع المدينة"
                 loading="lazy"
-                decoding="async"
             >
 
             <div class="gallery-info">
-                <small>STREETS</small>
-                <h3>بين الشوارع</h3>
+
+                <small>
+                    STREETS
+                </small>
+
+                <h3>
+                    بين الشوارع
+                </h3>
+
             </div>
 
         </div>
 
+
+        <!-- 05 -->
+
         <div
             class="gallery-item"
             data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90"
+            tabindex="0"
+            role="button"
+            aria-label="فتح صورة أفق جديد"
         >
 
             <img
                 src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=85"
                 alt="مدينة من الأعلى"
                 loading="lazy"
-                decoding="async"
             >
 
             <div class="gallery-info">
-                <small>URBAN</small>
-                <h3>أفق جديد</h3>
+
+                <small>
+                    URBAN
+                </small>
+
+                <h3>
+                    أفق جديد
+                </h3>
+
             </div>
 
         </div>
 
+
+        <!-- 06 -->
+
         <div
             class="gallery-item"
             data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+            tabindex="0"
+            role="button"
+            aria-label="فتح صورة الطريق"
         >
 
             <img
                 src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
                 alt="طريق وسط الطبيعة"
                 loading="lazy"
-                decoding="async"
             >
 
             <div class="gallery-info">
-                <small>JOURNEY</small>
-                <h3>الطريق</h3>
+
+                <small>
+                    JOURNEY
+                </small>
+
+                <h3>
+                    الطريق
+                </h3>
+
             </div>
 
         </div>
 
+
+        <!-- 07 -->
+
         <div
             class="gallery-item"
             data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+            tabindex="0"
+            role="button"
+            aria-label="فتح صورة لحظة هدوء"
         >
 
             <img
                 src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
                 alt="منظر طبيعي"
                 loading="lazy"
-                decoding="async"
             >
 
             <div class="gallery-info">
-                <small>CALM</small>
-                <h3>لحظة هدوء</h3>
+
+                <small>
+                    CALM
+                </small>
+
+                <h3>
+                    لحظة هدوء
+                </h3>
+
             </div>
 
         </div>
 
+
+        <!-- 08 -->
+
         <div
             class="gallery-item"
             data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
+            tabindex="0"
+            role="button"
+            aria-label="فتح صورة تفاصيل المكان"
         >
 
             <img
                 src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85"
                 alt="العمارة والحياة"
                 loading="lazy"
-                decoding="async"
             >
 
             <div class="gallery-info">
-                <small>ARCHITECTURE</small>
-                <h3>تفاصيل المكان</h3>
+
+                <small>
+                    ARCHITECTURE
+                </small>
+
+                <h3>
+                    تفاصيل المكان
+                </h3>
+
             </div>
 
         </div>
+
 
     </div>
 
 </section>
 
-<!-- =======================================================
+
+<!-- =====================================================
      JOURNEY
-======================================================= -->
+===================================================== -->
 
 <section
     class="section reveal"
@@ -2246,7 +3135,9 @@ footer{
 
     </div>
 
+
     <div class="timeline">
+
 
         <div class="timeline-item">
 
@@ -2267,6 +3158,7 @@ footer{
 
         </div>
 
+
         <div class="timeline-item">
 
             <div class="timeline-dot"></div>
@@ -2285,6 +3177,7 @@ footer{
             </div>
 
         </div>
+
 
         <div class="timeline-item">
 
@@ -2305,6 +3198,7 @@ footer{
 
         </div>
 
+
         <div class="timeline-item">
 
             <div class="timeline-dot"></div>
@@ -2323,6 +3217,7 @@ footer{
             </div>
 
         </div>
+
 
         <div class="timeline-item">
 
@@ -2343,16 +3238,18 @@ footer{
 
         </div>
 
+
     </div>
 
 </section>
 
-<!-- =======================================================
+
+<!-- =====================================================
      CONTACT
-======================================================= -->
+===================================================== -->
 
 <section
-    class="section reveal"
+    class="section contact-section reveal"
     id="contact"
 >
 
@@ -2368,13 +3265,18 @@ footer{
 
     </div>
 
+
     <div class="contact-card">
 
-        <p class="contact-description">
-            يسعدني تواصلك معي عبر القنوات التالية.
+        <p class="contact-heading">
+            يسعدني التواصل عبر القنوات التالية
         </p>
 
+
         <div class="contact-icons">
+
+
+            <!-- EMAIL -->
 
             <a
                 class="social"
@@ -2383,7 +3285,10 @@ footer{
                 title="البريد الإلكتروني"
             >
 
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
 
                     <path
                         d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
@@ -2392,6 +3297,9 @@ footer{
                 </svg>
 
             </a>
+
+
+            <!-- FACEBOOK -->
 
             <a
                 class="social"
@@ -2402,7 +3310,10 @@ footer{
                 title="Facebook"
             >
 
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
 
                     <path
                         d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
@@ -2412,7 +3323,9 @@ footer{
 
             </a>
 
+
         </div>
+
 
         <button
             class="qr-button"
@@ -2426,28 +3339,31 @@ footer{
 
 </section>
 
+
 </main>
 
-<!-- =======================================================
+
+<!-- =====================================================
      LIGHTBOX
-======================================================= -->
+===================================================== -->
 
 <div
     class="lightbox"
     id="lightbox"
     role="dialog"
     aria-modal="true"
-    aria-label="عرض الصورة"
+    aria-label="عارض الصور"
 >
 
     <button
         class="lightbox-close"
         id="lightboxClose"
         type="button"
-        aria-label="إغلاق الصورة"
+        aria-label="إغلاق"
     >
         ×
     </button>
+
 
     <img
         id="lightboxImage"
@@ -2455,11 +3371,40 @@ footer{
         alt=""
     >
 
+
+    <div class="lightbox-nav">
+
+        <button
+            id="lightboxPrev"
+            type="button"
+            aria-label="الصورة السابقة"
+        >
+            →
+        </button>
+
+        <span
+            class="lightbox-counter"
+            id="lightboxCounter"
+        >
+            1 / 8
+        </span>
+
+        <button
+            id="lightboxNext"
+            type="button"
+            aria-label="الصورة التالية"
+        >
+            ←
+        </button>
+
+    </div>
+
 </div>
 
-<!-- =======================================================
-     QR MODAL
-======================================================= -->
+
+<!-- =====================================================
+     QR
+===================================================== -->
 
 <div
     class="qr-modal"
@@ -2475,9 +3420,13 @@ footer{
             mabkhut.com
         </h3>
 
+        <p>
+            امسح الرمز لفتح الموقع
+        </p>
+
         <img
             src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com"
-            alt="رمز QR لموقع mabkhut.com"
+            alt="QR Code لموقع mabkhut.com"
             width="220"
             height="220"
         >
@@ -2494,9 +3443,24 @@ footer{
 
 </div>
 
-<!-- =======================================================
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<button
+    class="back-top"
+    id="backTop"
+    type="button"
+    aria-label="العودة إلى الأعلى"
+>
+    ↑
+</button>
+
+
+<!-- =====================================================
      FOOTER
-======================================================= -->
+===================================================== -->
 
 <footer>
 
@@ -2510,7 +3474,29 @@ footer{
 
 </footer>
 
+
+<noscript>
+
+    <div
+        style="
+            padding:20px;
+            text-align:center;
+            background:#061426;
+            color:#f8f7f2;
+        "
+    >
+        للحصول على جميع خصائص الموقع التفاعلية، يرجى تفعيل JavaScript.
+    </div>
+
+</noscript>
+
+
 <script>
+
+/* =========================================================
+   MBK V2 — JAVASCRIPT
+========================================================= */
+
 
 /* =========================================================
    ELEMENTS
@@ -2528,11 +3514,14 @@ const sideMenu =
 const overlay =
     document.getElementById("overlay");
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+const siteHeader =
+    document.getElementById("siteHeader");
 
-const galleryItems =
-    document.querySelectorAll(".gallery-item");
+const scrollProgress =
+    document.getElementById("scrollProgress");
+
+const backTop =
+    document.getElementById("backTop");
 
 const lightbox =
     document.getElementById("lightbox");
@@ -2542,6 +3531,15 @@ const lightboxImage =
 
 const lightboxClose =
     document.getElementById("lightboxClose");
+
+const lightboxPrev =
+    document.getElementById("lightboxPrev");
+
+const lightboxNext =
+    document.getElementById("lightboxNext");
+
+const lightboxCounter =
+    document.getElementById("lightboxCounter");
 
 const qrButton =
     document.getElementById("qrButton");
@@ -2554,14 +3552,36 @@ const qrClose =
 
 
 /* =========================================================
+   BODY LOCK
+========================================================= */
+
+function lockBody(){
+
+    document.body.style.overflow =
+        "hidden";
+}
+
+
+function unlockBody(){
+
+    document.body.style.overflow =
+        "";
+}
+
+
+/* =========================================================
    MENU
 ========================================================= */
 
 function openMenu(){
 
-    sideMenu.classList.add("active");
+    sideMenu.classList.add(
+        "active"
+    );
 
-    overlay.classList.add("active");
+    overlay.classList.add(
+        "active"
+    );
 
     menuBtn.setAttribute(
         "aria-expanded",
@@ -2573,17 +3593,19 @@ function openMenu(){
         "false"
     );
 
-    document.body.style.overflow =
-        "hidden";
-
+    lockBody();
 }
 
 
 function closeSideMenu(){
 
-    sideMenu.classList.remove("active");
+    sideMenu.classList.remove(
+        "active"
+    );
 
-    overlay.classList.remove("active");
+    overlay.classList.remove(
+        "active"
+    );
 
     menuBtn.setAttribute(
         "aria-expanded",
@@ -2595,9 +3617,7 @@ function closeSideMenu(){
         "true"
     );
 
-    document.body.style.overflow =
-        "";
-
+    unlockBody();
 }
 
 
@@ -2606,10 +3626,12 @@ menuBtn.addEventListener(
     openMenu
 );
 
+
 closeMenu.addEventListener(
     "click",
     closeSideMenu
 );
+
 
 overlay.addEventListener(
     "click",
@@ -2630,8 +3652,88 @@ document
 
 
 /* =========================================================
+   HEADER SCROLL
+========================================================= */
+
+function updateScrollUI(){
+
+    const scrollTop =
+        window.scrollY;
+
+    const documentHeight =
+        document.documentElement.scrollHeight
+        -
+        window.innerHeight;
+
+    const percentage =
+        documentHeight > 0
+        ? (scrollTop / documentHeight) * 100
+        : 0;
+
+    scrollProgress.style.width =
+        percentage + "%";
+
+
+    if(scrollTop > 35){
+
+        siteHeader.classList.add(
+            "scrolled"
+        );
+
+        backTop.classList.add(
+            "visible"
+        );
+
+    }else{
+
+        siteHeader.classList.remove(
+            "scrolled"
+        );
+
+        backTop.classList.remove(
+            "visible"
+        );
+
+    }
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateScrollUI,
+    {passive:true}
+);
+
+
+updateScrollUI();
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+backTop.addEventListener(
+    "click",
+    () => {
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+);
+
+
+/* =========================================================
    SCROLL REVEAL
 ========================================================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
+
 
 if(
     "IntersectionObserver"
@@ -2659,7 +3761,6 @@ if(
                                 .unobserve(
                                     entry.target
                                 );
-
                         }
 
                     }
@@ -2698,42 +3799,84 @@ if(
 
 
 /* =========================================================
-   GALLERY LIGHTBOX
+   GALLERY
 ========================================================= */
 
-galleryItems.forEach(
-    item => {
+const galleryItems =
+    Array.from(
+        document.querySelectorAll(
+            ".gallery-item"
+        )
+    );
 
-        item.addEventListener(
-            "click",
-            () => {
 
-                const image =
-                    item.dataset.full;
+let currentImageIndex = 0;
 
-                const title =
-                    item.querySelector("h3");
 
-                lightboxImage.src =
-                    image;
+function showLightbox(index){
 
-                lightboxImage.alt =
-                    title
-                        ? title.textContent.trim()
-                        : "صورة من مختاراتي";
+    if(!galleryItems.length){
+        return;
+    }
 
-                lightbox.classList.add(
-                    "active"
-                );
 
-                document.body.style.overflow =
-                    "hidden";
+    if(index < 0){
 
-            }
-        );
+        index =
+            galleryItems.length - 1;
 
     }
-);
+
+
+    if(
+        index >= galleryItems.length
+    ){
+
+        index = 0;
+
+    }
+
+
+    currentImageIndex =
+        index;
+
+
+    const item =
+        galleryItems[
+            currentImageIndex
+        ];
+
+
+    const image =
+        item.dataset.full;
+
+
+    const imageElement =
+        item.querySelector("img");
+
+
+    lightboxImage.src =
+        image;
+
+
+    lightboxImage.alt =
+        imageElement
+        ? imageElement.alt
+        : "";
+
+
+    lightboxCounter.textContent =
+        `${currentImageIndex + 1} / ${galleryItems.length}`;
+
+
+    lightbox.classList.add(
+        "active"
+    );
+
+
+    lockBody();
+
+}
 
 
 function closeLightbox(){
@@ -2745,10 +3888,45 @@ function closeLightbox(){
     lightboxImage.src =
         "";
 
-    document.body.style.overflow =
-        "";
+    unlockBody();
 
 }
+
+
+galleryItems.forEach(
+    (item,index) => {
+
+        item.addEventListener(
+            "click",
+            () => {
+
+                showLightbox(index);
+
+            }
+        );
+
+
+        item.addEventListener(
+            "keydown",
+            event => {
+
+                if(
+                    event.key === "Enter"
+                    ||
+                    event.key === " "
+                ){
+
+                    event.preventDefault();
+
+                    showLightbox(index);
+
+                }
+
+            }
+        );
+
+    }
+);
 
 
 lightboxClose.addEventListener(
@@ -2757,13 +3935,36 @@ lightboxClose.addEventListener(
 );
 
 
+lightboxPrev.addEventListener(
+    "click",
+    () => {
+
+        showLightbox(
+            currentImageIndex - 1
+        );
+
+    }
+);
+
+
+lightboxNext.addEventListener(
+    "click",
+    () => {
+
+        showLightbox(
+            currentImageIndex + 1
+        );
+
+    }
+);
+
+
 lightbox.addEventListener(
     "click",
     event => {
 
         if(
-            event.target ===
-            lightbox
+            event.target === lightbox
         ){
 
             closeLightbox();
@@ -2771,6 +3972,64 @@ lightbox.addEventListener(
         }
 
     }
+);
+
+
+/* =========================================================
+   TOUCH SWIPE
+========================================================= */
+
+let touchStartX = 0;
+
+
+lightbox.addEventListener(
+    "touchstart",
+    event => {
+
+        touchStartX =
+            event.changedTouches[0].screenX;
+
+    },
+    {passive:true}
+);
+
+
+lightbox.addEventListener(
+    "touchend",
+    event => {
+
+        const touchEndX =
+            event.changedTouches[0].screenX;
+
+        const difference =
+            touchStartX - touchEndX;
+
+
+        if(
+            Math.abs(difference) < 45
+        ){
+
+            return;
+
+        }
+
+
+        if(difference > 0){
+
+            showLightbox(
+                currentImageIndex + 1
+            );
+
+        }else{
+
+            showLightbox(
+                currentImageIndex - 1
+            );
+
+        }
+
+    },
+    {passive:true}
 );
 
 
@@ -2786,25 +4045,26 @@ qrButton.addEventListener(
             "active"
         );
 
-        document.body.style.overflow =
-            "hidden";
+        lockBody();
 
     }
 );
 
 
+function closeQR(){
+
+    qrModal.classList.remove(
+        "active"
+    );
+
+    unlockBody();
+
+}
+
+
 qrClose.addEventListener(
     "click",
-    () => {
-
-        qrModal.classList.remove(
-            "active"
-        );
-
-        document.body.style.overflow =
-            "";
-
-    }
+    closeQR
 );
 
 
@@ -2813,16 +4073,10 @@ qrModal.addEventListener(
     event => {
 
         if(
-            event.target ===
-            qrModal
+            event.target === qrModal
         ){
 
-            qrModal.classList.remove(
-                "active"
-            );
-
-            document.body.style.overflow =
-                "";
+            closeQR();
 
         }
 
@@ -2831,7 +4085,7 @@ qrModal.addEventListener(
 
 
 /* =========================================================
-   ESCAPE
+   ESC
 ========================================================= */
 
 document.addEventListener(
@@ -2839,20 +4093,61 @@ document.addEventListener(
     event => {
 
         if(
-            event.key ===
-            "Escape"
+            event.key !== "Escape"
         ){
 
-            closeSideMenu();
+            return;
 
-            closeLightbox();
+        }
 
-            qrModal.classList.remove(
+
+        closeSideMenu();
+
+        closeLightbox();
+
+        closeQR();
+
+    }
+);
+
+
+/* =========================================================
+   KEYBOARD LIGHTBOX NAVIGATION
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            !lightbox.classList.contains(
                 "active"
+            )
+        ){
+
+            return;
+
+        }
+
+
+        if(
+            event.key === "ArrowLeft"
+        ){
+
+            showLightbox(
+                currentImageIndex + 1
             );
 
-            document.body.style.overflow =
-                "";
+        }
+
+
+        if(
+            event.key === "ArrowRight"
+        ){
+
+            showLightbox(
+                currentImageIndex - 1
+            );
 
         }
 
@@ -2861,28 +4156,53 @@ document.addEventListener(
 
 
 /* =========================================================
-   IMAGE ERROR FALLBACK
+   IMAGE ERROR HANDLING
 ========================================================= */
 
-const profilePhoto =
+document
+    .querySelectorAll("img")
+    .forEach(image => {
+
+        image.addEventListener(
+            "error",
+            () => {
+
+                image.style.opacity =
+                    ".35";
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+const currentYear =
+    new Date()
+        .getFullYear();
+
+
+const footerCopy =
     document.querySelector(
-        ".profile-photo"
+        ".footer-copy"
     );
 
-profilePhoto.addEventListener(
-    "error",
-    () => {
 
-        profilePhoto.alt =
-            "صورة مبخوت بن عبدالله";
+if(
+    footerCopy
+    &&
+    currentYear > 2026
+){
 
-        profilePhoto.style.objectFit =
-            "contain";
+    footerCopy.textContent =
+        `© ${currentYear} مبخوت بن عبدالله — جميع الحقوق محفوظة`;
 
-    }
-);
+}
 
 </script>
 
 </body>
-</html>
+      </html>
