@@ -26,15 +26,50 @@
 <meta name="theme-color" content="#061426">
 <meta name="color-scheme" content="dark">
 
+<meta
+    name="mobile-web-app-capable"
+    content="yes"
+>
+
+<meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+>
+
+<meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+>
+
+<meta
+    name="apple-mobile-web-app-title"
+    content="MBK"
+>
+
 <link rel="canonical" href="https://mabkhut.com/">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    rel="preload"
+    as="image"
+    href="file_00000000202482468d4027eb8c5919f7.png"
+>
 
 <link
     href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
 >
+
 
 <!-- =========================================================
      OPEN GRAPH
@@ -43,10 +78,12 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_AR">
 <meta property="og:title" content="مبخوت بن عبدالله | MBK">
+
 <meta
     property="og:description"
     content="الموقع الشخصي لمبخوت بن عبدالله."
 >
+
 <meta property="og:url" content="https://mabkhut.com/">
 <meta property="og:site_name" content="MBK">
 
@@ -60,11 +97,15 @@
     content="مبخوت بن عبدالله"
 >
 
+
 <!-- =========================================================
      TWITTER / X
 ========================================================= -->
 
-<meta name="twitter:card" content="summary_large_image">
+<meta
+    name="twitter:card"
+    content="summary_large_image"
+>
 
 <meta
     name="twitter:title"
@@ -92,13 +133,19 @@
 >
 
 
+<link
+    rel="apple-touch-icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23061426'/%3E%3Ctext x='50' y='62' text-anchor='middle' font-family='Arial' font-size='34' font-weight='700' fill='%23f1d56a'%3EMBK%3C/text%3E%3C/svg%3E"
+>
+
+
 <!-- =========================================================
      MANIFEST
 ========================================================= -->
 
 <link
     rel="manifest"
-    href='data:application/manifest+json,{"name":"MBK — مبخوت بن عبدالله","short_name":"MBK","start_url":"https://mabkhut.com/","display":"standalone","background_color":"%23020914","theme_color":"%23061426","lang":"ar","dir":"rtl"}'
+    href='data:application/manifest+json,{"name":"MBK — مبخوت بن عبدالله","short_name":"MBK","start_url":"https://mabkhut.com/","scope":"https://mabkhut.com/","display":"standalone","background_color":"%23020914","theme_color":"%23061426","lang":"ar","dir":"rtl","description":"الموقع الشخصي لمبخوت بن عبدالله"}'
 >
 
 
@@ -121,8 +168,8 @@
 <style>
 
 /* =========================================================
-   MBK V3.1
-   CONSOLIDATED FINAL
+   MBK V4
+   INTELLIGENT PREMIUM EXPERIENCE
 ========================================================= */
 
 
@@ -164,14 +211,16 @@
     --radius-sm:16px;
 
     --header-height:76px;
-
     --content-width:1120px;
+
+    --pointer-x:50%;
+    --pointer-y:50%;
 
 }
 
 
 /* =========================================================
-   RESET / BASE
+   RESET
 ========================================================= */
 
 *{
@@ -211,6 +260,11 @@ body{
 
     background:
         radial-gradient(
+            circle at var(--pointer-x) var(--pointer-y),
+            rgba(212,175,55,.035),
+            transparent 22%
+        ),
+        radial-gradient(
             circle at 50% -10%,
             rgba(212,175,55,.095),
             transparent 30%
@@ -234,8 +288,7 @@ body{
 
     -webkit-font-smoothing:antialiased;
 
-    text-rendering:
-        optimizeLegibility;
+    text-rendering:optimizeLegibility;
 
 }
 
@@ -253,23 +306,23 @@ body.modal-open{
     overflow:hidden;
 }
 
+body.is-touch .desktop-only{
+    display:none !important;
+}
+
 img{
     max-width:100%;
+}
+
+button{
+    font-family:inherit;
+    -webkit-tap-highlight-color:transparent;
 }
 
 a{
     color:inherit;
     text-decoration:none;
-
-    -webkit-tap-highlight-color:
-        transparent;
-}
-
-button{
-    font-family:inherit;
-
-    -webkit-tap-highlight-color:
-        transparent;
+    -webkit-tap-highlight-color:transparent;
 }
 
 button,
@@ -278,21 +331,17 @@ a{
 }
 
 ::selection{
-
-    background:
-        rgba(212,175,55,.23);
-
+    background:rgba(212,175,55,.23);
     color:#fff;
-
 }
 
 :focus-visible{
-
-    outline:
-        2px solid var(--gold-light);
-
+    outline:2px solid var(--gold-light);
     outline-offset:4px;
+}
 
+[hidden]{
+    display:none !important;
 }
 
 
@@ -344,16 +393,14 @@ body::after{
     top:8%;
     left:50%;
 
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
     border-radius:50%;
 
     background:
         rgba(212,175,55,.028);
 
-    filter:
-        blur(135px);
+    filter:blur(135px);
 
     z-index:-29;
 
@@ -408,9 +455,7 @@ body::after{
 }
 
 .preloader-inner{
-
     text-align:center;
-
 }
 
 .preloader-mark{
@@ -509,6 +554,163 @@ body::after{
 
 
 /* =========================================================
+   SECTION INDEX RAIL
+========================================================= */
+
+.section-rail{
+
+    position:fixed;
+
+    left:20px;
+    top:50%;
+
+    transform:
+        translateY(-50%);
+
+    z-index:850;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:11px;
+
+}
+
+.rail-item{
+
+    position:relative;
+
+    width:28px;
+    height:18px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    opacity:.42;
+
+    transition:.3s ease;
+
+}
+
+.rail-item::before{
+
+    content:"";
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:
+        rgba(241,213,106,.7);
+
+    box-shadow:
+        0 0 0 rgba(212,175,55,0);
+
+    transition:.3s ease;
+
+}
+
+.rail-item::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:16px;
+
+    width:0;
+
+    height:1px;
+
+    background:
+        var(--gold-light);
+
+    transition:.3s ease;
+
+}
+
+.rail-item:hover,
+.rail-item.active{
+
+    opacity:1;
+
+}
+
+.rail-item.active::before{
+
+    width:7px;
+    height:7px;
+
+    background:
+        var(--gold-light);
+
+    box-shadow:
+        0 0 14px rgba(212,175,55,.66);
+
+}
+
+.rail-item.active::after{
+
+    width:12px;
+
+}
+
+.rail-tooltip{
+
+    position:absolute;
+
+    left:36px;
+
+    white-space:nowrap;
+
+    padding:
+        6px 9px;
+
+    border:
+        1px solid rgba(212,175,55,.18);
+
+    border-radius:999px;
+
+    background:
+        rgba(3,11,22,.84);
+
+    color:
+        var(--gold-light);
+
+    font-size:9px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:
+        translateX(-4px);
+
+    transition:.25s ease;
+
+    backdrop-filter:blur(8px);
+
+}
+
+.rail-item:hover .rail-tooltip{
+
+    opacity:1;
+
+    transform:
+        translateX(0);
+
+}
+
+
+/* =========================================================
    HEADER
 ========================================================= */
 
@@ -531,7 +733,6 @@ header{
     display:flex;
 
     align-items:center;
-
     justify-content:space-between;
 
     z-index:1000;
@@ -560,7 +761,7 @@ header{
 header.scrolled{
 
     background:
-        rgba(2,9,20,.89);
+        rgba(2,9,20,.90);
 
     border-color:
         rgba(212,175,55,.15);
@@ -569,11 +770,6 @@ header.scrolled{
         0 14px 50px rgba(0,0,0,.20);
 
 }
-
-
-/* =========================================================
-   LOGO
-========================================================= */
 
 .logo{
 
@@ -602,6 +798,7 @@ header.scrolled{
     position:absolute;
 
     right:0;
+
     bottom:-8px;
 
     width:25px;
@@ -613,11 +810,6 @@ header.scrolled{
     opacity:.72;
 
 }
-
-
-/* =========================================================
-   HEADER STATUS
-========================================================= */
 
 .header-status{
 
@@ -663,11 +855,6 @@ header.scrolled{
         0 0 12px rgba(241,213,106,.7);
 
 }
-
-
-/* =========================================================
-   MENU BUTTON
-========================================================= */
 
 .menu-btn{
 
@@ -743,24 +930,18 @@ header.scrolled{
 }
 
 .menu-lines span:nth-child(1){
-
     top:0;
     width:100%;
-
 }
 
 .menu-lines span:nth-child(2){
-
     top:6px;
     width:70%;
-
 }
 
 .menu-lines span:nth-child(3){
-
     top:12px;
     width:100%;
-
 }
 
 
@@ -789,7 +970,6 @@ header.scrolled{
         blur(7px);
 
     opacity:0;
-
     visibility:hidden;
 
     pointer-events:none;
@@ -818,9 +998,7 @@ header.scrolled{
     position:fixed;
 
     top:0;
-
     right:0;
-
     left:auto;
 
     width:
@@ -861,13 +1039,11 @@ header.scrolled{
         -35px 0 100px rgba(0,0,0,.52);
 
     overflow-y:auto;
-
     overflow-x:hidden;
 
     overscroll-behavior:contain;
 
-    -webkit-overflow-scrolling:
-        touch;
+    -webkit-overflow-scrolling:touch;
 
     visibility:hidden;
 
@@ -934,7 +1110,6 @@ header.scrolled{
     display:flex;
 
     align-items:center;
-
     justify-content:space-between;
 
 }
@@ -1052,6 +1227,76 @@ header.scrolled{
 
 }
 
+.menu-share{
+
+    margin-top:28px;
+
+    padding-top:22px;
+
+    border-top:
+        1px solid var(--border-soft);
+
+}
+
+.menu-share-title{
+
+    color:
+        var(--muted);
+
+    font-size:11px;
+
+}
+
+.menu-share-buttons{
+
+    margin-top:12px;
+
+    display:flex;
+
+    gap:9px;
+
+}
+
+.menu-share-button{
+
+    width:42px;
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    border:
+        1px solid rgba(212,175,55,.24);
+
+    background:
+        rgba(255,255,255,.02);
+
+    color:
+        var(--gold-light);
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+}
+
+.menu-share-button:hover{
+
+    border-color:
+        var(--gold-light);
+
+    background:
+        rgba(212,175,55,.07);
+
+    transform:
+        translateY(-2px);
+
+}
+
 
 /* =========================================================
    MAIN
@@ -1072,7 +1317,7 @@ main{
 
 
 /* =========================================================
-   SHARED SECTIONS
+   SHARED SECTION
 ========================================================= */
 
 .section{
@@ -1097,7 +1342,6 @@ main{
 .section-header{
 
     width:100%;
-    max-width:100%;
 
     margin-bottom:44px;
 
@@ -1125,7 +1369,6 @@ main{
 .section-title{
 
     width:100%;
-    max-width:100%;
 
     font-size:
         clamp(30px,5vw,48px);
@@ -1212,7 +1455,6 @@ main{
     flex-direction:column;
 
     align-items:center;
-
     justify-content:center;
 
     text-align:center;
@@ -1297,6 +1539,43 @@ main{
     z-index:-4;
 
     pointer-events:none;
+
+}
+
+.hero-glow{
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    top:50%;
+    left:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(241,213,106,.085),
+            transparent 70%
+        );
+
+    filter:
+        blur(25px);
+
+    z-index:-2;
+
+    pointer-events:none;
+
+    opacity:.7;
+
+    transition:
+        left .18s ease-out,
+        top .18s ease-out;
 
 }
 
@@ -1446,6 +1725,7 @@ main{
 .gold-line{
 
     width:108px;
+
     max-width:72vw;
 
     height:2px;
@@ -1572,8 +1852,7 @@ main{
 
 .photo-frame:hover::before{
 
-    transform:
-        rotate(0);
+    transform:rotate(0);
 
     border-color:
         rgba(241,213,106,.98);
@@ -1592,6 +1871,7 @@ main{
     display:block;
 
     object-fit:contain;
+
     object-position:center;
 
     border-radius:24px;
@@ -1625,6 +1905,7 @@ main{
     position:absolute;
 
     right:0;
+
     bottom:20px;
 
     min-width:124px;
@@ -1883,8 +2164,7 @@ main{
 
     width:100%;
 
-    padding:
-        19px 0;
+    padding:19px 0;
 
     border-top:
         1px solid rgba(212,175,55,.08);
@@ -2185,7 +2465,6 @@ main{
 .about-mini-line{
 
     width:45px;
-
     height:1px;
 
     margin:
@@ -2301,6 +2580,7 @@ main{
     flex-direction:column;
 
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
@@ -2343,8 +2623,7 @@ main{
     background:
         rgba(212,175,55,.032);
 
-    filter:
-        blur(8px);
+    filter:blur(8px);
 
 }
 
@@ -2631,8 +2910,175 @@ main{
 
 
 /* =========================================================
-   GALLERY
+   MILESTONES
 ========================================================= */
+
+.milestones{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:13px;
+
+}
+
+.milestone{
+
+    position:relative;
+
+    min-height:180px;
+
+    padding:
+        24px 20px;
+
+    border:
+        1px solid rgba(212,175,55,.13);
+
+    border-radius:23px;
+
+    background:
+        rgba(255,255,255,.016);
+
+    overflow:hidden;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+
+}
+
+.milestone:hover{
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(212,175,55,.35);
+
+    box-shadow:
+        0 20px 55px rgba(212,175,55,.05);
+
+}
+
+.milestone-number{
+
+    direction:ltr;
+
+    color:
+        var(--gold-light);
+
+    font-family:Arial,sans-serif;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.milestone-label{
+
+    margin-top:8px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+}
+
+.milestone p{
+
+    margin-top:6px;
+
+    color:
+        var(--muted);
+
+    font-size:12px;
+
+    line-height:1.85;
+
+}
+
+.milestone-line{
+
+    position:absolute;
+
+    right:20px;
+    bottom:17px;
+
+    width:28px;
+    height:1px;
+
+    background:
+        var(--gold);
+
+    opacity:.6;
+
+}
+
+
+/* =========================================================
+   GALLERY FILTER
+========================================================= */
+
+.gallery-controls{
+
+    margin-bottom:24px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+}
+
+.filter-btn{
+
+    padding:
+        9px 15px;
+
+    border-radius:999px;
+
+    border:
+        1px solid rgba(212,175,55,.18);
+
+    background:
+        rgba(255,255,255,.018);
+
+    color:
+        var(--muted);
+
+    font-size:11px;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+
+    color:
+        #11100b;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-light),
+            var(--gold)
+        );
+
+    border-color:
+        var(--gold);
+
+}
 
 .gallery{
 
@@ -2669,6 +3115,26 @@ main{
     content-visibility:auto;
 
     contain-intrinsic-size:500px;
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease,
+        border-color .3s ease;
+
+}
+
+.gallery-item.is-hidden{
+
+    opacity:0;
+
+    transform:
+        scale(.96);
+
+    pointer-events:none;
+
+    position:absolute;
+
+    visibility:hidden;
 
 }
 
@@ -2853,6 +3319,42 @@ main{
 
 }
 
+.gallery-category{
+
+    position:absolute;
+
+    top:17px;
+    left:17px;
+
+    z-index:2;
+
+    padding:
+        5px 8px;
+
+    border:
+        1px solid rgba(212,175,55,.22);
+
+    border-radius:999px;
+
+    background:
+        rgba(3,11,22,.35);
+
+    color:
+        rgba(241,213,106,.8);
+
+    font-family:Arial,sans-serif;
+
+    font-size:7px;
+
+    letter-spacing:1.5px;
+
+    direction:ltr;
+
+    backdrop-filter:
+        blur(5px);
+
+}
+
 .gallery-footer{
 
     margin-top:18px;
@@ -2861,7 +3363,9 @@ main{
 
     align-items:center;
 
-    justify-content:center;
+    justify-content:space-between;
+
+    gap:15px;
 
 }
 
@@ -2892,6 +3396,21 @@ main{
 
     box-shadow:
         0 0 12px rgba(212,175,55,.55);
+
+}
+
+.gallery-count{
+
+    direction:ltr;
+
+    color:
+        rgba(241,213,106,.76);
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:2px;
 
 }
 
@@ -3039,15 +3558,11 @@ main{
 }
 
 .lightbox-prev{
-
     right:7px;
-
 }
 
 .lightbox-next{
-
     left:7px;
-
 }
 
 .lightbox-close:hover,
@@ -3077,6 +3592,30 @@ main{
         var(--text);
 
     font-size:12px;
+
+}
+
+.lightbox-counter{
+
+    position:absolute;
+
+    top:-37px;
+
+    right:50%;
+
+    transform:
+        translateX(50%);
+
+    direction:ltr;
+
+    color:
+        rgba(241,213,106,.8);
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:2px;
 
 }
 
@@ -3158,9 +3697,7 @@ main{
 }
 
 .timeline-item:nth-child(odd){
-
     text-align:left;
-
 }
 
 .timeline-item:nth-child(even){
@@ -3199,15 +3736,11 @@ main{
 }
 
 .timeline-item:nth-child(odd) .timeline-dot{
-
     right:-6px;
-
 }
 
 .timeline-item:nth-child(even) .timeline-dot{
-
     left:-6px;
-
 }
 
 .timeline-item:hover .timeline-dot{
@@ -3564,6 +4097,7 @@ main{
     flex-wrap:wrap;
 
     align-items:center;
+
     justify-content:center;
 
     gap:10px;
@@ -3862,7 +4396,7 @@ main{
 
 
 /* =========================================================
-   BACK TO TOP
+   BACK TOP
 ========================================================= */
 
 .back-top{
@@ -3969,7 +4503,8 @@ footer{
 
     content-visibility:auto;
 
-    contain-intrinsic-size:320px;
+    contain-intrinsic-size:
+        320px;
 
 }
 
@@ -4161,28 +4696,25 @@ footer{
 
 @media(max-width:980px){
 
+    .section-rail{
+        display:none;
+    }
+
     .about-layout,
     .contact-layout{
-
         grid-template-columns:1fr;
-
     }
 
     .about-side{
-
         min-height:220px;
-
     }
 
     .values{
-
         grid-template-columns:
             repeat(2,1fr);
-
     }
 
     .value-card:last-child{
-
         grid-column:
             1 / -1;
 
@@ -4190,7 +4722,11 @@ footer{
             calc(50% - 8px);
 
         margin:auto;
+    }
 
+    .milestones{
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
 }
@@ -4207,124 +4743,95 @@ footer{
     }
 
     html{
-
         scroll-padding-top:88px;
-
     }
 
     header{
-
         height:70px;
 
         padding:
             0 20px;
-
     }
 
     .logo{
-
         font-size:21px;
-
         letter-spacing:6px;
-
     }
 
     .header-status{
-
         display:none;
-
     }
 
     .menu-btn{
-
         width:46px;
         height:46px;
-
     }
 
     main{
-
         width:
             min(92%,520px);
 
         max-width:
             calc(100% - 32px);
-
     }
 
     .section{
-
         padding:
             68px 0;
 
         overflow:hidden;
-
     }
 
     .section-header{
-
         margin-bottom:30px;
-
     }
 
     .section-title{
-
         font-size:31px;
-
     }
 
     .section-intro{
-
         font-size:13px;
-
         line-height:1.95;
-
     }
 
 
     /* HERO */
 
     .hero{
-
         min-height:
             100svh;
 
         padding:
             95px 0
             60px;
-
     }
 
     .hero::before{
-
         font-size:
             clamp(70px,21vw,150px);
 
         letter-spacing:5px;
+    }
 
+    .hero-glow{
+        display:none;
     }
 
     .hero-corner{
-
         width:46px;
         height:46px;
-
     }
 
     .hero-corner.top{
-
         top:90px;
-
     }
 
     .hero-corner.bottom{
-
         bottom:25px;
-
     }
 
     .hero-eyebrow{
-
         gap:7px;
 
         font-size:8px;
@@ -4332,22 +4839,17 @@ footer{
         letter-spacing:3.4px;
 
         white-space:nowrap;
-
     }
 
     .hero-eyebrow::before,
     .hero-eyebrow::after{
-
         width:17px;
-
     }
 
     .hero-name{
-
         max-width:100%;
 
-        padding:
-            0 2px;
+        padding:0 2px;
 
         font-size:
             clamp(31px,8.8vw,47px);
@@ -4355,32 +4857,24 @@ footer{
         line-height:1.55;
 
         letter-spacing:-.45px;
-
     }
 
     .hero-description{
-
         max-width:420px;
 
-        padding:
-            0 7px;
+        padding:0 7px;
 
         font-size:12.8px;
 
         line-height:1.95;
-
     }
 
     .hero-visual{
-
         width:100%;
-
         max-width:100%;
-
     }
 
     .photo-frame{
-
         width:
             min(380px,86vw);
 
@@ -4388,238 +4882,205 @@ footer{
             calc(100vw - 28px);
 
         padding:9px;
-
     }
 
     .photo-frame::before{
-
         border-radius:27px;
-
     }
 
     .photo-frame::after{
-
         border-radius:24px;
-
     }
 
     .profile-photo{
-
         border-radius:21px;
-
         border-width:4px;
-
     }
 
     .visual-caption{
-
         right:1px;
-
         bottom:14px;
 
         min-width:108px;
 
         padding:
             9px 10px;
-
     }
 
     .visual-caption.left{
-
         left:1px;
-
     }
 
     .visual-caption small{
-
         font-size:7px;
-
     }
 
     .visual-caption strong{
-
         font-size:10px;
-
     }
 
     .quote{
-
         font-size:
             clamp(19px,5vw,25px);
 
         margin-bottom:25px;
-
     }
 
     .hero-actions{
-
         max-width:420px;
-
     }
 
     .btn{
-
         min-width:140px;
 
         padding:
             12px 19px;
 
         font-size:13px;
-
     }
 
     .hero-scroll{
-
         display:none;
-
     }
 
 
     /* STRIP */
 
     .identity-strip{
-
         padding:16px 0;
-
     }
 
     .identity-marquee{
-
         gap:22px;
 
         animation-duration:
             20s;
-
     }
 
     .identity-marquee span{
-
         font-size:8px;
-
     }
 
 
     /* ABOUT */
 
     .about-card{
-
         padding:
             31px 22px;
-
     }
 
     .about-card p{
-
         font-size:15.5px;
-
         line-height:2;
-
     }
 
     .about-side{
-
         padding:
             29px 22px;
-
     }
 
     .about-side h3{
-
         font-size:24px;
-
     }
 
     .about-side p{
-
         font-size:13px;
-
     }
 
     .stats{
-
         grid-template-columns:1fr;
-
         gap:10px;
-
     }
 
     .stat-card{
-
         padding:17px;
-
     }
 
 
     /* VALUES */
 
     .values{
-
         grid-template-columns:1fr;
-
         gap:14px;
-
     }
 
     .value-card{
-
         width:100%;
-
         min-height:225px;
-
         padding:
             28px 22px;
-
     }
 
     .value-card:last-child{
-
         grid-column:auto;
-
         max-width:none;
-
     }
 
 
     /* SIGNATURE */
 
     .signature-section{
-
         padding-top:64px;
-
         padding-bottom:64px;
-
     }
 
     .signature-card{
-
         padding:
             48px 18px;
-
     }
 
     .signature-card h2{
-
         font-size:30px;
-
     }
 
     .signature-card p{
-
         font-size:13px;
-
         line-height:1.95;
+    }
 
+
+    /* MILESTONES */
+
+    .milestones{
+        grid-template-columns:1fr;
+    }
+
+    .milestone{
+        min-height:155px;
+    }
+
+
+    /* GALLERY FILTER */
+
+    .gallery-controls{
+        gap:7px;
+
+        overflow-x:auto;
+
+        justify-content:flex-start;
+
+        padding-bottom:5px;
+
+        scrollbar-width:none;
+
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .gallery-controls::-webkit-scrollbar{
+        display:none;
+    }
+
+    .filter-btn{
+        flex:none;
+        white-space:nowrap;
     }
 
 
     /* GALLERY */
 
     .gallery{
-
         grid-template-columns:1fr;
-
         gap:13px;
-
     }
 
     .gallery-item,
@@ -4636,60 +5097,53 @@ footer{
             span 1;
 
         width:100%;
-
         max-width:100%;
 
         aspect-ratio:
             16 / 10;
-
     }
 
     .gallery-info{
-
         right:17px;
-
         left:17px;
-
         bottom:15px;
-
     }
 
     .gallery-info h3{
-
         font-size:16px;
-
     }
 
     .gallery-index{
-
         top:14px;
-
         right:14px;
+    }
 
+    .gallery-category{
+        top:14px;
+        left:14px;
+    }
+
+    .gallery-footer{
+        flex-direction:column;
+        justify-content:center;
     }
 
 
     /* TIMELINE */
 
     .timeline{
-
         width:100%;
-
     }
 
     .timeline::before{
-
         right:13px;
-
     }
 
     .timeline-progress{
-
         right:13px;
 
         transform:
             translateX(.5px);
-
     }
 
     .timeline-item,
@@ -4707,36 +5161,26 @@ footer{
             0;
 
         text-align:right;
-
     }
 
     .timeline-item:nth-child(odd) .timeline-dot,
     .timeline-item:nth-child(even) .timeline-dot{
 
         right:7px;
-
         left:auto;
-
     }
 
     .timeline-year{
-
         font-size:25px;
-
     }
 
     .timeline-title{
-
         font-size:17px;
-
     }
 
     .timeline-text{
-
         max-width:none;
-
         font-size:13px;
-
     }
 
 
@@ -4744,113 +5188,84 @@ footer{
 
     .contact-intro,
     .contact-card{
-
         border-radius:29px;
-
     }
 
     .contact-intro{
-
         padding:
             31px 22px;
-
     }
 
     .contact-intro h3{
-
         font-size:26px;
-
     }
 
     .contact-card{
-
         padding:
             32px 20px;
-
     }
 
     .contact-copy{
-
         font-size:13px;
-
     }
 
     .contact-actions{
-
         width:100%;
-
     }
 
     .qr-button,
     .share-button,
     .copy-button{
-
         flex:1;
-
         min-width:136px;
-
     }
 
 
     /* LIGHTBOX */
 
     .lightbox{
-
         padding:15px;
-
     }
 
     .lightbox-content{
-
         width:100%;
-
         height:78dvh;
-
     }
 
     .lightbox img{
-
         max-width:
             calc(100vw - 30px);
 
         max-height:
             72dvh;
-
     }
 
     .lightbox-close{
-
         top:-4px;
-
         left:0;
-
     }
 
     .lightbox-prev{
-
         right:-4px;
-
     }
 
     .lightbox-next{
-
         left:-4px;
-
     }
 
     .lightbox-caption{
-
         bottom:-33px;
-
         font-size:10px;
+    }
 
+    .lightbox-counter{
+        top:-32px;
     }
 
 
     /* SIDE MENU */
 
     .side-menu{
-
         width:
             min(340px,84vw);
 
@@ -4862,41 +5277,31 @@ footer{
                 28px +
                 env(safe-area-inset-bottom)
             );
-
     }
 
     .close-menu{
-
         top:20px;
-
         left:20px;
-
     }
 
 
     /* FOOTER */
 
     footer{
-
         padding:
             52px 16px
             calc(
                 36px +
                 env(safe-area-inset-bottom)
             );
-
     }
 
     .footer-links{
-
         gap:11px;
-
     }
 
     .back-top{
-
         left:15px;
-
     }
 
 }
@@ -4909,74 +5314,52 @@ footer{
 @media(max-width:420px){
 
     .hero{
-
         padding-top:92px;
-
     }
 
     .hero-name{
-
         font-size:34px;
-
     }
 
     .hero-description{
-
         font-size:12.3px;
-
     }
 
     .photo-frame{
-
         width:
             min(360px,88vw);
 
         max-width:
             calc(100vw - 26px);
-
     }
 
     .visual-caption{
-
         display:none;
-
     }
 
     .social{
-
         width:56px;
         height:56px;
-
     }
 
     .contact-actions{
-
         flex-direction:column;
-
     }
 
     .qr-button,
     .share-button,
     .copy-button{
-
         width:100%;
-
         flex:none;
-
     }
 
     .side-menu{
-
         width:86vw;
-
         max-width:330px;
-
     }
 
     .signature-card h2{
-
         font-size:27px;
-
     }
 
 }
@@ -4989,39 +5372,27 @@ footer{
 @media(max-width:350px){
 
     .hero-name{
-
         font-size:31px;
-
     }
 
     .hero-eyebrow{
-
         font-size:7px;
-
         letter-spacing:2.4px;
-
     }
 
     .hero-eyebrow::before,
     .hero-eyebrow::after{
-
         width:11px;
-
     }
 
     .photo-frame{
-
         width:86vw;
-
     }
 
     .btn{
-
         min-width:130px;
-
         padding:
             11px 15px;
-
     }
 
 }
@@ -5046,17 +5417,16 @@ footer{
     }
 
     .preloader{
-
         display:none!important;
-
     }
 
     .reveal{
-
         opacity:1;
-
         transform:none;
+    }
 
+    .hero-glow{
+        display:none;
     }
 
 }
@@ -5071,6 +5441,7 @@ footer{
     header,
     .overlay,
     .side-menu,
+    .section-rail,
     .lightbox,
     .qr-modal,
     .toast,
@@ -5093,6 +5464,7 @@ footer{
 }
 
 </style>
+
 </head>
 
 
@@ -5131,6 +5503,122 @@ footer{
     aria-hidden="true"
 >
     <span id="scrollProgress"></span>
+</div>
+
+
+<!-- =========================================================
+     SECTION RAIL
+========================================================= -->
+
+<div
+    class="section-rail desktop-only"
+    id="sectionRail"
+    aria-label="التنقل بين أقسام الموقع"
+>
+
+    <div
+        class="rail-item active"
+        data-section="home"
+        tabindex="0"
+        role="button"
+        aria-label="الرئيسية"
+    >
+        <span class="rail-tooltip">
+            الرئيسية
+        </span>
+    </div>
+
+
+    <div
+        class="rail-item"
+        data-section="about"
+        tabindex="0"
+        role="button"
+        aria-label="نبذة"
+    >
+        <span class="rail-tooltip">
+            نبذة
+        </span>
+    </div>
+
+
+    <div
+        class="rail-item"
+        data-section="values"
+        tabindex="0"
+        role="button"
+        aria-label="بصمتي"
+    >
+        <span class="rail-tooltip">
+            بصمتي
+        </span>
+    </div>
+
+
+    <div
+        class="rail-item"
+        data-section="signature"
+        tabindex="0"
+        role="button"
+        aria-label="هويتي"
+    >
+        <span class="rail-tooltip">
+            هويتي
+        </span>
+    </div>
+
+
+    <div
+        class="rail-item"
+        data-section="milestones"
+        tabindex="0"
+        role="button"
+        aria-label="محطات"
+    >
+        <span class="rail-tooltip">
+            محطات
+        </span>
+    </div>
+
+
+    <div
+        class="rail-item"
+        data-section="gallery"
+        tabindex="0"
+        role="button"
+        aria-label="مختاراتي"
+    >
+        <span class="rail-tooltip">
+            مختاراتي
+        </span>
+    </div>
+
+
+    <div
+        class="rail-item"
+        data-section="journey"
+        tabindex="0"
+        role="button"
+        aria-label="رحلتي"
+    >
+        <span class="rail-tooltip">
+            رحلتي
+        </span>
+    </div>
+
+
+    <div
+        class="rail-item"
+        data-section="contact"
+        tabindex="0"
+        role="button"
+        aria-label="تواصل"
+    >
+        <span class="rail-tooltip">
+            تواصل
+        </span>
+    </div>
+
 </div>
 
 
@@ -5176,11 +5664,9 @@ footer{
             class="menu-lines"
             aria-hidden="true"
         >
-
             <span></span>
             <span></span>
             <span></span>
-
         </span>
 
     </button>
@@ -5227,7 +5713,7 @@ footer{
         </div>
 
         <div class="menu-version">
-            MBK V3.1
+            MBK V4
         </div>
 
     </div>
@@ -5241,15 +5727,11 @@ footer{
             data-section="home"
             class="active"
         >
-
-            <span>
-                الرئيسية
-            </span>
+            <span>الرئيسية</span>
 
             <span class="menu-number">
                 01
             </span>
-
         </a>
 
 
@@ -5257,15 +5739,11 @@ footer{
             href="#about"
             data-section="about"
         >
-
-            <span>
-                نبذة
-            </span>
+            <span>نبذة</span>
 
             <span class="menu-number">
                 02
             </span>
-
         </a>
 
 
@@ -5273,15 +5751,11 @@ footer{
             href="#values"
             data-section="values"
         >
-
-            <span>
-                بصمتي
-            </span>
+            <span>بصمتي</span>
 
             <span class="menu-number">
                 03
             </span>
-
         </a>
 
 
@@ -5289,15 +5763,23 @@ footer{
             href="#signature"
             data-section="signature"
         >
-
-            <span>
-                هويتي
-            </span>
+            <span>هويتي</span>
 
             <span class="menu-number">
                 04
             </span>
+        </a>
 
+
+        <a
+            href="#milestones"
+            data-section="milestones"
+        >
+            <span>محطات</span>
+
+            <span class="menu-number">
+                05
+            </span>
         </a>
 
 
@@ -5305,15 +5787,11 @@ footer{
             href="#gallery"
             data-section="gallery"
         >
-
-            <span>
-                مختاراتي
-            </span>
+            <span>مختاراتي</span>
 
             <span class="menu-number">
-                05
+                06
             </span>
-
         </a>
 
 
@@ -5321,15 +5799,11 @@ footer{
             href="#journey"
             data-section="journey"
         >
-
-            <span>
-                رحلتي
-            </span>
+            <span>رحلتي</span>
 
             <span class="menu-number">
-                06
+                07
             </span>
-
         </a>
 
 
@@ -5337,17 +5811,46 @@ footer{
             href="#contact"
             data-section="contact"
         >
-
-            <span>
-                تواصل
-            </span>
+            <span>تواصل</span>
 
             <span class="menu-number">
-                07
+                08
             </span>
-
         </a>
 
+
+    </div>
+
+
+    <div class="menu-share">
+
+        <div class="menu-share-title">
+            مشاركة الموقع
+        </div>
+
+
+        <div class="menu-share-buttons">
+
+            <button
+                class="menu-share-button"
+                id="menuShareButton"
+                type="button"
+                aria-label="مشاركة الموقع"
+            >
+                ↗
+            </button>
+
+
+            <button
+                class="menu-share-button"
+                id="menuCopyButton"
+                type="button"
+                aria-label="نسخ رابط الموقع"
+            >
+                ⧉
+            </button>
+
+        </div>
 
     </div>
 
@@ -5369,6 +5872,13 @@ footer{
     class="hero"
     id="home"
 >
+
+    <div
+        class="hero-glow"
+        id="heroGlow"
+        aria-hidden="true"
+    ></div>
+
 
     <div
         class="hero-corner top"
@@ -5466,13 +5976,11 @@ footer{
             class="btn btn-primary"
             href="#about"
         >
-
             اكتشف المزيد
 
             <span aria-hidden="true">
                 ↓
             </span>
-
         </a>
 
 
@@ -5858,6 +6366,121 @@ footer{
 
 
 <!-- =========================================================
+     MILESTONES
+========================================================= -->
+
+<section
+    class="section reveal"
+    id="milestones"
+>
+
+    <div class="section-header">
+
+        <span class="section-label">
+            HIGHLIGHTS
+        </span>
+
+        <h2 class="section-title">
+            محطات
+        </h2>
+
+        <p class="section-intro">
+            نقاط مختارة تختصر بعض الأفكار التي تشكّل
+            الهوية والرؤية الشخصية.
+        </p>
+
+    </div>
+
+
+    <div class="milestones">
+
+
+        <article class="milestone">
+
+            <div class="milestone-number">
+                01
+            </div>
+
+            <div class="milestone-label">
+                الهوية
+            </div>
+
+            <p>
+                بناء هوية شخصية واضحة تحمل اسم MBK
+                بطابع فاخر ومتوازن.
+            </p>
+
+            <span class="milestone-line"></span>
+
+        </article>
+
+
+        <article class="milestone">
+
+            <div class="milestone-number">
+                02
+            </div>
+
+            <div class="milestone-label">
+                التطوير
+            </div>
+
+            <p>
+                الاستمرار في التعلم والتجربة وتطوير
+                المهارات والأفكار.
+            </p>
+
+            <span class="milestone-line"></span>
+
+        </article>
+
+
+        <article class="milestone">
+
+            <div class="milestone-number">
+                03
+            </div>
+
+            <div class="milestone-label">
+                التفاصيل
+            </div>
+
+            <p>
+                الاهتمام بالتفاصيل الصغيرة التي تمنح
+                العمل طابعًا مختلفًا.
+            </p>
+
+            <span class="milestone-line"></span>
+
+        </article>
+
+
+        <article class="milestone">
+
+            <div class="milestone-number">
+                04
+            </div>
+
+            <div class="milestone-label">
+                المستقبل
+            </div>
+
+            <p>
+                رؤية أوسع وطموح مستمر وخطوات جديدة
+                نحو الأفضل.
+            </p>
+
+            <span class="milestone-line"></span>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
      GALLERY
 ========================================================= -->
 
@@ -5884,11 +6507,69 @@ footer{
     </div>
 
 
-    <div class="gallery">
+    <div
+        class="gallery-controls"
+        id="galleryControls"
+        aria-label="تصفية المختارات"
+    >
+
+        <button
+            class="filter-btn active"
+            type="button"
+            data-filter="all"
+        >
+            الكل
+        </button>
+
+
+        <button
+            class="filter-btn"
+            type="button"
+            data-filter="nature"
+        >
+            الطبيعة
+        </button>
+
+
+        <button
+            class="filter-btn"
+            type="button"
+            data-filter="life"
+        >
+            الحياة
+        </button>
+
+
+        <button
+            class="filter-btn"
+            type="button"
+            data-filter="city"
+        >
+            المدينة
+        </button>
+
+
+        <button
+            class="filter-btn"
+            type="button"
+            data-filter="journey"
+        >
+            الرحلة
+        </button>
+
+
+    </div>
+
+
+    <div
+        class="gallery"
+        id="galleryGrid"
+    >
 
 
         <figure
             class="gallery-item"
+            data-category="nature"
             data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=92"
             data-caption="هدوء الجبال — NATURE"
             tabindex="0"
@@ -5905,6 +6586,10 @@ footer{
 
             <span class="gallery-index">
                 01
+            </span>
+
+            <span class="gallery-category">
+                NATURE
             </span>
 
             <figcaption class="gallery-info">
@@ -5924,6 +6609,7 @@ footer{
 
         <figure
             class="gallery-item"
+            data-category="life"
             data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=92"
             data-caption="تفاصيل هادئة — LIFE"
             tabindex="0"
@@ -5940,6 +6626,10 @@ footer{
 
             <span class="gallery-index">
                 02
+            </span>
+
+            <span class="gallery-category">
+                LIFE
             </span>
 
             <figcaption class="gallery-info">
@@ -5959,6 +6649,7 @@ footer{
 
         <figure
             class="gallery-item"
+            data-category="city"
             data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=2200&q=92"
             data-caption="نبض المدينة — CITY"
             tabindex="0"
@@ -5975,6 +6666,10 @@ footer{
 
             <span class="gallery-index">
                 03
+            </span>
+
+            <span class="gallery-category">
+                CITY
             </span>
 
             <figcaption class="gallery-info">
@@ -5994,6 +6689,7 @@ footer{
 
         <figure
             class="gallery-item"
+            data-category="city"
             data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=2200&q=92"
             data-caption="بين الشوارع — STREETS"
             tabindex="0"
@@ -6010,6 +6706,10 @@ footer{
 
             <span class="gallery-index">
                 04
+            </span>
+
+            <span class="gallery-category">
+                CITY
             </span>
 
             <figcaption class="gallery-info">
@@ -6029,6 +6729,7 @@ footer{
 
         <figure
             class="gallery-item"
+            data-category="city"
             data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=2200&q=92"
             data-caption="أفق جديد — URBAN"
             tabindex="0"
@@ -6045,6 +6746,10 @@ footer{
 
             <span class="gallery-index">
                 05
+            </span>
+
+            <span class="gallery-category">
+                CITY
             </span>
 
             <figcaption class="gallery-info">
@@ -6064,6 +6769,7 @@ footer{
 
         <figure
             class="gallery-item"
+            data-category="journey"
             data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2200&q=92"
             data-caption="الطريق — JOURNEY"
             tabindex="0"
@@ -6080,6 +6786,10 @@ footer{
 
             <span class="gallery-index">
                 06
+            </span>
+
+            <span class="gallery-category">
+                JOURNEY
             </span>
 
             <figcaption class="gallery-info">
@@ -6099,6 +6809,7 @@ footer{
 
         <figure
             class="gallery-item"
+            data-category="nature"
             data-full="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2200&q=92"
             data-caption="لحظة هدوء — CALM"
             tabindex="0"
@@ -6115,6 +6826,10 @@ footer{
 
             <span class="gallery-index">
                 07
+            </span>
+
+            <span class="gallery-category">
+                NATURE
             </span>
 
             <figcaption class="gallery-info">
@@ -6134,6 +6849,7 @@ footer{
 
         <figure
             class="gallery-item"
+            data-category="life"
             data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=2200&q=92"
             data-caption="تفاصيل المكان — ARCHITECTURE"
             tabindex="0"
@@ -6150,6 +6866,10 @@ footer{
 
             <span class="gallery-index">
                 08
+            </span>
+
+            <span class="gallery-category">
+                LIFE
             </span>
 
             <figcaption class="gallery-info">
@@ -6180,6 +6900,14 @@ footer{
                 اضغط على أي صورة لعرضها بالحجم الكامل
             </span>
 
+        </div>
+
+
+        <div
+            class="gallery-count"
+            id="galleryCount"
+        >
+            08 / 08
         </div>
 
     </div>
@@ -6600,6 +7328,14 @@ footer{
 
 
         <div
+            class="lightbox-counter"
+            id="lightboxCounter"
+        >
+            01 / 08
+        </div>
+
+
+        <div
             class="lightbox-caption"
             id="lightboxCaption"
         ></div>
@@ -6724,6 +7460,10 @@ footer{
                 هويتي
             </a>
 
+            <a href="#milestones">
+                محطات
+            </a>
+
             <a href="#gallery">
                 مختاراتي
             </a>
@@ -6822,6 +7562,45 @@ const timelineProgress =
     document.getElementById(
         "timelineProgress"
     );
+
+const heroGlow =
+    document.getElementById(
+        "heroGlow"
+    );
+
+const hero =
+    document.getElementById(
+        "home"
+    );
+
+const sectionRail =
+    document.getElementById(
+        "sectionRail"
+    );
+
+const railItems =
+    document.querySelectorAll(
+        ".rail-item"
+    );
+
+
+/* =========================================================
+   TOUCH DETECTION
+========================================================= */
+
+const isTouchDevice =
+    window.matchMedia(
+        "(pointer: coarse)"
+    ).matches ||
+    "ontouchstart" in window;
+
+if(isTouchDevice){
+
+    body.classList.add(
+        "is-touch"
+    );
+
+}
 
 
 /* =========================================================
@@ -6933,7 +7712,7 @@ menuLinks.forEach(
 
 
 /* =========================================================
-   SIDE MENU SWIPE TO CLOSE
+   SIDE MENU SWIPE
 ========================================================= */
 
 let menuTouchStartX = 0;
@@ -6976,8 +7755,7 @@ sideMenu.addEventListener(
 
 
         if(
-            Math.abs(deltaX) >
-                60 &&
+            Math.abs(deltaX) > 60 &&
             Math.abs(deltaX) >
                 Math.abs(deltaY) &&
             deltaX > 0
@@ -6992,6 +7770,129 @@ sideMenu.addEventListener(
         passive:true
     }
 );
+
+
+/* =========================================================
+   MOUSE / POINTER HERO EFFECT
+========================================================= */
+
+if(
+    !isTouchDevice &&
+    window.matchMedia(
+        "(prefers-reduced-motion: no-preference)"
+    ).matches
+){
+
+    let heroTargetX = 50;
+    let heroTargetY = 50;
+
+    let heroCurrentX = 50;
+    let heroCurrentY = 50;
+
+    let rafId = null;
+
+
+    function animateHeroGlow(){
+
+        heroCurrentX +=
+            (heroTargetX - heroCurrentX)
+            * .08;
+
+        heroCurrentY +=
+            (heroTargetY - heroCurrentY)
+            * .08;
+
+
+        document.documentElement.style
+            .setProperty(
+                "--pointer-x",
+                `${heroCurrentX}%`
+            );
+
+
+        document.documentElement.style
+            .setProperty(
+                "--pointer-y",
+                `${heroCurrentY}%`
+            );
+
+
+        if(heroGlow){
+
+            const gx =
+                50 +
+                (
+                    heroCurrentX -
+                    50
+                ) * .35;
+
+            const gy =
+                50 +
+                (
+                    heroCurrentY -
+                    50
+                ) * .35;
+
+
+            heroGlow.style.left =
+                `${gx}%`;
+
+            heroGlow.style.top =
+                `${gy}%`;
+
+        }
+
+
+        rafId =
+            requestAnimationFrame(
+                animateHeroGlow
+            );
+
+    }
+
+
+    window.addEventListener(
+        "pointermove",
+        event => {
+
+            heroTargetX =
+                (
+                    event.clientX /
+                    window.innerWidth
+                ) * 100;
+
+
+            heroTargetY =
+                (
+                    event.clientY /
+                    window.innerHeight
+                ) * 100;
+
+        },
+        {
+            passive:true
+        }
+    );
+
+
+    rafId =
+        requestAnimationFrame(
+            animateHeroGlow
+        );
+
+
+    window.addEventListener(
+        "blur",
+        () => {
+
+            cancelAnimationFrame(
+                rafId
+            );
+
+        }
+    );
+
+}
 
 
 /* =========================================================
@@ -7013,6 +7914,7 @@ function updateScrollUI(){
     const maxScroll =
         documentHeight -
         viewportHeight;
+
 
     const progress =
         maxScroll > 0
@@ -7061,7 +7963,6 @@ window.addEventListener(
         passive:true
     }
 );
-
 
 updateScrollUI();
 
@@ -7160,9 +8061,7 @@ const sectionObserver =
                     if(
                         !entry.isIntersecting
                     ){
-
                         return;
-
                     }
 
 
@@ -7173,13 +8072,21 @@ const sectionObserver =
                     menuLinks.forEach(
                         link => {
 
-                            const active =
-                                link.dataset.section === id;
-
-
                             link.classList.toggle(
                                 "active",
-                                active
+                                link.dataset.section === id
+                            );
+
+                        }
+                    );
+
+
+                    railItems.forEach(
+                        item => {
+
+                            item.classList.toggle(
+                                "active",
+                                item.dataset.section === id
                             );
 
                         }
@@ -7212,6 +8119,68 @@ sections.forEach(
 
 
 /* =========================================================
+   SECTION RAIL NAVIGATION
+========================================================= */
+
+railItems.forEach(
+    item => {
+
+        function navigate(){
+
+            const id =
+                item.dataset.section;
+
+            const target =
+                document.getElementById(
+                    id
+                );
+
+            if(!target){
+                return;
+            }
+
+            target.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "start"
+
+            });
+
+        }
+
+
+        item.addEventListener(
+            "click",
+            navigate
+        );
+
+
+        item.addEventListener(
+            "keydown",
+            event => {
+
+                if(
+                    event.key === "Enter" ||
+                    event.key === " "
+                ){
+
+                    event.preventDefault();
+
+                    navigate();
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
    TIMELINE
 ========================================================= */
 
@@ -7221,9 +8190,7 @@ function updateTimeline(){
         !timeline ||
         !timelineProgress
     ){
-
         return;
-
     }
 
 
@@ -7232,11 +8199,12 @@ function updateTimeline(){
 
 
     const viewportCenter =
-        window.innerHeight * .58;
+        window.innerHeight *
+        .58;
 
 
     const total =
-        rect.height;
+        timeline.offsetHeight;
 
 
     let height =
@@ -7283,7 +8251,7 @@ updateTimeline();
 
 
 /* =========================================================
-   GALLERY
+   GALLERY DATA
 ========================================================= */
 
 const galleryItems =
@@ -7293,6 +8261,167 @@ const galleryItems =
         )
     );
 
+const filterButtons =
+    Array.from(
+        document.querySelectorAll(
+            ".filter-btn"
+        )
+    );
+
+const galleryCount =
+    document.getElementById(
+        "galleryCount"
+    );
+
+
+/* =========================================================
+   GALLERY FILTER
+========================================================= */
+
+function applyGalleryFilter(
+    filter
+){
+
+    let visibleCount = 0;
+
+
+    galleryItems.forEach(
+        item => {
+
+            const category =
+                item.dataset.category;
+
+
+            const shouldShow =
+                filter === "all" ||
+                category === filter;
+
+
+            if(
+                shouldShow
+            ){
+
+                item.classList.remove(
+                    "is-hidden"
+                );
+
+                item.removeAttribute(
+                    "aria-hidden"
+                );
+
+                visibleCount++;
+
+            }else{
+
+                item.classList.add(
+                    "is-hidden"
+                );
+
+                item.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
+
+            }
+
+        }
+    );
+
+
+    galleryCount.textContent =
+        `${String(visibleCount).padStart(2,"0")} / ${String(galleryItems.length).padStart(2,"0")}`;
+
+}
+
+
+filterButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                filterButtons.forEach(
+                    btn => {
+
+                        btn.classList.toggle(
+                            "active",
+                            btn === button
+                        );
+
+                    }
+                );
+
+
+                applyGalleryFilter(
+                    button.dataset.filter
+                );
+
+            }
+        );
+
+    }
+);
+
+
+applyGalleryFilter("all");
+
+
+/* =========================================================
+   IMAGE PRELOAD
+========================================================= */
+
+function preloadImage(
+    index
+){
+
+    if(
+        !galleryItems[index]
+    ){
+        return;
+    }
+
+
+    const url =
+        galleryItems[index]
+            .dataset
+            .full;
+
+
+    if(!url){
+        return;
+    }
+
+
+    const image =
+        new Image();
+
+
+    image.decoding =
+        "async";
+
+
+    image.src =
+        url;
+
+}
+
+
+for(
+    let i = 1;
+    i <= 2 &&
+    i < galleryItems.length;
+    i++
+){
+
+    preloadImage(i);
+
+}
+
+
+/* =========================================================
+   LIGHTBOX ELEMENTS
+========================================================= */
 
 const lightbox =
     document.getElementById(
@@ -7324,6 +8453,11 @@ const lightboxCaption =
         "lightboxCaption"
     );
 
+const lightboxCounter =
+    document.getElementById(
+        "lightboxCounter"
+    );
+
 
 let currentGalleryIndex =
     0;
@@ -7336,59 +8470,29 @@ let touchStartX =
 
 
 /* =========================================================
-   PRELOAD NEXT IMAGE
+   LIGHTBOX FILTER-AWARE NAVIGATION
 ========================================================= */
 
-function preloadImage(
-    index
-){
+function getVisibleGalleryItems(){
 
-    if(
-        !galleryItems[index]
-    ){
-
-        return;
-
-    }
-
-
-    const url =
-        galleryItems[index]
-            .dataset
-            .full;
-
-
-    if(!url){
-
-        return;
-
-    }
-
-
-    const image =
-        new Image();
-
-
-    image.decoding =
-        "async";
-
-
-    image.src =
-        url;
+    return galleryItems.filter(
+        item =>
+            !item.classList.contains(
+                "is-hidden"
+            )
+    );
 
 }
 
 
-/* Preload only the next few images rather than all */
-
-for(
-    let i = 1;
-    i <= 2 &&
-    i < galleryItems.length;
-    i++
+function getVisibleIndex(
+    actualItem
 ){
 
-    preloadImage(i);
+    return getVisibleGalleryItems()
+        .indexOf(
+            actualItem
+        );
 
 }
 
@@ -7404,9 +8508,16 @@ function openLightbox(
     if(
         !galleryItems[index]
     ){
-
         return;
+    }
 
+
+    if(
+        galleryItems[index]
+            .classList
+            .contains("is-hidden")
+    ){
+        return;
     }
 
 
@@ -7449,6 +8560,20 @@ function openLightbox(
         caption;
 
 
+    const visibleItems =
+        getVisibleGalleryItems();
+
+
+    const visibleIndex =
+        visibleItems.indexOf(
+            item
+        );
+
+
+    lightboxCounter.textContent =
+        `${String(visibleIndex + 1).padStart(2,"0")} / ${String(visibleItems.length).padStart(2,"0")}`;
+
+
     lightbox.classList.add(
         "active"
     );
@@ -7472,13 +8597,24 @@ function openLightbox(
     lightboxClose.focus();
 
 
-    preloadImage(
-        (
-            currentGalleryIndex +
-            1
-        ) %
-        galleryItems.length
-    );
+    const nextVisible =
+        visibleItems[
+            (
+                visibleIndex + 1
+            ) %
+            visibleItems.length
+        ];
+
+
+    if(nextVisible){
+
+        preloadImage(
+            galleryItems.indexOf(
+                nextVisible
+            )
+        );
+
+    }
 
 }
 
@@ -7524,17 +8660,49 @@ function closeLightbox(){
 
 function showPreviousImage(){
 
-    currentGalleryIndex =
+    const visibleItems =
+        getVisibleGalleryItems();
+
+
+    if(
+        !visibleItems.length
+    ){
+        return;
+    }
+
+
+    const currentItem =
+        galleryItems[
+            currentGalleryIndex
+        ];
+
+
+    let index =
+        visibleItems.indexOf(
+            currentItem
+        );
+
+
+    if(index < 0){
+
+        index = 0;
+
+    }
+
+
+    index =
         (
-            currentGalleryIndex -
+            index -
             1 +
-            galleryItems.length
+            visibleItems.length
         ) %
-        galleryItems.length;
+        visibleItems.length;
 
 
     openLightbox(
-        currentGalleryIndex
+        galleryItems.indexOf(
+            visibleItems[index]
+        )
     );
 
 }
@@ -7542,16 +8710,47 @@ function showPreviousImage(){
 
 function showNextImage(){
 
-    currentGalleryIndex =
+    const visibleItems =
+        getVisibleGalleryItems();
+
+
+    if(
+        !visibleItems.length
+    ){
+        return;
+    }
+
+
+    const currentItem =
+        galleryItems[
+            currentGalleryIndex
+        ];
+
+
+    let index =
+        visibleItems.indexOf(
+            currentItem
+        );
+
+
+    if(index < 0){
+
+        index = 0;
+
+    }
+
+
+    index =
         (
-            currentGalleryIndex +
-            1
+            index + 1
         ) %
-        galleryItems.length;
+        visibleItems.length;
 
 
     openLightbox(
-        currentGalleryIndex
+        galleryItems.indexOf(
+            visibleItems[index]
+        )
     );
 
 }
@@ -7586,7 +8785,6 @@ galleryItems.forEach(
                 ){
 
                     event.preventDefault();
-
 
                     openLightbox(
                         index
@@ -7624,8 +8822,7 @@ lightbox.addEventListener(
     event => {
 
         if(
-            event.target ===
-            lightbox
+            event.target === lightbox
         ){
 
             closeLightbox();
@@ -7673,9 +8870,7 @@ lightbox.addEventListener(
             Math.abs(diff) <
                 50
         ){
-
             return;
-
         }
 
 
@@ -7724,17 +8919,14 @@ function openQR(){
         "active"
     );
 
-
     qrModal.setAttribute(
         "aria-hidden",
         "false"
     );
 
-
     body.classList.add(
         "modal-open"
     );
-
 
     qrClose.focus();
 
@@ -7747,12 +8939,10 @@ function closeQR(){
         "active"
     );
 
-
     qrModal.setAttribute(
         "aria-hidden",
         "true"
     );
-
 
     body.classList.remove(
         "modal-open"
@@ -7766,20 +8956,17 @@ qrButton.addEventListener(
     openQR
 );
 
-
 qrClose.addEventListener(
     "click",
     closeQR
 );
-
 
 qrModal.addEventListener(
     "click",
     event => {
 
         if(
-            event.target ===
-            qrModal
+            event.target === qrModal
         ){
 
             closeQR();
@@ -7791,14 +8978,49 @@ qrModal.addEventListener(
 
 
 /* =========================================================
-   SHARE
+   TOAST
 ========================================================= */
 
-const shareButton =
-    document.getElementById(
-        "shareButton"
+let toastTimer =
+    null;
+
+
+function showToast(
+    message
+){
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
     );
 
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2600
+        );
+
+}
+
+
+/* =========================================================
+   SHARE SITE
+========================================================= */
 
 async function shareSite(){
 
@@ -7869,9 +9091,65 @@ async function shareSite(){
 }
 
 
+const shareButton =
+    document.getElementById(
+        "shareButton"
+    );
+
+
+const menuShareButton =
+    document.getElementById(
+        "menuShareButton"
+    );
+
+
 shareButton.addEventListener(
     "click",
     shareSite
+);
+
+
+menuShareButton.addEventListener(
+    "click",
+    shareSite
+);
+
+
+/* =========================================================
+   COPY WEBSITE URL
+========================================================= */
+
+const menuCopyButton =
+    document.getElementById(
+        "menuCopyButton"
+    );
+
+
+menuCopyButton.addEventListener(
+    "click",
+    async () => {
+
+        try{
+
+            await navigator.clipboard.writeText(
+                "https://mabkhut.com/"
+            );
+
+
+            showToast(
+                "تم نسخ رابط الموقع"
+            );
+
+
+        }catch(error){
+
+            showToast(
+                "mabkhut.com"
+            );
+
+        }
+
+    }
 );
 
 
@@ -7918,47 +9196,6 @@ copyButton.addEventListener(
 
 
 /* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer =
-    null;
-
-
-function showToast(
-    message
-){
-
-    toast.textContent =
-        message;
-
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        toastTimer
-    );
-
-
-    toastTimer =
-        setTimeout(
-            () => {
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            },
-            2600
-        );
-
-}
-
-
-/* =========================================================
    SMOOTH ANCHORS
 ========================================================= */
 
@@ -7988,9 +9225,7 @@ document
                     if(
                         !target
                     ){
-
                         return;
-
                     }
 
 
@@ -8036,11 +9271,8 @@ document.addEventListener(
             event.key !==
                 "Escape"
         ){
-
             return;
-
         }
-
 
         closeSideMenu();
 
@@ -8053,7 +9285,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   KEYBOARD LIGHTBOX NAVIGATION
+   KEYBOARD LIGHTBOX
 ========================================================= */
 
 document.addEventListener(
@@ -8065,9 +9297,7 @@ document.addEventListener(
                 "active"
             )
         ){
-
             return;
-
         }
 
 
@@ -8111,7 +9341,6 @@ window.addEventListener(
 
         }
 
-
         updateTimeline();
 
     }
@@ -8141,6 +9370,7 @@ document.documentElement.style
         "scroll-padding-top",
         "105px"
     );
+
 
 </script>
 
