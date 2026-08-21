@@ -474,7 +474,7 @@ a{
 
     font-size:17px;
 
-    color:var(--white);
+    color:#f8f7f2;
 
     transition:.3s ease;
 }
@@ -2305,17 +2305,6 @@ footer{
 
         <button
             class="icon-btn"
-            id="themeBtn"
-            type="button"
-            aria-label="تبديل المظهر"
-            title="تبديل المظهر"
-        >
-            ◐
-        </button>
-
-
-        <button
-            class="icon-btn"
             id="menuBtn"
             type="button"
             aria-label="فتح القائمة"
@@ -3511,9 +3500,6 @@ const sideMenu =
 const overlay =
     document.getElementById("overlay");
 
-const themeBtn =
-    document.getElementById("themeBtn");
-
 const qrButton =
     document.getElementById("qrButton");
 
@@ -3631,110 +3617,6 @@ document
         );
 
     });
-
-
-/* =========================================================
-   THEME
-========================================================= */
-
-let lightMode =
-    localStorage.getItem(
-        "mbk-theme"
-    ) === "light";
-
-
-function updateTheme(){
-
-    if(lightMode){
-
-        document.documentElement.style.setProperty(
-            "--navy",
-            "#f4f2eb"
-        );
-
-        document.documentElement.style.setProperty(
-            "--navy-dark",
-            "#e9e5da"
-        );
-
-        document.documentElement.style.setProperty(
-            "--white",
-            "#061426"
-        );
-
-        document.documentElement.style.setProperty(
-            "--text",
-            "#263548"
-        );
-
-        document.documentElement.style.setProperty(
-            "--muted",
-            "#647184"
-        );
-
-        document.body.style.background =
-            "linear-gradient(145deg,#f8f7f2,#e9e5da)";
-
-        themeBtn.textContent =
-            "☀";
-
-    }else{
-
-        document.documentElement.style.setProperty(
-            "--navy",
-            "#061426"
-        );
-
-        document.documentElement.style.setProperty(
-            "--navy-dark",
-            "#020914"
-        );
-
-        document.documentElement.style.setProperty(
-            "--white",
-            "#f8f7f2"
-        );
-
-        document.documentElement.style.setProperty(
-            "--text",
-            "#d8dce2"
-        );
-
-        document.documentElement.style.setProperty(
-            "--muted",
-            "#8995a3"
-        );
-
-        document.body.style.background =
-            "";
-
-        themeBtn.textContent =
-            "◐";
-    }
-}
-
-
-updateTheme();
-
-
-themeBtn.addEventListener(
-    "click",
-    () => {
-
-        lightMode =
-            !lightMode;
-
-        localStorage.setItem(
-            "mbk-theme",
-            lightMode
-                ? "light"
-                : "dark"
-        );
-
-        updateTheme();
-
-    }
-);
 
 
 /* =========================================================
