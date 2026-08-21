@@ -1,72 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 
-<meta name="theme-color" content="#061426">
-<meta name="color-scheme" content="dark">
-<meta name="description" content="الموقع الشخصي لمبخوت بن عبدالله — MBK.">
-<meta name="author" content="مبخوت بن عبدالله">
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta charset="UTF-8">
 
-<link rel="canonical" href="https://mabkhut.com/">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://mabkhut.com/">
-<meta property="og:title" content="مبخوت بن عبدالله | MBK">
-<meta property="og:description" content="الموقع الشخصي لمبخوت بن عبدالله.">
-<meta property="og:image" content="https://mabkhut.com/file_00000000202482468d4027eb8c5919f7.png">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="مبخوت بن عبدالله | MBK">
-<meta name="twitter:description" content="الموقع الشخصي لمبخوت بن عبدالله.">
-<meta name="twitter:image" content="https://mabkhut.com/file_00000000202482468d4027eb8c5919f7.png">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
 <title>مبخوت بن عبدالله | MBK</title>
 
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Person",
-  "name":"مبخوت بن عبدالله",
-  "alternateName":"MBK",
-  "url":"https://mabkhut.com/",
-  "email":"mailto:mabkhout@mabkhut.com",
-  "sameAs":[
-    "https://www.facebook.com/share/19JG7PQiHL/"
-  ]
-}
-</script>
+<meta
+    name="description"
+    content="الموقع الشخصي لمبخوت بن عبدالله — MBK"
+>
+
+<meta
+    name="theme-color"
+    content="#061426"
+>
+
+<meta
+    name="color-scheme"
+    content="dark"
+>
+
+<meta
+    name="robots"
+    content="index,follow"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
 
 <style>
 
 /* =========================================================
-   MBK V2 — DESIGN SYSTEM
+   MBK V2
+   DESIGN SYSTEM
 ========================================================= */
 
 :root{
+
     --navy:#061426;
+    --navy-2:#081a2f;
     --navy-dark:#020914;
-    --navy-soft:#0a1d33;
 
     --gold:#d4af37;
     --gold-light:#f1d56a;
+    --gold-bright:#ffe99a;
 
     --white:#f8f7f2;
-    --text:#d8dce2;
-    --muted:#8995a3;
+    --text:#d9dde3;
+    --muted:#8d99a8;
 
-    --border:rgba(212,175,55,.20);
-    --border-strong:rgba(212,175,55,.42);
+    --line:rgba(212,175,55,.18);
+    --line-strong:rgba(212,175,55,.42);
 
     --glass:rgba(255,255,255,.035);
-    --shadow:rgba(0,0,0,.45);
 
-    --radius-lg:30px;
-    --radius-md:24px;
+    --shadow:
+        0 30px 90px rgba(0,0,0,.42);
 
-    --header-height:76px;
+    --radius:28px;
 }
 
 
@@ -82,32 +92,36 @@
 
 html{
     scroll-behavior:smooth;
-    scroll-padding-top:90px;
+    background:var(--navy-dark);
 }
 
 body{
+
     min-height:100vh;
+
     overflow-x:hidden;
 
     font-family:
         "Cairo",
         "Noto Kufi Arabic",
-        Arial,
         sans-serif;
 
     color:var(--white);
 
     background:
+
         radial-gradient(
-            circle at 50% 0%,
-            rgba(212,175,55,.08),
-            transparent 27%
+            circle at 50% -10%,
+            rgba(212,175,55,.10),
+            transparent 34%
         ),
+
         radial-gradient(
-            circle at 0% 50%,
-            rgba(16,50,82,.32),
-            transparent 35%
+            circle at 0% 40%,
+            rgba(24,62,101,.24),
+            transparent 34%
         ),
+
         linear-gradient(
             145deg,
             #020914 0%,
@@ -116,48 +130,62 @@ body{
         );
 }
 
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
 body::before{
+
     content:"";
 
     position:fixed;
+
     inset:0;
 
     pointer-events:none;
 
     z-index:-10;
 
-    opacity:.055;
+    opacity:.045;
 
     background-image:
+
         linear-gradient(
-            rgba(255,255,255,.05) 1px,
+            rgba(255,255,255,.06) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
-            rgba(255,255,255,.05) 1px,
+            rgba(255,255,255,.06) 1px,
             transparent 1px
         );
 
-    background-size:75px 75px;
+    background-size:
+        70px 70px;
 }
 
+
 body::after{
+
     content:"";
 
     position:fixed;
 
-    width:450px;
-    height:450px;
+    width:460px;
+    height:460px;
 
-    top:12%;
+    top:10%;
     left:50%;
 
-    transform:translateX(-50%);
+    transform:
+        translateX(-50%);
 
     border-radius:50%;
 
-    background:rgba(212,175,55,.035);
+    background:
+        rgba(212,175,55,.035);
 
     filter:blur(120px);
 
@@ -166,61 +194,23 @@ body::after{
     z-index:-9;
 }
 
-img{
-    max-width:100%;
-}
 
-button,
-a{
-    font:inherit;
-}
-
-button{
-    border:0;
-}
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 a{
     color:inherit;
     text-decoration:none;
-
     -webkit-tap-highlight-color:transparent;
 }
 
-button,
-a{
-    -webkit-tap-highlight-color:transparent;
+button{
+    font:inherit;
 }
 
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-
-.skip-link{
-    position:fixed;
-
-    top:12px;
-    right:12px;
-
-    z-index:9999;
-
-    padding:10px 16px;
-
-    border-radius:999px;
-
-    background:var(--gold);
-
-    color:#020914;
-
-    font-weight:700;
-
-    transform:translateY(-150%);
-
-    transition:.25s ease;
-}
-
-.skip-link:focus{
-    transform:translateY(0);
+img{
+    max-width:100%;
 }
 
 
@@ -229,35 +219,47 @@ a{
 ========================================================= */
 
 .site-header{
+
     position:fixed;
 
     top:0;
     right:0;
     left:0;
 
-    height:var(--header-height);
+    height:76px;
 
-    padding:0 6%;
+    padding:
+        0 clamp(18px,6vw,80px);
 
     display:flex;
 
     align-items:center;
+
     justify-content:space-between;
 
     z-index:1000;
 
     background:
-        rgba(2,9,20,.76);
+        rgba(2,9,20,.94);
 
     border-bottom:
-        1px solid rgba(212,175,55,.12);
+        1px solid rgba(212,175,55,.13);
 
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
 }
 
+
 .logo{
+
     direction:ltr;
+
+    display:inline-flex;
+
+    align-items:center;
 
     font-family:
         Arial,
@@ -269,89 +271,61 @@ a{
 
     letter-spacing:7px;
 
-    color:var(--gold-light);
-
-    transition:.3s ease;
+    color:
+        var(--gold-light);
 }
 
-.logo:hover{
-    color:#fff0a3;
-    transform:translateY(-1px);
+
+.menu-toggle{
+
+    position:absolute;
+
+    opacity:0;
+
+    pointer-events:none;
 }
 
-.header-actions{
-    display:flex;
 
-    align-items:center;
+.menu-button{
 
-    gap:10px;
-}
-
-.icon-btn{
     width:47px;
     height:47px;
-
-    border-radius:50%;
-
-    border:
-        1px solid var(--border-strong);
-
-    background:
-        rgba(255,255,255,.025);
-
-    color:var(--gold-light);
-
-    cursor:pointer;
 
     display:flex;
 
     align-items:center;
     justify-content:center;
 
+    border:
+        1px solid var(--line-strong);
+
+    border-radius:50%;
+
+    color:
+        var(--gold-light);
+
+    background:
+        rgba(255,255,255,.025);
+
+    cursor:pointer;
+
     font-size:20px;
 
-    transition:.3s ease;
+    transition:
+        .3s ease;
 }
 
-.icon-btn:hover{
-    transform:scale(1.05);
 
-    border-color:var(--gold-light);
+.menu-button:hover{
+
+    border-color:
+        var(--gold-light);
 
     background:
         rgba(212,175,55,.08);
 
-    box-shadow:
-        0 0 30px rgba(212,175,55,.12);
-}
-
-
-/* =========================================================
-   OVERLAY
-========================================================= */
-
-.overlay{
-    position:fixed;
-
-    inset:0;
-
-    background:
-        rgba(0,0,0,.58);
-
-    backdrop-filter:blur(5px);
-
-    z-index:1100;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.35s ease;
-}
-
-.overlay.active{
-    opacity:1;
-    visibility:visible;
+    transform:
+        scale(1.05);
 }
 
 
@@ -359,130 +333,255 @@ a{
    SIDE MENU
 ========================================================= */
 
+.menu-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:1090;
+
+    background:
+        rgba(0,0,0,.72);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+}
+
+
 .side-menu{
+
     position:fixed;
 
     top:0;
     right:0;
 
-    width:min(390px,88vw);
+    width:
+        min(360px,88vw);
 
-    height:100vh;
-
-    padding:
-        92px
-        35px
-        35px;
+    height:100dvh;
 
     z-index:1200;
 
+    overflow-y:auto;
+
+    padding:
+        105px 34px 35px;
+
     background:
+
         linear-gradient(
-            150deg,
-            rgba(8,26,47,.99),
-            rgba(2,9,20,.99)
+            155deg,
+            #081b32 0%,
+            #061426 52%,
+            #020914 100%
         );
 
     border-left:
-        1px solid var(--border);
+        1px solid var(--line);
+
+    box-shadow:
+        -30px 0 100px rgba(0,0,0,.55);
 
     transform:
         translateX(105%);
 
     transition:
-        transform .45s cubic-bezier(.77,0,.18,1);
-
-    box-shadow:
-        -30px 0 90px rgba(0,0,0,.45);
-
-    overflow-y:auto;
+        transform .42s cubic-bezier(.77,0,.18,1);
 }
 
-.side-menu.active{
-    transform:translateX(0);
+
+.menu-toggle:checked ~ .menu-overlay{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
 }
 
-.close-menu{
+
+.menu-toggle:checked ~ .side-menu{
+
+    transform:
+        translateX(0);
+}
+
+
+.close-label{
+
     position:absolute;
 
-    top:24px;
-    left:24px;
+    top:23px;
+    left:23px;
 
-    width:42px;
-    height:42px;
+    width:44px;
+    height:44px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:
+        1px solid var(--line-strong);
 
     border-radius:50%;
 
-    border:
-        1px solid var(--border-strong);
-
-    background:transparent;
-
-    color:var(--gold-light);
+    color:
+        var(--gold-light);
 
     cursor:pointer;
 
-    font-size:22px;
+    font-size:23px;
 
     transition:.3s ease;
 }
 
-.close-menu:hover{
+
+.close-label:hover{
+
     background:
         rgba(212,175,55,.08);
 
-    transform:rotate(90deg);
+    border-color:
+        var(--gold-light);
+
+    transform:
+        rotate(90deg);
 }
+
 
 .menu-brand{
-    direction:ltr;
-
-    font-family:Arial,sans-serif;
-
-    font-size:30px;
-
-    font-weight:800;
-
-    letter-spacing:8px;
-
-    color:var(--gold-light);
-
-    margin-bottom:18px;
-}
-
-.menu-label{
-    color:var(--gold);
-
-    font-size:11px;
-
-    letter-spacing:4px;
-
-    margin-bottom:28px;
 
     direction:ltr;
 
     text-align:right;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:35px;
+
+    font-weight:700;
+
+    letter-spacing:8px;
+
+    color:
+        var(--gold-light);
+
+    margin-bottom:10px;
 }
 
-.side-menu a{
-    display:block;
 
-    padding:17px 0;
+.menu-subtitle{
+
+    direction:ltr;
+
+    text-align:right;
+
+    color:
+        var(--muted);
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    margin-bottom:40px;
+}
+
+
+.menu-line{
+
+    width:55px;
+    height:2px;
+
+    margin-bottom:22px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            transparent
+        );
+}
+
+
+.side-menu nav{
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+
+.side-menu nav a{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    min-height:62px;
+
+    padding:0 2px;
+
+    color:
+        var(--white);
+
+    font-size:17px;
 
     border-bottom:
         1px solid rgba(255,255,255,.055);
 
-    font-size:17px;
-
-    color:#f8f7f2;
-
-    transition:.3s ease;
+    transition:
+        color .25s ease,
+        padding .25s ease;
 }
 
-.side-menu a:hover{
-    color:var(--gold-light);
+
+.side-menu nav a::before{
+
+    content:"";
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:
+        var(--gold);
+
+    opacity:0;
+
+    transition:
+        opacity .25s ease;
+}
+
+
+.side-menu nav a:hover{
+
+    color:
+        var(--gold-light);
 
     padding-right:10px;
+}
+
+
+.side-menu nav a:hover::before{
+
+    opacity:1;
 }
 
 
@@ -491,13 +590,12 @@ a{
 ========================================================= */
 
 main{
-    width:min(1120px,92%);
 
-    margin:auto;
-}
+    width:
+        min(1120px,92%);
 
-.section-anchor{
-    scroll-margin-top:90px;
+    margin:
+        0 auto;
 }
 
 
@@ -506,94 +604,110 @@ main{
 ========================================================= */
 
 .hero{
-    min-height:100vh;
+
+    min-height:
+        100svh;
 
     padding:
-        125px
-        0
-        55px;
+        125px 0 60px;
 
     display:flex;
 
     flex-direction:column;
 
     align-items:center;
+
     justify-content:center;
 
-    text-align:center;
-
     position:relative;
+
+    text-align:center;
 }
 
-.hero-corner{
+
+.corner{
+
     position:absolute;
 
     width:72px;
     height:72px;
 
     border-color:
-        rgba(212,175,55,.68);
+        rgba(212,175,55,.65);
 
     pointer-events:none;
 }
 
-.hero-corner-top{
-    top:108px;
+
+.corner.top{
+
+    top:105px;
     right:0;
 
-    border-top:1px solid;
-    border-right:1px solid;
+    border-top:
+        1px solid;
+
+    border-right:
+        1px solid;
 }
 
-.hero-corner-bottom{
-    bottom:35px;
+
+.corner.bottom{
+
+    bottom:32px;
     left:0;
 
-    border-bottom:1px solid;
-    border-left:1px solid;
+    border-bottom:
+        1px solid;
+
+    border-left:
+        1px solid;
 }
 
-.eyebrow{
+
+.hero-label{
+
     direction:ltr;
 
-    color:var(--gold);
+    color:
+        var(--gold);
 
-    font-size:10px;
+    font-size:11px;
 
-    letter-spacing:4px;
+    letter-spacing:5px;
 
-    margin-bottom:12px;
+    margin-bottom:10px;
 
-    opacity:.85;
+    opacity:.9;
 }
 
+
 .hero-name{
+
     width:100%;
 
-    max-width:850px;
+    max-width:900px;
 
-    padding:0 20px;
-
-    margin:0 auto 14px;
+    padding:
+        0 12px;
 
     font-size:
-        clamp(34px,5.5vw,58px);
+        clamp(37px,6vw,64px);
 
     font-weight:800;
 
-    line-height:1.5;
-
-    text-align:center;
+    line-height:1.45;
 
     letter-spacing:-1px;
 
     background:
+
         linear-gradient(
             135deg,
             #b88918 0%,
-            #f7df78 25%,
+            #f7df78 24%,
             #d4af37 50%,
-            #fff0a3 75%,
+            #fff0a3 76%,
             #b88918 100%
         );
 
@@ -601,22 +715,24 @@ main{
 
     background-clip:text;
 
-    -webkit-text-fill-color:transparent;
+    -webkit-text-fill-color:
+        transparent;
 
     text-shadow:
-        0 0 18px
-        rgba(212,175,55,.12);
+        0 0 25px rgba(212,175,55,.10);
 }
 
+
 .gold-line{
-    width:100px;
+
+    width:110px;
     height:2px;
 
     margin:
-        0 auto
-        28px;
+        3px auto 28px;
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
@@ -627,45 +743,32 @@ main{
         );
 
     box-shadow:
-        0 0 16px
-        rgba(212,175,55,.28);
+        0 0 18px rgba(212,175,55,.25);
 }
 
-.hero-grid{
-    width:100%;
 
-    display:grid;
-
-    grid-template-columns:
-        minmax(0,1fr)
-        minmax(350px,470px);
-
-    align-items:center;
-
-    gap:50px;
-
-    text-align:right;
-}
-
-.hero-copy{
-    order:1;
-}
+/* =========================================================
+   PROFILE
+========================================================= */
 
 .photo-frame{
-    width:min(470px,88vw);
 
-    aspect-ratio:1/1;
+    width:
+        min(440px,84vw);
 
-    padding:10px;
+    aspect-ratio:
+        1 / 1;
 
     position:relative;
 
-    margin:auto;
+    padding:10px;
 
-    order:2;
+    margin-bottom:24px;
 }
 
+
 .photo-frame::before{
+
     content:"";
 
     position:absolute;
@@ -673,15 +776,17 @@ main{
     inset:0;
 
     border:
-        1px solid
-        rgba(212,175,55,.82);
+        1px solid rgba(212,175,55,.82);
 
     border-radius:31px;
 
-    transform:rotate(-1deg);
+    transform:
+        rotate(-1deg);
 }
 
+
 .photo-frame::after{
+
     content:"";
 
     position:absolute;
@@ -689,30 +794,17 @@ main{
     inset:7px;
 
     border:
-        1px solid
-        rgba(212,175,55,.22);
+        1px solid rgba(212,175,55,.24);
 
     border-radius:27px;
 
-    transform:rotate(1deg);
+    transform:
+        rotate(1deg);
 }
 
-.photo-glow{
-    position:absolute;
-
-    inset:10%;
-
-    background:
-        rgba(212,175,55,.08);
-
-    filter:blur(55px);
-
-    border-radius:50%;
-
-    z-index:0;
-}
 
 .profile-photo{
+
     position:relative;
 
     z-index:2;
@@ -722,192 +814,144 @@ main{
 
     display:block;
 
-    object-fit:contain;
+    object-fit:cover;
 
     object-position:center;
-
-    border-radius:24px;
 
     border:
         5px solid #07172a;
 
+    border-radius:25px;
+
     background:#07172a;
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,.50);
-
-    transition:
-        transform .6s ease,
-        box-shadow .6s ease;
+        0 35px 90px rgba(0,0,0,.52);
 }
 
-.photo-frame:hover .profile-photo{
-    transform:scale(1.012);
-
-    box-shadow:
-        0 35px 95px
-        rgba(0,0,0,.58);
-}
-
-.hero-intro{
-    color:var(--text);
-
-    font-size:
-        clamp(18px,2vw,22px);
-
-    line-height:2;
-
-    max-width:520px;
-
-    margin-bottom:25px;
-}
-
-.hero-actions{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-
-    margin-bottom:28px;
-}
-
-.btn{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    min-height:48px;
-
-    padding:
-        0 23px;
-
-    border-radius:999px;
-
-    font-size:14px;
-
-    font-weight:700;
-
-    transition:.3s ease;
-}
-
-.btn-primary{
-    background:
-        linear-gradient(
-            135deg,
-            #b88918,
-            #f1d56a
-        );
-
-    color:#061426;
-
-    box-shadow:
-        0 12px 30px
-        rgba(212,175,55,.13);
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-        0 17px 40px
-        rgba(212,175,55,.20);
-}
-
-.btn-ghost{
-    border:
-        1px solid
-        rgba(212,175,55,.38);
-
-    color:var(--gold-light);
-
-    background:
-        rgba(255,255,255,.02);
-}
-
-.btn-ghost:hover{
-    transform:translateY(-3px);
-
-    border-color:
-        var(--gold-light);
-
-    background:
-        rgba(212,175,55,.07);
-}
-
-.hero-meta{
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    direction:ltr;
-
-    color:var(--muted);
-
-    font-size:10px;
-
-    letter-spacing:3px;
-}
-
-.hero-meta i{
-    width:4px;
-    height:4px;
-
-    border-radius:50%;
-
-    background:var(--gold);
-}
 
 .quote{
-    color:var(--white);
+
+    color:
+        var(--white);
 
     font-size:
         clamp(20px,4vw,28px);
 
     font-weight:500;
 
-    margin-top:24px;
+    margin-bottom:10px;
 }
 
-.scroll-hint{
-    position:absolute;
 
-    bottom:15px;
-    right:50%;
+.hero-description{
 
-    transform:translateX(50%);
+    max-width:650px;
+
+    color:
+        var(--muted);
+
+    font-size:15px;
+
+    line-height:2;
+
+    margin-top:8px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.hero-actions{
 
     display:flex;
 
-    flex-direction:column;
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-top:25px;
+}
+
+
+.btn{
+
+    min-width:180px;
+
+    padding:
+        14px 28px;
+
+    border-radius:999px;
+
+    display:inline-flex;
 
     align-items:center;
 
-    gap:7px;
+    justify-content:center;
 
-    direction:ltr;
+    font-size:15px;
 
-    font-size:8px;
+    font-weight:600;
 
-    letter-spacing:3px;
-
-    color:var(--muted);
-
-    opacity:.65;
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
 }
 
-.scroll-hint span{
-    width:1px;
-    height:25px;
+
+.btn-primary{
+
+    color:
+        #17120a;
 
     background:
+
         linear-gradient(
-            var(--gold),
-            transparent
+            135deg,
+            #c99b20,
+            #f1d56a
         );
+
+    box-shadow:
+        0 12px 35px rgba(212,175,55,.15);
+}
+
+
+.btn-secondary{
+
+    color:
+        var(--gold-light);
+
+    border:
+        1px solid var(--line-strong);
+
+    background:
+        rgba(255,255,255,.018);
+}
+
+
+.btn:hover{
+
+    transform:
+        translateY(-3px);
+}
+
+
+.btn-primary:hover{
+
+    box-shadow:
+        0 18px 45px rgba(212,175,55,.25);
+}
+
+
+.btn-secondary:hover{
+
+    background:
+        rgba(212,175,55,.07);
 }
 
 
@@ -916,32 +960,41 @@ main{
 ========================================================= */
 
 .section{
-    padding:90px 0;
+
+    padding:
+        80px 0;
 
     position:relative;
 }
 
+
 .section-header{
+
     text-align:center;
 
-    margin-bottom:42px;
+    margin-bottom:35px;
 }
 
+
 .section-label{
+
     display:block;
-
-    color:var(--gold);
-
-    font-size:11px;
-
-    letter-spacing:4px;
 
     direction:ltr;
 
-    margin-bottom:7px;
+    color:
+        var(--gold);
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    margin-bottom:8px;
 }
 
+
 .section-title{
+
     font-size:
         clamp(30px,5vw,46px);
 
@@ -950,17 +1003,21 @@ main{
     line-height:1.4;
 }
 
+
 .section-title::after{
+
     content:"";
 
     display:block;
 
-    width:68px;
+    width:70px;
     height:2px;
 
-    margin:11px auto 0;
+    margin:
+        11px auto 0;
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
@@ -969,135 +1026,60 @@ main{
         );
 }
 
-.section-subtitle{
-    color:var(--muted);
-
-    font-size:14px;
-
-    margin:
-        12px auto 0;
-
-    max-width:650px;
-
-    line-height:1.9;
-}
-
-.glass{
-    border:
-        1px solid var(--border);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.012)
-        );
-
-    box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.18);
-}
-
 
 /* =========================================================
    ABOUT
 ========================================================= */
 
-.about-layout{
-    display:grid;
-
-    grid-template-columns:
-        minmax(0,1fr)
-        270px;
-
-    gap:18px;
-
-    align-items:stretch;
-}
-
 .about-card{
-    padding:38px 42px;
 
-    border-radius:
-        var(--radius-lg);
+    max-width:900px;
+
+    margin:auto;
+
+    padding:
+        40px clamp(24px,5vw,50px);
 
     text-align:center;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        var(--radius);
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
+        );
+
+    box-shadow:
+        var(--shadow);
 }
+
 
 .about-card p{
-    color:var(--text);
 
-    font-size:18px;
+    color:
+        var(--text);
 
-    line-height:2.05;
+    font-size:
+        clamp(16px,2vw,18px);
 
-    margin-bottom:20px;
+    line-height:
+        2.15;
 }
 
-.about-card p:last-child{
-    margin-bottom:0;
-}
 
 .about-card strong{
-    color:var(--gold-light);
+
+    color:
+        var(--gold-light);
 
     font-weight:700;
-}
-
-.about-signature{
-    color:var(--gold-light)!important;
-
-    font-weight:700;
-}
-
-.about-stats{
-    border-radius:
-        var(--radius-lg);
-
-    padding:20px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:space-between;
-}
-
-.stat{
-    padding:
-        20px 10px;
-
-    text-align:center;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.06);
-}
-
-.stat:last-child{
-    border-bottom:0;
-}
-
-.stat strong{
-    display:block;
-
-    color:var(--gold-light);
-
-    font-family:Arial,sans-serif;
-
-    direction:ltr;
-
-    font-size:28px;
-
-    letter-spacing:2px;
-
-    margin-bottom:4px;
-}
-
-.stat span{
-    color:var(--muted);
-
-    font-size:12px;
 }
 
 
@@ -1106,6 +1088,7 @@ main{
 ========================================================= */
 
 .values{
+
     display:grid;
 
     grid-template-columns:
@@ -1114,185 +1097,84 @@ main{
     gap:18px;
 }
 
-.value-card{
-    position:relative;
 
-    padding:32px 25px;
+.value-card{
+
+    padding:
+        34px 25px;
 
     text-align:center;
 
-    border-radius:25px;
+    border:
+        1px solid rgba(212,175,55,.15);
+
+    border-radius:
+        25px;
+
+    background:
+        rgba(255,255,255,.022);
 
     transition:
-        transform .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease;
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
 }
 
+
 .value-card:hover{
-    transform:translateY(-8px);
+
+    transform:
+        translateY(-8px);
 
     border-color:
         rgba(212,175,55,.42);
 
     box-shadow:
-        0 22px 55px
-        rgba(212,175,55,.07);
+        0 25px 60px rgba(212,175,55,.07);
 }
 
-.value-number{
-    position:absolute;
-
-    top:17px;
-    left:20px;
-
-    direction:ltr;
-
-    color:
-        rgba(212,175,55,.40);
-
-    font-family:Arial,sans-serif;
-
-    font-size:11px;
-
-    letter-spacing:2px;
-}
 
 .value-icon{
-    width:55px;
-    height:55px;
+
+    width:58px;
+    height:58px;
 
     margin:
-        0 auto 14px;
+        0 auto 16px;
 
     display:flex;
 
     align-items:center;
     justify-content:center;
 
+    border:
+        1px solid rgba(212,175,55,.38);
+
     border-radius:50%;
 
-    border:
-        1px solid
-        rgba(212,175,55,.35);
+    color:
+        var(--gold-light);
 
-    color:var(--gold-light);
-
-    font-size:22px;
+    font-size:23px;
 }
+
 
 .value-card h3{
+
     font-size:20px;
-
-    margin-bottom:7px;
-}
-
-.value-card p{
-    color:var(--muted);
-
-    font-size:14px;
-
-    line-height:1.85;
-}
-
-
-/* =========================================================
-   WORK
-========================================================= */
-
-.work-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:18px;
-}
-
-.work-card{
-    min-height:300px;
-
-    padding:28px;
-
-    border-radius:26px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    transition:.35s ease;
-}
-
-.work-card:hover{
-    transform:translateY(-7px);
-
-    border-color:
-        rgba(212,175,55,.42);
-
-    box-shadow:
-        0 25px 60px
-        rgba(0,0,0,.22);
-}
-
-.work-top{
-    display:flex;
-
-    justify-content:space-between;
-
-    direction:ltr;
-
-    color:var(--gold);
-
-    font-size:10px;
-
-    letter-spacing:2px;
-}
-
-.work-symbol{
-    margin:
-        28px 0 20px;
-
-    direction:ltr;
-
-    font-family:Arial,sans-serif;
-
-    color:var(--gold-light);
-
-    font-size:34px;
-
-    font-weight:800;
-
-    letter-spacing:4px;
-}
-
-.work-card h3{
-    font-size:21px;
 
     margin-bottom:8px;
 }
 
-.work-card p{
-    color:var(--muted);
+
+.value-card p{
+
+    color:
+        var(--muted);
 
     font-size:14px;
 
     line-height:1.9;
-
-    flex:1;
-}
-
-.work-card a{
-    margin-top:22px;
-
-    color:var(--gold-light);
-
-    font-size:13px;
-
-    transition:.3s ease;
-}
-
-.work-card a:hover{
-    padding-right:7px;
 }
 
 
@@ -1301,6 +1183,7 @@ main{
 ========================================================= */
 
 .gallery{
+
     display:grid;
 
     grid-template-columns:
@@ -1309,39 +1192,52 @@ main{
     gap:15px;
 }
 
+
 .gallery-item{
+
     position:relative;
 
     overflow:hidden;
 
-    border-radius:25px;
+    display:block;
 
     border:
-        1px solid
-        rgba(212,175,55,.17);
+        1px solid rgba(212,175,55,.17);
+
+    border-radius:25px;
 
     background:#07172a;
-
-    cursor:pointer;
-
-    padding:0;
-
-    min-height:280px;
 }
 
-.gallery-item.wide{
-    grid-column:span 7;
 
-    aspect-ratio:16/10;
+.gallery-item:nth-child(1),
+.gallery-item:nth-child(4),
+.gallery-item:nth-child(5),
+.gallery-item:nth-child(8){
+
+    grid-column:
+        span 7;
+
+    aspect-ratio:
+        16 / 10;
 }
 
-.gallery-item:not(.wide){
-    grid-column:span 5;
 
-    aspect-ratio:1/1;
+.gallery-item:nth-child(2),
+.gallery-item:nth-child(3),
+.gallery-item:nth-child(6),
+.gallery-item:nth-child(7){
+
+    grid-column:
+        span 5;
+
+    aspect-ratio:
+        1 / 1;
 }
+
 
 .gallery-item img{
+
     width:100%;
     height:100%;
 
@@ -1353,7 +1249,16 @@ main{
         transform .7s ease;
 }
 
+
+.gallery-item:hover img{
+
+    transform:
+        scale(1.06);
+}
+
+
 .gallery-item::after{
+
     content:"";
 
     position:absolute;
@@ -1361,20 +1266,19 @@ main{
     inset:0;
 
     background:
+
         linear-gradient(
             to top,
-            rgba(0,0,0,.78),
-            transparent 52%
+            rgba(0,0,0,.82),
+            rgba(0,0,0,.02) 58%
         );
 
     pointer-events:none;
 }
 
-.gallery-item:hover img{
-    transform:scale(1.07);
-}
 
 .gallery-info{
+
     position:absolute;
 
     right:22px;
@@ -1382,25 +1286,28 @@ main{
     bottom:18px;
 
     z-index:2;
-
-    text-align:right;
 }
 
+
 .gallery-info small{
+
     display:block;
 
-    color:var(--gold-light);
+    direction:ltr;
 
-    font-size:11px;
+    color:
+        var(--gold-light);
+
+    font-size:10px;
 
     letter-spacing:2px;
-
-    direction:ltr;
 
     margin-bottom:3px;
 }
 
-.gallery-info strong{
+
+.gallery-info h3{
+
     font-size:18px;
 
     font-weight:600;
@@ -1412,6 +1319,7 @@ main{
 ========================================================= */
 
 .timeline{
+
     max-width:850px;
 
     margin:auto;
@@ -1419,7 +1327,9 @@ main{
     position:relative;
 }
 
+
 .timeline::before{
+
     content:"";
 
     position:absolute;
@@ -1432,6 +1342,7 @@ main{
     width:1px;
 
     background:
+
         linear-gradient(
             transparent,
             var(--gold),
@@ -1439,26 +1350,34 @@ main{
         );
 }
 
+
 .timeline-item{
+
     position:relative;
 
     width:50%;
 
     padding:
-        0 36px 45px;
+        0 36px 48px;
 }
 
+
 .timeline-item:nth-child(odd){
+
     text-align:left;
 }
 
+
 .timeline-item:nth-child(even){
+
     margin-right:50%;
 
     text-align:right;
 }
 
+
 .timeline-dot{
+
     position:absolute;
 
     top:4px;
@@ -1468,25 +1387,32 @@ main{
 
     border-radius:50%;
 
-    background:var(--gold-light);
+    background:
+        var(--gold-light);
 
     box-shadow:
-        0 0 18px
-        rgba(212,175,55,.58);
+        0 0 18px rgba(212,175,55,.58);
 }
+
 
 .timeline-item:nth-child(odd)
 .timeline-dot{
+
     right:-6px;
 }
 
+
 .timeline-item:nth-child(even)
 .timeline-dot{
+
     left:-6px;
 }
 
+
 .timeline-year{
-    color:var(--gold-light);
+
+    color:
+        var(--gold-light);
 
     font-size:28px;
 
@@ -1494,40 +1420,28 @@ main{
 
     line-height:1;
 
-    margin-bottom:8px;
+    margin-bottom:9px;
 }
 
-.timeline-title,
-.timeline-item h3{
+
+.timeline-title{
+
     font-size:18px;
 
     font-weight:600;
 
-    margin-bottom:6px;
+    margin-bottom:7px;
 }
 
-.timeline-text,
-.timeline-item p{
-    color:var(--muted);
+
+.timeline-text{
+
+    color:
+        var(--muted);
 
     font-size:14px;
 
-    line-height:1.85;
-}
-
-.timeline-item.current
-.timeline-dot{
-    width:16px;
-    height:16px;
-
-    top:2px;
-
-    background:
-        #fff0a3;
-
-    box-shadow:
-        0 0 25px
-        rgba(212,175,55,.85);
+    line-height:1.9;
 }
 
 
@@ -1536,28 +1450,53 @@ main{
 ========================================================= */
 
 .contact-card{
+
     max-width:700px;
 
     margin:auto;
 
-    padding:38px 35px;
+    padding:
+        40px 25px;
 
     text-align:center;
 
-    border-radius:30px;
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        rgba(255,255,255,.022);
+
+    box-shadow:
+        var(--shadow);
 }
 
+
+.contact-title{
+
+    color:
+        var(--muted);
+
+    font-size:14px;
+
+    margin-bottom:22px;
+}
+
+
 .contact-icons{
+
     display:flex;
 
     justify-content:center;
 
-    align-items:center;
-
-    gap:16px;
+    gap:15px;
 }
 
+
 .social{
+
     width:60px;
     height:60px;
 
@@ -1566,24 +1505,26 @@ main{
     align-items:center;
     justify-content:center;
 
+    border:
+        1px solid rgba(212,175,55,.42);
+
     border-radius:50%;
 
-    border:
-        1px solid
-        rgba(212,175,55,.42);
+    color:
+        var(--gold-light);
 
     background:
         rgba(255,255,255,.02);
 
-    color:var(--gold-light);
-
-    transition:.3s ease;
+    transition:
+        .3s ease;
 }
 
+
 .social:hover{
+
     transform:
-        translateY(-5px)
-        scale(1.04);
+        translateY(-5px);
 
     background:
         rgba(212,175,55,.08);
@@ -1592,53 +1533,50 @@ main{
         var(--gold-light);
 
     box-shadow:
-        0 15px 40px
-        rgba(212,175,55,.13);
+        0 15px 40px rgba(212,175,55,.13);
 }
+
 
 .social svg{
-    width:26px;
-    height:26px;
 
-    fill:currentColor;
+    width:25px;
+    height:25px;
+
+    fill:
+        currentColor;
 }
 
-.contact-note{
-    margin-top:20px;
 
-    direction:ltr;
+/* =========================================================
+   QR
+========================================================= */
 
-    color:var(--muted);
+.qr-link{
 
-    font-family:Arial,sans-serif;
+    display:inline-flex;
 
-    letter-spacing:2px;
-
-    font-size:12px;
-}
-
-.qr-button{
-    margin-top:22px;
+    margin-top:23px;
 
     padding:
         11px 24px;
 
+    border:
+        1px solid rgba(212,175,55,.38);
+
     border-radius:999px;
 
-    border:
-        1px solid
-        rgba(212,175,55,.38);
+    color:
+        var(--gold-light);
 
-    background:transparent;
+    font-size:14px;
 
-    color:var(--gold-light);
-
-    cursor:pointer;
-
-    transition:.3s ease;
+    transition:
+        .3s ease;
 }
 
-.qr-button:hover{
+
+.qr-link:hover{
+
     background:
         rgba(212,175,55,.08);
 
@@ -1648,521 +1586,211 @@ main{
 
 
 /* =========================================================
-   LIGHTBOX
-========================================================= */
-
-.lightbox{
-    position:fixed;
-
-    inset:0;
-
-    z-index:2000;
-
-    padding:25px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    background:
-        rgba(0,0,0,.88);
-
-    backdrop-filter:blur(10px);
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.3s ease;
-}
-
-.lightbox.active{
-    opacity:1;
-
-    visibility:visible;
-}
-
-.lightbox img{
-    max-width:92vw;
-    max-height:86vh;
-
-    object-fit:contain;
-
-    border-radius:15px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.28);
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.65);
-}
-
-.lightbox-close{
-    position:absolute;
-
-    top:22px;
-    left:25px;
-
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(212,175,55,.4);
-
-    background:
-        rgba(0,0,0,.25);
-
-    color:var(--gold-light);
-
-    font-size:23px;
-
-    cursor:pointer;
-}
-
-
-/* =========================================================
-   QR MODAL
-========================================================= */
-
-.qr-modal{
-    position:fixed;
-
-    inset:0;
-
-    z-index:2100;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
-    background:
-        rgba(0,0,0,.78);
-
-    backdrop-filter:blur(8px);
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.3s ease;
-}
-
-.qr-modal.active{
-    opacity:1;
-
-    visibility:visible;
-}
-
-.qr-box{
-    width:min(360px,92vw);
-
-    padding:30px;
-
-    text-align:center;
-
-    border-radius:30px;
-
-    position:relative;
-}
-
-.qr-box h3{
-    color:var(--gold-light);
-
-    direction:ltr;
-
-    letter-spacing:2px;
-}
-
-.qr-box img{
-    width:220px;
-    height:220px;
-
-    display:block;
-
-    margin:18px auto;
-
-    padding:9px;
-
-    background:white;
-
-    border-radius:14px;
-}
-
-.qr-box p{
-    color:var(--muted);
-
-    font-size:12px;
-
-    margin-bottom:18px;
-}
-
-.qr-close{
-    padding:
-        10px 25px;
-
-    border-radius:999px;
-
-    border:
-        1px solid
-        rgba(212,175,55,.35);
-
-    background:transparent;
-
-    color:white;
-
-    cursor:pointer;
-}
-
-.qr-close-icon{
-    position:absolute;
-
-    top:15px;
-    left:15px;
-
-    width:38px;
-    height:38px;
-
-    border-radius:50%;
-
-    background:transparent;
-
-    color:var(--gold-light);
-
-    border:
-        1px solid
-        rgba(212,175,55,.30);
-
-    cursor:pointer;
-
-    font-size:20px;
-}
-
-
-/* =========================================================
    FOOTER
 ========================================================= */
 
 footer{
-    padding:38px 20px;
+
+    padding:
+        42px 20px;
+
+    text-align:center;
 
     border-top:
-        1px solid
-        rgba(212,175,55,.12);
+        1px solid rgba(212,175,55,.12);
 
     background:
-        rgba(2,8,17,.72);
+        rgba(2,8,17,.82);
 }
 
-.footer-inner{
-    width:min(1120px,92%);
-
-    margin:auto;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:20px;
-}
 
 .footer-copy{
-    color:#858f9b;
+
+    color:
+        #858f9b;
 
     font-size:12px;
 }
 
+
 .footer-mbk{
-    margin-top:9px;
 
     direction:ltr;
 
-    font-family:Arial,sans-serif;
+    margin-top:10px;
 
-    color:var(--gold);
+    font-family:
+        Arial,
+        sans-serif;
 
-    letter-spacing:6px;
+    color:
+        var(--gold);
+
+    letter-spacing:7px;
 
     font-weight:700;
 }
 
-.back-top{
-    width:46px;
-    height:46px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(212,175,55,.30);
-
-    color:var(--gold-light);
-
-    transition:.3s ease;
-}
-
-.back-top:hover{
-    transform:translateY(-4px);
-
-    background:
-        rgba(212,175,55,.08);
-
-    border-color:
-        var(--gold-light);
-}
-
-.noscript{
-    position:fixed;
-
-    bottom:0;
-    right:0;
-    left:0;
-
-    z-index:9999;
-
-    padding:12px;
-
-    text-align:center;
-
-    background:#8b0000;
-
-    color:#fff;
-}
-
 
 /* =========================================================
-   REVEAL ANIMATION
+   MOBILE
 ========================================================= */
-
-.reveal,
-.reveal-up{
-    opacity:0;
-
-    transform:translateY(25px);
-
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
-}
-
-.reveal-up{
-    transition-delay:.08s;
-}
-
-.reveal.visible,
-.reveal-up.visible{
-    opacity:1;
-
-    transform:translateY(0);
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:900px){
-
-    .hero-grid{
-        grid-template-columns:1fr;
-
-        gap:30px;
-
-        text-align:center;
-    }
-
-    .hero-copy{
-        order:2;
-
-        display:flex;
-
-        flex-direction:column;
-
-        align-items:center;
-    }
-
-    .photo-frame{
-        order:1;
-
-        width:min(430px,88vw);
-    }
-
-    .about-layout{
-        grid-template-columns:1fr;
-    }
-
-    .about-stats{
-        display:grid;
-
-        grid-template-columns:
-            repeat(3,1fr);
-    }
-
-    .stat{
-        border-bottom:0;
-
-        border-left:
-            1px solid
-            rgba(255,255,255,.06);
-    }
-
-    .stat:last-child{
-        border-left:0;
-    }
-
-    .work-grid{
-        grid-template-columns:1fr;
-    }
-
-    .work-card{
-        min-height:250px;
-    }
-}
-
 
 @media(max-width:760px){
 
-    :root{
-        --header-height:70px;
-    }
-
     .site-header{
+
         height:70px;
 
         padding:
-            0 20px;
+            0 18px;
     }
 
+
     .logo{
-        font-size:21px;
+
+        font-size:20px;
 
         letter-spacing:6px;
     }
 
-    .icon-btn{
-        width:44px;
-        height:44px;
+
+    .menu-button{
+
+        width:45px;
+        height:45px;
     }
+
 
     main{
-        width:min(92%,520px);
+
+        width:
+            min(92%,520px);
     }
+
 
     .hero{
+
         padding:
-            100px
-            0
-            55px;
+            100px 0 50px;
     }
+
+
+    .hero-label{
+
+        font-size:9px;
+
+        letter-spacing:4px;
+    }
+
 
     .hero-name{
-        max-width:100%;
-
-        padding:0 12px;
 
         font-size:
-            clamp(32px,9vw,47px);
+            clamp(34px,9vw,48px);
 
         line-height:1.55;
-
-        letter-spacing:-.5px;
     }
 
-    .hero-intro{
-        font-size:17px;
-
-        line-height:1.9;
-    }
-
-    .hero-actions{
-        justify-content:center;
-    }
 
     .photo-frame{
-        width:min(390px,88vw);
 
-        margin-bottom:10px;
+        width:
+            min(390px,88vw);
     }
 
-    .section{
-        padding:70px 0;
-    }
 
-    .section-header{
-        margin-bottom:30px;
-    }
+    .hero-description{
 
-    .about-card{
         padding:
-            28px 22px;
-    }
+            0 10px;
 
-    .about-card p{
-        font-size:16px;
+        font-size:14px;
 
         line-height:2;
     }
 
-    .about-stats{
-        grid-template-columns:1fr;
+
+    .hero-actions{
+
+        width:100%;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        padding:
+            0 10px;
     }
 
-    .stat{
-        border-left:0;
 
-        border-bottom:
-            1px solid
-            rgba(255,255,255,.06);
+    .btn{
+
+        width:
+            min(100%,380px);
     }
 
-    .stat:last-child{
-        border-bottom:0;
+
+    .section{
+
+        padding:
+            60px 0;
     }
+
+
+    .about-card{
+
+        padding:
+            30px 22px;
+    }
+
+
+    .about-card p{
+
+        font-size:16px;
+
+        line-height:2.05;
+    }
+
 
     .values{
-        grid-template-columns:1fr;
 
-        gap:14px;
+        grid-template-columns:
+            1fr;
     }
 
-    .value-card{
-        padding:
-            27px 22px;
-    }
 
     .gallery{
-        grid-template-columns:1fr;
+
+        grid-template-columns:
+            1fr;
 
         gap:13px;
     }
 
-    .gallery-item,
-    .gallery-item.wide,
-    .gallery-item:not(.wide){
 
-        grid-column:span 1;
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3),
+    .gallery-item:nth-child(4),
+    .gallery-item:nth-child(5),
+    .gallery-item:nth-child(6),
+    .gallery-item:nth-child(7),
+    .gallery-item:nth-child(8){
 
-        aspect-ratio:16/10;
+        grid-column:
+            span 1;
+
+        aspect-ratio:
+            16 / 10;
     }
+
 
     .timeline::before{
+
         right:13px;
     }
+
 
     .timeline-item,
     .timeline-item:nth-child(odd),
@@ -2173,15 +1801,14 @@ footer{
         margin:0;
 
         padding:
-            0 42px
-            38px 0;
+            0 42px 40px 0;
 
         text-align:right;
     }
 
+
     .timeline-item:nth-child(odd)
     .timeline-dot,
-
     .timeline-item:nth-child(even)
     .timeline-dot{
 
@@ -2190,64 +1817,83 @@ footer{
         left:auto;
     }
 
+
     .timeline-year{
+
         font-size:25px;
     }
 
+
     .contact-card{
+
         padding:
-            30px 20px;
+            32px 18px;
     }
 
-    .hero-corner{
+
+    .corner{
+
         width:45px;
         height:45px;
     }
 
-    .hero-corner-top{
+
+    .corner.top{
+
         top:90px;
-    }
-
-    .scroll-hint{
-        display:none;
-    }
-
-    .footer-inner{
-        flex-direction:column;
-
-        text-align:center;
     }
 
 }
 
 
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
 @media(max-width:420px){
 
     .hero-name{
+
         font-size:34px;
 
-        padding:0 8px;
+        padding:
+            0 5px;
     }
+
 
     .photo-frame{
-        width:92vw;
+
+        width:
+            92vw;
     }
+
 
     .social{
-        width:56px;
-        height:56px;
+
+        width:55px;
+        height:55px;
     }
 
-    .gallery-info strong{
+
+    .gallery-info h3{
+
         font-size:16px;
     }
 
-    .btn{
-        width:100%;
+
+    .side-menu{
+
+        width:
+            min(340px,90vw);
+
+        padding:
+            100px 27px 30px;
     }
 
-    .hero-actions{
-        width:100%;
+
+    .menu-brand{
+
+        font-size:31px;
     }
 
 }
@@ -2259,95 +1905,87 @@ footer{
 
 @media(prefers-reduced-motion:reduce){
 
+    html{
+
+        scroll-behavior:auto;
+    }
+
     *,
     *::before,
     *::after{
 
-        animation:none!important;
-
         transition:none!important;
 
-        scroll-behavior:auto!important;
+        animation:none!important;
     }
+
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<a
-    class="skip-link"
-    href="#main"
->
-    تجاوز إلى المحتوى
-</a>
-
-
-<!-- =====================================================
+<!-- ======================================================
      HEADER
-===================================================== -->
+====================================================== -->
 
 <header class="site-header">
 
     <a
-        class="logo"
         href="#home"
-        aria-label="MBK — الرئيسية"
+        class="logo"
+        aria-label="MBK الرئيسية"
     >
         MBK
     </a>
 
 
-    <div class="header-actions">
-
-        <button
-            class="icon-btn"
-            id="menuBtn"
-            type="button"
-            aria-label="فتح القائمة"
-            aria-expanded="false"
-        >
-            ☰
-        </button>
-
-    </div>
+    <label
+        for="menu-toggle"
+        class="menu-button"
+        aria-label="فتح القائمة"
+    >
+        ☰
+    </label>
 
 </header>
 
 
-<!-- =====================================================
-     OVERLAY
-===================================================== -->
+<!-- ======================================================
+     MENU CONTROL
+====================================================== -->
 
-<div
-    class="overlay"
-    id="overlay"
-    aria-hidden="true"
-></div>
-
-
-<!-- =====================================================
-     SIDE MENU
-===================================================== -->
-
-<nav
-    class="side-menu"
-    id="sideMenu"
-    aria-label="القائمة الرئيسية"
+<input
+    type="checkbox"
+    id="menu-toggle"
+    class="menu-toggle"
     aria-hidden="true"
 >
 
-    <button
-        class="close-menu"
-        id="closeMenu"
-        type="button"
-        aria-label="إغلاق"
+
+<label
+    for="menu-toggle"
+    class="menu-overlay"
+></label>
+
+
+<!-- ======================================================
+     SIDE MENU
+====================================================== -->
+
+<aside class="side-menu">
+
+    <label
+        for="menu-toggle"
+        class="close-label"
+        aria-label="إغلاق القائمة"
     >
         ×
-    </button>
+    </label>
 
 
     <div class="menu-brand">
@@ -2355,171 +1993,164 @@ footer{
     </div>
 
 
-    <div class="menu-label">
-        NAVIGATION
+    <div class="menu-subtitle">
+        MABKHOUT BIN ABDULLAH
     </div>
 
 
-    <a href="#home">
-        الرئيسية
-    </a>
-
-    <a href="#about">
-        نبذة
-    </a>
-
-    <a href="#values">
-        بصمتي
-    </a>
-
-    <a href="#work">
-        أعمالي
-    </a>
-
-    <a href="#gallery">
-        مختاراتي
-    </a>
-
-    <a href="#journey">
-        رحلتي
-    </a>
-
-    <a href="#contact">
-        تواصل
-    </a>
-
-</nav>
+    <div class="menu-line"></div>
 
 
-<!-- =====================================================
+    <nav>
+
+        <a
+            href="#home"
+            onclick="document.getElementById('menu-toggle').checked=false"
+        >
+            <span>الرئيسية</span>
+            <span>01</span>
+        </a>
+
+
+        <a
+            href="#about"
+            onclick="document.getElementById('menu-toggle').checked=false"
+        >
+            <span>نبذة</span>
+            <span>02</span>
+        </a>
+
+
+        <a
+            href="#values"
+            onclick="document.getElementById('menu-toggle').checked=false"
+        >
+            <span>بصمتي</span>
+            <span>03</span>
+        </a>
+
+
+        <a
+            href="#gallery"
+            onclick="document.getElementById('menu-toggle').checked=false"
+        >
+            <span>مختاراتي</span>
+            <span>04</span>
+        </a>
+
+
+        <a
+            href="#journey"
+            onclick="document.getElementById('menu-toggle').checked=false"
+        >
+            <span>رحلتي</span>
+            <span>05</span>
+        </a>
+
+
+        <a
+            href="#contact"
+            onclick="document.getElementById('menu-toggle').checked=false"
+        >
+            <span>تواصل</span>
+            <span>06</span>
+        </a>
+
+    </nav>
+
+</aside>
+
+
+<!-- ======================================================
      MAIN
-===================================================== -->
+====================================================== -->
 
-<main id="main">
+<main>
 
 
-<!-- =====================================================
+<!-- ======================================================
      HERO
-===================================================== -->
+====================================================== -->
 
 <section
-    class="hero section-anchor"
+    class="hero"
     id="home"
 >
 
-    <div
-        class="hero-corner hero-corner-top"
-    ></div>
+    <div class="corner top"></div>
+
+    <div class="corner bottom"></div>
 
 
-    <div
-        class="hero-corner hero-corner-bottom"
-    ></div>
-
-
-    <div class="eyebrow reveal-up">
+    <div class="hero-label">
         MBK — MABKHOUT BIN ABDULLAH
     </div>
 
 
-    <h1 class="hero-name reveal-up">
+    <h1 class="hero-name">
         مبخوت بن عبدالله
     </h1>
 
 
-    <div class="gold-line reveal-up"></div>
+    <div class="gold-line"></div>
 
 
-    <div class="hero-grid">
+    <div class="photo-frame">
 
-
-        <div class="hero-copy reveal-up">
-
-            <p class="hero-intro">
-                مساحة شخصية تجمع هويتي وأفكاري
-                ومشاريعي واختياراتي في تجربة هادئة
-                تجمع الأصالة بالأناقة والطموح.
-            </p>
-
-
-            <div class="hero-actions">
-
-                <a
-                    class="btn btn-primary"
-                    href="#about"
-                >
-                    اكتشف الموقع
-                </a>
-
-
-                <a
-                    class="btn btn-ghost"
-                    href="#contact"
-                >
-                    تواصل معي
-                </a>
-
-            </div>
-
-
-            <div class="hero-meta">
-
-                <span>YEMEN</span>
-
-                <i></i>
-
-                <span>MBK</span>
-
-                <i></i>
-
-                <span>2026</span>
-
-            </div>
-
-        </div>
-
-
-        <div class="photo-frame reveal-up">
-
-            <div class="photo-glow"></div>
-
-
-            <img
-                class="profile-photo"
-                src="file_00000000202482468d4027eb8c5919f7.png"
-                alt="صورة مبخوت بن عبدالله"
-                width="900"
-                height="900"
-                fetchpriority="high"
-            >
-
-        </div>
+        <img
+            class="profile-photo"
+            src="profile.png"
+            alt="مبخوت بن عبدالله"
+            width="880"
+            height="880"
+            fetchpriority="high"
+        >
 
     </div>
 
 
-    <p class="quote reveal-up">
+    <p class="quote">
         وما توفيقي إلا بالله
     </p>
 
 
-    <div class="scroll-hint">
+    <p class="hero-description">
 
-        <span></span>
+        مساحة شخصية تجمع هويتي وأفكاري
+        واهتماماتي في تجربة هادئة تجمع
+        الأصالة بالأناقة والطموح.
 
-        SCROLL
+    </p>
+
+
+    <div class="hero-actions">
+
+        <a
+            href="#about"
+            class="btn btn-primary"
+        >
+            اكتشف الموقع
+        </a>
+
+
+        <a
+            href="#contact"
+            class="btn btn-secondary"
+        >
+            تواصل معي
+        </a>
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- ======================================================
      ABOUT
-===================================================== -->
+====================================================== -->
 
 <section
-    class="section section-anchor reveal"
+    class="section"
     id="about"
 >
 
@@ -2529,107 +2160,52 @@ footer{
             ABOUT
         </span>
 
-
         <h2 class="section-title">
             نبذة
         </h2>
 
-
-        <p class="section-subtitle">
-            هوية شخصية، رؤية واضحة، وتفاصيل تصنع الفرق.
-        </p>
-
     </div>
 
 
-    <div class="about-layout">
+    <div class="about-card">
 
+        <p>
 
-        <div class="about-card glass">
+            أنا مبخوت بن عبدالله.
 
-            <p>
-                أنا
-                <strong>
-                    مبخوت بن عبدالله
-                </strong>.
-                أؤمن بأن الشخصية الحقيقية تُبنى
-                بالطموح والتجربة والاهتمام بالتفاصيل.
-                أسعى دائمًا إلى تطوير نفسي واكتشاف
-                أفكار جديدة وصناعة هوية تعكس رؤيتي
-                وشخصيتي بأسلوب يجمع بين الأصالة
-                والأناقة والطموح.
-            </p>
+            <br><br>
 
+            أؤمن بأن الشخصية الحقيقية تُبنى بالطموح
+            والتجربة والاهتمام بالتفاصيل. أسعى دائمًا
+            إلى تطوير نفسي واكتشاف أفكار جديدة
+            وصناعة هوية تعكس رؤيتي وشخصيتي بأسلوب
+            يجمع بين الأصالة والأناقة والطموح.
 
-            <p>
-                هذا الموقع مساحتي الخاصة؛ أشارك فيه
-                جانبًا من اهتماماتي وأعمالي واختياراتي
-                والأشياء التي أرى فيها قيمة وجمالًا
-                يستحق أن يُشارك.
-            </p>
+            <br><br>
 
+            هذا الموقع مساحتي الخاصة؛ أشارك فيه جانبًا
+            من اهتماماتي وأعمالي واختياراتي والأشياء
+            التي أرى فيها قيمة وجمالًا يستحق أن يُشارك.
 
-            <p class="about-signature">
-                أطمح للأفضل، وأسعى لأن أترك أثرًا
-                يستحق أن يُذكر.
-            </p>
+            <br><br>
 
-        </div>
+            <strong>
+                أطمح للأفضل وأسعى لأن أترك أثرًا يستحق أن يُذكر.
+            </strong>
 
-
-        <aside class="about-stats glass">
-
-            <div class="stat">
-
-                <strong>
-                    MBK
-                </strong>
-
-                <span>
-                    الهوية
-                </span>
-
-            </div>
-
-
-            <div class="stat">
-
-                <strong>
-                    2026
-                </strong>
-
-                <span>
-                    المرحلة الحالية
-                </span>
-
-            </div>
-
-
-            <div class="stat">
-
-                <strong>
-                    ∞
-                </strong>
-
-                <span>
-                    الطموح
-                </span>
-
-            </div>
-
-        </aside>
+        </p>
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- ======================================================
      VALUES
-===================================================== -->
+====================================================== -->
 
 <section
-    class="section section-anchor reveal"
+    class="section"
     id="values"
 >
 
@@ -2639,15 +2215,9 @@ footer{
             MY VALUES
         </span>
 
-
         <h2 class="section-title">
             بصمتي
         </h2>
-
-
-        <p class="section-subtitle">
-            ثلاثة مبادئ أريد أن تنعكس في كل ما أصنعه.
-        </p>
 
     </div>
 
@@ -2655,76 +2225,55 @@ footer{
     <div class="values">
 
 
-        <article class="value-card glass">
-
-            <span class="value-number">
-                01
-            </span>
-
+        <article class="value-card">
 
             <div class="value-icon">
                 ✦
             </div>
 
-
             <h3>
                 الإبداع
             </h3>
 
-
             <p>
-                أبحث عن الأفكار المختلفة والأسلوب
-                الذي يحمل طابعًا خاصًا.
+                أبحث دائمًا عن الأفكار المختلفة
+                والأسلوب الذي يحمل طابعًا خاصًا.
             </p>
 
         </article>
 
 
-        <article class="value-card glass">
-
-            <span class="value-number">
-                02
-            </span>
-
+        <article class="value-card">
 
             <div class="value-icon">
                 ◇
             </div>
 
-
             <h3>
                 الجودة
             </h3>
 
-
             <p>
-                أهتم بالتفاصيل الصغيرة لأنها تصنع
-                الفرق في النتيجة النهائية.
+                أهتم بالتفاصيل الصغيرة لأنها
+                تصنع الفرق في النتيجة النهائية.
             </p>
 
         </article>
 
 
-        <article class="value-card glass">
-
-            <span class="value-number">
-                03
-            </span>
-
+        <article class="value-card">
 
             <div class="value-icon">
                 ◆
             </div>
 
-
             <h3>
                 الأصالة
             </h3>
 
-
             <p>
-                أحافظ على هويتي وأطورها بأسلوب
-                حديث ومتوازن.
+                أحافظ على هويتي وأطورها
+                بأسلوب حديث ومتوازن.
             </p>
 
         </article>
@@ -2735,163 +2284,12 @@ footer{
 </section>
 
 
-<!-- =====================================================
-     WORK
-===================================================== -->
-
-<section
-    class="section section-anchor reveal"
-    id="work"
->
-
-    <div class="section-header">
-
-        <span class="section-label">
-            SELECTED WORK
-        </span>
-
-
-        <h2 class="section-title">
-            أعمالي
-        </h2>
-
-
-        <p class="section-subtitle">
-            مساحة جاهزة لإضافة مشاريعك الحقيقية
-            بدل المحتوى التجريبي.
-        </p>
-
-    </div>
-
-
-    <div class="work-grid">
-
-
-        <article class="work-card glass">
-
-            <div class="work-top">
-
-                <span>
-                    01
-                </span>
-
-                <span>
-                    PROJECT
-                </span>
-
-            </div>
-
-
-            <div class="work-symbol">
-                MBK
-            </div>
-
-
-            <h3>
-                الهوية الشخصية
-            </h3>
-
-
-            <p>
-                بناء هوية رقمية متكاملة تحمل اسم MBK
-                وتجمع بين البساطة والفخامة.
-            </p>
-
-
-            <a href="#contact">
-                معرفة المزيد ←
-            </a>
-
-        </article>
-
-
-        <article class="work-card glass">
-
-            <div class="work-top">
-
-                <span>
-                    02
-                </span>
-
-                <span>
-                    PROJECT
-                </span>
-
-            </div>
-
-
-            <div class="work-symbol">
-                WEB
-            </div>
-
-
-            <h3>
-                تجارب الويب
-            </h3>
-
-
-            <p>
-                واجهات سريعة ومتجاوبة تركز على
-                تجربة المستخدم والهوية البصرية.
-            </p>
-
-
-            <a href="#contact">
-                معرفة المزيد ←
-            </a>
-
-        </article>
-
-
-        <article class="work-card glass">
-
-            <div class="work-top">
-
-                <span>
-                    03
-                </span>
-
-                <span>
-                    PROJECT
-                </span>
-
-            </div>
-
-
-            <div class="work-symbol">
-                IDEA
-            </div>
-
-
-            <h3>
-                أفكار قادمة
-            </h3>
-
-
-            <p>
-                مساحة للمشاريع والأفكار الجديدة التي
-                ستضاف إلى الموقع مستقبلًا.
-            </p>
-
-
-            <a href="#contact">
-                تواصل ←
-            </a>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
+<!-- ======================================================
      GALLERY
-===================================================== -->
+====================================================== -->
 
 <section
-    class="section section-anchor reveal"
+    class="section"
     id="gallery"
 >
 
@@ -2901,15 +2299,9 @@ footer{
             SELECTED
         </span>
 
-
         <h2 class="section-title">
             مختاراتي
         </h2>
-
-
-        <p class="section-subtitle">
-            صور وأماكن وتفاصيل أجد فيها قيمة وجمالًا.
-        </p>
 
     </div>
 
@@ -2917,10 +2309,11 @@ footer{
     <div class="gallery">
 
 
-        <button
-            class="gallery-item wide"
-            type="button"
-            data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
+        <a
+            class="gallery-item"
+            href="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=90"
+            target="_blank"
+            rel="noopener noreferrer"
         >
 
             <img
@@ -2929,25 +2322,24 @@ footer{
                 loading="lazy"
             >
 
-            <span class="gallery-info">
+            <div class="gallery-info">
 
-                <small>
-                    NATURE
-                </small>
+                <small>NATURE</small>
 
-                <strong>
+                <h3>
                     هدوء الجبال
-                </strong>
+                </h3>
 
-            </span>
+            </div>
 
-        </button>
+        </a>
 
 
-        <button
+        <a
             class="gallery-item"
-            type="button"
-            data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
+            href="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
+            target="_blank"
+            rel="noopener noreferrer"
         >
 
             <img
@@ -2956,25 +2348,24 @@ footer{
                 loading="lazy"
             >
 
-            <span class="gallery-info">
+            <div class="gallery-info">
 
-                <small>
-                    LIFE
-                </small>
+                <small>LIFE</small>
 
-                <strong>
+                <h3>
                     تفاصيل هادئة
-                </strong>
+                </h3>
 
-            </span>
+            </div>
 
-        </button>
+        </a>
 
 
-        <button
+        <a
             class="gallery-item"
-            type="button"
-            data-full="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
+            href="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=90"
+            target="_blank"
+            rel="noopener noreferrer"
         >
 
             <img
@@ -2983,25 +2374,24 @@ footer{
                 loading="lazy"
             >
 
-            <span class="gallery-info">
+            <div class="gallery-info">
 
-                <small>
-                    CITY
-                </small>
+                <small>CITY</small>
 
-                <strong>
+                <h3>
                     نبض المدينة
-                </strong>
+                </h3>
 
-            </span>
+            </div>
 
-        </button>
+        </a>
 
 
-        <button
-            class="gallery-item wide"
-            type="button"
-            data-full="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
+        <a
+            class="gallery-item"
+            href="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=90"
+            target="_blank"
+            rel="noopener noreferrer"
         >
 
             <img
@@ -3010,25 +2400,24 @@ footer{
                 loading="lazy"
             >
 
-            <span class="gallery-info">
+            <div class="gallery-info">
 
-                <small>
-                    STREETS
-                </small>
+                <small>STREETS</small>
 
-                <strong>
+                <h3>
                     بين الشوارع
-                </strong>
+                </h3>
 
-            </span>
+            </div>
 
-        </button>
+        </a>
 
 
-        <button
+        <a
             class="gallery-item"
-            type="button"
-            data-full="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90"
+            href="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1800&q=90"
+            target="_blank"
+            rel="noopener noreferrer"
         >
 
             <img
@@ -3037,25 +2426,24 @@ footer{
                 loading="lazy"
             >
 
-            <span class="gallery-info">
+            <div class="gallery-info">
 
-                <small>
-                    URBAN
-                </small>
+                <small>URBAN</small>
 
-                <strong>
+                <h3>
                     أفق جديد
-                </strong>
+                </h3>
 
-            </span>
+            </div>
 
-        </button>
+        </a>
 
 
-        <button
+        <a
             class="gallery-item"
-            type="button"
-            data-full="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+            href="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+            target="_blank"
+            rel="noopener noreferrer"
         >
 
             <img
@@ -3064,25 +2452,50 @@ footer{
                 loading="lazy"
             >
 
-            <span class="gallery-info">
+            <div class="gallery-info">
 
-                <small>
-                    JOURNEY
-                </small>
+                <small>JOURNEY</small>
 
-                <strong>
+                <h3>
                     الطريق
-                </strong>
+                </h3>
 
-            </span>
+            </div>
 
-        </button>
+        </a>
 
 
-        <button
-            class="gallery-item wide"
-            type="button"
-            data-full="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
+        <a
+            class="gallery-item"
+            href="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
+                alt="منظر طبيعي"
+                loading="lazy"
+            >
+
+            <div class="gallery-info">
+
+                <small>CALM</small>
+
+                <h3>
+                    لحظة هدوء
+                </h3>
+
+            </div>
+
+        </a>
+
+
+        <a
+            class="gallery-item"
+            href="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=90"
+            target="_blank"
+            rel="noopener noreferrer"
         >
 
             <img
@@ -3091,19 +2504,17 @@ footer{
                 loading="lazy"
             >
 
-            <span class="gallery-info">
+            <div class="gallery-info">
 
-                <small>
-                    ARCHITECTURE
-                </small>
+                <small>ARCHITECTURE</small>
 
-                <strong>
+                <h3>
                     تفاصيل المكان
-                </strong>
+                </h3>
 
-            </span>
+            </div>
 
-        </button>
+        </a>
 
 
     </div>
@@ -3111,12 +2522,12 @@ footer{
 </section>
 
 
-<!-- =====================================================
+<!-- ======================================================
      JOURNEY
-===================================================== -->
+====================================================== -->
 
 <section
-    class="section section-anchor reveal"
+    class="section"
     id="journey"
 >
 
@@ -3126,16 +2537,9 @@ footer{
             MY JOURNEY
         </span>
 
-
         <h2 class="section-title">
             رحلتي
         </h2>
-
-
-        <p class="section-subtitle">
-            خط زمني يمكن تخصيصه لاحقًا بالمحطات
-            الحقيقية في حياتك.
-        </p>
 
     </div>
 
@@ -3145,100 +2549,100 @@ footer{
 
         <article class="timeline-item">
 
-            <span class="timeline-dot"></span>
+            <div class="timeline-dot"></div>
 
-            <span class="timeline-year">
+            <div class="timeline-year">
                 2015
-            </span>
+            </div>
 
-            <h3>
+            <div class="timeline-title">
                 البداية
-            </h3>
+            </div>
 
-            <p>
-                بداية الرحلة، ومنها بدأت مرحلة جديدة
-                من التجارب والتعلم.
-            </p>
+            <div class="timeline-text">
+                بداية الرحلة، ومنها بدأت مرحلة
+                جديدة من التجارب والتعلم.
+            </div>
 
         </article>
 
 
         <article class="timeline-item">
 
-            <span class="timeline-dot"></span>
+            <div class="timeline-dot"></div>
 
-            <span class="timeline-year">
+            <div class="timeline-year">
                 2018
-            </span>
+            </div>
 
-            <h3>
-                التجربة والتعلّم
-            </h3>
+            <div class="timeline-title">
+                مرحلة من التجربة والتعلّم
+            </div>
 
-            <p>
+            <div class="timeline-text">
                 سنوات من التجربة واكتشاف الاهتمامات
-                وتطوير المهارات.
-            </p>
+                وتطوير المهارات والنظرة الخاصة.
+            </div>
 
         </article>
 
 
         <article class="timeline-item">
 
-            <span class="timeline-dot"></span>
+            <div class="timeline-dot"></div>
 
-            <span class="timeline-year">
+            <div class="timeline-year">
                 2021
-            </span>
+            </div>
 
-            <h3>
+            <div class="timeline-title">
                 تطور ونضج
-            </h3>
+            </div>
 
-            <p>
+            <div class="timeline-text">
                 مرحلة أصبح فيها الطموح أكثر وضوحًا
-                وأصبحت التجارب جزءًا من الهوية.
-            </p>
+                وأصبحت التجارب السابقة جزءًا من الهوية.
+            </div>
 
         </article>
 
 
         <article class="timeline-item">
 
-            <span class="timeline-dot"></span>
+            <div class="timeline-dot"></div>
 
-            <span class="timeline-year">
+            <div class="timeline-year">
                 2024
-            </span>
+            </div>
 
-            <h3>
+            <div class="timeline-title">
                 مرحلة جديدة
-            </h3>
+            </div>
 
-            <p>
+            <div class="timeline-text">
                 بداية مرحلة مختلفة، برؤية أوسع
                 وطموح أكبر للمستقبل.
-            </p>
+            </div>
 
         </article>
 
 
-        <article class="timeline-item current">
+        <article class="timeline-item">
 
-            <span class="timeline-dot"></span>
+            <div class="timeline-dot"></div>
 
-            <span class="timeline-year">
+            <div class="timeline-year">
                 2026
-            </span>
+            </div>
 
-            <h3>
+            <div class="timeline-title">
                 رؤية للمستقبل
-            </h3>
+            </div>
 
-            <p>
+            <div class="timeline-text">
                 الاستمرار في التطور وبناء المستقبل
                 بخطوات أكثر وضوحًا وثباتًا.
-            </p>
+            </div>
 
         </article>
 
@@ -3248,12 +2652,12 @@ footer{
 </section>
 
 
-<!-- =====================================================
+<!-- ======================================================
      CONTACT
-===================================================== -->
+====================================================== -->
 
 <section
-    class="section section-anchor reveal"
+    class="section"
     id="contact"
 >
 
@@ -3263,21 +2667,18 @@ footer{
             CONTACT
         </span>
 
-
         <h2 class="section-title">
             تواصل
         </h2>
 
-
-        <p class="section-subtitle">
-            للتواصل المباشر أو متابعة الحسابات
-            المرتبطة بي.
-        </p>
-
     </div>
 
 
-    <div class="contact-card glass">
+    <div class="contact-card">
+
+        <p class="contact-title">
+            يمكنك التواصل معي عبر
+        </p>
 
 
         <div class="contact-icons">
@@ -3290,7 +2691,10 @@ footer{
                 title="البريد الإلكتروني"
             >
 
-                <svg viewBox="0 0 24 24">
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
 
                     <path
                         d="M3 5h18v14H3V5zm2 2v.5l7 5 7-5V7l-7 5-7-5z"
@@ -3310,7 +2714,10 @@ footer{
                 title="Facebook"
             >
 
-                <svg viewBox="0 0 24 24">
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
 
                     <path
                         d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
@@ -3324,19 +2731,14 @@ footer{
         </div>
 
 
-        <div class="contact-note">
-            mabkhut.com
-        </div>
-
-
-        <button
-            class="qr-button"
-            id="qrButton"
-            type="button"
+        <a
+            class="qr-link"
+            href="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com"
+            target="_blank"
+            rel="noopener noreferrer"
         >
-            مشاركة الموقع عبر QR
-        </button>
-
+            عرض QR للموقع
+        </a>
 
     </div>
 
@@ -3346,580 +2748,23 @@ footer{
 </main>
 
 
-<!-- =====================================================
-     LIGHTBOX
-===================================================== -->
-
-<div
-    class="lightbox"
-    id="lightbox"
-    role="dialog"
-    aria-modal="true"
-    aria-hidden="true"
->
-
-    <button
-        class="lightbox-close"
-        id="lightboxClose"
-        type="button"
-        aria-label="إغلاق الصورة"
-    >
-        ×
-    </button>
-
-
-    <img
-        id="lightboxImage"
-        src=""
-        alt=""
-    >
-
-</div>
-
-
-<!-- =====================================================
-     QR MODAL
-===================================================== -->
-
-<div
-    class="qr-modal"
-    id="qrModal"
-    role="dialog"
-    aria-modal="true"
-    aria-hidden="true"
->
-
-    <div class="qr-box glass">
-
-        <button
-            class="qr-close-icon"
-            id="qrCloseIcon"
-            type="button"
-            aria-label="إغلاق"
-        >
-            ×
-        </button>
-
-
-        <h3>
-            mabkhut.com
-        </h3>
-
-
-        <img
-            id="qrImage"
-            src=""
-            alt="رمز QR لموقع mabkhut.com"
-            width="300"
-            height="300"
-        >
-
-
-        <p>
-            امسح الرمز لفتح الموقع.
-        </p>
-
-
-        <button
-            class="qr-close"
-            id="qrClose"
-            type="button"
-        >
-            إغلاق
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
+<!-- ======================================================
      FOOTER
-===================================================== -->
+====================================================== -->
 
 <footer>
 
-    <div class="footer-inner">
-
-        <div>
-
-            <div class="footer-copy">
-                © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
-            </div>
+    <div class="footer-copy">
+        © 2026 مبخوت بن عبدالله — جميع الحقوق محفوظة
+    </div>
 
 
-            <div class="footer-mbk">
-                MBK
-            </div>
-
-        </div>
-
-
-        <a
-            class="back-top"
-            href="#home"
-            aria-label="العودة إلى الأعلى"
-        >
-            ↑
-        </a>
-
+    <div class="footer-mbk">
+        MBK
     </div>
 
 </footer>
 
-
-<noscript>
-
-    <div class="noscript">
-        لأفضل تجربة، يرجى تفعيل JavaScript.
-    </div>
-
-</noscript>
-
-
-<script>
-
-/* =========================================================
-   MBK V2 — JAVASCRIPT
-========================================================= */
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const closeMenu =
-    document.getElementById("closeMenu");
-
-const sideMenu =
-    document.getElementById("sideMenu");
-
-const overlay =
-    document.getElementById("overlay");
-
-const qrButton =
-    document.getElementById("qrButton");
-
-const qrModal =
-    document.getElementById("qrModal");
-
-const qrClose =
-    document.getElementById("qrClose");
-
-const qrCloseIcon =
-    document.getElementById("qrCloseIcon");
-
-const qrImage =
-    document.getElementById("qrImage");
-
-const lightbox =
-    document.getElementById("lightbox");
-
-const lightboxImage =
-    document.getElementById("lightboxImage");
-
-const lightboxClose =
-    document.getElementById("lightboxClose");
-
-const galleryItems =
-    document.querySelectorAll(".gallery-item");
-
-const revealElements =
-    document.querySelectorAll(
-        ".reveal,.reveal-up"
-    );
-
-
-/* =========================================================
-   MENU
-========================================================= */
-
-function openMenu(){
-
-    sideMenu.classList.add("active");
-
-    overlay.classList.add("active");
-
-    sideMenu.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-    overlay.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-    menuBtn.setAttribute(
-        "aria-expanded",
-        "true"
-    );
-
-    document.body.style.overflow =
-        "hidden";
-}
-
-
-function closeSideMenu(){
-
-    sideMenu.classList.remove("active");
-
-    overlay.classList.remove("active");
-
-    sideMenu.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-    overlay.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-    menuBtn.setAttribute(
-        "aria-expanded",
-        "false"
-    );
-
-    document.body.style.overflow =
-        "";
-}
-
-
-menuBtn.addEventListener(
-    "click",
-    openMenu
-);
-
-
-closeMenu.addEventListener(
-    "click",
-    closeSideMenu
-);
-
-
-overlay.addEventListener(
-    "click",
-    closeSideMenu
-);
-
-
-document
-    .querySelectorAll(".side-menu a")
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            closeSideMenu
-        );
-
-    });
-
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-if(
-    "IntersectionObserver"
-    in window
-){
-
-    const revealObserver =
-        new IntersectionObserver(
-            entries => {
-
-                entries.forEach(
-                    entry => {
-
-                        if(
-                            entry.isIntersecting
-                        ){
-
-                            entry.target.classList.add(
-                                "visible"
-                            );
-
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    }
-                );
-
-            },
-            {
-                threshold:.12
-            }
-        );
-
-
-    revealElements.forEach(
-        element => {
-
-            revealObserver.observe(
-                element
-            );
-
-        }
-    );
-
-}else{
-
-    revealElements.forEach(
-        element => {
-
-            element.classList.add(
-                "visible"
-            );
-
-        }
-    );
-}
-
-
-/* =========================================================
-   GALLERY LIGHTBOX
-========================================================= */
-
-galleryItems.forEach(
-    item => {
-
-        item.addEventListener(
-            "click",
-            () => {
-
-                const image =
-                    item.dataset.full;
-
-                const thumbnail =
-                    item.querySelector(
-                        "img"
-                    );
-
-                lightboxImage.src =
-                    image;
-
-                lightboxImage.alt =
-                    thumbnail
-                        ? thumbnail.alt
-                        : "";
-
-                lightbox.classList.add(
-                    "active"
-                );
-
-                lightbox.setAttribute(
-                    "aria-hidden",
-                    "false"
-                );
-
-                document.body.style.overflow =
-                    "hidden";
-
-            }
-        );
-
-    }
-);
-
-
-function closeLightbox(){
-
-    lightbox.classList.remove(
-        "active"
-    );
-
-    lightbox.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-    lightboxImage.src =
-        "";
-
-    document.body.style.overflow =
-        "";
-}
-
-
-lightboxClose.addEventListener(
-    "click",
-    closeLightbox
-);
-
-
-lightbox.addEventListener(
-    "click",
-    event => {
-
-        if(
-            event.target ===
-            lightbox
-        ){
-
-            closeLightbox();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   QR
-========================================================= */
-
-qrButton.addEventListener(
-    "click",
-    () => {
-
-        qrImage.src =
-            "https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com";
-
-        qrModal.classList.add(
-            "active"
-        );
-
-        qrModal.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-        document.body.style.overflow =
-            "hidden";
-
-    }
-);
-
-
-function closeQr(){
-
-    qrModal.classList.remove(
-        "active"
-    );
-
-    qrModal.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-    document.body.style.overflow =
-        "";
-}
-
-
-qrClose.addEventListener(
-    "click",
-    closeQr
-);
-
-
-qrCloseIcon.addEventListener(
-    "click",
-    closeQr
-);
-
-
-qrModal.addEventListener(
-    "click",
-    event => {
-
-        if(
-            event.target ===
-            qrModal
-        ){
-
-            closeQr();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   ESCAPE
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if(
-            event.key ===
-            "Escape"
-        ){
-
-            closeSideMenu();
-
-            closeLightbox();
-
-            closeQr();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   PREVENT BROKEN IMAGE
-========================================================= */
-
-document
-    .querySelectorAll("img")
-    .forEach(
-        image => {
-
-            image.addEventListener(
-                "error",
-                () => {
-
-                    image.style.opacity =
-                        ".35";
-
-                }
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   CURRENT YEAR
-========================================================= */
-
-const currentYear =
-    new Date().getFullYear();
-
-if(
-    currentYear !== 2026
-){
-
-    document
-        .querySelectorAll(
-            ".footer-copy"
-        )
-        .forEach(
-            element => {
-
-                element.textContent =
-                    element.textContent.replace(
-                        "2026",
-                        currentYear
-                    );
-
-            }
-        );
-}
-
-</script>
 
 </body>
 </html>
