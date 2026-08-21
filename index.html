@@ -6472,4 +6472,1677 @@ footer{
 
 
                 <a
-                    class="social
+                    class="social"
+                    href="https://www.facebook.com/share/19JG7PQiHL/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    title="Facebook"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.67.33-1 1-1z"
+                        />
+
+                    </svg>
+
+                </a>
+
+
+            </div>
+
+
+            <div class="contact-actions">
+
+
+                <button
+                    class="qr-button"
+                    id="qrButton"
+                    type="button"
+                >
+                    مشاركة عبر QR
+                </button>
+
+
+                <button
+                    class="share-button"
+                    id="shareButton"
+                    type="button"
+                >
+                    مشاركة الموقع
+                </button>
+
+
+                <button
+                    class="copy-button"
+                    id="copyButton"
+                    type="button"
+                >
+                    نسخ البريد
+                </button>
+
+
+            </div>
+
+
+            <div class="contact-email">
+                MABKHOUT@MABKHUT.COM
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+     LIGHTBOX
+========================================================= -->
+
+<div
+    class="lightbox"
+    id="lightbox"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-label="عرض الصورة"
+>
+
+    <div class="lightbox-content">
+
+
+        <button
+            class="lightbox-close"
+            id="lightboxClose"
+            type="button"
+            aria-label="إغلاق"
+        >
+            ×
+        </button>
+
+
+        <button
+            class="lightbox-nav lightbox-prev"
+            id="lightboxPrev"
+            type="button"
+            aria-label="الصورة السابقة"
+        >
+            →
+        </button>
+
+
+        <img
+            id="lightboxImage"
+            src=""
+            alt=""
+        >
+
+
+        <button
+            class="lightbox-nav lightbox-next"
+            id="lightboxNext"
+            type="button"
+            aria-label="الصورة التالية"
+        >
+            ←
+        </button>
+
+
+        <div
+            class="lightbox-caption"
+            id="lightboxCaption"
+        ></div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     QR MODAL
+========================================================= -->
+
+<div
+    class="qr-modal"
+    id="qrModal"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-label="مشاركة الموقع عبر QR"
+>
+
+    <div class="qr-box">
+
+        <h3>
+            MABKHUT.COM
+        </h3>
+
+        <p>
+            امسح الرمز لفتح الموقع
+        </p>
+
+        <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fmabkhut.com"
+            alt="رمز QR لموقع mabkhut.com"
+            width="220"
+            height="220"
+        >
+
+        <button
+            class="qr-close"
+            id="qrClose"
+            type="button"
+        >
+            إغلاق
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+></div>
+
+
+<!-- =========================================================
+     BACK TOP
+========================================================= -->
+
+<button
+    class="back-top"
+    id="backTop"
+    type="button"
+    aria-label="العودة إلى أعلى الصفحة"
+>
+    ↑
+</button>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div
+        class="footer-watermark"
+        aria-hidden="true"
+    >
+        MBK
+    </div>
+
+
+    <div class="footer-inner">
+
+
+        <div class="footer-copy">
+
+            ©
+            <span id="currentYear"></span>
+            مبخوت بن عبدالله
+            — جميع الحقوق محفوظة
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#home">
+                الرئيسية
+            </a>
+
+            <a href="#about">
+                نبذة
+            </a>
+
+            <a href="#values">
+                بصمتي
+            </a>
+
+            <a href="#signature">
+                هويتي
+            </a>
+
+            <a href="#gallery">
+                مختاراتي
+            </a>
+
+            <a href="#journey">
+                رحلتي
+            </a>
+
+            <a href="#contact">
+                تواصل
+            </a>
+
+        </div>
+
+
+        <div class="footer-mbk">
+            MBK
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const body =
+    document.body;
+
+const preloader =
+    document.getElementById(
+        "preloader"
+    );
+
+const header =
+    document.getElementById(
+        "siteHeader"
+    );
+
+const menuBtn =
+    document.getElementById(
+        "menuBtn"
+    );
+
+const closeMenu =
+    document.getElementById(
+        "closeMenu"
+    );
+
+const sideMenu =
+    document.getElementById(
+        "sideMenu"
+    );
+
+const overlay =
+    document.getElementById(
+        "overlay"
+    );
+
+const menuLinks =
+    document.querySelectorAll(
+        ".side-menu a"
+    );
+
+const sections =
+    document.querySelectorAll(
+        "main section[id]"
+    );
+
+const scrollProgress =
+    document.getElementById(
+        "scrollProgress"
+    );
+
+const backTop =
+    document.getElementById(
+        "backTop"
+    );
+
+const toast =
+    document.getElementById(
+        "toast"
+    );
+
+const timeline =
+    document.querySelector(
+        ".timeline"
+    );
+
+const timelineProgress =
+    document.getElementById(
+        "timelineProgress"
+    );
+
+
+/* =========================================================
+   PRELOADER
+========================================================= */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        setTimeout(
+            () => {
+
+                preloader.classList.add(
+                    "done"
+                );
+
+            },
+            420
+        );
+
+    }
+);
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+function openMenu(){
+
+    sideMenu.classList.add(
+        "active"
+    );
+
+    overlay.classList.add(
+        "active"
+    );
+
+    body.classList.add(
+        "menu-open"
+    );
+
+    menuBtn.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+    sideMenu.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+}
+
+
+function closeSideMenu(){
+
+    sideMenu.classList.remove(
+        "active"
+    );
+
+    overlay.classList.remove(
+        "active"
+    );
+
+    body.classList.remove(
+        "menu-open"
+    );
+
+    menuBtn.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    sideMenu.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+}
+
+
+menuBtn.addEventListener(
+    "click",
+    openMenu
+);
+
+closeMenu.addEventListener(
+    "click",
+    closeSideMenu
+);
+
+overlay.addEventListener(
+    "click",
+    closeSideMenu
+);
+
+menuLinks.forEach(
+    link => {
+
+        link.addEventListener(
+            "click",
+            closeSideMenu
+        );
+
+    }
+);
+
+
+/* =========================================================
+   SIDE MENU SWIPE TO CLOSE
+========================================================= */
+
+let menuTouchStartX = 0;
+let menuTouchStartY = 0;
+
+sideMenu.addEventListener(
+    "touchstart",
+    event => {
+
+        const touch =
+            event.changedTouches[0];
+
+        menuTouchStartX =
+            touch.clientX;
+
+        menuTouchStartY =
+            touch.clientY;
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+sideMenu.addEventListener(
+    "touchend",
+    event => {
+
+        const touch =
+            event.changedTouches[0];
+
+        const deltaX =
+            touch.clientX -
+            menuTouchStartX;
+
+        const deltaY =
+            touch.clientY -
+            menuTouchStartY;
+
+
+        if(
+            Math.abs(deltaX) >
+                60 &&
+            Math.abs(deltaX) >
+                Math.abs(deltaY) &&
+            deltaX > 0
+        ){
+
+            closeSideMenu();
+
+        }
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =========================================================
+   SCROLL UI
+========================================================= */
+
+function updateScrollUI(){
+
+    const scrollTop =
+        window.scrollY ||
+        document.documentElement.scrollTop;
+
+    const documentHeight =
+        document.documentElement.scrollHeight;
+
+    const viewportHeight =
+        window.innerHeight;
+
+    const maxScroll =
+        documentHeight -
+        viewportHeight;
+
+    const progress =
+        maxScroll > 0
+            ? (
+                scrollTop /
+                maxScroll
+            ) * 100
+            : 0;
+
+
+    scrollProgress.style.width =
+        `${progress}%`;
+
+
+    if(
+        scrollTop > 40
+    ){
+
+        header.classList.add(
+            "scrolled"
+        );
+
+        backTop.classList.add(
+            "visible"
+        );
+
+    }else{
+
+        header.classList.remove(
+            "scrolled"
+        );
+
+        backTop.classList.remove(
+            "visible"
+        );
+
+    }
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateScrollUI,
+    {
+        passive:true
+    }
+);
+
+
+updateScrollUI();
+
+
+/* =========================================================
+   BACK TOP
+========================================================= */
+
+backTop.addEventListener(
+    "click",
+    () => {
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:
+                "smooth"
+
+        });
+
+    }
+);
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
+
+
+const revealObserver =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold:.08,
+
+            rootMargin:
+                "0px 0px -30px 0px"
+        }
+
+    );
+
+
+revealElements.forEach(
+    element => {
+
+        revealObserver.observe(
+            element
+        );
+
+    }
+);
+
+
+/* =========================================================
+   ACTIVE SECTION
+========================================================= */
+
+const sectionObserver =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(
+                        !entry.isIntersecting
+                    ){
+
+                        return;
+
+                    }
+
+
+                    const id =
+                        entry.target.id;
+
+
+                    menuLinks.forEach(
+                        link => {
+
+                            const active =
+                                link.dataset.section === id;
+
+
+                            link.classList.toggle(
+                                "active",
+                                active
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+        },
+
+        {
+            rootMargin:
+                "-35% 0px -55% 0px",
+
+            threshold:0
+        }
+
+    );
+
+
+sections.forEach(
+    section => {
+
+        sectionObserver.observe(
+            section
+        );
+
+    }
+);
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+function updateTimeline(){
+
+    if(
+        !timeline ||
+        !timelineProgress
+    ){
+
+        return;
+
+    }
+
+
+    const rect =
+        timeline.getBoundingClientRect();
+
+
+    const viewportCenter =
+        window.innerHeight * .58;
+
+
+    const total =
+        rect.height;
+
+
+    let height =
+        viewportCenter -
+        rect.top;
+
+
+    height =
+        Math.max(
+            0,
+            height
+        );
+
+
+    height =
+        Math.min(
+            total,
+            height
+        );
+
+
+    timelineProgress.style.height =
+        `${height}px`;
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateTimeline,
+    {
+        passive:true
+    }
+);
+
+
+window.addEventListener(
+    "resize",
+    updateTimeline
+);
+
+
+updateTimeline();
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+const galleryItems =
+    Array.from(
+        document.querySelectorAll(
+            ".gallery-item"
+        )
+    );
+
+
+const lightbox =
+    document.getElementById(
+        "lightbox"
+    );
+
+const lightboxImage =
+    document.getElementById(
+        "lightboxImage"
+    );
+
+const lightboxClose =
+    document.getElementById(
+        "lightboxClose"
+    );
+
+const lightboxPrev =
+    document.getElementById(
+        "lightboxPrev"
+    );
+
+const lightboxNext =
+    document.getElementById(
+        "lightboxNext"
+    );
+
+const lightboxCaption =
+    document.getElementById(
+        "lightboxCaption"
+    );
+
+
+let currentGalleryIndex =
+    0;
+
+let previousFocusedElement =
+    null;
+
+let touchStartX =
+    0;
+
+
+/* =========================================================
+   PRELOAD NEXT IMAGE
+========================================================= */
+
+function preloadImage(
+    index
+){
+
+    if(
+        !galleryItems[index]
+    ){
+
+        return;
+
+    }
+
+
+    const url =
+        galleryItems[index]
+            .dataset
+            .full;
+
+
+    if(!url){
+
+        return;
+
+    }
+
+
+    const image =
+        new Image();
+
+
+    image.decoding =
+        "async";
+
+
+    image.src =
+        url;
+
+}
+
+
+/* Preload only the next few images rather than all */
+
+for(
+    let i = 1;
+    i <= 2 &&
+    i < galleryItems.length;
+    i++
+){
+
+    preloadImage(i);
+
+}
+
+
+/* =========================================================
+   OPEN LIGHTBOX
+========================================================= */
+
+function openLightbox(
+    index
+){
+
+    if(
+        !galleryItems[index]
+    ){
+
+        return;
+
+    }
+
+
+    currentGalleryIndex =
+        index;
+
+
+    const item =
+        galleryItems[
+            currentGalleryIndex
+        ];
+
+
+    const imageURL =
+        item.dataset.full;
+
+
+    const caption =
+        item.dataset.caption ||
+        "";
+
+
+    const thumbnail =
+        item.querySelector(
+            "img"
+        );
+
+
+    lightboxImage.src =
+        imageURL;
+
+
+    lightboxImage.alt =
+        thumbnail
+            ? thumbnail.alt
+            : "";
+
+
+    lightboxCaption.textContent =
+        caption;
+
+
+    lightbox.classList.add(
+        "active"
+    );
+
+
+    lightbox.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    body.classList.add(
+        "modal-open"
+    );
+
+
+    previousFocusedElement =
+        document.activeElement;
+
+
+    lightboxClose.focus();
+
+
+    preloadImage(
+        (
+            currentGalleryIndex +
+            1
+        ) %
+        galleryItems.length
+    );
+
+}
+
+
+function closeLightbox(){
+
+    lightbox.classList.remove(
+        "active"
+    );
+
+
+    lightbox.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    body.classList.remove(
+        "modal-open"
+    );
+
+
+    lightboxImage.src =
+        "";
+
+
+    lightboxCaption.textContent =
+        "";
+
+
+    if(
+        previousFocusedElement &&
+        typeof previousFocusedElement.focus ===
+            "function"
+    ){
+
+        previousFocusedElement.focus();
+
+    }
+
+}
+
+
+function showPreviousImage(){
+
+    currentGalleryIndex =
+        (
+            currentGalleryIndex -
+            1 +
+            galleryItems.length
+        ) %
+        galleryItems.length;
+
+
+    openLightbox(
+        currentGalleryIndex
+    );
+
+}
+
+
+function showNextImage(){
+
+    currentGalleryIndex =
+        (
+            currentGalleryIndex +
+            1
+        ) %
+        galleryItems.length;
+
+
+    openLightbox(
+        currentGalleryIndex
+    );
+
+}
+
+
+/* =========================================================
+   GALLERY EVENTS
+========================================================= */
+
+galleryItems.forEach(
+    (item,index) => {
+
+        item.addEventListener(
+            "click",
+            () => {
+
+                openLightbox(
+                    index
+                );
+
+            }
+        );
+
+
+        item.addEventListener(
+            "keydown",
+            event => {
+
+                if(
+                    event.key === "Enter" ||
+                    event.key === " "
+                ){
+
+                    event.preventDefault();
+
+
+                    openLightbox(
+                        index
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+lightboxClose.addEventListener(
+    "click",
+    closeLightbox
+);
+
+
+lightboxPrev.addEventListener(
+    "click",
+    showPreviousImage
+);
+
+
+lightboxNext.addEventListener(
+    "click",
+    showNextImage
+);
+
+
+lightbox.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target ===
+            lightbox
+        ){
+
+            closeLightbox();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   LIGHTBOX SWIPE
+========================================================= */
+
+lightbox.addEventListener(
+    "touchstart",
+    event => {
+
+        touchStartX =
+            event.changedTouches[0]
+                .screenX;
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+lightbox.addEventListener(
+    "touchend",
+    event => {
+
+        const endX =
+            event.changedTouches[0]
+                .screenX;
+
+
+        const diff =
+            endX -
+            touchStartX;
+
+
+        if(
+            Math.abs(diff) <
+                50
+        ){
+
+            return;
+
+        }
+
+
+        if(
+            diff > 0
+        ){
+
+            showPreviousImage();
+
+        }else{
+
+            showNextImage();
+
+        }
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =========================================================
+   QR
+========================================================= */
+
+const qrButton =
+    document.getElementById(
+        "qrButton"
+    );
+
+const qrModal =
+    document.getElementById(
+        "qrModal"
+    );
+
+const qrClose =
+    document.getElementById(
+        "qrClose"
+    );
+
+
+function openQR(){
+
+    qrModal.classList.add(
+        "active"
+    );
+
+
+    qrModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    body.classList.add(
+        "modal-open"
+    );
+
+
+    qrClose.focus();
+
+}
+
+
+function closeQR(){
+
+    qrModal.classList.remove(
+        "active"
+    );
+
+
+    qrModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+qrButton.addEventListener(
+    "click",
+    openQR
+);
+
+
+qrClose.addEventListener(
+    "click",
+    closeQR
+);
+
+
+qrModal.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target ===
+            qrModal
+        ){
+
+            closeQR();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SHARE
+========================================================= */
+
+const shareButton =
+    document.getElementById(
+        "shareButton"
+    );
+
+
+async function shareSite(){
+
+    const shareData = {
+
+        title:
+            "مبخوت بن عبدالله | MBK",
+
+        text:
+            "الموقع الشخصي لمبخوت بن عبدالله",
+
+        url:
+            "https://mabkhut.com/"
+
+    };
+
+
+    if(
+        typeof navigator.share ===
+            "function"
+    ){
+
+        try{
+
+            await navigator.share(
+                shareData
+            );
+
+            return;
+
+        }catch(error){
+
+            if(
+                error &&
+                error.name ===
+                    "AbortError"
+            ){
+
+                return;
+
+            }
+
+        }
+
+    }
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            "https://mabkhut.com/"
+        );
+
+
+        showToast(
+            "تم نسخ رابط الموقع"
+        );
+
+
+    }catch(error){
+
+        showToast(
+            "mabkhut.com"
+        );
+
+    }
+
+}
+
+
+shareButton.addEventListener(
+    "click",
+    shareSite
+);
+
+
+/* =========================================================
+   COPY EMAIL
+========================================================= */
+
+const copyButton =
+    document.getElementById(
+        "copyButton"
+    );
+
+
+const emailAddress =
+    "mabkhout@mabkhut.com";
+
+
+copyButton.addEventListener(
+    "click",
+    async () => {
+
+        try{
+
+            await navigator.clipboard.writeText(
+                emailAddress
+            );
+
+
+            showToast(
+                "تم نسخ البريد الإلكتروني"
+            );
+
+
+        }catch(error){
+
+            showToast(
+                emailAddress
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer =
+    null;
+
+
+function showToast(
+    message
+){
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2600
+        );
+
+}
+
+
+/* =========================================================
+   SMOOTH ANCHORS
+========================================================= */
+
+document
+    .querySelectorAll(
+        'a[href^="#"]'
+    )
+    .forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    const targetID =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    const target =
+                        document.querySelector(
+                            targetID
+                        );
+
+
+                    if(
+                        !target
+                    ){
+
+                        return;
+
+                    }
+
+
+                    event.preventDefault();
+
+
+                    closeSideMenu();
+
+
+                    target.scrollIntoView({
+
+                        behavior:
+                            "smooth",
+
+                        block:
+                            "start"
+
+                    });
+
+
+                    history.replaceState(
+                        null,
+                        "",
+                        targetID
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key !==
+                "Escape"
+        ){
+
+            return;
+
+        }
+
+
+        closeSideMenu();
+
+        closeLightbox();
+
+        closeQR();
+
+    }
+);
+
+
+/* =========================================================
+   KEYBOARD LIGHTBOX NAVIGATION
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            !lightbox.classList.contains(
+                "active"
+            )
+        ){
+
+            return;
+
+        }
+
+
+        if(
+            event.key ===
+                "ArrowRight"
+        ){
+
+            showPreviousImage();
+
+        }
+
+
+        if(
+            event.key ===
+                "ArrowLeft"
+        ){
+
+            showNextImage();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   RESIZE SAFETY
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if(
+            window.innerWidth >
+                760
+        ){
+
+            closeSideMenu();
+
+        }
+
+
+        updateTimeline();
+
+    }
+);
+
+
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
+
+const currentYear =
+    document.getElementById(
+        "currentYear"
+    );
+
+
+currentYear.textContent =
+    new Date().getFullYear();
+
+
+/* =========================================================
+   INITIAL
+========================================================= */
+
+document.documentElement.style
+    .setProperty(
+        "scroll-padding-top",
+        "105px"
+    );
+
+</script>
+
+</body>
+    </html>
